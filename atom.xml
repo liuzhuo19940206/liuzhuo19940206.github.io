@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>解忧杂货店</title>
+  
+  <subtitle>爱生活爱解忧</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://liuzhuo19940206.github.io/"/>
+  <updated>2018-10-11T05:29:55.839Z</updated>
+  <id>http://liuzhuo19940206.github.io/</id>
+  
+  <author>
+    <name>刘卓</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新文章</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/11/my-new-post/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/11/my-new-post/</id>
+    <published>2018-10-11T03:58:21.000Z</published>
+    <updated>2018-10-11T05:29:55.839Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这是作者的第一篇文章，主要是为了纪念自己的博客!!&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="blog" scheme="http://liuzhuo19940206.github.io/categories/blog/"/>
+    
+    
+      <category term="blog" scheme="http://liuzhuo19940206.github.io/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/11/hello-world/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/11/hello-world/</id>
+    <published>2018-10-11T02:31:51.909Z</published>
+    <updated>2018-10-11T02:31:51.929Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

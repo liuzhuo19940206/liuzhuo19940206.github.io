@@ -82,7 +82,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Archive | 解忧杂货店 - 爱生活爱解忧</title>
+    <title>About | 解忧杂货店 - 爱生活爱解忧</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"  data-spy="scroll" data-target=".list-group">
     
@@ -105,13 +105,13 @@
         
         <li role="menuitem"><a href="/">主页</a></li>
         
-        <li role="menuitem"><a href="/archives/" class="current">归档</a></li>
+        <li role="menuitem"><a href="/archives/">归档</a></li>
         
         <li role="menuitem"><a href="/categories/">分类</a></li>
         
         <li role="menuitem"><a href="/tags/">标签</a></li>
         
-        <li role="menuitem"><a href="/about/">关于</a></li>
+        <li role="menuitem"><a href="/about/" class="current">关于</a></li>
         
       </ul>
     </nav>
@@ -124,46 +124,67 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">Archive</h1>
-  <h2 class="page-counter">
-    
-    You have 2 posts!
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2018</h1>
-  
-  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/10/11/my-new-post/" itemprop="url">新文章</a>
+<div id="page" class="page">
+  <article class="article post card animate">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <span>About</span>
       </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-11T11:58:21+08:00">10-11</time>
-      </span>
-      
     </header>
+    <main class="post-main">
+      
+    </main>
+    <footer class="post-footer"></footer>
   </article>
   
   
-  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/10/11/hello-world/" itemprop="url">Hello World</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-11T10:31:51+08:00">10-11</time>
-      </span>
-      
-    </header>
-  </article>
+
+<div class="comments" id="comments">
   
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "",
+      "user": "",
+      "repo": "",
+      "client_id": "",
+      "client_secret": "",
+      "no_comment": "This page has no comment, go to comment now!",
+      "go_to_comment": "Go to Comment",
+      "issue_title": "About",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
   
 </div>
 
