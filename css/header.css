@@ -63,7 +63,7 @@
   top: 0;
 }
 .header .header-container .header-title .title {
-  font: bold 2em '热爱生活、热爱Cakki', Roboto, "Noto Sans", "Noto Sans CJK", Helvetica, Arial, sans-serif, "Roboto Slab", "Noto Serif", "Noto Serif CJK", Georgia, "Times New Roman", serif;
+  font: bold 2em Roboto, "Noto Sans", "Noto Sans CJK", Helvetica, Arial, sans-serif, "Roboto Slab", "Noto Serif", "Noto Serif CJK", Georgia, "Times New Roman", serif;
   margin: 0 0 0.5em 0;
 }
 .header .header-container .header-title .subtitle {
