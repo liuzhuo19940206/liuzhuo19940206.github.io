@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-11T05:29:55.839Z</updated>
+  <updated>2018-10-12T06:36:26.670Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/12/markdown/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/12/markdown/</id>
+    <published>2018-10-12T03:39:24.000Z</published>
+    <updated>2018-10-12T06:36:26.670Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://liuzhuo19940206.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="markdown" scheme="http://liuzhuo19940206.github.io/tags/markdown/"/>
+    
+  </entry>
   
   <entry>
     <title>新文章</title>

@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Markdown</title>
+      <link href="/2018/10/12/markdown/"/>
+      <url>/2018/10/12/markdown/</url>
+      
+        <content type="html"><![CDATA[<p> <strong>序言</strong>:<br></p><p></p><p>很久没有写日记了，以前只是在QQ空间写，现在觉得在自己的平台写日记还是感觉不错的，还是要多写博客来加强自己学习的知识，学的知识点感觉还是记不住，渐渐地让我明白，看的越多，懂的越少（你这话不是有毛病吗？应该是看的越多，懂的越多才对），此话怎讲，当你在茫茫的知识库里面东看西看的时候，很快就被海量的知识给淹没了，根本就不知道哪些是对的，哪些是错的，感觉好像这个也懂了，那个也懂了，但是真正写起来，脑子又一片空白，又好像什么都不懂，这种状态时有发生，这就叫不懂装懂，最根本的原因就是看的太多，写的太少，所以为了改掉这样毛病，把被动学习变成主动学习，接下来的日子，多写写，即使是写一些学习工作中遇到的坑也是好的，没事翻出来看看，还可以加深印象，好了，废话到处！<br></p><br>正文：<br><br><strong>一、标题的几种写法</strong>：<p></p><p><strong>第一种</strong>：<br></p><p>#一级标题<br></p><p>##二级标题<br></p><p>###三级级标题<br></p><p>####四级标题<br></p><p>#####五级标题<br></p><p>######六级标题<br><br><strong>说明：真正使用的时候，需要在#后加空格!!!!!</strong><br><br>效果:<br>   </p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级级标题"><a href="#三级级标题" class="headerlink" title="三级级标题"></a>三级级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><strong>第二种</strong>：<br><br>  这是一级标题<br><br>  ======<br><br>  这是二级标题<br><br>  ———<br><br>这种只能表示一级和二级标题,==和–的数量个数没有限制，多少都行!!!<br>效果：<br></p><h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><p><strong>第三种</strong>：<br></p><p>#一级标题#<br></p><p>##二级标题##<br><br>其他几级标题类似，就是一个封闭的意思，也是注意#后面需要有空格!!!</p><h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><p>那既然3种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面</p><p>为了搞清楚原理，我特意在网上搜一下在线编写markdown的工具，发现实际上是把这些标签最后转化为html标签，如图：<br><br><img src="https://i.imgur.com/QSo6UUP.png" alt=""><br>在线地址请看这里:<a href="http://tool.oschina.net/markdown/" title="markdown在线编辑器" target="_blank" rel="noopener">markdown在线编辑器</a><br></p><hr><p><strong>二：列表</strong><br><br>1.无序列表：<br><br>*1<br><br>*2<br><br>*3<br><br>+1<br><br>+2<br><br>+3<br><br>-1<br><br>-2<br><br>-3<br><br>效果:<br></p><ul><li>1</li><li>2</li><li>3</li></ul><ul><li>1</li><li>2</li><li>3</li></ul><ul><li>1</li><li>2</li><li>3<br></li></ul><p>可以看到，无序列表可以用 * ， + ， - 来创建，用在线编辑器看，实际上是转换成了ul&gt;li ，所以使用哪个都可以，推荐使用*吧.<br><br><br>2.有序列表:<br><br>1.列表1<br>2.列表2<br>3.列表3</p><ol><li>列表1</li><li>列表2</li><li>列表3</li></ol><p>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的。</p><hr><p><strong>三：区块引用</strong><br>比如说，你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。使用&gt;  </p><ul><li>犯我帝国者，虽远必诛!  <blockquote><p>这是嘉文四世说的</p></blockquote></li></ul><p><strong>四：华丽的分割线</strong><br>分割线可以由* - _（星号，减号，底线）这3个符号的至少3个符号表示，注意至少要3个，且不需要连续，有空格也可以</p><hr><p><strong>五:图片</strong><br>图片也有2种方式：行内式和参数式.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">![我是图片](https://www.fdfdfdf.jpg)<br>[我是图片]: (https://www.fdfdfdf.jpg)<br>参数式图片，这里是[我是图片]<br></code></pre></td></tr></table></figure></p><p>用法跟链接的基本一样，唯一的不同就是，图片前面要写一个！（这是必须的），没什么好说的。</p><hr><p><strong>六：代码块</strong></p><p>这个就比较重要了，很多时候都需要展示出一些代码</p><p>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下： </p><p>第一种：单行（两个）: ``</p><p><code>var js = new object();</code>  </p><p>要是多行这个就不行了，多行可以用3个 `</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">int a = 10;  <br>int b = 20;  <br>int sum = a + b;  <br>printf(&quot;%d&quot;,sum);<br></code></pre></td></tr></table></figure><hr><p><strong>七：强调</strong>  </p><p>*字体倾斜*<br>_字体倾斜_<br>**字体加粗**<br>__字体加粗__  </p><p>一个星号或者是一个下划线包起来，会转换为<code>&lt;em&gt;</code>倾斜，如果是2个，会转换为<code>&lt;strong&gt;</code>加粗</p><hr><p><strong>八：转义</strong>  </p><p> \：转义符号，和js一样。</p><hr><p><strong>九：删除线</strong>  </p><p>~~请删除我~~:</p><p><del>请删除我</del>  </p><hr><p><strong>十：html原始码</strong> </p><p>在代码区块里面， &amp; 、 &lt; 和 &gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，剩下的 Markdown 都会帮你处理.</p><hr><p>常用的基本上就这些了，如果还有一些常用的，可以跟我留言，我补充上去. </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>新文章</title>
       <link href="/2018/10/11/my-new-post/"/>
       <url>/2018/10/11/my-new-post/</url>
@@ -38,18 +61,18 @@
     </entry>
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
