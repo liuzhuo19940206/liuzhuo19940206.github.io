@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-12T06:36:26.670Z</updated>
+  <updated>2018-10-13T04:37:23.696Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_02</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/</id>
+    <published>2018-10-13T04:37:23.000Z</published>
+    <updated>2018-10-13T04:37:23.696Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring_annotation_day_01</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/</id>
+    <published>2018-10-12T13:14:58.000Z</published>
+    <updated>2018-10-13T03:20:00.873Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;&lt;br&gt;开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入依赖的区别。 
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown</title>
