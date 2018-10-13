@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-13T04:37:23.696Z</updated>
+  <updated>2018-10-13T11:02:24.950Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -21,12 +21,24 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/</id>
     <published>2018-10-13T04:37:23.000Z</published>
-    <updated>2018-10-13T04:37:23.696Z</updated>
+    <updated>2018-10-13T11:02:24.950Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; 
+        
+      
+    
     </summary>
     
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
     
   </entry>
   
