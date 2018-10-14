@@ -82,7 +82,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>spring_annotation_day_01 | 解忧杂货店 - 爱生活爱解忧</title>
+    <title>spring_annotation_day_04 | 解忧杂货店 - 爱生活爱解忧</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -128,7 +128,7 @@
   
   <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/14/spring-annotation-day-04/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="刘卓">
        <meta itemprop="description" content="hello,every body!">
@@ -139,11 +139,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">spring_annotation_day_01</h1>
+      <h1 class="post-title" itemprop="name headline">spring_annotation_day_04</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-12T21:14:58+08:00">2018-10-12 21:14:58</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-14T19:47:13+08:00">2018-10-14 19:47:13</time></span>
         </span>
         
         
@@ -161,36 +161,31 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p><strong>Spring注解开发</strong><br>开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入依赖的区别。  </p>
-<p>打开idea创建Maven工程，输入三个坐标，groupId，artifactId，version。<br>我们这里的三个坐标是:  </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;groupId&gt;com.liuzhuo&lt;/groupId&gt;<br>&lt;artifactId&gt;spring-annotation&lt;/artifactId&gt;<br>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;<br></code></pre></td></tr></table></figure>
-<p>创建后的工程如下：<br><img src="/images/20181012212912.png" style="width:300px; heigh:300px"></p>
+      <p><strong>Spring注解开发</strong>  </p>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>作用：按照一定的条件进行判断，满足条件给容器中注入bean  </p>
+<p>现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。</p>
+<p>在配置类中，添加两个方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean(&quot;bier&quot;)<br>public Person person01() &#123; //如果是windows系统就注入到容器中<br>    return new Person(&quot;Bier&quot;, 16);<br>&#125;<br><br>@Bean(&quot;linux&quot;)<br>public Person person02() &#123; //如果是Linux系统就注入到容器中<br>    return new Person(&quot;Linux&quot;, 18);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>在测试类中，创建新的test03方法:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void test03() &#123;<br>    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);<br>    //根据Bean类来获取所有的Bean类的id名字<br>    String[] beanNamesForType = applicationContext.getBeanNamesForType(Person.class);<br>    for (String name : beanNamesForType) &#123;<br>        System.out.println(name);<br>    &#125;<br>    //根据Bean类来获取Map结构<br>    Map&lt;String, Person&gt; beansOfType = applicationContext.getBeansOfType(Person.class);<br>    System.out.println(beansOfType);<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">D:\Java1.8\bin\java  <br>person<br>bier<br>linux<br>加载person类到容器中~~~<br>&#123;person=Person&#123;name=&apos;dengjie&apos;, age=18&#125;, bier=Person&#123;name=&apos;Bier&apos;, age=16&#125;, linux=Person&#123;name=&apos;Linux&apos;, age=18&#125;&#125;<br><br>Process finished with exit code 0<br></code></pre></td></tr></table></figure></p>
+<p>此时：获取了所有的person类的Bean的id的名字。</p>
 <hr>
-<p>现在打开pom.xml文件:添加依赖如下<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependencies&gt;<br>        &lt;dependency&gt;<br>            &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;<br>            &lt;version&gt;5.0.9.RELEASE&lt;/version&gt;<br>        &lt;/dependency&gt;<br>&lt;/dependencies&gt;<br></code></pre></td></tr></table></figure></p>
-<p>更新pom文件，会自动导入jar包。 </p>
+<p>现在，我们创建com.liuzhuo.conditaion包，并创建两个实现了condition接口的类。如下：</p>
+<p><img src="/images/20181014203017.png" style="width:50%">  </p>
+<p>WinCondition类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class WinCondition implements Condition &#123;<br>    /*<br>     * conditionContext：     条件上下文（获取我们需要的资源）<br>     * annotatedTypeMetadata：注解类型的信息<br>     * */<br>    @Override<br>    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) &#123;<br><br>        //获取beanFactory工厂<br>        ConfigurableListableBeanFactory beanFactory = conditionContext.getBeanFactory();<br>        //获取加载类<br>        ClassLoader classLoader = conditionContext.getClassLoader();<br>        //获取注解类<br>        BeanDefinitionRegistry registry = conditionContext.getRegistry();<br>        //获取环境变量<br>        Environment environment = conditionContext.getEnvironment();<br>        //获取资源加载类<br>        ResourceLoader resourceLoader = conditionContext.getResourceLoader();<br><br>        /*<br>        * 创建如果是windows系统的话，就注入到容器中<br>        * */<br>        String property = environment.getProperty(&quot;os.name&quot;);<br>        if (property.contains(&quot;Windows&quot;)) return true;<br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>LinuxCondition类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class LinuxCondition implements Condition &#123;<br>    @Override<br>    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) &#123;<br><br>        Environment environment = conditionContext.getEnvironment();<br>        String property = environment.getProperty(&quot;os.name&quot;);<br>        if (property.contains(&quot;Linux&quot;)) return true;<br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>修改配置类：给刚刚创建的两个方法添加@Conditional注解</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Conditional(&#123;WinCondition.class&#125;)<br>@Bean(&quot;bier&quot;)<br>public Person person01() &#123; //如果是windows系统就注入到容器中<br>    return new Person(&quot;Bier&quot;, 16);<br>&#125;<br><br>@Conditional(&#123;LinuxCondition.class&#125;)<br>@Bean(&quot;linux&quot;)<br>public Person person02() &#123; //如果是Linux系统就注入到容器中<br>    return new Person(&quot;Linux&quot;, 18);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">person<br>bier<br>加载person类到容器中~~~<br>&#123;person=Person&#123;name=&apos;dengjie&apos;, age=18&#125;, bier=Person&#123;name=&apos;Bier&apos;, age=16&#125;&#125;<br>Windows 10<br><br>Process finished with exit code 0<br></code></pre></td></tr></table></figure></p>
+<p>看到结果：现在作者的操作系统是windows系统，所以现在是bier给注入到容器中了。</p>
+<p>现在修改操作系统的类型。</p>
+<p>修改test03的运行环境，在idea的右上角点击”Edit Configrations···”:</p>
+<p><img src="/images/20181014204146.png" style="width:50%"></p>
+<p>编辑里面的 VM options: -Dos.name=Linux </p>
+<p>然后运行test03.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">person<br>linux<br>加载person类到容器中~~~<br>&#123;person=Person&#123;name=&apos;dengjie&apos;, age=18&#125;, linux=Person&#123;name=&apos;Linux&apos;, age=18&#125;&#125;<br>Linux<br><br>Process finished with exit code 0<br></code></pre></td></tr></table></figure></p>
+<p>此时，注入到容器中的是linux。</p>
 <hr>
-<p>在src下的main下的java中创建Person类。我的包名是com.liuzhuo.bean<br>Person类中主要是两个字段，一个name，一个age，如图:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Person &#123;<br>    private String name;<br>    private Integer age;<br><br>    ···中间省略了无参、有参的构造函数和getter、setter方法以及toString方法.    <br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>现在在main下的resources下创建bean.xml文件  </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br>       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;<br><br>    &lt;!--以前的开发模式，使用配置文件--&gt;<br>    &lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;<br>        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;<br>        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;<br>    &lt;/bean&gt;<br><br>&lt;/beans&gt;<br></code></pre></td></tr></table></figure>
-<hr>
-<p>现在在com.liuzhuo包下创建MainTest类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainTest &#123;<br><br>    public static void main(String[] args) &#123;<br><br>        //以前的开发模式，使用xml来配置bean<br>        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);<br>        Person person = (Person) applicationContext.getBean(&quot;person&quot;);<br>        System.out.println(person);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>输出结果:就是在配置文件中的配置的person类。</p>
-<p><code>Person{name=&#39;zhangsan&#39;, age=18}</code></p>
-<hr>
-<p>现在创建com.liuzhuo.config包，并创建MainConfig类:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>public class MainConfig &#123;<br><br>    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名<br>    @Bean<br>    public Person person() &#123;<br>        return new Person(&quot;lisi&quot;, 16);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>修改MainTest类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainTest &#123;<br><br>    public static void main(String[] args) &#123;<br><br>        //以前的开发模式，使用xml来配置bean<br>        /*ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);<br>        Person person = (Person) applicationContext.getBean(&quot;person&quot;);<br>        System.out.println(person);*/<br><br>        //现在使用java类来配置上下文容器<br>        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);<br>        Person person = context.getBean(Person.class);<br>        System.out.println(person);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>输出结果：是MainConfig类中配置Person类(@Bean注解的类) </p>
-<p><code>Person{name=&#39;lisi&#39;, age=16}</code></p>
-<p>在配置文件类必须使用@Configuration注解，然后再注入自己想要的Bean对象<br>创建一个方法，使用@Bean注解，返回值就是注入到容器中的Bean类型，默认情况下方法名就是注入到容器中的id。  </p>
-<p>@Bean注解()中，可以输入参数，其中就有value来修改Bean的id名，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainConfig &#123;<br><br>    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名<br>    @Bean(value = &quot;person01&quot;) //修改了Bean的id为person01<br>    public Person person() &#123;<br>        return new Person(&quot;lisi&quot;, 16);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>在MainTest文件中输入获取Person类的名字：</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//现在使用java类来配置上下文容器<br>AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);<br>Person person = context.getBean(Person.class);<br>System.out.println(person);<br><br>String[] beanNames = context.getBeanNamesForType(Person.class);<br>for(String name:beanNames)&#123;<br>   System.out.println(name);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>输出结果： </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Person&#123;name=&apos;lisi&apos;, age=16&#125;<br>person01<br></code></pre></td></tr></table></figure>
-<p>说明此时，Bean的id名字是被@Bean(value=”person01”)给替换了，不再是方法名person了。</p>
+<p>总结：@Conditional注解是用来按照一定的条件进行判断，满足条件给容器中注入bean。<br>点击@Conditional：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>public @interface Conditional &#123;<br>    Class&lt;? extends Condition&gt;[] value();<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>说明@Conditional里面是Condition&gt;[] value()数组。我们需要在@Conditional的value中写入数组。数组需要使用｛｝来写。传入的是实现了Condition接口的类。比如这里的WinCondition、LinuxCondition类。<br>实例：@Conditional({WinCondition.class})、@Conditional({LinuxCondition.class})</p>
 
     </main>
     <footer class="post-footer">
@@ -231,12 +226,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2018/10/12/markdown/" rel="next" title="Markdown"><i class="fas fa-angle-left"></i><span class="nav-title">Markdown</span></a>
+      <a href="/2018/10/14/spring-annotation-day-03/" rel="next" title="spring_annotation_day_03"><i class="fas fa-angle-left"></i><span class="nav-title">spring_annotation_day_03</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2018/10/13/spring-annotation-day-02/" rel="prev" title="spring_annotation_day_02"><span class="nav-title">spring_annotation_day_02</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -263,7 +256,7 @@
       "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "spring_annotation_day_01",
+      "issue_title": "spring_annotation_day_04",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -352,6 +345,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Conditional"><span class="toc-text">@Conditional</span></a></li></ol></div>
+    </div>
     
     
     
