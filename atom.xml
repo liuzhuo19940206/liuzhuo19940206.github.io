@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-15T03:54:20.460Z</updated>
+  <updated>2018-10-15T14:00:28.299Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_06</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/15/spring-annotation-day-06/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/15/spring-annotation-day-06/</id>
+    <published>2018-10-15T12:41:40.000Z</published>
+    <updated>2018-10-15T14:00:28.299Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;Bean的生命周期&quot;&gt;&lt;a href=&quot;#Bean的生命周期&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>spring_annotation_day_05</title>
