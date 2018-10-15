@@ -185,7 +185,8 @@
 <p>此时，注入到容器中的是linux。</p>
 <hr>
 <p>总结：@Conditional注解是用来按照一定的条件进行判断，满足条件给容器中注入bean。<br>点击@Conditional：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>public @interface Conditional &#123;<br>    Class&lt;? extends Condition&gt;[] value();<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>说明@Conditional里面是Condition&gt;[] value()数组。我们需要在@Conditional的value中写入数组。数组需要使用｛｝来写。传入的是实现了Condition接口的类。比如这里的WinCondition、LinuxCondition类。<br>实例：@Conditional({WinCondition.class})、@Conditional({LinuxCondition.class})</p>
+<p>说明@Conditional里面是Condition&gt;[] value()数组。我们需要在@Conditional的value中写入数组。数组需要使用｛｝来写。传入的是实现了Condition接口的类。比如这里的WinCondition、LinuxCondition类。<br>实例：@Conditional({WinCondition.class})、@Conditional({LinuxCondition.class})。</p>
+<p>@Conditional，不仅可以放在方法上面，还可以是类上面。<br>放在类上面，就是对这个类统一设置。</p>
 
     </main>
     <footer class="post-footer">
@@ -230,6 +231,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2018/10/15/spring-annotation-day-05/" rel="prev" title="spring_annotation_day_05"><span class="nav-title">spring_annotation_day_05</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -310,7 +313,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">6</a></div>
+      <div><a href="/archives/">7</a></div>
     </div>
     
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-14T12:51:25.869Z</updated>
+  <updated>2018-10-15T03:54:20.460Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>spring_annotation_day_05</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/15/spring-annotation-day-05/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/15/spring-annotation-day-05/</id>
+    <published>2018-10-15T01:50:41.000Z</published>
+    <updated>2018-10-15T03:54:20.460Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;Import注解&quot;&gt;&lt;a href=&quot;#Import注解&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>spring_annotation_day_04</title>
     <link href="http://liuzhuo19940206.github.io/2018/10/14/spring-annotation-day-04/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/14/spring-annotation-day-04/</id>
     <published>2018-10-14T11:47:13.000Z</published>
-    <updated>2018-10-14T12:51:25.869Z</updated>
+    <updated>2018-10-15T01:42:37.294Z</updated>
     
     <summary type="html">
     
