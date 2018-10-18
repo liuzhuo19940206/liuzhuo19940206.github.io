@@ -82,7 +82,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>spring_annotation_day_01 | 解忧杂货店 - 爱生活爱解忧</title>
+    <title>Spring_Ioc | 解忧杂货店 - 爱生活爱解忧</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -128,7 +128,7 @@
   
   <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="刘卓">
        <meta itemprop="description" content="hello,every body!">
@@ -139,11 +139,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">spring_annotation_day_01</h1>
+      <h1 class="post-title" itemprop="name headline">Spring_Ioc</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-12T21:14:58+08:00">2018-10-12 21:14:58</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-18T12:48:31+08:00">2018-10-18 12:48:31</time></span>
         </span>
         
         
@@ -152,7 +152,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-annotation/" itemprop="url" rel="index"><span itemprop="name">spring_annotation</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
         </span>
         
         
@@ -161,43 +161,94 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p><strong>Spring注解开发</strong><br>开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入依赖的区别。  </p>
-<p>打开idea创建Maven工程，输入三个坐标，groupId，artifactId，version。<br>我们这里的三个坐标是:  </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;groupId&gt;com.liuzhuo&lt;/groupId&gt;<br>&lt;artifactId&gt;spring-annotation&lt;/artifactId&gt;<br>&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;<br></code></pre></td></tr></table></figure>
-<p>创建后的工程如下：<br><img src="/images/20181012212912.png" style="width:300px; heigh:300px"></p>
-<hr>
-<p>现在打开pom.xml文件:添加依赖如下<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependencies&gt;<br>        &lt;dependency&gt;<br>            &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;<br>            &lt;version&gt;5.0.9.RELEASE&lt;/version&gt;<br>        &lt;/dependency&gt;<br>&lt;/dependencies&gt;<br></code></pre></td></tr></table></figure></p>
-<p>更新pom文件，会自动导入jar包。 </p>
-<hr>
-<p>在src下的main下的java中创建Person类。我的包名是com.liuzhuo.bean<br>Person类中主要是两个字段，一个name，一个age，如图:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Person &#123;<br>    private String name;<br>    private Integer age;<br><br>    ···中间省略了无参、有参的构造函数和getter、setter方法以及toString方法.    <br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>现在在main下的resources下创建bean.xml文件  </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br>       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;<br><br>    &lt;!--以前的开发模式，使用配置文件--&gt;<br>    &lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;<br>        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;<br>        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;<br>    &lt;/bean&gt;<br><br>&lt;/beans&gt;<br></code></pre></td></tr></table></figure>
-<hr>
-<p>现在在com.liuzhuo包下创建MainTest类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainTest &#123;<br><br>    public static void main(String[] args) &#123;<br><br>        //以前的开发模式，使用xml来配置bean<br>        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);<br>        Person person = (Person) applicationContext.getBean(&quot;person&quot;);<br>        System.out.println(person);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>输出结果:就是在配置文件中的配置的person类。</p>
-<p><code>Person{name=&#39;zhangsan&#39;, age=18}</code></p>
-<hr>
-<p>现在创建com.liuzhuo.config包，并创建MainConfig类:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>public class MainConfig &#123;<br><br>    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名<br>    @Bean<br>    public Person person() &#123;<br>        return new Person(&quot;lisi&quot;, 16);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>修改MainTest类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainTest &#123;<br><br>    public static void main(String[] args) &#123;<br><br>        //以前的开发模式，使用xml来配置bean<br>        /*ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);<br>        Person person = (Person) applicationContext.getBean(&quot;person&quot;);<br>        System.out.println(person);*/<br><br>        //现在使用java类来配置上下文容器<br>        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);<br>        Person person = context.getBean(Person.class);<br>        System.out.println(person);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<hr>
-<p>输出结果：是MainConfig类中配置Person类(@Bean注解的类) </p>
-<p><code>Person{name=&#39;lisi&#39;, age=16}</code></p>
-<p>在配置文件类必须使用@Configuration注解，然后再注入自己想要的Bean对象<br>创建一个方法，使用@Bean注解，返回值就是注入到容器中的Bean类型，默认情况下方法名就是注入到容器中的id。  </p>
-<p>@Bean注解()中，可以输入参数，其中就有value来修改Bean的id名，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainConfig &#123;<br><br>    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名<br>    @Bean(value = &quot;person01&quot;) //修改了Bean的id为person01<br>    public Person person() &#123;<br>        return new Person(&quot;lisi&quot;, 16);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>在MainTest文件中输入获取Person类的名字：</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//现在使用java类来配置上下文容器<br>AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);<br>Person person = context.getBean(Person.class);<br>System.out.println(person);<br><br>String[] beanNames = context.getBeanNamesForType(Person.class);<br>for(String name:beanNames)&#123;<br>   System.out.println(name);<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>输出结果： </p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Person&#123;name=&apos;lisi&apos;, age=16&#125;<br>person01<br></code></pre></td></tr></table></figure>
-<p>说明此时，Bean的id名字是被@Bean(value=”person01”)给替换了，不再是方法名person了。</p>
+      <h3 id="广义的Ioc"><a href="#广义的Ioc" class="headerlink" title="广义的Ioc"></a>广义的Ioc</h3><p>面试被问烂的 Spring IOC(求求你别再问了)  </p>
+<p>1）IoC(Inversion of Control) 控制反转，即“不用打电话过来，我们会打给你”。</p>
+<p>两种实现： 依赖查找（DL）和 依赖注入（DI）。</p>
+<p>IoC 和 DI 、DL 的关系（这个 DL，Avalon 和 EJB 就是使用的这种方式实现的 IoC）：</p>
+<p><img src="/images/20181018125125.png"></p>
+<p>2) DL 已经被抛弃，因为他需要用户自己去是使用 API 进行查找资源和组装对象。即有侵入性。  </p>
+<p>3) DI 是 Spring 使用的方式，容器负责组件的装配。</p>
+<p><strong>注意：</strong><br>Java 使用 DI 方式实现 IoC 的不止 Spring，包括 Google 的 Guice，还有一个冷门的 PicoContainer（极度轻量，但只提供 IoC）。</p>
+<h3 id="Spring的IoC"><a href="#Spring的IoC" class="headerlink" title="Spring的IoC"></a>Spring的IoC</h3><ol>
+<li>依赖注入</li>
+<li>依赖检查</li>
+<li>自动装配</li>
+<li>支持集合</li>
+<li>指定初始化方法和销毁方法</li>
+<li>支持回调某些方法(但是需要实现Spring接口，略有侵入)</li>
+</ol>
+<p>其中，最重要的就是依赖注入，从 XML 的配置上说， 即 ref 标签。对应 Spring RuntimeBeanReference 对象。</p>
+<p><strong>对于 IoC 来说，最重要的就是容器。容器管理着 Bean 的生命周期，控制着 Bean 的依赖注入。</strong>  </p>
+<p>那么， Spring 如何设计容器的呢？  </p>
+<p>Spring 作者 Rod Johnson 设计了两个接口用以表示容器。  </p>
+<ol>
+<li>BeanFactory</li>
+<li>ApplicationContext</li>
+</ol>
+<p>BeanFactory 粗暴简单，可以理解为就是个 HashMap，Key 是 BeanName，Value 是 Bean 实例。通常只提供注册（put），获取（get）这两个功能。我们可以称之为 “低级容器”。</p>
+<p>ApplicationContext 可以称之为 “高级容器”。因为他比 BeanFactory 多了更多的功能。他继承了多个接口。因此具备了更多的功能。</p>
+<p>例如资源的获取，支持多种消息（例如 JSP tag 的支持），对 BeanFactory 多了工具级别的支持等待。所以你看他的名字，已经不是 BeanFactory 之类的工厂了，而是 “应用上下文”， 代表着整个大容器的所有功能。  </p>
+<p>该接口定义了一个 refresh 方法，此方法是所有阅读 Spring 源码的人的最熟悉的方法，用于刷新整个容器，即重新加载/刷新所有的 bean。</p>
+<p>当然，除了这两个大接口，还有其他的辅助接口，但我今天不会花太多篇幅介绍他们。</p>
+<p>为了更直观的展示 “低级容器” 和 “高级容器” 的关系，我这里通过常用的 ClassPathXmlApplicationContext 类，来展示整个容器的层级 UML 关系。</p>
+<p><img src="/images/20181018130402.png"></p>
+<p>有点复杂？ 先不要慌，我来解释一下。</p>
+<p>最上面的 BeanFactory 知道吧？我就不讲了。</p>
+<p>下面的 3 个绿色的，都是功能扩展接口，这里就不展开讲。</p>
+<p>看下面的隶属 ApplicationContext 粉红色的 “高级容器”，依赖着 “低级容器”，这里说的是依赖，不是继承哦。他依赖着 “低级容器” 的 getBean 功能。而高级容器有更多的功能：支持不同的信息源头，可以访问文件资源，支持应用事件（Observer 模式）。</p>
+<p>通常用户看到的就是 “高级容器”。 但 BeanFactory 也非常够用啦！</p>
+<p>左边灰色区域的是 “低级容器”， 只负载加载 Bean，获取 Bean。容器其他的高级功能是没有的。例如上图画的 refresh 刷新 Bean 工厂所有配置。生命周期事件回调等。</p>
+<font color="#00ffff" size="4">好，解释了低级容器和高级容器，我们可以看看一个 IoC 启动过程是什么样子的。说白了，就是 ClassPathXmlApplicationContext 这个类，在启动时，都做了啥。</font>
+
+<p>下图是 ClassPathXmlApplicationContext 的构造过程，实际就是 Spring IoC 的初始化过程。<br><img src="/images/20181018131026.png"></p>
+<p>注意，这里为了理解方便，有所简化。</p>
+<p>这里再用文字来描述这个过程：</p>
+<ol>
+<li>用户构造 ClassPathXmlApplicationContext（简称 CPAC）</li>
+<li>CPAC 首先访问了 “抽象高级容器” 的 final 的 refresh 方法，这个方法是模板方法。所以要回调子类（低级容器）的 refreshBeanFactory 方法，这个方法的作用是使用低级容器加载所有 BeanDefinition 和 Properties 到容器中。</li>
+<li>低级容器加载成功后，高级容器开始处理一些回调，例如 Bean 后置处理器。回调 setBeanFactory 方法。或者注册监听器等，发布事件，实例化单例 Bean 等等功能，这些功能，随着 Spring 的不断升级，功能越来越多，很多人在这里迷失了方向）。</li>
+</ol>
+<p>简单说就是：</p>
+<ol>
+<li>低级容器 加载配置文件（从 XML，数据库，Applet），并解析成 BeanDefinition 到低级容器中。</li>
+<li>加载成功后，高级容器启动高级功能，例如接口回调，监听器，自动实例化单例，发布事件等等功能。</li>
+</ol>
+<p><strong>所以，一定要把 “低级容器” 和“高级容器” 的区别弄清楚。不能一叶障目不见泰山。</strong></p>
+<p>好，当我们创建好容器，就会使用 getBean 方法，获取 Bean，而 getBean 的流程如下：<br><img src="/images/20181018131432.png" heigth="50%"></p>
+<p>从图可以看出，getBean 的操作都是在低级容器里操作的。其中有个递归操作，这个是什么意思呢？</p>
+<font color="#00ffff" size="4"><br>假设：当 Bean_A 依赖着 Bean_B，而这个 Bean_A 在加载的时候，其配置的 ref = “Bean_B” 在解析的时候只是一个占位符，被放入了 Bean_A 的属性集合中，当调用 getBean 时，需要真正 Bean_B 注入到 Bean_A 内部时，就需要从容器中获取这个 Bean_B，因此产生了递归。<br></font>
+
+<p>为什么不是在加载的时候，就直接注入呢？因为加载的顺序不同，很可能 Bean_A 依赖的 Bean_B 还没有加载好，也就无法从容器中获取，你不能要求用户把 Bean 的加载顺序排列好，这是不人道的。</p>
+<p>所以，Spring 将其分为了 2 个步骤：</p>
+<ol>
+<li><p>加载所有的 Bean 配置成 BeanDefinition 到容器中，如果 Bean 有依赖关系，则使用占位符暂时代替。</p>
+</li>
+<li><p>然后，在调用 getBean 的时候，进行真正的依赖注入，即如果碰到了属性是 ref 的（占位符），那么就从容器里获取这个 Bean，然后注入到实例中 —— 称之为依赖注入。<br>可以看到，依赖注入实际上，只需要 “低级容器” 就可以实现。  </p>
+</li>
+</ol>
+<p>这就是 IoC。</p>
+<p>所以 ApplicationContext refresh 方法里面的操作不只是 IoC，是高级容器的所有功能（包括 IoC），IoC 的功能在低级容器里就可以实现。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>说了这么多，不知道你有没有理解Spring IoC？ 这里小结一下：IoC 在 Spring 里，只需要低级容器就可以实现，2 个步骤：</p>
+<ol>
+<li><p>加载配置文件，解析成 BeanDefinition 放在 Map 里。</p>
+</li>
+<li><p>调用 getBean 的时候，从 BeanDefinition 所属的 Map 里，拿出 Class 对象进行实例化，同时，如果有依赖关系，将递归调用 getBean 方法 —— 完成依赖注入。</p>
+</li>
+</ol>
+<p>上面就是 Spring 低级容器（BeanFactory）的 IoC。</p>
+<p>至于高级容器 ApplicationContext，他包含了低级容器的功能，当他执行 refresh 模板方法的时候，将刷新整个容器的 Bean。同时其作为高级容器，包含了太多的功能。一句话，他不仅仅是 IoC。他支持不同信息源头，支持 BeanFactory 工具类，支持层级容器，支持访问文件资源，支持事件发布通知，支持接口回调等等。</p>
+<p>可以预见，随着 Spring 的不断发展，高级容器的功能会越来越多。</p>
+<font color="#00ffff" size="4"><br>诚然，了解 IoC 的过程，实际上为了了解 Spring 初始化时，各个接口的回调时机。例如 InitializingBean，BeanFactoryAware，ApplicationListener 等等接口，这些接口的作用，笔者之前写过一篇文章进行介绍，有兴趣可以看一下，关键字：Spring 必知必会 扩展接口。<br></font>
+
+<p>但是请注意，实现 Spring 接口代表着你这个应用就绑定死 Spring 了！代表 Spring 具有侵入性！要知道，Spring 发布时，无侵入性就是他最大的宣传点之一 —— 即 IoC 容器可以随便更换，代码无需变动。而现如今，Spring 已然成为 J2EE 社区准官方解决方案，也没有了所谓的侵入性这个说法。因为他就是标准，和 Servlet 一样，你能不实现 Servlet 的接口吗？: -)</p>
+<p>好了，下次如果再有面试官问 Spring IoC 初始化过程，就再也不会含糊其词、支支吾吾了！！！</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/spring-annotation/" rel="tag"><i class="fas fa-tags"></i>spring_annotation</a>
+        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
         
       </div>
       
@@ -231,12 +282,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2018/10/12/markdown/" rel="next" title="Markdown"><i class="fas fa-angle-left"></i><span class="nav-title">Markdown</span></a>
+      <a href="/2018/10/17/spring-annotation-day-11/" rel="next" title="spring_annotation_day_11"><i class="fas fa-angle-left"></i><span class="nav-title">spring_annotation_day_11</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2018/10/13/spring-annotation-day-02/" rel="prev" title="spring_annotation_day_02"><span class="nav-title">spring_annotation_day_02</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2018/10/18/idea/" rel="prev" title="IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)"><span class="nav-title">IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -263,7 +314,7 @@
       "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "spring_annotation_day_01",
+      "issue_title": "Spring_Ioc",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -352,6 +403,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#广义的Ioc"><span class="toc-text">广义的Ioc</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Spring的IoC"><span class="toc-text">Spring的IoC</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
     
     
     

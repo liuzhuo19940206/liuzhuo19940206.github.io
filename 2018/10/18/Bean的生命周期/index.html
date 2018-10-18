@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Spring Bean的生命周期 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/18/Bean的生命周期/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Spring Bean的生命周期</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-18T16:17:44+08:00">2018-10-18 16:17:44</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。</p>
+<p>我们通常使用ApplicationContext作为Spring容器。这里，我们讲的也是 ApplicationContext中Bean的生命周期。而实际上BeanFactory也是差不多的，只不过处理器需要手动注册。</p>
+<h3 id="一、生命周期流程图："><a href="#一、生命周期流程图：" class="headerlink" title="一、生命周期流程图："></a>一、生命周期流程图：</h3><p>Spring Bean的完整生命周期从创建Spring容器开始，直到最终Spring容器销毁Bean，这其中包含了一系列关键点。<br><img src="/images/20181018162309.png"><br><img src="/images/20181018162419.png"></p>
+<p>若容器注册了以上各种接口，程序那么将会按照以上的流程进行。下面将仔细讲解各接口作用。</p>
+<h3 id="二、各种接口方法分类"><a href="#二、各种接口方法分类" class="headerlink" title="二、各种接口方法分类"></a>二、各种接口方法分类</h3><p>Bean的完整生命周期经历了各种方法调用，这些方法可以划分为以下几类：</p>
+<p>1、Bean自身的方法:这个包括了Bean本身调用的方法和通过配置文件中<bean>的init-method和destroy-method指定的方法</bean></p>
+<p>2、Bean级生命周期接口方法:这个包括了BeanNameAware、BeanFactoryAware、InitializingBean和DiposableBean这些接口的方法</p>
+<p>3、容器级生命周期接口方法:这个包括了InstantiationAwareBeanPostProcessor 和 BeanPostProcessor 这两个接口实现，一般称它们的实现类为“后处理器”。</p>
+<p>4、工厂后处理器接口方法:这个包括了AspectJWeavingEnabler, ConfigurationClassPostProcessor, CustomAutowireConfigurer等等非常有用的工厂后处理器接口的方法。工厂后处理器也是容器级的。在应用上下文装配配置文件之后立即调用。</p>
+<h3 id="三、演示"><a href="#三、演示" class="headerlink" title="三、演示"></a>三、演示</h3><p>我们用一个简单的Spring Bean来演示一下Spring Bean的生命周期。</p>
+<p>1、首先是一个简单的Spring Bean，调用Bean自身的方法和Bean级生命周期接口方法，为了方便演示，它实现了BeanNameAware、BeanFactoryAware、InitializingBean和DiposableBean这4个接口，同时有2个方法，对应配置文件中<bean>的init-method和destroy-method。如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package springBeanTest;<br><br>import org.springframework.beans.BeansException;<br>import org.springframework.beans.factory.BeanFactory;<br>import org.springframework.beans.factory.BeanFactoryAware;<br>import org.springframework.beans.factory.BeanNameAware;<br>import org.springframework.beans.factory.DisposableBean;<br>import org.springframework.beans.factory.InitializingBean;<br><br>/**<br>* @author qsk<br>*/<br>public class Person implements BeanFactoryAware, BeanNameAware,<br>       InitializingBean, DisposableBean &#123;<br><br>   private String name;<br>   private String address;<br>   private int phone;<br><br>   private BeanFactory beanFactory;<br>   private String beanName;<br><br>   public Person() &#123;<br>       System.out.println(&quot;【构造器】调用Person的构造器实例化&quot;);<br>   &#125;<br><br>   public String getName() &#123;<br>       return name;<br>   &#125;<br><br>   public void setName(String name) &#123;<br>       System.out.println(&quot;【注入属性】注入属性name&quot;);<br>       this.name = name;<br>   &#125;<br><br>   public String getAddress() &#123;<br>       return address;<br>   &#125;<br><br>   public void setAddress(String address) &#123;<br>       System.out.println(&quot;【注入属性】注入属性address&quot;);<br>       this.address = address;<br>   &#125;<br><br>   public int getPhone() &#123;<br>       return phone;<br>   &#125;<br><br>   public void setPhone(int phone) &#123;<br>       System.out.println(&quot;【注入属性】注入属性phone&quot;);<br>       this.phone = phone;<br>   &#125;<br><br>   @Override<br>   public String toString() &#123;<br>       return &quot;Person [address=&quot; + address + &quot;, name=&quot; + name + &quot;, phone=&quot;<br>               + phone + &quot;]&quot;;<br>   &#125;<br><br>   // 这是BeanFactoryAware接口方法<br>   @Override<br>   public void setBeanFactory(BeanFactory arg0) throws BeansException &#123;<br>       System.out<br>               .println(&quot;【BeanFactoryAware接口】调用BeanFactoryAware.setBeanFactory()&quot;);<br>       this.beanFactory = arg0;<br>   &#125;<br><br>   // 这是BeanNameAware接口方法<br>   @Override<br>   public void setBeanName(String arg0) &#123;<br>       System.out.println(&quot;【BeanNameAware接口】调用BeanNameAware.setBeanName()&quot;);<br>       this.beanName = arg0;<br>   &#125;<br><br>   // 这是InitializingBean接口方法<br>   @Override<br>   public void afterPropertiesSet() throws Exception &#123;<br>       System.out<br>               .println(&quot;【InitializingBean接口】调用InitializingBean.afterPropertiesSet()&quot;);<br>   &#125;<br><br>   // 这是DiposibleBean接口方法<br>   @Override<br>   public void destroy() throws Exception &#123;<br>       System.out.println(&quot;【DiposibleBean接口】调用DiposibleBean.destory()&quot;);<br>   &#125;<br><br>   // 通过&lt;bean&gt;的init-method属性指定的初始化方法<br>   public void myInit() &#123;<br>       System.out.println(&quot;【init-method】调用&lt;bean&gt;的init-method属性指定的初始化方法&quot;);<br>   &#125;<br><br>   // 通过&lt;bean&gt;的destroy-method属性指定的初始化方法<br>   public void myDestory() &#123;<br>       System.out.println(&quot;【destroy-method】调用&lt;bean&gt;的destroy-method属性指定的初始化方法&quot;);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure></bean></p>
+<p>2、接下来是演示BeanPostProcessor接口的方法，如下：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package springBeanTest;<br><br>import org.springframework.beans.BeansException;<br>import org.springframework.beans.factory.config.BeanPostProcessor;<br><br>public class MyBeanPostProcessor implements BeanPostProcessor &#123;<br><br>   public MyBeanPostProcessor() &#123;<br>       super();<br>       System.out.println(&quot;这是BeanPostProcessor实现类构造器！！&quot;);<br>       // TODO Auto-generated constructor stub<br>   &#125;<br><br>   @Override<br>   public Object postProcessAfterInitialization(Object arg0, String arg1)<br>           throws BeansException &#123;<br>       System.out<br>       .println(&quot;BeanPostProcessor接口方法postProcessAfterInitialization对属性进行更改！&quot;);<br>       return arg0;<br>   &#125;<br><br>   @Override<br>   public Object postProcessBeforeInitialization(Object arg0, String arg1)<br>           throws BeansException &#123;<br>       System.out<br>       .println(&quot;BeanPostProcessor接口方法postProcessBeforeInitialization对属性进行更改！&quot;);<br>       return arg0;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>如上，BeanPostProcessor接口包括2个方法: postProcessAfterInitialization和postProcessBeforeInitialization，这两个方法的第一个参数都是要处理的Bean对象，第二个参数都是Bean的name。返回值也都是要处理的Bean对象。这里要注意。</strong></p>
+<p>3、InstantiationAwareBeanPostProcessor 接口本质是BeanPostProcessor的子接口，一般我们继承Spring为其提供的适配器类InstantiationAwareBeanPostProcessor Adapter来使用它，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package springBeanTest;<br><br>import java.beans.PropertyDescriptor;<br><br>import org.springframework.beans.BeansException;<br>import org.springframework.beans.PropertyValues;<br>import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;<br><br>public class MyInstantiationAwareBeanPostProcessor extends<br>       InstantiationAwareBeanPostProcessorAdapter &#123;<br><br>   public MyInstantiationAwareBeanPostProcessor() &#123;<br>       super();<br>       System.out<br>               .println(&quot;这是InstantiationAwareBeanPostProcessorAdapter实现类构造器！！&quot;);<br>   &#125;<br><br>   // 接口方法、实例化Bean之前调用<br>   @Override<br>   public Object postProcessBeforeInstantiation(Class beanClass,<br>           String beanName) throws BeansException &#123;<br>       System.out<br>               .println(&quot;InstantiationAwareBeanPostProcessor调用postProcessBeforeInstantiation方法&quot;);<br>       return null;<br>   &#125;<br><br>   // 接口方法、实例化Bean之后调用<br>   @Override<br>   public Object postProcessAfterInitialization(Object bean, String beanName)<br>           throws BeansException &#123;<br>       System.out<br>               .println(&quot;InstantiationAwareBeanPostProcessor调用postProcessAfterInitialization方法&quot;);<br>       return bean;<br>   &#125;<br><br>   // 接口方法、设置某个属性时调用<br>   @Override<br>   public PropertyValues postProcessPropertyValues(PropertyValues pvs,<br>           PropertyDescriptor[] pds, Object bean, String beanName)<br>           throws BeansException &#123;<br>       System.out<br>               .println(&quot;InstantiationAwareBeanPostProcessor调用postProcessPropertyValues方法&quot;);<br>       return pvs;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><strong>这个有3个方法，其中第二个方法postProcessAfterInitialization就是重写了BeanPostProcessor的方法。第三个方法postProcessPropertyValues用来操作属性，返回值也应该是PropertyValues对象。</strong></p>
+<p>4、演示工厂后处理器接口方法，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package springBeanTest;<br><br>import org.springframework.beans.BeansException;<br>import org.springframework.beans.factory.config.BeanDefinition;<br>import org.springframework.beans.factory.config.BeanFactoryPostProcessor;<br>import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;<br><br>public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor &#123;<br><br>   public MyBeanFactoryPostProcessor() &#123;<br>       super();<br>       System.out.println(&quot;这是BeanFactoryPostProcessor实现类构造器！！&quot;);<br>   &#125;<br><br>   @Override<br>   public void postProcessBeanFactory(ConfigurableListableBeanFactory arg0)<br>           throws BeansException &#123;<br>       System.out.println(&quot;BeanFactoryPostProcessor调用postProcessBeanFactory方法&quot;);<br>       BeanDefinition bd = arg0.getBeanDefinition(&quot;person&quot;);<br>       bd.getPropertyValues().addPropertyValue(&quot;phone&quot;, &quot;110&quot;);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>5、配置文件如下beans.xml，很简单，使用ApplicationContext处理器不用手动注册：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br><br>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br>   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;http://www.springframework.org/schema/p&quot;<br>   xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;<br>   xsi:schemaLocation=&quot;<br>           http://www.springframework.org/schema/beans <br>           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd&quot;&gt;<br><br>   &lt;bean id=&quot;beanPostProcessor&quot; class=&quot;springBeanTest.MyBeanPostProcessor&quot;&gt;<br>   &lt;/bean&gt;<br><br>   &lt;bean id=&quot;instantiationAwareBeanPostProcessor&quot; class=&quot;springBeanTest.MyInstantiationAwareBeanPostProcessor&quot;&gt;<br>   &lt;/bean&gt;<br><br>   &lt;bean id=&quot;beanFactoryPostProcessor&quot; class=&quot;springBeanTest.MyBeanFactoryPostProcessor&quot;&gt;<br>   &lt;/bean&gt;<br>   <br>   &lt;bean id=&quot;person&quot; class=&quot;springBeanTest.Person&quot; init-method=&quot;myInit&quot;<br>       destroy-method=&quot;myDestory&quot; scope=&quot;singleton&quot; p:name=&quot;张三&quot; p:address=&quot;广州&quot;<br>       p:phone=&quot;15900000000&quot; /&gt;<br><br>&lt;/beans&gt;<br></code></pre></td></tr></table></figure></p>
+<p>6、下面测试一下：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package springBeanTest;<br><br>import org.springframework.context.ApplicationContext;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;<br><br>public class BeanLifeCycle &#123;<br><br>   public static void main(String[] args) &#123;<br><br>       System.out.println(&quot;现在开始初始化容器&quot;);<br>       <br>       ApplicationContext factory = new ClassPathXmlApplicationContext(&quot;springBeanTest/beans.xml&quot;);<br>       System.out.println(&quot;容器初始化成功&quot;);    <br>       //得到Preson，并使用<br>       Person person = factory.getBean(&quot;person&quot;,Person.class);<br>       System.out.println(person);<br>       <br>       System.out.println(&quot;现在开始关闭容器！&quot;);<br>       ((ClassPathXmlApplicationContext)factory).registerShutdownHook();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>关闭容器使用的是实际是AbstractApplicationContext的钩子方法。</p>
+<p>我们来看一下结果：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">现在开始初始化容器<br>2014-5-18 15:46:20 org.springframework.context.support.AbstractApplicationContext prepareRefresh<br>信息: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@19a0c7c: startup date [Sun May 18 15:46:20 CST 2014]; root of context hierarchy<br>2014-5-18 15:46:20 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions<br>信息: Loading XML bean definitions from class path resource [springBeanTest/beans.xml]<br>这是BeanFactoryPostProcessor实现类构造器！！<br>BeanFactoryPostProcessor调用postProcessBeanFactory方法<br>这是BeanPostProcessor实现类构造器！！<br>这是InstantiationAwareBeanPostProcessorAdapter实现类构造器！！<br>2014-5-18 15:46:20 org.springframework.beans.factory.support.DefaultListableBeanFactory preInstantiateSingletons<br>信息: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@9934d4: defining beans [beanPostProcessor,instantiationAwareBeanPostProcessor,beanFactoryPostProcessor,person]; root of factory hierarchy<br>InstantiationAwareBeanPostProcessor调用postProcessBeforeInstantiation方法<br>【构造器】调用Person的构造器实例化<br>InstantiationAwareBeanPostProcessor调用postProcessPropertyValues方法<br>【注入属性】注入属性address<br>【注入属性】注入属性name<br>【注入属性】注入属性phone<br>【BeanNameAware接口】调用BeanNameAware.setBeanName()<br>【BeanFactoryAware接口】调用BeanFactoryAware.setBeanFactory()<br>BeanPostProcessor接口方法postProcessBeforeInitialization对属性进行更改！<br>【InitializingBean接口】调用InitializingBean.afterPropertiesSet()<br>【init-method】调用&lt;bean&gt;的init-method属性指定的初始化方法<br>BeanPostProcessor接口方法postProcessAfterInitialization对属性进行更改！<br>InstantiationAwareBeanPostProcessor调用postProcessAfterInitialization方法<br>容器初始化成功<br>Person [address=广州, name=张三, phone=110]<br>现在开始关闭容器！<br>【DiposibleBean接口】调用DiposibleBean.destory()<br>【destroy-method】调用&lt;bean&gt;的destroy-method属性指定的初始化方法<br></code></pre></td></tr></table></figure>
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/10/18/idea/" rel="next" title="IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)"><i class="fas fa-angle-left"></i><span class="nav-title">IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Spring Bean的生命周期",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">16</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">4</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">4</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#一、生命周期流程图："><span class="toc-text">一、生命周期流程图：</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#二、各种接口方法分类"><span class="toc-text">二、各种接口方法分类</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#三、演示"><span class="toc-text">三、演示</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

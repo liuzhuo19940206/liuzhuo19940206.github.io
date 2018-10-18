@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-17T08:09:02.277Z</updated>
+  <updated>2018-10-18T08:33:47.753Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Bean的生命周期</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/18/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/18/Bean的生命周期/</id>
+    <published>2018-10-18T08:17:44.000Z</published>
+    <updated>2018-10-18T08:33:47.753Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。&lt;/p&gt;
+&lt;p&gt;我们通常使用ApplicationContext作为Spring容器。这里，我们讲的也是
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/18/idea/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/18/idea/</id>
+    <published>2018-10-18T05:27:50.000Z</published>
+    <updated>2018-10-18T05:47:54.748Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;自动代码&quot;&gt;&lt;a href=&quot;#自动代码&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spring_Ioc</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/</id>
+    <published>2018-10-18T04:48:31.000Z</published>
+    <updated>2018-10-18T05:20:57.184Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;广义的Ioc&quot;&gt;&lt;a href=&quot;#广义的Ioc&quot; class=&quot;headerlink&quot; title=&quot;广义的Ioc&quot;&gt;&lt;/a&gt;广义的Ioc&lt;/h3&gt;&lt;p&gt;面试被问烂的 Spring IOC(求求你别再问了)  &lt;/p&gt;
+&lt;p&gt;1）IoC(Inversion
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>spring_annotation_day_11</title>
