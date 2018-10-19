@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>spring_annotation_day_13 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">spring_annotation_day_13</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-19T14:21:22+08:00">2018-10-19 14:21:22</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-annotation/" itemprop="url" rel="index"><span itemprop="name">spring_annotation</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><strong>Spring注解开发</strong> </p>
+<p>AOP原理：</p>
+<p>我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。</p>
+<h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><p>1）点击@EnableAspectJAutoProxy注解：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Import(AspectJAutoProxyRegistrar.class)<br>public @interface EnableAspectJAutoProxy<br></code></pre></td></tr></table></figure></p>
+<p>发现，使用了@Import注解来注入组件。组件是AspectJAutoProxyRegistrar类。</p>
+<p>2）点击AspectJAutoProxyRegistrar类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">class AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar&#123;<br>  ···<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>该类，实现了ImportBeanDefinitionRegistrar接口，说明是用来自定义注入组件的。其中有一个registerBeanDefinitions（）方法。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) &#123;<br><br>		AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);<br><br>		AnnotationAttributes enableAspectJAutoProxy =<br>				AnnotationConfigUtils.attributesFor(importingClassMetadata, EnableAspectJAutoProxy.class);<br>		if (enableAspectJAutoProxy.getBoolean(&quot;proxyTargetClass&quot;)) &#123;<br>			AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry);<br>		&#125;<br>		if (enableAspectJAutoProxy.getBoolean(&quot;exposeProxy&quot;)) &#123;<br>			AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry);<br>		&#125;<br>	&#125;<br></code></pre></td></tr></table></figure></p>
+<p>查看其中的AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);</p>
+<p>最终会调用registerOrEscalateApcAsRequired方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">private static BeanDefinition registerOrEscalateApcAsRequired(Class&lt;?&gt; cls, BeanDefinitionRegistry registry, Object source) &#123;<br>	Assert.notNull(registry, &quot;BeanDefinitionRegistry must not be null&quot;);<br>	if (registry.containsBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME)) &#123;<br>		BeanDefinition apcDefinition = registry.getBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME);<br>		if (!cls.getName().equals(apcDefinition.getBeanClassName())) &#123;<br>			int currentPriority = findPriorityForClass(apcDefinition.getBeanClassName());<br>			int requiredPriority = findPriorityForClass(cls);<br>			if (currentPriority &lt; requiredPriority) &#123;<br>				apcDefinition.setBeanClassName(cls.getName());<br>			&#125;<br>		&#125;<br>		return null;<br>	&#125;<br>	RootBeanDefinition beanDefinition = new RootBeanDefinition(cls);<br>	beanDefinition.setSource(source);<br>	beanDefinition.getPropertyValues().add(&quot;order&quot;, Ordered.HIGHEST_PRECEDENCE);<br>	beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);<br>	registry.registerBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME, beanDefinition);<br>	return beanDefinition;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>最后是给容器注入了一个Bean：<br>id：internalAutoProxyCreator ==》 Class：AnnotationAwareAspectJAutoProxyCreator</p>
+<hr>
+<h3 id="AnnotationAwareAspectJAutoProxyCreator"><a href="#AnnotationAwareAspectJAutoProxyCreator" class="headerlink" title="AnnotationAwareAspectJAutoProxyCreator"></a>AnnotationAwareAspectJAutoProxyCreator</h3><p>@EnableAspectJAutoProxy注解帮我们注入了AnnotationAwareAspectJAutoProxyCreator组件，这个组件有什么作用呢？</p>
+<p>我们观察一下AnnotationAwareAspectJAutoProxyCreator的继承关系：</p>
+<p>AnnotationAwareAspectJAutoProxyCreator</p>
+<p>&nbsp;&nbsp;&nbsp;AspectJAwareAdvisorAutoProxyCreator  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractAdvisorAutoProxyCreator  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractAutoProxyCreator</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware</strong></p>
+<p><strong>关键:实现了两个接口，一个后置处理器(在Bean初始化完成前后做事情)、一个自动装配BeanFactory</strong></p>
+<hr>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>打上断点：(与后置处理器，自动装配有关的)</p>
+<p>1）AbstractAutoProxyCreator.setBeanFactory<br>2）AbstractAutoProxyCreator.postProcessBeforeInstantiation<br>3) AbstractAutoProxyCreator.postProcessAfterInitialization</p>
+<p>4) AbstractAdvisorAutoProxyCreator.setBeanFactory(父类重写的方法也打上断点)<br>5）AbstractAdvisorAutoProxyCreator.initBeanFactory</p>
+<p>6) AspectJAwareAdvisorAutoProxyCreator类没有相关的就不打上断点</p>
+<p>7）AnnotationAwareAspectJAutoProxyCreator.initBeanFactory(父类重写的方法也打上断点)</p>
+<p>8) MainConfigOfAOP配置类的中的两个Bean对象打上断点：<br>&nbsp;&nbsp;&nbsp;mathCalculator和logAspects</p>
+<h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><p>流程：<br>1）传入配置类，创建IoC容器<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);<br></code></pre></td></tr></table></figure></p>
+<p>2) 注册配置类，调用refresh（）, 刷新容器<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public AnnotationConfigApplicationContext(Class&lt;?&gt;... annotatedClasses) &#123;<br>		this();<br>		register(annotatedClasses); //注入配置类<br>		refresh();  //刷新容器<br>	&#125;<br></code></pre></td></tr></table></figure></p>
+<p>3）registerBeanPostProcessors(beanFactory);注册bean的后置处理器，来拦截bean的初始化操作。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;1.先获取IoC容器已经定义了的需要创建对象的所有BeanPostProcessor<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, true, false);<br></code></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2.给容器中加别的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;3.优先注册实现了PriorityOrdered接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;4.再注册实现了Ordered接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;5.注册没有实现优先级接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;6.注册BeanPostProcessor，实际上就是创建BeanPostProcessor对象，保存到容器中</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建    internalAutoProxyCreator的BeanPostProcessor【AnnotationAwareAspectJAutoProxyCreator】 </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.创建Bean对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.populateBean：给bean的属性赋值</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.initializeBean：初始化bean</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.invokeAwareMethods：处理Aware接口的回调：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">private void invokeAwareMethods(final String beanName, final Object bean) &#123;<br>	if (bean instanceof Aware) &#123;<br>		if (bean instanceof BeanNameAware) &#123;<br>			((BeanNameAware) bean).setBeanName(beanName);<br>		&#125;<br>		if (bean instanceof BeanClassLoaderAware) &#123;<br>			((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());<br>		&#125;<br>		if (bean instanceof BeanFactoryAware) &#123;<br>			((BeanFactoryAware) bean).setBeanFactory(AbstractAutowireCapableBeanFactory.this);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.applyBeanPostProcessorsBeforeInitialization:执行后置处理器的postProcessor：postProcessBeforeInitialization方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.invokeInitMethods：自定义的初始化方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.applyBeanPostProcessorsAfterInitialization：执行postProcessor：postProcessAfterInitialization方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.BeanPostProcessor(AnnotationAwareAspectJAutoProxyCreator)创建成功；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7.把BeanPostProcessor注册到BeanFactory中：beanFactory.addBeanPostProcessor（）</p>
+<hr>
+<p>以上是创建AnnotationAwareAspectJAutoProxyCreator的过程。</p>
+<p>AnnotationAwareAspectJAutoProxyCreator =》InstantiationAwareBeanPostProcessor，而不是 BeanPostProcessor 后置处理器</p>
+<p>InstantiationAwareBeanPostProcessor是 postProcessBeforeInstantiation（实例化）</p>
+<p>BeanPostProcessor是postProcessBeforeInitialization（初始化）</p>
+<p><strong>说明InstantiationAwareBeanPostProcessor后置处理器是 在Bean实例化前后执行</strong></p>
+<p><strong>BeanPostProcessor后置处理器是 在Bean对象初始化前后执行</strong></p>
+<p>4）finishBeanFactoryInitialization(beanFactory);完成BeanFactory初始化工作，创建剩下的没有创建的Bean组件</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;1.遍历获取容器中所有的Bean，依次创建对象；getBean(beanName)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getBean()-&gt;doGetBean()-&gt;getSingleton()-&gt;createBean()</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2.创建Bean：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.先从缓存中获取当前的Bean，如果能获取到，说明bean是之前被创建过，直接使用，否则再创建.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只要创建了bean就会被缓存起来。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.createBean():创建Bean</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.resolveBeforeInstantiation():解析BeanPostProcessors<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>想让后置处理器在次能返回一个代理对象</strong>，如果能返回代理对象就使用，如果不能就继续。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.后置处理器先尝试返回代理对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bean=applyBeanPostProcessorsBeforeInstantiation();拿到所有的后置处理器，如果是 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InstantiationAwareBeanPostProcessor；就执行postProcessBeforeInstantiation方法<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> if (bean != null) &#123;<br>  bean = applyBeanPostProcessorsAfterInitialization(bean, beanName);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.doCreateBean()：真正去创建一个bean实例；和3.6流程一样</p>
+<hr>
+<p>AnnotationAwareAspectJAutoProxyCreator[InstantiationAwareBeanPostProcessor]</p>
+<p>1) 每一个bean创建之前，调用postProcessBeforeInstantiation()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关心<strong>mathCalculator</strong>和<strong>logAspects</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）判断当前bean是否是在advicedBean中（保存了所有需要增强bean）</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）判断当前bean是否是基础类型的Advice、PointCut、Advisor、AopInfrastructureBean或者是否是切面(@Aspect)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）是否需要跳过</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取候选的增强器(切面里面的通知方法)【List<advisor> candidateAdvisors】<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个封装的通知方法的增强器是InstantiationModelAwarePointcutAdvisor<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;判断每一个增强器是否是AspectJPointcutAdvisor类型的；返回true</advisor></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）永远返回false</p>
+<p>2）创建对象<br>postProcessAfterInitialization：<br>return wrapIfNecessary(bean, beanName, cacheKey);//需要包装的情况下  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取当前bean的所有增强器(通知方法) Object[] specificInterceptors</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）找到候选的所有增强器(找哪些通知方法是需要切入当前bean方法的)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）获取到能在bean使用的增强器</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）给增强器排序</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）保存当前bean在advisedBeans中；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）如果当前bean需要增强，创建当前bean的代理对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取所有的增强器(通知方法)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）保存到proxyFactory</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）创建代理对象：Spring自动决定<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jdk代理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cglib代理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）给容器中返回当前组件使用cglib代理的对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5）以后容器中获取的就是这个组件的代理对象，执行目标方法的时候，代理对象就会执行通知方法的流程</p>
+<p>3）目标方法的执行流程</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容器中保存了组件的代理对象(cglib增强后的对象)，这个对象里面保存了详细信息(比如增强器、目标对象，xxx)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）CglibAopProxy.intercept();拦截目标方法的执行</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）根据ProxyFactory对象获取将要执行的目标方法拦截器</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);</object></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）List<object> interceptorList保存所有拦截器：5<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一个默认的ExposeInvocationInterceptor和4个增强器</object></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）遍历所有的增强器，将其转为Interceptor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）将增强器转为List<methodinterceptor>,如果是MethodInterceptor，直接加入集合中，如果不是，使用AdvisorAdapter将增强器转为   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MethodInterceptor，转换完后返回MethodInterceptor数组</methodinterceptor></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）如果没有拦截器链，直接执行目标方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）如果有拦截器链，把需要执行的目标对象，目标方法，拦截器链等信息传入，创建一个CglibMethodInvocation对象，并调用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object retVal = mi.proceed();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) 拦截器链的触发过程</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）如果没有拦截器执行，就直接执行目标方法，或者拦截器的索引和拦截器数组的个数-1一样大，执行目标方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拦截器链的机制，保证通知方法与目标方法的执行顺序.<br><img src="/images/20181019201432.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1）@EnableAspectJAutoProxy注解 开启AOP功能</p>
+<p>2）@EnableAspectJAutoProxy 会给容器中注册一个组件 AnnotationAwareAspectJAutoProxyCreator</p>
+<p>3）AnnotationAwareAspectJAutoProxyCreator是一个后置处理器</p>
+<p>4）容器的创建流程：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）registerBeanPostProcessors()注册后置处理器，创建AnnotationAwareAspectJAutoProxyCreator对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）finishBeanFactoryInitialization()：初始化剩下的单实例bean<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）创建业务逻辑组件和切面组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）组件创建完之后，判断组件是否需要增强。是：切面的通知方法，包装成增强器(Advisor);给业务逻辑组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建一个代理对象 </p>
+<p>5）执行目标方法：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）代理对象执行目标方法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）CglibAopProxy.Intercept:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）得到目标方法的拦截器链(增强器包装成拦截器MethodIntercept)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）利用拦截器的链式机制，依次进入每一个拦截器进行执行；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）效果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 正常执行：前置通知 -》目标方法 -》后置通知 -》返回通知<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 出现异常：前置通知 -》目标方法 -》后置通知 -》异常通知  </p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/spring-annotation/" rel="tag"><i class="fas fa-tags"></i>spring_annotation</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/10/19/Spring和SpringMVC父子容器关系初窥/" rel="next" title="Spring和SpringMVC父子容器关系初窥"><i class="fas fa-angle-left"></i><span class="nav-title">Spring和SpringMVC父子容器关系初窥</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "spring_annotation_day_13",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">19</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">4</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">4</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#EnableAspectJAutoProxy"><span class="toc-text">@EnableAspectJAutoProxy</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#AnnotationAwareAspectJAutoProxyCreator"><span class="toc-text">AnnotationAwareAspectJAutoProxyCreator</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#调试"><span class="toc-text">调试</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#debug"><span class="toc-text">debug</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

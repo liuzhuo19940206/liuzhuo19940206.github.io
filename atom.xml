@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-18T08:33:47.753Z</updated>
+  <updated>2018-10-19T12:31:55.374Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_13</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/</id>
+    <published>2018-10-19T06:21:22.000Z</published>
+    <updated>2018-10-19T12:31:55.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;AOP原理：&lt;/p&gt;
+&lt;p&gt;我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring和SpringMVC父子容器关系初窥</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring%E5%92%8CSpringMVC%E7%88%B6%E5%AD%90%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB%E5%88%9D%E7%AA%A5/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/19/Spring和SpringMVC父子容器关系初窥/</id>
+    <published>2018-10-19T04:01:29.000Z</published>
+    <updated>2018-10-19T06:05:47.524Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring_annotation_day_12</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/18/spring-annotation-day-12/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/18/spring-annotation-day-12/</id>
+    <published>2018-10-18T12:59:13.000Z</published>
+    <updated>2018-10-19T02:35:33.746Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;AOP介绍&quot;&gt;&lt;a href=&quot;#AOP介绍&quot; class=&quot;headerlink&quot; title=&quot;AOP介绍&quot;&gt;&lt;/a&gt;AOP介绍&lt;/h3&gt;&lt;p&gt;AOP是Spring
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Bean的生命周期</title>

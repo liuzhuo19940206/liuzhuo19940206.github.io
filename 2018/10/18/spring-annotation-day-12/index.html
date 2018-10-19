@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>spring_annotation_day_12 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/18/spring-annotation-day-12/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">spring_annotation_day_12</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-18T20:59:13+08:00">2018-10-18 20:59:13</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-annotation/" itemprop="url" rel="index"><span itemprop="name">spring_annotation</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><strong>Spring注解开发</strong>  </p>
+<h3 id="AOP介绍"><a href="#AOP介绍" class="headerlink" title="AOP介绍"></a>AOP介绍</h3><p>AOP是Spring 框架的一个关键组件，全称为Aspect-Oriented-Programming（面向切面编程），目前已是一种比较成熟的编程方式。</p>
+<p>AOP采取横向抽取机制，将分散在各个方法中的重复代码提取出来，然后在编译或运行的时候，再将这些代码应用到需要执行的地方。</p>
+<p><strong>注：提取出来的代码应用到需要执行的地方，并不会把源代码加到需要的地方执行，即源代码文件不会更改，但是它会影响最终的机器编译代码</strong></p>
+<p>意思就是，有一些通用功能的代码可以提取出来，然后在使用的时候应用进去就可以了，比如表单验证和日志记录等等。</p>
+<h3 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h3><p>Aspect（切面）</p>
+<p>通常指封装起来用于插入到指定位置实现某项功能的类</p>
+<p>Join point（连接点）</p>
+<p>在SpringAOP中，连接点指方法的调用</p>
+<p>Pointcut（切入点）</p>
+<p>切面与程序流程的交叉点，即那些需要处理的连接点，通常在程序中，切入点指的是类或者方法名</p>
+<p>Advice（通知/增强处理）</p>
+<p>就是程序实际运行之前或之后执行的方法，也就是AOP加入的代码</p>
+<p>Target Object（目标对象）</p>
+<p>即需要加入AOP代码的对象</p>
+<p>Proxy（代理）</p>
+<p>AOP框架动态生成的一个对象，该对象可以作为目标对象使用</p>
+<p>Weaving（织入）</p>
+<p>把切面连接到其它的应用程序类型或者对象上，并创建一个需要Advice对象的过程</p>
+<h3 id="AOP的例子（JDK代理）"><a href="#AOP的例子（JDK代理）" class="headerlink" title="AOP的例子（JDK代理）"></a>AOP的例子（JDK代理）</h3><p>1）首先建立一个java工程</p>
+<p><img src="/images/20181018211302.png" style="width:50%"></p>
+<p>UserDao接口:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package com.aop.jdk;<br><br>public interface UserDao &#123;<br> <br> public void addUser();<br> <br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>UserDaoImpl:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package com.aop.jdk;<br><br>public class UserDaoImpl implements UserDao &#123;<br><br> @Override<br> public void addUser() &#123;<br>   <br>   System.out.println(&quot;新增用户&quot;);<br> &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>JdkProxy:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package com.aop.jdk;<br><br>import java.lang.reflect.InvocationHandler;<br>import java.lang.reflect.Method;<br>import java.lang.reflect.Proxy;<br><br>import com.aop.aspect.MyAspect;<br><br>/**<br>* JDK代理类<br>*/<br>public class JdkProxy implements InvocationHandler&#123;<br> <br> // 声明目标类接口<br> private UserDao userDao;<br> <br> // 创建代理方法<br> public  Object createProxy(UserDao userDao) &#123;<br>   <br>   this.userDao = userDao;<br>   <br>   // 1.类加载器<br>   ClassLoader classLoader = JdkProxy.class.getClassLoader();<br>   <br>   // 2.被代理对象实现的所有接口<br>   @SuppressWarnings(&quot;rawtypes&quot;)<br>   Class[] clazz = userDao.getClass().getInterfaces();<br>   <br>   // 3.使用代理类，进行增强，返回的是代理后的对象<br>   return  Proxy.newProxyInstance(classLoader,clazz,this);<br>   <br> &#125;<br> <br> /*<br>  * 所有动态代理类的方法调用，都会交由invoke()方法去处理<br>  * proxy 被代理后的对象 <br>  * method 将要执行的方法<br>  * args 执行方法时需要的参数<br>  */<br> @Override<br> public Object invoke(Object proxy, Method method, Object[] args) <br>     throws Throwable &#123;<br>   <br>   // 声明切面<br>   MyAspect myAspect = new MyAspect();<br>   <br>   // 指定位置程序执行前执行这个方法<br>   myAspect.start();<br>   <br>   // 在目标类上调用方法<br>   Object obj = method.invoke(userDao, args);<br>   <br>   // 指定位置程序执行结束后执行<br>   myAspect.end();<br>   <br>   return obj;<br> &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>MyAspect:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package com.aop.aspect;<br><br>/**<br>*  切面<br>*/<br>public class MyAspect &#123;<br> <br> public void start()&#123;<br>   System.out.println(&quot;模拟事务处理功能 ...&quot;);<br> &#125;<br> <br> public void end()&#123;<br>   System.out.println(&quot;程序结束后执行此处 ...&quot;);<br> &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>JdkTest:</p>
+<p>测试结果项目编写完之后运行该类</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package com.aop.test;<br><br>import com.aop.jdk.JdkProxy;<br>import com.aop.jdk.UserDao;<br>import com.aop.jdk.UserDaoImpl;<br><br>public class JdkTest &#123;<br> <br> public static void main(String[] args) &#123;<br>   <br>   // 创建代理对象<br>   JdkProxy jdkProxy = new JdkProxy();<br>        // 创建目标对象<br>   UserDao userDao= new UserDaoImpl();<br>   // 从代理对象中获取增强后的目标对象<br>   UserDao userDao1 = (UserDao) jdkProxy.createProxy(userDao);<br>   // 执行方法<br>   userDao1.addUser();<br> &#125;<br> <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行之后，我们可以看到以下结果：<br><img src="/images/20181018211845.png" style="width:50%"></p>
+<hr>
+<p>我们可以看到，在我们执行新增用户的方法时，依据我们AOP编程，系统自动执行了start方法和end方法</p>
+<p>在实际运用中，我们可以把一些通用的方法放到start和end的位置，在需要的方法处加入切面即可</p>
+<p>此外，建议大家再了解下AspectJ</p>
+<p>AspectJ实现AOP有两种方式：一种是基于XML的声明式，另一种是基于注解的声明式</p>
+<p>基于XML的声明式AspectJ要便捷一些，但是存在配置信息多的缺点</p>
+<p>基于注解的声明式AspectJ则通过注解的方式减少了很多配置信息</p>
+<h3 id="Spring中的AOP使用"><a href="#Spring中的AOP使用" class="headerlink" title="Spring中的AOP使用"></a>Spring中的AOP使用</h3><p>1）创建新的配置类MainConfigOfAOP<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class MainConfigOfAOP &#123;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2) 在com.liuzhuo.aop包下，创建MathCalculator类<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MathCalculator &#123;<br><br>    public int div(int a, int b) &#123;<br>        return a / b;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2) 在com.liuzhuo.aop包下，创建切面类MathCalculator<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class LogAspects &#123;<br><br>    public void logStart()&#123;<br>        System.out.println(&quot;方法调用之前------&quot;);<br>    &#125;<br><br>    public void logEnd()&#123;<br>        System.out.println(&quot;方法调用之后-------&quot;);<br>    &#125;<br><br>    public void logReturn()&#123;<br>        System.out.println(&quot;方法成功返回之后------&quot;);<br>    &#125;<br><br>    public void logThrowing()&#123;<br>        System.out.println(&quot;方法出现异常之后------&quot;);<br>    &#125;<br><br>    public void logRound()&#123;<br>        //环绕方法<br>        System.out.println(&quot;环绕：方法调用之前----&quot;);<br>        System.out.println(&quot;环绕：方法调用之后----&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>3) 添加AOP的依赖，在pom文件中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">      <br>&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects --&gt;<br>&lt;dependency&gt;<br>    &lt;groupId&gt;org.springframework&lt;/groupId&gt;<br>    &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;<br>    &lt;version&gt;5.1.1.RELEASE&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p>4) 将切面与目标方法进行连接：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Aspect<br>public class LogAspects &#123;<br><br>    @Pointcut(&quot;execution(public int com.liuzhuo.aop.MathCalculator.div(int,int))&quot;)<br>    public void pointCut() &#123;<br>    &#125;<br><br>    //调用本类的切点<br>    @Before(&quot;pointCut()&quot;)<br>    public void logStart() &#123;<br>        System.out.println(&quot;方法调用之前------&quot;);<br>    &#125;<br><br>    //调用外面类的切点<br>    @After(&quot;com.liuzhuo.aop.LogAspects.pointCut()&quot;)<br>    public void logEnd() &#123;<br>        System.out.println(&quot;方法调用之后-------&quot;);<br>    &#125;<br><br>    @AfterReturning(value = &quot;pointCut()&quot;, returning = &quot;returns&quot;)<br>    public void logReturn(Object returns) &#123;<br>        System.out.println(&quot;方法成功返回之后------:&quot; + returns);<br>    &#125;<br><br>    @AfterThrowing(value = &quot;pointCut()&quot;, throwing = &quot;e&quot;)<br>    public void logThrowing(Exception e) &#123;<br>        System.out.println(&quot;方法出现异常之后------:&quot; + e);<br>    &#125;<br><br>    @Around(&quot;pointCut()&quot;)<br>    public Object logRound(ProceedingJoinPoint proceedingJoinPoint) throws Throwable &#123;<br>        //环绕方法<br>        System.out.println(&quot;环绕：方法调用之前----&quot;);<br>        Object proceed = proceedingJoinPoint.proceed();<br>        System.out.println(&quot;环绕：方法调用之后----&quot;);<br>        return proceed;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>5) 将切面和目标类注入到容器中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class MainConfigOfAOP &#123;<br><br>    @Bean<br>    public MathCalculator mathCalculator() &#123;<br>        return new MathCalculator();<br>    &#125;<br><br>    @Bean<br>    public LogAspects logAspects() &#123;<br>        return new LogAspects();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>6) <strong>开启Aspect的注解驱动</strong>：@EnableAspectJAutoProxy<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>@EnableAspectJAutoProxy //开启AOP注解驱动<br>public class MainConfigOfAOP &#123;<br><br>    @Bean<br>    public MathCalculator mathCalculator() &#123;<br>        return new MathCalculator();<br>    &#125;<br><br>    @Bean<br>    public LogAspects logAspects() &#123;<br>        return new LogAspects();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>7) 创建新的测试类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class IoCTest_AOP &#123;<br><br>    @Test<br>    public void test01() &#123;<br>        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);<br><br>        //不要自己创建MathCalculator类<br>        //MathCalculator mathCalculator = new MathCalculator();<br>        //mathCalculator.div(1, 1);<br><br>        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);<br>        mathCalculator.div(1, 1);<br><br>        applicationContext.close();<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>8) 运行结果：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">环绕：方法调用之前----<br>方法调用之前------<br>div:正在执行-----<br>环绕：方法调用之后----<br>方法调用之后-------<br>方法成功返回之后------:1<br>十月 18, 2018 10:03:03 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose<br>信息: Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@3a4afd8d: startup date [Thu Oct 18 22:03:02 CST 2018]; root of context hierarchy<br><br>Process finished with exit code 0<br></code></pre></td></tr></table></figure></p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ol>
+<li>将业务逻辑组件和切面类都加入到容器中，告诉Spring哪个是切面类(Aspect)  </li>
+<li>在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）</li>
+<li>开启基于注解的AOP模式：@EnableAspectJAutoProxy</li>
+</ol>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/spring-annotation/" rel="tag"><i class="fas fa-tags"></i>spring_annotation</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/10/18/Bean的生命周期/" rel="next" title="Spring Bean的生命周期"><i class="fas fa-angle-left"></i><span class="nav-title">Spring Bean的生命周期</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2018/10/19/Spring和SpringMVC父子容器关系初窥/" rel="prev" title="Spring和SpringMVC父子容器关系初窥"><span class="nav-title">Spring和SpringMVC父子容器关系初窥</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "spring_annotation_day_12",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">19</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">4</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">4</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#AOP介绍"><span class="toc-text">AOP介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#AOP术语"><span class="toc-text">AOP术语</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#AOP的例子（JDK代理）"><span class="toc-text">AOP的例子（JDK代理）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Spring中的AOP使用"><span class="toc-text">Spring中的AOP使用</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结："><span class="toc-text">总结：</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
