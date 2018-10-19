@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-19T12:37:07.303Z</updated>
+  <updated>2018-10-19T13:55:54.655Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring4配置文件详解</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/19/Spring4配置文件详解/</id>
+    <published>2018-10-19T13:10:14.000Z</published>
+    <updated>2018-10-19T13:55:54.655Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;这里，总结了Spring4中的各种配置文件的信息。&lt;/p&gt;
+&lt;p&gt;欢迎大家补充，完善各种配置信息。&lt;/p&gt;
+&lt;p&gt;好的习惯，将会伴随你的一生。&lt;/p&gt;
+&lt;p&gt;开始今天的主题！！！&lt;/p&gt;
+&lt;h3 id=&quot;配置数据源&quot;&gt;&lt;a href=&quot;#配置数据源&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring中无处不在的Properties</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84Properties/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/19/Spring中无处不在的Properties/</id>
+    <published>2018-10-19T12:54:13.000Z</published>
+    <updated>2018-10-19T13:06:52.177Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。&lt;/p&gt;
+&lt;p&gt;本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>spring_annotation_day_13</title>
@@ -499,37 +558,6 @@
     
     
       <category term="markdown" scheme="http://liuzhuo19940206.github.io/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新文章</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/11/my-new-post/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/11/my-new-post/</id>
-    <published>2018-10-11T03:58:21.000Z</published>
-    <updated>2018-10-14T03:14:31.407Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;这是作者的第一篇文章，主要是为了纪念自己的博客!!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;欢迎大家在此篇文章下面评论，我会尽量回复大家的问题。&lt;/p&gt;
-&lt;p&gt;不管是生活上面的，还是学习上面的疑惑都可以提&lt;/p&gt;
-&lt;p&gt;一段故事温柔人心，爱分享爱解忧，么么哒~~&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-      <category term="blog" scheme="http://liuzhuo19940206.github.io/categories/blog/"/>
-    
-    
-      <category term="blog" scheme="http://liuzhuo19940206.github.io/tags/blog/"/>
     
   </entry>
   
