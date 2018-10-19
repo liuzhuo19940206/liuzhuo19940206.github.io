@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-19T12:31:55.374Z</updated>
+  <updated>2018-10-19T12:37:07.303Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/</id>
     <published>2018-10-19T06:21:22.000Z</published>
-    <updated>2018-10-19T12:31:55.374Z</updated>
+    <updated>2018-10-19T12:37:07.303Z</updated>
     
     <summary type="html">
     
@@ -32,6 +32,7 @@
           &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
 &lt;p&gt;AOP原理：&lt;/p&gt;
 &lt;p&gt;我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3
         
       
@@ -130,7 +131,7 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/18/idea/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/18/idea/</id>
     <published>2018-10-18T05:27:50.000Z</published>
-    <updated>2018-10-18T05:47:54.748Z</updated>
+    <updated>2018-10-19T12:38:17.072Z</updated>
     
     <summary type="html">
     
@@ -144,6 +145,10 @@
     
     </summary>
     
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/categories/idea/"/>
+    
+    
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
     
   </entry>
   

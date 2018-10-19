@@ -164,6 +164,7 @@
       <p><strong>Spring注解开发</strong> </p>
 <p>AOP原理：</p>
 <p>我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。</p>
+<hr>
 <h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><p>1）点击@EnableAspectJAutoProxy注解：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Import(AspectJAutoProxyRegistrar.class)<br>public @interface EnableAspectJAutoProxy<br></code></pre></td></tr></table></figure></p>
 <p>发现，使用了@Import注解来注入组件。组件是AspectJAutoProxyRegistrar类。</p>
 <p>2）点击AspectJAutoProxyRegistrar类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">class AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar&#123;<br>  ···<br>&#125;<br></code></pre></td></tr></table></figure></p>
@@ -393,7 +394,7 @@
     
     <div class="categories-count">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">4</a></div>
+      <div><a href="/categories/">5</a></div>
     </div>
     
     
@@ -402,7 +403,7 @@
     
     <div class="tags-count">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">4</a></div>
+      <div><a href="/tags/">5</a></div>
     </div>
     
   </div>
