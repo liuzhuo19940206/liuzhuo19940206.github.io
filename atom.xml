@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-19T13:55:54.655Z</updated>
+  <updated>2018-10-20T03:50:45.592Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_14</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/20/spring-annotation-day-14/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/20/spring-annotation-day-14/</id>
+    <published>2018-10-20T02:44:10.000Z</published>
+    <updated>2018-10-20T03:50:45.592Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;今天来学习Spring的声明式事务。&lt;/p&gt;
+&lt;h3 id=&quot;不使用事务&quot;&gt;&lt;a href=&quot;#不使用事务&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring4配置文件详解</title>
@@ -532,32 +560,6 @@
     
     
       <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/12/markdown/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/12/markdown/</id>
-    <published>2018-10-12T03:39:24.000Z</published>
-    <updated>2018-10-12T06:36:26.670Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://liuzhuo19940206.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="markdown" scheme="http://liuzhuo19940206.github.io/tags/markdown/"/>
     
   </entry>
   
