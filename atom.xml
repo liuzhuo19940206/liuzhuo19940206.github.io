@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-20T03:50:45.592Z</updated>
+  <updated>2018-10-22T03:46:47.363Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_15</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/</id>
+    <published>2018-10-22T02:05:14.000Z</published>
+    <updated>2018-10-22T03:46:47.363Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点&lt;/p&gt;
+&lt;h3 id=&quot;BeanFactoryPostProcessor&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>spring_annotation_day_14</title>
@@ -525,32 +553,6 @@
         
         
           &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; 
-        
-      
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_01</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/12/spring-annotation-01/</id>
-    <published>2018-10-12T13:14:58.000Z</published>
-    <updated>2018-10-13T03:20:00.873Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;&lt;br&gt;开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入依赖的区别。 
         
       
     
