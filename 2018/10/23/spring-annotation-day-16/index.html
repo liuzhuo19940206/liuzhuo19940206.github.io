@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>spring_annotation_day_16 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">spring_annotation_day_16</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-23T10:33:28+08:00">2018-10-23 10:33:28</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-annotation/" itemprop="url" rel="index"><span itemprop="name">spring_annotation</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p><strong>Spring容器的创建过程</strong></p>
+<p>今天，我们来统一学习一下，Spring容器的整个创建过程。</p>
+<hr>
+<p><strong>Spring容器的refresh()[创建刷新]</strong></p>
+<h3 id="prepareRefresh-【刷新前的预处理】"><a href="#prepareRefresh-【刷新前的预处理】" class="headerlink" title="prepareRefresh();【刷新前的预处理】"></a>prepareRefresh();【刷新前的预处理】</h3><p>1）initPropertySources();初始化一些属性设置；子类自定义个性化的属性设置方法；<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> protected void initPropertySources() &#123;<br> // For subclasses: do nothing by default.<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2)  getEnvironment().validateRequiredProperties();检验属性的合法性等</p>
+<p>3）earlyApplicationEvents = new LinkedHashSet<applicationevent>();保存容器的一些早期的事件；</applicationevent></p>
+<h3 id="obtainFreshBeanFactory；【获取BeanFactory】"><a href="#obtainFreshBeanFactory；【获取BeanFactory】" class="headerlink" title="obtainFreshBeanFactory；【获取BeanFactory】"></a>obtainFreshBeanFactory；【获取BeanFactory】</h3><p>1）refreshBeanFactory();刷新BeanFactory<br>创建 this.beanFactory = new DefaultListableBeanFactory();<br>设置id。</p>
+<p>2）getBeanFactory();<br>返回GenericApplicationContext创建的beanFactory对象;return this.beanFactory;</p>
+<p>3)将创建好的BeanFactory【GenericApplicationContext】对象返回；</p>
+<h3 id="prepareBeanFactory-beanFactory"><a href="#prepareBeanFactory-beanFactory" class="headerlink" title="prepareBeanFactory(beanFactory);"></a>prepareBeanFactory(beanFactory);</h3><p>BeanFactory的预准备工作（BeanFactory进行一些设置）</p>
+<p>1）设置BeanFactory的类加载、支持表达式解析器····</p>
+<p>2）添加部分BeanPostProcessor【ApplicationContextAwareProcessor】</p>
+<p>3）设置忽略的自动装配的接口EnvironmentAware、EmbeddedValueResolverAware、ResourceLoaderAware等</p>
+<p>4）注册可以解析的自动装配：我们能直接在任何组件中自动注入：BeanFactory、ResourceLoader、ApplicationEventPublisher、ApplicationContext。</p>
+<p>5）添加BeanPostProcessor【ApplicationListenerDetector】</p>
+<p>6）添加编译时Aspectj<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> // Detect a LoadTimeWeaver and prepare for weaving, if found.<br>if (beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) &#123;<br>	beanFactory.addBeanPostProcessor(new LoadTimeWeaverAwareProcessor(beanFactory));<br>	// Set a temporary ClassLoader for type matching.<br>	beanFactory.setTempClassLoader(new ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader()));<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>7) 给BeanFactory中注册一些能用的组件</p>
+<p>environment【ConfigurableEnvironment】</p>
+<p>systemProperties【Map&lt;String, Object&gt;】</p>
+<p>systemEnvironment【Map&lt;String, Object&gt;】</p>
+<h3 id="postProcessBeanFactory-beanFactory"><a href="#postProcessBeanFactory-beanFactory" class="headerlink" title="postProcessBeanFactory(beanFactory);"></a>postProcessBeanFactory(beanFactory);</h3><p>BeanFactory准备工作完成后进行的后置处理工作<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) &#123;<br>	&#125;<br></code></pre></td></tr></table></figure></p>
+<p>子类通过覆写这个方法来在BeanFactory创建并准备完成以后做进一步的设置。</p>
+<div style="text-align: center;"><font color="#00ffff" size="4">以上是BeanFactory的创建以及准备工作</font></div>
+
+<hr>
+<h3 id="invokeBeanFactoryPostProcessors-beanFactory"><a href="#invokeBeanFactoryPostProcessors-beanFactory" class="headerlink" title="invokeBeanFactoryPostProcessors(beanFactory);"></a>invokeBeanFactoryPostProcessors(beanFactory);</h3><p>执行BeanFactoryPostProcessor</p>
+<p>BeanFactoryPostProcessor：BeanFactory的后置处理器。在BeanFactory标准化初始化之后执行。</p>
+<p>两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor。</p>
+<p>一、执行BeanFactoryPostProcessor的方法：</p>
+<p><strong>先执行BeanDefinitionRegistryPostProcessor</strong></p>
+<p>1）获取所有的BeanDefinitionRegistryPostProcessor  </p>
+<p>2）先执行实现了PriorityOrdered优先级接口的BeanDefinitionRegistryPostProcessor<br>postProcessor.postProcessBeanDefinitionRegistry(registry);</p>
+<p>3）再执行实现了Ordered顺序接口的BeanDefinitionRegistryPostProcessor<br>postProcessor.postProcessBeanDefinitionRegistry(registry);</p>
+<p>4）最后执行没有实现任何优先级或者顺序接口的BeanDefinitionRegistryPostProcessor<br>postProcessor.postProcessBeanDefinitionRegistry(registry);</p>
+<p><strong>后执行BeanFactoryPostProcessor的方法</strong></p>
+<p>1）获取所有的BeanFactoryPostProcessor</p>
+<p>2）先执行实现了PriorityOrdered优先级接口的BeanFactoryPostProcessor<br>postProcessor.postProcessBeanFactory();</p>
+<p>3）再执行实现了Ordered顺序接口的BeanFactoryPostProcessor<br>postProcessor.postProcessBeanFactory();</p>
+<p>4）最后执行没有实现任何优先级或者顺序接口的BeanFactoryPostProcessor<br>postProcessor.postProcessBeanFactory();</p>
+<h3 id="registerBeanPostProcessors（BeanFactory）"><a href="#registerBeanPostProcessors（BeanFactory）" class="headerlink" title="registerBeanPostProcessors（BeanFactory）"></a>registerBeanPostProcessors（BeanFactory）</h3><p>注册BeanPostProcessor（Bean的后置处理器）【Intercept bean creation.】</p>
+<p>不同类型的BeanPostProcessor：在Bean的创建前后的执行顺序是不同的</p>
+<p>DestructionAwareBeanPostProcessor</p>
+<p>InstantiationAwareBeanPostProcessor</p>
+<p>MergedBeanDefinitionPostProcessor【internalPostProcessor】</p>
+<p>SmartInstantiationAwareBeanPostProcessor</p>
+<p>1）获取所有的BeanPostProcessor；后置处理器默认都可以通过PriorityOrdered、Ordered接口来执行优先级</p>
+<p>2）先注册PriorityOrdered优先级接口的BeanPostProcessor；把每一个BeanPostProcessor添加到BeanFactory中</p>
+<p>3）再注册Ordered</p>
+<p>4）注册其他的没有实现任何接口的BeanPostProcessor</p>
+<p>5）最终注册MergedBeanDefinitionPostProcessor</p>
+<p>6）注册一个ApplicationListenerDetector；来在Bean创建后检查是否是ApplicationListener，如果是，就添加到容器中：applicationContext.addApplicationListener((ApplicationListener&lt;?&gt;) bean);</p>
+<h3 id="initMessageSource"><a href="#initMessageSource" class="headerlink" title="initMessageSource();"></a>initMessageSource();</h3><p>初始化MessageSource组件，做国家化功能；消息绑定；消息解析。</p>
+<p>1）获取BeanFactory</p>
+<p>2）看容器中是否有id=messageSource，类型是MessageSource的组件。如果有就赋值给messageSource，如果没有就自己创建一个DelegatingMessageSource组件。</p>
+<p>MessageSource：取出国际化配置文件中的某个key的值；能按照区域信息获取。</p>
+<p>3）把创建好的messageSource注册到容器中，以后获取国际化配置文件时，可以自动注入MessageSource</p>
+<h3 id="initApplicationEventMulticaster"><a href="#initApplicationEventMulticaster" class="headerlink" title="initApplicationEventMulticaster();"></a>initApplicationEventMulticaster();</h3><p>初始化事件派发器</p>
+<p>1）获取BeanFactory</p>
+<p>2）从BeanFactory中获取applicationEventMulticaster的ApplicationEventMulticaster</p>
+<p>3）如果上一步没有配置，就创建一个SimpleApplicationEventMulticaster</p>
+<p>4）将创建好的ApplicationEventMulticaster添加到容器中，以后其他组件直接自动注入</p>
+<h3 id="onRefresh"><a href="#onRefresh" class="headerlink" title="onRefresh();"></a>onRefresh();</h3><p>留给子类，重写onRefresh()方法.在容器刷新的时候自定义逻辑。</p>
+<h3 id="registerListeners"><a href="#registerListeners" class="headerlink" title="registerListeners();"></a>registerListeners();</h3><p>给容器中将所有项目里面的ApplicationListener注册进来</p>
+<p>1）从容器中拿到所有的ApplicationListener组件</p>
+<p>2）将每个监听器添加到事件派发器中：getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</p>
+<p>3）派发之前步骤中产生的事件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Set&lt;ApplicationEvent&gt; earlyEventsToProcess = this.earlyApplicationEvents;<br>this.earlyApplicationEvents = null;<br>if (earlyEventsToProcess != null) &#123;<br>	for (ApplicationEvent earlyEvent : earlyEventsToProcess) &#123;<br>		getApplicationEventMulticaster().multicastEvent(earlyEvent);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="finishBeanFactoryInitialization-beanFactory"><a href="#finishBeanFactoryInitialization-beanFactory" class="headerlink" title="finishBeanFactoryInitialization(beanFactory);"></a>finishBeanFactoryInitialization(beanFactory);</h3><p>初始化所有的剩下的单实例Bean对象</p>
+<p>1）beanFactory.preInstantiateSingletons();初始化剩下的单实例Bean</p>
+<p>1.1 获取容器中的所有Bean，依次初始化和创建对象</p>
+<p>1.2 获取Bean的定义信息：RootBeanDefinition</p>
+<p>1.3 Bean不是抽象的、是单实例、是懒加载<br>1.3.1 判断是不是FactoryBean；是否是实现FactoryBean接口的Bean<br>1.3.2 不是工厂Bean，就利用getBean()获取Bean对象。 </p>
+<hr>
+<p>1.3.2.1）getBean(beanName);ioc.getBean();</p>
+<p>1.3.2.2) doGetBean(name,null,null,false);</p>
+<p>1.3.2.3) 先获取缓存中保存的单实例bean。如果能获取说明这个Bean之前创建过（所有创建过的单实例Bean都会被保存起来）</p>
+<p>1.3.2.4）缓存中获取不到，开始Bean的创建对象流程</p>
+<p>1.3.2.5）标记当前Bean已经被创建，防止多线程下创建多个单实例Bean</p>
+<p>1.3.2.6）获取Bean的定义信息</p>
+<p>1.3.2.7）获取当前Bean依赖的其他Bean；如果有按照getBean()把依赖的Bean先创建出来；</p>
+<p>1.3.2.8）启动单实例Bean的创建过程：</p>
+<hr>
+<p>1.3.2.8.1) createBean(beanName,mbd,args)</p>
+<p>1.3.2.8.2) resolveBeforeInstantiation(beanName, mbdToUse);让BeanPostProcessor在Bean的创建之前执行，是InstantiationAwareBeanPostProcessor类型的后置处理器。看是否是需要创建代理对象。</p>
+<p>先触发applyBeanPostProcessorsBeforeInstantiation：postProcessBeforeInstantiation()</p>
+<p>如果有返回值：applyBeanPostProcessorsAfterInitialization：postProcessAfterInitialization()</p>
+<p>1.3.2.8.3)如果前面InstantiationAwareBeanPostProcessor没有返回值，说明不需要创建代理对象。</p>
+<p>1.3.2.8.4)Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建Bean</p>
+<hr>
+<p>1.3.2.8.4.1) instanceWrapper = createBeanInstance(beanName, mbd, args);创建Bean对象；利用工厂方法或者构造器创建出Bean对象</p>
+<p>1.3.2.8.4.2) applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);</p>
+<p>1.3.2.8.4.3) 【属性赋值】populateBean(beanName, mbd, instanceWrapper);</p>
+<hr>
+<p>赋值之前：<br>1.3.2.8.4.3.1) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessAfterInstrantiation();</p>
+<p>1.3.2.8.4.3.2) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessPropertyValues();</p>
+<p>赋值之后：<br>1.3.2.8.4.3.3) 应用Bean属性的值：为属性利用setter方法等进行赋值<br>applyPropertyValues(beanName, mbd, bw, pvs);</p>
+<p>1.3.2.8.4.4) 【Bean初始化】initializeBean(beanName, exposedObject, mbd)；</p>
+<hr>
+<p>1.3.2.8.4.4.1) 【执行Aware接口方法】invokeAwareMethods(beanName, bean);<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">   if (bean instanceof Aware) &#123;<br>	if (bean instanceof BeanNameAware) &#123;<br>		((BeanNameAware) bean).setBeanName(beanName);<br>	&#125;<br>	if (bean instanceof BeanClassLoaderAware) &#123;<br>		((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());<br>	&#125;<br>	if (bean instanceof BeanFactoryAware) &#123;<br>		((BeanFactoryAware) bean).setBeanFactory(AbstractAutowireCapableBeanFactory.this);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>1.3.2.8.4.4.2) 【执行后置处理器初始化之前】 </p>
+<p>applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);<br>beanProcessor.postProcessBeforeInitialization(result, beanName);</p>
+<p>1.3.2.8.4.4.3)【执行初始化方法】invokeInitMethods(beanName, wrappedBean, mbd);</p>
+<hr>
+<p>1.3.2.8.4.4.3.1) 是否是InitializingBean接口的实现；执行接口规定的初始化</p>
+<p>1.3.2.8.4.4.3.2) 是否自定义初始化方法：invokeCustomInitMethod(beanName, bean, mbd);</p>
+<hr>
+<p>1.3.2.8.4.4.4)【执行后置处理器初始化之后】  </p>
+<p>applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);<br>beanProcessor.postProcessAfterInitialization(result, beanName);</p>
+<p>1.3.2.8.4.5)【注册Bean的销毁方法】：DisposableBeanAdapter</p>
+<p>1.3.2.8.5）将创建的Bean添加到缓存中singletonObjects；<br>ioc容器就是这些Map：很多的Map里面保存了单实例Bean，环境信息····</p>
+<p>所有的Bean都利用getBean()创建完后：<br> 检查所有的Bean是否是SmartInitializingSingleton接口类型；如果是，就执行afterSingletonsInstantion()方法</p>
+<h3 id="finishRefresh"><a href="#finishRefresh" class="headerlink" title="finishRefresh();"></a>finishRefresh();</h3><p>完成BeanFactory的初始化创建工作；IoC容器就创建完了。</p>
+<p>1）initLifecycleProcessor();初始化和生命周期有关的后置处理器：LifecycleProcessor</p>
+<p>默认从容器中找是否是lifecycleProcessor的组件；如果没有，创建一个默认的 new DefaultLifecycleProcessor()；并加入到容器中。</p>
+<p>2）getLifecycleProcessor().onRefresh();</p>
+<p>拿到前面定义的生命周期处理器，并回调onRefresh()方法。</p>
+<p>3）publishEvent(new ContextRefreshedEvent(this));发布容器刷新完成事件。</p>
+<p>4）LiveBeansView.registerApplicationContext(this);</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1）<strong>Spring容器在启动的时候，先会保存所有注册进来的Bean定义信息。</strong></p>
+<p>1.1 xml注册的bean；<bean></bean></p>
+<p>1.2 注解注册Bean:@Bean、@Service、@Component、XXX</p>
+<p>2）<strong>Spring容器会在合适的时候创建这些Bean</strong></p>
+<p>2.1 用到这个bean的时候，利用getBean创建bean；创建好以后保存在容器中；</p>
+<p>2.2 统一创建剩下的所有单实例bean；finishBeanFactoryInitialization(beanFactory);</p>
+<p>3）<strong>后置处理器</strong></p>
+<p>每个bean创建完后，都会使用各种后置处理器进行处理；来增强bean的功能；  </p>
+<p>AutowiredAnnotationBeanPostProcessor：处理自动注入</p>
+<p>AnnotationAwareAspectJAutoProxyCreator：来做AOP功能</p>
+<p>XXX····</p>
+<p>增强的功能注解：</p>
+<p>AsyncAnnotationBeanPostProcessor</p>
+<p>4）<strong>事件驱动模型：</strong></p>
+<p>ApplicationListener：事件监听器</p>
+<p>ApplicationEventMulticaster：事件派发</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/spring-annotation/" rel="tag"><i class="fas fa-tags"></i>spring_annotation</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/10/22/spring-annotation-day-15/" rel="next" title="spring_annotation_day_15"><i class="fas fa-angle-left"></i><span class="nav-title">spring_annotation_day_15</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "spring_annotation_day_16",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">24</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">5</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">5</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#prepareRefresh-【刷新前的预处理】"><span class="toc-text">prepareRefresh();【刷新前的预处理】</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#obtainFreshBeanFactory；【获取BeanFactory】"><span class="toc-text">obtainFreshBeanFactory；【获取BeanFactory】</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#prepareBeanFactory-beanFactory"><span class="toc-text">prepareBeanFactory(beanFactory);</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#postProcessBeanFactory-beanFactory"><span class="toc-text">postProcessBeanFactory(beanFactory);</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#invokeBeanFactoryPostProcessors-beanFactory"><span class="toc-text">invokeBeanFactoryPostProcessors(beanFactory);</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#registerBeanPostProcessors（BeanFactory）"><span class="toc-text">registerBeanPostProcessors（BeanFactory）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#initMessageSource"><span class="toc-text">initMessageSource();</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#initApplicationEventMulticaster"><span class="toc-text">initApplicationEventMulticaster();</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#onRefresh"><span class="toc-text">onRefresh();</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#registerListeners"><span class="toc-text">registerListeners();</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#finishBeanFactoryInitialization-beanFactory"><span class="toc-text">finishBeanFactoryInitialization(beanFactory);</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#finishRefresh"><span class="toc-text">finishRefresh();</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

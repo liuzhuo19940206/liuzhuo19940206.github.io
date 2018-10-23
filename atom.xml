@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-23T02:13:11.909Z</updated>
+  <updated>2018-10-23T09:10:46.051Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring_annotation_day_16</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/</id>
+    <published>2018-10-23T02:33:28.000Z</published>
+    <updated>2018-10-23T09:10:46.051Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;Spring容器的创建过程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;今天，我们来统一学习一下，Spring容器的整个创建过程。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Spring容器的refresh()[创建刷新]&lt;/strong&gt;&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
+    
+    
+      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>spring_annotation_day_15</title>
@@ -527,32 +557,6 @@
         
           &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
 &lt;h3 id=&quot;Scope注解&quot;&gt;&lt;a href=&quot;#Scope注解&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_02</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/</id>
-    <published>2018-10-13T04:37:23.000Z</published>
-    <updated>2018-10-14T02:28:18.154Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; 
         
       
     
