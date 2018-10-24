@@ -82,7 +82,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Markdown | 解忧杂货店 - 爱生活爱解忧</title>
+    <title>SpringMVC架构与流程 | 解忧杂货店 - 爱生活爱解忧</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -128,7 +128,7 @@
   
   <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/12/markdown/">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC架构与流程/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="刘卓">
        <meta itemprop="description" content="hello,every body!">
@@ -139,11 +139,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">Markdown</h1>
+      <h1 class="post-title" itemprop="name headline">SpringMVC架构与流程</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-12T11:39:24+08:00">2018-10-12 11:39:24</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-24T15:24:40+08:00">2018-10-24 15:24:40</time></span>
         </span>
         
         
@@ -152,7 +152,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringMVC/" itemprop="url" rel="index"><span itemprop="name">SpringMVC</span></a></span>
         </span>
         
         
@@ -161,88 +161,51 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p> <strong>序言</strong>:<br></p>
-<p></p><p>很久没有写日记了，以前只是在QQ空间写，现在觉得在自己的平台写日记还是感觉不错的，还是要多写博客来加强自己学习的知识，学的知识点感觉还是记不住，渐渐地让我明白，看的越多，懂的越少（你这话不是有毛病吗？应该是看的越多，懂的越多才对），此话怎讲，当你在茫茫的知识库里面东看西看的时候，很快就被海量的知识给淹没了，根本就不知道哪些是对的，哪些是错的，感觉好像这个也懂了，那个也懂了，但是真正写起来，脑子又一片空白，又好像什么都不懂，这种状态时有发生，这就叫不懂装懂，最根本的原因就是看的太多，写的太少，所以为了改掉这样毛病，把被动学习变成主动学习，接下来的日子，多写写，即使是写一些学习工作中遇到的坑也是好的，没事翻出来看看，还可以加深印象，好了，废话到处！<br></p><br>正文：<br><br><strong>一、标题的几种写法</strong>：<p></p>
-<p><strong>第一种</strong>：<br></p>
-<p>#一级标题<br></p>
-<p>##二级标题<br></p>
-<p>###三级级标题<br></p>
-<p>####四级标题<br></p>
-<p>#####五级标题<br></p>
-<p>######六级标题<br><br><strong>说明：真正使用的时候，需要在#后加空格!!!!!</strong><br><br>效果:<br>   </p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级级标题"><a href="#三级级标题" class="headerlink" title="三级级标题"></a>三级级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><p><strong>第二种</strong>：<br><br>  这是一级标题<br><br>  ======<br><br>  这是二级标题<br><br>  ———<br><br>这种只能表示一级和二级标题,==和–的数量个数没有限制，多少都行!!!<br>效果：<br></p>
-<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><p><strong>第三种</strong>：<br></p>
-<p>#一级标题#<br></p>
-<p>##二级标题##<br><br>其他几级标题类似，就是一个封闭的意思，也是注意#后面需要有空格!!!</p>
-<h1 id="一级标题-1"><a href="#一级标题-1" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题-1"><a href="#二级标题-1" class="headerlink" title="二级标题"></a>二级标题</h2><p>那既然3种都可以使用，可不可以混合使用呢？我试了一下，是可以的，但是为了让页面标签的统一性，不建议混合使用，推荐使用第一种，比较简洁，全面</p>
-<p>为了搞清楚原理，我特意在网上搜一下在线编写markdown的工具，发现实际上是把这些标签最后转化为html标签，如图：<br><br><img src="https://i.imgur.com/QSo6UUP.png" alt=""><br>在线地址请看这里:<a href="http://tool.oschina.net/markdown/" title="markdown在线编辑器" target="_blank" rel="noopener">markdown在线编辑器</a><br></p>
+      <p><strong>SpringMVC架构与流程</strong></p>
+<p>前言：</p>
+<p>顾名思义SpringMVC是一个基于MVC设计思想的框架。</p>
+<p>什么是mvc？MVC是模型(model)－视图(view)－控制器(controller)的缩写 ，是一种软件设计思想，主要的作用就是解决应用开发的耦合性，将应用的输入、控制、输出进行强制解耦。</p>
+<p>mvc中的模型、视图、控制器分别担负着不同的角色：</p>
+<p>模型：页数的数据和业务的处理。我们平常用的service和dao层就属于这一层面</p>
+<p>视图：只用于用户的显示，不进行任何的业务处理。主要用来获取和显示数据</p>
+<p>控制器：控制视图层与用户的交互，将对应的操作调用对应的模型。简单的说，就是管理交互的</p>
+<p>理解了mvc，我们就来说一说mvc的执行过程：用户通过view层向服务器发出请求，controller接收请求后，调用对应的model后获取数据，控制器在将数据返回给view。</p>
+<p><strong>好了，我们可以进入正题了，既然SpringMVC是基于MVC的软件设计思想的框架，我们就先看一下SpringMVC的M、V、C分别是什么</strong></p>
+<p><img src="/images/20181024152707.png"></p>
+<p>上图里的东西我们不用细看，只需要大概晓得对应的mvc是啥的就行</p>
+<p>M:这里的模型指定是具体执行的Handler(Controller)。</p>
+<p>V:就是试图View</p>
+<p>C:指的的前端控制器</p>
+<p><strong>了解的springMVC的架构思想（mvc），我就开始继续深入的学习springmvc的执行流程吧。</strong></p>
+<p>下面的顺序并不代表图中的顺序：</p>
+<p>用户将请求发送给前端控制器（DispatcherServlet）也就是SpringMVC的控制器</p>
+<p>然后 前端控制器 请求调用HandlerMapper（处理器映射器）</p>
+<p>处理器映射器 根据请求的url返回 Handler和处理器拦截器（如果有）给前端控制器（DispatcherServlet）</p>
+<p>前端控制器（DispatcherServlet）找到合适的 处理器适配器(HanderAdatper)，由处理器适配器调用Handler</p>
+<p>Handler（以后统称为Controller）执行操作，Handler通常就是我们定义的controller(这里的controller是springmvc的model层),执行完后返回ModelAndView</p>
+<p>处理器映射器(HanderAdatper)将ModelAndView返回给 前端控制器</p>
+<p>然后 前端控制器将ModelAndView 传递给 视图解析器（ViewReslover )</p>
+<p>视图解析器解析（ViewReslover )后 返回具体view，给前端控制器（DispatcherServlet）</p>
+<p>前端控制器（DispatcherServlet）对视图进行渲染（将数据填充到视图中）</p>
+<p>前端控制器（DispatcherServlet）将视图返回给用户。</p>
 <hr>
-<p><strong>二：列表</strong><br><br>1.无序列表：<br><br>*1<br><br>*2<br><br>*3<br><br>+1<br><br>+2<br><br>+3<br><br>-1<br><br>-2<br><br>-3<br><br>效果:<br></p>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-</ul>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3<br></li>
-</ul>
-<p>可以看到，无序列表可以用 * ， + ， - 来创建，用在线编辑器看，实际上是转换成了ul&gt;li ，所以使用哪个都可以，推荐使用*吧.<br><br><br>2.有序列表:<br><br>1.列表1<br>2.列表2<br>3.列表3</p>
-<ol>
-<li>列表1</li>
-<li>列表2</li>
-<li>列表3</li>
-</ol>
-<p>有序列表就相对简单一点，只有这一种方式，注意，数字后面的点只能是英文的点，特别注意，有序列表的序号是根据第一行列表的数字顺序来的。</p>
+<p>了解了流程，我们在详细了解一下里面讲到的部件：</p>
+<p>前端控制器（DispatcherServlet）：这玩意是 SpringMVC的入口（实际上呢就是一个Servlet对象），所有的请求都要通过它，因为是个Servlet所以不可避免的你要在web.xml进行配置(Servlet3.0以后，可以不使用web.xml配置文件了)。</p>
+<p>处理器映射器(HandlerMapper)，这个玩意就是根据不同的方式找到处理器（Handler），它支持的有配置文件形式，接口形式，注解形式等等</p>
+<p>处理器适配器（HandlAdapter ）这玩意就是 分析处理器是那种方式的处理器（配置文件，接口、注解等形式）然后执行Handler</p>
+<p>ModelAndView 封装了数据和视图信息，如果想进行页面的数据交互，可以选择这玩意进行传输，数据的存放位置，默认的是Request域</p>
+<p>视图解析器（ViewResolver ），负责将处理结果生成View视图。</p>
+<p>视图（View ） SpringMVC提供了很多视图，比如jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp</p>
 <hr>
-<p><strong>三：区块引用</strong><br>比如说，你想对某个部分做的内容做一些说明或者引用某某的话等，可以用这个语句。使用&gt;  </p>
-<ul>
-<li>犯我帝国者，虽远必诛!  <blockquote>
-<p>这是嘉文四世说的</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>四：华丽的分割线</strong><br>分割线可以由* - _（星号，减号，底线）这3个符号的至少3个符号表示，注意至少要3个，且不需要连续，有空格也可以</p>
-<hr>
-<p><strong>五:图片</strong><br>图片也有2种方式：行内式和参数式.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">![我是图片](https://www.fdfdfdf.jpg)<br>[我是图片]: (https://www.fdfdfdf.jpg)<br>参数式图片，这里是[我是图片]<br></code></pre></td></tr></table></figure></p>
-<p>用法跟链接的基本一样，唯一的不同就是，图片前面要写一个！（这是必须的），没什么好说的。</p>
-<hr>
-<p><strong>六：代码块</strong></p>
-<p>这个就比较重要了，很多时候都需要展示出一些代码</p>
-<p>如果代码量比较少，只有单行的话，可以用单反引号包起来，如下： </p>
-<p>第一种：单行（两个）: ``</p>
-<p><code>var js = new object();</code>  </p>
-<p>要是多行这个就不行了，多行可以用3个 `</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">int a = 10;  <br>int b = 20;  <br>int sum = a + b;  <br>printf(&quot;%d&quot;,sum);<br></code></pre></td></tr></table></figure>
-<hr>
-<p><strong>七：强调</strong>  </p>
-<p>*字体倾斜*<br>_字体倾斜_<br>**字体加粗**<br>__字体加粗__  </p>
-<p>一个星号或者是一个下划线包起来，会转换为<code>&lt;em&gt;</code>倾斜，如果是2个，会转换为<code>&lt;strong&gt;</code>加粗</p>
-<hr>
-<p><strong>八：转义</strong>  </p>
-<p> \：转义符号，和js一样。</p>
-<hr>
-<p><strong>九：删除线</strong>  </p>
-<p>~~请删除我~~:</p>
-<p><del>请删除我</del>  </p>
-<hr>
-<p><strong>十：html原始码</strong> </p>
-<p>在代码区块里面， &amp; 、 &lt; 和 &gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，剩下的 Markdown 都会帮你处理.</p>
-<hr>
-<p>常用的基本上就这些了，如果还有一些常用的，可以跟我留言，我补充上去. </p>
+<p><strong>在spring-mvc.xml文件中配置：</strong><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- 配置处理器映射器 --&gt;<br>&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;/&gt;<br>&lt;!-- 配置处理器适配器 --&gt;<br>&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;/&gt; <br>为什么这么配置spring就能用呢？因为spring对bean的加载有一个顺序，同名称的spring只会认第一次加载的bean，也就是配置文件最先配置的bean<br></code></pre></td></tr></table></figure></p>
+<p><strong>当然了还有更简洁的配置，添加这个配置即可 mvc:annotation-driven</strong><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br>       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;http://www.springframework.org/schema/p&quot;<br>       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;<br>       xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;<br>       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd<br>        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd<br>        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd&quot;&gt;<br>    &lt;context:component-scan base-package=&quot;com.lifeibai&quot;/&gt;<br>    &lt;mvc:annotation-driven/&gt;<br>&lt;/beans&gt;<br></code></pre></td></tr></table></figure></p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/markdown/" rel="tag"><i class="fas fa-tags"></i>markdown</a>
+        <a class="post-tag button" href="/tags/SpringMVC/" rel="tag"><i class="fas fa-tags"></i>SpringMVC</a>
         
       </div>
       
@@ -276,12 +239,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2018/10/11/my-new-post/" rel="next" title="新文章"><i class="fas fa-angle-left"></i><span class="nav-title">新文章</span></a>
+      <a href="/2018/10/23/spring-annotation-day-16/" rel="next" title="spring_annotation_day_16"><i class="fas fa-angle-left"></i><span class="nav-title">spring_annotation_day_16</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2018/10/12/spring-annotation-01/" rel="prev" title="spring_annotation_day_01"><span class="nav-title">spring_annotation_day_01</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2018/10/24/Values返回值/" rel="prev" title="SpringMVC-Return Values返回值"><span class="nav-title">SpringMVC-Return Values返回值</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -308,7 +271,7 @@
       "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "Markdown",
+      "issue_title": "SpringMVC架构与流程",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -397,12 +360,6 @@
     
     
     
-    
-    <hr>
-    <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#一级标题"><span class="toc-text">一级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二级标题"><span class="toc-text">二级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#三级级标题"><span class="toc-text">三级级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#四级标题"><span class="toc-text">四级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#五级标题"><span class="toc-text">五级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-6"><a class="list-group-item toc-link" href="#六级标题"><span class="toc-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#这是一级标题"><span class="toc-text">这是一级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#这是二级标题"><span class="toc-text">这是二级标题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#一级标题-1"><span class="toc-text">一级标题</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二级标题-1"><span class="toc-text">二级标题</span></a></li></ol></li></ol></div>
-    </div>
     
     
     
