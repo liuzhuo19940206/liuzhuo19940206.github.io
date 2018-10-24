@@ -148,14 +148,75 @@
         
         
         
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringMVC/" itemprop="url" rel="index"><span itemprop="name">SpringMVC</span></a></span>
+        </span>
+        
+        
         
         
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      
+      <p><strong>SpringMVC注解</strong></p>
+<h3 id="注解概观"><a href="#注解概观" class="headerlink" title="注解概观"></a>注解概观</h3><p><strong>Spring2.5 引入注解式处理器</strong></p>
+<p>@Controller：用于标识是处理器类；</p>
+<p>@RequestMapping：请求到处理器功能方法的映射规则；</p>
+<p>@RequestParam：请求参数到处理器功能处理方法的方法参数上的绑定；</p>
+<p>@ModelAttribute：请求参数到命令对象的绑定；</p>
+<p>@SessionAttributes：用于声明session级别存储的属性，放置在处理器类上，通常列出模型属性（如@ModelAttribute）对应的名称，则这些属性会透明的保存到session中；</p>
+<p>@InitBinder：自定义数据绑定注册支持，用于将请求参数转换到命令对象属性的对应类型；</p>
+<hr>
+<p><strong>Spring3.0 引入RESTful架构风格支持(通过@PathVariable注解和一些其他特性支持),且又引入了更多的注解支持</strong></p>
+<p>@CookieValue：cookie数据到处理器功能处理方法的方法参数上的绑定；</p>
+<p>@RequestHeader：请求头（header）数据到处理器功能处理方法的方法参数上的绑定；</p>
+<p>@RequestBody：请求的body体的绑定（通过HttpMessageConverter进行类型转换）；</p>
+<p>@ResponseBody：处理器功能处理方法的返回值作为响应体（通过HttpMessageConverter进行类型转换）；</p>
+<p>@ResponseStatus：定义处理器功能处理方法/异常处理器返回的状态码和原因；</p>
+<p>@ExceptionHandler：注解式声明异常处理器；</p>
+<p>@PathVariable：请求URI中的模板变量部分到处理器功能处理方法的方法参数上的绑定</p>
+<h3 id="类与方法注解"><a href="#类与方法注解" class="headerlink" title="类与方法注解"></a>类与方法注解</h3><p>@Controller @RestController</p>
+<p>@RestContrller注解相当于@ResponseBody和@Controller的结合 :</p>
+<h4 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h4><p>通过HttpMessageConverter接口转换为指定格式的数据</p>
+<h4 id="InitBinder-局部转换器"><a href="#InitBinder-局部转换器" class="headerlink" title="@InitBinder-局部转换器"></a>@InitBinder-局部转换器</h4><p>如果希望某个属性编辑器仅作用于特定的 Controller ，</p>
+<p>可以在 Controller 中定义一个标注 @InitBinder 注解的方法，</p>
+<p>可以在该方法中向 Controller 了注册若干个属性编辑器</p>
+<p>例如:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@InitBinder<br>public void initBinder(WebDataBinder binder) &#123;<br>SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);<br>dateFormat.setLenient(false);<br>binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h4 id="RequestMapping-请求路径映射"><a href="#RequestMapping-请求路径映射" class="headerlink" title="@RequestMapping-请求路径映射"></a>@RequestMapping-请求路径映射</h4><p>RequestMapping是一个用来处理请求地址映射的注解（将请求映射到对应的控制器方法中），可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</p>
+<p>RequestMapping请求路径映射，如果标注在某个controller的类级别上，则表明访问此类路径下的方法都要加上其配置的路径；最常用是标注在方法上，表明哪个具体的方法来接受处理某次请求。</p>
+<p>属性:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">RequestMapping注解有六个属性，下面我们把她分成三类进行说明（下面有相应示例）。<br>1、 value， method；<br>value：   指定请求的实际地址，指定的地址可以是URI Template 模式（后面将会说明）；<br>method：  指定请求的method类型， GET、POST、PUT、DELETE等；<br>2、consumes，produces<br>consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;<br>produces:  指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；<br>3、params，headers<br>params：  指定request中必须包含某些参数值是，才让该方法处理。<br>headers： 指定request中必须包含某些指定的header值，才能让该方法处理请求。<br></code></pre></td></tr></table></figure></p>
+<p>派生的子类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Ø  @GetMapping<br><br>Ø  @PostMapping<br><br>Ø  @PutMapping<br><br>Ø  @DeleteMapping<br><br>Ø  @PatchMapping<br></code></pre></td></tr></table></figure></p>
+<p>属性详解：</p>
+<h5 id="value"><a href="#value" class="headerlink" title="value"></a><font size="4">value</font></h5><p>用法</p>
+<p>(1)普通的具体值。如前面的 value=”/book”。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RequestMapping(value=&quot;/get/&#123;bookId&#125;&quot;)<br>public String getBookById(@PathVariable String bookId,Model model)&#123;<br>  model.addAttribute(&quot;bookId&quot;, bookId);<br>  return &quot;book&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>(2)含某变量的一类值。</p>
+<p>(3)ant风格<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RequestMapping(value=&quot;/get/id?&quot;)：可匹配“/get/id1”或“/get/ida”，但不匹配“/get/id”或“/get/idaa”;<br>@RequestMapping(value=&quot;/get/id*&quot;)：可匹配“/get/idabc”或“/get/id”，但不匹配“/get/idabc/abc”;<br>@RequestMapping(value=&quot;/get/id/*&quot;)：可匹配“/get/id/abc”，但不匹配“/get/idabc”;<br>@RequestMapping(value=&quot;/get/id/**/&#123;id&#125;&quot;)：可匹配“/get/id/abc/abc/123”或“/get/id/123”，也就是Ant风格和URI模板变量风格可混用。<br></code></pre></td></tr></table></figure></p>
+<p>(4)含正则表达式的一类值<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RequestMapping(value=&quot;/get/&#123;idPre:\d+&#125;-&#123;idNum:\d+&#125;&quot;)：<br>可以匹配“/get/123-1”，但不能匹配“/get/abc-1”，这样可以设计更加严格的规则。<br>可以通过@PathVariable 注解提取路径中的变量(idPre,idNum)<br></code></pre></td></tr></table></figure></p>
+<p>(5)或关系<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RequestMapping(value=&#123;&quot;/get&quot;,&quot;/fetch&quot;&#125; ) 即 /get或/fetch都会映射到该方法上。<br></code></pre></td></tr></table></figure></p>
+<h5 id="method"><a href="#method" class="headerlink" title="method"></a><font size="4">method</font></h5><p>指定请求的method类型， GET、POST、PUT、DELETE等；</p>
+<p>用法:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RequestMapping(value=&quot;/get/&#123;bookid&#125;&quot;,method=&#123;RequestMethod.GET,RequestMethod.POST&#125;)<br></code></pre></td></tr></table></figure></p>
+<h5 id="params："><a href="#params：" class="headerlink" title="params："></a><font size="4">params：</font></h5><p><strong>指定request中必须包含某些参数值是，才让该方法处理。</strong></p>
+<p>@RequestMapping(params=”action=del”)，请求参数包含”action=del”,如：</p>
+<p><code>http://localhost:8080/book?action=del</code></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)<br>public class RelativePathUriTemplateController &#123;<br>@RequestMapping(value = &quot;/pets/&#123;petId&#125;&quot;, method = RequestMethod.GET, params=&quot;myParam=myValue&quot;)<br>public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) &#123;    <br>  // implementation omitted<br>&#125;<br>&#125;<br>仅处理请求中包含了名为“myParam”，值为“myValue”的请求<br></code></pre></td></tr></table></figure>
+<h5 id="headers："><a href="#headers：" class="headerlink" title="headers："></a><font size="4">headers：</font></h5><p>指定request中必须包含某些指定的header值，才能让该方法处理请求。</p>
+<p>@RequestMapping(value=”/header/id”, headers = “Accept=application/json”)：</p>
+<p>表示请求的URL必须为“/header/id 且请求头中必须有“Accept =application/json”参数即可匹配。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)<br>public class RelativePathUriTemplateController &#123;<br><br>	@RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.GET, headers=&quot;Referer=http://www.ifeng.com/&quot;)<br>	public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) &#123;    <br>	  // implementation omitted<br>	&#125;<br><br>&#125;<br>    仅处理request的header中包含了指定“Refer”请求头和对应值为“http://www.ifeng.com/”的请求。<br></code></pre></td></tr></table></figure></p>
+<h5 id="consumes："><a href="#consumes：" class="headerlink" title="consumes："></a><font size="4">consumes：</font></h5><p>指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。</p>
+<p>用法:</p>
+<p>@RequestMapping(value = “/pets”, method = RequestMethod.POST, consumes=”application/json”)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>@RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.POST, consumes=&quot;application/json&quot;)<br>public void addPet(@RequestBody Pet pet, Model model) &#123;    <br>  // implementation omitted<br>&#125;<br>          方法仅处理request Content-Type为“application/json”类型的请求。<br></code></pre></td></tr></table></figure></p>
+
     </main>
     <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/SpringMVC/" rel="tag"><i class="fas fa-tags"></i>SpringMVC</a>
+        
+      </div>
       
     </footer>
   </article>
@@ -302,6 +363,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#注解概观"><span class="toc-text">注解概观</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#类与方法注解"><span class="toc-text">类与方法注解</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ResponseBody"><span class="toc-text">@ResponseBody</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#InitBinder-局部转换器"><span class="toc-text">@InitBinder-局部转换器</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#RequestMapping-请求路径映射"><span class="toc-text">@RequestMapping-请求路径映射</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#value"><span class="toc-text">value</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#method"><span class="toc-text">method</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#params："><span class="toc-text">params：</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#headers："><span class="toc-text">headers：</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#consumes："><span class="toc-text">consumes：</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
     
     
     <hr>
