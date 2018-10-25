@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-24T09:30:54.153Z</updated>
+  <updated>2018-10-25T13:16:50.171Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git初级入门</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/25/Git%E5%88%9D%E7%BA%A7%E5%85%A5%E9%97%A8/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/25/Git初级入门/</id>
+    <published>2018-10-25T01:02:40.000Z</published>
+    <updated>2018-10-25T13:16:50.171Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;git的初级用法&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Git的下载&quot;&gt;&lt;a href=&quot;#Git的下载&quot; class=&quot;headerlink&quot; title=&quot;Git的下载&quot;&gt;&lt;/a&gt;Git的下载&lt;/h3&gt;&lt;p&gt;git的官网：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="git" scheme="http://liuzhuo19940206.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="http://liuzhuo19940206.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringMVC注解</title>
@@ -533,33 +560,6 @@
         
           &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
 &lt;h3 id=&quot;Value注解&quot;&gt;&lt;a href=&quot;#Value注解&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_07</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-07/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-07/</id>
-    <published>2018-10-16T01:52:04.000Z</published>
-    <updated>2018-10-16T03:04:04.611Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;BeanPostProcessor的生命周期流程&quot;&gt;&lt;a href=&quot;#BeanPostProcessor的生命周期流程&quot; class=&quot;headerlink&quot;
         
       
     
