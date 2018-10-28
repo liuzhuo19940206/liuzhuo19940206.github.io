@@ -82,7 +82,7 @@
     <script defer type="text/javascript" src="/js/index.js"></script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>关于 | 解忧杂货店 - 爱生活爱解忧</title>
+    <title>idea 创建动态Web项目 | 解忧杂货店 - 爱生活爱解忧</title>
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -111,7 +111,7 @@
         
         <li role="menuitem"><a href="/tags/">标签</a></li>
         
-        <li role="menuitem"><a href="/about/" class="current">关于</a></li>
+        <li role="menuitem"><a href="/about/">关于</a></li>
         
       </ul>
     </nav>
@@ -124,24 +124,94 @@
         <div class="main-container">
           <div class="content">
             
-<div id="page" class="page">
-  <article class="article post card animate">
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/28/idea-创建动态Web项目/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <span>关于</span>
-      </h1>
+      <h1 class="post-title" itemprop="name headline">idea 创建动态Web项目</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-28T18:15:11+08:00">2018-10-28 18:15:11</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类别1/" itemprop="url" rel="index"><span itemprop="name">类别1</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类别1/类别2/" itemprop="url" rel="index"><span itemprop="name">类别2</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
     </header>
-    <main class="post-main">
-      <p>  <img src="/images/gakki.png"></p>
-<p>  </p><p>&nbsp;&nbsp;&nbsp;&nbsp;本人只是一个即将毕业的程序猿小哥哥，由于秋招结束，闲暇时间搭建了这个平台，只为给自己的生活增添一点乐趣。</p><p></p>
-<p>  </p><p>&nbsp;&nbsp;&nbsp;&nbsp;本人也是Gakki酱的脑残粉，非常喜欢她的微笑，看了好多她的电视剧，比如：父女七日变、恋空、花水木、逃避虽可耻但有用、Legal High、全开女孩等，欢迎大家关注我的<a href="https://weibo.com/p/1005053310889015/home/" target="_blank" rel="noopener">微博</a>，比心~~~</p><p></p>
-<p>  </p><p>&nbsp;&nbsp;&nbsp;&nbsp;平时喜欢的娱乐是打篮球和逛B站，对二次元有着一定的情怀，B站也给我机会，为了生活放弃了机会，不知道是对还是错，只能一路走到黑了。游戏的话，英雄联盟也陪伴了我的大学生活，现在都不怎么玩了，最多玩玩荣耀和吃鸡，但是还是少了当初那种在网吧5连坐开黑的感觉，我觉得人生最大的乐趣莫过于回忆，等老了，和老伴坐在板凳上面，说着过去的回忆，想想就很幸福。</p><p></p>
-<p>  </p><p>&nbsp;&nbsp;&nbsp;&nbsp;作为一个程序员对技术不感兴趣，说来也惭愧，平时我也会更新自己的技术博客的，为了生活，不容易，fighting~</p><p></p>
-<p>  </p><p>&nbsp;&nbsp;&nbsp;&nbsp;最后放一段爱豆的视频让大家欣赏一下，萨拉拉~</p><p></p>
-  <iframe src="//player.bilibili.com/player.html?aid=23675732&cid=39547539&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="80%" height="500px" style="margin-left:30px"><br>  </iframe>
+    <main class="post-main" itemprop="articleBody">
+      <p>这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上<br><a id="more"></a>，在<!--more-->之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more 才能看到。</p>
+
     </main>
-    <footer class="post-footer"></footer>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/标签1/" rel="tag"><i class="fas fa-tags"></i>标签1</a>
+        
+        <a class="post-tag button" href="/tags/标签2/" rel="tag"><i class="fas fa-tags"></i>标签2</a>
+        
+      </div>
+      
+    </footer>
   </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/10/25/Git初级入门/" rel="next" title="Git初级入门"><i class="fas fa-angle-left"></i><span class="nav-title">Git初级入门</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
   
   
 
@@ -164,7 +234,7 @@
       "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "关于",
+      "issue_title": "idea 创建动态Web项目",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
