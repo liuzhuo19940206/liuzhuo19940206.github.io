@@ -162,6 +162,8 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <p><strong>SpringMVC-Return Values返回值</strong></p>
+<p>本篇文章，主要讲解SpringMVC的返回值的使用。</p>
+<a id="more"></a>
 <hr>
 <h3 id="Handler-Return-Values返回值"><a href="#Handler-Return-Values返回值" class="headerlink" title="Handler-Return Values返回值"></a>Handler-Return Values返回值</h3><h4 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h4><p> 返回值通过HttpMessageConverters转换并写入响应。   请参阅@ResponseBody。<br> 处理器功能处理方法的返回值作为响应体（通过HttpMessageConverter进行类型转换）；<br> 作用： 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。<br> 使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；</p>
 <h4 id="HttpEntity-ResponseEntity"><a href="#HttpEntity-ResponseEntity" class="headerlink" title="HttpEntity,ResponseEntity"></a>HttpEntity,ResponseEntity</h4><p>返回值:指定完整响应，包括HTTP标头和正文通过HttpMessageConverters转换并写入响应。 请参阅ResponseEntity。</p>

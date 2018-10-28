@@ -162,6 +162,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <p><strong>Spring注解开发</strong>  </p>
+<p>今天学习BeanPostProcessor的生命周期流程<br><a id="more"></a></p>
 <h3 id="BeanPostProcessor的生命周期流程"><a href="#BeanPostProcessor的生命周期流程" class="headerlink" title="BeanPostProcessor的生命周期流程"></a>BeanPostProcessor的生命周期流程</h3><p>我们知道BeanPostProcessor是后置处理器，是在Bean初始化前后执行一些列操作的，底层到底是怎么执行的呢？现在debug一下。</p>
 <p>1）设置断点，在com.liuzhuo.bean包下的MyBeanPostProcessor类中，给postProcessBeforeInitialization方法设置断点。</p>
 <p><img src="/images/20181016100600.png"></p>

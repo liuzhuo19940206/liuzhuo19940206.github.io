@@ -163,7 +163,7 @@
     <main class="post-main" itemprop="articleBody">
       <p>对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。</p>
 <p>本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。</p>
-<hr>
+<a id="more"></a>
 <h3 id="Properties-的使用"><a href="#Properties-的使用" class="headerlink" title="Properties 的使用"></a>Properties 的使用</h3><p>先来看看 Properties 是怎么使用的，Spring 中常用的有以下几种使用方式：</p>
 <h4 id="在-xml-配置文件中使用"><a href="#在-xml-配置文件中使用" class="headerlink" title="在 xml 配置文件中使用"></a>在 xml 配置文件中使用</h4><p>即自动替换 ${} 里面的值。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;bean id=&quot;xxx&quot; class=&quot;com.javadoop.Xxx&quot;&gt;<br>     &lt;property name=&quot;url&quot; value=&quot;$&#123;javadoop.jdbc.url&#125;&quot; /&gt;<br>&lt;/bean&gt;<br></code></pre></td></tr></table></figure></p>
 <h4 id="通过-Value-注入使用"><a href="#通过-Value-注入使用" class="headerlink" title="通过 @Value 注入使用"></a>通过 @Value 注入使用</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Value(&quot;$&#123;javadoop.jdbc.url&#125;&quot;)<br>private String url;<br></code></pre></td></tr></table></figure>

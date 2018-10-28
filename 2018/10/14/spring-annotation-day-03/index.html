@@ -162,6 +162,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <p><strong>Spring注解开发</strong>  </p>
+<p>今天，学习Spring中的@Scope注解<br><a id="more"></a></p>
 <h3 id="Scope注解"><a href="#Scope注解" class="headerlink" title="@Scope注解"></a>@Scope注解</h3><p>@Scope注解：是用来控制创建对象的作用域的，这里的作用域是我们平时所说的作用域。<br>这里是：单例模式、多例模式等。  </p>
 <p>现在创建新的配置类com.liuzhuo.config.MainConfig2:</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>public class MainConfig2 &#123;<br><br>    @Bean(&quot;person&quot;)<br>    public Person person() &#123;<br>        return new Person(&quot;dengjie&quot;, 18);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>

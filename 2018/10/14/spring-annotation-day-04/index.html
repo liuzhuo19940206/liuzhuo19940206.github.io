@@ -162,6 +162,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <p><strong>Spring注解开发</strong>  </p>
+<p>今天，学习条件注解！！！<br><a id="more"></a></p>
 <h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>作用：按照一定的条件进行判断，满足条件给容器中注入bean  </p>
 <p>现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。</p>
 <p>在配置类中，添加两个方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean(&quot;bier&quot;)<br>public Person person01() &#123; //如果是windows系统就注入到容器中<br>    return new Person(&quot;Bier&quot;, 16);<br>&#125;<br><br>@Bean(&quot;linux&quot;)<br>public Person person02() &#123; //如果是Linux系统就注入到容器中<br>    return new Person(&quot;Linux&quot;, 18);<br>&#125;<br></code></pre></td></tr></table></figure></p>

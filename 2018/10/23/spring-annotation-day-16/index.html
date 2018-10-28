@@ -163,6 +163,7 @@
     <main class="post-main" itemprop="articleBody">
       <p><strong>Spring容器的创建过程</strong></p>
 <p>今天，我们来统一学习一下，Spring容器的整个创建过程。</p>
+<a id="more"></a>
 <hr>
 <p><strong>Spring容器的refresh()[创建刷新]</strong></p>
 <h3 id="prepareRefresh-【刷新前的预处理】"><a href="#prepareRefresh-【刷新前的预处理】" class="headerlink" title="prepareRefresh();【刷新前的预处理】"></a>prepareRefresh();【刷新前的预处理】</h3><p>1）initPropertySources();初始化一些属性设置；子类自定义个性化的属性设置方法；<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> protected void initPropertySources() &#123;<br> // For subclasses: do nothing by default.<br>&#125;<br></code></pre></td></tr></table></figure></p>

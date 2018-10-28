@@ -162,7 +162,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <p><strong>Spring注解开发</strong> </p>
-<p>今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点</p>
+<p>今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点<br><a id="more"></a></p>
 <h3 id="BeanFactoryPostProcessor"><a href="#BeanFactoryPostProcessor" class="headerlink" title="BeanFactoryPostProcessor"></a>BeanFactoryPostProcessor</h3><p>BeanPostProcessor：bean的后置处理器，bean创建对象初始化前后进行拦截工作的。  </p>
 <p>BeanFactoryPostProcessor：BeanFactory的后置处理器，在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容，所有的Bean的定义已经保存加载到BeanFactory，<strong>但是bean的实例还没有创建</strong>。</p>
 <h4 id="创建ExConfig配置类："><a href="#创建ExConfig配置类：" class="headerlink" title="创建ExConfig配置类："></a>创建ExConfig配置类：</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>@ComponentScan(&quot;com.liuzhuo.ext&quot;)<br>public class ExtConfig &#123;<br><br>    @Bean<br>    public Blue blue() &#123;<br>        return new Blue();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>

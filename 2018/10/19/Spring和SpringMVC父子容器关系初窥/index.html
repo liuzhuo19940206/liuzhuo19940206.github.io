@@ -161,7 +161,8 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>最近由于项目的包扫描出现了问题，在解决问题的过程中，偶然发现了Spring和SpringMVC是有父子容器关系的，而且正是因为这个才往往会出现包扫描的问题，我们在此来分析和理解Spring和SpringMVC的父子容器关系并且给出Spring和SpringMVC配置文件中包扫描的官方推荐方式。</p>
+      <p>Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系<br><a id="more"></a></p>
+<h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>最近由于项目的包扫描出现了问题，在解决问题的过程中，偶然发现了Spring和SpringMVC是有父子容器关系的，而且正是因为这个才往往会出现包扫描的问题，我们在此来分析和理解Spring和SpringMVC的父子容器关系并且给出Spring和SpringMVC配置文件中包扫描的官方推荐方式。</p>
 <h3 id="二、概念理解和知识铺垫"><a href="#二、概念理解和知识铺垫" class="headerlink" title="二、概念理解和知识铺垫"></a>二、概念理解和知识铺垫</h3><p>在Spring整体框架的核心概念中，容器是核心思想，就是用来管理Bean的整个生命周期的，而在一个项目中，容器不一定只有一个，Spring中可以包括多个容器，而且容器有上下层关系</p>
 <p>目前最常见的一种场景就是在一个项目中引入Spring和SpringMVC这两个框架，那么它其实就是两个容器，Spring是父容器，SpringMVC是其子容器</p>
 <p>并且在Spring父容器中注册的Bean对于SpringMVC容器中是可见的，而在SpringMVC容器中注册的Bean对于Spring父容器中是不可见的，也就是子容器可以看见父容器中的注册的Bean，反之就不行。</p>

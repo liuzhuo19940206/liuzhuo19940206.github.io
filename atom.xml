@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-26T03:41:18.441Z</updated>
+  <updated>2018-10-28T06:34:01.527Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -21,18 +21,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/25/Git%E5%88%9D%E7%BA%A7%E5%85%A5%E9%97%A8/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/25/Git初级入门/</id>
     <published>2018-10-25T01:02:40.000Z</published>
-    <updated>2018-10-26T03:41:18.441Z</updated>
+    <updated>2018-10-28T06:34:01.527Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;git的初级用法&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Git的下载&quot;&gt;&lt;a href=&quot;#Git的下载&quot; class=&quot;headerlink&quot; title=&quot;Git的下载&quot;&gt;&lt;/a&gt;Git的下载&lt;/h3&gt;&lt;p&gt;git的官网：&lt;a
-        
-      
+      &lt;p&gt;&lt;strong&gt;git的初级用法&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -48,18 +41,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC%E6%B3%A8%E8%A7%A3/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/24/SpringMVC注解/</id>
     <published>2018-10-24T09:07:31.000Z</published>
-    <updated>2018-10-24T09:30:54.153Z</updated>
+    <updated>2018-10-28T06:18:06.528Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;SpringMVC注解&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;注解概观&quot;&gt;&lt;a href=&quot;#注解概观&quot; class=&quot;headerlink&quot; title=&quot;注解概观&quot;&gt;&lt;/a&gt;注解概观&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Spring2.5
-        
-      
+      &lt;p&gt;&lt;strong&gt;SpringMVC注解&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SpringMVC注解的详细解答&lt;br&gt;
     
     </summary>
     
@@ -75,18 +62,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC-%E5%8F%82%E6%95%B0%E7%BB%91%E5%AE%9A/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/24/SpringMVC-参数绑定/</id>
     <published>2018-10-24T08:35:51.000Z</published>
-    <updated>2018-10-24T08:57:31.055Z</updated>
+    <updated>2018-10-28T06:20:56.879Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;SpringMVC-参数绑定&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&quot;Model-ModelMap-ModelAndView&quot;&gt;&lt;a href=&quot;#Model-ModelMap-ModelAndView&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;&lt;strong&gt;SpringMVC-参数绑定&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;探究SpringMVC中控制层的方法中的参数绑定&lt;br&gt;
     
     </summary>
     
@@ -102,19 +83,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/24/Values%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/24/Values返回值/</id>
     <published>2018-10-24T07:44:17.000Z</published>
-    <updated>2018-10-24T08:02:09.577Z</updated>
+    <updated>2018-10-28T06:12:43.024Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;SpringMVC-Return Values返回值&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;Handler-Return-Values返回值&quot;&gt;&lt;a href=&quot;#Handler-Return-Values返回值&quot;
-        
-      
+      &lt;p&gt;&lt;strong&gt;SpringMVC-Return Values返回值&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;本篇文章，主要讲解SpringMVC的返回值的使用。&lt;/p&gt;
     
     </summary>
     
@@ -130,20 +104,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%B5%81%E7%A8%8B/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/24/SpringMVC架构与流程/</id>
     <published>2018-10-24T07:24:40.000Z</published>
-    <updated>2018-10-24T07:32:42.773Z</updated>
+    <updated>2018-10-28T06:19:43.694Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;SpringMVC架构与流程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;前言：&lt;/p&gt;
-&lt;p&gt;顾名思义SpringMVC是一个基于MVC设计思想的框架。&lt;/p&gt;
-&lt;p&gt;什么是mvc？MVC是模型(model)－视图(view)－控制器(controller)的缩写
-        
-      
+      &lt;p&gt;&lt;strong&gt;SpringMVC的架构与流程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;探究MVC在SpringMVC中的关系。&lt;br&gt;
     
     </summary>
     
@@ -159,21 +125,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/</id>
     <published>2018-10-23T02:33:28.000Z</published>
-    <updated>2018-10-23T09:10:46.051Z</updated>
+    <updated>2018-10-28T06:22:14.857Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring容器的创建过程&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Spring容器的创建过程&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;今天，我们来统一学习一下，Spring容器的整个创建过程。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Spring容器的refresh()[创建刷新]&lt;/strong&gt;&lt;/p&gt;
-&lt;h3
-        
-      
     
     </summary>
     
@@ -189,19 +146,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/</id>
     <published>2018-10-22T02:05:14.000Z</published>
-    <updated>2018-10-23T02:13:11.909Z</updated>
+    <updated>2018-10-28T06:23:23.175Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点&lt;/p&gt;
-&lt;h3 id=&quot;BeanFactoryPostProcessor&quot;&gt;&lt;a
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点&lt;br&gt;
     
     </summary>
     
@@ -217,19 +167,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/20/spring-annotation-day-14/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/20/spring-annotation-day-14/</id>
     <published>2018-10-20T02:44:10.000Z</published>
-    <updated>2018-10-20T03:50:45.592Z</updated>
+    <updated>2018-10-28T06:23:31.935Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
 &lt;p&gt;今天来学习Spring的声明式事务。&lt;/p&gt;
-&lt;h3 id=&quot;不使用事务&quot;&gt;&lt;a href=&quot;#不使用事务&quot; class=&quot;headerlink&quot;
-        
-      
     
     </summary>
     
@@ -245,21 +188,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/19/Spring4配置文件详解/</id>
     <published>2018-10-19T13:10:14.000Z</published>
-    <updated>2018-10-19T13:55:54.655Z</updated>
+    <updated>2018-10-28T06:32:15.930Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;这里，总结了Spring4中的各种配置文件的信息。&lt;/p&gt;
-&lt;p&gt;欢迎大家补充，完善各种配置信息。&lt;/p&gt;
-&lt;p&gt;好的习惯，将会伴随你的一生。&lt;/p&gt;
-&lt;p&gt;开始今天的主题！！！&lt;/p&gt;
-&lt;h3 id=&quot;配置数据源&quot;&gt;&lt;a href=&quot;#配置数据源&quot;
-        
-      
+      &lt;p&gt;总结Spring4中的各种配置文件的信息。&lt;/p&gt;
     
     </summary>
     
@@ -275,20 +208,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84Properties/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/19/Spring中无处不在的Properties/</id>
     <published>2018-10-19T12:54:13.000Z</published>
-    <updated>2018-10-19T13:06:52.177Z</updated>
+    <updated>2018-10-28T06:15:02.549Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。&lt;/p&gt;
+      &lt;p&gt;对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。&lt;/p&gt;
 &lt;p&gt;本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3
-        
-      
     
     </summary>
     
@@ -304,21 +229,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/19/spring-annotation-day-13/</id>
     <published>2018-10-19T06:21:22.000Z</published>
-    <updated>2018-10-19T12:37:07.303Z</updated>
+    <updated>2018-10-28T06:24:01.252Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;AOP原理：&lt;/p&gt;
-&lt;p&gt;我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;今天来学习AOP原理。&lt;/p&gt;
     
     </summary>
     
@@ -334,17 +250,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring%E5%92%8CSpringMVC%E7%88%B6%E5%AD%90%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB%E5%88%9D%E7%AA%A5/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/19/Spring和SpringMVC父子容器关系初窥/</id>
     <published>2018-10-19T04:01:29.000Z</published>
-    <updated>2018-10-19T06:05:47.524Z</updated>
+    <updated>2018-10-28T06:16:51.525Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系&lt;br&gt;
     
     </summary>
     
@@ -360,18 +270,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/18/spring-annotation-day-12/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/18/spring-annotation-day-12/</id>
     <published>2018-10-18T12:59:13.000Z</published>
-    <updated>2018-10-19T02:35:33.746Z</updated>
+    <updated>2018-10-28T06:24:27.801Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;AOP介绍&quot;&gt;&lt;a href=&quot;#AOP介绍&quot; class=&quot;headerlink&quot; title=&quot;AOP介绍&quot;&gt;&lt;/a&gt;AOP介绍&lt;/h3&gt;&lt;p&gt;AOP是Spring
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;今天学习AOP的开发与使用&lt;br&gt;
     
     </summary>
     
@@ -387,18 +291,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/18/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/18/Bean的生命周期/</id>
     <published>2018-10-18T08:17:44.000Z</published>
-    <updated>2018-10-18T08:33:47.753Z</updated>
+    <updated>2018-10-28T06:34:51.720Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。&lt;/p&gt;
-&lt;p&gt;我们通常使用ApplicationContext作为Spring容器。这里，我们讲的也是
-        
-      
+      &lt;p&gt;Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。&lt;br&gt;
     
     </summary>
     
@@ -414,17 +311,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/18/idea/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/18/idea/</id>
     <published>2018-10-18T05:27:50.000Z</published>
-    <updated>2018-10-19T12:38:17.072Z</updated>
+    <updated>2018-10-28T06:33:37.151Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;自动代码&quot;&gt;&lt;a href=&quot;#自动代码&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;IntelliJ Idea 常用快捷键 列表 总结&lt;br&gt;
     
     </summary>
     
@@ -440,18 +331,11 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/</id>
     <published>2018-10-18T04:48:31.000Z</published>
-    <updated>2018-10-18T05:20:57.184Z</updated>
+    <updated>2018-10-28T06:21:39.661Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;广义的Ioc&quot;&gt;&lt;a href=&quot;#广义的Ioc&quot; class=&quot;headerlink&quot; title=&quot;广义的Ioc&quot;&gt;&lt;/a&gt;广义的Ioc&lt;/h3&gt;&lt;p&gt;面试被问烂的 Spring IOC(求求你别再问了)  &lt;/p&gt;
-&lt;p&gt;1）IoC(Inversion
-        
-      
+      &lt;p&gt;面试被问烂的 Spring IOC(求求你别再问了)&lt;br&gt;
     
     </summary>
     
@@ -467,18 +351,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-11/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-11/</id>
     <published>2018-10-17T06:58:03.000Z</published>
-    <updated>2018-10-17T08:09:02.277Z</updated>
+    <updated>2018-10-28T06:25:15.477Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;Profile注解&quot;&gt;&lt;a href=&quot;#Profile注解&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;今天学习，@Profile注解的使用。&lt;br&gt;
     
     </summary>
     
@@ -494,18 +372,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-10/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-10/</id>
     <published>2018-10-17T06:00:36.000Z</published>
-    <updated>2018-10-17T06:56:02.015Z</updated>
+    <updated>2018-10-28T06:26:42.302Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;自定义组件想要使用Spring容器底层的一些组件(ApplicationContext,BeanFactory,xxx) 
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)&lt;br&gt;
     
     </summary>
     
@@ -521,20 +393,13 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-09/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-09/</id>
     <published>2018-10-16T13:09:27.000Z</published>
-    <updated>2018-10-16T14:36:08.869Z</updated>
+    <updated>2018-10-28T06:26:55.572Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;Spring的自动装配：  &lt;/p&gt;
-&lt;p&gt;Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。&lt;/p&gt;
-&lt;h3 id=&quot;Autowired注解&quot;&gt;&lt;a
-        
-      
+&lt;p&gt;Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。&lt;br&gt;
     
     </summary>
     
@@ -550,18 +415,12 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-08/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-08/</id>
     <published>2018-10-16T09:14:28.000Z</published>
-    <updated>2018-10-16T09:51:19.859Z</updated>
+    <updated>2018-10-28T06:27:29.739Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;Value注解&quot;&gt;&lt;a href=&quot;#Value注解&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;今天，学习Spring的自动注入&lt;br&gt;
     
     </summary>
     

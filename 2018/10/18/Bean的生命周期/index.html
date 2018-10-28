@@ -161,7 +161,7 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。</p>
+      <p>Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。<br><a id="more"></a></p>
 <p>我们通常使用ApplicationContext作为Spring容器。这里，我们讲的也是 ApplicationContext中Bean的生命周期。而实际上BeanFactory也是差不多的，只不过处理器需要手动注册。</p>
 <h3 id="一、生命周期流程图："><a href="#一、生命周期流程图：" class="headerlink" title="一、生命周期流程图："></a>一、生命周期流程图：</h3><p>Spring Bean的完整生命周期从创建Spring容器开始，直到最终Spring容器销毁Bean，这其中包含了一系列关键点。<br><img src="/images/20181018162309.png"><br><img src="/images/20181018162419.png"></p>
 <p>若容器注册了以上各种接口，程序那么将会按照以上的流程进行。下面将仔细讲解各接口作用。</p>
