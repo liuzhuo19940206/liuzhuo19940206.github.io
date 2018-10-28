@@ -152,7 +152,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类别1/" itemprop="url" rel="index"><span itemprop="name">类别1</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/类别1/类别2/" itemprop="url" rel="index"><span itemprop="name">类别2</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a></span>
         </span>
         
         
@@ -161,16 +161,38 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上<br><a id="more"></a>，在<!--more-->之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more 才能看到。</p>
+      <p>intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。</p>
+<a id="more"></a>
+<p>打开idea</p>
+<p>我使用的是2017版本的。</p>
+<p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="/images/QQ截图20181028182054.png"></p>
+<p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="/images/QQ截图20181028191302.png"></p>
+<p>(3)填好项目名称，和项目路径，Finish。<br><img src="/images/QQ截图20181028191740.png"></p>
+<p>(4)完成后，需要添加web.xml文件。在idea201703版本之前。在第二步的选择Web Application时，可以选择版本号，并创建web.xml文件。但是之后的版本没有。我们可以手工创建，但是麻烦，教大家另外的创建方法。</p>
+<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里选中次级的 web 或者 在Modules 中选中web，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="/images/QQ截图20181028194446.png" style="width:50%"><br><img src="/images/QQ截图20181028194836.png"><br><img src="/images/QQ截图20181028195525.png" style="width:50%"></p>
+<p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="/images/QQ截图20181028195719.png" style="width:50%"></p>
+<p>.idea文件夹和webapp.iml是IDEA自动创建的，包含了工程和模块的配置数据<br>src文件夹是源码目录<br>web文件夹相当于eclipse创建的web工程WebContent文件夹，包含了WEB-INF/web.xml及index.jsp<br>External Libraries包含了JDK及Tomcat带的jsp-api、servlet-api jar文件</p>
+<p>(4)完善工程目录，点击WEF-INF  ,右键，NEW–&gt;Directory  创建两个文件夹，classes 和 lib  <strong>这个名字不要改哦！</strong></p>
+<p>4.1 创建classes文件夹<br><img src="/images/QQ截图20181028200211.png"><br><img src="/images/QQ截图20181028200344.png" style="width:50%"></p>
+<p>4.2 同理，创建lib文件夹<br><img src="/images/QQ截图20181028200618.png" style="width:50%"></p>
+<p>(5) 完成后再点击File ,选择Project Structure  </p>
+<p>点击Modules ,选择Paths,选中Use module compile output path ,将Outputpath 和Test output path 都设置为刚刚创建的classes文件夹。<br><img src="/images/QQ截图20181028201015.png"></p>
+<p><strong>点击apply就行，接着第六步。</strong></p>
+<p>(6) 点击path旁边的Dependencies, 点击”+”号，选择1 JARs or directories<br><img src="/images/QQ截图20181028201526.png"></p>
+<p>选择刚刚创建的lib。<br><img src="/images/QQ截图20181028201634.png"></p>
+<p>选择第三个，jar Directory。一路ok到底！<br><img src="/images/QQ截图20181028201803.png" style="width:50%"></p>
+<p>(7) 配置servlet容器：Tomcat<br>点击右上角的tomcat的向下的小三角，然后点击Edit Configurations<br><img src="/images/QQ截图20181028202512.png" style="width:30%"></p>
+<p>看tomcat已经有啦，这是java Enterprise的好处啦，点击Deployment。<br><img src="/images/QQ截图20181028203004.png"><br>1，设置On frame deactivation : Update classes and resources<br>2，设置自己的jre位置路径。（jdk对应的jre）</p>
+<p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="/images/QQ截图20181028203156.png"><br>点击ok。</p>
+<p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="/images/QQ截图20181028203422.png"></p>
+<p>(9) 运行程序，就点击右上角的绿色图标<br><img src="/images/QQ截图20181028203713.png"></p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/标签1/" rel="tag"><i class="fas fa-tags"></i>标签1</a>
-        
-        <a class="post-tag button" href="/tags/标签2/" rel="tag"><i class="fas fa-tags"></i>标签2</a>
+        <a class="post-tag button" href="/tags/web/" rel="tag"><i class="fas fa-tags"></i>web</a>
         
       </div>
       
@@ -297,7 +319,7 @@
     
     <div class="categories-count">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">9</a></div>
+      <div><a href="/categories/">8</a></div>
     </div>
     
     
@@ -306,7 +328,7 @@
     
     <div class="tags-count">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">9</a></div>
+      <div><a href="/tags/">8</a></div>
     </div>
     
   </div>

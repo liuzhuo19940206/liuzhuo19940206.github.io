@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-28T10:15:11.500Z</updated>
+  <updated>2018-10-28T13:05:21.397Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -21,22 +21,18 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/28/idea-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81Web%E9%A1%B9%E7%9B%AE/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/28/idea-创建动态Web项目/</id>
     <published>2018-10-28T10:15:11.000Z</published>
-    <updated>2018-10-28T10:15:11.500Z</updated>
+    <updated>2018-10-28T13:05:21.397Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上&lt;br&gt;
+      &lt;p&gt;intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。&lt;/p&gt;
     
     </summary>
     
-      <category term="类别1" scheme="http://liuzhuo19940206.github.io/categories/%E7%B1%BB%E5%88%AB1/"/>
-    
-      <category term="类别2" scheme="http://liuzhuo19940206.github.io/categories/%E7%B1%BB%E5%88%AB1/%E7%B1%BB%E5%88%AB2/"/>
+      <category term="web" scheme="http://liuzhuo19940206.github.io/categories/web/"/>
     
     
-      <category term="标签1" scheme="http://liuzhuo19940206.github.io/tags/%E6%A0%87%E7%AD%BE1/"/>
-    
-      <category term="标签2" scheme="http://liuzhuo19940206.github.io/tags/%E6%A0%87%E7%AD%BE2/"/>
+      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
     
   </entry>
   
