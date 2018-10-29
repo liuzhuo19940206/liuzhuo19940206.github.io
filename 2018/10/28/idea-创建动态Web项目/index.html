@@ -163,13 +163,13 @@
     <main class="post-main" itemprop="articleBody">
       <p>intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。</p>
 <a id="more"></a>
-<p>打开idea</p>
+<h3 id="idea-创建动态Web项目"><a href="#idea-创建动态Web项目" class="headerlink" title="idea 创建动态Web项目"></a>idea 创建动态Web项目</h3><p>打开idea</p>
 <p>我使用的是2017版本的。</p>
 <p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="/images/QQ截图20181028182054.png"></p>
 <p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="/images/QQ截图20181028191302.png"></p>
 <p>(3)填好项目名称，和项目路径，Finish。<br><img src="/images/QQ截图20181028191740.png"></p>
 <p>(4)完成后，需要添加web.xml文件。在idea201703版本之前。在第二步的选择Web Application时，可以选择版本号，并创建web.xml文件。但是之后的版本没有。我们可以手工创建，但是麻烦，教大家另外的创建方法。</p>
-<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里选中次级的 web 或者 在Modules 中选中web，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="/images/QQ截图20181028194446.png" style="width:50%"><br><img src="/images/QQ截图20181028194836.png"><br><img src="/images/QQ截图20181028195525.png" style="width:50%"></p>
+<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里<strong>选中次级的 web 或者 在Modules 中选中web</strong>，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="/images/QQ截图20181028194446.png" style="width:50%"><br><img src="/images/QQ截图20181028194836.png"><br><img src="/images/QQ截图20181028195525.png" style="width:50%"></p>
 <p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="/images/QQ截图20181028195719.png" style="width:50%"></p>
 <p>.idea文件夹和webapp.iml是IDEA自动创建的，包含了工程和模块的配置数据<br>src文件夹是源码目录<br>web文件夹相当于eclipse创建的web工程WebContent文件夹，包含了WEB-INF/web.xml及index.jsp<br>External Libraries包含了JDK及Tomcat带的jsp-api、servlet-api jar文件</p>
 <p>(4)完善工程目录，点击WEF-INF  ,右键，NEW–&gt;Directory  创建两个文件夹，classes 和 lib  <strong>这个名字不要改哦！</strong></p>
@@ -186,6 +186,8 @@
 <p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="/images/QQ截图20181028203156.png"><br>点击ok。</p>
 <p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="/images/QQ截图20181028203422.png"></p>
 <p>(9) 运行程序，就点击右上角的绿色图标<br><img src="/images/QQ截图20181028203713.png"></p>
+<h3 id="WEB-INF目录与META-INF目录的作用"><a href="#WEB-INF目录与META-INF目录的作用" class="headerlink" title="WEB-INF目录与META-INF目录的作用"></a>WEB-INF目录与META-INF目录的作用</h3><p>/WEB-INF/web.xml</p>
+<p>Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。</p>
 
     </main>
     <footer class="post-footer">
@@ -230,6 +232,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2018/10/28/Servlet3-0/" rel="prev" title="Servlet3.0"><span class="nav-title">Servlet3.0</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -310,7 +314,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">30</a></div>
+      <div><a href="/archives/">31</a></div>
     </div>
     
     
@@ -319,7 +323,7 @@
     
     <div class="categories-count">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">8</a></div>
+      <div><a href="/categories/">12</a></div>
     </div>
     
     
@@ -328,7 +332,7 @@
     
     <div class="tags-count">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">8</a></div>
+      <div><a href="/tags/">11</a></div>
     </div>
     
   </div>
@@ -345,6 +349,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#idea-创建动态Web项目"><span class="toc-text">idea 创建动态Web项目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WEB-INF目录与META-INF目录的作用"><span class="toc-text">WEB-INF目录与META-INF目录的作用</span></a></li></ol></div>
+    </div>
     
     
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-28T13:05:21.397Z</updated>
+  <updated>2018-10-28T13:37:49.966Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Servlet3.0</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/</id>
+    <published>2018-10-28T13:19:53.000Z</published>
+    <updated>2018-10-28T13:37:49.966Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注解，还有运行时的组件式插拔开发。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/"/>
+    
+      <category term="web" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/web/"/>
+    
+    
+      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
+    
+      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>idea 创建动态Web项目</title>
     <link href="http://liuzhuo19940206.github.io/2018/10/28/idea-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81Web%E9%A1%B9%E7%9B%AE/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/28/idea-创建动态Web项目/</id>
     <published>2018-10-28T10:15:11.000Z</published>
-    <updated>2018-10-28T13:05:21.397Z</updated>
+    <updated>2018-10-29T02:46:10.837Z</updated>
     
     <summary type="html">
     
@@ -398,28 +422,6 @@
     
       &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
 &lt;p&gt;自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_09</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-09/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/16/spring-annotation-day-09/</id>
-    <published>2018-10-16T13:09:27.000Z</published>
-    <updated>2018-10-28T06:26:55.572Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;Spring的自动装配：  &lt;/p&gt;
-&lt;p&gt;Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。&lt;br&gt;
     
     </summary>
     
