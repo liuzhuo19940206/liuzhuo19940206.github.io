@@ -164,16 +164,70 @@
       <p>以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注解，还有运行时的组件式插拔开发。<br><a id="more"></a></p>
 <p><strong>注意：</strong> servlet3.0的容器Tomcat 必须是<strong>7.0.x以上版本</strong>才能使用servlet3.0。</p>
 <h3 id="创建dynamic-Web项目"><a href="#创建dynamic-Web项目" class="headerlink" title="创建dynamic Web项目"></a>创建dynamic Web项目</h3><p>我这里使用的是idea，大家也可以使用eclipse开发。大家估计都对eclipse开发熟悉，如果对idea创建动态web项目不熟悉的话，可以看我另一篇博客<a href="https://gakkil.top/2018/10/28/idea-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81Web%E9%A1%B9%E7%9B%AE/" target="_blank" rel="noopener">idea 创建动态Web项目</a>。</p>
-<p>创建好工程后如下：<br><img src="/images/"></p>
+<p>创建好工程后如下：<br><img src="/images/QQ截图20181029114758.png" style="width:50%"></p>
+<h4 id="使用web-xml的方式"><a href="#使用web-xml的方式" class="headerlink" title="使用web.xml的方式"></a>使用web.xml的方式</h4><p>1）在src下创建com.liuzhuo.servlet包，并创建HelloServlet<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class HelloServlet extends HttpServlet &#123;<br>    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;<br>        super.doPost(request, response);<br>    &#125;<br><br>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;<br>        response.getWriter().write(&quot;hello world servlet3.0 ~~~&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2) 在WBE-INF下的index.jsp中：</p>
+<p>添加：<code>&lt;a href=&quot;hello&quot;&gt;hello&lt;/a&gt;</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;servlet3.0&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;a href=&quot;hello&quot;&gt;hello&lt;/a&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure></p>
+<p>3) 在web.xml中配置servlet的映射关系<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;<br>         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;<br>         version=&quot;3.1&quot;&gt;<br><br>    &lt;servlet&gt;<br>        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;<br>        &lt;servlet-class&gt;com.liuzhuo.servlet.HelloServlet&lt;/servlet-class&gt;<br>    &lt;/servlet&gt;<br><br>    &lt;servlet-mapping&gt;<br>        &lt;servlet-name&gt;hello&lt;/servlet-name&gt;<br>        &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;<br>    &lt;/servlet-mapping&gt;<br>    <br>&lt;/web-app&gt;<br></code></pre></td></tr></table></figure></p>
+<p>4) 运行web应用<br><img src="/images/QQ截图20181029124916.png"></p>
+<p>点击hello的超链接<br><img src="/images/QQ截图20181029124951.png"></p>
+<p>以上就是servlet3.0之前的版本开发web工程的演示。</p>
+<hr>
+<h4 id="不使用web-xml-servlet3-0"><a href="#不使用web-xml-servlet3-0" class="headerlink" title="不使用web.xml(servlet3.0)"></a>不使用web.xml(servlet3.0)</h4><p>1) 去掉web.xml中的servlet的配置：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;<br>         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;<br>         version=&quot;3.1&quot;&gt;<br><br>&lt;/web-app&gt;<br></code></pre></td></tr></table></figure></p>
+<p>2) 此时再运行web项目，点击hello超链接<br><img src="/images/QQ截图20181029125311.png"></p>
+<p>3）使用@WebServlet注解</p>
+<p>在HelloServlet类上面写上@WebServlet注解<br>name : 就是servlet的名字<br>value：就是映射的路径</p>
+<p>@WebServlet上的name  &lt;==&gt; <code>&lt;servlet-name&gt;hello&lt;/servlet-name&gt;</code><br>@WebServlet上的value &lt;==&gt; <code>&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</code></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@WebServlet(value =&quot;/hello&quot; )<br>public class HelloServlet extends HttpServlet &#123;<br>    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;<br>        super.doPost(request, response);<br>    &#125;<br><br>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;<br>        response.getWriter().write(&quot;hello world servlet3.0 ~~~&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>4) 重新启动web项目</p>
+<p>会发现，项目启动正常了。</p>
+<p><strong>ps：在idea中，有一个web的窗口，在编辑器的左下角，点开，会看见当前web项目的映射信息，很方便排错。</strong><br><img src="/images/QQ截图20181029130641.png" style="width:50%"></p>
+<p>其他注解：</p>
+<p>@WebFilter   ：注解过滤器<br>@WebListener ：注解监听器<br>@WebInitParam：注解初始化的参数</p>
+<p>具体的使用情况：看官方文档即可。</p>
+<hr>
+<h3 id="servlet3-0的共享库和运行时插件"><a href="#servlet3-0的共享库和运行时插件" class="headerlink" title="servlet3.0的共享库和运行时插件"></a>servlet3.0的共享库和运行时插件</h3><p>Shared libraries / runtimes pluggability</p>
+<p>1）在Servlet容器启动的时候，会扫描当前应用里面的每一个jar包的ServletContainerInitializer的实现类</p>
+<p>2）提供ServletContainerInitializer的实现类</p>
+<p>必须绑定在：META-INF/services/javax.servlet.ServletContainerInitializer文件中。<br><strong>文件名就是 javax.servlet.ServletContainerInitializer 没有后缀。</strong></p>
+<p>文件中的内容就是：ServletContainerInitializer实现类的<strong>全类名</strong>。</p>
+<p>总结：容器在启动的时候，会扫描当前应用中每一个jar包里面的：META-INF/services/javax.servlet.ServletContainerInitializer文件中ServletContainerInitializer实现类，启动并运行这个实现类中的方法和传入感兴趣的类型。</p>
+<p>3）测试</p>
+<p>3.1) 这里就不创建jar包了，直接在src下创建META-INF/services目录，然后在该目录下，创建javax.servlet.ServletContainerInitializer文件。<br><img src="/images/QQ截图20181029135845.png" style="width:50%"></p>
+<p><strong>注意：目录和文件名称不要打错！！！</strong></p>
+<p>3.2）在src下的com.liuzhuo.servlet下创建MyServletContainerInitializer，并实现ServletContainerInitializer接口。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@HandlesTypes(value = &#123;HelloService.class&#125;)<br>public class MyServletContainerInitializer implements ServletContainerInitializer &#123;<br><br>    /**<br>     * @param set：感兴趣的类型的所有子类型.@HandlesTypes注解中的value即为感兴趣的类型。<br>     * @param servletContext :代表当前Web应用的ServletContext,一个Web应用一个上下文<br>     * @throws ServletException<br>     */<br>    @Override<br>    public void onStartup(Set&lt;Class&lt;?&gt;&gt; set, ServletContext servletContext) throws ServletException &#123;<br>        System.out.println(&quot;感兴趣的类型：&quot;);<br>        for (Class&lt;?&gt; aClass : set) &#123;<br>            System.out.println(aClass);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>3.3) 在src下的com.liuzhuo.service下创建<br>HelloService：接口<br>HelloServiceExt：实现了HelloService的子接口<br>AbstractHelloService：实现了HelloService的抽象类<br>HelloServiceImpl：HelloService的实现类<br><img src="/images/QQ截图20181029140510.png" style="width:50%"></p>
+<p>3.4）将MyServletContainerInitializer的全类名添加到javax.servlet.ServletContainerInitializer文件中<br><img src="/images/QQ截图20181029140722.png"></p>
+<p>3.5）运行web项目<br><img src="/images/QQ截图20181029140828.png"></p>
+<p>能看到，输出感兴趣的类型：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">class com.liuzhuo.service.HelloServiceImpl<br>interface com.liuzhuo.service.HelloServiceExt<br>class com.liuzhuo.service.AbstractHelloService<br></code></pre></td></tr></table></figure></p>
+<p><strong>注意感兴趣的类型：不包括本身（HelloService接口）！！！</strong></p>
+<hr>
+<h3 id="使用ServletContainerInitializer给容器添加组件"><a href="#使用ServletContainerInitializer给容器添加组件" class="headerlink" title="使用ServletContainerInitializer给容器添加组件"></a>使用ServletContainerInitializer给容器添加组件</h3><p>根据上文，我们已经了解到了，我们使用@WebServlet注解，给容器添加我们自己写的Servlet类，但是无法添加第三方的组件。只能使用Web.xml文件来添加。</p>
+<p>现在，我们了解了Servlet3.0的共享库和运行时机制，可以使用ServletContainerInitializer的机制来注册Web组件(Servlet、Filter、Listener)，不必使用Web.xml配置文件。</p>
+<p>接着现有的项目继续开发。</p>
+<p>1）在com.liuzhuo.servlet下创建UserServlet、UserFilter、UserListener三大组件<br><img src="/images/QQ截图20181029143900.png" style="width:50%"></p>
+<p>UserServlet:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class UserServlet extends HttpServlet &#123;<br><br>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;<br>        response.getWriter().write(&quot;UserServlet ·····&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>UserFilter:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class UserFilter implements Filter &#123;<br>    public void destroy() &#123;<br>    &#125;<br><br>    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException &#123;<br>        //执行过滤的方法<br>        System.out.println(&quot;UserFilter ~~~&quot;);<br>        //放行<br>        chain.doFilter(req, resp);<br>    &#125;<br><br>    public void init(FilterConfig config) throws ServletException &#123;<br><br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>UserListener:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class UserListener implements ServletContextListener &#123;<br><br>    //容器初始化的时候<br>    @Override<br>    public void contextInitialized(ServletContextEvent servletContextEvent) &#123;<br>        //获取ServletContext容器的上下文，这里也可以注册Servlet、Fliter、Listener组件<br>        ServletContext servletContext = servletContextEvent.getServletContext();<br>        System.out.println(servletContext);<br>        System.out.println(&quot;UserListener监听ServletContextListener的初始化&quot;);<br>    &#125;<br><br>    //容器销毁的时候<br>    @Override<br>    public void contextDestroyed(ServletContextEvent servletContextEvent) &#123;<br>        System.out.println(&quot;UserListener监听ServletContextListener的销毁&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2) 在MyServletContainerInitializer中的onStartup方法中使用ServletContext注册三大组件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@HandlesTypes(value = &#123;HelloService.class&#125;)<br>public class MyServletContainerInitializer implements ServletContainerInitializer &#123;<br><br>    /**<br>     * @param set：感兴趣的类型的所有子类型.@HandlesTypes注解中的value即为感兴趣的类型。<br>     * @param servletContext :代表当前Web应用的ServletContext：一个Web应用一个上下文<br>     * @throws ServletException<br>     */<br>    @Override<br>    public void onStartup(Set&lt;Class&lt;?&gt;&gt; set, ServletContext servletContext) throws ServletException &#123;<br>        System.out.println(&quot;感兴趣的类型：&quot;);<br>        for (Class&lt;?&gt; aClass : set) &#123;<br>            System.out.println(aClass);<br>        &#125;<br><br>        //添加userServelt组件。<br>        ServletRegistration.Dynamic userServelt = servletContext.addServlet(&quot;userServelt&quot;, new UserServlet());<br>        //添加Servlet的映射路径<br>        userServelt.addMapping(&quot;/user&quot;);<br><br>        //添加监听器<br>        servletContext.addListener(UserListener.class);<br><br>        //添加过滤器<br>        FilterRegistration.Dynamic userFilter = servletContext.addFilter(&quot;userFilter&quot;, UserFilter.class);<br>        //添加拦截规则<br>        //EnumSet&lt;DispatcherType&gt; var1 :拦截的请求类型<br>        // boolean var2                ：true<br>        // String... var3              ：拦截的路径<br>        userFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, &quot;/*&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>3) 运行Web项目<br><img src="/images/QQ截图20181029150012.png"></p>
+<p>说明userListener监听器注册成功。</p>
+<p>在浏览器中输入：<code>http://localhost:8080/user</code><br><img src="/images/QQ截图20181029150247.png"><br><img src="/images/QQ截图20181029150400.png"></p>
+<p>说明UserServlet和userFliter注册也成功了。</p>
+<p>停止Web项目：<br><img src="/images/QQ截图20181029150554.png"></p>
+<p>以上，就是不使用Web.xml的注册Servlet、Filter、Listener三大组件的过程，使用硬编码的形式。</p>
+<p><strong>注意：servlet3.0动态注册，只能在webapp启动时进行注册,可能是为了安全考虑吧.不能在运行时完成对servlet的注册和销毁</strong></p>
+<p>在初始化情况下的注册Servlet组件有除了上面的方式，还有另外一种方式：<br>就是在实现ServletContextListener接口,在contextInitialized方法中完成注册.</p>
+<p>就是在上述UserListener中contextInitialized方法中获取：<br> ServletContext servletContext = servletContextEvent.getServletContext();<br>然后进行三大组件的注册。</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/web/" rel="tag"><i class="fas fa-tags"></i>web</a>
-        
         <a class="post-tag button" href="/tags/servlet3-0/" rel="tag"><i class="fas fa-tags"></i>servlet3.0</a>
+        
+        <a class="post-tag button" href="/tags/web/" rel="tag"><i class="fas fa-tags"></i>web</a>
         
       </div>
       
@@ -211,6 +265,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2018/10/29/Servlet3-0与SpringMVC整合/" rel="prev" title="Servlet3.0与SpringMVC整合"><span class="nav-title">Servlet3.0与SpringMVC整合</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -291,7 +347,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">31</a></div>
+      <div><a href="/archives/">34</a></div>
     </div>
     
     
@@ -300,7 +356,7 @@
     
     <div class="categories-count">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">12</a></div>
+      <div><a href="/categories/">16</a></div>
     </div>
     
     
@@ -309,7 +365,7 @@
     
     <div class="tags-count">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">11</a></div>
+      <div><a href="/tags/">13</a></div>
     </div>
     
   </div>
@@ -330,7 +386,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建dynamic-Web项目"><span class="toc-text">创建dynamic Web项目</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建dynamic-Web项目"><span class="toc-text">创建dynamic Web项目</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#使用web-xml的方式"><span class="toc-text">使用web.xml的方式</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#不使用web-xml-servlet3-0"><span class="toc-text">不使用web.xml(servlet3.0)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#servlet3-0的共享库和运行时插件"><span class="toc-text">servlet3.0的共享库和运行时插件</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用ServletContainerInitializer给容器添加组件"><span class="toc-text">使用ServletContainerInitializer给容器添加组件</span></a></li></ol></div>
     </div>
     
     

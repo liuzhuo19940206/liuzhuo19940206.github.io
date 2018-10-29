@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-28T13:37:49.966Z</updated>
+  <updated>2018-10-29T09:57:00.305Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,87 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>idea创建maven-web工程</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/29/idea%E5%88%9B%E5%BB%BAmaven-web%E5%B7%A5%E7%A8%8B/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/29/idea创建maven-web工程/</id>
+    <published>2018-10-29T09:02:04.000Z</published>
+    <updated>2018-10-29T09:57:00.305Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;考虑到现在大家都是使用maven来创建web工程，不再使用创建原始的Dynamic Web工程了，所以，我们开始吧~~~&lt;br&gt;
+    
+    </summary>
+    
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/categories/idea/"/>
+    
+      <category term="maven" scheme="http://liuzhuo19940206.github.io/categories/idea/maven/"/>
+    
+      <category term="web" scheme="http://liuzhuo19940206.github.io/categories/idea/maven/web/"/>
+    
+    
+      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
+    
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
+    
+      <category term="maven" scheme="http://liuzhuo19940206.github.io/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决idea控制台输出乱码问题</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/29/%E8%A7%A3%E5%86%B3idea%E6%8E%A7%E5%88%B6%E5%8F%B0%E8%BE%93%E5%87%BA%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/29/解决idea控制台输出乱码问题/</id>
+    <published>2018-10-29T08:43:52.000Z</published>
+    <updated>2018-10-29T08:48:30.664Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;解决IntelliJ IDEA 控制台输出乱码问题&lt;br&gt;
+    
+    </summary>
+    
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/categories/idea/"/>
+    
+      <category term="乱码" scheme="http://liuzhuo19940206.github.io/categories/idea/%E4%B9%B1%E7%A0%81/"/>
+    
+    
+      <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
+    
+      <category term="乱码" scheme="http://liuzhuo19940206.github.io/tags/%E4%B9%B1%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet3.0与SpringMVC整合</title>
+    <link href="http://liuzhuo19940206.github.io/2018/10/29/Servlet3-0%E4%B8%8ESpringMVC%E6%95%B4%E5%90%88/"/>
+    <id>http://liuzhuo19940206.github.io/2018/10/29/Servlet3-0与SpringMVC整合/</id>
+    <published>2018-10-29T07:14:12.000Z</published>
+    <updated>2018-10-29T08:43:14.019Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Servlet3.0与SpringMVC的整合，永久告别web.xml的配置文件啦~~&lt;br&gt;
+    
+    </summary>
+    
+      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/"/>
+    
+      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/SpringMVC/"/>
+    
+    
+      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
+    
+      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Servlet3.0</title>
     <link href="http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/</id>
     <published>2018-10-28T13:19:53.000Z</published>
-    <updated>2018-10-28T13:37:49.966Z</updated>
+    <updated>2018-10-29T07:11:49.032Z</updated>
     
     <summary type="html">
     
@@ -34,9 +110,9 @@
       <category term="web" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/web/"/>
     
     
-      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
-    
       <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
+    
+      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
     
   </entry>
   
@@ -45,7 +121,7 @@
     <link href="http://liuzhuo19940206.github.io/2018/10/28/idea-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81Web%E9%A1%B9%E7%9B%AE/"/>
     <id>http://liuzhuo19940206.github.io/2018/10/28/idea-创建动态Web项目/</id>
     <published>2018-10-28T10:15:11.000Z</published>
-    <updated>2018-10-29T02:46:10.837Z</updated>
+    <updated>2018-10-29T03:41:07.474Z</updated>
     
     <summary type="html">
     
@@ -367,68 +443,6 @@
     
     
       <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring_Ioc</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/18/Spring-Ioc/</id>
-    <published>2018-10-18T04:48:31.000Z</published>
-    <updated>2018-10-28T06:21:39.661Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;面试被问烂的 Spring IOC(求求你别再问了)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_11</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-11/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-11/</id>
-    <published>2018-10-17T06:58:03.000Z</published>
-    <updated>2018-10-28T06:25:15.477Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;今天学习，@Profile注解的使用。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_10</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-10/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/17/spring-annotation-day-10/</id>
-    <published>2018-10-17T06:00:36.000Z</published>
-    <updated>2018-10-28T06:26:42.302Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)&lt;br&gt;
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
     
   </entry>
   

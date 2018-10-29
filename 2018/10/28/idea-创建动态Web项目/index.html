@@ -186,8 +186,39 @@
 <p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="/images/QQ截图20181028203156.png"><br>点击ok。</p>
 <p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="/images/QQ截图20181028203422.png"></p>
 <p>(9) 运行程序，就点击右上角的绿色图标<br><img src="/images/QQ截图20181028203713.png"></p>
-<h3 id="WEB-INF目录与META-INF目录的作用"><a href="#WEB-INF目录与META-INF目录的作用" class="headerlink" title="WEB-INF目录与META-INF目录的作用"></a>WEB-INF目录与META-INF目录的作用</h3><p>/WEB-INF/web.xml</p>
+<h3 id="WEB-INF目录与META-INF目录的作用"><a href="#WEB-INF目录与META-INF目录的作用" class="headerlink" title="WEB-INF目录与META-INF目录的作用"></a>WEB-INF目录与META-INF目录的作用</h3><p>1) /WEB-INF/web.xml</p>
 <p>Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。</p>
+<p>2) /WEB-INF/classes/</p>
+<p>包含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中。</p>
+<p>3) /WEB-INF/lib/</p>
+<p>存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件。</p>
+<p>4) /WEB-INF/src/</p>
+<p>源码目录，按照包名结构放置各个Java文件。</p>
+<p>5) /WEB-INF/database.properties</p>
+<p>数据库配置文件</p>
+<p>6) /WEB-INF/tags/</p>
+<p>存放了自定义标签文件，该目录并不一定为 tags，可以根据自己的喜好和习惯为自己的标签文件库命名，当使用自定义的标签文件库名称时，在使用标签文件时就必须声明正确的标签文件库路径。例如：当自定义标签文件库名称为 simpleTags 时，在使用 simpleTags 目录下的标签文件时，就必须在 jsp 文件头声明为：&lt;%@ taglibprefix=”tags” tagdir=”/WEB-INF /simpleTags” % &gt;。</p>
+<p>7) /WEB-INF/jsp/</p>
+<p>jsp 1.2 以下版本的文件存放位置。改目录没有特定的声明，同样，可以根据自己的喜好与习惯来命名。此目录主要存放的是 jsp 1.2 以下版本的文件，为区分 jsp 2.0 文件，通常使用 jsp 命名，当然你也可以命名为 jspOldEdition 。</p>
+<p>8) /WEB-INF/jsp2/</p>
+<p>与 jsp 文件目录相比，该目录下主要存放 Jsp 2.0 以下版本的文件，当然，它也是可以任意命名的，同样为区别 Jsp 1.2以下版本的文件目录，通常才命名为 jsp2。</p>
+<p>9) META-INF</p>
+<p>相当于一个信息包，目录中的文件和目录获得Java 2平台的认可与解释，用来配置应用程序、扩展程序、类加载器和服务manifest.mf文件，在用jar打包时自动生成。</p>
+<h3 id="META-INF有什么用？它跟WEB-INF有什么区别？"><a href="#META-INF有什么用？它跟WEB-INF有什么区别？" class="headerlink" title="META-INF有什么用？它跟WEB-INF有什么区别？"></a>META-INF有什么用？它跟WEB-INF有什么区别？</h3><p>WEB-INF使用web 项目才会有这个文件夹,普通的j2se项目是没有这个文件夹的。</p>
+<p>META-INF存在程序入口相关信息, 每个jar 都会有这个文件夹,里面的 MANIFEST文件 记录下面这些信息。我们把MANIFEST中的配置信息进行分类，可以归纳出下面几个大类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs undefined">一. 一般属性　　<br>1. Manifest-Version　　用来定义manifest文件的版本，例如：Manifest-Version: 1.0　　<br>2. Created-By　　	声明该文件的生成者，一般该属性是由jar命令行工具生成的，例如：Created-By: Apache Ant 1.5.1　　<br>3. Signature-Version　　定义jar文件的签名版本　　<br>4. Class-Path　　应用程序或者类装载器使用该值来构建内部的类搜索路径　　<br>二. 应用程序相关属性　　<br>1. Main-Class　　定义jar文件的入口类，该类必须是一个可执行的类，一旦定义了该属性即可通过 java -jar x.jar来运行该jar文件。　　<br>三. 小程序(Applet)相关属性　　<br>1. Extendsion-List　　该属性指定了小程序需要的扩展信息列表，列表中的每个名字对应以下的属性　　<br>2. &lt;extension&gt;-Extension-Name　　<br>3. &lt;extension&gt;-Specification-Version　　<br>4. &lt;extension&gt;-Implementation-Version　　<br>5. &lt;extension&gt;-Implementation-Vendor-Id　　<br>6. &lt;extension&gt;-Implementation-URL　　<br>四. 扩展标识属性　　<br>1. Extension-Name　　该属性定义了jar文件的标识，例如Extension-Name: Struts Framework　　<br>五. 包扩展属性　　<br>1. Implementation-Title 定义了扩展实现的标题　　<br>2. Implementation-Version 定义扩展实现的版本　　<br>3. Implementation-Vendor 定义扩展实现的组织 　　<br>4. Implementation-Vendor-Id 定义扩展实现的组织的标识　　<br>5. Implementation-URL : 定义该扩展包的下载地址(URL)　　<br>6. Specification-Title 定义扩展规范的标题　　<br>7. Specification-Version 定义扩展规范的版本　　<br>8. Specification-Vendor 声明了维护该规范的组织　　<br>9. Sealed 定义jar文件是否封存，值可以是true或者false (这点我还不是很理解)　　<br>六. 签名相关属性　　<br>签名方面的属性我们可以来参照JavaMail所提供的mail.jar中的一段　　<br>Name: javax/mail/Address.class　　<br>Digest-Algorithms: SHA MD5 　　<br>SHA-Digest: AjR7RqnN//cdYGouxbd06mSVfI4=　　<br>MD5-Digest: ZnTIQ2aQAtSNIOWXI1pQpw==　　<br>这段内容定义类签名的类名、计算摘要的算法名以及对应的摘要内容(使用BASE64方法进行编码)<br></code></pre></td></tr></table></figure></p>
+<h3 id="为什么需要把页面放在WEB-INF文件夹下面？"><a href="#为什么需要把页面放在WEB-INF文件夹下面？" class="headerlink" title="为什么需要把页面放在WEB-INF文件夹下面？"></a>为什么需要把页面放在WEB-INF文件夹下面？</h3><ol>
+<li>基于不同的功能 JSP 被放置在不同的目录下</li>
+</ol>
+<p>这种方法的问题是这些页面文件容易被偷看到源代码，或被直接调用。某些场合下这可能不是个大问题，可是在特定情形中却可能构成安全隐患。用户可以绕过Struts的controller直接调用JSP同样也是个问题。</p>
+<p>为了减少风险，可以把这些页面文件移到WEB-INF 目录下。基于Servlet的声明，WEB-INF不作为Web应用的公共文档树的一部分。因此，WEB-INF 目录下的资源不是为客户直接服务的。我们仍然可以使用WEB-INF目录下的JSP页面来提供视图给客户，客户却不能直接请求访问JSP。</p>
+<ol start="2">
+<li>JSP存放在 WEB-INF 目录下更为安全</li>
+</ol>
+<p>如果把这些JSP页面文件移到WEB-INF 目录下，在调用页面的时候就必须把”WEB-INF”添加到URL中。</p>
+<p>我们知道，实现页面的跳转有两种方式，一种是通过redirect的方式，一种是通过forward的方式。redirect方式的跳转，系统会在一个新的页面打开要跳转的网页；而forward方式跳转，系统会在原来的页面上打开一个要跳转的网页。所以放到WEB-INF目录下的文件是不允许采用redirect方式的跳转来访问的.</p>
+<p>WEB-INF文件夹是受保护的文件夹，外部无法访问这个文件夹内的文件，只有服务器内部才能访问。</p>
+<p>重要的服务器初始化核心文件web.xml就这在个文件夹内。</p>
+<p>为了达到服务器端访问的目的，我们可以使用action进行转向，我们先去请求一个action，然后由这个action转发到WEB-INF下的页面，这样客户端就可以访问</p>
 
     </main>
     <footer class="post-footer">
@@ -314,7 +345,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">31</a></div>
+      <div><a href="/archives/">34</a></div>
     </div>
     
     
@@ -323,7 +354,7 @@
     
     <div class="categories-count">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">12</a></div>
+      <div><a href="/categories/">16</a></div>
     </div>
     
     
@@ -332,7 +363,7 @@
     
     <div class="tags-count">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">11</a></div>
+      <div><a href="/tags/">13</a></div>
     </div>
     
   </div>
@@ -353,7 +384,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#idea-创建动态Web项目"><span class="toc-text">idea 创建动态Web项目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WEB-INF目录与META-INF目录的作用"><span class="toc-text">WEB-INF目录与META-INF目录的作用</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#idea-创建动态Web项目"><span class="toc-text">idea 创建动态Web项目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WEB-INF目录与META-INF目录的作用"><span class="toc-text">WEB-INF目录与META-INF目录的作用</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#META-INF有什么用？它跟WEB-INF有什么区别？"><span class="toc-text">META-INF有什么用？它跟WEB-INF有什么区别？</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#为什么需要把页面放在WEB-INF文件夹下面？"><span class="toc-text">为什么需要把页面放在WEB-INF文件夹下面？</span></a></li></ol></div>
     </div>
     
     
