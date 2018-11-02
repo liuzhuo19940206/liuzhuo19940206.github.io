@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-10-30T03:37:04.073Z</updated>
+  <updated>2018-11-02T13:01:35.731Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot_day_01</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/02/SpringBoot-day-01/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/02/SpringBoot-day-01/</id>
+    <published>2018-11-02T06:31:37.000Z</published>
+    <updated>2018-11-02T13:01:35.731Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>idea创建maven-web工程</title>
@@ -423,26 +447,6 @@
     
     
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IntelliJ Idea 常用快捷键 列表(实战终极总结！！！！)</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/18/idea/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/18/idea/</id>
-    <published>2018-10-18T05:27:50.000Z</published>
-    <updated>2018-10-28T06:33:37.151Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;IntelliJ Idea 常用快捷键 列表 总结&lt;br&gt;
-    
-    </summary>
-    
-      <category term="idea" scheme="http://liuzhuo19940206.github.io/categories/idea/"/>
-    
-    
-      <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
     
   </entry>
   
