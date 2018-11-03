@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-02T13:01:35.731Z</updated>
+  <updated>2018-11-03T09:11:32.031Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot_day_02</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/03/SpringBoot-day-02/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/03/SpringBoot-day-02/</id>
+    <published>2018-11-03T02:33:31.000Z</published>
+    <updated>2018-11-03T09:11:32.031Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Springboot的配置文件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot_day_01</title>
@@ -427,26 +451,6 @@
     
     
       <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Bean的生命周期</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/18/Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/18/Bean的生命周期/</id>
-    <published>2018-10-18T08:17:44.000Z</published>
-    <updated>2018-10-28T06:34:51.720Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
