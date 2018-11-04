@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>SpringBoot_day_03 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/04/SpringBoot-day-03/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">SpringBoot_day_03</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-04T09:28:58+08:00">2018-11-04 09:28:58</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>SpringBoot的日志框架与配置<br><a id="more"></a></p>
+<h1 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h1><p>小张；开发一个大型系统；<br>1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？<br>2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.jar；<br>3、高大上的几个功能？异步模式？自动归档？xxxx？ zhanglogging-good.jar？<br>4、将以前框架卸下来？换上新的框架，重新修改之前相关的API；zhanglogging-prefect.jar；<br>5、JDBC—数据库驱动；<br>写了一个统一的接口层；日志门面（日志的一个抽象层）；logging-abstract.jar；<br>给项目中导入具体的日志实现就行了；我们之前的日志框架都是实现的抽象层；</p>
+<hr>
+<p><strong>市面上的日志框架</strong></p>
+<p>JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….</p>
+<p><img src="/images/QQ截图20181104094606.png"></p>
+<p>左边选一个门面（抽象层）、右边来选一个实现；</p>
+<p>日志门面： SLF4J；</p>
+<p>日志实现：Logback；</p>
+<p>SpringBoot：底层是Spring框架，Spring框架默认是用JCL；</p>
+<p><strong>SpringBoot选用 SLF4j和logback.</strong></p>
+<h1 id="SLF4j使用"><a href="#SLF4j使用" class="headerlink" title="SLF4j使用"></a>SLF4j使用</h1><h2 id="如何在系统中使用SLF4j"><a href="#如何在系统中使用SLF4j" class="headerlink" title="如何在系统中使用SLF4j"></a>如何在系统中使用SLF4j</h2><p><a href="https://www.slf4j.org/" target="_blank" rel="noopener">SLF4j参考文档</a></p>
+<p>以后开发的时候，日志记录方法的调用，<strong>不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法；</strong></p>
+<p>给系统里面导入slf4j的jar和 logback的实现jar</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;<br>public class HelloWorld &#123;<br>  public static void main(String[] args) &#123;<br>    Logger logger = LoggerFactory.getLogger(HelloWorld.class);<br>    logger.info(&quot;Hello World&quot;);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>图示:<br><img src="/images/QQ截图20181104095906.png"></p>
+<p>每一个日志的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是要用日志实现框架自己本身的配置文件；</strong></p>
+<p>比如使用slf4j 和 logback，就用logback的配置文件，使用slf4j 和 log4j,就使用log4j的配置文件。而不是使用slf4j的配置文件。</p>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>a系统（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx</p>
+<p>我们自己的a系统想要使用slf4j+logback做日志框架，但是我们的a系统是基于Spring、HIbernate等其他框架的，而这些其他框架底层使用的是其他日志框架，Spring使用的是commons-logging，Hibernate使用的是jboss-logging。</p>
+<p>现在，我们想统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出，能做到吗？</p>
+<p>slf4j官网给出了答案，<a href="https://www.slf4j.org/legacy.html" target="_blank" rel="noopener">参考答案</a></p>
+<p><img src="/images/QQ截图20181104101357.png"></p>
+<p><strong>如何让系统中所有的日志都统一到slf4j?</strong></p>
+<font color="red">1、将系统中其他日志框架的日志jar包先排除出去；<br><br>2、用中间包来替换原有的日志框架的jar；<br><br>3、导入slf4j其他的实现。</font>
+
+<h1 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h1><p>创建一个新的Springboot的应用，只需要Web模块即可。<br><img src="/images/QQ截图20181104103732.png"></p>
+<p>现在，我们来查看一下Springboot的依赖关系。</p>
+<p>查看依赖关系</p>
+<p>1）使用idea的自带的maven管理器工具<br><img src="/images/QQ截图20181104103856.png" style="width:50%"></p>
+<p>这样不够直观。</p>
+<p>2）查看依赖图</p>
+<p>在pom文件中，右键点击Diagrams -&gt; show dependencies<br><img src="/images/QQ截图20181104104228.png"><br><img src="/images/QQ截图20181104104542.png"></p>
+<p>首先查看spring‐boot‐starter，因为这是Springboot的应用都必须依赖的jar包。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;<br>	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>	&lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
+<p>然后发现，在spring‐boot‐starter下，有spring‐boot‐starter‐logging。</p>
+<p>说明SpringBoot使用它来做日志功能<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;<br>	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>	&lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p>再来看spring-boot-starter-logging底层依赖：<br><img src="/images/QQ截图20181104105357.png"></p>
+<p>总结：</p>
+<p>1）、SpringBoot底层也是使用slf4j+logback的方式进行日志记录</p>
+<p>2）、SpringBoot也把其他的日志都替换成了slf4j；</p>
+<p>3）、中间替换包？<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@SuppressWarnings(&quot;rawtypes&quot;)<br>public abstract class LogFactory &#123;<br>    static String UNSUPPORTED_OPERATION_IN_JCL_OVER_SLF4J =<br>&quot;http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j&quot;;<br>    static LogFactory logFactory = new SLF4JLogFactory();<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181104105601.png" style="width:50%"></p>
+<p>其实这些jar包，本身还是原来的日志框架的jar包，只是在使用的过程中，偷换成了slf4j的日志框架，就和适配器模式很像。</p>
+<p><strong>这些操作，Springboot已经帮我们做好了，我们只需要在引入其他框架的时候，移除掉他们本身的日志框架就行了。</strong></p>
+<p>4）、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？</p>
+<p>　　　我们挑Spring来做一个列子：</p>
+<p>　　　Spring框架用的是commons-logging；</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;        <br>	&lt;groupId&gt;org.springframework&lt;/groupId&gt;            <br>	&lt;artifactId&gt;spring‐core&lt;/artifactId&gt;            <br>		&lt;exclusions&gt;            <br>			&lt;exclusion&gt;                <br>			&lt;groupId&gt;commons‐logging&lt;/groupId&gt;                    <br>			&lt;artifactId&gt;commons‐logging&lt;/artifactId&gt;                    <br>		&lt;/exclusion&gt;                <br>	&lt;/exclusions&gt;            <br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
+<p>发现，Springboot也帮我们剔除掉了，Springboot真方便！！！</p>
+<font color="red"><strong>SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，引入其他框架的时候，只需要<br>把这个框架依赖的日志框架排除掉即可；</strong></font>
+
+<h1 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h1><h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>直接运行，我们刚刚创建的项目：<br><img src="/images/QQ截图20181104112034.png"></p>
+<p>发现，Springboot已经帮我们创建好了默认的配置。默认情况下，Spring Boot会用Logback来记录日志，并用INFO级别输出到控制台。在运行应用程序和其他例子时，你应该已经看到很多INFO级别的日志了。</p>
+<p>从上图可以看到，日志输出内容元素具体如下：</p>
+<ul>
+<li>时间日期：精确到毫秒</li>
+<li>日志级别：ERROR, WARN, INFO, DEBUG or TRACE</li>
+<li>进程ID</li>
+<li>分隔符：－－－ 标识实际日志的开始</li>
+<li>线程名：方括号括起来（可能会截断控制台输出）</li>
+<li>Logger名：通常使用源代码的类名</li>
+<li>日志内容</li>
+</ul>
+<p>使用：</p>
+<p>在测试类中：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RunWith(SpringRunner.class)<br>@SpringBootTest<br>public class SpringBoot03LoggingApplicationTests &#123;<br><br>	//日志记录器<br>	Logger logger = LoggerFactory.getLogger(getClass());<br><br>	@Test<br>	public void contextLoads() &#123;<br><br>		//System.out.println();  我们不再使用这种方法来记录了<br><br>		//日志的级别，trace&lt;debug&lt;info&lt;warn&lt;error<br>		//只会打印本级别和比本级别更高的日志<br>		logger.trace(&quot;这是trace日志···&quot;);<br>		logger.debug(&quot;这是debug日志···&quot;);<br>		//Springboot默认的级别是info级别<br>		logger.info(&quot;这是info日志···&quot;);<br>		logger.warn(&quot;这是warn日志···&quot;);<br>		logger.error(&quot;这error日志···&quot;);<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行测试方法：<br><img src="/images/QQ截图20181104113131.png"></p>
+<p>只打印了info级别以及以上的。说明Springboot默认的日志级别是info。</p>
+<p>1) 修改日志的级别。</p>
+<p>在application.properties文件中。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">logging.level.com.liuzhuo=trace<br></code></pre></td></tr></table></figure></p>
+<p>再次运行测试方法：<br><img src="/images/QQ截图20181104113410.png"></p>
+<p>格式为：logging.level.* = LEVEL</p>
+<ul>
+<li>logging.level：日志级别控制前缀，*为包名或Logger名</li>
+<li>LEVEL：选项TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF</li>
+</ul>
+<p>举例：</p>
+<ul>
+<li>logging.level.com.liuzhuo=DEBUG：com.liuzhuo包下所有class以DEBUG级别输出</li>
+<li>logging.level.root=WARN：root日志以WARN级别输出</li>
+</ul>
+<p>2) 日志文件的输出</p>
+<p>默认情况下，Spring Boot将日志输出到控制台，不会写到日志文件。如果要编写除控制台输出之外的日志文件，则需在application.properties中设置logging.file或logging.path属性。</p>
+<ul>
+<li>logging.file，设置文件，可以是绝对路径，也可以是相对路径。如：logging.file=my.log</li>
+<li>logging.path，设置目录，会在该目录下创建spring.log文件，并写入日志内容，如：logging.path=/var/log</li>
+</ul>
+<p>logging.file=xxx.log，会在项目的根目录下生成xxx.log文件<br>logging.file=G:/xxx.log，会在G盘下生xxx.log文件</p>
+<p>logging.path=/aaa/bbb，会在项目的磁盘下，创建aaa/bbb文件夹，然后生成spring.log日志文件，<strong>日志文件的名字都是spring.log</strong></p>
+<font color="red">注：二者不能同时使用，如若同时使用，则只有logging.file生效</font>
+
+<p><strong>默认情况下，日志文件的大小达到10MB时会切分一次，产生新的日志文件，默认级别为：ERROR、WARN、INFO</strong></p>
+<p>3) 日志输出格式的设置</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined"># 在控制台输出的日志的格式<br>logging.pattern.console=%d&#123;yyyy‐MM‐dd&#125; [%thread] %‐5level %logger&#123;50&#125; ‐ %msg%n<br># 指定文件中日志输出的格式<br>logging.pattern.file=%d&#123;yyyy‐MM‐dd&#125; === [%thread] === %‐5level === %logger&#123;50&#125; ==== %msg%n<br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">日志输出格式：<br><br>%d表示日期时间，        <br>%thread表示线程名，        <br>%‐5level：级别从左显示5个字符宽度        <br>%logger&#123;50&#125; 表示logger名字最长50个字符，否则按照句点分割。         <br>%msg：日志消息，        <br>%n是换行符  <br>      <br>    ‐‐&gt;<br><br>%d&#123;yyyy‐MM‐dd HH:mm:ss.SSS&#125; [%thread] %‐5level %logger&#123;50&#125; ‐ %msg%n<br></code></pre></td></tr></table></figure>
+<h2 id="指定配置"><a href="#指定配置" class="headerlink" title="指定配置"></a>指定配置</h2><p>在使用我们自己定义的日志配置文件之前，我们先来看看，为啥我们不用配置日志文件，Springboot中也能使用日志功能？</p>
+<p>1) 打开org.springframework.boot:spring-boot:1.5.17.RELEASE<br>2) 打开org.springframework.boot<br>3) 打开logging、logback、base.xml<br><img src="/images/QQ截图20181104150319.png" style="width:50%"><br><img src="/images/QQ截图20181104150519.png" style="width:50%"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br><br>&lt;!--<br>Base logback configuration provided for compatibility with Spring Boot 1.1<br>--&gt;<br><br>&lt;included&gt;<br>	&lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;<br>	&lt;property name=&quot;LOG_FILE&quot; value=&quot;$&#123;LOG_FILE:-$&#123;LOG_PATH:-$&#123;LOG_TEMP:-$&#123;java.io.tmpdir:-/tmp&#125;&#125;&#125;/spring.log&#125;&quot;/&gt;<br>	&lt;include resource=&quot;org/springframework/boot/logging/logback/console-appender.xml&quot; /&gt;<br>	&lt;include resource=&quot;org/springframework/boot/logging/logback/file-appender.xml&quot; /&gt;<br>	&lt;root level=&quot;INFO&quot;&gt;<br>		&lt;appender-ref ref=&quot;CONSOLE&quot; /&gt;<br>		&lt;appender-ref ref=&quot;FILE&quot; /&gt;<br>	&lt;/root&gt;<br>&lt;/included&gt;<br></code></pre></td></tr></table></figure>
+<p>我们发现，Springboot已经帮我们默认配置好了。</p>
+<p>我们看到root下的 level的等于INFO，所以Springboot默认是info级别。</p>
+<p>再看<code>&lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br><br>&lt;!--<br>Default logback configuration provided for import, equivalent to the programmatic<br>initialization performed by Boot<br>--&gt;<br><br>&lt;included&gt;<br>	&lt;conversionRule conversionWord=&quot;clr&quot; converterClass=&quot;org.springframework.boot.logging.logback.ColorConverter&quot; /&gt;<br>	&lt;conversionRule conversionWord=&quot;wex&quot; converterClass=&quot;org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter&quot; /&gt;<br>	&lt;conversionRule conversionWord=&quot;wEx&quot; converterClass=&quot;org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter&quot; /&gt;<br>	&lt;property name=&quot;CONSOLE_LOG_PATTERN&quot; value=&quot;$&#123;CONSOLE_LOG_PATTERN:-%clr(%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125;)&#123;faint&#125; %clr($&#123;LOG_LEVEL_PATTERN:-%5p&#125;) %clr($&#123;PID:- &#125;)&#123;magenta&#125; %clr(---)&#123;faint&#125; %clr([%15.15t])&#123;faint&#125; %clr(%-40.40logger&#123;39&#125;)&#123;cyan&#125; %clr(:)&#123;faint&#125; %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;/&gt;<br>	&lt;property name=&quot;FILE_LOG_PATTERN&quot; value=&quot;$&#123;FILE_LOG_PATTERN:-%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; $&#123;LOG_LEVEL_PATTERN:-%5p&#125; $&#123;PID:- &#125; --- [%t] %-40.40logger&#123;39&#125; : %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;/&gt;<br><br>	&lt;appender name=&quot;DEBUG_LEVEL_REMAPPER&quot; class=&quot;org.springframework.boot.logging.logback.LevelRemappingAppender&quot;&gt;<br>		&lt;destinationLogger&gt;org.springframework.boot&lt;/destinationLogger&gt;<br>	&lt;/appender&gt;<br><br>	&lt;logger name=&quot;org.apache.catalina.startup.DigesterFactory&quot; level=&quot;ERROR&quot;/&gt;<br>	&lt;logger name=&quot;org.apache.catalina.util.LifecycleBase&quot; level=&quot;ERROR&quot;/&gt;<br>	&lt;logger name=&quot;org.apache.coyote.http11.Http11NioProtocol&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.apache.sshd.common.util.SecurityUtils&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.apache.tomcat.util.net.NioSelectorPool&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.crsh.plugin&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.crsh.ssh&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.eclipse.jetty.util.component.AbstractLifeCycle&quot; level=&quot;ERROR&quot;/&gt;<br>	&lt;logger name=&quot;org.hibernate.validator.internal.util.Version&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration&quot; level=&quot;WARN&quot;/&gt;<br>	&lt;logger name=&quot;org.springframework.boot.actuate.endpoint.jmx&quot; additivity=&quot;false&quot;&gt;<br>		&lt;appender-ref ref=&quot;DEBUG_LEVEL_REMAPPER&quot;/&gt;<br>	&lt;/logger&gt;<br>	&lt;logger name=&quot;org.thymeleaf&quot; additivity=&quot;false&quot;&gt;<br>		&lt;appender-ref ref=&quot;DEBUG_LEVEL_REMAPPER&quot;/&gt;<br>	&lt;/logger&gt;<br>&lt;/included&gt;<br></code></pre></td></tr></table></figure></p>
+<p>我们能看到<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;property name=&quot;CONSOLE_LOG_PATTERN&quot; value=&quot;$&#123;CONSOLE_LOG_PATTERN:-%clr(%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125;)&#123;faint&#125; %clr($&#123;LOG_LEVEL_PATTERN:-%5p&#125;) %clr($&#123;PID:- &#125;)&#123;magenta&#125; %clr(---)&#123;faint&#125; %clr([%15.15t])&#123;faint&#125; %clr(%-40.40logger&#123;39&#125;)&#123;cyan&#125; %clr(:)&#123;faint&#125; %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;/&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这里就是配置控制台输出日志格式的配置，我们写在application.propertiese中的logging.pattern.console=xxx.就会覆盖这个配置中的内容，如果不配置的话，就使用默认的配置，就是冒号后面的一串：<code>-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} xxxxx</code></p>
+<hr>
+<p>现在我们已经了解到了Springboot的默认日志文件的配置了。当我们具体使用日志框架时，需要使用哪个配置文件呢？</p>
+<p>打开Spring的官网，<a href="https://docs.spring.io/spring-boot/docs/1.5.17.RELEASE/reference/htmlsingle/#boot-features-logging" target="_blank" rel="noopener">logging参考文献</a></p>
+<p>找到：<strong>26.5 Custom log configuration</strong></p>
+<p><img src="/images/QQ截图20181104194411.png"></p>
+<p>从图中，我们可以看出，使用logback日志框架，就使用logback-spring.xml、logback.xml等配置文件。</p>
+<p>其他的日志框架，类似logback。</p>
+<p><strong>给类路径下放上每个日志框架自己的配置文件即可；SpringBoot就不使用他默认配置的了。</strong></p>
+<p>现在，我们在类路径下，即resources下，放入一个logback.xml的日志配置文件。<br><img src="/images/QQ截图20181104195557.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!--<br>scan：当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。<br>scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒当scan为true时，此属性生效。默认的时间间隔为1分钟。<br>debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。<br>--&gt;<br>&lt;configuration scan=&quot;false&quot; scanPeriod=&quot;60 seconds&quot; debug=&quot;false&quot;&gt;<br>    &lt;!-- 定义日志的根目录 --&gt;<br>    &lt;property name=&quot;LOG_HOME&quot; value=&quot;/app/log&quot; /&gt;<br>    &lt;!-- 定义日志文件名称 --&gt;<br>    &lt;property name=&quot;appName&quot; value=&quot;atguigu-springboot&quot;&gt;&lt;/property&gt;<br>    &lt;!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 --&gt;<br>    &lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;<br>        &lt;!--<br>        日志输出格式：<br>			%d表示日期时间，<br>			%thread表示线程名，<br>			%-5level：级别从左显示5个字符宽度<br>			%logger&#123;50&#125; 表示logger名字最长50个字符，否则按照句点分割。 <br>			%msg：日志消息，<br>			%n是换行符<br>        --&gt;<br>        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;<br>            &lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n&lt;/pattern&gt;<br>        &lt;/layout&gt;<br>    &lt;/appender&gt;<br><br>    &lt;!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 --&gt;  <br>    &lt;appender name=&quot;appLogAppender&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;<br>        &lt;!-- 指定日志文件的名称 --&gt;<br>        &lt;file&gt;$&#123;LOG_HOME&#125;/$&#123;appName&#125;.log&lt;/file&gt;<br>        &lt;!--<br>        当发生滚动时，决定 RollingFileAppender 的行为，涉及文件移动和重命名<br>        TimeBasedRollingPolicy： 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动。<br>        --&gt;<br>        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;<br>            &lt;!--<br>            滚动时产生的文件的存放位置及文件名称 %d&#123;yyyy-MM-dd&#125;：按天进行日志滚动 <br>            %i：当文件大小超过maxFileSize时，按照i进行文件滚动<br>            --&gt;<br>            &lt;fileNamePattern&gt;$&#123;LOG_HOME&#125;/$&#123;appName&#125;-%d&#123;yyyy-MM-dd&#125;-%i.log&lt;/fileNamePattern&gt;<br>            &lt;!-- <br>            可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每天滚动，<br>            且maxHistory是365，则只保存最近365天的文件，删除之前的旧文件。注意，删除旧文件是，<br>            那些为了归档而创建的目录也会被删除。<br>            --&gt;<br>            &lt;MaxHistory&gt;365&lt;/MaxHistory&gt;<br>            &lt;!-- <br>            当日志文件超过maxFileSize指定的大小是，根据上面提到的%i进行日志文件滚动 注意此处配置SizeBasedTriggeringPolicy是无法实现按文件大小进行滚动的，必须配置timeBasedFileNamingAndTriggeringPolicy<br>            --&gt;<br>            &lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;<br>                &lt;maxFileSize&gt;100MB&lt;/maxFileSize&gt;<br>            &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;<br>        &lt;/rollingPolicy&gt;<br>        &lt;!-- 日志输出格式： --&gt;     <br>        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;<br>            &lt;pattern&gt;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [ %thread ] - [ %-5level ] [ %logger&#123;50&#125; : %line ] - %msg%n&lt;/pattern&gt;<br>        &lt;/layout&gt;<br>    &lt;/appender&gt;<br><br>    &lt;!-- <br>		logger主要用于存放日志对象，也可以定义日志类型、级别<br>		name：表示匹配的logger类型前缀，也就是包的前半部分<br>		level：要记录的日志级别，包括 TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR<br>		additivity：作用在于children-logger是否使用 rootLogger配置的appender进行输出，<br>		false：表示只用当前logger的appender-ref，true：<br>		表示当前logger的appender-ref和rootLogger的appender-ref都有效<br>    --&gt;<br>    &lt;!-- hibernate logger --&gt;<br>    &lt;logger name=&quot;com.atguigu&quot; level=&quot;debug&quot; /&gt;<br>    &lt;!-- Spring framework logger --&gt;<br>    &lt;logger name=&quot;org.springframework&quot; level=&quot;debug&quot; additivity=&quot;false&quot;&gt;&lt;/logger&gt;<br><br><br><br>    &lt;!-- <br>    root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，<br>    要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。 <br>    --&gt;<br>    &lt;root level=&quot;info&quot;&gt;<br>        &lt;appender-ref ref=&quot;stdout&quot; /&gt;<br>        &lt;appender-ref ref=&quot;appLogAppender&quot; /&gt;<br>    &lt;/root&gt;<br>&lt;/configuration&gt;<br></code></pre></td></tr></table></figure>
+<p>现在，我们修改一下日志的输出格式：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> &lt;!-- 日志输出格式： --&gt;     <br>&lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;<br>    &lt;pattern&gt;%d&#123;yyyy-MM-dd&#125; -----&gt; [ %thread ] -----&gt; [ %-5level ] [ %logger&#123;50&#125; : %line ] -----&gt; %msg%n&lt;/pattern&gt;<br>&lt;/layout&gt;<br></code></pre></td></tr></table></figure></p>
+<p><strong>把时间的时分秒去掉，然后把分隔符改为箭头。</strong></p>
+<p>启动Springboot项目：<br><img src="/images/QQ截图20181104200138.png"></p>
+<p>我们的日志配置文件设置成功了。</p>
+<hr>
+<p>我们注意到了，官网上面写了logback.xml和logback-spring.xml两种配置文件的<strong>书写方式。</strong></p>
+<font color="red"><strong>官网推荐我们使用logback-spring.xml命名的配置文件。</strong></font>
+
+<p>logback.xml: 是直接被日志框架识别，在Spring应用启动之前。不会走Spring的流程。</p>
+<p><strong>logback-spring.xml:</strong> 日志框架就不直接加载日志的配置项，由SpringBoot解析日志配置，可以使用SpringBoot<br>的高级Profile功能</p>
+<p>可以使用：在哪个环境下生效。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;springProfile name=&quot;staging&quot;&gt;<br>    &lt;!‐‐ configuration to be enabled when the &quot;staging&quot; profile is active ‐‐&gt;<br>   可以指定某段配置只在某个环境下生效  <br>&lt;/springProfile&gt;<br></code></pre></td></tr></table></figure>
+<p>如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;<br>        &lt;!‐‐<br>        日志输出格式：<br>	 %d表示日期时间，            <br>	 %thread表示线程名，            <br>	 %‐5level：级别从左显示5个字符宽度            <br>	 %logger&#123;50&#125; 表示logger名字最长50个字符，否则按照句点分割。             <br>	 %msg：日志消息，            <br>	 %n是换行符            <br>        ‐‐&gt;<br>        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;<br>            &lt;springProfile name=&quot;dev&quot;&gt;<br>                &lt;pattern&gt;%d&#123;yyyy‐MM‐dd HH:mm:ss.SSS&#125; ‐‐‐‐&gt; [%thread] ‐‐‐&gt; %‐5level %logger&#123;50&#125; ‐ %msg%n&lt;/pattern&gt;<br>            &lt;/springProfile&gt;<br>            &lt;springProfile name=&quot;!dev&quot;&gt;<br>                &lt;pattern&gt;%d&#123;yyyy‐MM‐dd HH:mm:ss.SSS&#125; ==== [%thread] ==== %‐5level %logger&#123;50&#125; ‐ %msg%n&lt;/pattern&gt;<br>            &lt;/springProfile&gt;<br>        &lt;/layout&gt;<br>    &lt;/appender&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在dev环境下：使用上面的输出格式。</p>
+<p>在非dev环境下：使用下面的输出格式。</p>
+<p>现在运行Springboot项目：<br><img src="/images/QQ截图20181104201524.png"></p>
+<p><strong>发现，日志框架出现错误了。因为我们的日志配置文件的名字还没有改。</strong></p>
+<p>现在修改logback.xml —&gt; logback-spring.xml.</p>
+<p>再次启动Springboot应用：<br><img src="/images/QQ截图20181104201940.png"></p>
+<p>发现，启动的是非dev环境的日志控制台输出格式。</p>
+<p>我们在配置Springboot为dev环境。</p>
+<p>1）application.properties.</p>
+<p>spring.profiles.active=dev</p>
+<p>2) 配置命令行参数：<br><code>--spring.profiles.active=dev</code><br><img src="/images/QQ截图20181104202332.png"></p>
+<p>使用上面两种方法都可以改变Springboot的环境。</p>
+<p>然后启动Springboot应用：<br><img src="/images/QQ截图20181104202559.png"></p>
+<h1 id="切换日志框架"><a href="#切换日志框架" class="headerlink" title="切换日志框架"></a>切换日志框架</h1><h2 id="切换成log4j"><a href="#切换成log4j" class="headerlink" title="切换成log4j"></a>切换成log4j</h2><p>现在，我们使用的是slf4j+logback。但是我们想换成slf4j + log4j怎么办？</p>
+<p><strong>这里，说明一下，就是因为log4j有问题，所以才会推出logback日志框架的，这里只是做个例子演示日志框架的切换，实际情况下，直接使用logback日志框架就行。</strong></p>
+<p>切换日志框架，我们直接参考slf4j的官网的那个图，就行。<br><img src="/images/QQ截图20181104204428.png"></p>
+<p>现在打开我们的依赖图层：<br><img src="/images/QQ截图20181104204742.png"></p>
+<p>去掉图中画红色框框的logback的依赖。</p>
+<p>快速移除依赖：在想要移除的依赖上面，右键Exclude<br><img src="/images/QQ截图20181104205023.png"></p>
+<p>移除完毕后：<br><img src="/images/QQ截图20181104205144.png" style="width:50%"></p>
+<p>打开pom.xml文件：<br><img src="/images/QQ截图20181104205307.png"></p>
+<p>现在需要添加log4j的依赖。</p>
+<p>直接在pom.xml文件中添加：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;<br>	&lt;groupId&gt;org.slf4j&lt;/groupId&gt;<br>	&lt;artifactId&gt;slf4j-log412&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181104205726.png"></p>
+<p>启动Springboot应用：<br><img src="/images/QQ截图20181104205838.png"><br><strong>发出警告，因为在类路径下，没有log4j.properties的配置文件。</strong></p>
+<p>在resources下，添加log4j.properties的配置文件<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs undefined">### set log levels ###<br>log4j.rootLogger = debug ,  stdout ,  D ,  E<br><br>### 输出到控制台 ###<br>log4j.appender.stdout = org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.Target = System.out<br>log4j.appender.stdout.layout = org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern =  %d&#123;ABSOLUTE&#125; %5p %c&#123; 1 &#125;:%L - %m%n<br><br>#### 输出到日志文件 ###<br>#log4j.appender.D = org.apache.log4j.DailyRollingFileAppender<br>#log4j.appender.D.File = logs/log.log<br>#log4j.appender.D.Append = true<br>#log4j.appender.D.Threshold = DEBUG ## 输出DEBUG级别以上的日志<br>#log4j.appender.D.layout = org.apache.log4j.PatternLayout<br>#log4j.appender.D.layout.ConversionPattern = %-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %t:%r ] - [ %p ]  %m%n<br>#<br>#### 保存异常信息到单独文件 ###<br>#log4j.appender.D = org.apache.log4j.DailyRollingFileAppender<br>#log4j.appender.D.File = logs/error.log ## 异常日志文件名<br>#log4j.appender.D.Append = true<br>#log4j.appender.D.Threshold = ERROR ## 只输出ERROR级别以上的日志!!!<br>#log4j.appender.D.layout = org.apache.log4j.PatternLayout<br>#log4j.appender.D.layout.ConversionPattern = %-d&#123;yyyy-MM-dd HH:mm:ss&#125;  [ %t:%r ] - [ %p ]  %m%n<br></code></pre></td></tr></table></figure></p>
+<p>再次启动应用，就会打印出日志信息了。</p>
+<hr>
+<h2 id="切换成log4j2"><a href="#切换成log4j2" class="headerlink" title="切换成log4j2"></a>切换成log4j2</h2><p>在官网上面，我们能发现，Springboot默认是加载logback日志框架的，我们也可以直接改成log4j2日志框架。</p>
+<p>在pom.xml文件中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">   &lt;dependency&gt;<br>       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>       &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;<br>          &lt;exclusions&gt;<br>             &lt;exclusion&gt;<br>                 &lt;artifactId&gt;spring‐boot‐starter‐logging&lt;/artifactId&gt;<br>                 &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>            &lt;/exclusion&gt;<br>          &lt;/exclusions&gt;<br>    &lt;/dependency&gt;<br><br>&lt;dependency&gt;<br>  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>  &lt;artifactId&gt;spring‐boot‐starter‐log4j2&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p>直接移除spring‐boot‐starter‐logging依赖。然后添加spring‐boot‐starter‐log4j2的依赖。</p>
+<p>然后添加log4j2-spring.xml 或者 log4j2.xml 日志配置文件。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
+        
+        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/03/SpringBoot-day-02/" rel="next" title="SpringBoot_day_02"><i class="fas fa-angle-left"></i><span class="nav-title">SpringBoot_day_02</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "SpringBoot_day_03",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">37</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">14</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#日志框架"><span class="toc-text">日志框架</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SLF4j使用"><span class="toc-text">SLF4j使用</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#如何在系统中使用SLF4j"><span class="toc-text">如何在系统中使用SLF4j</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#遗留问题"><span class="toc-text">遗留问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SpringBoot日志关系"><span class="toc-text">SpringBoot日志关系</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#日志使用"><span class="toc-text">日志使用</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#默认配置"><span class="toc-text">默认配置</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#指定配置"><span class="toc-text">指定配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#切换日志框架"><span class="toc-text">切换日志框架</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#切换成log4j"><span class="toc-text">切换成log4j</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#切换成log4j2"><span class="toc-text">切换成log4j2</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
