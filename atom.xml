@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-07T12:35:40.812Z</updated>
+  <updated>2018-11-08T08:05:47.807Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot_day_06</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/08/SpringBoot-day-06/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/08/SpringBoot-day-06/</id>
+    <published>2018-11-08T01:46:59.000Z</published>
+    <updated>2018-11-08T08:05:47.807Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天，继续Web的开发，错误处理机制、配置嵌入式Servlet容器、使用外置的Servlet容器&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot_day_05</title>
@@ -433,27 +457,6 @@
     <summary type="html">
     
       &lt;p&gt;总结Spring4中的各种配置文件的信息。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring中无处不在的Properties</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/19/Spring%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84Properties/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/19/Spring中无处不在的Properties/</id>
-    <published>2018-10-19T12:54:13.000Z</published>
-    <updated>2018-10-28T06:15:02.549Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。&lt;/p&gt;
-&lt;p&gt;本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。&lt;/p&gt;
     
     </summary>
     
