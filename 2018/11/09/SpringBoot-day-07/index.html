@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>SpringBoot_day_07 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/09/SpringBoot-day-07/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">SpringBoot_day_07</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-09T09:52:33+08:00">2018-11-09 09:52:33</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>今天，学习Docker的相关知识<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>Docker</strong>是一个开源的应用容器引擎；是一个轻量级容器技术；</p>
+<p>Docker支持将软件编译成一个镜像；然后在镜像中将各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像；</p>
+<p>运行中的这个镜像称为容器，容器启动是非常快速的。</p>
+<p><img src="/images/QQ截图20181109095615.png" style="width:50%;heigth:50%"></p>
+<hr>
+<p><img src="/images/QQ截图20181109095947.png"></p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>docker主机(Host)：安装了Docker程序的机器（Docker直接安装在操作系统之上）；</p>
+<p>docker客户端(Client)：连接docker主机进行操作；</p>
+<p>docker仓库(Registry)：用来保存各种打包好的软件镜像；</p>
+<p>docker镜像(Images)：软件打包好的镜像；放在docker仓库中；</p>
+<p>docker容器(Container)：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用<br><img src="/images/QQ截图20181109100109.png"></p>
+<p>使用Docker的步骤：</p>
+<p>1）、安装Docker</p>
+<p>2）、去Docker仓库找到这个软件对应的镜像；</p>
+<p>3）、使用Docker运行这个镜像，这个镜像就会生成一个Docker容器；</p>
+<p>4）、对容器的启动停止就是对软件的启动停止；</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><h3 id="安装linux虚拟机"><a href="#安装linux虚拟机" class="headerlink" title="安装linux虚拟机"></a>安装linux虚拟机</h3><p>因为，以后的服务器都是部署在linux上面的，所以我们需要使用linux虚拟机来学习Docker</p>
+<p>1）VMWare、VirtualBox（安装）。</p>
+<p>VMWare虚拟机：比较重量级，而且是收费的，可以破解。</p>
+<p>VirtualBox：轻量级，免费。</p>
+<p>大家，如果没有，提供一个软件的百度云给大家。<a href="https://pan.baidu.com/s/1K8J6ThB1ecpDoZU5IYRGDQ" target="_blank" rel="noopener">软件安装</a>，密码：0zeo</p>
+<p>下载之后，打开<strong>软件</strong>的目录：<br><img src="/images/QQ截图20181109101823.png"></p>
+<p>双击VirtualBox-5.1.26-117224-Win.exe.(安装linux虚拟机)</p>
+<p>2）导入虚拟机文件centos7-atguigu.ova</p>
+<p>打开虚拟机界面，点击管理：导入虚拟电脑。<br><img src="/images/QQ截图20181109102440.png" style="width:50%"><br><strong>一定要 勾选重新初始化所有的网卡的MAC地址</strong><br><img src="/images/QQ截图20181109102555.png" style="width:50%"><br>导入成功后：<br><img src="/images/QQ截图20181109102748.png"></p>
+<p>3）双击启动linux虚拟机;使用 root/ 123456登陆</p>
+<p>会出现未能启动虚拟电脑，由于物理网卡未找到：<br><img src="/images/QQ截图20181109103253.png" style="width:50%"></p>
+<p>点击更改网络设置：<br><img src="/images/QQ截图20181109103407.png"><br><img src="/images/QQ截图20181109103712.png"></p>
+<p>设置完毕后，虚拟机自动启动：<br><img src="/images/QQ截图20181109103900.png"></p>
+<p>输入用户名：root，密码：123456<br><img src="/images/QQ截图20181109104044.png"></p>
+<p>此时，已经登入成功了。</p>
+<p>4）使用客户端连接linux服务器进行命令操作</p>
+<p>为了操作方便，我们可以使用linux的客户端来远程操作linux虚拟机。</p>
+<p>安装软件目录下的：SmarTTY-2.2.msi<br><img src="/images/QQ截图20181109104240.png"></p>
+<p>安装完毕后，启动程序：<br><img src="/images/QQ截图20181109104615.png"></p>
+<p>点击创建新的SSH连接：<br><img src="/images/QQ截图20181109104656.png"><br><img src="/images/QQ截图20181109104916.png"></p>
+<p>虚拟机的ip地址：<br>在虚拟机中输入：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ip addr<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181109105352.png"></p>
+<p>查看本地的ip地址：<br><img src="/images/QQ截图20181109105439.png"></p>
+<p><strong>发现是在一个网络里面，正确！！！</strong></p>
+<p><img src="/images/QQ截图20181109105639.png"><br><img src="/images/QQ截图20181109105717.png"><br><img src="/images/QQ截图20181109105735.png"></p>
+<p>到此，linux客户端连接成功，此时注意不要关闭linux的服务器。</p>
+<h3 id="在linux虚拟机上安装docker"><a href="#在linux虚拟机上安装docker" class="headerlink" title="在linux虚拟机上安装docker"></a>在linux虚拟机上安装docker</h3><p>首先启动虚拟机：<br><img src="/images/QQ截图20181110095216.png"><br>输入用户名和密码：root/123456<br><img src="/images/QQ截图20181110095348.png"><br>查看ip地址：<br><code>ip addr</code><br><img src="/images/QQ截图20181110095509.png"><br>ip地址没有变的话，直接使用我们的linux客户端连接：<br><img src="/images/QQ截图20181110095639.png"><br>输入密码：<br><img src="/images/QQ截图20181110095732.png"><br>连接成功：<br><img src="/images/QQ截图20181110095759.png"></p>
+<hr>
+<p><strong>现在开始在linux上安装docker。</strong></p>
+<p>步骤：</p>
+<p>1）检查虚拟机的内核版本，必须是3.10及以上<br><code>uname ‐r</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# uname -r<br>3.10.0-327.el7.x86_64<br>[root@localhost ~]#<br></code></pre></td></tr></table></figure></p>
+<p>我当前的版本是：3.10.0-327.el7.x86_64</p>
+<p>如果你的不是，那就必须升级内核：<br><code>yum update</code></p>
+<p>2) 安装docker(必须联网)<br><code>yum install docker</code><br><img src="/images/QQ截图20181110100256.png"></p>
+<p>3）输入y确认安装<br><img src="/images/QQ截图20181110100405.png"><br><img src="/images/QQ截图20181110101217.png"><br><strong>出现Complete，表示安装完成！</strong><br><img src="/images/QQ截图20181110101347.png"></p>
+<p>4）启动docker<br><code>systemctl start docker</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# systemctl start docker<br></code></pre></td></tr></table></figure></p>
+<p>查看docker的版本：<br><code>docker -v</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker -v<br>Docker version 1.13.1, build 8633870/1.13.1<br></code></pre></td></tr></table></figure></p>
+<p>5) linux开机就启动docker<br><code>systemctl enable docker</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# systemctl enable docker<br>Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.<br></code></pre></td></tr></table></figure></p>
+<p>6) 停止docker<br><code>systemctl stop docker</code></p>
+<h2 id="Docker常用命令-amp-操作"><a href="#Docker常用命令-amp-操作" class="headerlink" title="Docker常用命令&amp;操作"></a>Docker常用命令&amp;操作</h2><h3 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h3><p><img src="/images/QQ截图20181110102850.png"></p>
+<p><a href="https://hub.docker.com/" target="_blank" rel="noopener">官方的docker仓库</a></p>
+<p><font color="red"><strong>如果在启动的时候，出现问题</strong></font><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# systemctl start docker<br>Job for docker.service failed because the control process exited with error code. See &quot;systemctl status docker.service&quot; and &quot;journa<br>lctl -xe&quot; for details.<br></code></pre></td></tr></table></figure></p>
+<p>然后根据提示进行systemctl status docker.service，打印出相关的日志：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><br>[root@localhost ~]# systemctl status docker.service<br>● docker.service - Docker Application Container Engine<br>   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)<br>   Active: failed (Result: exit-code) since Fri 2018-04-27 21:25:13 EDT; 3min 32s ago<br>     Docs: http://docs.docker.com<br>  Process: 2390 ExecStart=/usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=dock<br>er-runc --exec-opt native.cgroupdriver=systemd --userland-proxy-path=/usr/libexec/docker/docker-proxy-current --seccomp-profile=/etc/docker<br>/seccomp.json $OPTIONS $DOCKER_STORAGE_OPTIONS $DOCKER_NETWORK_OPTIONS $ADD_REGISTRY $BLOCK_REGISTRY $INSECURE_REGISTRY $REGISTRIES (code=e<br>xited, status=1/FAILURE)<br> Main PID: 2390 (code=exited, status=1/FAILURE)<br> <br>Apr 27 21:25:12 localhost.localdomain systemd[1]: Starting Docker Application Container Engine...<br>Apr 27 21:25:12 localhost.localdomain dockerd-current[2390]: time=&quot;2018-04-27T21:25:12.286650644-04:00&quot; level=warning msg=&quot;could no...ound&quot;<br>Apr 27 21:25:12 localhost.localdomain dockerd-current[2390]: time=&quot;2018-04-27T21:25:12.295209148-04:00&quot; level=info msg=&quot;libcontaine...2395&quot;<br>Apr 27 21:25:13 localhost.localdomain dockerd-current[2390]: time=&quot;2018-04-27T21:25:13.310268309-04:00&quot; level=warning msg=&quot;overlay2: the...<br>Apr 27 21:25:13 localhost.localdomain dockerd-current[2390]: Error starting daemon: SELinux is not supported with the overlay2 grap...alse<br>Apr 27 21:25:13 localhost.localdomain systemd[1]: docker.service: main process exited, code=exited, status=1/FAILURE<br>Apr 27 21:25:13 localhost.localdomain systemd[1]: Failed to start Docker Application Container Engine.<br>Apr 27 21:25:13 localhost.localdomain systemd[1]: Unit docker.service entered failed state.<br>Apr 27 21:25:13 localhost.localdomain systemd[1]: docker.service failed.<br>Hint: Some lines were ellipsized, use -l to show in full.<br></code></pre></td></tr></table></figure></p>
+<p>其中：<code>Error starting daemon: SELinux is not supported with the overlay2 grap...alse</code></p>
+<p>这是由于overlay2不支持造成的，所以我们要关闭它。</p>
+<p>重新编辑docker配置文件：</p>
+<p><code>vi /etc/sysconfig/docker</code></p>
+<p>可以进行以下配置：</p>
+<p>OPTIONS=’–selinux-enabled<strong>=false</strong>  –log-driver=journald –signature-verification=false’</p>
+<p>将–selinux-enabled后面添加 =false 即可。<br><img src="/images/QQ截图20181110112203.png"></p>
+<p>vi编辑器，使用i进入编辑状态，修改后：Esc，然后冒号：wq，保存退出。</p>
+<p>然后进行重启操作：</p>
+<p><code>systemctl  restart  docker</code></p>
+<p>自此，Docker启动成功！</p>
+<hr>
+<p>我们以mysql为例：</p>
+<p>1）查询mysql的镜像：<code>docker search mysql</code><br><img src="/images/QQ截图20181110112521.png"></p>
+<p>INDEX：代表镜像的索引</p>
+<p>NAME：镜像的名字</p>
+<p>DESCRIPTION：镜像的描述信息</p>
+<p>STARS：镜像被采纳的次数</p>
+<p>OFFICIAL：是否官方（[OK]：官方，不写：非官方）</p>
+<p>AUTOMATED：是否自动配置（[OK]：自动配置，不写：非自动配置）</p>
+<p>这里搜索的镜像和官方<code>https://hub.docker.com/</code>上面搜索的一样：<br><img src="/images/QQ截图20181110112948.png"><br><img src="/images/QQ截图20181110113105.png"></p>
+<p>2）下载mysql镜像：<code>docker pull mysql</code>(默认下载最近的版本)<br><img src="/images/QQ截图20181110115418.png"></p>
+<p>如果下载镜像很慢，可以使用阿里云的镜像加速度：<br><a href="https://cr.console.aliyun.com/cn-hangzhou/mirrors" target="_blank" rel="noopener">登入阿里云</a><br><img src="/images/QQ截图20181110115602.png"></p>
+<p>将其中的加速器地址，配置到/etc/docker/daemon.json中，然后重启docker</p>
+<p>vi /etc/docker/daemon.json<br><img src="/images/QQ截图20181110115926.png"><br>重启docker：systemctl restart docker<br><img src="/images/QQ截图20181110120138.png"></p>
+<hr>
+<p>如果后面没有加tag，默认是下载最新的版本：latest。</p>
+<p>如果想要下载其他版本，在官网上面查看自己想要下载的版本的tag：<br><img src="/images/QQ截图20181110114140.png"><br><img src="/images/QQ截图20181110114057.png"><br>比如想要下载5.6版本的mysql：<br><img src="/images/QQ截图20181110114239.png"></p>
+<p><code>docker pull mysql:5.6</code><br><img src="/images/QQ截图2018111019173723.png"></p>
+<p>3) 查看本地的镜像：<code>docker images</code><br><img src="/images/QQ截图20181110192115.png"><br>能发现，我们刚刚下载好的两个版本的mysql镜像</p>
+<p>4) 删除镜像：<code>docker rmi image_id</code></p>
+<p>其中的image_id：镜像的唯一id.</p>
+<p>删除mysql：5.6的镜像：<br><img src="/images/QQ截图20181110194611.png"><br>查看剩余的镜像：（只剩下最新版本的mysql镜像）<br><img src="/images/QQ截图20181110194728.png"></p>
+<h3 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h3><p>软件镜像（QQ安装程序）—-运行镜像—-产生一个容器（正在运行的软件，运行的QQ）；<br><img src="/images/QQ截图20181110194920.png"><br><a href="https://docs.docker.com/engine/reference/commandline/docker/" target="_blank" rel="noopener">更多命令</a></p>
+<p>现在，我们以Tomcat为例来操作演示：</p>
+<p>1）搜索镜像<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker search tomcat<br></code></pre></td></tr></table></figure></p>
+<p>2) 拉取镜像<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker pull tomcat<br></code></pre></td></tr></table></figure></p>
+<p>3) 根据镜像启动容器(第一次启动)</p>
+<p><code>docker run ‐‐name mytomcat ‐d tomcat:latest</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">--name:自己定义的容器名字，随便写。<br>-d:后台运行<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181110200332.png"></p>
+<p>4）查看<strong>运行中</strong>的容器</p>
+<p><code>docker ps</code><br><img src="/images/QQ截图20181110200655.png"></p>
+<p>5) 停止运行中的容器</p>
+<p><code>docker stop  容器的id或自定义的名字</code><br><img src="/images/QQ截图20181110200858.png"></p>
+<p>6) 查看所有的容器（运行或者不运行）</p>
+<p><code>docker ps ‐a</code><br><img src="/images/QQ截图20181110201121.png"></p>
+<p>7) 启动（暂停的）容器</p>
+<p><code>docker start 容器id</code><br><img src="/images/QQ截图20181110201246.png"></p>
+<p>8）删除一个容器</p>
+<p><code>docker rm 容器id</code></p>
+<p>注意删除镜像是 ：rmi</p>
+<p><strong>而且删除容器之前，先要停止容器的运行！！！</strong><br><img src="/images/QQ截图20181110201454.png"></p>
+<p>9）启动一个做了端口映射的tomcat</p>
+<p><code>docker run ‐d ‐p 8888:8080 tomcat:latest</code></p>
+<p>-d：后台运行<br>-p：将主机的端口映射到容器中的一个端口　　主机端口：容器内部的端口</p>
+<p>为了演示简单关闭了linux的防火墙。</p>
+<p>service firewalld status ：查看防火墙状态</p>
+<p>service firewalld stop：关闭防火墙</p>
+<p>如果不映射端口号的话，启动容器，访问Tomcat的主页，是没有作用的：<br><img src="/images/QQ截图20181110201808.png"><br><img src="/images/QQ截图20181110202000.png"></p>
+<p>发现无法访问Tomcat，因为我们只能访问到虚拟机上面的docker，不能直接访问到docker中的Tomcat，所以需要端口号映射。<br><img src="/images/QQ截图20181110202325.png"></p>
+<p>在浏览器中访问：<code>http://10.6.11.17:8888/</code><br><img src="/images/QQ截图20181110202506.png"></p>
+<p>Tomcat访问成功！！！</p>
+<p>我们也可以使用一个Tomcat镜像，开启多个Tomcat容器。<br><img src="/images/QQ截图20181110202657.png"><br>又开启了，8887和8889端口号映射的Tomcat容器。</p>
+<p>在浏览器中输入：<code>http://10.6.11.17:8887/</code> 和 <code>http://10.6.11.17:8889/</code><br><img src="/images/QQ截图20181110202836.png"><br><img src="/images/QQ截图20181110202848.png"></p>
+<p>10）查看容器的日志</p>
+<p><code>docker logs container_name/container_id</code><br><img src="/images/QQ截图20181110203052.png"></p>
+<hr>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>安装以后学习时，需要的镜像。</p>
+<h3 id="安装MySQL示例"><a href="#安装MySQL示例" class="headerlink" title="安装MySQL示例"></a>安装MySQL示例</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker pull mysql<br></code></pre></td></tr></table></figure>
+<p>错误的启动:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker run ‐‐name mysql01 ‐d mysql<br>42f09819908bb72dd99ae19e792e0a5d03c48638421fa64cce5f8ba0f40f5846<br><br>mysql退出了<br>[root@localhost ~]# docker ps ‐a<br>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS          NAMES<br>42f09819908b        mysql               &quot;docker‐entrypoint.sh&quot;   34 seconds ago      Exited(1) 33 seconds ago                   mysql01<br><br>//错误日志<br>[root@localhost ~]# docker logs 42f09819908b<br>error: database is uninitialized and password option is not specified<br>  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and<br>MYSQL_RANDOM_ROOT_PASSWORD；这个三个参数必须指定一个<br></code></pre></td></tr></table></figure></p>
+<p>查看官网：<br><img src="/images/QQ截图20181110205133.png"></p>
+<p>正确的启动：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker run ‐‐name mysql01 ‐e MYSQL_ROOT_PASSWORD=123456 ‐d mysql<br>b874c56bec49fb43024b3805ab51e9097da779f2f572c22c695305dedd684c5f<br>[root@localhost ~]# docker ps<br>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS             PORTS               NAMES<br>b874c56bec49        mysql               &quot;docker‐entrypoint.sh&quot;   4 seconds ago       Up 3seconds        3306/tcp            mysql01<br></code></pre></td></tr></table></figure></p>
+<p>打开mysql的客户端（navicat）：<br><img src="/images/QQ截图20181110205647.png"><br>点击：连接测试：<br><img src="/images/QQ截图20181110205718.png"></p>
+<p>这是因为，我们没有做端口号映射：(‐p 3306:3306)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@localhost ~]# docker run ‐p 3306:3306 ‐‐name mysql02 ‐e MYSQL_ROOT_PASSWORD=123456 ‐d mysql<br>ad10e4bc5c6a0f61cbad43898de71d366117d120e39db651844c0e73863b9434<br>[root@localhost ~]# docker ps<br>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS             PORTS                    NAMES<br>ad10e4bc5c6a        mysql               &quot;docker‐entrypoint.sh&quot;   4 seconds ago       Up 2seconds        0.0.0.0:3306‐&gt;3306/tcp   mysql02<br></code></pre></td></tr></table></figure></p>
+<p>这里将虚拟机linux的3306端口映射到docker容器的3306端口。</p>
+<p>再次尝试：mysql的客户端打开，连接我们的mysql。</p>
+<p>如果你是mysql安装的是8.0以上的版本：会出现2059 - authentication plugin ‘caching_sha2_password’ -navicat连接异常。<br><img src="/images/QQ截图20181110213957.png"></p>
+<p>这个错误的原因是由于MySQL8.0之后的加密规则为caching_sha2_password.而在此之前的加密规则为mysql_native_password。</p>
+<p>可以将加密规则改成mysql_native_password来。</p>
+<p>解决方案：</p>
+<p>1）进入mysql容器<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker exec -it 容器的id或容器的名字 /bin/bash<br></code></pre></td></tr></table></figure></p>
+<p>必须在mysql启动的时候：输入上面的命令。<br><img src="/images/QQ截图20181110214454.png"></p>
+<p>2）进入mysql：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mysql -u用户名 -p密码<br><br>比如：<br>mysql -uroot -p123456<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181110214906.png"></p>
+<p>3）修改密码的加密方式：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;password&apos;;<br><br>这里的password：写你自己想要定制的密码：<br><br>比如：<br>ALTER USER &apos;root&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;123456&apos;;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181110215258.png"></p>
+<p>4）执行命令flush privileges使权限配置项立即生效<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">flush privileges;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181110215401.png"></p>
+<p>以上就修改密码的加密方式。</p>
+<hr>
+<p>再次测试我们的mysql客户端连接：<br><img src="/images/QQ截图20181110215450.png"></p>
+<p>现在退出我们的容器：<br>使用：Ctrl+p+q</p>
+<hr>
+<p>几个其他的高级操作：(官网上面都有介绍)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker run ‐‐name mysql03 ‐v /conf/mysql:/etc/mysql/conf.d ‐e MYSQL_ROOT_PASSWORD=my‐secret‐pw ‐d mysql:tag<br><br>把主机的/conf/mysql文件夹挂载到  mysqldocker容器的/etc/mysql/conf.d文件夹里面<br>该mysql的配置文件就只需要把mysql配置文件放在自定义的文件夹下（/conf/mysql）<br><br>docker run ‐‐name some‐mysql ‐e MYSQL_ROOT_PASSWORD=my‐secret‐pw ‐d mysql:tag ‐‐character‐set‐<br>server=utf8mb4 ‐‐collation‐server=utf8mb4_unicode_ci<br>指定mysql的一些配置参数：utf-8的编码<br></code></pre></td></tr></table></figure></p>
+<h3 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h3><p>自行完成</p>
+<h3 id="安装rabbitmq"><a href="#安装rabbitmq" class="headerlink" title="安装rabbitmq"></a>安装rabbitmq</h3><p>自行完成</p>
+<h3 id="安装elasticsearch"><a href="#安装elasticsearch" class="headerlink" title="安装elasticsearch"></a>安装elasticsearch</h3><p>自行完成</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
+        
+        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/08/SpringBoot-day-06/" rel="next" title="SpringBoot_day_06"><i class="fas fa-angle-left"></i><span class="nav-title">SpringBoot_day_06</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "SpringBoot_day_07",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">41</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">14</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#核心概念"><span class="toc-text">核心概念</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#安装Docker"><span class="toc-text">安装Docker</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#安装linux虚拟机"><span class="toc-text">安装linux虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#在linux虚拟机上安装docker"><span class="toc-text">在linux虚拟机上安装docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker常用命令-amp-操作"><span class="toc-text">Docker常用命令&amp;操作</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#镜像操作"><span class="toc-text">镜像操作</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#容器操作"><span class="toc-text">容器操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#环境搭建"><span class="toc-text">环境搭建</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#安装MySQL示例"><span class="toc-text">安装MySQL示例</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#安装redis"><span class="toc-text">安装redis</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#安装rabbitmq"><span class="toc-text">安装rabbitmq</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#安装elasticsearch"><span class="toc-text">安装elasticsearch</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
