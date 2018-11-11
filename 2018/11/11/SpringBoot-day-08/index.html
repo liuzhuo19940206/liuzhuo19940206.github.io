@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>SpringBoot_day_08 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/11/SpringBoot-day-08/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">SpringBoot_day_08</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-11T10:29:04+08:00">2018-11-11 10:29:04</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>SpringBoot与数据访问<br><a id="more"></a></p>
+<h2 id="JDBC-默认支持的数据源"><a href="#JDBC-默认支持的数据源" class="headerlink" title="JDBC(默认支持的数据源)"></a>JDBC(默认支持的数据源)</h2><p>1）创建新的Springboot项目，添加web模块、mysql模块、jdbc模块<br><img src="/images/QQ截图20181111110045.png"><br><img src="/images/QQ截图20181111110143.png"><br><img src="/images/QQ截图20181111110336.png"></p>
+<p>2) 连接我们的数据库：</p>
+<p>打开我们的虚拟机，然后启动mysql的容器<br><img src="/images/QQ截图20181111110542.png"><br><img src="/images/QQ截图20181111110735.png"><br><img src="/images/QQ截图20181111110811.png"></p>
+<p>3）在我们的项目中，添加数据源的配置信息。</p>
+<p>这里使用yml文件，properties文件也一样。<br>在resources下：创建application.yml文件。<br><img src="/images/QQ截图20181111111923.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    driver-class-name: com.mysql.jdbc.Driver<br>    url: jdbc:mysql://10.6.11.17:3306/jdbc<br></code></pre></td></tr></table></figure></p>
+<p>在mysql的客户端上面，创建jdbc数据库：<br><img src="/images/QQ截图20181111111412.png"></p>
+<p>4）测试数据源是否配置成功<br>在test包下：<br><img src="/images/QQ截图20181111112125.png"></p>
+<p>效果：</p>
+<p>默认是用org.apache.tomcat.jdbc.pool.DataSource作为数据源</p>
+<p>数据源的相关配置都在DataSourceProperties里面。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)<br>public class DataSourceProperties<br>		implements BeanClassLoaderAware, EnvironmentAware, InitializingBean &#123;<br></code></pre></td></tr></table></figure></p>
+<p>5) 自动配置的原理</p>
+<p>org.springframework.boot.autoconfigure.jdbc：</p>
+<p>1、参考DataSourceConfiguration，根据配置创建数据源，默认使用Tomcat连接池；可以使用<br>spring.datasource.type指定自定义的数据源类型；</p>
+<p>2、SpringBoot默认支持的数据源：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">org.apache.tomcat.jdbc.pool.DataSource、HikariDataSource、BasicDataSource<br></code></pre></td></tr></table></figure></p>
+<p>3、自定义数据源类型<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/**<br> * Generic DataSource configuration.<br> */<br>@ConditionalOnMissingBean(DataSource.class)<br>@ConditionalOnProperty(name = &quot;spring.datasource.type&quot;)<br>static class Generic &#123;<br><br>	@Bean<br>	public DataSource dataSource(DataSourceProperties properties) &#123;<br>		return properties.initializeDataSourceBuilder().build();<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>4、自动运行sql语句的原理</p>
+<p>DataSourceAutoConfiguration:中有一个<strong>DataSourceInitializer</strong>对象。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>@ConditionalOnClass(&#123; DataSource.class, EmbeddedDatabaseType.class &#125;)<br>@EnableConfigurationProperties(DataSourceProperties.class)<br>@Import(&#123; Registrar.class, DataSourcePoolMetadataProvidersConfiguration.class &#125;)<br>public class DataSourceAutoConfiguration &#123;<br><br>	@Bean<br>	@ConditionalOnMissingBean<br>	public DataSourceInitializer dataSourceInitializer(DataSourceProperties properties,<br>			ApplicationContext applicationContext) &#123;<br>		return new DataSourceInitializer(properties, applicationContext);<br>	&#125;<br>  ···<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>DataSourceInitializer：ApplicationListener</strong><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">class DataSourceInitializer implements ApplicationListener<br></code></pre></td></tr></table></figure></p>
+<p>作用：<br>1）、runSchemaScripts();运行建表语句；</p>
+<p>2）、runDataScripts();运行插入数据的sql语句；</p>
+<p>默认只需要将文件命名为：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">schema‐*.sql、data‐*.sql<br>默认规则：schema.sql，schema‐all.sql；<br><br>自定义名字：<br>在配置文件中：<br>   schema:<br>      ‐ classpath:department.sql<br>      指定位置<br></code></pre></td></tr></table></figure></p>
+<p>验证：<br>在resources下：创建默认命名规则的：schema-all.sql文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">SET FOREIGN_KEY_CHECKS=0;<br><br>-- ----------------------------<br>-- Table structure for department<br>-- ----------------------------<br>DROP TABLE IF EXISTS `department`;<br>CREATE TABLE `department` (<br>  `id` int(11) NOT NULL AUTO_INCREMENT,<br>  `departmentName` varchar(255) DEFAULT NULL,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181111113520.png"></p>
+<p>现在jdbc中还没有department表：<br><img src="/images/QQ截图20181111113648.png"></p>
+<p>运行我们的Springboot项目：<br><img src="/images/QQ截图20181111113737.png"><br><img src="/images/QQ截图20181111113833.png"></p>
+<p>刷新jdbc数据库：<br><img src="/images/QQ截图20181111113923.png"></p>
+<hr>
+<p>使用自定义的命名规则：<br>修改schema-all.sql 的名字为：department.sql<br>在application.yml文件中：<br><img src="/images/QQ截图20181111114934.png"></p>
+<p>删除jdbc中的department表，然后再次启动Springboot项目：<br><img src="/images/QQ截图20181111115013.png"></p>
+<p>5、操作数据库：Springboot自动配置了JdbcTemplate操作数据库<br><img src="/images/QQ截图20181111115134.png" style="width:50%"><br><img src="/images/QQ截图20181111115401.png"></p>
+<p>说明Springboot已经帮我们配置好了JdbcTemplate模板引擎，我们可以直接使用：<br>创建HelloController：<br><img src="/images/QQ截图20181111120407.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class HelloController &#123;<br><br>    @Autowired<br>    private JdbcTemplate jdbcTemplate;<br><br>    @ResponseBody<br>    @RequestMapping(&quot;/query&quot;)<br>    public Map&lt;String, Object&gt; queryDepartment() &#123;<br>        List&lt;Map&lt;String, Object&gt;&gt; mapList = jdbcTemplate.queryForList(&quot;select * from department&quot;);<br>        //返回第一条数据<br>        return mapList.get(0);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>启动应用：<br><img src="/images/QQ截图20181111120130.png"></p>
+<p>打开mysql的客户端：<br>添加一条数据：<br><img src="/images/QQ截图20181111120217.png"></p>
+<p>打开浏览器：输入：<code>http://localhost:8080/query</code><br><img src="/images/QQ截图20181111120509.png"></p>
+<hr>
+<h2 id="整合Druid数据源-阿里的数据源连接池"><a href="#整合Druid数据源-阿里的数据源连接池" class="headerlink" title="整合Druid数据源(阿里的数据源连接池)"></a>整合Druid数据源(阿里的数据源连接池)</h2><p>1）导入druid的依赖<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!--导入druid的数据源--&gt;<br>&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;<br>&lt;dependency&gt;<br>	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;<br>	&lt;artifactId&gt;druid&lt;/artifactId&gt;<br>	&lt;version&gt;1.1.10&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p>2) 切换数据源：<br>使用type来切换数据源<br><img src="/images/QQ截图20181111123613.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    driver-class-name: com.mysql.jdbc.Driver<br>    url: jdbc:mysql://10.6.11.17:3306/jdbc<br>    type: com.alibaba.druid.pool.DruidDataSource<br>#    schema:<br>#      - classpath:department.sql<br></code></pre></td></tr></table></figure></p>
+<p>3) 运行测试类：<br><img src="/images/QQ截图20181111123753.png"><br><img src="/images/QQ截图20181111123907.png"><br>数据源切换成功。</p>
+<p>4）添加druid的独有配置<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    driver-class-name: com.mysql.jdbc.Driver<br>    url: jdbc:mysql://10.6.11.17:3306/jdbc<br>    type: com.alibaba.druid.pool.DruidDataSource<br><br>    #数据源其他配置<br>    initialSize: 5<br>    minIdle: 5<br>    maxActive: 20<br>    maxWait: 60000<br>    timeBetweenEvictionRunsMillis: 60000<br>    minEvictableIdleTimeMillis: 300000<br>    validationQuery: SELECT 1 FROM DUAL<br>    testWhileIdle: true<br>    testOnBorrow: false<br>    testOnReturn: false<br>    poolPreparedStatements: true<br><br>    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，&apos;wall&apos;用于防火墙<br>    filters: stat,wall,log4j<br>    maxPoolPreparedStatementPerConnectionSize: 20<br>    useGlobalDataSourceStat: true<br>    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500<br>    <br>#    schema:<br>#      - classpath:department.sql<br></code></pre></td></tr></table></figure></p>
+<p>dubug一下，看是否是其他属性配置成功：</p>
+<p>给contextLoads中的System.out.println(dataSource);打上断点<br><img src="/images/QQ截图20181111124326.png"></p>
+<p>dubug运行该测试方法：<br><img src="/images/QQ截图20181111124538.png"></p>
+<p>因为我们在application配置文件中配置的：spring-datasource:开头的配置信息，都是DataSourceProperties中的<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)<br>public class DataSourceProperties<br></code></pre></td></tr></table></figure></p>
+<p>而DataSourceProperties类中，根本没有druid那些独有的配置信息：<br><img src="/images/QQ截图20181111124846.png"></p>
+<p>5）自己配置druid数据源</p>
+<p>在config包下，创建MyDruidConfig类：<br><img src="/images/QQ截图20181111125255.png"></p>
+<p>这样就能将application配置文件中的druid的独有配置信息调入到我们的druid数据源当中了。</p>
+<p>如果没有添加@ConfigurationProperties(prefix = “spring.datasource”)的话：<br>需要自己手动一个一个的配置<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>DataSource druid() &#123;<br>    DruidDataSource druidDataSource = new DruidDataSource();<br>    druidDataSource.setInitialSize(5);<br>    druidDataSource.setMaxActive(10);<br>    ···<br>    return druidDataSource;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>再次dubug测试方法：<br><img src="/images/QQ截图20181111125737.png"></p>
+<p>6）配置druid的监控</p>
+<p>在MyDruidConfig类中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置Druid的监控<br>//1、配置一个管理后台的Servlet<br>@Bean<br>public ServletRegistrationBean statViewServlet() &#123;<br>    ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), &quot;/druid/*&quot;);<br><br>    Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();<br>    initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);<br>    initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);<br>    initParams.put(&quot;allow&quot;,&quot;&quot;);//默认就是允许所有访问<br>    initParams.put(&quot;deny&quot;,&quot;192.168.15.21&quot;);//不然访问<br><br>    bean.setInitParameters(initParams);<br>    return bean;<br>&#125;<br><br>//2、配置一个web监控的filter<br>@Bean<br>public FilterRegistrationBean webStatFilter() &#123;<br>    FilterRegistrationBean bean = new FilterRegistrationBean();<br>    bean.setFilter(new WebStatFilter());<br><br>    Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();<br>    initParams.put(&quot;exclusions&quot;,&quot;*.js,*.css,/druid/*&quot;);//排除静态资源<br><br>    bean.setInitParameters(initParams);<br>    bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));<br>    <br>    return bean;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/druid</code><br><img src="/images/QQ截图20181111130651.png"></p>
+<p>输入自己配置的用户名与密码：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);<br>initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181111130816.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/query</code></p>
+<p>然后点击SQL监控：<br><img src="/images/QQ截图20181111131006.png"></p>
+<p>点击Web应用：就是我们的配置WebAppStat List过滤器<br><img src="/images/QQ截图20181111131202.png"></p>
+<p>监控成功！！！</p>
+<hr>
+<h2 id="整合MyBatis"><a href="#整合MyBatis" class="headerlink" title="整合MyBatis"></a>整合MyBatis</h2><h3 id="前期准备阶段"><a href="#前期准备阶段" class="headerlink" title="前期准备阶段"></a>前期准备阶段</h3><p>1）创建新的项目，添加web、mysql、mybatis模块：<br><img src="/images/QQ截图20181111141702.png"></p>
+<p>导入druid依赖：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!--导入druid的数据源--&gt;<br>&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;<br>&lt;dependency&gt;<br>	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;<br>	&lt;artifactId&gt;druid&lt;/artifactId&gt;<br>	&lt;version&gt;1.1.10&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
+<p>2）创建application.yml文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    driver-class-name: com.mysql.jdbc.Driver<br>    url: jdbc:mysql://10.6.11.17:3306/mybatis<br>    type: com.alibaba.druid.pool.DruidDataSource<br><br>    #数据源其他配置<br>    initialSize: 5<br>    minIdle: 5<br>    maxActive: 20<br>    maxWait: 60000<br>    timeBetweenEvictionRunsMillis: 60000<br>    minEvictableIdleTimeMillis: 300000<br>    validationQuery: SELECT 1 FROM DUAL<br>    testWhileIdle: true<br>    testOnBorrow: false<br>    testOnReturn: false<br>    poolPreparedStatements: true<br><br>    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，&apos;wall&apos;用于防火墙<br>    filters: stat,wall,log4j<br>    maxPoolPreparedStatementPerConnectionSize: 20<br>    useGlobalDataSourceStat: true<br>    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500<br><br>    schema:<br>      - classpath:sql/department.sql<br>      - classpath:sql/employee.sql<br></code></pre></td></tr></table></figure></p>
+<p>3) 创建新的数据库mybatis：<br><img src="/images/QQ截图20181111142149.png"></p>
+<p>4）在resours下：参加过sql文件夹<br>里面放入：department.sql 和 employee.sql文件：<br><img src="/images/QQ截图20181111142335.png" style="width:50%"></p>
+<p>department.sql:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/*<br>Navicat MySQL Data Transfer<br><br>Source Server         : 本地<br>Source Server Version : 50528<br>Source Host           : 127.0.0.1:3306<br>Source Database       : restful_crud<br><br>Target Server Type    : MYSQL<br>Target Server Version : 50528<br>File Encoding         : 65001<br><br>Date: 2018-03-05 10:41:40<br>*/<br><br>SET FOREIGN_KEY_CHECKS=0;<br><br>-- ----------------------------<br>-- Table structure for department<br>-- ----------------------------<br>DROP TABLE IF EXISTS `department`;<br>CREATE TABLE `department` (<br>  `id` int(11) NOT NULL AUTO_INCREMENT,<br>  `departmentName` varchar(255) DEFAULT NULL,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;<br></code></pre></td></tr></table></figure></p>
+<p>employee.sql文件:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/*<br>Navicat MySQL Data Transfer<br><br>Source Server         : 本地<br>Source Server Version : 50528<br>Source Host           : 127.0.0.1:3306<br>Source Database       : restful_crud<br><br>Target Server Type    : MYSQL<br>Target Server Version : 50528<br>File Encoding         : 65001<br><br>Date: 2018-03-05 10:41:58<br>*/<br><br>SET FOREIGN_KEY_CHECKS=0;<br><br>-- ----------------------------<br>-- Table structure for employee<br>-- ----------------------------<br>DROP TABLE IF EXISTS `employee`;<br>CREATE TABLE `employee` (<br>  `id` int(11) NOT NULL AUTO_INCREMENT,<br>  `lastName` varchar(255) DEFAULT NULL,<br>  `email` varchar(255) DEFAULT NULL,<br>  `gender` int(2) DEFAULT NULL,<br>  `d_id` int(11) DEFAULT NULL,<br>  PRIMARY KEY (`id`)<br>) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;<br></code></pre></td></tr></table></figure></p>
+<p>5) 创建config：DruidConfig配置类：<br><img src="/images/QQ截图20181111142702.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class DruidConfig &#123;<br><br>    @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)<br>    @Bean<br>    DataSource druid() &#123;<br>        return new DruidDataSource();<br>    &#125;<br><br>    //配置Druid的监控<br>    //1、配置一个管理后台的Servlet<br>    @Bean<br>    public ServletRegistrationBean statViewServlet() &#123;<br>        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), &quot;/druid/*&quot;);<br><br>        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();<br>        initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;);<br>        initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;);<br>        initParams.put(&quot;allow&quot;, &quot;&quot;);//默认就是允许所有访问<br>        initParams.put(&quot;deny&quot;, &quot;192.168.15.21&quot;);//不然访问<br><br>        bean.setInitParameters(initParams);<br>        return bean;<br>    &#125;<br><br>    //2、配置一个web监控的filter<br>    @Bean<br>    public FilterRegistrationBean webStatFilter() &#123;<br>        FilterRegistrationBean bean = new FilterRegistrationBean();<br>        bean.setFilter(new WebStatFilter());<br><br>        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();<br>        initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;);//排除静态资源<br><br>        bean.setInitParameters(initParams);<br>        bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));<br><br>        return bean;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6) 启动Springboot应用：</p>
+<p>打开mysql的客户端：生成了两个表：<br><img src="/images/QQ截图20181111142926.png"></p>
+<p>注释掉，application配置文件中的schema：(防止再次启动应用，表又归零！)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#    schema:<br>#      - classpath:sql/department.sql<br>#      - classpath:sql/employee.sql<br></code></pre></td></tr></table></figure></p>
+<p>7）创建bean对象：</p>
+<p>根据数据库mybatis中的两个表，创建对应的JavaBean对象。<br><img src="/images/QQ截图20181111143428.png"></p>
+<p>Employee：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Employee &#123;<br><br>    private Integer id;<br>    private String lastName;<br>    private Integer gender;<br>    private String email;<br>    private Integer dId;<br><br>   ··· get和set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>Department:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Department &#123;<br><br>    private Integer id;<br>    private String departmentName;<br><br>    ··· get和set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="mybatis的使用"><a href="#mybatis的使用" class="headerlink" title="mybatis的使用"></a>mybatis的使用</h3><h4 id="注解版"><a href="#注解版" class="headerlink" title="注解版"></a>注解版</h4><p>1）创建mapper文件夹：DepartmentMapper（接口）<br><img src="/images/QQ截图20181111145746.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Mapper<br>public interface DepartmentMapper &#123;<br><br>    @Select(&quot;select * from department where id=#&#123;id&#125;&quot;)<br>    public Department getDeptById(Integer id);<br><br>    @Delete(&quot;delete from department where id=#&#123;id&#125;&quot;)<br>    public int deleteDeptById(Integer id);<br><br>    //回显主键的id。<br>    @Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)<br>    @Insert(&quot;insert into department(departmentName) values(#&#123;departmentName&#125;)&quot;)<br>    public int insertDept(Department department);<br><br>    @Update(&quot;update department set departmentName=#&#123;departmentName&#125; where id=#&#123;id&#125;&quot;)<br>    public int updateDept(Department department);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>2) 创建一个DepartmentController：<br><img src="/images/QQ截图20181111150310.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RestController<br>public class DepartmentController &#123;<br><br>    @Autowired<br>    private DepartmentMapper departmentMapper;<br><br>    @GetMapping(&quot;/dept/&#123;id&#125;&quot;)<br>    public Department findDepartmentById(@PathVariable(&quot;id&quot;) Integer id) &#123;<br>        return departmentMapper.getDeptById(id);<br>    &#125;<br><br>    @GetMapping(&quot;/dept&quot;)<br>    public Department addDepartment(Department department) &#123;<br>        departmentMapper.insertDept(department);<br>        return department;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>3) 启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept/1</code><br><img src="/images/QQ截图20181111151409.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=aa</code><br><img src="/images/QQ截图20181111151555.png"><br><img src="/images/QQ截图20181111151633.png"></p>
+<p>问题：</p>
+<p>我们将mysql中的departmentName改为：department_name.<br><img src="/images/QQ截图20181111151808.png"></p>
+<p>修改我们的DepartmentMapper中的departmentName为：department_name。<br><img src="/images/QQ截图20181111151946.png"></p>
+<p>再次启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=bb</code></p>
+<p>如果你的mybat的依赖版本的1.3.2以上，会执行成功，因为默认支持驼峰命名了。如果失败的话，我们需要自定义mybatis的规则：</p>
+<p>创建MybatisConfig配置类:<br><img src="/images/QQ截图20181111152708.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class MybatisConfig &#123;<br><br>    @Bean<br>    public ConfigurationCustomizer customizer() &#123;<br>        return new ConfigurationCustomizer() &#123;<br>            @Override<br>            public void customize(org.apache.ibatis.session.Configuration configuration) &#123;<br>                //使用驼峰命名规则<br>                configuration.setMapUnderscoreToCamelCase(true);<br>            &#125;<br>        &#125;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或者使用在配置文件中，配置驼峰命名规则。</p>
+<hr>
+<p>4）扫描多个mapper类：</p>
+<p>在配合类上面加上：<br>@MapperScan(value = “com.liuzhuo.springboot.mapper”)</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">使用MapperScan批量扫描所有的Mapper接口；<br>@MapperScan(value = &quot;com.liuzhuo.springboot.mapper&quot;)<br>@SpringBootApplication<br>public class SpringBoot06DataMybatisApplication &#123;<br>public static void main(String[] args) &#123;    <br>   SpringApplication.run(SpringBoot06DataMybatisApplication.class, args);        <br>&#125;    <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样，我们就必须要在每个mapper类上，加@Mapper注解了</p>
+<h4 id="配置文件版"><a href="#配置文件版" class="headerlink" title="配置文件版"></a>配置文件版</h4><p>1）创建EmployeeMapper接口：<br><img src="/images/QQ截图20181111154909.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//必须使用@Mapper或者@MapperScan。二者其一即可<br>public interface EmployeeMapper &#123;<br><br>    public Employee findEmplById(Integer id);<br><br>    public void insertEmpl(Employee employee);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2) 创建mybatis的全局配置文件：</p>
+<p>在resours下创建mybatis/mapper文件夹：<br><img src="/images/QQ截图20181111155138.png" style="width:50%"></p>
+<p>在mybatis文件夹下，创建mybatis的全局配置文件：<br>不会写的话，看mybatis的官网文档，mybatis已经被整合到github上面：<br><img src="/images/QQ截图20181111155348.png"><br><img src="/images/QQ截图20181111155424.png"><br><img src="/images/QQ截图20181111155456.png"></p>
+<p><a href="http://www.mybatis.org/mybatis-3/" target="_blank" rel="noopener">mybatis-3的官方文档</a></p>
+<p>其中的什么数据源，mapper的文件扫描，我们全部删除，我们已经使用application.yml文件配置了。</p>
+<p>最终mybatis-config.xml：</p>
+<p>就设置了一个使用驼峰命名法<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE configuration<br>        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;<br>&lt;configuration&gt;<br>&lt;settings&gt;<br>    &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;<br>&lt;/settings&gt;<br>&lt;/configuration&gt;<br></code></pre></td></tr></table></figure></p>
+<p>3）创建mapper.xml文件：</p>
+<p>在mapper文件夹下，创建employee-mapper.xml<br><img src="/images/QQ截图20181111160017.png" style="width:50%"></p>
+<p>文件不会写，看官方文档：<br><img src="/images/QQ截图20181111160123.png"></p>
+<p>最终employee-mapper.xml：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br>&lt;mapper namespace=&quot;com.liuzhuo.springboot.mapper.EmployeeMapper&quot;&gt;<br>    &lt;!--<br>        public Employee findEmplById(Integer id);<br>        public Employee insertEmpl(Employee employee);<br>    --&gt;<br>    &lt;select id=&quot;findEmplById&quot; resultType=&quot;com.liuzhuo.springboot.bean.Employee&quot;&gt;<br>        select * from employee where id = #&#123;id&#125;<br>    &lt;/select&gt;<br><br>    &lt;insert id=&quot;insertEmpl&quot; &gt;<br>        INSERT INTO employee(lastName,email,gender,d_id) VALUES (#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;,#&#123;dId&#125;)<br>    &lt;/insert&gt;<br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>4) 在application.yml文件中，制定全局mybatis.xml和mapper.xml的映射：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mybatis:<br>  config-location: classpath:mybatis/mybatis-config.xml 指定全局配置文件的位置<br>  mapper-locations: classpath:mybatis/mapper/*.xml 指定sql映射文件的位置<br></code></pre></td></tr></table></figure></p>
+<p>5) 创建EmployeeController：<br><img src="/images/QQ截图20181111161700.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RestController<br>public class EmployeeController &#123;<br><br>    @Autowired<br>    private EmployeeMapper employeeMapper;<br><br>    @GetMapping(&quot;/empl/&#123;id&#125;&quot;)<br>    public Employee findEmplById(@PathVariable(&quot;id&quot;) Integer id) &#123;<br>        return employeeMapper.findEmplById(id);<br>    &#125;<br><br>    @GetMapping(&quot;/empl&quot;)<br>    public Employee insertEmpl(Employee employee) &#123;<br>        employeeMapper.insertEmpl(employee);<br>        return employee;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>6) 启动Springboot应用</p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="/images/QQ截图20181111161941.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl?lastName=jack&amp;&amp;email=4324324@qq.com&amp;&amp;gender=1&amp;&amp;dId=2</code><br><img src="/images/QQ截图20181111163225.png"></p>
+<p>再次浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="/images/QQ截图20181111163307.png"></p>
+<p>最主要的就是在application配置文件中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mybatis:<br>  config-location: classpath:mybatis/mybatis-config.xml<br>  mapper-locations: classpath:mybatis/mapper/*.xml<br></code></pre></td></tr></table></figure></p>
+<p>更多使用参照:<br><a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/" target="_blank" rel="noopener">mybatis-spring-boot-autoconfigure</a></p>
+<hr>
+<h2 id="整合SpringData-JPA"><a href="#整合SpringData-JPA" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h2><h3 id="SpringData简介"><a href="#SpringData简介" class="headerlink" title="SpringData简介"></a>SpringData简介</h3><p><img src="/images/QQ截图20181111165834.png"></p>
+<h3 id="整合SpringData-JPA-1"><a href="#整合SpringData-JPA-1" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h3><p>JPA:ORM（Object Relational Mapping）</p>
+<p>1）创建新的Springboot项目，添加web、mysql、jpa模块：<br><img src="/images/QQ截图20181111170202.png"></p>
+<p>2）在application.yml配置文件中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring:<br>  datasource:<br>    username: root<br>    password: 123456<br>    driver-class-name: com.mysql.jdbc.Driver<br>    url: jdbc:mysql://10.6.11.17:3306/jpa<br>  jpa:<br>#  自动创建数据库的表<br>    hibernate:<br>      ddl-auto: update<br>#  显示sql语句<br>    show-sql: true<br></code></pre></td></tr></table></figure></p>
+<p>3) 在mysql客户端中创建jpa数据库：<br><img src="/images/QQ截图20181111170624.png"></p>
+<p>4）<strong>编写一个实体类（bean）和数据表进行映射，并且配置好映射关系</strong></p>
+<p>在bean包下，创建User类:<br><img src="/images/QQ截图20181111171609.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//使用JPA注解配置映射关系<br>@Entity  //表名是一个实体与数据库中的某个表对应<br>@Table(name = &quot;t_user&quot;) //表示User类与t_user表对象，不写的话，默认就类名小写的表名<br>public class User &#123;<br><br>    @Id //这是一个主键：javax.persistence.Id;<br>    @GeneratedValue(strategy = GenerationType.IDENTITY)//自增主键<br>    private Integer id;<br><br>    @Column(name = &quot;last_name&quot;, length = 50)//这是和数据表对应的一个列<br>    private String lastName;<br><br>    @Column //省略默认列名就是属性名<br>    private String email;<br>    <br>   ····get和set方法<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>5）编写一个Dao接口来操作实体类对应的数据表（Repository）：</p>
+<p>继承JpaRepository类就行：&lt;T,U&gt;: T : 实体类， U : 主键类型<br><img src="/images/QQ截图20181111171846.png"></p>
+<p>6）基本的配置（JpaProperties）<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring: <br> jpa:<br>    hibernate:<br>#     更新或者创建数据表结构<br>      ddl‐auto: update<br>#    控制台显示SQL<br>    show‐sql: true<br></code></pre></td></tr></table></figure></p>
+<p>7) 编写UserController类<br><img src="/images/QQ截图20181111172435.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RestController<br>public class UserController &#123;<br><br>    @Autowired<br>    private UserRepository userRepository;<br><br><br>    @GetMapping(&quot;/user/&#123;id&#125;&quot;)<br>    public User findUserById(@PathVariable(&quot;id&quot;) Integer id) &#123;<br>        User user = userRepository.findOne(id);<br>        return user;<br>    &#125;<br><br>    @GetMapping(&quot;/user&quot;)<br>    public User insertUser(User user) &#123;<br>        User save = userRepository.save(user);<br>        return save;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>8) 启动Springboot应用：<br>打开mysql的客户端：<br><img src="/images/QQ截图20181111172613.png"><br>自动帮我们创建了t_user表</p>
+<p>在浏览器中输入：<code>http://localhost:8080/user/1</code><br><img src="/images/QQ截图20181111172801.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/user?lastName=zhangsan&amp;email=89028394@qq.com</code><br><img src="/images/QQ截图20181111172917.png"></p>
+<p>控制台：（打印出了sql语句）<br><img src="/images/QQ截图20181111173008.png"></p>
+<p>mysql客户端：<br><img src="/images/QQ截图20181111173129.png"></p>
+<p>其他博客：</p>
+<p><a href="https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3" target="_blank" rel="noopener">https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3</a></p>
+<p><a href="https://blog.csdn.net/suo082407128/article/details/60963161" target="_blank" rel="noopener">https://blog.csdn.net/suo082407128/article/details/60963161</a></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
+        
+        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/09/SpringBoot-day-07/" rel="next" title="SpringBoot_day_07"><i class="fas fa-angle-left"></i><span class="nav-title">SpringBoot_day_07</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "SpringBoot_day_08",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">42</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">18</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">14</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#JDBC-默认支持的数据源"><span class="toc-text">JDBC(默认支持的数据源)</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#整合Druid数据源-阿里的数据源连接池"><span class="toc-text">整合Druid数据源(阿里的数据源连接池)</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#整合MyBatis"><span class="toc-text">整合MyBatis</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#前期准备阶段"><span class="toc-text">前期准备阶段</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#mybatis的使用"><span class="toc-text">mybatis的使用</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#注解版"><span class="toc-text">注解版</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#配置文件版"><span class="toc-text">配置文件版</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#整合SpringData-JPA"><span class="toc-text">整合SpringData JPA</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SpringData简介"><span class="toc-text">SpringData简介</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#整合SpringData-JPA-1"><span class="toc-text">整合SpringData JPA</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
