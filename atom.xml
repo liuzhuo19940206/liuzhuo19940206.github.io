@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-11T09:47:40.246Z</updated>
+  <updated>2018-11-12T07:40:15.047Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot_day_09</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/12/SpringBoot-day-09/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/12/SpringBoot-day-09/</id>
+    <published>2018-11-12T02:40:49.000Z</published>
+    <updated>2018-11-12T07:40:15.047Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Spring Boot启动配置原理：启动原理、运行流程、自动配置原理。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
+    
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot_day_08</title>
@@ -443,27 +467,6 @@
     
       &lt;p&gt;&lt;strong&gt;Spring容器的创建过程&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;今天，我们来统一学习一下，Spring容器的整个创建过程。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_15</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/22/spring-annotation-day-15/</id>
-    <published>2018-10-22T02:05:14.000Z</published>
-    <updated>2018-10-28T06:23:23.175Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;Spring注解开发&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点&lt;br&gt;
     
     </summary>
     
