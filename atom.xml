@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-12T07:40:15.047Z</updated>
+  <updated>2018-11-14T12:44:26.673Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot与缓存</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot%E4%B8%8E%E7%BC%93%E5%AD%98/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot与缓存/</id>
+    <published>2018-11-13T02:27:48.000Z</published>
+    <updated>2018-11-14T12:44:26.673Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JSR-107、Spring缓存抽象、整合Redi&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot_day_09</title>
@@ -453,27 +477,6 @@
     
     
       <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>spring_annotation_day_16</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/23/spring-annotation-day-16/</id>
-    <published>2018-10-23T02:33:28.000Z</published>
-    <updated>2018-10-28T06:22:14.857Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;Spring容器的创建过程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;今天，我们来统一学习一下，Spring容器的整个创建过程。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/categories/spring-annotation/"/>
-    
-    
-      <category term="spring_annotation" scheme="http://liuzhuo19940206.github.io/tags/spring-annotation/"/>
     
   </entry>
   
