@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-14T12:44:26.673Z</updated>
+  <updated>2018-11-15T11:53:27.828Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,15 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Spring Boot与消息</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/15/Spring-Boot%E4%B8%8E%E6%B6%88%E6%81%AF/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/15/Spring-Boot与消息/</id>
+    <published>2018-11-15T04:50:02.000Z</published>
+    <updated>2018-11-15T11:53:27.828Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JMS、AMQP、RabbitMQ的消息处理机制&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="消息" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E6%B6%88%E6%81%AF/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="消息" scheme="http://liuzhuo19940206.github.io/tags/%E6%B6%88%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring Boot与缓存</title>
     <link href="http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot%E4%B8%8E%E7%BC%93%E5%AD%98/"/>
     <id>http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot与缓存/</id>
     <published>2018-11-13T02:27:48.000Z</published>
-    <updated>2018-11-14T12:44:26.673Z</updated>
+    <updated>2018-11-15T04:49:29.953Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;JSR-107、Spring缓存抽象、整合Redi&lt;br&gt;
+      &lt;p&gt;JSR-107、Spring缓存抽象、整合Redis&lt;br&gt;
     
     </summary>
     
@@ -449,27 +473,6 @@
     
       &lt;p&gt;&lt;strong&gt;SpringMVC-Return Values返回值&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;本篇文章，主要讲解SpringMVC的返回值的使用。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/categories/SpringMVC/"/>
-    
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMVC架构与流程</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%B5%81%E7%A8%8B/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/24/SpringMVC架构与流程/</id>
-    <published>2018-10-24T07:24:40.000Z</published>
-    <updated>2018-10-28T06:19:43.694Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;SpringMVC的架构与流程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;探究MVC在SpringMVC中的关系。&lt;br&gt;
     
     </summary>
     
