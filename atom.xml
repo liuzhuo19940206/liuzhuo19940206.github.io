@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-15T11:53:27.828Z</updated>
+  <updated>2018-11-16T12:32:55.218Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot与检索</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/16/Spring-Boot%E4%B8%8E%E6%A3%80%E7%B4%A2/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/16/Spring-Boot与检索/</id>
+    <published>2018-11-16T06:35:48.000Z</published>
+    <updated>2018-11-16T12:32:55.218Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ElasticSearch&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="检索" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E6%A3%80%E7%B4%A2/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="检索" scheme="http://liuzhuo19940206.github.io/tags/%E6%A3%80%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot与消息</title>
@@ -452,27 +476,6 @@
     
       &lt;p&gt;&lt;strong&gt;SpringMVC-参数绑定&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;探究SpringMVC中控制层的方法中的参数绑定&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/categories/SpringMVC/"/>
-    
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMVC-Return Values返回值</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/24/Values%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/24/Values返回值/</id>
-    <published>2018-10-24T07:44:17.000Z</published>
-    <updated>2018-10-28T06:12:43.024Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;SpringMVC-Return Values返回值&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;本篇文章，主要讲解SpringMVC的返回值的使用。&lt;/p&gt;
     
     </summary>
     
