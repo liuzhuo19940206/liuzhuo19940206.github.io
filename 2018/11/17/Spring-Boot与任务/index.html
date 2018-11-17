@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Spring Boot与任务 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/17/Spring-Boot与任务/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Spring Boot与任务</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-17T10:12:03+08:00">2018-11-17 10:12:03</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/任务/" itemprop="url" rel="index"><span itemprop="name">任务</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>异步任务、定时任务、邮件任务<br><a id="more"></a></p>
+<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>异步任务，是Spring帮我们开启线程池，创建一个新的线程来执行我们的方法，就不会有卡顿的现象。</p>
+<p>在Java应用中，绝大多数情况下都是通过同步的方式来实现交互处理的；但是在处理与第三方系统交互的时候，容易造成响应迟缓的情况，之前大部分都是使用多线程来完成此类任务，其实，在Spring 3.x之后，就已经内置了@Async来完美解决这个问题。</p>
+<p><font color="red"><strong>两个注解：</strong></font><br>@EnableAysnc、@Aysnc</p>
+<p>1）创建Springboot项目，添加Web模块。<br><img src="/images/QQ截图20181117105809.png"></p>
+<p>2) 创建service、controller模块<br><img src="/images/QQ截图20181117110232.png"><br><img src="/images/QQ截图20181117110258.png"></p>
+<p>3）启动Springboot应用</p>
+<p>在浏览器中输入：<code>http://localhost:8080/async</code><br><img src="/images/QQ截图20181117110457.png"><br><img src="/images/QQ截图20181117110539.png"></p>
+<p>4) 修改成异步执行</p>
+<p>添加@Async注解：表示是异步方法。<br><img src="/images/QQ截图20181117110723.png"></p>
+<p>在启动类上，添加@EnableAsync注解<br><img src="/images/QQ截图20181117110835.png"></p>
+<p>5）重启应用</p>
+<p>在浏览器中输入：<code>http://localhost:8080/async</code></p>
+<p>会发现，页面会瞬速响应，而控制台的执行任务的输出会停顿三秒。起到了异步的效果！</p>
+<hr>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>项目开发中经常需要执行一些定时任务，比如需要在每天凌晨时候，分析一次前一天的日志信息。Spring为我们提供了异步执行任务调度的方式，提供<strong>TaskExecutor 、TaskScheduler 接口</strong>。</p>
+<p><font color="red"><strong>两个注解</strong>：</font><strong>@EnableScheduling、@Scheduled</strong></p>
+<p><strong>cron表达式：</strong><br><img src="/images/QQ截图20181117111444.png" style="width:50%"><br><img src="/images/QQ截图20181117111511.png" style="width:50%"></p>
+<p>1）在service包：创建ScheduledService：<br><img src="/images/QQ截图20181117113534.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Service<br>public class ScheduledService &#123;<br><br>    /**<br>     * second(秒) , minute(分), hour(时), day of month(日), month(月) , day of week.(周几)<br>     * 例子：[0 * * * * MON-SAT]:代表每月，每日，每时，每分每秒的周一到周六的0秒执行<br>     */<br>    @Scheduled(cron =&quot;0 * * * * MON-SAT&quot;)<br>    public void hello()&#123;<br>        System.out.println(&quot;hello ···&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2）在启动类上，添加@EnableScheduling：<br><img src="/images/QQ截图20181117113223.png"></p>
+<p>3）启动应用<br><img src="/images/QQ截图20181117113757.png"></p>
+<p>更多写法：参考上面的<strong>cron表达式</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">,(逗号)：枚举的意思，[0,1,2,3,4 * * * * *]:就是0、1、2、3、4秒执行一次<br><br>-(减号):区间的意思，[0-4 * * * * *] : 和上面的意思一样<br><br>/(斜杆):步长的意思，[0/4 * * * * *]:就是0秒开始执行，每隔4秒执行一次<br><br>当每日与周几冲突时，请使用 ？代替 *。<br></code></pre></td></tr></table></figure>
+<p>案例：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[0 0/5 14,18 * * ?]:每天14整点，和18整点，每隔5分钟执行一次。<br><br>[0 15 10 ? * 1-6]: 每个月的周一到周六10:15:00执行一次<br><br>[0 0 2 ？* 6L]:每个月的最后一个周六凌晨两点执行一次<br><br>[0 0 2 LW * ?]:每个月的最后一个工作日凌晨两点执行一次<br><br>[0 0 2-4 ? * 1#1]:每一个月的第一个周一凌晨2点到4点期间，每个整点，整秒执行一次。（ps：1#4 就是每个月的第四个周一）<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="邮件任务"><a href="#邮件任务" class="headerlink" title="邮件任务"></a>邮件任务</h2><p>• 邮件发送需要引入spring-boot-starter-mail<br>• Spring Boot 自动配置MailSenderAutoConfiguration<br>• 定义MailProperties内容，配置在application.yml中<br>• 自动装配JavaMailSender<br>• 测试邮件发送</p>
+<p>接下来，我们演示：使用QQ邮箱给163邮箱发送邮件的案例</p>
+<p>1）导入spring-boot-starter-mail依赖：<br><img src="/images/QQ截图20181117120605.png"></p>
+<p>2）配置邮件的信息：</p>
+<p>spring.mail.username：设置发送者的邮箱的用户名</p>
+<p>spring.mail.password：不是登入邮箱的密码，而是你的邮箱的服务器的生成的密码。</p>
+<p>如果使用的是qq邮箱的话，打开qq邮箱，点击设置：<br><img src="/images/QQ截图20181117121032.png"></p>
+<p>然后点击<strong>账号</strong>，找到POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务：<br><img src="/images/QQ截图20181117121208.png"></p>
+<p>将POP3/SMTP服务开启，点击开启：<br><img src="/images/QQ截图20181117121406.png"></p>
+<p>发送短信：点击我已发送：<br><img src="/images/QQ截图20181117121551.png"></p>
+<p>看到下面的密码了，就是你的设置密码了。</p>
+<p>spring.mail.password=eaqltjcbbababcje</p>
+<p>spring.mail.host：配置的是你的邮箱服务器的SMTP地址<br><img src="/images/QQ截图20181117121909.png"><br><img src="/images/QQ截图20181117121941.png"></p>
+<p>spring.mail.host=smtp.qq.com</p>
+<p>完整的application配置文件内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#qq邮箱的用户名<br>spring.mail.username=575920824@qq.com<br>#你的服务器生成的POP3安全密码<br>spring.mail.password=eaqltjcbbababcje<br>#配置的是你的邮箱服务器的SMTP<br>spring.mail.host=smtp.qq.com<br></code></pre></td></tr></table></figure></p>
+<p>3) 在测试类下，编写发送邮件的测试方法<br><img src="/images/QQ截图20181117123107.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@RunWith(SpringRunner.class)<br>@SpringBootTest<br>public class SpringBoot04TaskApplicationTests &#123;<br><br>	@Autowired<br>	private JavaMailSenderImpl javaMailSender;<br><br>	@Test<br>	public void sendSimpleMail()&#123;<br>		SimpleMailMessage mailMessage = new SimpleMailMessage();<br>		//设置主题<br>		mailMessage.setSubject(&quot;今天下午7点到9点开会&quot;);<br>		//设置正文<br>		mailMessage.setText(&quot;关于XXX的会议&quot;);<br>		//设置接受者：你的163邮箱的账号<br>		mailMessage.setTo(&quot;18896991176@163.com&quot;);<br>		//设置发送者<br>		mailMessage.setFrom(&quot;575920824@qq.com&quot;);<br>		javaMailSender.send(mailMessage);<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>4) 测试运行：<br><img src="/images/QQ截图20181117123236.png"></p>
+<p>发送成功：如果你的出现异常，请在application配置文件中：</p>
+<p>添加：spring.mail.properties.mail.smtp.sst.enable=true</p>
+<p>打开你的163邮箱：<br><img src="/images/QQ截图20181117123535.png"><br><img src="/images/QQ截图20181117123558.png"><br><img src="/images/QQ截图20181117123648.png"></p>
+<p>以上就是发送简单邮箱的方法，现在我们来发送复杂邮件，携带附件的邮箱：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void sendMail() throws Exception&#123;<br>	//创建复杂邮件<br>	MimeMessage mimeMessage = javaMailSender.createMimeMessage();<br>        //new一个复杂邮件的工具类<br>	//第二个参数：true，表示发送附件的邮箱<br>	MimeMessageHelper message = new MimeMessageHelper(mimeMessage,true);<br>	//设置主题<br>	message.setSubject(&quot;今天下午7点到9点开会&quot;);<br>	//设置正文,第二个参数：表示发送的是html的文本<br>	message.setText(&quot;&lt;b style=&apos;color:red&apos;&gt;关于XXX的会议&lt;/b&gt;&quot;,true);<br>	//设置接受者<br>	message.setTo(&quot;18896991176@163.com&quot;);<br>	//设置发送者<br>	message.setFrom(&quot;575920824@qq.com&quot;);<br><br>	//上传附件<br>	message.addAttachment(&quot;1.jpg&quot;,new File(&quot;C:\\Users\\liuzhuo\\Pictures\\Saved Pictures\\123.jpg&quot;));<br>	message.addAttachment(&quot;2.jpg&quot;,new File(&quot;C:\\Users\\liuzhuo\\Pictures\\Saved Pictures\\gakki.jpg&quot;));<br><br>	//发送邮件<br>	javaMailSender.send(mimeMessage);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>测试：<br><img src="/images/QQ截图20181117125016.png"><br><img src="/images/QQ截图20181117125041.png"><br><img src="/images/QQ截图20181117125238.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
+        
+        <a class="post-tag button" href="/tags/任务/" rel="tag"><i class="fas fa-tags"></i>任务</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/16/Spring-Boot与检索/" rel="next" title="Spring Boot与检索"><i class="fas fa-angle-left"></i><span class="nav-title">Spring Boot与检索</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Spring Boot与任务",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">47</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">22</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">18</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#异步任务"><span class="toc-text">异步任务</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#定时任务"><span class="toc-text">定时任务</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#邮件任务"><span class="toc-text">邮件任务</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
