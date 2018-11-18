@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Spring Boot与安全 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/18/Spring-Boot与安全/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Spring Boot与安全</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-18T10:32:55+08:00">2018-11-18 10:32:55</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/安全/" itemprop="url" rel="index"><span itemprop="name">安全</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>安全、Spring Security. 比如身份认证，用户权限等，市面上有两大主流安全框架：第一个是Apache的 <strong>Shiro</strong>，第二个就是Spring的<strong>Security</strong>。<br><a id="more"></a></p>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><p><strong>Spring Security</strong>是针对Spring项目的安全框架，也是Spring Boot底层安全模块默认的技术选型。他可以实现强大的web安全控制。对于安全控制，我们仅需引入spring-boot-starter-security模块，进行少量的配置，即可实现强大的安全管理。</p>
+<p>几个类：</p>
+<ul>
+<li>WebSecurityConfigurerAdapter：自定义Security策略</li>
+<li>AuthenticationManagerBuilder：自定义认证策略</li>
+<li>@EnableWebSecurity：开启WebSecurity模式</li>
+</ul>
+<p>应用程序的两个主要区域是“认证”和“授权”（或者访问控制）。这两个主要区域是Spring Security 的两个目标。</p>
+<p>• “认证”（Authentication），是建立一个他声明的主体的过程（一个“主体”一般是指用户，设备或一些可以在你的应用程序中执行动作的其他系统）。</p>
+<p>• “授权”（Authorization）指确定一个主体是否允许在你的应用程序执行一个动作的过程。为了抵达需要授权的店，主体的身份已经有认证过程建立。</p>
+<p>• 这个概念是通用的而不只在Spring Security中。</p>
+<p>1) 创建新的Springboot项目，添加Web、Themleaf模块：<br><img src="/images/QQ截图20181118110926.png"></p>
+<p>2) 在resources中书写页面：<br><img src="/images/QQ截图20181118111136.png"></p>
+<p>3）书写一个java类：(KungfuController)<br><img src="/images/QQ截图20181118111658.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class KungfuController &#123;<br>    private final String PREFIX = &quot;pages/&quot;;<br><br>    /**<br>     * 欢迎页<br>     *<br>     * @return<br>     */<br>    @GetMapping(&quot;/&quot;)<br>    public String index() &#123;<br>        return &quot;welcome&quot;;<br>    &#125;<br><br>    /**<br>     * 登陆页<br>     *<br>     * @return<br>     */<br>    @GetMapping(&quot;/userlogin&quot;)<br>    public String loginPage() &#123;<br>        return PREFIX + &quot;login&quot;;<br>    &#125;<br><br><br>    /**<br>     * level1页面映射<br>     *<br>     * @param path<br>     * @return<br>     */<br>    @GetMapping(&quot;/level1/&#123;path&#125;&quot;)<br>    public String level1(@PathVariable(&quot;path&quot;) String path) &#123;<br>        return PREFIX + &quot;level1/&quot; + path;<br>    &#125;<br><br>    /**<br>     * level2页面映射<br>     *<br>     * @param path<br>     * @return<br>     */<br>    @GetMapping(&quot;/level2/&#123;path&#125;&quot;)<br>    public String level2(@PathVariable(&quot;path&quot;) String path) &#123;<br>        return PREFIX + &quot;level2/&quot; + path;<br>    &#125;<br><br>    /**<br>     * level3页面映射<br>     *<br>     * @param path<br>     * @return<br>     */<br>    @GetMapping(&quot;/level3/&#123;path&#125;&quot;)<br>    public String level3(@PathVariable(&quot;path&quot;) String path) &#123;<br>        return PREFIX + &quot;level3/&quot; + path;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>这里，大家可以有自己的页面，和controller类，只是简单的访问页面而已，没有什么业务逻辑。</p>
+<p>4）启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181118112006.png"><br><img src="/images/QQ截图20181118112040.png"></p>
+<p>这里是，thymeleaf的版本比较低。<br><img src="/images/QQ截图20181118112604.png"></p>
+<p>我们要切换成3版本以上的。切换thymeleaf的时候，不要忘记thymeleaf-layout的版本。<br><img src="/images/QQ截图20181118113001.png"></p>
+<p>5）重启Springboot应用：<br><img src="/images/QQ截图20181118113131.png"></p>
+<p>页面解析成功。</p>
+<hr>
+<p>上面，是没有使用Spring Security的功能，页面上的所有超链接都能访问。</p>
+<h3 id="整合Spring-Security模块"><a href="#整合Spring-Security模块" class="headerlink" title="整合Spring Security模块"></a>整合Spring Security模块</h3><p>现在，我们加入Spring Security模块。</p>
+<p>1）导入：spring-boot-starter-security<br><img src="/images/QQ截图20181118122302.png"></p>
+<p>2）打开Spring的官网，找到Spring Security模块：<br><img src="/images/QQ截图20181118122433.png"><br><img src="/images/QQ截图20181118122802.png"></p>
+<p><a href="https://docs.spring.io/spring-security/site/docs/4.2.8.RELEASE/guides/html5/helloworld-boot.html" target="_blank" rel="noopener">官方参考文档</a></p>
+<p>说明，第一步，我们需要写一个Spring Security的配置类，标记@EnableWebSecurity注解，并且继承 WebSecurityConfigurerAdapter</p>
+<p>在我们的项目中，添加config包，并创建MySecurityConfig类：<br><img src="/images/QQ截图20181118140618.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@EnableWebSecurity<br>public class MySecurityConfig extends WebSecurityConfigurerAdapter &#123;<br><br>    //设置访问权限的<br>    @Override<br>    protected void configure(HttpSecurity http) throws Exception &#123;<br>        //super.configure(http);<br>        http.authorizeRequests().mvcMatchers(&quot;/&quot;).permitAll()<br>                .mvcMatchers(&quot;/level1/**&quot;).hasRole(&quot;VIP1&quot;)<br>                .mvcMatchers(&quot;/level2/**&quot;).hasRole(&quot;VIP2&quot;)<br>                .mvcMatchers(&quot;/level3/**&quot;).hasRole(&quot;VIP3&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>以上的方法的，就是访问”/“: 所有的人都可以访问，而访问”/level1/**”下的请求，必须是”VIP1”用户，其他类似。</p>
+<p>现在重启Springboot应用：<br><img src="/images/QQ截图20181118140836.png"></p>
+<p>访问普通武功秘籍下的超链接：罗汉拳、武当长拳、全真剑法其中的任意一个。</p>
+<p><strong>PS：普通武功秘籍是level1，高级武功秘籍是level2，绝世武功秘籍是level3</strong></p>
+<p>比如访问：罗汉拳(/level1/1)<br><img src="/images/QQ截图20181118141225.png"></p>
+<p>现在出现了，403：拒绝访问，即没有访问权限！</p>
+<p>接下来，我们配置授权的用户：</p>
+<p>修改configure方法：<br><img src="/images/QQ截图20181118141803.png"></p>
+<p>此时重启，访问罗汉拳的话，会重定向到/login请求，请求登入：(Spring Security 自动帮我们配合的)<br><img src="/images/QQ截图20181118141855.png"></p>
+<p>此时，还没有配置用户信息，在MySecurityConfig类：添加新的方法：<br><img src="/images/QQ截图20181118142152.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Autowired<br>public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception &#123;<br>    auth.inMemoryAuthentication()<br>            .withUser(&quot;zhangsan&quot;).password(&quot;123456&quot;).roles(&quot;VIP1&quot;,&quot;VIP2&quot;)<br>            .and()<br>            .withUser(&quot;lisi&quot;).password(&quot;123456&quot;).roles(&quot;VIP2&quot;,&quot;VIP3&quot;)<br>            .and()<br>            .withUser(&quot;wangwu&quot;).password(&quot;123456&quot;).roles(&quot;VIP1&quot;,&quot;VIP3&quot;);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong>使用inMemoryAuthentication：是在内存中配合用户的信息，这里是简单起见，我们一般需要将配置保存到数据库中。</p>
+<p>这里，配置了用户名：zhangsan，密码：123456，用户的角色是:VIP1,VIP2. 其他类似。</p>
+<p>重启应用，访问罗汉拳：<br><img src="/images/QQ截图20181118142453.png"><br>登入用户和密码：zhangsan，123456<br><img src="/images/QQ截图20181118142545.png"><br><img src="/images/QQ截图20181118142639.png"><br>访问成功，有level1的权限。</p>
+<p>点击返回，访问<strong>普通武功秘籍</strong> 和 <strong>高级武功秘籍</strong> 下的，<strong>其他秘籍</strong>，此时都不会被拦截了。</p>
+<p>因为张三用户，有level1 和 level2 的访问权限。如果访问 <strong>绝世武功秘籍(level3)</strong>，就会出现403.</p>
+<h3 id="注销登入"><a href="#注销登入" class="headerlink" title="注销登入"></a>注销登入</h3><p>现在，我们只能登入用户，还不能注销，怎么注销用户呢？</p>
+<p>1）修改MySecurityConfig的：configure(HttpSecurity http)<br><img src="/images/QQ截图20181118144712.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//设置访问权限的<br>@Override<br>protected void configure(HttpSecurity http) throws Exception &#123;<br>    //super.configure(http);<br>    http.authorizeRequests().mvcMatchers(&quot;/&quot;).permitAll()<br>            .mvcMatchers(&quot;/level1/**&quot;).hasRole(&quot;VIP1&quot;)<br>            .mvcMatchers(&quot;/level2/**&quot;).hasRole(&quot;VIP2&quot;)<br>            .mvcMatchers(&quot;/level3/**&quot;).hasRole(&quot;VIP3&quot;)<br>            .and()<br>            //自动配置了授权的,当没有权限的时候，会让你登入<br>            //自动重定向到/login请求，请求登陆。<br>            .formLogin();<br><br>    //自动帮我们注销登入。<br>    //1.需要在页面发一个/logout的post请求<br>    //2.注销成功后，会重定向到：login?logout，会让你重新登入。<br>    http.logout();<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>2）在welcome页面中，添加注销的按钮：<br><img src="/images/QQ截图20181118144334.png"></p>
+<p>3）启动程序</p>
+<p>先登入用户成功，访问能访问的权限，都可以！然后点击注销按钮：<br><img src="/images/QQ截图20181118144520.png"><br><img src="/images/QQ截图20181118144648.png"></p>
+<p>注销成功。</p>
+<p>如果，我们不想让注销成功后，返回登入页面呢？那可以修改配置：<br><img src="/images/QQ截图20181118144937.png"></p>
+<p>此时，注销成功后会跳转到主页了。</p>
+<h3 id="完成我们的security模块"><a href="#完成我们的security模块" class="headerlink" title="完成我们的security模块"></a>完成我们的security模块</h3><p>现在，我们想让登入成功后，显示XX登入成功，给他看见能够访问的页面信息，不能访问的就不显示出来。</p>
+<p>1）这里我们需要thymeleaf提供的安全的标签功能，需要导入相关的模块：<br><img src="/images/QQ截图20181118150104.png"></p>
+<p>2）在我们的welcome页面中。添加安全的命名空间：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">xmlns:sec=&quot;http://www.thymeleaf.org/thymeleaf-extras-springsecurity4&quot;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181118150442.png"></p>
+<p>接下来：我们就可以使用 sec 前缀的标签了。</p>
+<p>给 登入 和 注销 添加 div 然后判断是否有权限：<br><img src="/images/QQ截图20181118150837.png"></p>
+<p>给三大武功秘籍，添加用户权限：<br><img src="/images/QQ截图20181118151321.png"></p>
+<p><img src="/images/QQ截图20181118151330.png"></p>
+<p><img src="/images/QQ截图20181118151342.png"></p>
+<p>重启应用：</p>
+<p>观察我们的应用效果！</p>
+<h3 id="记住我"><a href="#记住我" class="headerlink" title="记住我"></a>记住我</h3><p>只要在：MySecurityConfig 类中的：configure(HttpSecurity http)方法中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">http.rememberMe();<br></code></pre></td></tr></table></figure></p>
+<p>这样的话，spring Security就会记住密码，下次不需要登入，直接进入。原理就是发了一个remember-me的cookie而已。</p>
+<hr>
+<p>如果，想要修改登入界面，使用我们自己定义的登入页面：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">http.formLogin().loginPage(&quot;/userlogin&quot;);<br></code></pre></td></tr></table></figure></p>
+<p>这样的话，就是发送这个/userlogin请求，跳转到我们自定义的页面，然后：使用 post请求的：/userlogin来登入。<br><img src="/images/QQ截图20181118164447.png"></p>
+<p>这里的 用户名 和 密码的 name属性怎么设置呢？</p>
+<p>使用：usernameParameter 和 passwordParameter 来修改。</p>
+<p>默认是：username 和 password</p>
+<p>即：不配置的话<br><img src="/images/QQ截图20181118164712.png"></p>
+<p>配置的话：<br><img src="/images/QQ截图20181118164847.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//自动配置了授权的,当没有权限的时候，会让你登入<br>//自动重定向到/login请求，请求登陆。<br>http.formLogin().loginPage(&quot;/userlogin&quot;)<br>                .usernameParameter(&quot;uName&quot;)<br>                .passwordParameter(&quot;pName&quot;);<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181118164936.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
+        
+        <a class="post-tag button" href="/tags/安全/" rel="tag"><i class="fas fa-tags"></i>安全</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/17/Spring-Boot与任务/" rel="next" title="Spring Boot与任务"><i class="fas fa-angle-left"></i><span class="nav-title">Spring Boot与任务</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Spring Boot与安全",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">48</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">23</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">19</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#安全"><span class="toc-text">安全</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#整合Spring-Security模块"><span class="toc-text">整合Spring Security模块</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#注销登入"><span class="toc-text">注销登入</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#完成我们的security模块"><span class="toc-text">完成我们的security模块</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#记住我"><span class="toc-text">记住我</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

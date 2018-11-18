@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-17T04:52:43.635Z</updated>
+  <updated>2018-11-18T08:49:48.495Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot与安全</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/18/Spring-Boot%E4%B8%8E%E5%AE%89%E5%85%A8/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/18/Spring-Boot与安全/</id>
+    <published>2018-11-18T02:32:55.000Z</published>
+    <updated>2018-11-18T08:49:48.495Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;安全、Spring Security. 比如身份认证，用户权限等，市面上有两大主流安全框架：第一个是Apache的 &lt;strong&gt;Shiro&lt;/strong&gt;，第二个就是Spring的&lt;strong&gt;Security&lt;/strong&gt;。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="安全" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="安全" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot与任务</title>
@@ -130,9 +154,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -154,9 +178,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -178,9 +202,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -202,9 +226,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -226,9 +250,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -250,9 +274,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -274,9 +298,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -298,9 +322,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -322,9 +346,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -465,27 +489,6 @@
     
     
       <category term="git" scheme="http://liuzhuo19940206.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMVC注解</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/24/SpringMVC%E6%B3%A8%E8%A7%A3/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/24/SpringMVC注解/</id>
-    <published>2018-10-24T09:07:31.000Z</published>
-    <updated>2018-10-28T06:18:06.528Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;SpringMVC注解&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;SpringMVC注解的详细解答&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/categories/SpringMVC/"/>
-    
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
     
   </entry>
   
