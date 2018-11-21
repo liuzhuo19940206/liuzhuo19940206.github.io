@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-21T07:41:46.581Z</updated>
+  <updated>2018-11-21T08:44:04.735Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot与监控管理</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/21/Spring-Boot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/21/Spring-Boot与监控管理/</id>
+    <published>2018-11-21T07:47:55.000Z</published>
+    <updated>2018-11-21T08:44:04.735Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Spring Boot与监控管理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="监控管理" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="监控管理" scheme="http://liuzhuo19940206.github.io/tags/%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot与开发热部署</title>
@@ -202,9 +226,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -226,9 +250,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -250,9 +274,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -274,9 +298,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -298,9 +322,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -322,9 +346,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -346,9 +370,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -370,9 +394,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -394,9 +418,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -473,30 +497,6 @@
       <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
     
       <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Servlet3.0</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/28/Servlet3-0/</id>
-    <published>2018-10-28T13:19:53.000Z</published>
-    <updated>2018-10-29T07:11:49.032Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注解，还有运行时的组件式插拔开发。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/"/>
-    
-      <category term="web" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/web/"/>
-    
-    
-      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
-    
-      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
     
   </entry>
   
