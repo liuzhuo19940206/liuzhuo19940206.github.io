@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-19T08:58:10.095Z</updated>
+  <updated>2018-11-21T07:41:46.581Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring Boot与开发热部署</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/21/Spring-Boot%E4%B8%8E%E5%BC%80%E5%8F%91%E7%83%AD%E9%83%A8%E7%BD%B2/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/21/Spring-Boot与开发热部署/</id>
+    <published>2018-11-21T04:59:03.000Z</published>
+    <updated>2018-11-21T07:41:46.581Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SpringBoot中的热部署&lt;br&gt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
+    
+      <category term="热部署" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E7%83%AD%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="热部署" scheme="http://liuzhuo19940206.github.io/tags/%E7%83%AD%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot与分布式</title>
@@ -178,9 +202,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -202,9 +226,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -226,9 +250,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -250,9 +274,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -274,9 +298,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -298,9 +322,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -322,9 +346,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -346,9 +370,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -370,9 +394,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -471,26 +495,6 @@
     
     
       <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
-    
-      <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>idea 创建动态Web项目</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/28/idea-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81Web%E9%A1%B9%E7%9B%AE/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/28/idea-创建动态Web项目/</id>
-    <published>2018-10-28T10:15:11.000Z</published>
-    <updated>2018-10-29T03:41:07.474Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="http://liuzhuo19940206.github.io/categories/web/"/>
-    
     
       <category term="web" scheme="http://liuzhuo19940206.github.io/tags/web/"/>
     
