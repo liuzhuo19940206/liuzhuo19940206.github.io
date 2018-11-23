@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-21T08:44:04.735Z</updated>
+  <updated>2018-11-23T10:16:44.859Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux基础入门</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/22/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/22/Linux基础入门/</id>
+    <published>2018-11-22T02:15:44.000Z</published>
+    <updated>2018-11-23T10:16:44.859Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Linux的基础入门篇，帮助大家入门的教程&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot与监控管理</title>
@@ -226,9 +246,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -250,9 +270,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -274,9 +294,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -298,9 +318,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -322,9 +342,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -346,9 +366,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -370,9 +390,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -394,9 +414,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -418,9 +438,9 @@
       <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
     
     
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
+    
+      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -473,30 +493,6 @@
       <category term="idea" scheme="http://liuzhuo19940206.github.io/tags/idea/"/>
     
       <category term="乱码" scheme="http://liuzhuo19940206.github.io/tags/%E4%B9%B1%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Servlet3.0与SpringMVC整合</title>
-    <link href="http://liuzhuo19940206.github.io/2018/10/29/Servlet3-0%E4%B8%8ESpringMVC%E6%95%B4%E5%90%88/"/>
-    <id>http://liuzhuo19940206.github.io/2018/10/29/Servlet3-0与SpringMVC整合/</id>
-    <published>2018-10-29T07:14:12.000Z</published>
-    <updated>2018-10-30T07:53:56.971Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Servlet3.0与SpringMVC的整合，永久告别web.xml的配置文件啦~~&lt;br&gt;
-    
-    </summary>
-    
-      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/"/>
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/categories/servlet3-0/SpringMVC/"/>
-    
-    
-      <category term="servlet3.0" scheme="http://liuzhuo19940206.github.io/tags/servlet3-0/"/>
-    
-      <category term="SpringMVC" scheme="http://liuzhuo19940206.github.io/tags/SpringMVC/"/>
     
   </entry>
   
