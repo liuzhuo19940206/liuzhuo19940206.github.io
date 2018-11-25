@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Linux基础入门之用户 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/25/Linux基础入门之实操/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Linux基础入门之用户</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-25T13:41:57+08:00">2018-11-25 13:41:57</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>本篇文章，将会讲解Linux的用户管理、实用指令等。<br><a id="more"></a></p>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>Linux系统是一个多用户多任务的操作系统，任何一个要使用系统资源的用户，都必须首先向系统管理员申请一个账号，然后以这个账号的身份进入系统。</p>
+<p><img src="/images/QQ截图20181125135424.png"></p>
+<p>注意：Linux用户需要至少属于一个组。</p>
+<h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">useradd [选项] 用户名<br><br>useradd  用户名  //默认会在/home下创建同名的家目录<br><br>useradd -d 新的家目录的路径 用户名  //会在指定的路径下创建家目录，不要提前创建文件夹<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示"><a href="#案例演示" class="headerlink" title="案例演示"></a>案例演示</h4><p>打开，我们的Xshell远程登录我们的centOS系统。<br><img src="/images/QQ截图20181125141201.png"></p>
+<p>现在:<br><img src="/images/QQ截图20181125141406.png"><br><img src="/images/QQ截图20181125141558.png"><br><img src="/images/QQ截图20181125141727.png"></p>
+<p><strong>使用细节</strong></p>
+<p>1) 当创建用户成功后，会自动的创建和用户同名的家目录 【/home/用户名】</p>
+<p>2) 也可以通过 useradd -d   指定目录   新的用户名jack 【给新创建的用户指定新的家目录】</p>
+<p>现在创建一个新的用户jack，并把它的家目录放到 /home/rose下，默认是放在/home/jack文件夹中。<br><img src="/images/QQ截图20181125142852.png"><br>验证jack用户是否创建成功，开启一个新的连接：<br><img src="/images/QQ截图20181125143053.png"></p>
+<p><img src="/images/QQ截图20181125143109.png"></p>
+<p><img src="/images/QQ截图20181125143433.png"></p>
+<p><strong>此时/home/rose，就是jack的家目录了。</strong></p>
+<h3 id="指定-修改密码"><a href="#指定-修改密码" class="headerlink" title="指定/修改密码"></a>指定/修改密码</h3><h4 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">passwd 用户名         //如果没有带用户名，则是给当前登录的用户修改密码<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示-1"><a href="#案例演示-1" class="headerlink" title="案例演示"></a>案例演示</h4><p><img src="/images/QQ截图20181125143821.png"></p>
+<p>将xm用户的密码设置为：xm<br><img src="/images/QQ截图20181125144013.png"></p>
+<p>创建一个新的连接，或者直接使用虚拟机登入系统，输入用户：xm，密码：xm，即可登入成功；这里就不演示了。</p>
+<p><strong>注意：添加、设置密码、删除用户，都必须是下root用户下才行！！！</strong></p>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><h4 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">userdel   用户名   //不会删除家目录<br><br>userdel -r 用户名  //会删除家目录<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示-2"><a href="#案例演示-2" class="headerlink" title="案例演示"></a>案例演示</h4><p>1）删除xm用户，但不删除他的家目录【/home/xm】<br><img src="/images/QQ截图20181125144853.png"></p>
+<p>2）删除jack用户，但不删除他的家目录</p>
+<p>注意这里：我们创建jack用户的时候，将他的家目录修改成了/home/rose，所以删除他的家目录，就是删除/home/rose.<br><img src="/images/QQ截图20181125145649.png"></p>
+<p><strong>使用细节</strong></p>
+<p>在实际开发中，一般员工离职后，直接删除用户即可，不要删除他的家目录，因为里面会有他写的代码，资源很珍贵的！！！</p>
+<h3 id="查询用户信息"><a href="#查询用户信息" class="headerlink" title="查询用户信息"></a>查询用户信息</h3><h4 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">id 用户名<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示-3"><a href="#案例演示-3" class="headerlink" title="案例演示"></a>案例演示</h4><p>查看root用户的信息<br><img src="/images/QQ截图20181125150310.png"></p>
+<p>查看不存在的用户<br><img src="/images/QQ截图20181125150459.png"></p>
+<h3 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h3><p>介绍</p>
+<p>在操作linux系统时，如果当前用户没有权限的时候，可以通过 su - 指令 ，来切换到高权利的用户，比如：root用户。</p>
+<h4 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">su - 要切换的用户名<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示-4"><a href="#案例演示-4" class="headerlink" title="案例演示"></a>案例演示</h4><p>创建一个zs用户，指定密码，然后切换到root用户。<br><img src="/images/QQ截图20181125151061.png"></p>
+<p><strong>注意细节：</strong></p>
+<p>1）普通用户前面是：$ , 超级用户前面是：# 。</p>
+<p>2）su root 切换root用户时，如果没有带 - 的话，只是会切换到root用户，但是不会加载root用户的环境变量，这样会导致一个命令会 not found。</p>
+<p>3）从权限高的用户切换到权限低的用户，不需要输入密码，反之需要。</p>
+<p>4）当需要返回到原来用户时，使用exit指令。</p>
+<p>5）如果 su – 没有带用户名，则默认切换到root用户</p>
+<h3 id="查看当前用户"><a href="#查看当前用户" class="headerlink" title="查看当前用户"></a>查看当前用户</h3><h4 id="基本语法-5"><a href="#基本语法-5" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">whoami/ who am I<br></code></pre></td></tr></table></figure>
+<h4 id="案例演示-5"><a href="#案例演示-5" class="headerlink" title="案例演示"></a>案例演示</h4><p><img src="/images/QQ截图20181125152055.png"></p>
+<h3 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>类似于角色，系统可以对有共性的多个用户进行统一的管理。</p>
+<h4 id="新增组"><a href="#新增组" class="headerlink" title="新增组"></a>新增组</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">groupadd  组名<br></code></pre></td></tr></table></figure>
+<h4 id="删除组"><a href="#删除组" class="headerlink" title="删除组"></a>删除组</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">groupdel 组名<br></code></pre></td></tr></table></figure>
+<p><strong>注意：这里有一个前提，就是这个组没有用户，才能删除。</strong></p>
+<h4 id="添加用户到指定的组"><a href="#添加用户到指定的组" class="headerlink" title="添加用户到指定的组"></a>添加用户到指定的组</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">useradd -g 组名 用户名<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181125154110.png"></p>
+<h4 id="修改用户的到其他组"><a href="#修改用户的到其他组" class="headerlink" title="修改用户的到其他组"></a>修改用户的到其他组</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">usermod -g 新的组名 用户名<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181125154256.png"></p>
+<h3 id="用户和组的相关文件"><a href="#用户和组的相关文件" class="headerlink" title="用户和组的相关文件"></a>用户和组的相关文件</h3><h4 id="etc-passwd-文件"><a href="#etc-passwd-文件" class="headerlink" title="/etc/passwd 文件"></a>/etc/passwd 文件</h4><p>用户（user）的配置文件，记录用户的各种信息。</p>
+<p>每行的含义：用户名 : 口令 : 用户标识号 : 组标识号 : 注释性描述 : 主目录 : 登录Shell的工具</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim /etc/passwd<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181125155926.png"></p>
+<h4 id="etc-shadow-文件"><a href="#etc-shadow-文件" class="headerlink" title="/etc/shadow 文件"></a>/etc/shadow 文件</h4><p>口令的配置文件</p>
+<p>每行的含义：登录名 : 加密口令 : 最后一次修改时间 : 最小时间间隔 : 最大时间间隔 : 警告时间 : 不活动时间 : 失效时间 : 保留</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim /etc/shadow<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181125160306.png"></p>
+<h4 id="etc-group-文件"><a href="#etc-group-文件" class="headerlink" title="/etc/group 文件"></a>/etc/group 文件</h4><p>组(group)的配置文件，记录Linux包含的组的信息</p>
+<p>每行含义：组名 : 口令 : 组标识号 : 组内用户列表</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim /etc/group<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181125160725.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Linux/" rel="tag"><i class="fas fa-tags"></i>Linux</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/23/Linux基础入门之进阶/" rel="next" title="Linux基础入门之进阶"><i class="fas fa-angle-left"></i><span class="nav-title">Linux基础入门之进阶</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Linux基础入门之用户",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">54</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">25</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">21</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#用户管理"><span class="toc-text">用户管理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本介绍"><span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#添加用户"><span class="toc-text">添加用户</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#指定-修改密码"><span class="toc-text">指定/修改密码</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-1"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示-1"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#删除用户"><span class="toc-text">删除用户</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-2"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示-2"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#查询用户信息"><span class="toc-text">查询用户信息</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-3"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示-3"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#切换用户"><span class="toc-text">切换用户</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-4"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示-4"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#查看当前用户"><span class="toc-text">查看当前用户</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-5"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#案例演示-5"><span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#用户组"><span class="toc-text">用户组</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#新增组"><span class="toc-text">新增组</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#删除组"><span class="toc-text">删除组</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#添加用户到指定的组"><span class="toc-text">添加用户到指定的组</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#修改用户的到其他组"><span class="toc-text">修改用户的到其他组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#用户和组的相关文件"><span class="toc-text">用户和组的相关文件</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#etc-passwd-文件"><span class="toc-text">/etc/passwd 文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#etc-shadow-文件"><span class="toc-text">/etc/shadow 文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#etc-group-文件"><span class="toc-text">/etc/group 文件</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
