@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-25T08:07:34.753Z</updated>
+  <updated>2018-11-27T07:52:41.702Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux基础入门之指令</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/25/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E6%8C%87%E4%BB%A4/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/25/Linux基础入门之指令/</id>
+    <published>2018-11-25T12:52:46.000Z</published>
+    <updated>2018-11-27T07:52:41.702Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇会介绍Linux系统的常用指令&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux基础入门之用户</title>
     <link href="http://liuzhuo19940206.github.io/2018/11/25/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E5%AE%9E%E6%93%8D/"/>
     <id>http://liuzhuo19940206.github.io/2018/11/25/Linux基础入门之实操/</id>
     <published>2018-11-25T05:41:57.000Z</published>
-    <updated>2018-11-25T08:07:34.753Z</updated>
+    <updated>2018-11-25T08:18:54.097Z</updated>
     
     <summary type="html">
     
@@ -446,30 +466,6 @@
     <summary type="html">
     
       &lt;p&gt;Springboot的配置文件&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot_day_01</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/02/SpringBoot-day-01/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/02/SpringBoot-day-01/</id>
-    <published>2018-11-02T06:31:37.000Z</published>
-    <updated>2018-11-02T13:01:35.731Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。&lt;br&gt;
     
     </summary>
     

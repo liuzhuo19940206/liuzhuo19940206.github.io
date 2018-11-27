@@ -182,7 +182,7 @@
 <p><strong>注意：添加、设置密码、删除用户，都必须是下root用户下才行！！！</strong></p>
 <h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><h4 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">userdel   用户名   //不会删除家目录<br><br>userdel -r 用户名  //会删除家目录<br></code></pre></td></tr></table></figure>
 <h4 id="案例演示-2"><a href="#案例演示-2" class="headerlink" title="案例演示"></a>案例演示</h4><p>1）删除xm用户，但不删除他的家目录【/home/xm】<br><img src="/images/QQ截图20181125144853.png"></p>
-<p>2）删除jack用户，但不删除他的家目录</p>
+<p>2）删除jack用户，并且删除他的家目录</p>
 <p>注意这里：我们创建jack用户的时候，将他的家目录修改成了/home/rose，所以删除他的家目录，就是删除/home/rose.<br><img src="/images/QQ截图20181125145649.png"></p>
 <p><strong>使用细节</strong></p>
 <p>在实际开发中，一般员工离职后，直接删除用户即可，不要删除他的家目录，因为里面会有他写的代码，资源很珍贵的！！！</p>
@@ -266,6 +266,8 @@
     </div>
     <div class="page-nav-prev page-nav-item">
       
+      <a href="/2018/11/25/Linux基础入门之指令/" rel="prev" title="Linux基础入门之指令"><span class="nav-title">Linux基础入门之指令</span><i class="fas fa-angle-right"></i></a>
+      
     </div>
   </nav>
   
@@ -345,7 +347,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">54</a></div>
+      <div><a href="/archives/">55</a></div>
     </div>
     
     
