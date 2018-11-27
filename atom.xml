@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-27T07:52:41.702Z</updated>
+  <updated>2018-11-27T14:22:34.989Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux基础入门之权限</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/27/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E6%9D%83%E9%99%90/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/27/Linux基础入门之权限/</id>
+    <published>2018-11-27T10:47:41.000Z</published>
+    <updated>2018-11-27T14:22:34.989Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;组管理和权限管理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux基础入门之指令</title>
     <link href="http://liuzhuo19940206.github.io/2018/11/25/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E6%8C%87%E4%BB%A4/"/>
     <id>http://liuzhuo19940206.github.io/2018/11/25/Linux基础入门之指令/</id>
     <published>2018-11-25T12:52:46.000Z</published>
-    <updated>2018-11-27T07:52:41.702Z</updated>
+    <updated>2018-11-27T09:19:05.963Z</updated>
     
     <summary type="html">
     
@@ -442,30 +462,6 @@
     <summary type="html">
     
       &lt;p&gt;SpringBoot的日志框架与配置&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot_day_02</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/03/SpringBoot-day-02/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/03/SpringBoot-day-02/</id>
-    <published>2018-11-03T02:33:31.000Z</published>
-    <updated>2018-11-03T09:11:32.031Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Springboot的配置文件&lt;br&gt;
     
     </summary>
     
