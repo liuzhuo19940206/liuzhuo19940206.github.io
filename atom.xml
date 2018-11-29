@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-11-28T11:43:17.629Z</updated>
+  <updated>2018-11-29T13:49:56.977Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux基础入门之网络设置</title>
+    <link href="http://liuzhuo19940206.github.io/2018/11/28/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://liuzhuo19940206.github.io/2018/11/28/Linux基础入门之网络设置/</id>
+    <published>2018-11-28T11:55:38.000Z</published>
+    <updated>2018-11-29T13:49:56.977Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Linux系统的网络设置&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
+    
+    
+      <category term="标签1" scheme="http://liuzhuo19940206.github.io/tags/%E6%A0%87%E7%AD%BE1/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux基础入门之任务调度与磁盘分区</title>
@@ -434,30 +454,6 @@
     <summary type="html">
     
       &lt;p&gt;今天，学习Springboot中的SpringMVC的自动配置原理&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot_day_04</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/05/SpringBoot-day-04/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/05/SpringBoot-day-04/</id>
-    <published>2018-11-05T05:11:16.000Z</published>
-    <updated>2018-11-05T08:52:58.952Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天，我们开始Springboot的Web开发&lt;br&gt;
     
     </summary>
     

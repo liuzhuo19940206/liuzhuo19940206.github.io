@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Linux基础入门之网络设置 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/28/Linux基础入门之网络设置/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Linux基础入门之网络设置</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-28T19:55:38+08:00">2018-11-28 19:55:38</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>Linux系统的网络设置<br><a id="more"></a></p>
+<h2 id="桥接的方式"><a href="#桥接的方式" class="headerlink" title="桥接的方式"></a>桥接的方式</h2><p>之前，我们都是使用桥接的模式来连接虚拟机与宿主机的，桥接模式的缺点，之前我们也讲过了，会占用ip地址，引发ip地址冲突！！！</p>
+<p>好处是，内网中的<strong>其他用户</strong>，也可以直接访问我的虚拟机，与我们的虚拟机通信。</p>
+<p>比如：我宿主机的ip地址是：10.6.11.123。</p>
+<p><img src="/images/QQ截图20181129100530.png"></p>
+<p>使用桥接模式下的linux系统会自动帮我们，生成一个同网段下的ip地址：10.6.11.81<br><img src="/images/QQ截图20181129100614.png"><br><img src="/images/QQ截图20181129100853.png"></p>
+<p>然后，现在不管是你的宿主机ping虚拟机的ip地址，还是虚拟机ping你的宿主机的ip地址，都能成功。<br><img src="/images/QQ截图20181129101126.png"><br><img src="/images/QQ截图20181129101401.png"></p>
+<p><strong>注意：你的同事、同学也能ping通你的虚拟机，因为你的宿主机、虚拟机、你的同事都在一个网段里面。</strong></p>
+<p>下面，我使用我同学的Mac机远程登录我的虚拟机，成功：<br><img src="/images/QQ截图20181129101910.png"></p>
+<p><strong>坏处：如果每个人，都在虚拟机中使用桥接模式的话，那么该网段下的ip地址就会用光，某一天，当你开启你的虚拟机的linux系统时，你会听到你的同事说，又是哪个王八羔子抢了我本机的ip地址！！！</strong></p>
+<h2 id="Nat模式"><a href="#Nat模式" class="headerlink" title="Nat模式"></a>Nat模式</h2><p>介绍：NAT网络主要作用是用于虚拟机与外网互通，它是宿主机内部的local网络，只有本主机内部可见，不能跨宿主机。</p>
+<p>好处：虚拟机不占用其他的ip,所以不会ip冲突。</p>
+<p>坏处：内网的其他人宿主机不能和虚拟机通讯。</p>
+<h3 id="单独使用NAT网络"><a href="#单独使用NAT网络" class="headerlink" title="单独使用NAT网络"></a>单独使用NAT网络</h3><p>1）创建NAT网络</p>
+<p>在创建虚拟机并为其指定NAT网络时，会弹出如下图所示的界面，其中包含<strong>网络地址转换（NAT）</strong>与<strong>NAT网络</strong>两个选项，这两个选项有什么区别呢？可以这样理解，网络地址转换（NAT）为VirtualBox内置的已经创建好的NAT网络，其网段为10.0.2.0/24，<strong>这个网络不允许用户管理</strong>，为了直观起见，在本例中创建自己的NAT网络。<br><img src="/images/QQ截图20181129103000.png"></p>
+<p>点击菜单中的管理按键，选择全局设定，再从对话框中选择网络，然后点击界面上的加号图标，弹出NAT网络明细对话框。其中网络名称随意，网络CIDR一栏的地址不能与宿主机所属的任何一个物理网络冲突，也不能与宿主机中已经存在的其它虚拟网络冲突。</p>
+<p><img src="/images/QQ截图20181129103626.png"></p>
+<p>现在，新增NAT网络：点击界面上的加号图标。</p>
+<p>下图中，CIDR为10.6.28.0/24，VirtualBox会将10.6.28.1这个IP设置成网关，并且选中支持DHCP选择。这样就创建了网络号为10.6.28、具备DHCP功能、默认网关为10.6.28.1的NAT网络，这些功能都是Virtualbox通过一个服务进程实现的。</p>
+<p><img src="/images/QQ截图20181129104140.png"><br><img src="/images/QQ截图20181129104230.png"></p>
+<p>现在，将我们的centOS_7.5系统的网络模式，改为我们刚刚设置的NAT网络：<br><img src="/images/QQ截图20181129104722.png"><br><img src="/images/QQ截图20181129104802.png"></p>
+<p>设置完毕后，启动我们的centOS_7.5系统。<br><img src="/images/QQ截图20181129105404.png"></p>
+<p>测试是否能上网 和 与我们的宿主机是否连通：<br><img src="/images/QQ截图20181129105550.png"></p>
+<p><strong>注意：前提是你的宿主机本身能联网。</strong></p>
+<p>虚拟机ping宿主机成功：<br><img src="/images/QQ截图20181129105825.png"></p>
+<p>宿主机ping虚拟机超时：<br><img src="/images/QQ截图20181129161346.png"></p>
+<p><strong>为啥，在使用NAT的模式下，虚拟机能够访问宿主机，能够通过宿主机上网成功，而宿主机却不能连通虚拟机呢？</strong></p>
+<p>在NAT模式下，virtualBox帮我们创建的一个虚拟的内部网络，使用同一个NAT网络的内部虚拟机之间可以互相访问。</p>
+<p>测试：使用virtualBox打开另一台Linux系统并且使用相同的NAT网络。</p>
+<p>第二台的虚拟机的ip地址是：10.6.28.7<br><img src="/images/QQ截图20181129162644.png"></p>
+<p>第一台的虚拟机的ip应该是10.6.28.4的，但是我重启了系统，现在变成了：10.6.28.6<br><img src="/images/QQ截图20181129162815.png"></p>
+<p>现在互相ping。</p>
+<p>第二台虚拟机ping第一台虚拟机：（成功）<br><img src="/images/QQ截图20181129163024.png"></p>
+<p>第一台虚拟机ping第二台虚拟机：（成功）<br><img src="/images/QQ截图20181129163353.png"></p>
+<p><strong>说明：使用相同的NAT网络，内部的虚拟机之间是可以互相访问的！！！</strong></p>
+<p>到现在还是没有解释，我们的虚拟机能够联网呢？请看下图：<br><img src="/images/QQ截图20181129164646.png"></p>
+<p>首先，VirtualBox为我们创建了一个虚拟的二层交换机，两台虚拟机中的网卡都联接在这台交换机上。同时，此交换机具备DHCP功能，管理10.6.28.0/24的地址池，它的网关地址是10.6.28.1。另外DHCP还负责管理DNS地址，这里的DNS地址的来源是宿主机，VirtualBox从宿主机拿到后设置在这里。当虚拟机启动时，DHCP服务会为它分配IP地址，设置网关，设置DNS服务器地址。</p>
+<p>我们来查看，我们的虚拟机的DNS服务器地址与我们的宿主机的DNS服务器地址是否一致：</p>
+<p>虚拟机的DNS服务的地址：<br><code>cat /etc/resolv.conf</code><br><img src="/images/QQ截图20181129164958.png"></p>
+<p>宿主机的DNS服务器的地址：<br><img src="/images/QQ截图20181129165117.png"></p>
+<p>发现是一样的，验证了我们的理论正确！！！</p>
+<p>其次，VirtualBox为创建了一个三层的虚拟路由器，路由器中的路由表来源于宿主机，其实是与宿主机共享路由表。同时，因为创建的是NAT网络，这个路由器除了一般的路由功能，还是一个配置了NAT功能的路由器，实现宿主机IP地址+端口号与虚拟机IP地址+端口号之间的映射，最终实现与外部网络的通信。</p>
+<p>可以看出，已经实现了一个完整的内部网络，包括带DHCP功能的二层交换机与带NAT功能的三层路由器。</p>
+<p>所以，我们的虚拟机能够通过宿主机来访问外网。</p>
+<p>但是，我们的宿主机是不知道虚拟机的存在的，所以宿主机ping不通我们的虚拟机。</p>
+<h3 id="NAT-Host-only-的模式"><a href="#NAT-Host-only-的模式" class="headerlink" title="NAT + Host-only 的模式"></a>NAT + Host-only 的模式</h3><p>单独使用NAT网络的时候，是能很方便的连接外网的，但是宿主机与虚拟机是不能互通的，如果，我们想要互通怎么呢？</p>
+<p>1）增加一个网卡，使用桥接的模式，宿主机与虚拟机通过桥接生成的ip地址互通。</p>
+<p>不知道的话，请看桥接模式即可。</p>
+<p>2）增加一个网卡，使用Host-only网络。</p>
+<p>当你增加Host-only网络时，发现界面名称是：未指定时，需要我们自己来创建一个Host-only网卡。<br><img src="/images/QQ截图20181129170122.png"></p>
+<p>一般，我们下载完VirtualBox后，会自动生成一个Host-only网卡。默认的ip地址是：192.168.56.1</p>
+<p>点击virtualBox的管理，然后点击主机网络管理器，新增一个网卡。<br><img src="/images/QQ截图20181129170734.png"></p>
+<p>此时，我们的宿主机上面，就会多出一个网络：<br><img src="/images/QQ截图20181129170933.png"></p>
+<p>修改我们的centOS网络，添加新的网卡（Host-only）：<br><img src="/images/QQ截图20181129171051.png"></p>
+<p>重新启动我们的centOS系统：</p>
+<p><code>ifconfig 一下：</code><br><img src="/images/QQ截图20181129171407.png"></p>
+<p>此时会多出一个网卡：enp0s8：就是我们刚刚设置的Host-only网卡。</p>
+<p>来测试是否能上网：<br><img src="/images/QQ截图20181129171617.png"><br><img src="/images/QQ截图20181129171645.png"></p>
+<p>来测试，宿主机与虚拟机是否能互通：</p>
+<p>虚拟机ping宿主机：<br><img src="/images/QQ截图20181129171846.png"></p>
+<p>宿主机ping虚拟机：</p>
+<p><strong>注意：这里宿主机是ping那个Host-only生成的ip地址！！！</strong><br><img src="/images/QQ截图20181129172312.png"></p>
+<p>接下来，我们使用Xshell来连接我们的虚拟机试试：</p>
+<p>新建连接，主机写：虚拟机中的host-only生成的ip地址。<br><img src="/images/QQ截图20181129172946.png"><br><img src="/images/QQ截图20181129173102.png"></p>
+<p><strong>总结：使用 NAT + Host-only的模式，虚拟机通过NAT来连通外网，通过Host-only来与宿主机互通。</strong></p>
+<h3 id="最佳方案"><a href="#最佳方案" class="headerlink" title="最佳方案"></a>最佳方案</h3><p>上面，我们已经学习了，NAT + Host-only的模式来连通外网，并且宿主机与虚拟机互通。</p>
+<p>但是，上面的方案是DHCP的方式，即自动生成ip地址，这样的话，我们的ip会随时变动的，作为服务器的是不行的，我们需要设置静态的ip地址来作为服务器。</p>
+<p>编辑我们的网卡配置文件：</p>
+<p><code>/etc/sysconfig/network-scripts/</code><br><img src="/images/QQ截图20181129174545.png"></p>
+<p>在该目录下，应该有两个配置文件：ifcfg-enp0s3 和 ifcfg-enp0s8</p>
+<p><strong>ifcfg-enp0s3：</strong>就是NAT网络生成的ip地址</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim ifcfg-enp0s3<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181129175402.png"></p>
+<p>ifcfg-enp0s3:动态生成ip地址就行，我们主要设置ifcfg-enp0s8，改为静态分配ip地址。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim ifcfg-enp0s8<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181129180212.png"></p>
+<p>注意上面的网关地址写错了，应该是：<strong>192.168.69.1</strong>！！！,不然重启网络会失败的。</p>
+<p>保存并退出。</p>
+<p><code>systemctl restart network</code> : 重启我们的网络！！！</p>
+<p><img src="/images/QQ截图20181129191233.png"><br><img src="/images/QQ截图20181129192721.png"></p>
+<p>IP地址修改成功了，改成了静态配置，而且ip地址是我们自己输入的：<strong>192.168.69.200</strong></p>
+<p>如果你重启网络的时候，出现异常，请查看你的Mac地址，网关是否配置有问题！！！</p>
+<p>现在，重新修改我们的Xshell连接的主机ip地址：<br><img src="/images/QQ截图20181129193012.png"><br><img src="/images/QQ截图20181129193144.png"></p>
+<p>以后，不管我们去哪里连接虚拟机都会成功了，因为现在是静态分配的ip了，不会变了。</p>
+<hr>
+<p>如果，我们是带有图形化界面的linux系统的话，其实可以直接图形化的方式修改ip地址。<br><img src="/images/QQ截图20181129193541.png"><br><img src="/images/QQ截图20181129193821.png"><br><img src="/images/QQ截图20181129194101.png"><br><img src="/images/QQ截图20181129194309.png"></p>
+<p>修改完后，点击应用后，退出到网络设置页面，重新启动一下，就会更新我们的设置了！！！<br><img src="/images/QQ截图20181129194506.png"></p>
+<p><strong>PS：不建议使用图形化的方式修改ip设置，我们学习，当然是以命令行为基准，图形化只是为了验证我们的配置是否正确而存在的！！！</strong></p>
+<p><strong> NAT + Host-only的方式，是只能我们的宿主机与虚拟网络中的虚拟机互通，在该宿主机网络中的其他同事、同学是不能访问我们的虚拟机的，而桥接模式是可以的，注意两者之间的区别！！！</strong></p>
+<h2 id="网络设置的几个重要配置文件"><a href="#网络设置的几个重要配置文件" class="headerlink" title="网络设置的几个重要配置文件"></a>网络设置的几个重要配置文件</h2><h3 id="网卡的配置文件"><a href="#网卡的配置文件" class="headerlink" title="网卡的配置文件"></a>网卡的配置文件</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/etc/sysconfig/network-scripts/<br></code></pre></td></tr></table></figure>
+<p>有几个网卡，就应该有几个：ifcfg-enp0s3、ifcfg-enp0s8等配置文件，有几个网卡就有几个配置文件，否则重启网络会出现异常！！！</p>
+<p>配置文件的大概内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">DEVICE=enp0s3                  #接口名（设备,网卡的唯一标识，不能乱写的！！！）<br>HWADDR=00:0C:2x:6x:0x:xx       #MAC地址 <br>TYPE=Ethernet                  #网络类型（通常是Ethemet）<br>UUID=926a57ba-92c6-4231-bacb-f27e5e6a9f44  #网卡的唯一标识。（自动生成的，要唯一！！！）<br>ONBOOT=yes                     #系统启动的时候网络接口是否有效（yes/no）<br># IP的配置方法[none|static|bootp|dhcp]（引导时不使用协议|静态分配IP|BOOTP协议|DHCP协议）<br>BOOTPROTO=static      <br>IPADDR=192.168.69.200          #IP地址<br>PREFIX=24                      #设置子网掩码<br>GATEWAY=192.168.69.1           #网关 <br>DNS1=192.168.69.1              #域名解析器<br></code></pre></td></tr></table></figure></p>
+<p><strong>PS：在centOS7之后的版本，可以在配置文件中设置多个ip地址，IPADDR0=xxx.xxx.xxx.xxx，IPADDR1=xxx.xxx.xxx.xxx，依次类推。</strong></p>
+<p><strong>PREFIX：子网掩码也是一样的，PREFIX0，PREFIX1，与上面的ip地址对应；24：代表255.255.255.0 , 26：代表255.255.255.192</strong></p>
+<p>GATEWAY:网关，可以在这里配置，也可以在 /etc/sysconfig/network中配置，如果没有在网卡配置文件中设置网关，那么/etc/sysconfig/network中的网关地址会生效。默认情况下，网卡配置文件中的网关配置会覆盖/etc/sysconfig/network中的网关设置。</p>
+<h3 id="网关的配置文件"><a href="#网关的配置文件" class="headerlink" title="网关的配置文件"></a>网关的配置文件</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/etc/sysconfig/network<br></code></pre></td></tr></table></figure>
+<p>配置文件中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">GATEWAY=192.168.69.1<br></code></pre></td></tr></table></figure></p>
+<h3 id="主机名的配置文件"><a href="#主机名的配置文件" class="headerlink" title="主机名的配置文件"></a>主机名的配置文件</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/etc/hostname<br></code></pre></td></tr></table></figure>
+<p>配合文件中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">liuzhuo01    #主机名<br></code></pre></td></tr></table></figure></p>
+<p>查看主机名：直接使用 hostname指令即可。</p>
+<h3 id="ip和主机映射的文件"><a href="#ip和主机映射的文件" class="headerlink" title="ip和主机映射的文件"></a>ip和主机映射的文件</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/etc/hosts<br></code></pre></td></tr></table></figure>
+<p>配置文件中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4<br>::1         localhost localhost.localdomain localhost6 localhost6.localdomain6<br></code></pre></td></tr></table></figure></p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>有些时候，我们想直接ping主机名来访问，不想ping我们虚拟机的ip地址，不好记。</p>
+<p>现在，我们尝试直接ping主机名：</p>
+<p><img src="/images/QQ截图20181129203255.png"></p>
+<p>现在添加新的 ip 与 主机名的映射信息：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vim /etc/hosts<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181129213529.png"><br><img src="/images/QQ截图20181129213635.png"></p>
+<p>这里，虚拟机自己ping自己的域名没有什么意义，我们想要在windows宿主机也能ping通虚拟机的主机名，该怎么呢？<br><img src="/images/QQ截图20181129214028.png"></p>
+<p>修改windows下的：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">C:\Windows\System32\drivers\etc\hosts<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20181129214230.png"><br><img src="/images/QQ截图20181129214441.png"><br><img src="/images/QQ截图20181129214543.png"></p>
+<p>现在，使用Xshell的时候，创建一个新的连接，主机：填写你的虚拟机的主机名也可以连接成功。<br><img src="/images/QQ截图20181129214732.png"><br><img src="/images/QQ截图20181129214802.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/标签1/" rel="tag"><i class="fas fa-tags"></i>标签1</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/28/Linux基础入门之任务调度/" rel="next" title="Linux基础入门之任务调度与磁盘分区"><i class="fas fa-angle-left"></i><span class="nav-title">Linux基础入门之任务调度与磁盘分区</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Linux基础入门之网络设置",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">58</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">25</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">22</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#桥接的方式"><span class="toc-text">桥接的方式</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Nat模式"><span class="toc-text">Nat模式</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#单独使用NAT网络"><span class="toc-text">单独使用NAT网络</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#NAT-Host-only-的模式"><span class="toc-text">NAT + Host-only 的模式</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#最佳方案"><span class="toc-text">最佳方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#网络设置的几个重要配置文件"><span class="toc-text">网络设置的几个重要配置文件</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#网卡的配置文件"><span class="toc-text">网卡的配置文件</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#网关的配置文件"><span class="toc-text">网关的配置文件</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#主机名的配置文件"><span class="toc-text">主机名的配置文件</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ip和主机映射的文件"><span class="toc-text">ip和主机映射的文件</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#应用"><span class="toc-text">应用</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
