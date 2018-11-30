@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Linux基础入门之进程管理 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/30/Linux基础入门之进程管理/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Linux基础入门之进程管理</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-30T13:04:41+08:00">2018-11-30 13:04:41</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>Linux系统的进程管理（重点！！！）<br><a id="more"></a></p>
+<h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>1）在Linux系统中，每个执行的程序（代码）都称为一个进程。每一个进程都分配一个ID号。</p>
+<p>2）一个进程，都会对应一个父进程，而这个父进程可以复制多个子进程。例如www服务器。</p>
+<p>3）每个进程都可能以两种方式存在的: <font color="red">前台 与 后台</font>，所谓<strong>前台进程</strong>就是用户目前的屏幕上可以进行操作的 ; <strong>后台进程</strong>则是实际在操作，但由于屏幕上无法看到的进程，通常使用后台方式执行 [sshd , crond]。</p>
+<p>4）一般系统的服务都是以后台进程的方式存在，而且都会常驻在系统中。直到关机才会结束。</p>
+<h2 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h2><h3 id="ps基本介绍"><a href="#ps基本介绍" class="headerlink" title="ps基本介绍"></a>ps基本介绍</h3><p>ps命令是用来查看目前系统中，有哪些正在执行，以及它们执行的状况。（可以不加任何参数）</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ps -a：显示当前终端的所有进程信息<br>ps -u：以用户的格式显示进程的信息<br>ps -x：显示后台进程运行的参数<br><br>一般使用：<br>ps -aux<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181130132958.png"></p>
+<p>如果太多，看不过来的话，使用：| more。</p>
+<p><img src="/images/QQ截图20181130133124.png"></p>
+<h3 id="ps详解"><a href="#ps详解" class="headerlink" title="ps详解"></a>ps详解</h3><p>1）指令：ps –aux | grep xxx ，比如我要看有没有sshd服务。</p>
+<p><img src="/images/QQ截图20181130133333.png"></p>
+<p>2）指令说明<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">System V展示风格<br><br>USER：用户名称 <br>PID： 进程号 <br>%CPU：进程占用CPU的百分比 <br>%MEM：进程占用物理内存的百分比 <br>VSZ： 进程占用的虚拟内存大小（单位：KB） <br>RSS： 进程占用的物理内存大小（单位：KB） <br>TTY： 终端名称,缩写.<br><br>STAT：进程状态。<br>其中S-睡眠，s-表示该进程是会话的先导进程，N-表示进程拥有比普通优先级更低的优先级<br>R-正在运行，D-短期等待，Z-僵死进程，T-被跟踪或者被停止等等。<br><br>STARTED：进程的启动时间 <br>TIME：   占用CPU的时间，即进程使用CPU的总时间 <br>COMMAND：启动进程所用的命令和参数，如果过长会被截断显示<br></code></pre></td></tr></table></figure></p>
+<h3 id="查看父进程"><a href="#查看父进程" class="headerlink" title="查看父进程"></a>查看父进程</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ps -ef：是以全格式显示当前所有的进程<br><br>-e：显示所有进程<br>-f：全格式<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20181130133917.png"></p>
+<p>1）查找特定指令的父进程id：<code>ps -ef | grep xxx</code><br><img src="/images/QQ截图20181130134150.png"></p>
+<p>2) 详细介绍<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">是BSD风格<br><br>UID： 用户的名字 <br>PID： 进程ID <br>PPID：父进程ID <br>C：   CPU用于计算执行优先级的因子。数值越大，表明进程是CPU密集型运算，执行优先级会降低；数值越小，表明进程是I/O密集型运算，执行优先级会提高 <br>STIME：进程启动的时间 <br>TTY：  完整的终端名称 <br>TIME： CPU时间 <br>CMD：  启动进程所用的命令和参数<br></code></pre></td></tr></table></figure></p>
+<h2 id="终止进程kill和killall"><a href="#终止进程kill和killall" class="headerlink" title="终止进程kill和killall"></a>终止进程kill和killall</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>若是某个进程执行一半需要停止时，或是已消了很大的系统资源时，此时可以考虑停止该进程。使用kill命令来完成此项任务。</p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">kill  [选项] 进程号（功能描述：通过进程号杀死进程 -9 强制终止）<br><br>killall 进程名称	（功能描述：通过进程名称杀死进程，也支持通配符，这在系统因负载过大而变得很慢时很有用）<br><br>常用选项：<br><br>-9： 表示强迫进程立即停止<br>-2： 表示结束进程，但不是强制性的。常用的Ctrl+c就是：kill -2 的意思。<br>-15：表示正常结束进程，是kill的默认选项。<br></code></pre></td></tr></table></figure>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p>案例1：踢掉某个非法登录用户</p>
+<p>现在使用另一个用户登入我们的linux系统，假装是非法用户，我这里使用的是liuzhuo用户：<br><img src="/images/QQ截图20181130142114.png"></p>
+<p>现在查看liuzhuo用户的进程id，首先我们要知道进程的服务名字，因为是使用Xshell登入的，所以是sshd服务。</p>
+<p><code>ps -aux | grep sshd</code><br><img src="/images/QQ截图20181130142341.png"></p>
+<p><code>kill 3519</code> (liuzhuo用户的pid)<br><img src="/images/QQ截图20181130142618.png"></p>
+<p>案例2: 终止远程登录服务sshd, 在适当时候再次重启sshd服务。</p>
+<p>有些时候，我们的linux系统的管理员需要自己执行一些操作，不让远程用户登入，所以有这样的情况，杀死sshd服务。不再让远程登入用户！</p>
+<p>首先找到sshd服务的pid：<br><code>ps -aux | grep sshd</code><br><img src="/images/QQ截图20181130142943.png"></p>
+<p><code>kill 1110</code> （sshd的pid）<br><img src="/images/QQ截图20181130143119.png"></p>
+<p>现在就只存在root用户了，其他用户想要远程登入linux系统是不能通过的：</p>
+<p>我使用liuzhuo用户登入linux系统：失败<br><img src="/images/QQ截图20181130143309.png"></p>
+<p>案例3: 终止多个gedit 编辑器。</p>
+<p>kill pid：每次只能杀死一个进程，不能杀死多个进程，有些时候，我们需要一次性杀死多个进程，这个时候就需要使用：<br>killall指令了。</p>
+<p><code>killall 进程名</code>（注意是进程名，不是进程id）<br><img src="/images/QQ截图20181130143851.png"></p>
+<p>现在，我们一次性杀死多个gedit进程。执行：<code>killall gedit</code><br><img src="/images/QQ截图20181130144200.png"></p>
+<p>案例4：强制杀掉一个终端  (对于:bash)</p>
+<p>对于某些重要的进程，直接使用 kill 指令是杀不死的，需要带上参数： -9 ，强制杀死进程。</p>
+<p>终端就是一个重要的进程。</p>
+<p>打开两个终端，隔一段时间，否则无法区分开来的。</p>
+<p>在第二个终端中输入：<code>ps -aux | grep bash</code><br><img src="/images/QQ截图20181130144752.png"></p>
+<p>杀死第一个终端：<br><img src="/images/QQ截图20181130144934.png"><br><img src="/images/QQ截图20181130145124.png"></p>
+<h2 id="查看进程树pstree"><a href="#查看进程树pstree" class="headerlink" title="查看进程树pstree"></a>查看进程树pstree</h2><h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">pstree [选项] (可以更加直观的来看进程信息)<br><br>常用选项：<br>-p :显示进程的PID<br>-u :显示进程的所属用户<br></code></pre></td></tr></table></figure>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>案例1：请用树状的形式显示进程的pid</p>
+<p><code>pstree -p</code><br><img src="/images/QQ截图20181130145605.png"></p>
+<p>案例2：请用树状的形式显示进程的用户id</p>
+<p><code>pstree –u</code>:只显示进程名，并且 合并进程名一样的进程<br><img src="/images/QQ截图20181130145944.png"></p>
+<p><code>pstree -pu</code><br><img src="/images/QQ截图20181130150036.png"></p>
+<h2 id="服务-service-管理"><a href="#服务-service-管理" class="headerlink" title="服务(service)管理"></a>服务(service)管理</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>服务(service) 本质就是进程，但是是运行在<font color="red"><strong>后台</strong></font>的，通常都会监听某个端口，等待其它程序的请求，比如(mysql , sshd , 防火墙等)，因此我们又称为<strong>守护进程</strong>，是Linux中非常重要的知识点。</p>
+<h3 id="service管理指令"><a href="#service管理指令" class="headerlink" title="service管理指令"></a>service管理指令</h3><p>service  服务名 [start | stop | restart | reload | status]</p>
+<p>在CentOS7.0后 不再使用 service , 而是 systemctl.</p>
+<p>systemctl [start | stop | restart | reload | status] 服务名</p>
+<p>centOS/RHEL6 系统中 System V init命令 与 centOS/RHEL7 系统中 Systemctl命令的对比:<br><img src="/images/QQ截图20181130155106.png"><br><img src="/images/QQ截图20181130155127.png"></p>
+<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p>1) 查看当前防火墙的状况，关闭防火墙和重启防火墙。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">centOS6/RHEL6:<br>service iptables start           # 启动<br>service iptables stop            # 关闭<br>service iptables restart         # 重启<br>service iptables status          # 查看防火墙的状态<br>chkconfig iptables on            # 开机启动<br>chkconfig iptables off           # 取消开机启动<br>--------------------- <br>centOS7/RHEL7:<br>systemctl start firewalld          # 启动<br>systemctl stop firewalld           # 关闭<br>systemctl restart firewalld        # 重启<br>systemctl status firewalld         # 查看防火墙的状态<br>systemctl enable firewalld         # 开机启动<br>systemctl disable firewalld        # 取消开机启动<br><br>firewall-cmd --list-all            #查看防火墙规则<br>---------------------<br></code></pre></td></tr></table></figure>
+<p><code>service iptables status</code><br><img src="/images/QQ截图20181130153438.png"></p>
+<p>在CentOS7 或 RHEL7 或 Fedora 中 防火墙由<strong> firewalld </strong>来管理.</p>
+<p><code>systemctl status firewalld</code>：查看防火墙状态<br><img src="/images/QQ截图20181130160617.png"></p>
+<p><code>systemctl stop firewalld</code> : 关闭防火墙<br><img src="/images/QQ截图20181130161040.png"></p>
+<p><code>systemctl restart firewalld</code>：重启防火墙<br><img src="/images/QQ截图20181130161200.png"></p>
+<hr>
+<h3 id="CentOS切换为iptables防火墙"><a href="#CentOS切换为iptables防火墙" class="headerlink" title="CentOS切换为iptables防火墙"></a>CentOS切换为iptables防火墙</h3><p>切换到iptables首先应该关掉默认的firewalld，然后安装iptables服务。</p>
+<p>1）关闭firewall</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">systemctl stop firewalld          # 关闭<br>systemctl disable firewalld       # 取消开机启动<br></code></pre></td></tr></table></figure>
+<p>2) 安装iptables防火墙</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">yum install iptables-services #安装<br></code></pre></td></tr></table></figure>
+<p>3) 编辑iptables防火墙配置<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">vi /etc/sysconfig/iptables<br></code></pre></td></tr></table></figure></p>
+<p>下边是一个完整的配置文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Firewall configuration written by system-config-firewall<br><br>Manual customization of this file is not recommended.<br><br>*filter<br><br>:INPUT ACCEPT [0:0]<br><br>:FORWARD ACCEPT [0:0]<br><br>:OUTPUT ACCEPT [0:0]<br><br>-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT<br><br>-A INPUT -p icmp -j ACCEPT<br><br>-A INPUT -i lo -j ACCEPT<br><br>-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT<br><br>-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT<br><br>-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT<br><br>-A INPUT -j REJECT --reject-with icmp-host-prohibited<br><br>-A FORWARD -j REJECT --reject-with icmp-host-prohibited<br><br>COMMIT<br></code></pre></td></tr></table></figure></p>
+<p>4）:wq! #保存退出</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">service iptables start    #开启防火墙<br>systemctl enable iptables #设置防火墙开机启动<br></code></pre></td></tr></table></figure>
+<p><strong>细节：可以在windows宿主机中，使用 telnet 测试某个端口是否开启。</strong></p>
+<h3 id="查看系统中的服务"><a href="#查看系统中的服务" class="headerlink" title="查看系统中的服务"></a>查看系统中的服务</h3><p>方式一：使用setup -&gt; 系统服务 就可以看到。<br><img src="/images/QQ截图20181130163538.png"><br><img src="/images/QQ截图20181130163606.png"><br><img src="/images/QQ截图20181130163652.png"></p>
+<p>服务名前面带有*的，就是开机自启动的：使用空格键来切换是否开启启动，Tab键来切换到确定和取消按钮。</p>
+<p>方式二:   systemctl list-unit-files –type=service</p>
+<p><code>systemctl list-unit-files --type=service</code> : 列出系统有哪些服务<br><img src="/images/QQ截图20181130164926.png"></p>
+<h3 id="服务的运行级别-runlevel"><a href="#服务的运行级别-runlevel" class="headerlink" title="服务的运行级别(runlevel)"></a>服务的运行级别(runlevel)</h3><p><strong>查看或者修改默认级别：  vi /etc/inittab </strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Linux系统有7种运行级别(runlevel)：常用的是级别3和5<br><br>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动<br>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆<br>运行级别2：多用户状态(没有NFS)，不支持网络<br>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式<br>运行级别4：系统未使用，保留<br>运行级别5：X11控制台，登陆后进入图形GUI模式<br>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动<br></code></pre></td></tr></table></figure>
+<p>CentOS 7 之前的版本是通过 /etc/inittab 文件来定义系统运行级别:</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined"># inittab is only used by upstart for the default runlevel.<br>#<br># ADDING OTHER CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.<br>#<br># System initialization is started by /etc/init/rcS.conf<br>#<br># Individual runlevels are started by /etc/init/rc.conf<br>#<br># Ctrl-Alt-Delete is handled by /etc/init/control-alt-delete.conf<br>#<br># Terminal gettys are handled by /etc/init/tty.conf and /etc/init/serial.conf,<br># with configuration in /etc/sysconfig/init.<br>#<br># For information on how to write upstart event handlers, or how<br># upstart works, see init(5), init(8), and initctl(8).<br>#<br># Default runlevel. The runlevels used are:<br>#   0 - halt (Do NOT set initdefault to this)<br>#   1 - Single user mode<br>#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)<br>#   3 - Full multiuser mode<br>#   4 - unused<br>#   5 - X11<br>#   6 - reboot (Do NOT set initdefault to this)<br># <br>id:5:initdefault:   #这里的数字：5就代表的是运行级别为5。修改成3后，就是多用户命令行的运行级别了。<br></code></pre></td></tr></table></figure>
+<p>CentOS 7 版本不再使用该文件定义系统运行级别,相关运行级别设置无效:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined"># inittab is no longer used when using systemd.<br>#<br># ADDING CONFIGURATION HERE WILL HAVE NO EFFECT ON YOUR SYSTEM.<br>#<br># Ctrl-Alt-Delete is handled by /etc/systemd/system/ctrl-alt-del.target<br>#<br># systemd uses &apos;targets&apos; instead of runlevels. By default, there are two main targets:<br>#<br># multi-user.target: analogous to runlevel 3<br># graphical.target: analogous to runlevel 5<br>#<br># To set a default target, run:<br>#<br># ln -sf /lib/systemd/system/&lt;target name&gt;.target /etc/systemd/system/default.target<br>#<br>id:3:initdefault:  #无效,不要在这个配置文件中写这行代码！！！<br></code></pre></td></tr></table></figure></p>
+<p>新版本的运行级别都定义在 <code>/lib/systemd/system</code>下:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@liuzhuo01 ~]# ls -ltr /lib/systemd/system/runlevel*<br>lrwxrwxrwx. 1 root root 15 11月 27 16:37 /lib/systemd/system/runlevel0.target -&gt; poweroff.target<br>lrwxrwxrwx. 1 root root 13 11月 27 16:37 /lib/systemd/system/runlevel1.target -&gt; rescue.target<br>lrwxrwxrwx. 1 root root 17 11月 27 16:37 /lib/systemd/system/runlevel2.target -&gt; multi-user.target<br>lrwxrwxrwx. 1 root root 17 11月 27 16:37 /lib/systemd/system/runlevel3.target -&gt; multi-user.target<br>lrwxrwxrwx. 1 root root 17 11月 27 16:37 /lib/systemd/system/runlevel4.target -&gt; multi-user.target<br>lrwxrwxrwx. 1 root root 16 11月 27 16:37 /lib/systemd/system/runlevel5.target -&gt; graphical.target<br>lrwxrwxrwx. 1 root root 13 11月 27 16:37 /lib/systemd/system/runlevel6.target -&gt; reboot.target<br></code></pre></td></tr></table></figure></p>
+<p>新版本的默认运行级别定义在：<code>/etc/systemd/system/default.target</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">[root@liuzhuo01 ~]# ls -l /etc/systemd/system/default.target<br>lrwxrwxrwx. 1 root root 36 11月 27 16:50 /etc/systemd/system/default.target -&gt; /lib/systemd/system/graphical.target<br></code></pre></td></tr></table></figure></p>
+<p>可以针对不同需要设置不同的运行级别:</p>
+<p>如设置命令行级别(init 3)方法:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ln -sf /lib/systemd/system/runlevel3.target /etc/systemd/system/default.target<br>或<br>ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target<br>或<br>systemctl set-default multi-user.target<br></code></pre></td></tr></table></figure></p>
+<p>设置窗口级别(init 5)方法:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target<br>或<br>ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target<br>或<br>systemctl set-default graphical.target<br></code></pre></td></tr></table></figure></p>
+<h3 id="chkconfig指令"><a href="#chkconfig指令" class="headerlink" title="chkconfig指令"></a>chkconfig指令</h3><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍:"></a>介绍:</h4><p>通过chkconfig 命令 可以给<strong>每个服务</strong>的<strong>各个运行级别</strong> 设置自启动/关闭 （<strong>centOS7之前的版本使用的指令！！！</strong>）</p>
+<h4 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法:"></a>基本语法:</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">1） chkconfig  --list                         #查看所有的服务<br>2)  chkconfig  --list | grep 服务名           #查看指定的服务   <br>3)  chkconfig   服务名   --list               #查看指定的服务<br>4） chkconfig   服务名   on/off               #在所有级别，开启或关闭，指定的服务<br>    iptables 彻底关闭  ：chkconfig  iptables off  [不管是哪个级别都关闭]<br>5)  chkconfig  --level  5   服务名   on/off   #指定某个级别，开启或关闭，指定的服务、<br>    sshd 服务在 1 运行级别 关闭 ： chkconfig --level 1 sshd off<br></code></pre></td></tr></table></figure>
+<h4 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h4><p>1) 案例1： 请显示当前系统所有服务的各个运行级别的运行状态</p>
+<p><code>chkconfig --list</code><br><img src="/images/QQ截图20181130171923.png"></p>
+<p>2) 案例2 ：请查看sshd服务的运行状态</p>
+<p><code>chkconfig sshd --list</code> 或者 <code>chkconfig --list | grep sshd</code><br><img src="/images/QQ截图20181130172752.png"></p>
+<p>3) 案例3： 将sshd 服务在运行级别5下设置为不自动启动，看看有什么效果？</p>
+<p><code>chkconfig –level 5 sshd off</code></p>
+<p>4) 案例4： 当运行级别为5时，关闭防火墙。</p>
+<p><code>chkconfig –level 5 iptables off</code></p>
+<p>5) 案例5： 在所有运行级别下，关闭防火墙</p>
+<p><code>chkconfig iptables off</code></p>
+<p>6) 案例6： 在所有运行级别下，开启防火墙</p>
+<p><code>chkconfig  iptables on</code></p>
+<h4 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h4><p>chkconfig重新设置服务后自启动或关闭，重启机器才会按设置的状态运行。</p>
+<h2 id="动态监控进程"><a href="#动态监控进程" class="headerlink" title="动态监控进程"></a>动态监控进程</h2><h3 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h3><p>top与ps命令很相似。它们都用来显示正在执行的进程。top与ps最大的不同之处，在于top在执行一段时间可以更新正在运行的的进程(默认每3秒变化一次)。</p>
+<h3 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">top [选项]<br><br>选项说明:<br>-d 秒数	        ：指定top命令每隔几秒更新。默认是3秒在top命令的交互模式当中可以执行的命令。<br>-i 		：使用top不显示任何闲置 或者 僵死的进程。<br>-p		：通过指定监控进程的id来仅仅监控某个进程的状态。<br></code></pre></td></tr></table></figure>
+<h3 id="交互操作说明"><a href="#交互操作说明" class="headerlink" title="交互操作说明"></a>交互操作说明</h3><p><img src="/images/QQ截图20181130173701.png"></p>
+<h3 id="应用实例-2"><a href="#应用实例-2" class="headerlink" title="应用实例"></a>应用实例</h3><p>案例1.如何监视特定用户</p>
+<p>top：输入此命令，按回车键，查看执行的进程。（默认3秒刷新一次）</p>
+<p><img src="/images/QQ截图20181130174826.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs undefined">1）统计信息<br>top -<br>17:48:19 :表示当前的系统时间<br>up 4:20  ：表示系统已经启动的时间（4小时20分钟）<br>2 user   ：当前登录系统的用户数<br>load average：表示系统的平均负载，3个数字分别表示1分钟、5分钟、15分钟到现在的系统平均负载值<br><br>Tasks：<br>227 total：表示进程的总数<br>1 running：正在运行的进程数<br>226 sleeping：处于休眠状态的进程数<br>0 stopped：停止的进程数<br>0 zombie：僵死的进程数<br><br>%Cpu(s)：<br>0.0 us：表示用户进程占用CPU的百分比<br>0.3 sy：系统进程占用CPU的百分比<br>0.0 ni：用户进程空间的内改变过优先级的进程占用CPU的百分比<br>99.7 id：空闲CPU的百分比<br>0.0 wa：等待输入、输出的进程占用CPU的百分比<br><br>KiB Mem：<br>4046020 total：系统的物理内存大小<br>1950468 free：目前空余内存大小<br>882624 userd：已经使用的物理内存大小<br>1212928 buff/cache：用作内核缓冲区的内存大小<br><br>KiB Swap：<br>8388604 total：交换分区的内存大小<br>8388604 free：交换分区空闲的内存大小<br>0 used：交换分区已经使用的内存大小<br><br>2）进程信息区<br>PID：进程的ID<br>USER：进程所有者的用户名<br>PR：进程的优先级<br>NI：nice值。负值表示高优先级，正值表示低优先级<br>VIRT：进程使用的虚拟内存总量，单位KB<br>SHR：进程使用的、未被换出的物理内存大小，单位KB<br>S：进程的状态，D-表示不可中断的睡眠状态，R-表示正在运行的状态，S-表示睡眠的状态，T-表示跟踪/停止，Z-表示僵死进程<br>%CPU：上次更新到现在的CPU时间占用百分比<br>%MEM：进程占用物理内存的百分比<br>TIME+：进程总计使用的CPU时间，单位为1/100秒<br>COMMAND：正在运行进程的命令名或者命令路径<br></code></pre></td></tr></table></figure>
+<p>u：然后输入“u”回车，再输入用户名，即可。<br><img src="/images/QQ截图20181130181001.png"></p>
+<p>案例2：如何终止指定的进程。</p>
+<p>top：输入此命令，按回车键，查看执行的进程。<br>k：然后输入“k”回车，再输入要结束的进程ID号<br><img src="/images/QQ截图20181130181123.png"></p>
+<p>案例3:指定系统状态更新的时间(每隔10秒自动更新)：<br><img src="/images/QQ截图20181130181215.png"><br><img src="/images/QQ截图20181130181233.png"></p>
+<h2 id="监控网络状态"><a href="#监控网络状态" class="headerlink" title="监控网络状态"></a>监控网络状态</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>查看系统网络情况netstat</p>
+<h3 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">netstat [选项]<br><br>选项说明 <br>-an：按一定顺序排列输出<br>-p ：显示哪个进程在调用<br>-r ：显示路由表的信息<br></code></pre></td></tr></table></figure>
+<h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><p>1）查看所有服务的监听端口</p>
+<p><code>netstat -anp | more</code><br><img src="/images/QQ截图20181130190225.png"></p>
+<p>2) 查看服务名为 sshd 的服务的信息。</p>
+<p><code>netstat -anp | grep sshd</code><br><img src="/images/QQ截图20181130190558.png"></p>
+<p>3) 查看路由表的信息</p>
+<p><code>netstat -r</code><br><img src="/images/QQ截图20181130190707.png"><br><code>netstat -rn</code><br><img src="/images/QQ截图20181130190838.png"></p>
+<p><code>route -n</code><br><img src="/images/QQ截图20181130190948.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Linux/" rel="tag"><i class="fas fa-tags"></i>Linux</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/11/28/Linux基础入门之网络设置/" rel="next" title="Linux基础入门之网络设置"><i class="fas fa-angle-left"></i><span class="nav-title">Linux基础入门之网络设置</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Linux基础入门之进程管理",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">59</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">27</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">23</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#基本介绍"><span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#显示系统执行的进程"><span class="toc-text">显示系统执行的进程</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ps基本介绍"><span class="toc-text">ps基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ps详解"><span class="toc-text">ps详解</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#查看父进程"><span class="toc-text">查看父进程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#终止进程kill和killall"><span class="toc-text">终止进程kill和killall</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本语法"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#最佳实践"><span class="toc-text">最佳实践</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#查看进程树pstree"><span class="toc-text">查看进程树pstree</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本语法-1"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#应用实例"><span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#服务-service-管理"><span class="toc-text">服务(service)管理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#介绍-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#service管理指令"><span class="toc-text">service管理指令</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用案例"><span class="toc-text">使用案例</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS切换为iptables防火墙"><span class="toc-text">CentOS切换为iptables防火墙</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#查看系统中的服务"><span class="toc-text">查看系统中的服务</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#服务的运行级别-runlevel"><span class="toc-text">服务的运行级别(runlevel)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#chkconfig指令"><span class="toc-text">chkconfig指令</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#介绍-2"><span class="toc-text">介绍:</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#基本语法-2"><span class="toc-text">基本语法:</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#应用实例-1"><span class="toc-text">应用实例</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#使用细节"><span class="toc-text">使用细节</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#动态监控进程"><span class="toc-text">动态监控进程</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#介绍-3"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本语法-3"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#交互操作说明"><span class="toc-text">交互操作说明</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#应用实例-2"><span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#监控网络状态"><span class="toc-text">监控网络状态</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本介绍-1"><span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本语法-4"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#应用案例"><span class="toc-text">应用案例</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
