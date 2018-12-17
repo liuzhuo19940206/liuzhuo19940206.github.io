@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-06T05:24:27.174Z</updated>
+  <updated>2018-12-17T11:05:25.487Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题：如何求根号2</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/17/%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%A6%82%E4%BD%95%E6%B1%82%E6%A0%B9%E5%8F%B72/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/17/面试题：如何求根号2/</id>
+    <published>2018-12-17T10:45:00.000Z</published>
+    <updated>2018-12-17T11:05:25.487Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;小L最近找实习的时候，被面试官问了这样一道题：如何求根号2的值？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="面试题" scheme="http://liuzhuo19940206.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="面试题" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>前端:后端,我要与你分手</title>
@@ -424,30 +444,6 @@
     <summary type="html">
     
       &lt;p&gt;Spring Boot启动配置原理：启动原理、运行流程、自动配置原理。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot_day_08</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/11/SpringBoot-day-08/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/11/SpringBoot-day-08/</id>
-    <published>2018-11-11T02:29:04.000Z</published>
-    <updated>2018-11-11T09:47:40.246Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;SpringBoot与数据访问&lt;br&gt;
     
     </summary>
     
