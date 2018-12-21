@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-17T11:05:25.487Z</updated>
+  <updated>2018-12-21T13:44:03.430Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的下载与安装</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/21/Redis%E7%9A%84%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/21/Redis的下载与安装/</id>
+    <published>2018-12-21T12:07:52.000Z</published>
+    <updated>2018-12-21T13:44:03.430Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习Redis缓存，完成redis的下载与安装&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题：如何求根号2</title>
@@ -428,31 +452,7 @@
       <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E7%BC%93%E5%AD%98/"/>
     
     
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
       <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot_day_09</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/12/SpringBoot-day-09/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/12/SpringBoot-day-09/</id>
-    <published>2018-11-12T02:40:49.000Z</published>
-    <updated>2018-11-12T07:40:15.047Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Spring Boot启动配置原理：启动原理、运行流程、自动配置原理。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/Spring/"/>
-    
-    
-      <category term="Spring" scheme="http://liuzhuo19940206.github.io/tags/Spring/"/>
     
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
