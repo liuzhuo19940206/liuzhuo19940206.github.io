@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-22T05:53:20.976Z</updated>
+  <updated>2018-12-22T08:27:47.715Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的String命令操作</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/22/Redis%E7%9A%84String%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/22/Redis的String命令操作/</id>
+    <published>2018-12-22T06:08:06.000Z</published>
+    <updated>2018-12-22T08:27:47.715Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习Redis中的字符串类型操作&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的key通用操作</title>
@@ -431,30 +455,6 @@
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
       <category term="检索" scheme="http://liuzhuo19940206.github.io/tags/%E6%A3%80%E7%B4%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot与消息</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/15/Spring-Boot%E4%B8%8E%E6%B6%88%E6%81%AF/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/15/Spring-Boot与消息/</id>
-    <published>2018-11-15T04:50:02.000Z</published>
-    <updated>2018-11-15T11:53:27.828Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JMS、AMQP、RabbitMQ的消息处理机制&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="消息" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E6%B6%88%E6%81%AF/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-      <category term="消息" scheme="http://liuzhuo19940206.github.io/tags/%E6%B6%88%E6%81%AF/"/>
     
   </entry>
   
