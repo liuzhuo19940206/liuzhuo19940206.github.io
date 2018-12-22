@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuzhuo19940206.github.io/2018/12/22/Redis%E7%9A%84key%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2018-12-22T05:53:20.976Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuzhuo19940206.github.io/2018/12/21/Redis%E7%9A%84%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/</loc>
     
     <lastmod>2018-12-21T13:44:03.430Z</lastmod>

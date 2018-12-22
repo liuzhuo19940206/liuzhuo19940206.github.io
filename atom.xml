@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-21T13:44:03.430Z</updated>
+  <updated>2018-12-22T05:53:20.976Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的key通用操作</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/22/Redis%E7%9A%84key%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/22/Redis的key通用操作/</id>
+    <published>2018-12-22T03:39:13.000Z</published>
+    <updated>2018-12-22T05:53:20.976Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习redis的通用操作命名。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的下载与安装</title>
@@ -431,30 +455,6 @@
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
       <category term="消息" scheme="http://liuzhuo19940206.github.io/tags/%E6%B6%88%E6%81%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot与缓存</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot%E4%B8%8E%E7%BC%93%E5%AD%98/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/13/Spring-Boot与缓存/</id>
-    <published>2018-11-13T02:27:48.000Z</published>
-    <updated>2018-11-15T04:49:29.953Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JSR-107、Spring缓存抽象、整合Redis&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
   </entry>
   
