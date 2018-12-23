@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Redis的set命令操作 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/12/23/Redis的set命令操作/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Redis的set命令操作</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-12-23T10:35:28+08:00">2018-12-23 10:35:28</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/缓存/" itemprop="url" rel="index"><span itemprop="name">缓存</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>今天来学习redis中的集合操作命令。<br><a id="more"></a></p>
+<p>集合的性质: 唯一性,无序性,确定性</p>
+<p>注: 在string 和 list的命令中,可以通过 range 来访问 string 中的某几个字符或某几个元素</p>
+<p>但,因为集合的无序性,无法通过下标或范围来访问部分元素.</p>
+<h2 id="sadd-key-member-member-…"><a href="#sadd-key-member-member-…" class="headerlink" title="sadd key member [member …]"></a>sadd key member [member …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 往集合key中增加元素。<br><br>Redis Sadd 命令将一个或多个成员元素加入到集合中，已经存在于集合的成员元素将被忽略。<br><br>假如集合 key 不存在，则创建一个只包含添加的元素作成员的集合。<br><br>当集合 key 不是集合类型时，返回一个错误。<br><br>注意：在Redis2.4版本以前， SADD 只接受单个成员值。<br><br>redis&gt; SADD myset &quot;Hello&quot;<br>(integer) 1<br>redis&gt; SADD myset &quot;World&quot;<br>(integer) 1<br>redis&gt; SADD myset &quot;World&quot;<br>(integer) 0<br>redis&gt; SMEMBERS myset<br>1) &quot;World&quot;<br>2) &quot;Hello&quot;<br>redis&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="smembers-key"><a href="#smembers-key" class="headerlink" title="smembers key"></a>smembers key</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Smembers 命令返回集合中的所有的成员。 不存在的集合 key 被视为空集合。<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SMEMBERS myset1<br>1) &quot;World&quot;<br>2) &quot;Hello&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="srem-value-value…"><a href="#srem-value-value…" class="headerlink" title="srem value [value…]"></a>srem value [value…]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 删除集合中集为 value1 value2的元素<br>返回值: 忽略不存在的元素后,真正删除掉的元素的个数<br><br>127.0.0.1:6379&gt; sadd gender male famale yao<br>(integer) 3<br>127.0.0.1:6379&gt; <br>127.0.0.1:6379&gt; smembers gender<br>1) &quot;yao&quot;<br>2) &quot;famale&quot;<br>3) &quot;male&quot;<br>127.0.0.1:6379&gt; srem gender yao<br>(integer) 1<br>127.0.0.1:6379&gt; smembers gender<br>1) &quot;famale&quot;<br>2) &quot;male&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="spop-key"><a href="#spop-key" class="headerlink" title="spop key"></a>spop key</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 返回并删除集合中key中1个随机元素.<br>随机--体现了无序性.<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SPOP myset1<br>&quot;bar&quot;<br>redis 127.0.0.1:6379&gt; SMEMBERS myset1<br>1) &quot;Hello&quot;<br>2) &quot;world&quot;<br><br>不是删除第一个或最后一个插入集合的元素，而是随机删除的！！！<br></code></pre></td></tr></table></figure>
+<h2 id="srandmember-key"><a href="#srandmember-key" class="headerlink" title="srandmember key"></a>srandmember key</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 返回集合key中,随机的1个元素。<br>只是返回，不删除！！！<br><br>127.0.0.1:6379&gt; srandmember gender<br>&quot;famale&quot;<br>127.0.0.1:6379&gt; srandmember gender<br>&quot;famale&quot;<br>127.0.0.1:6379&gt; srandmember gender<br>&quot;famale&quot;<br>127.0.0.1:6379&gt; srandmember gender<br>&quot;famale&quot;<br>127.0.0.1:6379&gt; srandmember gender<br>&quot;male&quot;<br><br>这里不是说famale的概率大啊，是随机的，只是测试次数少，所以看起来好像famale的概率大。<br></code></pre></td></tr></table></figure>
+<h2 id="sismember-key-value"><a href="#sismember-key-value" class="headerlink" title="sismember key value"></a>sismember key value</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 判断value是否在key集合中<br>是返回1,否返回0<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SISMEMBER myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SISMEMBER myset1 &quot;world&quot;<br>(integer) 0<br></code></pre></td></tr></table></figure>
+<h2 id="scard-key"><a href="#scard-key" class="headerlink" title="scard key"></a>scard key</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用: 返回集合中元素的个数<br><br>redis 127.0.0.1:6379&gt; SADD myset &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;hello&quot;<br>(integer) 0<br>redis 127.0.0.1:6379&gt; SCARD myset<br>(integer) 2<br></code></pre></td></tr></table></figure>
+<h2 id="smove-source-dest-member"><a href="#smove-source-dest-member" class="headerlink" title="smove source dest member"></a>smove source dest member</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">作用:把source中的 member 删除 , 并添加到dest集合中。<br><br>SMOVE 是原子性操作。<br><br>如果 source 集合不存在或不包含指定的 member 元素，则 SMOVE 命令不执行任何操作，仅返回 0 。<br><br>否则， member 元素从 source 集合中被移除，并添加到 dest 集合中去。<br><br>当 dest 集合已经包含 member 元素时， SMOVE 命令只是简单地将 source 集合中的 member 元素删除。<br><br>当 source 或 dest 不是集合类型时，返回一个错误。<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SMOVE myset1 myset2 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SMEMBERS myset1<br>1) &quot;World&quot;<br>2) &quot;Hello&quot;<br>redis 127.0.0.1:6379&gt; SMEMBERS myset2<br>1) &quot;foo&quot;<br>2) &quot;bar&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sinter-key-key-…"><a href="#sinter-key-key-…" class="headerlink" title="sinter  key [key …]"></a>sinter  key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sinter 命令返回给定所有给定集合的交集。 不存在的集合 key 被视为空集。 <br><br>当给定集合当中有一个空集时，结果也为空集(根据集合运算定律)。<br><br>redis 127.0.0.1:6379&gt; SADD myset &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SINTER myset myset2<br>1) &quot;hello&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sinterstore-destination-key-key-…"><a href="#sinterstore-destination-key-key-…" class="headerlink" title="sinterstore destination key [key …]"></a>sinterstore destination key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sinterstore 命令将给定集合之间的交集存储在指定的集合中。如果指定的集合已经存在，则将其覆盖。<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SINTERSTORE myset myset1 myset2<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SMEMBERS myset<br>1) &quot;hello&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sunion-key-key-…"><a href="#sunion-key-key-…" class="headerlink" title="sunion key [key …]"></a>sunion key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sunion 命令返回给定集合的并集。不存在的集合 key 被视为空集。<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SUNION myset1 myset2<br>1) &quot;bar&quot;<br>2) &quot;world&quot;<br>3) &quot;hello&quot;<br>4) &quot;foo&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sunionstore-destination-key-key-…"><a href="#sunionstore-destination-key-key-…" class="headerlink" title="sunionstore destination key [key …]"></a>sunionstore destination key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sunionstore 命令将给定集合的并集存储在指定的集合 destination 中。<br><br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset1 &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SUNIONSTORE myset myset1 myset2<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SMEMBERS myset<br>1) &quot;bar&quot;<br>2) &quot;world&quot;<br>3) &quot;hello&quot;<br>4) &quot;foo&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sdiff-key-key-…"><a href="#sdiff-key-key-…" class="headerlink" title="sdiff key [key …]"></a>sdiff key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sdiff 命令返回给定集合之间的差集。不存在的集合 key 将视为空集。<br><br>redis 127.0.0.1:6379&gt; SADD myset &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SDIFF myset myset2<br>1) &quot;foo&quot;<br>2) &quot;bar&quot;<br></code></pre></td></tr></table></figure>
+<h2 id="sdiffstore-destination-key-key-…"><a href="#sdiffstore-destination-key-key-…" class="headerlink" title="sdiffstore destination key [key …]"></a>sdiffstore destination key [key …]</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Redis Sdiffstore 命令将给定集合之间的差集存储在指定的集合中。如果指定的集合 key 已存在，则会被覆盖。<br><br>redis 127.0.0.1:6379&gt; SADD myset &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;foo&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset &quot;bar&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;hello&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SADD myset2 &quot;world&quot;<br>(integer) 1<br>redis 127.0.0.1:6379&gt; SDIFFSTORE destset myset myset2<br>(integer) 2<br>redis 127.0.0.1:6379&gt; SMEMBERS destset<br>1) &quot;foo&quot;<br>2) &quot;bar&quot;<br></code></pre></td></tr></table></figure>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/redis/" rel="tag"><i class="fas fa-tags"></i>redis</a>
+        
+        <a class="post-tag button" href="/tags/缓存/" rel="tag"><i class="fas fa-tags"></i>缓存</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/12/22/Redis的list命令操作/" rel="next" title="Redis的list命令操作"><i class="fas fa-angle-left"></i><span class="nav-title">Redis的list命令操作</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Redis的set命令操作",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">67</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">30</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">26</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sadd-key-member-member-…"><span class="toc-text">sadd key member [member …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#smembers-key"><span class="toc-text">smembers key</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#srem-value-value…"><span class="toc-text">srem value [value…]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#spop-key"><span class="toc-text">spop key</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#srandmember-key"><span class="toc-text">srandmember key</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sismember-key-value"><span class="toc-text">sismember key value</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#scard-key"><span class="toc-text">scard key</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#smove-source-dest-member"><span class="toc-text">smove source dest member</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sinter-key-key-…"><span class="toc-text">sinter  key [key …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sinterstore-destination-key-key-…"><span class="toc-text">sinterstore destination key [key …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sunion-key-key-…"><span class="toc-text">sunion key [key …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sunionstore-destination-key-key-…"><span class="toc-text">sunionstore destination key [key …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sdiff-key-key-…"><span class="toc-text">sdiff key [key …]</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#sdiffstore-destination-key-key-…"><span class="toc-text">sdiffstore destination key [key …]</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

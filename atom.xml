@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-22T13:16:21.051Z</updated>
+  <updated>2018-12-23T03:06:43.421Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的set命令操作</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/23/Redis%E7%9A%84set%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/23/Redis的set命令操作/</id>
+    <published>2018-12-23T02:35:28.000Z</published>
+    <updated>2018-12-23T03:06:43.421Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习redis中的集合操作命令。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的list命令操作</title>
@@ -431,30 +455,6 @@
       <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
     
       <category term="安全" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot与任务</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/17/Spring-Boot%E4%B8%8E%E4%BB%BB%E5%8A%A1/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/17/Spring-Boot与任务/</id>
-    <published>2018-11-17T02:12:03.000Z</published>
-    <updated>2018-11-17T04:52:43.635Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;异步任务、定时任务、邮件任务&lt;br&gt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/"/>
-    
-      <category term="任务" scheme="http://liuzhuo19940206.github.io/categories/SpringBoot/%E4%BB%BB%E5%8A%A1/"/>
-    
-    
-      <category term="SpringBoot" scheme="http://liuzhuo19940206.github.io/tags/SpringBoot/"/>
-    
-      <category term="任务" scheme="http://liuzhuo19940206.github.io/tags/%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
