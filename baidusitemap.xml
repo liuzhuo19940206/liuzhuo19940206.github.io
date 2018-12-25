@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuzhuo19940206.github.io/2018/12/25/Redis%E7%9A%84hash%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-12-25T07:46:30.279Z</lastmod>
+  </url>  <url>
     <loc>http://liuzhuo19940206.github.io/2018/12/23/Redis%E7%9A%84sorted-set%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2018-12-23T07:12:00.899Z</lastmod>
   </url>  <url>
