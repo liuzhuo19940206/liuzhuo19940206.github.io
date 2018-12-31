@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84aof%E6%97%A5%E5%BF%97%E6%8C%81%E4%B9%85%E5%8C%96/</loc>
+    <lastmod>2018-12-31T09:02:41.381Z</lastmod>
+  </url>  <url>
     <loc>http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84rdb%E5%BF%AB%E7%85%A7%E6%8C%81%E4%B9%85%E5%8C%96/</loc>
     <lastmod>2018-12-31T04:53:40.006Z</lastmod>
   </url>  <url>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Redis中的aof日志持久化 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/12/31/Redis中的aof日志持久化/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Redis中的aof日志持久化</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-12-31T14:36:19+08:00">2018-12-31 14:36:19</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/缓存/" itemprop="url" rel="index"><span itemprop="name">缓存</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>接着上篇的内容，来讲述redis中的aof日志持久化操作<br><a id="more"></a></p>
+<p>通过上篇，我们知道了redis中的rdb快照持久化操作，但是由于其存在丢失数据的现象，所以提出了aof持久化的操作。</p>
+<p>rdb恢复数据的速度是比aof快的，aof是通过将每次执行的操作命令，写入到一个文件中保存起来，当作持久化的。</p>
+<h2 id="aof的原理"><a href="#aof的原理" class="headerlink" title="aof的原理"></a>aof的原理</h2><p><img src="/images/QQ截图20181231154133.png"></p>
+<p>现在提出两个问题：</p>
+<p>1:每次执行一次命令都要写入到aof文件中吗?<br>2:某key操作100次,产生100行记录,aof文件会很大,怎么解决?</p>
+<p>首先先思考，在后面的学习中，会依次解决这两个问题。</p>
+<h2 id="aof的配置选项"><a href="#aof的配置选项" class="headerlink" title="aof的配置选项"></a>aof的配置选项</h2><p>打开redis.conf文件<br><img src="/images/QQ截图20181231154509.png"><br><img src="/images/QQ截图20181231154616.png"><br><img src="/images/QQ截图20181231154717.png"></p>
+<p>主要关注aof中几个重点配置选项<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">appendonly no        # 是否仅要日志,就是是否开启aof日志<br><br>appendfsync always   # 系统不缓冲,每次执行一次命令，就写入一次，慢,丢失数据少<br>appendfsync everysec # 折中,每秒写如一次<br>appendfsync no       # 系统缓冲,统一写,由操作系统来决定，速度快<br><br>no-appendfsync-on-rewrite no     # 当重写aof文件时是否同步最新数据，no同步更新，yes不同步更新<br>auto-AOF-rewrite-percentage 100  # 当前aof文件比上次重写时文件大N%时重写<br>auto-AOF-rewrite-min-size 64mb   # aof重写至少要达到的大小<br></code></pre></td></tr></table></figure></p>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>1）开启aof日志，并设置aof文件的保存目录以及名字<br><img src="/images/QQ截图20181231155858.png"></p>
+<p>2）开启redis服务器</p>
+<p>如果已经开启了，就杀死：<code>pkill -9 redis</code><br><img src="/images/QQ截图20181231160138.png"></p>
+<p>重新开启redis服务器，使用刚刚修改后的redis.conf配置文件<br><img src="/images/QQ截图20181231160423.png"><br><img src="/images/QQ截图20181231160619.png"><br><img src="/images/QQ截图20181231160709.png"></p>
+<p>3）开启redis的客户端<br><img src="/images/QQ截图20181231161005.png"><br><img src="/images/QQ截图20181231161144.png"></p>
+<hr>
+<p>如果aof是每执行一次命令，就向aof文件插入一条数据的话，那就不能体现redis快速缓存的优势了，因为每次都是写入到磁盘上面，和mysql一样了。</p>
+<p>为了平衡 快速读取数据与持久化 ，aof所以出现了：appendfsync 配置。</p>
+<p>根据你的实际需求，设置appendfsync的值，如果数据很重要，不能丢失一丁点，那就always。一般使用：everysec。</p>
+<hr>
+<p>我们也注意到了，每次对同一个key执行操作，都会写入到aof文件中。<br><img src="/images/QQ截图20181231161921.png"></p>
+<p>如果num想加到100，那么aof文件中就会出现很多incr指令，这样不是很浪费空间吗？aof文件会瞬间增涨很多，怎么解决呢？</p>
+<p>redis中，就出现了aof重写的方法。我们知道num最后的状态是100，那么直接存指令set num 100就好了，就不用存在那么多的incr指令，节约空间。</p>
+<p>使用：<code>auto-AOF-rewrite-percentage 和 auto-AOF-rewrite-min-size</code></p>
+<p>如果不使用：auto-AOF-rewrite-min-size的话，前期aof文件很小，每次写入一个命令，都是之前文件的100%倍，那样的话，每次都会重写，因此出现了设置aof文件最小重写的大小，当到达最小要求时，才会重写。</p>
+<p>现在我们来验证这个配置。</p>
+<p>修改aof的最小重写大小，这里是为了方便演示，所以设置成了20mb。</p>
+<p><img src="/images/QQ截图20181231162751.png"></p>
+<p>重启redis服务器<br><img src="/images/QQ截图20181231162920.png"></p>
+<p>使用测试redis性能的执行，来随机执行20000条指令<br><img src="/images/QQ截图20181231163103.png"><br><img src="/images/QQ截图20181231163337.png"></p>
+<p>接着再执行20000条数据。<br><img src="/images/QQ截图20181231163530.png"></p>
+<p>在右边的客户端执行redis命令时，左边的一直测试aof文件的大小，发现aof文件一开始是从13M开始增加，当超过20M后，就会突然变小成4.3M了，这是因为触发了aof的重写命令。</p>
+<p>也可以直接执行aof重写的命令来重写：<code>bgrewriteaof</code><br><img src="/images/QQ截图20181231164124.png"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>注: 1）在dump rdb过程中 , aof如果停止同步 , 会不会丢失?<br>答: 不会 , 所有的操作缓存在内存的队列里, dump完成后,统一操作.</p>
+<p>注: 2）aof重写是指什么?<br>答: aof重写是指把内存中的数据,逆化成命令,写入到.aof日志里.<br>以解决 aof日志过大的问题.</p>
+<p><strong>问: 3）如果rdb文件,和aof文件都存在,优先用谁来恢复数据?</strong><br>答: <font color="red"><strong>aof</strong></font></p>
+<p>问: 4）2种是否可以同时用?<br>答: 可以,而且推荐这么做</p>
+<p>问: 5）恢复时rdb和aof哪个恢复的快<br>答: rdb快,因为其是数据的内存映射,直接载入到内存,而aof是命令,需要逐条执行.</p>
+<hr>
+<p>演示第三个问题。</p>
+<p>当rdb文件和aof文件同时存在时，会使用aof来恢复数据！！！</p>
+<p>1）首先查看是否存在rdb文件。<br><img src="/images/QQ截图20181231164640.png"></p>
+<p>2）删除aof文件，避免干扰<br><img src="/images/QQ截图20181231164851.png"></p>
+<p>3）查看现在redis缓存中存在哪些数据<br><img src="/images/QQ截图20181231164942.png"></p>
+<p>存在site数据。</p>
+<p>4）杀死redis服务器，重启redis服务器<br><img src="/images/QQ截图20181231165054.png"><br><img src="/images/QQ截图20181231165310.png"></p>
+<p>为啥site不存了呢？这是因为，我们开启了aof日志，但是，目前aof文件中还没有保存任何数据，所以恢复数据的时候，啥也没有！</p>
+<p>查看aof文件的保存目录：<br><img src="/images/QQ截图20181231165538.png"></p>
+<p>现在删除aof文件，并关闭aof日志。<br><img src="/images/QQ截图20181231165659.png"><br><img src="/images/QQ截图20181231165801.png"></p>
+<p>重启redis服务器<br><img src="/images/QQ截图20181231170047.png"></p>
+<p>此时site数据又存在了，这是因为，我们关闭了aof日志，此时是依靠rdb文件来恢复数据的。<br><img src="/images/QQ截图20181231170228.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/redis/" rel="tag"><i class="fas fa-tags"></i>redis</a>
+        
+        <a class="post-tag button" href="/tags/缓存/" rel="tag"><i class="fas fa-tags"></i>缓存</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2018/12/31/Redis中的rdb快照持久化/" rel="next" title="Redis中的rdb快照持久化"><i class="fas fa-angle-left"></i><span class="nav-title">Redis中的rdb快照持久化</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Redis中的aof日志持久化",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">73</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">30</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">26</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#aof的原理"><span class="toc-text">aof的原理</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#aof的配置选项"><span class="toc-text">aof的配置选项</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#演示"><span class="toc-text">演示</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#问题"><span class="toc-text">问题</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2018</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
