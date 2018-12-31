@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-31T02:14:45.365Z</updated>
+  <updated>2018-12-31T04:53:40.006Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis中的rdb快照持久化</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84rdb%E5%BF%AB%E7%85%A7%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/31/Redis中的rdb快照持久化/</id>
+    <published>2018-12-31T03:33:50.000Z</published>
+    <updated>2018-12-31T04:53:40.006Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习redis中的持久化操作，这是redis缓存一大优势。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的发布与订阅</title>
@@ -428,26 +452,6 @@
     <summary type="html">
     
       &lt;p&gt;Linux基础入门的目录结构、远程登入等&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux基础入门之安装</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/22/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/22/Linux基础入门/</id>
-    <published>2018-11-22T02:15:44.000Z</published>
-    <updated>2018-11-23T12:20:30.963Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Linux的基础入门篇，帮助大家入门的教程&lt;br&gt;
     
     </summary>
     
