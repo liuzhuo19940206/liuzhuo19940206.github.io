@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2018-12-31T09:02:41.381Z</updated>
+  <updated>2019-01-01T07:36:23.275Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis中的集群部署</title>
+    <link href="http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/"/>
+    <id>http://liuzhuo19940206.github.io/2018/12/31/Redis中的集群部署/</id>
+    <published>2018-12-31T09:52:33.000Z</published>
+    <updated>2019-01-01T07:36:23.275Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis中的aof日志持久化</title>
@@ -436,26 +460,6 @@
     <summary type="html">
     
       &lt;p&gt;本篇会介绍Linux系统的常用指令&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux基础入门之用户</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/25/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E5%AE%9E%E6%93%8D/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/25/Linux基础入门之实操/</id>
-    <published>2018-11-25T05:41:57.000Z</published>
-    <updated>2018-11-25T08:18:54.097Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇文章，将会讲解Linux的用户管理、实用指令等。&lt;br&gt;
     
     </summary>
     
