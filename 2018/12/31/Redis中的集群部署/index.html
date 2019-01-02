@@ -197,6 +197,7 @@
 <p>slave：redis6780.conf<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">bind 127.0.0.1   # 实际生产中，添加自己的ip地址。<br>port 6780<br>daemonize yes<br>pidfile /var/run/redis_6780.pid<br>save 900 1                     # 6780的slave开启：rdb<br>save 300 10<br>save 60 10000<br>dbfilename dump6780.rdb<br>dir /var/rdb<br>appendonly no                  # 关闭aof功能，因为master已经开启了<br>appendfilename &quot;appendonly6780.aof&quot;<br><br>#配置主从复制<br>replicaof 127.0.0.1 6379  # 配置master的ip地址和端口号。注意这里不能写localhost！！！<br>replica-read-only yes     # slave只读。<br></code></pre></td></tr></table></figure></p>
 <p>slave：redis6781.conf<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">bind 127.0.0.1   # 实际生产中，添加自己的ip地址。<br>port 6781<br>daemonize yes<br>pidfile /var/run/redis_6781.pid<br>#save 900 1                     # 关闭rdb功能<br>#save 300 10<br>#save 60 10000<br>dbfilename dump6781.rdb<br>dir /var/rdb<br>appendonly no                  # 关闭aof功能<br>appendfilename &quot;appendonly6781.aof&quot;<br><br>#配置主从复制<br>replicaof 127.0.0.1 6379  # 配置master的ip地址和端口号。注意这里不能写localhost！！！<br>replica-read-only yes     # slave只读。<br></code></pre></td></tr></table></figure></p>
 <p>这样：分别启动三个redis客户端来验证，数据就一致了。</p>
+<p><strong>注意：高版本的redis主从复制中配置文件中，是：replicaof 、replica-read-only；低版本中是：slaveof、slave-read-only。</strong></p>
 <hr>
 <p>下面，来演示redis-2版本之上的版本集群搭建方式：</p>
 <h3 id="redis中的集群搭建"><a href="#redis中的集群搭建" class="headerlink" title="redis中的集群搭建"></a>redis中的集群搭建</h3><p>上面，我们演示了redis中的，简单主从复制的搭建，比较简单。其实slave就是将master中的数据拷贝了一份。<br>而redis中的集群的话，就不是那么简单了，当我们访问其中一个redis服务器时，首先会使用hash算法，定位到具体要使用哪个redis服务器，详细理论知识请看官网。</p>
@@ -408,7 +409,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">76</a></div>
+      <div><a href="/archives/">77</a></div>
     </div>
     
     
