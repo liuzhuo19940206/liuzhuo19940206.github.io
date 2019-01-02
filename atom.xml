@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-02T11:05:03.402Z</updated>
+  <updated>2019-01-02T13:36:34.963Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis中key的设计技巧</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%ADkey%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/02/Redis中key的设计技巧/</id>
+    <published>2019-01-02T13:34:29.000Z</published>
+    <updated>2019-01-02T13:36:34.963Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中的key设计技巧。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis中的sentinel运维工具</title>
@@ -452,26 +476,6 @@
     <summary type="html">
     
       &lt;p&gt;Linux系统的进程管理（重点！！！）&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://liuzhuo19940206.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux基础入门之网络设置</title>
-    <link href="http://liuzhuo19940206.github.io/2018/11/28/Linux%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E4%B9%8B%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://liuzhuo19940206.github.io/2018/11/28/Linux基础入门之网络设置/</id>
-    <published>2018-11-28T11:55:38.000Z</published>
-    <updated>2018-11-30T05:05:16.612Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Linux系统的网络设置&lt;br&gt;
     
     </summary>
     

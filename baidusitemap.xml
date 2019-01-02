@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%ADkey%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2019-01-02T13:36:34.963Z</lastmod>
+  </url>  <url>
     <loc>http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%AD%E7%9A%84sentinel%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-01-02T11:05:03.402Z</lastmod>
   </url>  <url>
