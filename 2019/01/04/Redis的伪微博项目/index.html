@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Redis的伪微博项目 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/04/Redis的伪微博项目/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Redis的伪微博项目</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-04T21:10:05+08:00">2019-01-04 21:10:05</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/缓存/" itemprop="url" rel="index"><span itemprop="name">缓存</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>之前的篇章，介绍了redis中的大多数用法，今天使用redis来设计与实现一个伪微博项目。<br><a id="more"></a></p>
+<p>具体使用什么客户端语言（java、python等），这里就不详细写了，主要是讲解该项目怎么使用redis这个key-value数据库来设计。</p>
+<p>我一直觉得，一个程序猿，思想很重要，语言只是一种工具！！！</p>
+<h2 id="微博项目的key设计"><a href="#微博项目的key设计" class="headerlink" title="微博项目的key设计"></a>微博项目的key设计</h2><h3 id="全局key的设计"><a href="#全局key的设计" class="headerlink" title="全局key的设计"></a>全局key的设计</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">-----------------------------------------------------------<br>表名                  global<br>列名                  操作                  备注<br>global:userid         incr                 产生全局的userid<br>global:postid         incr                 产生全局的postid<br>-----------------------------------------------------------<br><br>说明：<br>在以前，我们使用mysql等关系型数据库时，一般会使用数据库自带的自增主键，<br>在redis中，我们可以设置一个全局的key，然后通过incr指令来实现mysql中的自增主键。<br><br>userid：代表用户的id<br>postid：代表微博的id<br></code></pre></td></tr></table></figure>
+<h3 id="用户相关的key的设计"><a href="#用户相关的key的设计" class="headerlink" title="用户相关的key的设计"></a>用户相关的key的设计</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs undefined">用户相关的表设计(mysql中)<br>------------------------------------------------------------------------<br>表名                  user<br>userid               username             password            authsecret<br>1                    test1                11111111            #Ujkdjf#o4&amp;<br>2                    test2                22222222            zzuWNM#$jkf<br>···                  ···                  ···                 ···<br>------------------------------------------------------------------------<br><br>在redis中,变成以下几个key<br>-----------------------------------------------------------------------------------------------------<br>key的前缀             user<br>user:userid:*        user:userid:*:username      user:userid:*:password      user:userid:*:authsecret<br>user:userid:1        user:userid:1:username      user:userid:1:password      user:userid:1:authsecret<br>-----------------------------------------------------------------------------------------------------<br><br>get global:userid  ====&gt; 返回一个userid<br>假设返回：1<br>set user:userid:1:username test1<br>set user:userid:1:password 11111111<br>set user:userid:1:authsecret #Ujkdjf#o4&amp;<br><br>说明：authsecret是为了防止，客户端修改cookie中的userid和username来切换用户的身份，为了安全性，所以设置了authsecret。<br>每次用户登入，都会随机设置新的authsecret值。<br></code></pre></td></tr></table></figure>
+<h3 id="微博相关的key设计"><a href="#微博相关的key设计" class="headerlink" title="微博相关的key设计"></a>微博相关的key设计</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">微博相关的表设计<br>-------------------------------------------------------------<br>表名              post<br>postid            userid            time             content<br>4                 2                 13792238923      测试内容<br>-------------------------------------------------------------<br><br>微博在redis中, 与表设计对应的key设计<br>--------------------------------------------------------------------------------------------------------------------<br>key的前缀           post<br>post:postid:*       post:postid:*:userid       post:postid:*:username     post:postid:*:time   post:postid:*:content<br>post:postid:4       post:postid:4:userid       post:postid:4:username     post:postid:4:time   post:postid:4:content<br>--------------------------------------------------------------------------------------------------------------------<br><br>注意：在这里，可以看到，我们在redis中，多设置了username的属性，这是为啥？username不是存在user:userid:*:username里面嘛，这样<br>不是数据冗余了嘛，有时候，为了提高查询的速度，适当的增加一些冗余数据是可以的，我们使用redis，不就是因为它的执行速度快嘛。<br><br>这里，使用的是string结构来存储的，但是可以改成hash更棒哦，大家可以自己设计一个hash结构。<br></code></pre></td></tr></table></figure>
+<h3 id="关注表和粉丝表的设计"><a href="#关注表和粉丝表的设计" class="headerlink" title="关注表和粉丝表的设计"></a>关注表和粉丝表的设计</h3><p>在伪微博的项目中，一定会有关注者，被关注者的功能，即：你的粉丝，和你关注的人。</p>
+<p><strong>关注表：</strong><br>我们使用redis中的集合结构来存储：</p>
+<p>following:$userid —&gt;  set</p>
+<p>即：sadd following:1 2 3 4<br>表示：用户1，关注了用户id为2、3、4的用户。</p>
+<p><strong>粉丝表：</strong><br>我们使用redis中的集合结构来存储：</p>
+<p>follower:$userid —–&gt;  set</p>
+<p>即：sadd follower:2 6 7 8<br>表示：用户id为2的粉丝有：6、7、8。</p>
+<h3 id="微博推送的设计"><a href="#微博推送的设计" class="headerlink" title="微博推送的设计"></a>微博推送的设计</h3><p>在该项目中，一个用户发表了一条微博，那么他的粉丝应该也会收到微博的推送信息。即：在用户的首页，可以看到自己发的微博和你们关注的博主的微博。</p>
+<p>这个功能是该项目的难点，也是最重要的部分。</p>
+<p><strong>方法一：采用推送的方式</strong></p>
+<p>推送表: revicepost<br>使用list结构：</p>
+<p>recivepost:$userid   —-&gt; list(3,4,7)</p>
+<p>即当一个用户发布一条微博的时候，他会自己主动的向他的粉丝发送该条微博。</p>
+<p>即：lpush recivepost:$userid   —-&gt; list(3,4,7)<br>表示的是，当前博主发送了多条微博的话，会向redis数据库中，recivepost列表中加入发布的微博的id。<br>使用一个for循环，向自己的粉丝，调用:lpush recivepost:$userid  $postid。$userid：粉丝的id，postid：自己发布的微博的id。</p>
+<p>然后，在其中一个粉丝登入之后，点击首页的时候，获取到recivepost中的所有微博id，再通过post来获取微博的信息。</p>
+<p><strong>方法二：采用拉取的方式</strong></p>
+<p>推送的方式，有一个致命的缺点，那就是当一个粉丝有可能会很久不登入微博来了，那么那些博主自己主动推的意义也不大，会浪费内存，因为该粉丝短时间不登入微博。某一天，粉丝突然登入微博的话，会接受到大量的博主的推送信息，会造成大量的数据发送，而且该粉丝只想看到最近的博主发送的微博，这个方式会发送所有的微博，意义不大。</p>
+<p>采用拉取方式，是粉丝登入后，自己主动拉取博主的微博信息，不是被动的接受信息，而且，我们可以设置只拉取关注的每个博主的最近的20条数据，不需要很久之前的微博信息。</p>
+<p>该怎么实现呢？这是一个难点。</p>
+<p>拉取表<br>pull:$userid:  —–&gt; list(3,4,7)</p>
+<p>问: 上次我拉取了 A -&gt; 5,6,7, 三条微博, 下次刷新首页 , 需要从postid大于7的微博开始拉取。<br>解决: 拉取时, 设定一个lastpull时间点, 下次拉取时, 取&gt;lastpull的微博</p>
+<p>问: 有很多关注人,如何取?<br>解决: 循环自己的关注列表 , 逐个取他们的新微博</p>
+<p>问:  取出来之后放在哪儿?<br>答:  pull:$userid的链接里面</p>
+<p>问: 如果个人中心 , 只有前1000条<br>答: ltrim,只取前1000条</p>
+<p>问: 如果我关注 A,B两人, 从2人中,各取3条最新信息, 这3+3条信息, 从时间上,是交错的, 如何按时间排序?<br>答: 我们发布时, 是发布的hash结构 , 不能按时间来排序.</p>
+<p>解决: 同步时, 取微博后, 记录本次取的微博的最大id,下次同步时, 只取比最大id更大的微博。</p>
+<hr>
+<p>思路：<br>（1）当博主发送微博后，会pull:$userid $postid。 $userid：博主的userid，博主发送的postid。因为postid的自增的，所以postid越大表示该微博是最近发布的，这样就可以根据postid的大小来决定获取最近的1000条数据了。</p>
+<p>（2）当粉丝登入到首页后，使用for循环来获取到博主的userid，然后通过userid来获取到每个博主发送的postid，该postid &gt; lastpull (lastpull初始化为0，后来就赋值为上次访问后的最大的postid)</p>
+<p>（3）然后将第二步获取到的所有postid，取其中的最近的1000条数据。</p>
+<h3 id="将redis中的数据写入到mysql中"><a href="#将redis中的数据写入到mysql中" class="headerlink" title="将redis中的数据写入到mysql中"></a>将redis中的数据写入到mysql中</h3><p>前面的操作，都是在redis中操作的，现在，我们需要将每个用户的不经常访问的微博放到mysql中，redis中只保存最新的1000条数据即可。</p>
+<p>思路：</p>
+<p>每个用户发微博的时候，将自己的微博构新建成一个链表，然后还有添加一个全局的链表</p>
+<p>即：mypost:userid:* —–&gt; postid  和 global:storge —–&gt; postid</p>
+<p>当mypost:userid中的postid的数量，大于1000后，就将mypost链表最后的一条postid，插入到global:storge的最左端。</p>
+<p>当global:storge中的postid的数量大于1000后，一致性将global:storge中的最右端的1000条数据，批量插入到mysql中。</p>
+<p>示意图如下：<br><img src="/images/QQ截图20190105112749.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/redis/" rel="tag"><i class="fas fa-tags"></i>redis</a>
+        
+        <a class="post-tag button" href="/tags/缓存/" rel="tag"><i class="fas fa-tags"></i>缓存</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/02/Redis中key的设计技巧/" rel="next" title="Redis中key的设计技巧"><i class="fas fa-angle-left"></i><span class="nav-title">Redis中key的设计技巧</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Redis的伪微博项目",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">79</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">30</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">26</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#微博项目的key设计"><span class="toc-text">微博项目的key设计</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#全局key的设计"><span class="toc-text">全局key的设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#用户相关的key的设计"><span class="toc-text">用户相关的key的设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#微博相关的key设计"><span class="toc-text">微博相关的key设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#关注表和粉丝表的设计"><span class="toc-text">关注表和粉丝表的设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#微博推送的设计"><span class="toc-text">微博推送的设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#将redis中的数据写入到mysql中"><span class="toc-text">将redis中的数据写入到mysql中</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

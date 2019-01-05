@@ -161,7 +161,45 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中的key设计技巧。<br><a id="more"></a></p>
+      <p>传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中key的设计技巧。<br><a id="more"></a></p>
+<h2 id="redis与关系型数据库的适合场景"><a href="#redis与关系型数据库的适合场景" class="headerlink" title="redis与关系型数据库的适合场景"></a>redis与关系型数据库的适合场景</h2><p>现在，我们来考虑一个场景需求，比如豆瓣网站中的书，每本书都有标签，比如西游记，标签：文学等。</p>
+<h3 id="mysql中的设计"><a href="#mysql中的设计" class="headerlink" title="mysql中的设计"></a>mysql中的设计</h3><p>在mysql中，我们设计表结构如下：</p>
+<p>书签系统设计：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#book表<br>create table book (<br>bookid int,         # book的id<br>title char(20)      # book的书名<br>)engine myisam charset utf8;<br><br>insert into book values <br>(5 , &apos;PHP圣经&apos;),<br>(6 , &apos;ruby实战&apos;),<br>(7 , &apos;mysql运维&apos;)<br>(8, &apos;ruby服务端编程&apos;);<br><br>#书签表<br>create table tags (<br>tid int,          # 书签的id<br>bookid int,       # book的id<br>content char(20)  # 书签的内容<br>)engine myisam charset utf8;<br><br>insert into tags values <br>(10 , 5 , &apos;PHP&apos;),<br>(11 , 5 , &apos;WEB&apos;),<br>(12 , 6 , &apos;WEB&apos;),<br>(13 , 6 , &apos;ruby&apos;),<br>(14 , 7 , &apos;database&apos;),<br>(15 , 8 , &apos;ruby&apos;),<br>(16 , 8 , &apos;server&apos;);<br></code></pre></td></tr></table></figure>
+<p>现在，我想要知道既有”WEB”标签又有”PHP”标签的书名，sql语句该怎么写呢？</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">select b.bookid , b.title from book as b,tags inner join tags as t on tags.bookid=t.bookid<br>where tags.content=&apos;PHP&apos; and t.content=&apos;WEB&apos; and b.bookid = tags.bookid;<br></code></pre></td></tr></table></figure>
+<p>大家可以看到，这是多么麻烦的操作，如果再加一个标签，还包括”ruby”标签呢？ 则 and c.content = ‘ruby’ </p>
+<p>如果数据库中的数量很大，这样的内连接查询，会很耗时的。</p>
+<p>因此，对于这样的需求，可以使用key-value数据库。</p>
+<h3 id="key-value中的设计"><a href="#key-value中的设计" class="headerlink" title="key-value中的设计"></a>key-value中的设计</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">book使用string来存储<br>set book:5:title &apos;PHP圣经&apos;<br>set book:6:title &apos;ruby实战&apos;<br>set book:7:title &apos;mysql运难&apos;<br>set book:8:title ‘ruby server’<br><br>tag使用set集合来存储<br>sadd tag:PHP 5<br>sadd tag:WEB 5 6<br>sadd tag:database 7<br>sadd tag:ruby 6 8<br>sadd tag:SERVER 8<br></code></pre></td></tr></table></figure>
+<p>查: 既有PHP,又有WEB的书。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sinter tag:PHP tag:WEB  #查集合的交集<br></code></pre></td></tr></table></figure></p>
+<p>查: 有PHP或有WEB标签的书.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sunin tag:PHP tag:WEB  #查集合的并集<br></code></pre></td></tr></table></figure></p>
+<p>查: 含有ruby,不含WEB标签的书.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sdiff tag:ruby tag:WEB #求差集<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190102222658.png"></p>
+<p><img src="/images/QQ截图20190102222938.png"></p>
+<p>我们能很轻松的实现这样的需求，速度快。</p>
+<hr>
+<h2 id="redis中key的设计技巧"><a href="#redis中key的设计技巧" class="headerlink" title="redis中key的设计技巧"></a>redis中key的设计技巧</h2><p>通过上面的演示，我们知道了，key-value数据库可以实现一些特殊的需求，怎样设计key呢？</p>
+<p>一般，分为以下4步：</p>
+<p>1：第1段放置表名，作为为key前缀 ，如：<code>user:</code><br>2：第2段放置用于区分区key的字段–对应mysql中的主键的列名,如：<code>userid</code><br>3：第3段放置主键值,如 <code>2,3,4...., a , b ,c</code><br>4：第4段,写要存储的列名。如 <code>name,passwd,email</code></p>
+<p>完整的key：<code>set user:userid:1:name gakki</code></p>
+<hr>
+<p>mysql中的表：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">user表：<br>----------------------------------------------------------<br>userid         username           password      email<br>1              lisi               123456        a@a.com<br>2              jack               987656        b@b.com<br>3              rose               454354        c@c.com<br>···            ···                ···           ···<br>----------------------------------------------------------<br></code></pre></td></tr></table></figure></p>
+<p>key-value：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">set user:userid:1:username lisi<br>set user:userid:1:password 123456<br>set user:userid:1:email a@a.com<br><br>----------------------------------<br>set user:userid:2:username jack<br>set user:userid:2:password 987656<br>set user:userid:2:email b@b.com<br><br>----------------------------------<br>set user:userid:3:username rose<br>set user:userid:3:password 454354<br>set user:userid:3:email c@c.com<br></code></pre></td></tr></table></figure>
+<p>这样设计的好处是，通过设计的key的前缀，比如：<code>user:userid:1</code> 通过hash函数，定位到指定的redis服务器，从该服务器中获取所有的id：1的数据。</p>
+<p>这样对于分布式存储很有用处，一般id相同的数据都存储在一个数据库中，不可能id：1的name存储在1号redis服务器，id：1的password存储在2号redis服务器中。</p>
+<p><strong>注意：</strong></p>
+<p>在关系型数据库中, 除主键外, 还有可能其他列也会频繁查询。<br>如上表中, username 也是极频繁查询的,往往这种列会通过加索引来加快查询的速度。</p>
+<p>那么，在redis中，要查询username为lisi，该怎么呢？</p>
+<p>不会使用：<code>keys user:userid:*:username lisi</code></p>
+<p>这样查询的话，redis会从userid为1开始往后依次对比username是否为lisi，这样效率当然很低了。</p>
+<p>没有什么其他好的办法了，只能使用<strong>冗余数据来加快username的查询</strong>。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">set user:username:lisi:userid 1<br>set user:username:jack:userid 2<br>set user:username:rose:userid 3<br></code></pre></td></tr></table></figure>
+<p>注意，这里，我们额外添加了冗余的数据，使用username来作为前缀了，来保存userid的值，但是只保存userid的值，其他的值，可以通过username获取的id，再通过id来获取其他的值。</p>
+<p>比如：我想获取 jack 的 email </p>
+<p>首先，<strong>get user:username:<font color="red">jack</font>:userid</strong>     ====&gt; <code>返回id：2</code></p>
+<p>然后，<strong>get user:userid:<font color="red">2</font>:email</strong>           ====&gt; <code>返回email：b@b.com</code></p>
 
     </main>
     <footer class="post-footer">
@@ -208,6 +246,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/01/04/Redis的伪微博项目/" rel="prev" title="Redis的伪微博项目"><span class="nav-title">Redis的伪微博项目</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -288,7 +328,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">78</a></div>
+      <div><a href="/archives/">79</a></div>
     </div>
     
     
@@ -323,6 +363,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#redis与关系型数据库的适合场景"><span class="toc-text">redis与关系型数据库的适合场景</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#mysql中的设计"><span class="toc-text">mysql中的设计</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#key-value中的设计"><span class="toc-text">key-value中的设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#redis中key的设计技巧"><span class="toc-text">redis中key的设计技巧</span></a></li></ol></div>
+    </div>
     
     
     
