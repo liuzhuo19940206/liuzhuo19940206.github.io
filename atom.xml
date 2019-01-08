@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-08T14:10:01.156Z</updated>
+  <updated>2019-01-08T15:11:35.277Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么分布式一定要有Redis</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E5%AE%9A%E8%A6%81%E6%9C%89Redis/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/08/为什么分布式一定要有Redis/</id>
+    <published>2019-01-08T14:45:24.000Z</published>
+    <updated>2019-01-08T15:11:35.277Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;考虑到绝大部分写业务的程序员，在实际开发中使用 Redis 的时候，只会 Set Value 和 Get Value 两个操作，对 Redis 整体缺乏一个认知。所以对 Redis 常见问题做一个总结，希望能够弥补大家的知识盲点。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/redis/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>利用Redis实现分布式锁</title>
@@ -469,26 +493,6 @@
       <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
     
       <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试题：如何求根号2</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/17/%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%A6%82%E4%BD%95%E6%B1%82%E6%A0%B9%E5%8F%B72/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/17/面试题：如何求根号2/</id>
-    <published>2018-12-17T10:45:00.000Z</published>
-    <updated>2018-12-17T11:05:25.487Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;小L最近找实习的时候，被面试官问了这样一道题：如何求根号2的值？&lt;br&gt;
-    
-    </summary>
-    
-      <category term="面试题" scheme="http://liuzhuo19940206.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    
-      <category term="面试题" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
