@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-08T13:23:06.905Z</updated>
+  <updated>2019-01-08T14:10:01.156Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用Redis实现分布式锁</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/08/%E5%88%A9%E7%94%A8Redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/08/利用Redis实现分布式锁/</id>
+    <published>2019-01-08T13:38:23.000Z</published>
+    <updated>2019-01-08T14:10:01.156Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我在之前总结幂等性的时候，写过一种分布式锁的实现，可惜当时没有真正应用过，着实的心虚啊。正好这段时间对这部分实践了一下，也算是对之前填坑了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
+    
+      <category term="分布式锁" scheme="http://liuzhuo19940206.github.io/categories/redis/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
+    
+      <category term="分布式锁" scheme="http://liuzhuo19940206.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis的常用配置选项</title>
@@ -465,32 +489,6 @@
     
     
       <category term="面试题" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端:后端,我要与你分手</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/06/%E5%89%8D%E7%AB%AF-%E5%90%8E%E7%AB%AF-%E6%88%91%E8%A6%81%E4%B8%8E%E4%BD%A0%E5%88%86%E6%89%8B/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/06/前端-后端-我要与你分手/</id>
-    <published>2018-12-06T04:59:40.000Z</published>
-    <updated>2018-12-06T05:24:27.174Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇文章，将会讲解前端、后端的架构思想。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://liuzhuo19940206.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="后端" scheme="http://liuzhuo19940206.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://liuzhuo19940206.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="后端" scheme="http://liuzhuo19940206.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
-    
-      <category term="分离" scheme="http://liuzhuo19940206.github.io/tags/%E5%88%86%E7%A6%BB/"/>
     
   </entry>
   

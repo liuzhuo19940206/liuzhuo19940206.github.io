@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>利用Redis实现分布式锁 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/08/利用Redis实现分布式锁/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">利用Redis实现分布式锁</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-08T21:38:23+08:00">2019-01-08 21:38:23</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/分布式锁/" itemprop="url" rel="index"><span itemprop="name">分布式锁</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>我在之前总结幂等性的时候，写过一种分布式锁的实现，可惜当时没有真正应用过，着实的心虚啊。正好这段时间对这部分实践了一下，也算是对之前填坑了。<br><a id="more"></a></p>
+<p>分布式锁按照网上的结论，大致分为三种：1、数据库乐观锁； 2、基于Redis的分布式锁；3、基于ZooKeeper的分布式锁。</p>
+<p>关于数据库的乐观锁实现网上已经有很多了，如果有必要的话，留言一下，我以后会出相关的mysql乐观锁。</p>
+<p>今天先简单总结下redis的实现方法，后面详细研究过ZooKeeper的实现原理后再具体说说ZooKeeper的实现。</p>
+<h2 id="为什么需要分布式锁"><a href="#为什么需要分布式锁" class="headerlink" title="为什么需要分布式锁"></a>为什么需要分布式锁</h2><p>在传统单体应用单机部署的情况下，可以使用Java并发相关的锁，如<strong>ReentrantLcok</strong>或<strong>synchronized</strong>进行互斥控制。但是，随着业务发展的需要，原单体单机部署的系统，渐渐的被部署在多机器多JVM上同时提供服务，这使得原单机部署情况下的并发控制锁策略失效了，为了解决这个问题就需要一种跨JVM的互斥机制来控制共享资源的访问，这就是分布式锁要解决的问题。</p>
+<h2 id="分布式锁的实现条件"><a href="#分布式锁的实现条件" class="headerlink" title="分布式锁的实现条件"></a>分布式锁的实现条件</h2><p>1、互斥性，和单体应用一样，要保证任意时刻，只能有一个客户端持有锁</p>
+<p>2、可靠性，要保证系统的稳定性，不能产生死锁</p>
+<p>3、一致性，要保证锁只能由加锁人解锁，不能出现A用户产生的锁被B用户解锁的情况</p>
+<h2 id="Redis分布式锁的实现"><a href="#Redis分布式锁的实现" class="headerlink" title="Redis分布式锁的实现"></a>Redis分布式锁的实现</h2><p>Redis实现分布式锁，不同的人可能有不同的实现逻辑，但是核心就是下面三个方法。</p>
+<h3 id="SETNX"><a href="#SETNX" class="headerlink" title="SETNX"></a>SETNX</h3><p>SETNX key val<br>当且仅当key不存在时，set一个key为val的字符串，返回1；若key存在，则什么都不做，返回0。</p>
+<h3 id="Expire"><a href="#Expire" class="headerlink" title="Expire"></a>Expire</h3><p>expire key timeout<br>为key设置一个超时时间，单位为second（秒），超过这个时间锁会自动释放，避免死锁。</p>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p>delete key<br>删除key。</p>
+<h2 id="获取锁"><a href="#获取锁" class="headerlink" title="获取锁"></a>获取锁</h2><p>首先讲一个目前网上应用最多的一种实现:</p>
+<p><img src="/images/QQ截图20190108214911.png"></p>
+<p>实现思路：</p>
+<p>1.获取锁的时候，使用setnx加锁，并使用expire命令为锁添加一个超时时间，超过该时间则自动释放锁以免产生死锁，锁的value值为一个随机生成的UUID，通过此在释放锁的时候进行判断。</p>
+<p>2.获取锁的时候还设置一个获取的超时时间，若超过这个时间则放弃获取锁。</p>
+<p>3.释放锁的时候，通过UUID判断是不是该锁，若是该锁，则执行delete进行锁释放。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public String getRedisLock(Jedis jedis, String lockKey, Long acquireTimeout, Long timeOut) &#123;<br>    try &#123;<br>        // 定义 redis 对应key 的value值(uuid) 作用 释放锁 随机生成value,根据项目情况修改<br>        String identifierValue = UUID.randomUUID().toString();<br>        // 定义在获取锁之后的超时时间<br>        int expireLock = (int) (timeOut / 1000);// 以秒为单位，timeOut：传入的是毫秒值。<br>        // 定义在获取锁之前的超时时间<br>        // 使用循环机制 如果没有获取到锁，要在规定acquireTimeout时间 保证重复进行尝试获取锁<br>        // 使用循环方式重试的获取锁<br>        Long endTime = System.currentTimeMillis() + acquireTimeout;<br>        while (System.currentTimeMillis() &lt; endTime) &#123;<br>            // 获取锁<br>            // 使用setnx命令插入对应的redislockKey ，如果返回为1 成功获取锁<br>            if (jedis.setnx(lockKey, identifierValue) == 1) &#123;<br>                // 设置对应key的有效期<br>                jedis.expire(lockKey, expireLock);<br>                return identifierValue;<br>            &#125;<br>        &#125;<br><br>    &#125; catch (Exception e) &#123;<br>        e.printStackTrace();<br>    &#125; <br>    return null;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>这种实现方法也是目前应用最多的实现，我一直以为这确实是正确的。<strong>然而由于这是两条Redis命令，不具有原子性</strong>，如果程序在执行完setnx()之后突然崩溃，导致锁没有设置过期时间。那么还是会发生死锁的情况。<strong>网上之所以有人这样实现，是因为低版本的 jedis 并不支持多参数的set()方法。</strong></p>
+<p>当然这种情况 jedis 的设计者也显然想到了，新版的 jedis 可以<strong>同时set多个参数</strong>，具体实现如下：<br><img src="/images/QQ截图20190108215608.png"></p>
+<p>实现思路：</p>
+<p>基本上和原来的逻辑类似，<strong>只是将 setnx 和 expire 的操作合并为一步</strong>，改为使用新的set多参的方法。</p>
+<p>set(final String key, final String value, final String nxxx, final String expx , final long time)</p>
+<p>key和value自然不用多说。nxxx参数只可以传String 类型的NX（仅在不存在的情况下设置）和 XX（和普通的set操作一样会做更新操作）两种。</p>
+<p>expx是指到期时间单位，可传参数为EX （秒）和 PX （毫秒）, time就是具体的过期时间了，单位为前面expx所指定的。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public String getRedisLock(Jedis jedis, String lockKey, Long acquireTimeout, Long timeOut) &#123;<br>    try &#123;<br>        // 定义 redis 对应key 的value值(uuid) 作用 释放锁 随机生成value,根据项目情况修改<br>        String identifierValue = UUID.randomUUID().toString();<br>        // 定义在获取锁之前的超时时间<br>        // 使用循环机制 如果没有获取到锁，要在规定acquireTimeout时间 保证重复进行尝试获取锁<br>        // 使用循环方式重试的获取锁<br>        Long endTime = System.currentTimeMillis() + acquireTimeout;<br>        while (System.currentTimeMillis() &lt; endTime) &#123;<br>            // 获取锁<br>            // set使用NX参数的方式就等同于 setnx()方法，成功返回OK。PX以毫秒为单位<br>            if (&quot;OK&quot;.equals(jedis.set(lockKey, identifierValue, &quot;NX&quot;, &quot;PX&quot;, timeOut))) &#123;<br>                return identifierValue;<br>            &#125;<br>        &#125;<br><br>    &#125; catch (Exception e) &#123;<br>        e.printStackTrace();<br>    &#125; <br>    return null;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>好了，获取锁的操作基本上就上面这些，有同学可能要问，为什么不直接返回一个Boolean型的true或false呢？</p>
+<p>正如我前面所说的，要保证解锁的一致性，所以就需要通过value值来保证解锁人就是加锁人，而不能直接返回true或false了。</p>
+<h2 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h2><p>还是先举一个错误的例子：</p>
+<p><img src="/images/QQ截图20190108220325.png"></p>
+<p>实现思路：</p>
+<p>释放锁的时候，通过传入key和加锁时返回的value值，判断传入的value是否和key从redis中取出的相等。相等则证明解锁人就是加锁人，执行delete释放锁的操作。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">// 释放redis锁<br>public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) &#123;<br>    try &#123;<br>        // 如果该锁的id 等于identifierValue 是同一把锁情况才可以删除<br>        if (jedis.get(lockKey).equals(identifierValue)) &#123;<br>            jedis.del(lockKey);<br>        &#125;<br>    &#125; catch (Exception e)&#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>看着好像没啥问题哈。然而仔细想想又总感觉哪里不对。</p>
+<p>如果在执行jedis.del(lockKey)操作之前，刚好锁的过期时间到了，而这个时候又有别的客户端取到了锁，我们在此时执行删除操作，不是又不符合一致性的要求了嘛？</p>
+<p>然后我们修改为下述方案：</p>
+<p><img src="/images/QQ截图20190108220645.png"></p>
+<p>修改后的代码为：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) &#123;<br>   try &#123;<br>       String script = &quot;if redis.call(&apos;get&apos;, KEYS[1]) == ARGV[1] then return redis.call(&apos;del&apos;, KEYS[1]) else return 0 end&quot;;<br>       Long result = (Long) jedis.eval(script, Collections.singletonList(lockKey), Collections.singletonList(identifierValue));<br>       //0释放锁失败。1释放成功<br>       if (1 == result) &#123;<br>           //如果你想返回删除成功还是失败，可以在这里返回<br>           System.out.println(result+&quot;释放锁成功&quot;);<br>       &#125; <br>       if (0 == result)&#123;<br>           System.out.println(result+&quot;释放锁失败&quot;);<br>       &#125;<br>   &#125; catch (Exception e)&#123;<br>       e.printStackTrace();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>实现思路：</p>
+<p>我们将 <strong>Lua代码</strong> 传到 <strong>jedis.eval()</strong> 方法里，并使参数KEYS[1]赋值为lockKey，ARGV[1]赋值为identifierValue。eval()方法是将Lua代码交给Redis服务端执行。</p>
+<p>那么这段Lua代码的功能是什么呢？其实很简单，首先获取锁对应的value值，检查是否与identifierValue相等，如果相等则删除锁（解锁）。那么为什么要使用Lua语言来实现呢？<strong>因为要确保上述操作是原子性的。</strong></p>
+<p>那么为什么执行eval()方法可以确保原子性？源于Redis的特性，因为Redis是单线程，在eval命令执行Lua代码的时候，Lua代码将被当成一个命令去执行，并且直到eval命令执行完成，Redis才会执行其他命令。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/redis/" rel="tag"><i class="fas fa-tags"></i>redis</a>
+        
+        <a class="post-tag button" href="/tags/分布式锁/" rel="tag"><i class="fas fa-tags"></i>分布式锁</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/08/Redis的常用配置选项/" rel="next" title="Redis的常用配置选项"><i class="fas fa-angle-left"></i><span class="nav-title">Redis的常用配置选项</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "利用Redis实现分布式锁",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">81</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">31</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">27</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#为什么需要分布式锁"><span class="toc-text">为什么需要分布式锁</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#分布式锁的实现条件"><span class="toc-text">分布式锁的实现条件</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Redis分布式锁的实现"><span class="toc-text">Redis分布式锁的实现</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SETNX"><span class="toc-text">SETNX</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Expire"><span class="toc-text">Expire</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Delete"><span class="toc-text">Delete</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#获取锁"><span class="toc-text">获取锁</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#释放锁"><span class="toc-text">释放锁</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
