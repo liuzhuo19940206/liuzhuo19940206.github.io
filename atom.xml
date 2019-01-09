@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-08T15:11:35.277Z</updated>
+  <updated>2019-01-09T08:19:06.872Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker的简介</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/09/Docker%E7%9A%84%E7%AE%80%E4%BB%8B/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/09/Docker的简介/</id>
+    <published>2019-01-09T07:38:24.000Z</published>
+    <updated>2019-01-09T08:19:06.872Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天开始学习Docker的基础篇章的学习。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么分布式一定要有Redis</title>
@@ -458,30 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis的通用操作命名。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的下载与安装</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/21/Redis%E7%9A%84%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/21/Redis的下载与安装/</id>
-    <published>2018-12-21T12:07:52.000Z</published>
-    <updated>2018-12-21T13:44:03.430Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习Redis缓存，完成redis的下载与安装&lt;br&gt;
     
     </summary>
     
