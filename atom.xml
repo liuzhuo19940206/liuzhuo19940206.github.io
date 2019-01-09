@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-09T08:19:06.872Z</updated>
+  <updated>2019-01-09T12:41:08.481Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker的安装</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/09/Docker%E7%9A%84%E5%AE%89%E8%A3%85/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/09/Docker的安装/</id>
+    <published>2019-01-09T08:39:46.000Z</published>
+    <updated>2019-01-09T12:41:08.481Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇讲解docker的安装&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker的简介</title>
@@ -458,30 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习Redis中的字符串类型操作&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的key通用操作</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/22/Redis%E7%9A%84key%E9%80%9A%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/22/Redis的key通用操作/</id>
-    <published>2018-12-22T03:39:13.000Z</published>
-    <updated>2018-12-22T05:53:20.976Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习redis的通用操作命名。&lt;br&gt;
     
     </summary>
     

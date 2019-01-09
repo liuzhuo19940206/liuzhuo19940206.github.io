@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Docker的安装 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/09/Docker的安装/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Docker的安装</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-09T16:39:46+08:00">2019-01-09 16:39:46</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>本篇讲解docker的安装<br><a id="more"></a></p>
+<h2 id="Docker安装前提说明"><a href="#Docker安装前提说明" class="headerlink" title="Docker安装前提说明"></a>Docker安装前提说明</h2><font color="blue">CentOS Docker 安装：</font>
+
+<p>Docker支持以下的CentOS版本：<br>CentOS 7 (64-bit)<br>CentOS 6.5 (64-bit) 或更高的版本</p>
+<p><strong>前提条件</strong></p>
+<p>目前，CentOS 仅发行版本中的内核支持 Docker。<br>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。<br>Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统<strong>内核版本为 2.6.32-431</strong> 或者更高版本。</p>
+<p><strong>查看自己的内核</strong></p>
+<p>uname命令用于打印当前系统相关信息（<strong>内核版本号</strong>、硬件架构、主机名称和操作系统类型等）。</p>
+<p><img src="/images/QQ截图20190109164948.png"></p>
+<p>查看已安装的CentOS版本信息<br><img src="/images/QQ截图20190109165254.png"></p>
+<h2 id="Docker的基本组成"><a href="#Docker的基本组成" class="headerlink" title="Docker的基本组成"></a>Docker的基本组成</h2><p>Docker的架构图：<br><img src="/images/QQ截图20190109165533.png" style="width:50%"></p>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>Docker 镜像（Image）就是一个只读的模板。<strong>镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。</strong><br><img src="/images/QQ截图20190109165653.png"></p>
+<h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>Docker 利用容器（Container）独立运行的一个或一组应用。<strong><code>容器是用镜像创建的运行实例。</code></strong></p>
+<p>它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。</p>
+<p><font color="red"><i><strong>可以把容器看做是一个简易版的 Linux 环境</strong></i></font>（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。</p>
+<p>容器的定义和镜像几乎一模一样，也是一堆层的统一视角，<strong>唯一区别在于容器的最上面那一层是可读可写的。</strong></p>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p>仓库（Repository）是<font color="red"> 集中存放镜像文件的场所</font>。</p>
+<p>仓库(Repository)和仓库注册服务器（Registry）是有区别的。仓库注册服务器上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。</p>
+<p>仓库分为 公开仓库（Public）和 私有仓库（Private）两种形式。</p>
+<p>最大的公开仓库是 Docker Hub <code>(https://hub.docker.com/)</code> , 存放了数量庞大的镜像供用户下载。</p>
+<p>国内的公开仓库包括：<strong>阿里云 、网易云</strong> 等。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>需要正确的理解：仓储 / 镜像 / 容器 这几个概念:</p>
+<p>Docker 本身是一个容器运行载体或称之为<strong>管理引擎</strong>。我们把应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就似乎 image镜像文件。只有通过这个镜像文件才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。</p>
+<ul>
+<li><p>image 文件生成的容器实例，本身也是一个文件，称为镜像文件。</p>
+</li>
+<li><p>一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器</p>
+</li>
+<li><p>至于仓储，就是放了一堆镜像的地方，我们可以把镜像发布到仓储中，需要的时候从仓储中拉下来就可以了。</p>
+</li>
+</ul>
+<h2 id="Docker的安装步骤"><a href="#Docker的安装步骤" class="headerlink" title="Docker的安装步骤"></a>Docker的安装步骤</h2><h3 id="CentOS6-8安装Docker"><a href="#CentOS6-8安装Docker" class="headerlink" title="CentOS6.8安装Docker"></a>CentOS6.8安装Docker</h3><p>1.<code>yum install -y epel-release</code></p>
+<p>Docker使用EPEL发布，RHEL系的OS首先要确保已经持有EPEL仓库，否则先检查OS的版本，然后安装相应的EPEL包。<br><img src="/images/QQ截图20190109172137.png"></p>
+<p>2.<code>yum install -y docker-io</code><br><img src="/images/QQ截图20190109172251.png"></p>
+<p>3.<code>检测docker的配置文件</code></p>
+<p><code>/etc/sysconfig/docker</code>:该文件是否存在<br><img src="/images/QQ截图20190109172409.png"></p>
+<p>4.<code>启动Docker后台服务</code></p>
+<p><font color="red"><strong>service docker start</strong></font>（开机启动docker服务）</p>
+<p>5.<code>docker version验证</code></p>
+<p><img src="/images/QQ截图20190109172603.png"></p>
+<p>以上五个步骤就是：centOS:6.8的安装docker的步骤。</p>
+<hr>
+<h3 id="CentOS7安装Docker"><a href="#CentOS7安装Docker" class="headerlink" title="CentOS7安装Docker"></a>CentOS7安装Docker</h3><p>1.请看官方手册：<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
+<p><img src="/images/QQ截图20190109173019.png"></p>
+<p>看上图，我们能知道，docker有社区版和企业版，社区版是免费的，如果你的公司有钱，那你就下载企业版，这里，我下载的是社区版的docker。</p>
+<p><strong>如果大家英文不好的话，这里有中文版的安装手册：</strong></p>
+<p><a href="https://docs.docker-cn.com/engine/installation/linux/docker-ce/centos/#prerequisites" target="_blank" rel="noopener">https://docs.docker-cn.com/engine/installation/linux/docker-ce/centos/#prerequisites</a></p>
+<p>2.确定你的CentOS的版本是否是7以及以上</p>
+<p><code>cat /etc/redhat-release</code></p>
+<p>3.yum安装gcc相关</p>
+<ul>
+<li><p>CentOS7能上外网</p>
+</li>
+<li><p>yum -y install gcc</p>
+</li>
+<li><p>yum -y install gcc-c++<br><img src="/images/QQ截图20190109173704.png"></p>
+</li>
+</ul>
+<p>4.卸载旧版本</p>
+<p>方法一：<code>yum -y remove docker docker-common docker-selinux docker-engine</code></p>
+<p>方法二：查看官网删除</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ sudo yum remove docker \<br>                  docker-client \<br>                  docker-client-latest \<br>                  docker-common \<br>                  docker-latest \<br>                  docker-latest-logrotate \<br>                  docker-logrotate \<br>                  docker-selinux \<br>                  docker-engine-selinux \<br>                  docker-engine<br></code></pre></td></tr></table></figure>
+<p>如果 yum 报告未安装任何这些软件包，这表示情况正常。</p>
+<p>将保留 /var/lib/docker/ 的内容，包括镜像、容器、存储卷和网络。Docker CE 软件包现在称为 docker-ce。</p>
+<p>5.安装需要的软件包</p>
+<p><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></p>
+<p>6.设置stable镜像仓库</p>
+<p>方式一：官网上面：</p>
+<p><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">如果出现报错：（请使用方法二）<br><br>1   [Errno 14] curl#35 - TCP connection reset by peer<br> <br>2   [Errno 12] curl#35 - Timeout<br></code></pre></td></tr></table></figure>
+<p>方式二：推荐：</p>
+<p><code>yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></p>
+<p>7.更新yum软件包索引</p>
+<p><code>yum makecache fast</code></p>
+<p>如果这是自添加 Docker 镜像仓库以来您首次刷新软件包索引，系统将提示您接受 GPG 密钥，并且将显示此密钥的指纹。验证指纹是否正确，并且在正确的情况下接受此密钥。指纹应匹配 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35。</p>
+<p>8.安装DOCKER CE</p>
+<p><code>yum -y install docker-ce</code></p>
+<p>该命令是安装最新版本的，在生产系统中，您应该安装特定版本的 Docker CE，而不是始终使用最新版本。列出可用版本。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">注：此 yum list 命令仅显示二进制软件包。如果还需要显示 源软件包，请从软件包名称中省略 .x86_64。<br><br>$ yum list docker-ce.x86_64  --showduplicates | sort -r<br><br>docker-ce.x86_64  17.06.0.el7                               docker-ce-stable  <br><br>使用下面的命令，安装指定的版本：<br><br>$ sudo yum install docker-ce-&lt;VERSION&gt;<br></code></pre></td></tr></table></figure></p>
+<p>9.启动docker</p>
+<p><code>systemctl start docker</code> (注意CentOS7 与 CentOS6 系列的启动命令不一样了)</p>
+<p>10.测试</p>
+<p><code>docker version</code></p>
+<p><img src="/images/QQ截图20190109181449.png"></p>
+<p>11.配置镜像加速<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">1.  mkdir -p /etc/docker<br><br>2.  vim  /etc/docker/daemon.json<br><br>#网易云<br>&#123;&quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;] &#125;<br> <br> <br>#阿里云<br>&#123;<br>  &quot;registry-mirrors&quot;: [&quot;https://｛自已的编码｝.mirror.aliyuncs.com&quot;]<br>&#125;<br><br>注意上面的配置，不要加上 #网易云 和 #阿里云。在配置文件中，直接写入文字下面的花括号里面的内容即可！！！<br><br>配置一个加速器就行，推荐阿里云加速度<br><br>阿里云的编码，从阿里云的容器镜像服务里面找即可。<br><br>3.  systemctl daemon-reload<br><br>4.  systemctl restart docker<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190109183932.png"></p>
+<p>12.卸载</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">1.   systemctl stop docker <br><br>2.   yum -y remove docker-ce<br><br>3.   rm -rf /var/lib/docker<br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="永远的hello-world"><a href="#永远的hello-world" class="headerlink" title="永远的hello-world"></a>永远的hello-world</h2><p>在我们实际开发中，如果是使用dicker-hub的话，会很慢，因为是国外的网站，所以为了方便开发，一般会使用国内的镜像加速地址。</p>
+<p>国内属于：阿里云 与 网易云 镜像加速比较好，现在来详细说明两者的配置。</p>
+<h3 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h3><p>1.打开阿里云的官网：<a href="https://dev.aliyun.com/search.html" target="_blank" rel="noopener">https://dev.aliyun.com/search.html</a><br><img src="/images/QQ截图20190109194448.png"></p>
+<p>2.注册一个属于自己的阿里云账户（可复用淘宝账户）</p>
+<p>3.获取加速器地址连接</p>
+<p>登入阿里云，进入控制台：<br><img src="/images/QQ截图20190109194804.png"></p>
+<p>找到容器镜像服务：<br><img src="/images/QQ截图20190109195001.png"></p>
+<p>点击左侧的容器镜像服务：<br><img src="/images/QQ截图20190109195201.png"></p>
+<hr>
+<h4 id="CentOS6的系统镜像加速配置"><a href="#CentOS6的系统镜像加速配置" class="headerlink" title="CentOS6的系统镜像加速配置"></a>CentOS6的系统镜像加速配置</h4><p>如果你是<strong>CentOS6的系统</strong>，当你安装好docker之后，docker的配置<strong>文件</strong>是在：<code>/etc/sysconfig/docker</code></p>
+<p><code>vim /etc/sysconfig/docker</code></p>
+<p>将获得的自己账户下的阿里云加速地址配置进</p>
+<p><code>other_args=&quot;--registry-mirror=https://你自己的账号加速信息.mirror.aliyuncs.com&quot;</code><br><img src="/images/QQ截图20190109195423.png"></p>
+<p>配置成功后，重新启动docker的后台服务：<code>service docker restart</code></p>
+<p>检查Linux 系统下配置完加速器需要检查是否生效：</p>
+<p>如果从结果中看到了配置的<code>--registry-mirror</code>参数说明配置成功，如下所示:</p>
+<p><code>ps -ef|grep docker</code><br><img src="/images/QQ截图20190109195724.png"></p>
+<hr>
+<h4 id="CentOS7的系统镜像加速配置"><a href="#CentOS7的系统镜像加速配置" class="headerlink" title="CentOS7的系统镜像加速配置"></a>CentOS7的系统镜像加速配置</h4><p>如果你是<strong>CentOS7的系统</strong>，当你安装好docker之后，docker的配置文件<strong>目录</strong>是在：<code>/etc/docker</code></p>
+<p>在该目录下，创建一个新的文件：daemon.json文件。</p>
+<p><code>mkdir -p /etc/docker</code></p>
+<p>将该文件中，输入：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&#123;<br>  &quot;registry-mirrors&quot;: [&quot;https://你的加速编码.mirror.aliyuncs.com&quot;]<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>配置成功后，重启加速配置文件：</p>
+<p><code>systemctl daemon-reload</code></p>
+<p>重新启动docker后台服务：</p>
+<p><code>systemctl restart docker</code></p>
+<h3 id="网易云镜像加速"><a href="#网易云镜像加速" class="headerlink" title="网易云镜像加速"></a>网易云镜像加速</h3><p>网易云的镜像加速配置 与 阿里云镜像加速配置一样，只是加速地址变了。</p>
+<p>只要把其中的加速地址换成：<code>http://hub-mirror.c.163.com</code> 即可。</p>
+<p>例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&#123;<br> &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><strong>一般推荐：阿里云的镜像加速配置。</strong></p>
+<h3 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h3><p>启动Docker后台容器(测试运行 hello-world)</p>
+<p><code>docker run hello-world</code></p>
+<p><img src="/images/QQ截图20190109201836.png"></p>
+<p>输出这段提示以后，hello world 就会停止运行，容器自动终止。</p>
+<p>这个run干了什么呢？<br><img src="/images/QQ截图20190109202054.png"></p>
+<p>因为我们配置了阿里云镜像，所以当本地找不到镜像的时候，会去阿里云镜像找，而不是去docker hub中找相关的镜像！！！</p>
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><h4 id="docker是怎么工作的"><a href="#docker是怎么工作的" class="headerlink" title="docker是怎么工作的"></a>docker是怎么工作的</h4><p>docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器。 <strong>容器，是一个运行时环境，就是我们前面说到的集装箱。</strong><br><img src="/images/QQ截图20190109203549.png"></p>
+<h4 id="为什么Docker比较比VM快"><a href="#为什么Docker比较比VM快" class="headerlink" title="为什么Docker比较比VM快"></a>为什么Docker比较比VM快</h4><p>(1) docker有着比虚拟机更少的抽象层。由于docker不需要<strong>Hypervisor</strong>实现硬件资源虚拟化,运行在docker容器上的程序直接使用的都是实际物理机的硬件资源。因此在CPU、内存利用率上docker将会在效率上有明显优势。</p>
+<p>(2) docker利用的是宿主机的内核,而不需要Guest OS。因此,当新建一个容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。然而避免了引寻、加载操作系统内核这个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载Guest OS,所以新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统,则省略了这个过程,因此新建一个docker容器只需要几秒钟。<br><img src="/images/QQ截图20190109204013.png" style="width:50%"><br><img src="/images/QQ截图20190109204054.png" style="width:50%"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/docker/" rel="tag"><i class="fas fa-tags"></i>docker</a>
+        
+        <a class="post-tag button" href="/tags/容器/" rel="tag"><i class="fas fa-tags"></i>容器</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/09/Docker的简介/" rel="next" title="Docker的简介"><i class="fas fa-angle-left"></i><span class="nav-title">Docker的简介</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Docker的安装",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">84</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">34</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">30</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker安装前提说明"><span class="toc-text">Docker安装前提说明</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的基本组成"><span class="toc-text">Docker的基本组成</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#镜像"><span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#容器"><span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#仓库"><span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的安装步骤"><span class="toc-text">Docker的安装步骤</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS6-8安装Docker"><span class="toc-text">CentOS6.8安装Docker</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS7安装Docker"><span class="toc-text">CentOS7安装Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#永远的hello-world"><span class="toc-text">永远的hello-world</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#阿里云镜像加速"><span class="toc-text">阿里云镜像加速</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS6的系统镜像加速配置"><span class="toc-text">CentOS6的系统镜像加速配置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS7的系统镜像加速配置"><span class="toc-text">CentOS7的系统镜像加速配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#网易云镜像加速"><span class="toc-text">网易云镜像加速</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#牛刀小试"><span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#底层原理"><span class="toc-text">底层原理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#docker是怎么工作的"><span class="toc-text">docker是怎么工作的</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#为什么Docker比较比VM快"><span class="toc-text">为什么Docker比较比VM快</span></a></li></ol></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
