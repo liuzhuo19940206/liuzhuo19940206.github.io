@@ -279,6 +279,12 @@
 <p>只要把其中的加速地址换成：<code>http://hub-mirror.c.163.com</code> 即可。</p>
 <p>例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&#123;<br> &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]<br>&#125;<br></code></pre></td></tr></table></figure></p>
 <p><strong>一般推荐：阿里云的镜像加速配置。</strong></p>
+<h3 id="不使用国内镜像加速"><a href="#不使用国内镜像加速" class="headerlink" title="不使用国内镜像加速"></a>不使用国内镜像加速</h3><p>还可以不使用国内镜像加速的方法，在国内有一个镜像加速下载的网站：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a><br><img src="/images/QQ截图20190110134356.png"></p>
+<p>按照网站上面的说明，当pull镜像的时候：</p>
+<p><code>$ docker pull registry.docker-cn.com/myname/myrepo:mytag</code></p>
+<p>例如：拉取ubuntu:16.04 （tag为16.04）</p>
+<p><code>$ docker pull registry.docker-cn.com/library/ubuntu:16.04</code></p>
+<p>意思就是：当pull的时候，加上前缀：<code>registry.docker-cn.com/library/</code> 即可。</p>
 <h3 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h3><p>启动Docker后台容器(测试运行 hello-world)</p>
 <p><code>docker run hello-world</code></p>
 <p><img src="/images/QQ截图20190109201836.png"></p>
@@ -334,6 +340,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/01/09/Docker的常用命令/" rel="prev" title="Docker的常用命令"><span class="nav-title">Docker的常用命令</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -414,7 +422,7 @@
     
     <div class="archives-count">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">84</a></div>
+      <div><a href="/archives/">85</a></div>
     </div>
     
     
@@ -453,7 +461,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker安装前提说明"><span class="toc-text">Docker安装前提说明</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的基本组成"><span class="toc-text">Docker的基本组成</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#镜像"><span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#容器"><span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#仓库"><span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的安装步骤"><span class="toc-text">Docker的安装步骤</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS6-8安装Docker"><span class="toc-text">CentOS6.8安装Docker</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS7安装Docker"><span class="toc-text">CentOS7安装Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#永远的hello-world"><span class="toc-text">永远的hello-world</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#阿里云镜像加速"><span class="toc-text">阿里云镜像加速</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS6的系统镜像加速配置"><span class="toc-text">CentOS6的系统镜像加速配置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS7的系统镜像加速配置"><span class="toc-text">CentOS7的系统镜像加速配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#网易云镜像加速"><span class="toc-text">网易云镜像加速</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#牛刀小试"><span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#底层原理"><span class="toc-text">底层原理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#docker是怎么工作的"><span class="toc-text">docker是怎么工作的</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#为什么Docker比较比VM快"><span class="toc-text">为什么Docker比较比VM快</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker安装前提说明"><span class="toc-text">Docker安装前提说明</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的基本组成"><span class="toc-text">Docker的基本组成</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#镜像"><span class="toc-text">镜像</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#容器"><span class="toc-text">容器</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#仓库"><span class="toc-text">仓库</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Docker的安装步骤"><span class="toc-text">Docker的安装步骤</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS6-8安装Docker"><span class="toc-text">CentOS6.8安装Docker</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CentOS7安装Docker"><span class="toc-text">CentOS7安装Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#永远的hello-world"><span class="toc-text">永远的hello-world</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#阿里云镜像加速"><span class="toc-text">阿里云镜像加速</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS6的系统镜像加速配置"><span class="toc-text">CentOS6的系统镜像加速配置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CentOS7的系统镜像加速配置"><span class="toc-text">CentOS7的系统镜像加速配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#网易云镜像加速"><span class="toc-text">网易云镜像加速</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#不使用国内镜像加速"><span class="toc-text">不使用国内镜像加速</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#牛刀小试"><span class="toc-text">牛刀小试</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#底层原理"><span class="toc-text">底层原理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#docker是怎么工作的"><span class="toc-text">docker是怎么工作的</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#为什么Docker比较比VM快"><span class="toc-text">为什么Docker比较比VM快</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     
