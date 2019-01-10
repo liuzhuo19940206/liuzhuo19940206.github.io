@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Docker的镜像原理 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/10/Docker的镜像原理/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Docker的镜像原理</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-10T15:23:28+08:00">2019-01-10 15:23:28</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>今天来学习docker中镜像原理，以及相关的commit命令。<br><a id="more"></a></p>
+<h2 id="镜像是什么"><a href="#镜像是什么" class="headerlink" title="镜像是什么"></a>镜像是什么</h2><p>镜像是一种轻量级、可执行的独立软件包，<font color="red">用来打包软件运行环境和基于运行环境开发的软件</font>，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件。</p>
+<h3 id="UnionFS（联合文件系统）"><a href="#UnionFS（联合文件系统）" class="headerlink" title="UnionFS（联合文件系统）"></a>UnionFS（联合文件系统）</h3><p>UnionFS（联合文件系统）：Union文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)。Union 文件系统是 Docker 镜像的基础。<strong>镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</strong></p>
+<p><strong>特性</strong>：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录。</p>
+<h3 id="Docker镜像加载原理"><a href="#Docker镜像加载原理" class="headerlink" title="Docker镜像加载原理"></a>Docker镜像加载原理</h3><font color="red">Docker镜像加载原理：</font>
+
+<p>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS。</p>
+<p>bootfs(boot file system)主要包含bootloader和kernel, bootloader主要是引导加载kernel, Linux刚启动时会加载bootfs文件系统，在docker镜像的最底层是bootfs。这一层与我们典型的Linux/Unix系统是一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs。</p>
+<p>rootfs (root file system) ，在bootfs之上。包含的就是典型 Linux 系统中的 /dev, /proc, /bin, /etc 等标准目录和文件。rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等等。</p>
+<font color="blue">平时我们安装进虚拟机的CentOS都是好几个G，为什么docker这里才200M？？</font>
+
+<p>对于一个精简的OS，rootfs可以很小，只需要包括最基本的命令、工具和程序库就可以了，因为底层直接用Host的kernel，自己只需要提供 rootfs 就行了。由此可见对于不同的linux发行版, bootfs基本是一致的, rootfs会有差别, 因此不同的发行版可以公用bootfs。</p>
+<h3 id="分层的镜像"><a href="#分层的镜像" class="headerlink" title="分层的镜像"></a>分层的镜像</h3><p>以我们的pull为例，在下载的过程中我们可以看到docker的镜像好像是在一层一层的在下载<br><img src="/images/QQ截图20190110160603.png"></p>
+<h3 id="为什么Docker镜像要采用这种分层结构呢"><a href="#为什么Docker镜像要采用这种分层结构呢" class="headerlink" title="为什么Docker镜像要采用这种分层结构呢"></a>为什么Docker镜像要采用这种分层结构呢</h3><p>最大的一个好处就是 - 共享资源</p>
+<p>比如：有多个镜像都从相同的 base 镜像构建而来，那么宿主机只需在磁盘上保存一份base镜像</p>
+<p>同时内存中也只需加载一份 base 镜像，就可以为所有容器服务了。而且镜像的每一层都可以被共享。</p>
+<h2 id="镜像的特点"><a href="#镜像的特点" class="headerlink" title="镜像的特点"></a>镜像的特点</h2><ul>
+<li><p>docker镜像都是<strong>只读的</strong>。</p>
+</li>
+<li><p>当容器启动时，一个新的<strong>可写层</strong>被加载到镜像的<strong>顶部</strong>。</p>
+</li>
+<li><p>这一层通常被称作“容器层”，“容器层”之下的都叫“镜像层”。</p>
+</li>
+</ul>
+<h2 id="镜像的提交"><a href="#镜像的提交" class="headerlink" title="镜像的提交"></a>镜像的提交</h2><p>我们能不能提交自己的镜像呢？ 然后根据自己的镜像生成相应的容器呢？</p>
+<p>答案：当然是可以的撒，不然的话，docker将无法适应开发者多变的需要。</p>
+<h3 id="docker-commit"><a href="#docker-commit" class="headerlink" title="docker commit"></a>docker commit</h3><p><code>docker commit</code>: 提交容器副本使之成为一个新的镜像。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker commit -m=&quot;提交的描述信息&quot; -a=&quot;作者&quot;  容器ID  命名空间/要创建的目标镜像名:[标签名]<br></code></pre></td></tr></table></figure></p>
+<h3 id="案例演示"><a href="#案例演示" class="headerlink" title="案例演示"></a>案例演示</h3><p>这里，我们来使用tomcat镜像来演示。</p>
+<p><strong>1.从Hub上下载tomcat镜像到本地并成功运行</strong></p>
+<p><code>docker pull tomcat</code><br><img src="/images/QQ截图20190110155847.png"></p>
+<p><strong>2.运行tomcat容器</strong></p>
+<p><code>docker run -it -p 8080:8080 tomcat</code></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">启动容器后面的参数，之前应该讲过了，这里再重复一遍<br><br>-it：以后台交互的方式启动容器。<br><br>-p：dockerPort:containerPort     docker的端口号映射到docker容器的端口号。（小写的p）<br><br>-P：docker会随机帮我们分配端口号 (大写的P)<br><br>解释：我们的docker是运行在宿主机上面的，而宿主机只能访问到docker的端口号，如果想要访问到docker内部容器的端口号，就需要映射。<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20190110161525.png"><br><img src="/images/QQ截图20190110161629.png"><br><img src="/images/QQ截图20190110161827.png"></p>
+<p>验证tomcat容器是否启动成功：</p>
+<p>1.在虚拟机验证<br><img src="/images/QQ截图20190110162108.png"></p>
+<p>2.在本机中验证<br><img src="/images/QQ截图20190110162230.png"></p>
+<p><strong>3.删除tomcat的文档说明文件</strong></p>
+<p>现在，我们故意删除tomcat的文档说明文件，然后提交生成新的镜像来说明问题。</p>
+<p>怎么删除tomcat中是文档说明文件呢？</p>
+<p>在window系统中，我们知道下载好的tomcat的目录下的webapp下有一个doc目录，就是文档说明文件。<br><img src="/images/QQ截图20190110162737.png"></p>
+<p>在linux中，下载好的tomcat也有相关的文档说明文件，但是使用docker镜像生成的tomcat容器，怎么进入里面呢？</p>
+<p>我们知道，docker镜像文件，就相当于一个微小型linux系统，因此进入里面的方法，就是相当于进入centos的交互方法一样。</p>
+<p> <code>docker exec -it tomcat容器id /bin/bash</code><br><img src="/images/QQ截图20190110163823.png"></p>
+<p>在浏览器中输入：<code>localhost:8888</code> , 然后点击Documentation<br><img src="/images/QQ截图20190110164641.png"><br><img src="/images/QQ截图20190110164727.png"></p>
+<p>如果，没有出现404，刷新一下，因为有缓存。注意：以上都是一气呵成的，中途tomcat容器不能停止运行呀。</p>
+<p><strong>4.将已经删除文档的tomcat容器生成新的镜像</strong></p>
+<p><code>docker commit -a=&#39;liuzhuo&#39; -m=&#39;del tomcat docs&#39; tomcat容器的ID gakki/mytomcat:1.1</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">说明：<br><br>-a：  提交的作者<br>-m：  提交的信息<br><br>gakki/mytomcat:1.1         命名空间/新的镜像名:标签<br><br>命令空间：只是为了区分而已。<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190110165701.png"></p>
+<p><strong>5.启动我们的新的镜像并与原来的镜像进行对比</strong></p>
+<p>启动gakki/mytomcat:1.1<br><img src="/images/QQ截图20190110170937.png"></p>
+<p>启动原来的tomcat<br><img src="/images/QQ截图20190110170958.png"></p>
+<p><img src="/images/QQ截图20190110171048.png"><br><img src="/images/QQ截图20190110171205.png"><br><img src="/images/QQ截图20190110171314.png"></p>
+<p>以上就是演示，怎么提交新的镜像，根据新的镜像，启动新的容器的过程。</p>
+<hr>
+<p>演示，使用<code>-P</code>（大写的P）<br><img src="/images/QQ截图20190110171629.png"><br><img src="/images/QQ截图20190110171718.png"><br><img src="/images/QQ截图20190110171842.png"></p>
+<p>演示，使用 <code>-d</code> 后台运行tomcat容器</p>
+<p><img src="/images/QQ截图20190110172200.png"><br><img src="/images/QQ截图20190110172250.png"></p>
+<p><strong>注意：</strong></p>
+<p>之前不是说，后台运行的容器，只是运行一下下就退出的嘛？怎么这里不是呢？</p>
+<p>因为，tomcat后台启动后，会挂起，如果不是挂起的后台启动，都只是会启动一下就停止运行。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/docker/" rel="tag"><i class="fas fa-tags"></i>docker</a>
+        
+        <a class="post-tag button" href="/tags/容器/" rel="tag"><i class="fas fa-tags"></i>容器</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/09/Docker的常用命令/" rel="next" title="Docker的常用命令"><i class="fas fa-angle-left"></i><span class="nav-title">Docker的常用命令</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Docker的镜像原理",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">86</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">34</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">30</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#镜像是什么"><span class="toc-text">镜像是什么</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#UnionFS（联合文件系统）"><span class="toc-text">UnionFS（联合文件系统）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Docker镜像加载原理"><span class="toc-text">Docker镜像加载原理</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#分层的镜像"><span class="toc-text">分层的镜像</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#为什么Docker镜像要采用这种分层结构呢"><span class="toc-text">为什么Docker镜像要采用这种分层结构呢</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#镜像的特点"><span class="toc-text">镜像的特点</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#镜像的提交"><span class="toc-text">镜像的提交</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#docker-commit"><span class="toc-text">docker commit</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#案例演示"><span class="toc-text">案例演示</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

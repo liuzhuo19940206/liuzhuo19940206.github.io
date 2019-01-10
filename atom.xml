@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-10T05:40:18.023Z</updated>
+  <updated>2019-01-10T09:24:35.057Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker的镜像原理</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/10/Docker%E7%9A%84%E9%95%9C%E5%83%8F%E5%8E%9F%E7%90%86/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/10/Docker的镜像原理/</id>
+    <published>2019-01-10T07:23:28.000Z</published>
+    <updated>2019-01-10T09:24:35.057Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习docker中镜像原理，以及相关的commit命令。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker的常用命令</title>
@@ -458,30 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis中的集合操作命令。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的list命令操作</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/22/Redis%E7%9A%84list%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/22/Redis的list命令操作/</id>
-    <published>2018-12-22T11:46:56.000Z</published>
-    <updated>2018-12-22T13:16:21.051Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇文章来讲述redis中的list：链表的操作，学过数据结构的应该都清楚，链表的结构，这里就不详细描述了，只讲述redis中的链表操作。&lt;br&gt;
     
     </summary>
     
