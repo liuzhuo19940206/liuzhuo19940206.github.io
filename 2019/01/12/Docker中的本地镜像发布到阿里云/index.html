@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Docker中的本地镜像发布到阿里云 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/12/Docker中的本地镜像发布到阿里云/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Docker中的本地镜像发布到阿里云</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-12T16:54:09+08:00">2019-01-12 16:54:09</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>这篇主要来学习怎么将Docker中的本地镜像发布到阿里云上面。<br><a id="more"></a></p>
+<h2 id="本地镜像发布到阿里云流程"><a href="#本地镜像发布到阿里云流程" class="headerlink" title="本地镜像发布到阿里云流程"></a>本地镜像发布到阿里云流程</h2><p><img src="/images/QQ截图20190112165829.png"></p>
+<h2 id="镜像的生成方法"><a href="#镜像的生成方法" class="headerlink" title="镜像的生成方法"></a>镜像的生成方法</h2><h3 id="使用Dockerfile文件生成"><a href="#使用Dockerfile文件生成" class="headerlink" title="使用Dockerfile文件生成"></a>使用Dockerfile文件生成</h3><p><code>docker build -f Dockerfile路径 -t 镜像名:TAG</code> 指令来生成，参考Dockerfile文件解析那篇文章。</p>
+<h3 id="从已有的容器中创建一个新的镜像"><a href="#从已有的容器中创建一个新的镜像" class="headerlink" title="从已有的容器中创建一个新的镜像"></a>从已有的容器中创建一个新的镜像</h3><p><code>docker commit [OPTIONS] 容器ID [REPOSITORY[:TAG]]</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">OPTIONS说明：<br>-a :提交的镜像作者；<br>-m :提交时的说明文字；<br></code></pre></td></tr></table></figure></p>
+<p>这里，我使用mycentos:1.3为例，来生成 mycentos:1.4镜像：<br><img src="/images/QQ截图20190112170636.png"></p>
+<p>首先启动 mycentos:1.3 容器：<br><img src="/images/QQ截图20190112170847.png"></p>
+<p>接下来，生成 mycentos:1.4 镜像：</p>
+<p><code>docker commit -a gakki -m &#39;gakki commit mycentos:1.4&#39; mycentos:1.3的容器ID mycentos:1.4</code><br><img src="/images/QQ截图20190112171218.png"></p>
+<hr>
+<h2 id="将本地镜像推送到阿里云"><a href="#将本地镜像推送到阿里云" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h2><h3 id="本地要推送的镜像素材"><a href="#本地要推送的镜像素材" class="headerlink" title="本地要推送的镜像素材"></a>本地要推送的镜像素材</h3><p><img src="/images/QQ截图20190112171359.png"></p>
+<h3 id="进入阿里云开发者平台"><a href="#进入阿里云开发者平台" class="headerlink" title="进入阿里云开发者平台"></a>进入阿里云开发者平台</h3><p><code>https://dev.aliyun.com/search.html</code><br><img src="/images/QQ截图20190112171634.png"><br><img src="/images/QQ截图20190112171805.png"></p>
+<h3 id="创建仓库镜像"><a href="#创建仓库镜像" class="headerlink" title="创建仓库镜像"></a>创建仓库镜像</h3><p><img src="/images/QQ截图20190112172159.png"><br><img src="/images/QQ截图20190112172330.png"><br><img src="/images/QQ截图20190112172701.png"></p>
+<h3 id="将本地镜像推送到阿里云-1"><a href="#将本地镜像推送到阿里云-1" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h3><p><img src="/images/QQ截图20190112172831.png"><br><img src="/images/QQ截图20190112172921.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">$ sudo docker login --username=liuzhuo19940206 registry.cn-hangzhou.aliyuncs.com<br>$ sudo docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:[镜像版本号]<br>$ sudo docker push registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:[镜像版本号]<br><br>如果你是 root，就不需要加上sudo。<br><br>上面是我的账号，如果是你的话，请改成你的账号，即：拷贝阿里云上面的关键步骤<br></code></pre></td></tr></table></figure></p>
+<p>第一步：登入<br><img src="/images/QQ截图20190112173427.png"><br><img src="/images/QQ截图20190112173632.png"></p>
+<p>第二步：设置镜像的版本号<br><img src="/images/QQ截图20190112173913.png"></p>
+<p>第三步：推送<br><img src="/images/QQ截图20190112174050.png"><br><img src="/images/QQ截图20190112174317.png"></p>
+<h3 id="在阿里云的公有云可以查到"><a href="#在阿里云的公有云可以查到" class="headerlink" title="在阿里云的公有云可以查到"></a>在阿里云的公有云可以查到</h3><p><img src="/images/QQ截图20190112174617.png"><br><img src="/images/QQ截图20190112174741.png"><br><img src="/images/QQ截图20190112174811.png"></p>
+<h3 id="将阿里云上的镜像下载到本地"><a href="#将阿里云上的镜像下载到本地" class="headerlink" title="将阿里云上的镜像下载到本地"></a>将阿里云上的镜像下载到本地</h3><p><img src="/images/QQ截图20190112175134.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">拼接起来如下：<br><br>docker pull registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:1.4.1<br></code></pre></td></tr></table></figure>
+<p>首先删除本地的mycentos:1.4.1的镜像：<br><img src="/images/QQ截图20190112175450.png"><br><img src="/images/QQ截图20190112175634.png"><br><img src="/images/QQ截图20190112175722.png"><br><img src="/images/QQ截图20190112175847.png"></p>
+<hr>
+<p>以上，就是今天所有的内容了，相信大家已经学会了，从本地上传镜像到阿里云，也会从阿里云上拉取镜像了。爱生活，爱技术，我是gakkij酱。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/docker/" rel="tag"><i class="fas fa-tags"></i>docker</a>
+        
+        <a class="post-tag button" href="/tags/容器/" rel="tag"><i class="fas fa-tags"></i>容器</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/12/Docker中的常用安装/" rel="next" title="Docker中的常用安装"><i class="fas fa-angle-left"></i><span class="nav-title">Docker中的常用安装</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Docker中的本地镜像发布到阿里云",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">90</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">34</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">30</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#本地镜像发布到阿里云流程"><span class="toc-text">本地镜像发布到阿里云流程</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#镜像的生成方法"><span class="toc-text">镜像的生成方法</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用Dockerfile文件生成"><span class="toc-text">使用Dockerfile文件生成</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#从已有的容器中创建一个新的镜像"><span class="toc-text">从已有的容器中创建一个新的镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#将本地镜像推送到阿里云"><span class="toc-text">将本地镜像推送到阿里云</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地要推送的镜像素材"><span class="toc-text">本地要推送的镜像素材</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#进入阿里云开发者平台"><span class="toc-text">进入阿里云开发者平台</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#创建仓库镜像"><span class="toc-text">创建仓库镜像</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#将本地镜像推送到阿里云-1"><span class="toc-text">将本地镜像推送到阿里云</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#在阿里云的公有云可以查到"><span class="toc-text">在阿里云的公有云可以查到</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#将阿里云上的镜像下载到本地"><span class="toc-text">将阿里云上的镜像下载到本地</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
