@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-12T04:13:56.172Z</updated>
+  <updated>2019-01-12T07:52:23.117Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker中的常用安装</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/12/Docker%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AE%89%E8%A3%85/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/12/Docker中的常用安装/</id>
+    <published>2019-01-12T06:10:33.000Z</published>
+    <updated>2019-01-12T07:52:23.117Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天，主要来介绍Docker中的常用安装，希望大家学习完毕后，可以举一反三。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker中的Dockerfile解析</title>
@@ -458,30 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis中的简单事务。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的hash命令操作</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/25/Redis%E7%9A%84hash%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/25/Redis的hash命令操作/</id>
-    <published>2018-12-25T07:00:47.000Z</published>
-    <updated>2018-12-25T07:46:30.279Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习redis中的最后一个数据结构hash结构。&lt;br&gt;
     
     </summary>
     
