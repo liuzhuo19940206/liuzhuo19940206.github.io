@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Docker中的Dockerfile解析 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/11/Docker中的Dockerfile解析/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Docker中的Dockerfile解析</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-11T18:13:42+08:00">2019-01-11 18:13:42</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>这篇专门来讲解Docker中比较重要的DockerFile文件<br><a id="more"></a></p>
+<h2 id="DockerFile是什么"><a href="#DockerFile是什么" class="headerlink" title="DockerFile是什么"></a>DockerFile是什么</h2><p>Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
+<p>构建三步骤：</p>
+<ul>
+<li><p>编写Dockerfile文件</p>
+</li>
+<li><p>docker build</p>
+</li>
+<li><p>docker run</p>
+</li>
+</ul>
+<p>Dockerfile文件是什么样呢？</p>
+<p>以我们熟悉的CentOS为例：</p>
+<p><img src="/images/QQ截图20190111192141.png"><br><img src="/images/QQ截图20190111192322.png"><br><img src="/images/QQ截图20190111192232.png"></p>
+<hr>
+<h2 id="DockerFile构建过程解析"><a href="#DockerFile构建过程解析" class="headerlink" title="DockerFile构建过程解析"></a>DockerFile构建过程解析</h2><h3 id="Dockerfile内容基础知识"><a href="#Dockerfile内容基础知识" class="headerlink" title="Dockerfile内容基础知识"></a>Dockerfile内容基础知识</h3><p>1：每条保留字指令都必须为大写字母且后面要跟随至少一个参数</p>
+<p>2：指令按照从上到下，顺序执行</p>
+<p>3：#表示注释</p>
+<p>4：每条指令都会创建一个新的镜像层，并对镜像进行提交</p>
+<h3 id="Docker执行Dockerfile的流程"><a href="#Docker执行Dockerfile的流程" class="headerlink" title="Docker执行Dockerfile的流程"></a>Docker执行Dockerfile的流程</h3><p>（1）docker从基础镜像运行一个容器</p>
+<p>（2）执行一条指令并对容器作出修改</p>
+<p>（3）执行类似docker commit的操作提交一个新的镜像层</p>
+<p>（4）docker再基于刚提交的镜像运行一个新容器</p>
+<p>（5）执行dockerfile中的下一条指令直到所有指令都执行完成</p>
+<h3 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h3><p>从应用软件的角度来看，Dockerfile、Docker镜像与Docker容器分别代表软件的三个不同阶段：</p>
+<ul>
+<li><p>Dockerfile是软件的原材料</p>
+</li>
+<li><p>Docker镜像是软件的交付品</p>
+</li>
+<li><p>Docker容器则可以认为是软件的运行态。</p>
+</li>
+</ul>
+<p>Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可，合力充当Docker体系的基石。</p>
+<p><img src="/images/QQ截图20190111192957.png"></p>
+<ol>
+<li><p>Dockerfile，需要定义一个Dockerfile，Dockerfile定义了进程需要的一切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;</p>
+</li>
+<li><p>Docker镜像，在用Dockerfile定义一个文件之后，docker build 时会产生一个Docker镜像，当运行 Docker镜像时，会真正开始提供服务;</p>
+</li>
+<li><p>Docker容器，容器是直接提供服务的。</p>
+</li>
+</ol>
+<h2 id="DockerFile体系结构-保留字指令"><a href="#DockerFile体系结构-保留字指令" class="headerlink" title="DockerFile体系结构(保留字指令)"></a>DockerFile体系结构(保留字指令)</h2><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs undefined">FROM:         基础镜像，当前新镜像是基于哪个镜像的<br>MAINTAINER:   镜像维护者的姓名和邮箱地址<br>RUN:          容器构建时需要运行的linux命令<br>EXPOSE:       当前容器对外暴露出的端口<br><br>------------------------------------------------------<br>ENV:          用来在构建镜像过程中设置环境变量<br><br>ENV MY_PATH /usr/mytest<br>这个环境变量可以在后续的任何RUN指令中使用，这就如同在命令前面指定了环境变量前缀一样；<br>也可以在其它指令中直接使用这些环境变量，<br> <br>比如：WORKDIR $MY_PATH<br>------------------------------------------------------<br><br>WORKDIR:      指定在创建容器后，终端默认登陆的进来工作目录，一个落脚点<br>ADD:          将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar压缩包<br>COPY:         类似ADD，拷贝文件和目录到镜像中。将从构建上下文目录中 &lt;源路径&gt; 的文件/目录复制到新的一层的镜像内的 &lt;目标路径&gt; 位置.<br>VOLUME:       容器数据卷，用于数据保存和持久化工作。<br><br>-------------------------------------------------------<br>CMD:          指定一个容器启动时要运行的命令,Dockerfile 中可以有多个 CMD 指令，但只有最后一个生效，CMD 会被 docker run 之后的参数替换.<br><br>CMD指令的格式与RUN相似，也是两种格式：<br><br>shell 格式：CMD &lt;命令&gt;<br><br>exec 格式：CMD [&quot;可执行文件&quot;,&quot;参数1&quot;,&quot;参数2&quot;,···]<br><br>参数列表格式：CMD [&quot;参数1&quot;,&quot;参数2&quot;,···]。在指定了 ENTRYPOINT 指令后，可以用 CMD 指定具体的参数。<br>--------------------------------------------------------<br><br>ENTRYPOINT：  指定一个容器启动时要运行的命令，ENTRYPOINT 的目的 和 CMD 一样，都是在指定容器启动程序及参数，但是它是叠加命令，不是覆盖命令。<br>ONBUILD：     当构建一个被继承的Dockerfile时运行命令，父镜像在被子继承后父镜像的onbuild被触发<br></code></pre></td></tr></table></figure>
+<h3 id="小总结-1"><a href="#小总结-1" class="headerlink" title="小总结"></a>小总结</h3><p><img src="/images/QQ截图20190111194330.png"></p>
+<hr>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Base镜像-scratch"><a href="#Base镜像-scratch" class="headerlink" title="Base镜像(scratch)"></a>Base镜像(scratch)</h3><p>Docker Hub 中 99% 的镜像都是 通过在 base 镜像中安装和配置需要的软件构建出来的。<code>scratch</code> 就是最基础的镜像，和 java中对象默认继承Object对象一样。<br><img src="/images/QQ截图20190111194719.png"></p>
+<h3 id="自定义镜像mycentos"><a href="#自定义镜像mycentos" class="headerlink" title="自定义镜像mycentos"></a>自定义镜像mycentos</h3><h4 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h4><p>1.默认的centos镜像是什么情况呢？<br><img src="/images/QQ截图20190111195155.png"></p>
+<p>现在：我们想创建自己的mycentos镜像，修改登入后的工作目录，支持vim编辑器，支持ifconfig网络配置。</p>
+<p>2.编写dockerfile文件</p>
+<p>由于之前，我们在mydocker文件下，写过Dockerfile文件，所以接着在里面写了，你们如果没有，就在根目录下创建即可，随意。<br><img src="/images/QQ截图20190111195627.png"></p>
+<p>Dockerfile文件中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">FROM centos                               #继承centos镜像<br>MAINTAINER gakki&lt;gakki167@126.com&gt;        #填写作者与邮箱地址<br> <br>ENV mypath /usr/local                     #编写环境变量，方便后续使用<br>WORKDIR $mypath                           #修改登入后的工作目录<br> <br>RUN yum -y install vim                    #使用RUN命令，下载vim编辑<br>RUN yum -y install net-tools              #使用RUN命令，下载网络配置工具<br> <br>EXPOSE 80                                 #暴露端口号为80<br> <br>CMD echo $mypath                          #为了测试，随便写的，不写也行<br>CMD echo &quot;success--------------ok&quot;        #为了测试，随便写的，不写也行<br>CMD /bin/bash                             #启动容器，执行/bin/bash命令<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190111200217.png"></p>
+<h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p><code>docker build -f Dockerfile文件的路径 -t 新镜像名字:TAG .</code>  注意最后有一个点,  . 表示当前目录</p>
+<p>如果当前目录下，存在Dockerfile文件话，而且就是<code>Dockerfile</code>这个名字，那么可以不写 <code>-f Dockerfile的路径</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker build -t mycentos:1.3 .<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190111200803.png"></p>
+<p>然后开始一顿哗啦啦的代码，因为要下载 vim 和 net-tools。<br><img src="/images/QQ截图20190111200933.png"><br><img src="/images/QQ截图20190111201130.png"></p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><code>docker run -it 新镜像名:TAG</code><br><img src="/images/QQ截图20190111201358.png"><br><img src="/images/QQ截图20190111201459.png"><br><img src="/images/QQ截图20190111201548.png"></p>
+<h4 id="列出镜像的变更历史"><a href="#列出镜像的变更历史" class="headerlink" title="列出镜像的变更历史"></a>列出镜像的变更历史</h4><p><code>docker history 镜像名</code><br><img src="/images/QQ截图20190111201937.png"></p>
+<h3 id="CMD-ENTRYPOINT-镜像案例"><a href="#CMD-ENTRYPOINT-镜像案例" class="headerlink" title="CMD/ENTRYPOINT 镜像案例"></a>CMD/ENTRYPOINT 镜像案例</h3><p>为了区分 CMD 与 ENTRYPOINT 命令的区别，而做了案例。</p>
+<p>两者都是：指定一个容器启动时要运行的命令。</p>
+<h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><p>采用 CMD 的话，当Dockerfile 中有多个 CMD 指令时，只能最后一个生效。而且 CMD 会被 docker run 之后的参数替换。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">比如，当Dockerfile文件中的最后是:<br><br>CMD [&quot;/bin/bash&quot;]<br>CMD [&quot;ls&quot;,&quot;-l&quot;]<br><br>那么，只会执行 ls -l 命令，不会执行/bin/bash 命令。<br><br>当使用 docker run -it 镜像名 ls -l ： 启动容器也是一样的效果，这里的ls -l 会覆盖掉Dockerfile文件中的：CMD [&quot;/bin/bash&quot;]<br></code></pre></td></tr></table></figure></p>
+<p>这里，我以tomcat为例来演示：</p>
+<p><img src="/images/QQ截图20190111202901.png"></p>
+<p>如果不加 ls -l ，就会执行默认的 CMD [“catalina.sh”, “run”] （上图写错了）<br><img src="/images/QQ截图20190111203033.png"></p>
+<hr>
+<h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>docker run 之后的参数会被当做参数传递给 ENTRYPOINT，之后形成新的命令组合，不会覆盖之前的命令。</p>
+<p>制作CMD版可以查询IP信息的容器：</p>
+<p>在mydocker文件夹下，创建Dockerfile2文件：<br><img src="/images/QQ截图20190111203430.png"></p>
+<p>Dockerfile2文件内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">FROM centos<br>RUN yum install -y curl<br>CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190111204426.png"></p>
+<p>生成 myip镜像：<br><img src="/images/QQ截图20190111203855.png"></p>
+<p>运行 myip镜像：<br><img src="/images/QQ截图20190111204646.png"></p>
+<p>那是因为，我们生成myip的镜像的Dockerfile文件，最后执行了：<code>CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]。</code></p>
+<p>如果，我们想要获取抓包过程中的头部信息，还需要加上 -i 。<br><img src="/images/QQ截图20190111204950.png"></p>
+<p>现在，我在启动myip的过程中 加上 -i：<br><img src="/images/QQ截图20190111205157.png"></p>
+<p>因为，我们使用的是CMD，不是ENTRYPOINT，所以，在docker run 后面的参数，会直接覆盖Dockerfile中的<code>CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]</code>，相当于现在变成了<code>CMD [&quot;-i&quot;]</code> ，这个当然报错呀，都不知道是什么玩意！！！</p>
+<hr>
+<p>现在，在mydocker文件夹下，创建Dockerfile3：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">FROM centos<br>RUN yum install -y curl<br>ENTRYPOINT [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]<br></code></pre></td></tr></table></figure></p>
+<p>唯一的区别就是：将CMD 换成了 ENTRYPOINT 。<br><img src="/images/QQ截图20190111205600.png"></p>
+<p>生成新的镜像：myip2<br><img src="/images/QQ截图20190111205729.png"></p>
+<p>启动 myip2 容器：<br><img src="/images/QQ截图20190111205905.png"></p>
+<p>到目前为止，都和CMD一样。现在 再次启动 myip2 还面带上 -i 参数：<br><img src="/images/QQ截图20190111210120.png"></p>
+<p>发现，没有报错，返回了 头部信息 和 主体信息。</p>
+<p>以上：就是 CMD 和 ENTRYPOINT 的区别！！！</p>
+<h4 id="CURL"><a href="#CURL" class="headerlink" title="CURL"></a>CURL</h4><p>考虑到大家有可能对 curl 不熟，这里简单介绍一下：</p>
+<p>curl命令可以用来执行 下载、发送各种HTTP请求，指定HTTP头部等操作。</p>
+<p>如果系统没有curl可以使用 yum install curl安装，也可以下载安装。</p>
+<p><code>curl是将下载文件输出到stdout</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">使用命令：curl http://www.baidu.com<br>执行后，www.baidu.com的html就会显示在屏幕上了<br><br>这是最简单的使用方法。用这个命令获得了http://curl.haxx.se指向的页面<br>同样，如果这里的URL指向的是一个文件或者一幅图都可以直接下载到本地。<br>如果下载的是HTML文档，那么缺省的将只显示文件头部，即HTML文档的header。要全部显示，请加参数 -i<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="自定义镜像Tomcat9"><a href="#自定义镜像Tomcat9" class="headerlink" title="自定义镜像Tomcat9"></a>自定义镜像Tomcat9</h3><h4 id="创建一个目录来编写Dockerfile文件"><a href="#创建一个目录来编写Dockerfile文件" class="headerlink" title="创建一个目录来编写Dockerfile文件"></a>创建一个目录来编写Dockerfile文件</h4><p><code>mkdir -p /gakki/mydocker/tomcat9</code><br><img src="/images/QQ截图20190111210844.png"></p>
+<h4 id="在上述目录下创建c-txt"><a href="#在上述目录下创建c-txt" class="headerlink" title="在上述目录下创建c.txt"></a>在上述目录下创建c.txt</h4><p><img src="/images/QQ截图20190111211019.png"></p>
+<p>创建c.txt，主要是为了使用：COPY命令来玩的，没有什么作用意义。</p>
+<h4 id="将jdk和tomcat安装的压缩包拷贝进上一步目录"><a href="#将jdk和tomcat安装的压缩包拷贝进上一步目录" class="headerlink" title="将jdk和tomcat安装的压缩包拷贝进上一步目录"></a>将jdk和tomcat安装的压缩包拷贝进上一步目录</h4><p>在我的centos中，已经下载过 jdk 和 tocmat 的压缩包，如果大家没有，请自行下载，自学，比较简单。</p>
+<p><code>cp /usr/local/src/apache-tomcat-8.5.37.tar.gz ./</code></p>
+<p><code>cp /usr/local/src/jdk-8u191-linux-x64.tar.gz ./</code></p>
+<p><img src="/images/QQ截图20190112105516.png"></p>
+<h4 id="在当前目录下创建Dockerfile文件"><a href="#在当前目录下创建Dockerfile文件" class="headerlink" title="在当前目录下创建Dockerfile文件"></a>在当前目录下创建Dockerfile文件</h4><p><img src="/images/QQ截图20190112105740.png"></p>
+<p>Dockerfile文件内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#基于centos镜像<br>FROM centos<br>#作者以及邮箱<br>MAINTAINER gakki&lt;gakkij@126.com&gt;<br>#把宿主机当前上下文的c.txt拷贝到容器/usr/local/路径下<br>COPY c.txt /usr/local/copycontainer.txt<br>#把java与tomcat添加到容器中<br>ADD jdk-8u191-linux-x64.tar.gz /usr/local/<br>ADD apache-tomcat-8.5.37.tar.gz /usr/local/<br>#安装vim编辑器<br>RUN yum -y install vim<br>#设置工作访问时候的WORKDIR路径，登录落脚点<br>ENV MYPATH /usr/local<br>WORKDIR $MYPATH<br>#配置java与tomcat环境变量<br>ENV JAVA_HOME /usr/local/jdk1.8.0_191<br>ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar<br>ENV CATALINA_HOME /usr/local/apache-tomcat-8.5.37<br>ENV CATALINA_BASE /usr/local/apache-tomcat-8.5.37<br>ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin<br>#容器运行时监听的端口<br>EXPOSE  8080<br>#启动时运行tomcat<br># ENTRYPOINT [&quot;/usr/local/apache-tomcat-8.5.37/bin/startup.sh&quot; ]<br># CMD [&quot;/usr/local/apache-tomcat-8.5.37/bin/catalina.sh&quot;,&quot;run&quot;]<br>CMD /usr/local/apache-tomcat-8.5.37/bin/startup.sh &amp;&amp; tail -F /usr/local/apache-tomcat-8.5.37/bin/logs/catalina.out<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190112110723.png"></p>
+<p><strong>注意：</strong>上面的 jdk 和 tomcat 填写成你的机器上面的 jdk 和 tomcat 的版本，不要和我一样，除非你下载的jdk和tomcat的版本和我一样！！！</p>
+<h4 id="构建-1"><a href="#构建-1" class="headerlink" title="构建"></a>构建</h4><p><code>docker build -t gakkitomcat9 .</code></p>
+<p><img src="/images/QQ截图20190112111444.png"><br><img src="/images/QQ截图20190112111531.png"><br><img src="/images/QQ截图20190112111623.png"></p>
+<h4 id="run"><a href="#run" class="headerlink" title="run"></a>run</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">docker run -d -p 9080:8080 --name myt9 -v /gakki/mydocker/tomcat9/app:/usr/local/apache-tomcat-8.5.37/webapps/app -v /gakki/mydocker/tomcat9/tomcat9logs/:/usr/local/apache-tomcat-8.5.37/logs --privileged=true gakkitomcat9<br><br>解释：上面创建了两个数据卷，一个用来创建app来与gakkitomcat9共享，放置网站用的，这样的话，我们直接就可以在宿主机上操作网站中的内容了<br><br>另一个数据卷是用来存放gakkitomcat9容器启动后的日志信息。<br></code></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20190112112223.png"><br><img src="/images/QQ截图20190112112335.png"><br><img src="/images/QQ截图20190112112437.png"></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p><img src="/images/QQ截图20190112112648.png"><br><img src="/images/QQ截图20190112112801.png"></p>
+<h4 id="发布webapp"><a href="#发布webapp" class="headerlink" title="发布webapp"></a>发布webapp</h4><p>在我们的宿主机的app目录下(数据卷目录)，创建webapp的标准目录结构：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">app<br>---a.jsp<br>---WEB-INF<br>------web.xml<br><br>app目录下：有a.jsp文件 和 WEB-INF目录<br>WEB-INF目录下：有web.xml文件<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190112113341.png"></p>
+<p>web.xml中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>  xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;<br>  xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;<br>  id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;<br>  <br>  &lt;display-name&gt;myApp&lt;/display-name&gt;<br> <br>&lt;/web-app&gt;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190112113625.png"></p>
+<p>a.jsp中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;<br>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;<br>&lt;html&gt;<br>  &lt;head&gt;<br>    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;<br>    &lt;title&gt;Insert title here&lt;/title&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    -----------welcome------------<br>    &lt;%=&quot;i am in docker tomcat self &quot;%&gt;<br>    &lt;br&gt;<br>    &lt;br&gt;<br>    &lt;% System.out.println(&quot;=============docker tomcat self&quot;);%&gt;<br>  &lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/QQ截图20190112113715.png"></p>
+<p>测试：</p>
+<p>在浏览器中输入：<code>localhost:9080/app/a.jsp</code><br><img src="/images/QQ截图20190112113853.png"><br><img src="/images/QQ截图20190112113939.png"></p>
+<hr>
+<p>现在，我们稍微修改一下，a.jsp中的内容：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;<br>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;<br>&lt;html&gt;<br>  &lt;head&gt;<br>    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;<br>    &lt;title&gt;Insert title here&lt;/title&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    -----------welcome------------&lt;br&gt;<br>    &lt;%=&quot;i am update in docker tomcat self &quot;%&gt;<br>    &lt;br&gt;<br>    &lt;br&gt;<br>    &lt;% System.out.println(&quot;=============docker tomcat self&quot;);%&gt;<br>  &lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure></p>
+<p>就是在：welcome后面加了换行，修改了输出语句加了：update。<br><img src="/images/QQ截图20190112114252.png"></p>
+<p>现在，来查看日志信息：<br><img src="/images/QQ截图20190112115253.png"><br><img src="/images/QQ截图20190112115340.png"></p>
+<p>现在稍微明白容器数据卷的作用的吧，以后我们只需要在宿主机中的 app目录下修改、添加内容，docker容器中就会同步数据，方便开发和查看日志信息。</p>
+<hr>
+<p>现在，我们进入gakkitomcat9中，验证：<br><img src="/images/QQ截图20190112115727.png"><br><img src="/images/QQ截图20190112120945.png"><br><img src="/images/QQ截图20190112121214.png"></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/images/QQ截图20190112121346.png"></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/docker/" rel="tag"><i class="fas fa-tags"></i>docker</a>
+        
+        <a class="post-tag button" href="/tags/容器/" rel="tag"><i class="fas fa-tags"></i>容器</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/10/Docker中的容器数据卷/" rel="next" title="Docker中的容器数据卷"><i class="fas fa-angle-left"></i><span class="nav-title">Docker中的容器数据卷</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Docker中的Dockerfile解析",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">88</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">34</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">30</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#DockerFile是什么"><span class="toc-text">DockerFile是什么</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#DockerFile构建过程解析"><span class="toc-text">DockerFile构建过程解析</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Dockerfile内容基础知识"><span class="toc-text">Dockerfile内容基础知识</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Docker执行Dockerfile的流程"><span class="toc-text">Docker执行Dockerfile的流程</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#小总结"><span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#DockerFile体系结构-保留字指令"><span class="toc-text">DockerFile体系结构(保留字指令)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#小总结-1"><span class="toc-text">小总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#案例"><span class="toc-text">案例</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Base镜像-scratch"><span class="toc-text">Base镜像(scratch)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#自定义镜像mycentos"><span class="toc-text">自定义镜像mycentos</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#编写"><span class="toc-text">编写</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#构建"><span class="toc-text">构建</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#运行"><span class="toc-text">运行</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#列出镜像的变更历史"><span class="toc-text">列出镜像的变更历史</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CMD-ENTRYPOINT-镜像案例"><span class="toc-text">CMD/ENTRYPOINT 镜像案例</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CMD"><span class="toc-text">CMD</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ENTRYPOINT"><span class="toc-text">ENTRYPOINT</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CURL"><span class="toc-text">CURL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#自定义镜像Tomcat9"><span class="toc-text">自定义镜像Tomcat9</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#创建一个目录来编写Dockerfile文件"><span class="toc-text">创建一个目录来编写Dockerfile文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#在上述目录下创建c-txt"><span class="toc-text">在上述目录下创建c.txt</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#将jdk和tomcat安装的压缩包拷贝进上一步目录"><span class="toc-text">将jdk和tomcat安装的压缩包拷贝进上一步目录</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#在当前目录下创建Dockerfile文件"><span class="toc-text">在当前目录下创建Dockerfile文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#构建-1"><span class="toc-text">构建</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#run"><span class="toc-text">run</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#验证"><span class="toc-text">验证</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#发布webapp"><span class="toc-text">发布webapp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

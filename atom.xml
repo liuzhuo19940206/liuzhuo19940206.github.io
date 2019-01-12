@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-11T07:44:20.832Z</updated>
+  <updated>2019-01-12T04:13:56.172Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker中的Dockerfile解析</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/11/Docker%E4%B8%AD%E7%9A%84Dockerfile%E8%A7%A3%E6%9E%90/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/11/Docker中的Dockerfile解析/</id>
+    <published>2019-01-11T10:13:42.000Z</published>
+    <updated>2019-01-12T04:13:56.172Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这篇专门来讲解Docker中比较重要的DockerFile文件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
+    
+    
+      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
+    
+      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker中的容器数据卷</title>
@@ -458,30 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis中的最后一个数据结构hash结构。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的sorted set命令操作</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/23/Redis%E7%9A%84sorted-set%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/23/Redis的sorted-set命令操作/</id>
-    <published>2018-12-23T05:35:50.000Z</published>
-    <updated>2018-12-23T07:12:00.899Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;redis中的有序集合：sorted set。&lt;br&gt;
     
     </summary>
     
