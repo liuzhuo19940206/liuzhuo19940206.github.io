@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-12T10:01:06.761Z</updated>
+  <updated>2019-01-13T06:18:35.737Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java原子类实现原理分析</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/13/java%E5%8E%9F%E5%AD%90%E7%B1%BB%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/13/java原子类实现原理分析/</id>
+    <published>2019-01-13T06:01:26.000Z</published>
+    <updated>2019-01-13T06:18:35.737Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浅谈java中的原子类实现原理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="原子类" scheme="http://liuzhuo19940206.github.io/categories/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E5%8E%9F%E5%AD%90%E7%B1%BB/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="原子类" scheme="http://liuzhuo19940206.github.io/tags/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈java中的volatile</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/13/%E8%B0%88%E8%B0%88java%E4%B8%AD%E7%9A%84volatile/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/13/谈谈java中的volatile/</id>
+    <published>2019-01-13T05:13:54.000Z</published>
+    <updated>2019-01-13T05:49:22.024Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浅谈java中的volatile关键字&lt;br&gt;
+    
+    </summary>
+    
+      <category term="volatile" scheme="http://liuzhuo19940206.github.io/categories/volatile/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/volatile/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="volatile" scheme="http://liuzhuo19940206.github.io/tags/volatile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试中的单例问题</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/13/%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E9%97%AE%E9%A2%98/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/13/面试中的单例问题/</id>
+    <published>2019-01-13T04:26:52.000Z</published>
+    <updated>2019-01-13T05:10:03.383Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给大家普及一下，我在面试中遇到的单例问题。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="单例" scheme="http://liuzhuo19940206.github.io/categories/%E5%8D%95%E4%BE%8B/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E5%8D%95%E4%BE%8B/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="单例" scheme="http://liuzhuo19940206.github.io/tags/%E5%8D%95%E4%BE%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker中的本地镜像发布到阿里云</title>
@@ -410,78 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的aof日志持久化</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84aof%E6%97%A5%E5%BF%97%E6%8C%81%E4%B9%85%E5%8C%96/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/31/Redis中的aof日志持久化/</id>
-    <published>2018-12-31T06:36:19.000Z</published>
-    <updated>2018-12-31T09:02:41.381Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;接着上篇的内容，来讲述redis中的aof日志持久化操作&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的rdb快照持久化</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84rdb%E5%BF%AB%E7%85%A7%E6%8C%81%E4%B9%85%E5%8C%96/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/31/Redis中的rdb快照持久化/</id>
-    <published>2018-12-31T03:33:50.000Z</published>
-    <updated>2018-12-31T04:53:40.006Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习redis中的持久化操作，这是redis缓存一大优势。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的发布与订阅</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/30/Redis%E7%9A%84%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/30/Redis的发布与订阅/</id>
-    <published>2018-12-30T13:09:18.000Z</published>
-    <updated>2018-12-31T02:14:45.365Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇介绍redis中的发布与订阅的简单操作。&lt;br&gt;
     
     </summary>
     

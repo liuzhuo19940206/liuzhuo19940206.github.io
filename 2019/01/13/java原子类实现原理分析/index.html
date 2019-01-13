@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>java原子类实现原理分析 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/13/java原子类实现原理分析/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">java原子类实现原理分析</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-13T14:01:26+08:00">2019-01-13 14:01:26</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/原子类/" itemprop="url" rel="index"><span itemprop="name">原子类</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/原子类/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>浅谈java中的原子类实现原理<br><a id="more"></a></p>
+<p>在谈谈java中的volatile一文中，我们提到过并发包中的原子类可以解决类似num++这样的复合类操作的原子性问题，相比锁机制，使用原子类更精巧轻量，性能开销更小，本章就一起来分析下原子类的实现机理。</p>
+<h3 id="悲观的解决方案（阻塞同步）"><a href="#悲观的解决方案（阻塞同步）" class="headerlink" title="悲观的解决方案（阻塞同步）"></a>悲观的解决方案（阻塞同步）</h3><p>我们知道，num++看似简单的一个操作，实际上是由<strong>1.读取 2.加一 3.写入 </strong>三步组成的，这是个复合类的操作（所以我们之前提到过的volatile是无法解决num++的原子性问题的），在并发环境下，如果不做任何同步处理，就会有线程安全问题。最直接的处理方式就是<strong>加锁</strong>。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">synchronized(this)&#123;<br>    num++;<br> &#125;<br></code></pre></td></tr></table></figure>
+<p>使用独占锁机制来解决，是一种<strong>悲观的并发策略</strong>，抱着一副“总有刁民想害朕”的态势，每次操作数据的时候都认为别的线程会参与</p>
+<p>竞争修改，所以直接加锁。同一刻只能有一个线程持有锁，那其他线程就会阻塞。线程的挂起恢复会带来很大的性能开销，尽管</p>
+<p>jvm对于非竞争性的锁的获取和释放做了很多优化，但是一旦有多个线程竞争锁，频繁的阻塞唤醒，还是会有很大的性能开销的。</p>
+<p>所以，使用synchronized或其他重量级锁来处理显然不够合理。</p>
+<hr>
+<h3 id="乐观的解决方案（非阻塞同步）"><a href="#乐观的解决方案（非阻塞同步）" class="headerlink" title="乐观的解决方案（非阻塞同步）"></a>乐观的解决方案（非阻塞同步）</h3><p>乐观的解决方案，顾名思义，就是很大度乐观，每次操作数据的时候，都认为别的线程不会参与竞争修改，也不加锁。如果操作成功了那最好；如果失败了，比如中途确有别的线程进入并修改了数据（依赖于冲突检测），也不会阻塞，可以采取一些补偿机制，一般的策略就是<strong>反复重试</strong>。很显然，这种思想相比简单粗暴利用锁来保证同步要合理的多。</p>
+<p>鉴于并发包中的原子类其实现机理都差不太多，本章我们就通过AtomicInteger这个原子类来进行分析。我们先来看看对于num++这样的操作AtomicInteger是如何保证其原子性的。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/**<br>    * Atomically increments by one the current value.<br>    *<br>    * @return the updated value<br>    */<br>   public final int incrementAndGet() &#123;<br>       for (;;) &#123;<br>           int current = get();<br>           int next = current + 1;<br>           if (compareAndSet(current, next))<br>               return next;<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+<p>我们来分析下incrementAndGet的逻辑：</p>
+<ol>
+<li><p>先获取当前的value值</p>
+</li>
+<li><p>对value加一</p>
+</li>
+<li><p>第三步是关键步骤，调用<strong>compareAndSet</strong>方法来来进行原子更新操作，这个方法的语义是：</p>
+</li>
+</ol>
+<font color="red"><strong>先检查当前value是否等于current，如果相等，则意味着value没被其他线程修改过，更新并返回true。如果不相等，compareAndSet则会返回false，然后循环继续尝试更新。</strong></font>
+
+<p>compareAndSet调用了Unsafe类的compareAndSwapInt方法:</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/**<br>     * Atomically sets the value to the given updated value<br>     * if the current value &#123;@code ==&#125; the expected value.<br>     *<br>     * @param expect the expected value<br>     * @param update the new value<br>     * @return true if successful. False return indicates that<br>     * the actual value was not equal to the expected value.<br>     */<br>    public final boolean compareAndSet(int expect, int update) &#123;<br>        return unsafe.compareAndSwapInt(this, valueOffset, expect, update);<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>Unsafe的compareAndSwapInt是个native方法，也就是平台相关的。它是基于CPU的CAS指令来完成的。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public final native boolean compareAndSwapInt(Object var1, long var2, int var4, int var5);<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="CAS-Compare-and-Swap"><a href="#CAS-Compare-and-Swap" class="headerlink" title="CAS(Compare-and-Swap)"></a>CAS(Compare-and-Swap)</h3><p>CAS算法是由硬件直接支持来保证原子性的，有三个操作数：<font color="red"><strong>内存位置V、旧的预期值A 和 新值B，当且仅当V符合预期值A时，CAS用新值B原子化地更新V的值，否则，它什么都不做。</strong></font></p>
+<p><strong>CAS的ABA问题:</strong></p>
+<p>当然CAS也并不完美，它存在”ABA”问题，假若一个变量初次读取是A，<strong>在compare阶段依然是A，但其实可能在此过程中</strong>，<strong>它先被改为B，再被改回A</strong>，<strong>而CAS是无法意识到这个问题的。</strong>CAS只关注了比较前后的值是否改变，而无法清楚在此过程中变量的变更明细，这就是所谓的ABA漏洞。 </p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/原子类/" rel="tag"><i class="fas fa-tags"></i>原子类</a>
+        
+        <a class="post-tag button" href="/tags/面试/" rel="tag"><i class="fas fa-tags"></i>面试</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/13/谈谈java中的volatile/" rel="next" title="谈谈java中的volatile"><i class="fas fa-angle-left"></i><span class="nav-title">谈谈java中的volatile</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "java原子类实现原理分析",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">93</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">40</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">32</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#悲观的解决方案（阻塞同步）"><span class="toc-text">悲观的解决方案（阻塞同步）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#乐观的解决方案（非阻塞同步）"><span class="toc-text">乐观的解决方案（非阻塞同步）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CAS-Compare-and-Swap"><span class="toc-text">CAS(Compare-and-Swap)</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

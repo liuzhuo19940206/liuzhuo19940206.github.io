@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>谈谈java中的volatile | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/13/谈谈java中的volatile/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">谈谈java中的volatile</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-13T13:13:54+08:00">2019-01-13 13:13:54</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/volatile/" itemprop="url" rel="index"><span itemprop="name">volatile</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/volatile/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>浅谈java中的volatile关键字<br><a id="more"></a></p>
+<h3 id="内存可见性"><a href="#内存可见性" class="headerlink" title="内存可见性"></a>内存可见性</h3><p>volatile是Java提供的一种轻量级的同步机制，在并发编程中，它也扮演着比较重要的角色。同synchronized相比（synchronized通常称为重量级锁），volatile更轻量级，相比使用synchronized所带来的庞大开销，倘若能恰当的合理的使用volatile，自然是美事一桩。</p>
+<p>为了能比较清晰彻底的理解volatile，我们一步一步来分析。首先来看看如下代码：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class TestVolatile &#123;<br>    boolean status = false;<br><br>    /**<br>     * 状态切换为true<br>     */<br>    public void changeStatus()&#123;<br>        status = true;<br>    &#125;<br><br>    /**<br>     * 若状态为true，则running。<br>     */<br>    public void run()&#123;<br>        if(status)&#123;<br>            System.out.println(&quot;running....&quot;);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面这个例子，在 <strong>多线程环境</strong> 里，假设 线程A 执行changeStatus()方法后 , 线程B 运行run()方法，可以保证输出”running…..”吗？</p>
+<font color="red">答案是NO! </font>
+
+<p>这个结论会让人有些疑惑，可以理解。因为倘若在单线程模型里，先运行changeStatus方法，再执行run方法，自然是可以正确输出”running….”的；但是在多线程模型中，是没法做这种保证的。因为对于共享变量status来说，线程A的修改，对于线程B来讲，<strong>是”不可见”的</strong>。也就是说，线程B此时可能无法观测到status已被修改为true。那么什么是可见性呢？</p>
+<font color="red">所谓可见性，是指当一条线程修改了共享变量的值，新值对于其他线程来说是<strong>可以立即得知的</strong>。很显然，上述的例子中是没有办法做到内存可见性的。</font>
+
+<p><strong>Java内存模型</strong></p>
+<p>为什么出现这种情况呢，我们需要先了解一下JMM（java内存模型）</p>
+<p>java虚拟机有自己的内存模型（Java Memory Model，JMM），JMM可以屏蔽掉各种硬件和操作系统的内存访问差异，以实现让java程序在各种平台下都能达到一致的内存访问效果。</p>
+<p>JMM决定一个线程对共享变量的写入何时对另一个线程可见，JMM定义了线程和主内存之间的抽象关系：共享变量存储在主内存(Main Memory)中，每个线程都有一个私有的本地内存（Local Memory），本地内存保存了被该线程使用到的主内存的副本拷贝，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存中的变量。这三者之间的交互关系如下:</p>
+<p><img src="/images/QQ截图20190113132739.png"></p>
+<p>　　需要注意的是，JMM是个抽象的内存模型，所以所谓的本地内存，主内存都是抽象概念，并不一定就真实的对应cpu缓存和物理内存。当然如果是出于理解的目的，这样对应起来也无不可。</p>
+<p>大概了解了JMM的简单定义后，问题就很容易理解了，对于普通的共享变量来讲，比如我们上文中的status，线程A将其修改</p>
+<p>为true这个动作发生在线程A的本地内存中，此时还未同步到主内存中去；而线程B缓存了status的初始值false，此时可能</p>
+<p>没有观测到status的值被修改了，所以就导致了上述的问题。那么这种共享变量在多线程模型中的不可见性如何解决呢？比</p>
+<p>较粗暴的方式自然就是加锁，但是此处使用synchronized或者Lock这些方式太重量级了，有点炮打蚊子的意思。比较合理的方式其实就是volatile。</p>
+<p>volatile具备两种特性，第一就是保证共享变量对所有线程的可见性。将一个共享变量声明为volatile后，会有以下效应：</p>
+<ul>
+<li><p><strong>当写一个volatile变量时，JMM会把该线程对应的本地内存中的变量强制刷新到主内存中去；</strong></p>
+</li>
+<li><p><strong>这个写会操作会导致其他线程中的缓存无效。</strong></p>
+</li>
+</ul>
+<p>上面的例子只需将status声明为volatile，即可保证在线程A将其修改为true时，线程B可以立刻得知：</p>
+<p><code>volatile boolean status = false;</code></p>
+<hr>
+<h3 id="留意复合类操作"><a href="#留意复合类操作" class="headerlink" title="留意复合类操作"></a>留意复合类操作</h3><p>但是需要注意的是，我们一直在拿volatile和synchronized做对比，仅仅是因为这两个关键字在某些内存语义上有共通之处，volatile并不能完全替代synchronized，它依然是个轻量级锁，在很多场景下，volatile并不能胜任。看下这个例子：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs undefined">package test;<br><br>import java.util.concurrent.CountDownLatch;<br><br>public class Counter &#123;<br>    public static volatile int num = 0;<br>    //使用CountDownLatch来等待计算线程执行完<br>    static CountDownLatch countDownLatch = new CountDownLatch(30);<br>    public static void main(String []args) throws InterruptedException &#123;<br>        //开启30个线程进行累加操作<br>        for(int i=0;i&lt;30;i++)&#123;<br>            new Thread()&#123;<br>                public void run()&#123;<br>                    for(int j=0;j&lt;10000;j++)&#123;<br>                        num++;//自加操作<br>                    &#125;<br>                    countDownLatch.countDown();<br>                &#125;<br>            &#125;.start();<br>        &#125;<br>        //等待计算线程执行完<br>        countDownLatch.await();<br>        System.out.println(num);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<p><code>224291</code></p>
+<p>针对这个示例，一些同学可能会觉得疑惑，如果用volatile修饰的共享变量可以保证可见性，那么结果不应该是<code>300000么</code>?</p>
+<p>问题就出在num++这个操作上，<strong>因为num++不是个原子性的操作</strong>，<strong>而是个复合操作</strong>。我们可以简单讲这个操作理解为由这三步组成:</p>
+<ol>
+<li><p>读取</p>
+</li>
+<li><p>加一</p>
+</li>
+<li><p>赋值</p>
+</li>
+</ol>
+<p>所以，在多线程环境下，有可能线程A将num读取到本地内存中，此时其他线程可能已经将num增大了很多，线程A依然对过期的num进行自加，重新写到主存中，最终导致了num的结果不合预期，而是小于30000。</p>
+<hr>
+<h3 id="解决num-操作的原子性问题"><a href="#解决num-操作的原子性问题" class="headerlink" title="解决num++操作的原子性问题"></a>解决num++操作的原子性问题</h3><p>针对 num++ 这类复合类的操作，可以使用 java并发包 中的原子操作类 , 原子操作类是通过循环CAS的方式来保证其原子性的。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Counter &#123;<br>　　//使用原子操作类<br>    public static AtomicInteger num = new AtomicInteger(0);<br>    //使用CountDownLatch来等待计算线程执行完<br>    static CountDownLatch countDownLatch = new CountDownLatch(30);<br>    public static void main(String []args) throws InterruptedException &#123;<br>        //开启30个线程进行累加操作<br>        for(int i=0;i&lt;30;i++)&#123;<br>            new Thread()&#123;<br>                public void run()&#123;<br>                    for(int j=0;j&lt;10000;j++)&#123;<br>                        num.incrementAndGet();//原子性的num++,通过循环CAS方式<br>                    &#125;<br>                    countDownLatch.countDown();<br>                &#125;<br>            &#125;.start();<br>        &#125;<br>        //等待计算线程执行完<br>        countDownLatch.await();<br>        System.out.println(num);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>执行结果:</p>
+<p><code>300000</code></p>
+<p>关于原子类操作的基本原理，会在以后的章节进行介绍，此处不再赘述。</p>
+<hr>
+<h3 id="禁止指令重排序"><a href="#禁止指令重排序" class="headerlink" title="禁止指令重排序"></a>禁止指令重排序</h3><p>volatile还有一个特性：<strong>禁止指令重排序优化。</strong></p>
+<font color="red">重排序是指编译器和处理器为了优化程序性能而对指令序列进行排序的一种手段。但是重排序也需要遵守一定规则：</font>
+
+<p><strong>1.重排序操作不会对存在数据依赖关系的操作进行重排序。</strong></p>
+<p>比如：a=1; b=a;  这个指令序列，由于第二个操作依赖于第一个操作，所以在编译时和处理器运行时这两个操作不会被重排序。</p>
+<p><strong>2.重排序是为了优化性能，但是不管怎么重排序，单线程下程序的执行结果不能被改变</strong></p>
+<p>比如：a=1; b=2; c=a+b 这三个操作，第一步（a=1) 和 第二步(b=2)由于不存在数据依赖关系，所以可能会发生重排序，但是c=a+b这个操作是不会被重排序的，因为需要保证最终的结果一定是c=a+b=3。</p>
+<p>重排序在单线程模式下是一定会保证最终结果的正确性，但是在多线程环境下，问题就出来了，来开个例子，我们对第一个TestVolatile的例子稍稍改进，再增加个共享变量a:</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class TestVolatile &#123;<br>    int a = 1;<br>    boolean status = false;<br><br>    /**<br>     * 状态切换为true<br>     */<br>    public void changeStatus()&#123;<br>        a = 2; //1<br>        status = true; //2<br>    &#125;<br><br>    /**<br>     * 若状态为true，则running。<br>     */<br>    public void run()&#123;<br>        if(status)&#123; //3<br>            int b = a + 1; //4<br>            System.out.println(b);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>假设线程A执行changeStatus后，线程B执行run，我们能保证在4处，b一定等于3么？</p>
+<p><strong>答案依然是无法保证！</strong>也有可能b仍然为2。上面我们提到过，为了提供程序并行度，编译器和处理器可能会对指令进行重排序，</p>
+<p>而上例中的1和2由于不存在数据依赖关系，则有可能会被重排序，先执行status=true,再执行a=2。而此时线程B会顺利到达4处，</p>
+<p>而线程A中a=2这个操作还未被执行，所以b=a+1的结果也有可能依然等于2。</p>
+<p><strong>使用volatile关键字修饰共享变量便可以禁止这种重排序。若用volatile修饰共享变量，在编译时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序</strong></p>
+<p>volatile禁止指令重排序也有一些规则，简单列举一下：</p>
+<p><strong>1.当第二个操作是voaltile写时，无论第一个操作是什么，都不能进行重排序</strong></p>
+<p><strong>2.当第一个操作是volatile读时，不管第二个操作是什么，都不能进行重排序</strong></p>
+<p><strong>3.当第一个操作是volatile写时，第二个操作是volatile读时，不能进行重排序</strong></p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>简单总结下，volatile是一种轻量级的同步机制，它主要有两个特性：一是保证共享变量对所有线程的<code>可见性</code>；二是<code>禁止指令重排序优化</code>。同时需要注意的是，<code>volatile对于单个的共享变量的读/写具有原子性</code>，但是像num++这种复合操作，volatile无法保证其原子性，当然文中也提出了解决方案，就是使用并发包中的原子操作类，通过循环CAS地方式来保证num++操作的原子性。关于原子操作类，会在后续的文章进行介绍。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/面试/" rel="tag"><i class="fas fa-tags"></i>面试</a>
+        
+        <a class="post-tag button" href="/tags/volatile/" rel="tag"><i class="fas fa-tags"></i>volatile</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/13/面试中的单例问题/" rel="next" title="面试中的单例问题"><i class="fas fa-angle-left"></i><span class="nav-title">面试中的单例问题</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/01/13/java原子类实现原理分析/" rel="prev" title="java原子类实现原理分析"><span class="nav-title">java原子类实现原理分析</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "谈谈java中的volatile",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">93</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">40</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">32</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#内存可见性"><span class="toc-text">内存可见性</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#留意复合类操作"><span class="toc-text">留意复合类操作</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#解决num-操作的原子性问题"><span class="toc-text">解决num++操作的原子性问题</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#禁止指令重排序"><span class="toc-text">禁止指令重排序</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
