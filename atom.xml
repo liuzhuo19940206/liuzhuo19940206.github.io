@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-13T06:18:35.737Z</updated>
+  <updated>2019-01-14T07:06:41.499Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ConcurrentHashMap的实现原理</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/14/ConcurrentHashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/14/ConcurrentHashMap的实现原理/</id>
+    <published>2019-01-14T06:16:34.000Z</published>
+    <updated>2019-01-14T07:06:41.499Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;接着上篇的HashMap的原理分析后，今天来学ConcurrentHashMap的实现原理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="ConcurrentHashMap" scheme="http://liuzhuo19940206.github.io/categories/ConcurrentHashMap/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/ConcurrentHashMap/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="ConcurrentHashMap" scheme="http://liuzhuo19940206.github.io/tags/ConcurrentHashMap/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HashMap的实现原理</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/14/HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/14/HashMap的实现原理/</id>
+    <published>2019-01-14T05:00:15.000Z</published>
+    <updated>2019-01-14T05:56:51.406Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;帮助大家理解，HashMap的底层原理，方便大家面试&lt;br&gt;
+    
+    </summary>
+    
+      <category term="HashMap" scheme="http://liuzhuo19940206.github.io/categories/HashMap/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/HashMap/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="HashMap" scheme="http://liuzhuo19940206.github.io/tags/HashMap/"/>
+    
+  </entry>
   
   <entry>
     <title>java原子类实现原理分析</title>
@@ -34,9 +82,9 @@
       <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E5%8E%9F%E5%AD%90%E7%B1%BB/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="原子类" scheme="http://liuzhuo19940206.github.io/tags/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
-    
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="原子类" scheme="http://liuzhuo19940206.github.io/tags/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
     
   </entry>
   
@@ -298,9 +346,9 @@
       <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/redis/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
     
   </entry>
   
@@ -434,54 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习redis中的aof恢复与rdb服务器之间的迁移&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中运维相关的指令</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/01/Redis%E4%B8%AD%E8%BF%90%E7%BB%B4%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8C%87%E4%BB%A4/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/01/Redis中运维相关的指令/</id>
-    <published>2019-01-01T13:25:19.000Z</published>
-    <updated>2019-01-02T02:17:11.726Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这篇文章，将讲述redis中与运维相关的指令。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的集群部署</title>
-    <link href="http://liuzhuo19940206.github.io/2018/12/31/Redis%E4%B8%AD%E7%9A%84%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/"/>
-    <id>http://liuzhuo19940206.github.io/2018/12/31/Redis中的集群部署/</id>
-    <published>2018-12-31T09:52:33.000Z</published>
-    <updated>2019-01-02T07:10:20.092Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。&lt;br&gt;
     
     </summary>
     

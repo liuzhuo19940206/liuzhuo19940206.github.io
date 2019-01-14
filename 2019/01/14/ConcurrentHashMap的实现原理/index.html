@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>ConcurrentHashMap的实现原理 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/14/ConcurrentHashMap的实现原理/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">ConcurrentHashMap的实现原理</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-14T14:16:34+08:00">2019-01-14 14:16:34</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ConcurrentHashMap/" itemprop="url" rel="index"><span itemprop="name">ConcurrentHashMap</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ConcurrentHashMap/面试/" itemprop="url" rel="index"><span itemprop="name">面试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>接着上篇的HashMap的原理分析后，今天来学ConcurrentHashMap的实现原理<br><a id="more"></a></p>
+<p>在现实开发中，不可避免地会碰到一些多线程并发访问的情况。为了解决这个问题，HashTable 和 HashMap 先后诞生。</p>
+<p>问题也随之而来，使用后发现HashTable 虽然能保证线程安全但是效率低下，而HashMap 虽然效率高于hashTable 但是是非线程安全的。这个很像一个鱼与熊掌的问题，真的不可兼得吗？</p>
+<p>于是人们就考虑有没有一种及支持并发有能保证线程安全的方法。终于，在JDK1.5中，伟大的Doug Lea 给我们带来了concurrent 包，从此Map 也有安全的了，这就是ConcurrentHashMap。安全且高效，像一条长了熊掌的鱼。</p>
+<p>为了更好的理解ConcurrentHashMap的优点，我们先了解下它的两个前辈HashTable 和HashMap。</p>
+<p><strong>HashMap</strong>：它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。HashMap最多只允许一条记录的键为null，允许多条记录的值为null。</p>
+<p><strong>HashMap</strong>：非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。</p>
+<p><strong>HashMap的线程安全问题如下：</strong></p>
+<p>在hashmap 做put 操作的时候，假如A线程和B线程同时对同一个数组位置调用addEntry，两个线程会同时得到现在的头结点，然后A写入新的头结点之后，B也写入新的头结点，那B的写入操作就会覆盖A的写入操作造成A的写入操作丢失。同理，当多线程对同一数组位置进行remove操作时也会产生覆盖。</p>
+<p>因此如果不进行额外的外同步操作，HashMap 是非线程安全的。如果加锁必然导致效率低下，而且竞争越激烈，效率越低下。</p>
+<hr>
+<p><strong>Hashtable：</strong>Hashtable是遗留类，很多映射的常用功能与HashMap类似，不同的是它承自Dictionary类，并且是<strong>线程安全</strong>的，任一时间只有一个线程能写Hashtable，并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。Hashtable不建议在新代码中使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。</p>
+<p><img src="/images/QQ截图20190114142923.png"></p>
+<p>HashTable 只有一把锁，当一个线程访问HashTable的同步方法时，会将整张table 锁住，当其他线程也想访问HashTable 同步方法时，就会进入阻塞或轮询状态。也就是确保同一时间只有一个线程对同步方法的占用，避免多个线程同时对数据的修改，确保线程的安全性。</p>
+<p>但HashTable 对 get，put，remove 方法都使用了同步操作，这就造成如果两个线程都只想使用get 方法去读取数据时，因为一个线程先到进行了锁操作，另一个线程就不得不等待，这样必然导致效率低下，而且竞争越激烈，效率越低下。</p>
+<hr>
+<h3 id="并发又安全的ConcurrentHashMap"><a href="#并发又安全的ConcurrentHashMap" class="headerlink" title="并发又安全的ConcurrentHashMap"></a>并发又安全的ConcurrentHashMap</h3><p>ConcurrentHashMap 保证线程安全的方法是：<strong>分段锁技术</strong></p>
+<p><img src="/images/QQ截图20190114143134.png"></p>
+<p>ConcurrentHashMap采用了非常精妙的”分段锁”策略，ConcurrentHashMap的主干是个Segment数组。</p>
+<p>如上图，在hashMap 的基础上，ConcurrentHashMap 将数据分为多个segment（默认16个），然后每次操作对一个segment 加锁，HashTable 在竞争激烈的并发环境下表现出效率低下的原因是，由于所有访问HashTable的线程都必须竞争同一把锁，而ConcurrentHashMap 将数据分到多个segment 中（默认16，也可在申明时自己设置，不过一旦设定就不能更改，扩容都是扩充各个segment 的容量），每个segment 都有一个自己的锁，只要多个线程访问的不是同一个segment 就没有锁争用，就没有堵塞，也就是允许16个线程并发的更新而尽量没有锁争用。</p>
+<p>ConcurrentHashMap 的 segment 就类似一个HashTable，但比HashTable 更加优化，前面说过HashTable对get，put，remove 方法都会使用锁，而ConcurrnetHashMap 中get 方法是不涉及到锁的。</p>
+<p>在并发读取时，除了key 对应的value 为null 外，并没有用到锁，所以对于读操作无论多少线程并发都是安全高效的。</p>
+<p>举个日常生活中的例子（背景是你在网上订好了一家旅店，然后拿着材料来入住，map就相当于这个旅店，你就相当于是操作map的线程）：上述这家旅店（Collections.synchronizedMap）如果只有一个前台，所有人要登记入住都得在前台办理手续，如果只有你一个人，那么你可以马上入住，如果有一群人，那你就得等着，这样效率不高。而ConcurrentHashMap在每层都有一个前台，你根据你的楼层号（哈希值）去相应的楼层办理入住手续，这样就减少排队等待的概率及时间。</p>
+<hr>
+<h3 id="ConcurrentHashMap源码分析"><a href="#ConcurrentHashMap源码分析" class="headerlink" title="ConcurrentHashMap源码分析"></a>ConcurrentHashMap源码分析</h3><p>ConcurrentHashMap采用了非常精妙的”分段锁”策略，ConcurrentHashMap的主干是个Segment数组。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">final Segment&lt;K,V&gt;[] segments;<br></code></pre></td></tr></table></figure>
+<p>Segment继承了 <strong>ReentrantLock</strong>，所以它就是一种可重入锁（ReentrantLock)。在ConcurrentHashMap，一个Segment就是一个子哈希表，Segment里维护了一个HashEntry数组，并发环境下，对于不同Segment的数据进行操作是不用考虑锁竞争的。（就按默认的ConcurrentLeve为16来讲，理论上就允许16个线程并发执行，有木有很酷）</p>
+<font color="red">所以，对于同一个Segment的操作才需考虑线程同步，不同的Segment则无需考虑。</font>
+
+<p>Segment类似于HashMap，一个Segment维护着一个HashEntry数组:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">transient volatile HashEntry&lt;K,V&gt;[] table;<br></code></pre></td></tr></table></figure></p>
+<p>HashEntry是目前我们提到的最小的逻辑处理单元了。一个ConcurrentHashMap维护一个Segment数组，一个Segment维护一个HashEntry数组。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined"> static final class HashEntry&lt;K,V&gt; &#123;<br>        final int hash;<br>        final K key;<br>        volatile V value;<br>        volatile HashEntry&lt;K,V&gt; next;<br>        //其他省略<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们说Segment类似哈希表，那么一些属性就跟我们之前提到的HashMap差不离，比如负载因子loadFactor，比如阈值threshold等等，看下Segment的构造方法<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Segment(float lf, int threshold, HashEntry&lt;K,V&gt;[] tab) &#123;<br>            this.loadFactor = lf;//负载因子<br>            this.threshold = threshold;//阈值<br>            this.table = tab;//主干数组即HashEntry数组<br>        &#125;<br></code></pre></td></tr></table></figure></p>
+<p>我们来看下ConcurrentHashMap的构造方法:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public ConcurrentHashMap(int initialCapacity , float loadFactor, int concurrencyLevel) &#123;<br>       if (!(loadFactor &gt; 0) || initialCapacity &lt; 0 || concurrencyLevel &lt;= 0)<br>             throw new IllegalArgumentException();<br>       //MAX_SEGMENTS 为1&lt;&lt;16=65536，也就是最大并发数为65536<br>       if (concurrencyLevel &gt; MAX_SEGMENTS)<br>            concurrencyLevel = MAX_SEGMENTS;<br>       //2的sshif次方等于ssize，例:ssize=16,sshift=4;ssize=32,sshif=5<br>       int sshift = 0;<br>       //ssize 为segments数组长度，根据concurrentLevel计算得出<br>       int ssize = 1;<br>       while (ssize &lt; concurrencyLevel) &#123;<br>           ++sshift;<br>           ssize &lt;&lt;= 1;<br>       &#125;<br>       //segmentShift和segmentMask这两个变量在定位segment时会用到，后面会详细讲<br>       this.segmentShift = 32 - sshift;<br>       this.segmentMask = ssize - 1;<br>       if (initialCapacity &gt; MAXIMUM_CAPACITY)<br>           initialCapacity = MAXIMUM_CAPACITY;<br>       //计算cap的大小，即Segment中HashEntry的数组长度，cap也一定为2的n次方.<br>       int c = initialCapacity / ssize;<br>       if (c * ssize &lt; initialCapacity)<br>           ++c;<br>       int cap = MIN_SEGMENT_TABLE_CAPACITY;<br>       while (cap &lt; c)<br>           cap &lt;&lt;= 1;<br>       //创建segments数组并初始化第一个Segment，其余的Segment延迟初始化<br>       Segment&lt;K,V&gt; s0 =<br>           new Segment&lt;K,V&gt;(loadFactor, (int)(cap * loadFactor),<br>                            (HashEntry&lt;K,V&gt;[])new HashEntry[cap]);<br>       Segment&lt;K,V&gt;[] ss = (Segment&lt;K,V&gt;[])new Segment[ssize];<br>       UNSAFE.putOrderedObject(ss, SBASE, s0); <br>       this.segments = ss;<br>   &#125;<br></code></pre></td></tr></table></figure></p>
+<p>初始化方法有三个参数，如果用户不指定则会使用默认值，initialCapacity为16，loadFactor为0.75（负载因子，扩容时需要参考），concurrentLevel为16。</p>
+<p>从上面的代码可以看出来,Segment数组的大小ssize是由concurrentLevel来决定的，但是却不一定等于concurrentLevel，ssize一定是大于或等于concurrentLevel的最小的2的次幂。比如：默认情况下concurrentLevel是16，则ssize为16；若concurrentLevel为14，ssize为16；若concurrentLevel为17，则ssize为32。为什么Segment的数组大小一定是2的次幂？其实主要是便于通过按位与的散列算法来定位Segment的index。</p>
+<h4 id="put的过程分析："><a href="#put的过程分析：" class="headerlink" title="put的过程分析："></a>put的过程分析：</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public V put(K key, V value) &#123;<br>       Segment&lt;K,V&gt; s;<br>       //concurrentHashMap不允许key/value为空<br>       if (value == null)<br>           throw new NullPointerException();<br>       //hash函数对key的hashCode重新散列，避免差劲的不合理的hashcode，保证散列均匀<br>       int hash = hash(key);<br>       //返回的hash值无符号右移segmentShift位与段掩码进行位运算，定位segment<br>       int j = (hash &gt;&gt;&gt; segmentShift) &amp; segmentMask;<br>       if ((s = (Segment&lt;K,V&gt;)UNSAFE.getObject          // nonvolatile; recheck<br>            (segments, (j &lt;&lt; SSHIFT) + SBASE)) == null) //  in ensureSegment<br>           s = ensureSegment(j);<br>       return s.put(key, hash, value, false);<br>   &#125;<br></code></pre></td></tr></table></figure>
+<p>从源码看出，put的主要逻辑也就两步：1.定位segment并确保定位的Segment已初始化 2.调用Segment的put方法。</p>
+<p>关于segmentShift和segmentMask：</p>
+<p>segmentShift 和 segmentMask 这两个全局变量的主要作用是用来定位Segment，int j =(hash &gt;&gt;&gt; segmentShift) &amp; segmentMask。</p>
+<p><strong>segmentMask：</strong>段掩码，假如segments数组长度为16，则段掩码为16-1=15；segments长度为32，段掩码为32-1=31。这样得到的所有bit位都为1，可以更好地保证散列的均匀性。</p>
+<p><strong>segmentShift：</strong>2的sshift次方等于ssize，segmentShift=32-sshift。若segments长度为16，segmentShift=32-4=28;若segments长度为32，segmentShift=32-5=27。而计算得出的hash值最大为32位，<strong>无符号右移segmentShift，则意味着只保留高几位</strong>（其余位是没用的），然后与段掩码segmentMask位运算来定位Segment。</p>
+<hr>
+<h4 id="get的过程分析："><a href="#get的过程分析：" class="headerlink" title="get的过程分析："></a>get的过程分析：</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public V get(Object key) &#123;<br>       Segment&lt;K,V&gt; s; <br>       HashEntry&lt;K,V&gt;[] tab;<br>       int h = hash(key);<br>       long u = (((h &gt;&gt;&gt; segmentShift) &amp; segmentMask) &lt;&lt; SSHIFT) + SBASE;<br>       //先定位Segment，再定位HashEntry<br>       if ((s = (Segment&lt;K,V&gt;)UNSAFE.getObjectVolatile(segments, u)) != null &amp;&amp;<br>           (tab = s.table) != null) &#123;<br>           for (HashEntry&lt;K,V&gt; e = (HashEntry&lt;K,V&gt;) UNSAFE.getObjectVolatile<br>                    (tab, ((long)(((tab.length - 1) &amp; h)) &lt;&lt; TSHIFT) + TBASE);<br>                e != null; e = e.next) &#123;<br>               K k;<br>               if ((k = e.key) == key || (e.hash == h &amp;&amp; key.equals(k)))<br>                   return e.value;<br>           &#125;<br>       &#125;<br>       return null;<br>   &#125;<br></code></pre></td></tr></table></figure>
+<p><font color="red">get方法无需加锁，由于其中涉及到的共享变量都使用volatile修饰，volatile可以保证内存可见性，所以不会读取到过期数据。<font></font></font></p>
+<p>来看下concurrentHashMap代理到Segment上的put方法，Segment中的put方法是要加锁的。只不过是锁粒度细了而已。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs undefined">final V put(K key, int hash, V value, boolean onlyIfAbsent) &#123;<br><br>            //tryLock不成功时会遍历定位到的HashEnry位置的链表（遍历主要是为了使CPU缓存链表)<br>            //若找不到，则创建HashEntry。tryLock一定次数后（MAX_SCAN_RETRIES变量决定）则lock。<br>            //若遍历过程中，由于其他线程的操作导致链表头结点变化，则需要重新遍历。<br>            HashEntry&lt;K,V&gt; node = tryLock() ? null :scanAndLockForPut(key, hash, value);<br>            V oldValue;<br>            try &#123;<br>                HashEntry&lt;K,V&gt;[] tab = table;<br>                //定位HashEntry，可以看到，这个hash值在定位Segment时和在Segment中定位HashEntry都会用到<br>                //只不过定位Segment时只用到高几位。<br>                int index = (tab.length - 1) &amp; hash;<br>                HashEntry&lt;K,V&gt; first = entryAt(tab, index);<br>                for (HashEntry&lt;K,V&gt; e = first;;) &#123;<br>                    if (e != null) &#123;<br>                        K k;<br>                        if ((k = e.key) == key ||<br>                            (e.hash == hash &amp;&amp; key.equals(k))) &#123;<br>                            oldValue = e.value;<br>                            if (!onlyIfAbsent) &#123;<br>                                e.value = value;<br>                                ++modCount;<br>                            &#125;<br>                            break;<br>                        &#125;<br>                        e = e.next;<br>                    &#125;<br>                    else &#123;<br>                        if (node != null)<br>                            node.setNext(first);<br>                        else<br>                            node = new HashEntry&lt;K,V&gt;(hash, key, value, first);<br>                        int c = count + 1;<br>　　　　　　　　　　　　 //若c超出阈值threshold，需要扩容并rehash。扩容后的容量是当前容量的2倍。<br>                        if (c &gt; threshold &amp;&amp; tab.length &lt; MAXIMUM_CAPACITY)<br>                            rehash(node);<br>                        else<br>                            setEntryAt(tab, index, node);<br>                        ++modCount;<br>                        count = c;<br>                        oldValue = null;<br>                        break;<br>                    &#125;<br>                &#125;<br>            &#125; finally &#123;<br>                unlock();<br>            &#125;<br>            return oldValue;<br>        &#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>ConcurrentHashMap作为一种线程安全且高效的哈希表的解决方案，尤其其中的”分段锁”的方案，相比HashTable的全表锁在性能上的提升非常之大。本文对ConcurrentHashMap的实现原理进行了详细分析，并解读了部分源码，希望能帮助到有需要的童鞋。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/ConcurrentHashMap/" rel="tag"><i class="fas fa-tags"></i>ConcurrentHashMap</a>
+        
+        <a class="post-tag button" href="/tags/面试/" rel="tag"><i class="fas fa-tags"></i>面试</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/14/HashMap的实现原理/" rel="next" title="HashMap的实现原理"><i class="fas fa-angle-left"></i><span class="nav-title">HashMap的实现原理</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "ConcurrentHashMap的实现原理",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">95</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">44</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">34</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#并发又安全的ConcurrentHashMap"><span class="toc-text">并发又安全的ConcurrentHashMap</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ConcurrentHashMap源码分析"><span class="toc-text">ConcurrentHashMap源码分析</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#put的过程分析："><span class="toc-text">put的过程分析：</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#get的过程分析："><span class="toc-text">get的过程分析：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
