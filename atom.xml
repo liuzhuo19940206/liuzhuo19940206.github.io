@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-14T07:06:41.499Z</updated>
+  <updated>2019-01-16T11:07:41.295Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tomcat的启动分析(一) Lifecycle</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/16/Tomcat%E7%9A%84%E5%90%AF%E5%8A%A8%E5%88%86%E6%9E%90-%E4%B8%80-Lifecycle/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/16/Tomcat的启动分析-一-Lifecycle/</id>
+    <published>2019-01-16T09:36:02.000Z</published>
+    <updated>2019-01-16T11:07:41.295Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Tomcat组件生命周期管理:Lifecycle&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+    
+      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+    
+      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat的总体框架设计</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/16/Tomcat%E7%9A%84%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/16/Tomcat的总体框架设计/</id>
+    <published>2019-01-16T08:35:23.000Z</published>
+    <updated>2019-01-16T09:33:38.661Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+    
+      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+    
+      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入理解CAS</title>
+    <link href="http://liuzhuo19940206.github.io/2019/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CAS/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/15/深入理解CAS/</id>
+    <published>2019-01-15T05:34:42.000Z</published>
+    <updated>2019-01-15T06:28:54.225Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CAS，Compare And Swap，即比较并交换。Doug lea大神在同步组件中大量使用CAS技术鬼斧神工地实现了Java多线程的并发操作。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="CAS" scheme="http://liuzhuo19940206.github.io/categories/CAS/"/>
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/CAS/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+      <category term="CAS" scheme="http://liuzhuo19940206.github.io/tags/CAS/"/>
+    
+  </entry>
   
   <entry>
     <title>ConcurrentHashMap的实现原理</title>
@@ -410,78 +482,6 @@
     <summary type="html">
     
       &lt;p&gt;之前的篇章，介绍了redis中的大多数用法，今天使用redis来设计与实现一个伪微博项目。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中key的设计技巧</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%ADkey%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/02/Redis中key的设计技巧/</id>
-    <published>2019-01-02T13:34:29.000Z</published>
-    <updated>2019-01-02T14:58:11.057Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中key的设计技巧。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的sentinel运维工具</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%AD%E7%9A%84sentinel%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/02/Redis中的sentinel运维工具/</id>
-    <published>2019-01-02T07:07:08.000Z</published>
-    <updated>2019-01-02T11:05:03.402Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;接着上篇，来学习redis中的sentinel运维工具。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/categories/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/categories/redis/%E7%BC%93%E5%AD%98/"/>
-    
-    
-      <category term="redis" scheme="http://liuzhuo19940206.github.io/tags/redis/"/>
-    
-      <category term="缓存" scheme="http://liuzhuo19940206.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis中的aof恢复与rdb的迁移</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/02/Redis%E4%B8%AD%E7%9A%84aof%E6%81%A2%E5%A4%8D%E4%B8%8Erdb%E7%9A%84%E8%BF%81%E7%A7%BB/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/02/Redis中的aof恢复与rdb的迁移/</id>
-    <published>2019-01-02T03:20:39.000Z</published>
-    <updated>2019-01-02T05:22:03.987Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习redis中的aof恢复与rdb服务器之间的迁移&lt;br&gt;
     
     </summary>
     
