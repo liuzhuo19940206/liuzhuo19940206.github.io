@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Tomcat的启动分析(三)Catalina启动 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/01/18/Tomcat的启动分析-三-Catalina启动/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Tomcat的启动分析(三)Catalina启动</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-18T13:31:55+08:00">2019-01-18 13:31:55</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tomcat/" itemprop="url" rel="index"><span itemprop="name">tomcat</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tomcat/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的ServletContextListener，以及Servlet呢？我们将在这篇文章进行分析。<br><a id="more"></a></p>
+<p>我们先来看下整体的启动逻辑，tomcat由上往下，挨个启动各个组件： </p>
+<p><img src="/images/QQ截图20190118133508.png"></p>
+<p>针对如此复杂的组件关系，tomcat 又是如何将各个组件串联起来，实现统一的生命周期管控呢？在这篇文章中，我们将分析 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，进一步理解tomcat的架构设计</p>
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>启动过程和初始化一样，由Bootstrap反射调用Catalina的 start 方法</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void start() throws Exception &#123;<br>    if( catalinaDaemon==null ) init();<br>    Method method = catalinaDaemon.getClass().getMethod(&quot;start&quot;, (Class [] )null);<br>    method.invoke(catalinaDaemon, (Object [])null);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Catalina"><a href="#Catalina" class="headerlink" title="Catalina"></a>Catalina</h3><p>主要分为以下三个步骤，其核心逻辑在于Server组件： </p>
+<ol>
+<li><p>调用Server的start方法，启动Server组件 </p>
+</li>
+<li><p>注册jvm关闭的勾子程序，用于安全地关闭Server组件，以及其它组件</p>
+</li>
+<li><p>开启shutdown端口的监听并阻塞，用于监听关闭指令</p>
+</li>
+</ol>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void start() &#123;<br>    // 省略若干代码......<br>    // Start the new server<br>    try &#123;<br>        getServer().start();<br>    &#125; catch (LifecycleException e) &#123;<br>        // 省略......<br>        return;<br>    &#125;<br><br>    // 注册勾子，用于安全关闭tomcat<br>    if (useShutdownHook) &#123;<br>        if (shutdownHook == null) &#123;<br>            shutdownHook = new CatalinaShutdownHook();<br>        &#125;<br>        Runtime.getRuntime().addShutdownHook(shutdownHook);<br>    &#125;<br><br>    // Bootstrap中会设置await为true，其目的在于让tomcat在shutdown端口阻塞监听关闭命令<br>    if (await) &#123;<br>        await();<br>        stop();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>在前面的Lifecycle文章中，我们介绍了StandardServer重写了startInternal方法，完成自己的逻辑，如果对tomcat的Lifecycle还不熟悉的童鞋，先学习下Lifecycle，<font color="red">《Tomcat8源码分析系列-启动分析(一) Lifecycle》</font></p>
+<p>StandardServer的代码如下所示：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">protected void startInternal() throws LifecycleException &#123;<br><br>    fireLifecycleEvent(CONFIGURE_START_EVENT, null);<br>    setState(LifecycleState.STARTING);<br><br>    globalNamingResources.start();<br><br>    // Start our defined Services<br>    synchronized (servicesLock) &#123;<br>        for (int i = 0; i &lt; services.length; i++) &#123;<br>            services[i].start();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>先是由LifecycleBase统一发出STARTING_PREP事件，StandardServer额外还会发出CONFIGURE_START_EVENT、STARTING事件，用于通知LifecycleListener在启动前做一些准备工作，比如NamingContextListener会处理CONFIGURE_START_EVENT事件，实例化tomcat相关的上下文，以及ContextResource资源</p>
+<p>然后，启动内部的NamingResourcesImpl实例，这个类封装了各种各样的数据，比如ContextEnvironment、ContextResource、Container等等，它用于Resource资源的初始化，以及为webapp应用提供相关的数据资源，比如 JNDI 数据源(对应ContextResource)</p>
+<p>接着，启动Service组件，这一块的逻辑将在下面进行详细分析，最后由LifecycleBase发出STARTED事件，完成start</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>StandardService的start代码如下所示： </p>
+<ol>
+<li><p>启动Engine，Engine的child容器都会被启动，webapp的部署会在这个步骤完成； </p>
+</li>
+<li><p>启动Executor，这是tomcat用Lifecycle封装的线程池，继承至java.util.concurrent.Executor以及tomcat的Lifecycle接口 </p>
+</li>
+<li><p>启动Connector组件，由Connector完成Endpoint的启动，这个时候意味着tomcat可以对外提供请求服务了</p>
+</li>
+</ol>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs undefined">protected void startInternal() throws LifecycleException &#123;<br><br>    setState(LifecycleState.STARTING);<br><br>    // 启动Engine<br>    if (engine != null) &#123;<br>        synchronized (engine) &#123;<br>            engine.start();<br>        &#125;<br>    &#125;<br><br>    // 启动Executor线程池<br>    synchronized (executors) &#123;<br>        for (Executor executor: executors) &#123;<br>            executor.start();<br>        &#125;<br>    &#125;<br><br>    // 启动MapperListener<br>    mapperListener.start();<br><br>    // 启动Connector<br>    synchronized (connectorsLock) &#123;<br>        for (Connector connector: connectors) &#123;<br>            try &#123;<br>                // If it has already failed, don&apos;t try and start it<br>                if (connector.getState() != LifecycleState.FAILED) &#123;<br>                    connector.start();<br>                &#125;<br>            &#125; catch (Exception e) &#123;<br>                // logger......<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h3><p>在Server调用startInternal启动的时候，首先会调用start启动StandardEngine，而StandardEngine继承至ContainerBase，我们再来回顾下Lifecycle类图，关于Container，我们只需要关注右下角的部分即可。</p>
+<p><img src="/images/QQ截图20190118134119.png"></p>
+<p>StandardEngine、StandardHost、StandardContext、StandardWrapper各个容器存在父子关系，一个父容器包含多个子容器，并且一个子容器对应一个父容器。Engine是顶层父容器，它不存在父容器，关于各个组件的详细介绍，请参考《tomcat框架设计》。各个组件的包含关系如下图所示，默认情况下，StandardEngine只有一个子容器StandardHost，一个StandardContext对应一个webapp应用，而一个StandardWrapper对应一个webapp里面的一个 Servlet。</p>
+<p><img src="/images/QQ截图20190118134247.png"></p>
+<p>由类图可知，StandardEngine、StandardHost、StandardContext、StandardWrapper都是继承至ContainerBase，各个容器的启动，都是由父容器调用子容器的start方法，也就是说由StandardEngine启动StandardHost，再StandardHost启动StandardContext，以此类推。</p>
+<p>由于它们都是继续至ContainerBase，当调用 start 启动Container容器时，首先会执行 ContainerBase 的 start 方法，它会寻找子容器，并且在线程池中启动子容器，StandardEngine也不例外。</p>
+<h4 id="ContainerBase"><a href="#ContainerBase" class="headerlink" title="ContainerBase"></a>ContainerBase</h4><p>ContainerBase的startInternal方法如下所示，主要分为以下3个步骤： </p>
+<ol>
+<li><p>启动子容器 </p>
+</li>
+<li><p>启动Pipeline，并且发出STARTING事件</p>
+</li>
+<li><p>如果backgroundProcessorDelay参数 &gt;= 0，则开启ContainerBackgroundProcessor线程，用于调用子容器的backgroundProcess</p>
+</li>
+</ol>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">protected synchronized void startInternal() throws LifecycleException &#123;<br>    // 省略若干代码......<br><br>    // 把子容器的启动步骤放在线程中处理，默认情况下线程池只有一个线程处理任务队列<br>    Container children[] = findChildren();<br>    List&lt;Future&lt;Void&gt;&gt; results = new ArrayList&lt;&gt;();<br>    for (int i = 0; i &lt; children.length; i++) &#123;<br>        results.add(startStopExecutor.submit(new StartChild(children[i])));<br>    &#125;<br><br>    // 阻塞当前线程，直到子容器start完成<br>    boolean fail = false;<br>    for (Future&lt;Void&gt; result : results) &#123;<br>        try &#123;<br>            result.get();<br>        &#125; catch (Exception e) &#123;<br>            log.error(sm.getString(&quot;containerBase.threadedStartFailed&quot;), e);<br>            fail = true;<br>        &#125;<br>    &#125;<br><br>    // 启用Pipeline<br>    if (pipeline instanceof Lifecycle)<br>        ((Lifecycle) pipeline).start();<br>    setState(LifecycleState.STARTING);<br><br>    // 开启ContainerBackgroundProcessor线程用于调用子容器的backgroundProcess方法，默认情况下backgroundProcessorDelay=-1，不会启用该线程<br>    threadStart();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="启动子容器"><a href="#启动子容器" class="headerlink" title="启动子容器"></a>启动子容器</h4><p>startStopExecutor是在init阶段创建的线程池，默认情况下 coreSize = maxSize = 1，也就是说默认只有一个线程处理子容器的 start，通过调用 <font color="red">Container.setStartStopThreads(int startStopThreads) 可以改变默认值 1</font> 。</p>
+<p>如果我们有4个webapp，希望能够尽快启动应用，我们只需要设置Host的startStopThreads值即可，如下所示。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">server.xml<br><br>&lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;<br>            unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot; startStopThreads=&quot;4&quot;&gt;<br>  &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;<br>         prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;<br>         pattern=&quot;%h %l %u %t &quot;%r&quot; %s %b&quot; /&gt;<br>&lt;/Host&gt;<br></code></pre></td></tr></table></figure>
+<p>ContainerBase会把StartChild任务丢给线程池处理，得到Future，并且会遍历所有的Future进行阻塞result.get()，这个操作是将异步启动转同步，子容器启动完成才会继续运行。我们再来看看submit到线程池的StartChild任务，它实现了java.util.concurrent.Callable接口，在call里面完成子容器的start动作</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">private static class StartChild implements Callable&lt;Void&gt; &#123;<br><br>    private Container child;<br><br>    public StartChild(Container child) &#123;<br>        this.child = child;<br>    &#125;<br><br>    @Override<br>    public Void call() throws LifecycleException &#123;<br>        child.start();<br>        return null;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="启动Pipeline"><a href="#启动Pipeline" class="headerlink" title="启动Pipeline"></a>启动Pipeline</h4><p><strong>pipeline是什么？</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Pipeline是管道组件，用于封装了一组有序的Valve，便于Valve顺序地传递或者处理请求<br></code></pre></td></tr></table></figure>
+<p>Pipeline的接口定义如下，定义了 Valve 的常用操作，以及 Container 的 getter/setter 方法，它的默认实现类是org.apache.catalina.core.StandardPipeline，同时它也是一个Lifecycle组件<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface Pipeline &#123;<br>    public Valve getBasic();<br>    public void setBasic(Valve valve);<br>    public void addValve(Valve valve);<br>    public Valve[] getValves();<br>    public void removeValve(Valve valve);<br>    public Valve getFirst();<br>    public boolean isAsyncSupported();<br>    public Container getContainer();<br>    public void setContainer(Container container);<br>    public void findNonAsyncValves(Set&lt;String&gt; result);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><strong>Valve是什么？</strong><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">Valve 是阀门组件，穿插在 Container 容器中，可以把它理解成请求拦截器，在 tomcat 接收到网络请求与触发 Servlet 之间执行<br></code></pre></td></tr></table></figure></p>
+<p>Valve的接口如下所示，我们主要关注它的invoke方法，Request、Response分别是HttpServletRequest、HttpServletResponse的实现类<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface Valve &#123;<br>    public Valve getNext();<br>    public void backgroundProcess();<br>    public void invoke(Request request, Response response) throws IOException, ServletException;<br>    public boolean isAsyncSupported();<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>我们再来看看 Pipeline 启动过程，默认使用 StandardPipeline 实现类，它也是一个Lifecycle。在容器启动的时候，StandardPipeline 会遍历 Valve 链表，如果 Valve 是 Lifecycle 的子类，则会调用其 start 方法启动 Valve 组件，代码如下:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StandardPipeline extends LifecycleBase<br>        implements Pipeline, Contained &#123;<br><br>    // 省略若干代码......<br><br>    protected synchronized void startInternal() throws LifecycleException &#123;<br><br>        Valve current = first;<br>        if (current == null) &#123;<br>            current = basic;<br>        &#125;<br>        while (current != null) &#123;<br>            if (current instanceof Lifecycle)<br>                ((Lifecycle) current).start();<br>            current = current.getNext();<br>        &#125;<br><br>        setState(LifecycleState.STARTING);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>tomcat为我们提供了一系列的Valve :</p>
+<ul>
+<li><p>AccessLogValve，记录请求日志，默认会开启 </p>
+</li>
+<li><p>RemoteAddrValve，可以做访问控制，比如限制IP黑白名单 </p>
+</li>
+<li><p>RemoteIpValve，主要用于处理 X-Forwarded-For 请求头，用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段</p>
+</li>
+</ul>
+<p>关于更详细的说明，请参考<a href="http://tomcat.apache.org/tomcat-8.5-doc/config/valve.html" target="_blank" rel="noopener"><font color="red">tomcat官方文档</font></a></p>
+<h3 id="StandardHost"><a href="#StandardHost" class="headerlink" title="StandardHost"></a>StandardHost</h3><p>前面我们分析了 StandardEngine 的启动逻辑，它会启动其子容器 StandardHost，接下来我们看下 StandardHost 的 start 逻辑。其实， StandardHost 重写的 startInternal 方法主要是为了查找报告错误的 Valve 阀门</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs undefined">protected synchronized void startInternal() throws LifecycleException &#123;<br><br>    // errorValve默认使用org.apache.catalina.valves.ErrorReportValve<br>    String errorValve = getErrorReportValveClass();<br>    if ((errorValve != null) &amp;&amp; (!errorValve.equals(&quot;&quot;))) &#123;<br>        try &#123;<br>            boolean found = false;<br><br>            // 如果所有的阀门中已经存在这个实例，则不进行处理，否则添加到  Pipeline 中<br>            Valve[] valves = getPipeline().getValves();<br>            for (Valve valve : valves) &#123;<br>                if (errorValve.equals(valve.getClass().getName())) &#123;<br>                    found = true;<br>                    break;<br>                &#125;<br>            &#125;<br><br>            // 如果未找到则添加到 Pipeline 中，注意是添加到 basic valve 的前面<br>            // 默认情况下，first valve 是 AccessLogValve，basic 是 StandardHostValve<br>            if(!found) &#123;<br>                Valve valve =<br>                    (Valve) Class.forName(errorValve).getConstructor().newInstance();<br>                getPipeline().addValve(valve);<br>            &#125;<br>        &#125; catch (Throwable t) &#123;<br>            // 处理异常，省略......<br>        &#125;<br>    &#125;<br><br>    // 调用父类 ContainerBase，完成统一的启动动作<br>    super.startInternal();<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>StandardHost Pipeline 包含的 Valve 组件： </p>
+<ol>
+<li><p>basic：org.apache.catalina.core.StandardHostValve </p>
+</li>
+<li><p>first：org.apache.catalina.valves.AccessLogValve</p>
+</li>
+</ol>
+<p>需要注意的是，在往 Pipeline 中添加 Valve 阀门时，是添加到 first 后面，basic 前面</p>
+<p>由上面的代码可知，在 start 的时候，StandardHost 并没有做太多的处理，<strong>那么 StandardHost 又是怎么知道它有哪些 child 容器需要启动呢？</strong></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">tomcat 在这块的逻辑处理有点特殊，使用 HostConfig 加载子容器，而这个 HostConfig 是一个 LifecycleListener，它会处理 start、stop 事件通知，并且会在线程池中启动、停止 Context 容器，接下来看下 HostConfig 是如何工作的<br></code></pre></td></tr></table></figure>
+<h4 id="HostConfig"><a href="#HostConfig" class="headerlink" title="HostConfig"></a>HostConfig</h4><p>以下是 HostConfig 处理事件通知的代码，我们着重关注下 start 方法，这个方法里面主要是做一些应用部署的准备工作，比如过滤无效的webapp、解压war包等，而主要的逻辑在于 deployDirectories 中，它会往线程池中提交一个 DeployDirectory 任务，并且调用 Future#get() 阻塞当前线程，直到 deploy 工作完成。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void lifecycleEvent(LifecycleEvent event) &#123;<br><br>    // (省略若干代码) 判断事件是否由 Host 发出，并且为 HostConfig 设置属性<br><br>    if (event.getType().equals(Lifecycle.PERIODIC_EVENT)) &#123;<br>        check();<br>    &#125; else if (event.getType().equals(Lifecycle.BEFORE_START_EVENT)) &#123;<br>        beforeStart();<br>    &#125; else if (event.getType().equals(Lifecycle.START_EVENT)) &#123;<br>        start();<br>    &#125; else if (event.getType().equals(Lifecycle.STOP_EVENT)) &#123;<br>        stop();<br>    &#125;<br>&#125;<br><br>public void start() &#123;<br>    // (省略若干代码)<br>    if (host.getDeployOnStartup())<br>        deployApps();<br>&#125;<br><br>protected void deployApps() &#123;<br><br>    File appBase = host.getAppBaseFile();<br>    File configBase = host.getConfigBaseFile();<br><br>    // 过滤出 webapp 要部署应用的目录<br>    String[] filteredAppPaths = filterAppPaths(appBase.list());<br><br>    // 部署 xml 描述文件<br>    deployDescriptors(configBase, configBase.list());<br><br>    // 解压 war 包，但是这里还不会去启动应用<br>    deployWARs(appBase, filteredAppPaths);<br><br>    // 处理已经存在的目录，前面解压的 war 包不会再行处理<br>    deployDirectories(appBase, filteredAppPaths);<br><br>&#125;<br>···<br><br>而这个 DeployDirectory 任务很简单，只是调用 `HostConfig#deployDirectory(cn, dir)`<br><br>```java<br>private static class DeployDirectory implements Runnable &#123;<br>    // (省略若干代码)<br><br>    @Override<br>    public void run() &#123;<br>        config.deployDirectory(cn, dir);<br>    &#125;<br><br>&#125;<br>···<br><br>我们再回到 HostConfig，看看 deployDirectory 的具体逻辑，分为以下几个步骤： <br><br>1. 使用 digester，或者反射实例化 StandardContext <br>2. 实例化 ContextConfig，并且为 Context 容器注册事件监听器，和 StandardHost 的套路一样，借助 XXXConfig 完成容器的启动、停止工作 <br>3. 将当前 Context 实例作为子容器添加到 Host 容器中，添加子容器的逻辑在 ContainerBase 中已经实现了，如果当前 Container 的状态是 STARTING_PREP 并且 startChildren 为 true，则还会启动子容器<br><br>```java<br>protected void deployDirectory(ContextName cn, File dir) &#123;<br><br>    Context context = null;<br>    File xml = new File(dir, Constants.ApplicationContextXml);<br>    File xmlCopy = new File(host.getConfigBaseFile(), cn.getBaseName() + &quot;.xml&quot;);<br><br>    // 实例化 StandardContext<br>    if (deployThisXML &amp;&amp; xml.exists()) &#123;<br>        synchronized (digesterLock) &#123;<br>            // 省略若干异常处理的代码<br>            context = (Context) digester.parse(xml);<br>        &#125;<br><br>        // (省略)为 Context 设置 configFile<br>    &#125; else if (!deployThisXML &amp;&amp; xml.exists()) &#123;<br>        // 异常处理<br>        context = new FailedContext();<br>    &#125; else &#123;<br>        context = (Context) Class.forName(contextClass).getConstructor().newInstance();<br>    &#125;<br><br>    // 实例化 ContextConfig，作为 LifecycleListener 添加到 Context 容器中，这和 StandardHost 的套路一样，都是使用 XXXConfig<br>    Class&lt;?&gt; clazz = Class.forName(host.getConfigClass());<br>    LifecycleListener listener = (LifecycleListener) clazz.getConstructor().newInstance();<br>    context.addLifecycleListener(listener);<br><br>    context.setName(cn.getName());<br>    context.setPath(cn.getPath());<br>    context.setWebappVersion(cn.getVersion());<br>    context.setDocBase(cn.getBaseName());<br><br>    // 实例化 Context 之后，为 Host 添加子容器<br>    host.addChild(context);<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>现在有两个疑问： </p>
+<p>1.为什么要使用 HostConfig 组件启动 Context 容器呢，不可以直接在 Host 容器中直接启动吗？<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">HostConfig 不仅仅是启动、停止 Context 容器，还封装了很多应用部署的逻辑，此外，还会对 web.xml、context.xml 文件的改动进行监听，默认情况会重新启动 Context 容器。而这个 Host 只是负责管理 Context 的生命周期，基于单一职责的原则，tomcat 利用事件通知的方式，很好地解决了藕合问题，Context 容器也是如此，它会对应一个 ContextConfig<br></code></pre></td></tr></table></figure></p>
+<p>2.Context 容器又是如何启动的？<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">前面我们也提到了，HostConfig 将当前 Context 实例作为子容器添加到 Host 容器中（调用 ContainerBase.addChild 方法 ），而 Context 的启动就是在添加的时候调用的，ContainerBase 的关键代码如下所示，Context 启动的时候会解析web.xml，以及启动 Servlet、Listener，Servlet3.0还支持注解配置，等等这一系列逻辑将在下一篇文章进行分析<br></code></pre></td></tr></table></figure></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Override<br>public void addChild(Container child) &#123;<br>    if (Globals.IS_SECURITY_ENABLED) &#123;<br>        PrivilegedAction&lt;Void&gt; dp = new PrivilegedAddChild(child);<br>        AccessController.doPrivileged(dp);<br>    &#125; else &#123;<br>        addChildInternal(child);<br>    &#125;<br>&#125;<br><br>private void addChildInternal(Container child) &#123;<br>    synchronized(children) &#123;<br>        // 省略部分代码，避免重复添加子容器<br>    &#125;<br><br>    try &#123;<br>        if ((getState().isAvailable()<br>                || LifecycleState.STARTING_PREP.equals(getState()))<br>                &amp;&amp; startChildren) &#123;<br>            // 启动添加的子容器<br>            child.start();<br>        &#125;<br>    &#125; catch (LifecycleException e) &#123;<br>        throw new IllegalStateException(&quot;ContainerBase.addChild: start: &quot; + e);<br>    &#125; finally &#123;<br>        fireContainerEvent(ADD_CHILD_EVENT, child);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/tomcat/" rel="tag"><i class="fas fa-tags"></i>tomcat</a>
+        
+        <a class="post-tag button" href="/tags/源码/" rel="tag"><i class="fas fa-tags"></i>源码</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/01/17/Tomcat的启动分析-二-Catalina初始化/" rel="next" title="Tomcat的启动分析(二)Catalina初始化"><i class="fas fa-angle-left"></i><span class="nav-title">Tomcat的启动分析(二)Catalina初始化</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/01/18/Tomcat的启动分析-四-webapp/" rel="prev" title="Tomcat的启动分析(四)webapp"><span class="nav-title">Tomcat的启动分析(四)webapp</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Tomcat的启动分析(三)Catalina启动",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">101</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">50</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">39</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Bootstrap"><span class="toc-text">Bootstrap</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Catalina"><span class="toc-text">Catalina</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Server"><span class="toc-text">Server</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Service"><span class="toc-text">Service</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Engine"><span class="toc-text">Engine</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ContainerBase"><span class="toc-text">ContainerBase</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#启动子容器"><span class="toc-text">启动子容器</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#启动Pipeline"><span class="toc-text">启动Pipeline</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#StandardHost"><span class="toc-text">StandardHost</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#HostConfig"><span class="toc-text">HostConfig</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
