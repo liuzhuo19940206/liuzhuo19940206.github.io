@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-01-22T06:25:05.081Z</updated>
+  <updated>2019-03-08T06:53:12.312Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis的开发的第一天</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/08/Mybatis%E7%9A%84%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/08/Mybatis的开发的第一天/</id>
+    <published>2019-03-08T05:33:50.000Z</published>
+    <updated>2019-03-08T06:53:12.312Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Java中的父子类的执行顺序</title>
@@ -458,30 +478,6 @@
     <summary type="html">
     
       &lt;p&gt;本篇讲解docker的安装&lt;br&gt;
-    
-    </summary>
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
-    
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker的简介</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/09/Docker%E7%9A%84%E7%AE%80%E4%BB%8B/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/09/Docker的简介/</id>
-    <published>2019-01-09T07:38:24.000Z</published>
-    <updated>2019-01-09T08:19:06.872Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天开始学习Docker的基础篇章的学习。&lt;br&gt;
     
     </summary>
     
