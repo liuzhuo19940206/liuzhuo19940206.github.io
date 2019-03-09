@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-09T04:22:24.597Z</updated>
+  <updated>2019-03-09T13:40:46.877Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis的第三天作用域</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/09/Mybatis%E7%9A%84%E7%AC%AC%E4%B8%89%E5%A4%A9%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/09/Mybatis的第三天作用域/</id>
+    <published>2019-03-09T11:36:51.000Z</published>
+    <updated>2019-03-09T13:40:46.877Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;探讨Mybatis中的各个对象的作用域和生命周期&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis的第二天简单入门</title>
@@ -450,30 +470,6 @@
     <summary type="html">
     
       &lt;p&gt;今天来学习docker中镜像原理，以及相关的commit命令。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
-    
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker的常用命令</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/09/Docker%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/09/Docker的常用命令/</id>
-    <published>2019-01-09T13:01:28.000Z</published>
-    <updated>2019-01-10T05:40:18.023Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;接着上篇，我们来学习docker的常用命令，大家是不是已经开始蠢蠢欲动了呢？come on！！！&lt;br&gt;
     
     </summary>
     
