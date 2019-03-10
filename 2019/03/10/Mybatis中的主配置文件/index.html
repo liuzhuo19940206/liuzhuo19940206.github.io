@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Mybatis中的主配置文件 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/03/10/Mybatis中的主配置文件/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Mybatis中的主配置文件</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-10T10:03:48+08:00">2019-03-10 10:03:48</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。<br><a id="more"></a></p>
+<h3 id="Mybatis配置文件层次结构"><a href="#Mybatis配置文件层次结构" class="headerlink" title="Mybatis配置文件层次结构"></a>Mybatis配置文件层次结构</h3><p>先来看一下MyBatis配置XML文件的层次结构。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE configuration<br>        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;<br>&lt;configuration&gt;&lt;!--配置--&gt;<br>    &lt;properties/&gt;&lt;!--属性--&gt;<br>    &lt;settings/&gt;&lt;!--设置--&gt;<br>    &lt;typeAliases/&gt;&lt;!--别名--&gt;<br>    &lt;typeHandlers/&gt;&lt;!--类型处理器--&gt;<br>    &lt;plugins/&gt;&lt;!--插件--&gt;<br>    &lt;environments default=&quot;development&quot;&gt;&lt;!--配置环境--&gt;<br>        &lt;environment id=&quot;development&quot;&gt;&lt;!--环境变量--&gt;<br>            &lt;transactionManager type=&quot;JDBC&quot;/&gt;&lt;!--事务管理器--&gt;<br>            &lt;dataSource type=&quot;POOLED&quot;/&gt;&lt;!--数据源--&gt;<br>        &lt;/environment&gt;<br>    &lt;/environments&gt;<br>    &lt;databaseIdProvider/&gt;&lt;!--数据库厂商标识--&gt;<br>    &lt;mappers/&gt;&lt;!--映射器--&gt;<br>&lt;/configuration&gt;<br></code></pre></td></tr></table></figure>
+<font color="red"><strong>注意，这些层次是不能够颠倒顺序的的，如果颠倒顺序，Mybatis在解析XML文件的时候就会出现异常。</strong></font>
+
+<h3 id="properties元素"><a href="#properties元素" class="headerlink" title="properties元素"></a>properties元素</h3><p>properties是一个配置属性的元素，让我们能在配置文件的上下文中使用它。</p>
+<p>Mybatis提供3种配置方式：</p>
+<ul>
+<li><p>property子元素</p>
+</li>
+<li><p>properties配置文件</p>
+</li>
+<li><p>程序参数传递</p>
+</li>
+</ul>
+<h4 id="property子元素"><a href="#property子元素" class="headerlink" title="property子元素"></a>property子元素</h4><p>property子元素的配置方式如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;properties&gt;<br>    &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;<br>    &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis&quot;/&gt;<br>    &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;<br>    &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;<br>&lt;/properties&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这样我们就可以在上下文中使用已经配置好的属性值了。我们在配置数据库的数据源时就可以按照如下进行配置：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dataSource type=&quot;POOLED&quot;&gt;<br>    &lt;property name=&quot;driver&quot; value=&quot;$&#123;driver&#125;&quot;/&gt;<br>    &lt;property name=&quot;url&quot; value=&quot;$&#123;url&#125;&quot;/&gt;<br>    &lt;property name=&quot;username&quot; value=&quot;$&#123;username&#125;&quot;/&gt;<br>    &lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;/&gt;<br>&lt;/dataSource&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="properties配置文件"><a href="#properties配置文件" class="headerlink" title="properties配置文件"></a>properties配置文件</h4><p>更多时候，我们希望使用properties配置文件来配置属性值，以方便我们在多个配置文件中重复使用它们，也方便日后维护和随时修改，这些在Mybatis中是很容易做到的，我们先来看一下 properties文件 ( jdbc.properties )，代码如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#数据库配置文件<br>driver=com.mysql.jdbc.Driver<br>url=jdbc:mysql://localhost:3306/mybatis<br>username=root<br>password=123456<br></code></pre></td></tr></table></figure></p>
+<p>我们把这个properties配置文件放在<strong>源码包</strong>下，只要这样引入这个配置文件即可：</p>
+<p><code>&lt;properties resources=&quot;jdbc.properties&quot;/&gt;</code></p>
+<p>如果想要放在自定义的包下，比如：com.liuzhuo.mybatis中就：</p>
+<p><code>&lt;properties resources=&quot;com/liuzhuo/mybatis/jdbc.properties&quot;/&gt;</code></p>
+<hr>
+<h4 id="程序参数传递"><a href="#程序参数传递" class="headerlink" title="程序参数传递"></a>程序参数传递</h4><p>在实际工作中，我们常常遇到这样的问题：系统是由运维人员去配置的，生产数据库的用户密码对于开发者而言是保密的，而且为了安全，运维人员要求对配置文件中的数据库用户密码进行加密，这样我们的配置文件中往往配置的是加密过后的数据库信息，而无法通过加密的字符串去连接数据库，这个时候可以通过编码的形式来满足我们遇到的场景。</p>
+<p>下面假设jdbc.properties文件中的username和password两个属性使用了加密的字符串，这个时候我们需要在生成SqlSessionFactory之前将它转化为明文，而系统已经提供了解密的方法decode(str)，让我们来看看如何使用代码的方式来完成SqlSessionFactory的创建，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs undefined">InputStream cfgStream = null;<br>Reader cfgReader = null;<br>InputStream proStream = null;<br>Reader proReader = null;<br>Properties properties = null;<br>try&#123;<br>   //读取配置文件流<br>   cfgStream = Resources.getResourceAsStream(&quot;mybatis-config.xml&quot;);<br>   cfgReader = new InputStreamReader(cfgStream);<br><br>   //读入属性文件<br>   proStream = Resources.getResourceAsStream(&quot;jdbc.properties&quot;);<br>   proReader = new InputStreamReader(proStream);<br>   <br>   properties = new Properties();<br>   properties.load(proReader);<br>   <br>   //解密为明文<br>   properties.setProperty(&quot;username&quot;,decode(properties.getProperty(&quot;username&quot;)));<br>   properties.setProperty(&quot;password&quot;,decode(properties.getProperty(&quot;password&quot;)));<br>&#125;catch(IOException ex)&#123;<br>     System.out.println(ex.getMessage());<br>   &#125;<br>   <br>   Synchronized(CLASS_LOCK)&#123;<br>        if(sqlSessionFactory == null)&#123;<br>           //使用属性来创建SqlSessionFactory<br>           SqlSessionFactory = new SqlSessionFactoryBuilder().build(cfgReader,properties);<br>        &#125;<br>   &#125;<br></code></pre></td></tr></table></figure></p>
+<p>这样我们完全可以在jdbc.properties配合密文了，满足对系统安全的要求了。</p>
+<hr>
+<h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><p>Mybatis支持3种配置方式可能同时出现，并且属性还会重复配置。这3种方式是存在优先级的，Mybatis将按照下面的顺序来加载。</p>
+<ol>
+<li><p>在properties元素体内指定的属性首先被读取（property子元素）</p>
+</li>
+<li><p>根据properties元素中的resources属性读取类路径下的.properties文件，或者根据url属性指定的路径读取属性文件，并覆盖也读取的同名属性</p>
+</li>
+<li><p>读取作为方法参数传递的属性，并覆盖也读取的同名属性</p>
+</li>
+</ol>
+<p><strong>因此，通过<code>方法参数传递的属性具有最高优先级</code>，<code>resources属性中指定的配置文件次之</code>，<code>最低优先级的是properties元素中的指定的属性。</code></strong></p>
+<hr>
+<p>因此，在实际操作中，我们需要注意一下3点：</p>
+<ol>
+<li><p>不要混合使用，这样会导致管理混乱</p>
+</li>
+<li><p>首选的方式是使用properties文件</p>
+</li>
+<li><p>如果需要使用加密或者其他加工处理，不妨按照示例的方法来处理，这样做的好处是使得配置都来自于同一个配置文件，就不容易产生没有必要的歧义。</p>
+</li>
+</ol>
+<hr>
+<p>从MyBatis 3.4.2开始，你可以为占位符指定一个默认值。例如：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dataSource type=&quot;POOLED&quot;&gt;<br>  &lt;!-- ... --&gt;<br>  &lt;property name=&quot;username&quot; value=&quot;$&#123;username:ut_user&#125;&quot;/&gt; &lt;!-- If &apos;username&apos; property not present, username become &apos;ut_user&apos; --&gt;<br>&lt;/dataSource&gt;<br></code></pre></td></tr></table></figure>
+<p>这个特性默认是关闭的。如果你想为占位符指定一个默认值， 你应该添加一个指定的属性来开启这个特性。例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;<br>  &lt;!-- ... --&gt;<br>  &lt;property name=&quot;org.apache.ibatis.parsing.PropertyParser.enable-default-value&quot; value=&quot;true&quot;/&gt; &lt;!-- Enable this feature --&gt;<br>&lt;/properties&gt;<br></code></pre></td></tr></table></figure></p>
+<p><strong><code>提示：你可以使用 &quot;:&quot; 作为属性键(e.g. db:username) 或者你也可以在sql定义中使用 OGNL 表达式的三元运算符
+(e.g. ${tableName != null ? tableName : &#39;global_constants&#39;})</code></strong></p>
+<p>你也可以通过增加一个指定的属性来改变分隔键和默认值的字符。例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;<br>  &lt;!-- ... --&gt;<br>  &lt;property name=&quot;org.apache.ibatis.parsing.PropertyParser.default-value-separator&quot; value=&quot;?:&quot;/&gt; &lt;!-- Change default value of separator --&gt;<br>&lt;/properties&gt;<br><br>&lt;dataSource type=&quot;POOLED&quot;&gt;<br>  &lt;!-- ... --&gt;<br>  &lt;property name=&quot;username&quot; value=&quot;$&#123;db:username?:ut_user&#125;&quot;/&gt;<br>&lt;/dataSource&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="settings设置"><a href="#settings设置" class="headerlink" title="settings设置"></a>settings设置</h3><p>设置（settings）在Mybatis中是最复杂的配置，同时也是最为重要的配置内容之一，它会改变Mybatis运行时的行为。即使不配置settings，Mybatis也可以正常的工作，不过了解settings的配置内容，以及它们的作用仍然十分必要。</p>
+<p>Settings的配置内容如下：<br><img src="/images/mybatis/QQ截图20190310114235.png"><br><img src="/images/mybatis/QQ截图20190310114509.png"><br><img src="/images/mybatis/QQ截图20190310114547.png"></p>
+<p>一个配置完整的 settings 元素的示例如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;settings&gt;<br>  &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;<br>  &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;<br>  &lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot;/&gt;<br>  &lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot;/&gt;<br>  &lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot;/&gt;<br>  &lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot;/&gt;<br>  &lt;setting name=&quot;autoMappingUnknownColumnBehavior&quot; value=&quot;WARNING&quot;/&gt;<br>  &lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot;/&gt;<br>  &lt;setting name=&quot;defaultStatementTimeout&quot; value=&quot;25&quot;/&gt;<br>  &lt;setting name=&quot;defaultFetchSize&quot; value=&quot;100&quot;/&gt;<br>  &lt;setting name=&quot;safeRowBoundsEnabled&quot; value=&quot;false&quot;/&gt;<br>  &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;false&quot;/&gt;<br>  &lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot;/&gt;<br>  &lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;OTHER&quot;/&gt;<br>  &lt;setting name=&quot;lazyLoadTriggerMethods&quot; value=&quot;equals,clone,hashCode,toString&quot;/&gt;<br>&lt;/settings&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在大部分时候我们不需要去配置它，或者只需要配置少数几项即可。</p>
+<hr>
+<h3 id="typeAliases-别名"><a href="#typeAliases-别名" class="headerlink" title="typeAliases(别名)"></a>typeAliases(别名)</h3><p>别名(typeAliases)是一个指代的名称，因为我们遇到的类的全限定名过长，所以我们希望用一个简短的名称来指代它，而这个名称可以在Mybatis上下文中使用。别名在Mybatis里面分为<strong>系统定义的别名</strong>和<strong>自定义的别名</strong>。注意，在Mybatis中别名是不分大小写的。</p>
+<p>一个typeAliases的实例是在解析配置文件时生成的，然后长期保存在Configuration对象中，当我们使用它时，再把它拿出来，这样就没有必要运行的时候再次生成它的实例了。</p>
+<h4 id="系统别名"><a href="#系统别名" class="headerlink" title="系统别名"></a>系统别名</h4><p>Mybatis系统定义了一些经常使用的类型的别名，比如：数值、字符串、日期和集合等，我们可以在Mybatis中直接使用它们，在使用时不要重复定义把它们给覆盖了。</p>
+<p>如下是系统给我们定义的常用的别名：<br><img src="/images/mybatis/QQ截图20190310115942.png"><br><img src="/images/mybatis/QQ截图20190310120030.png"><br><img src="/images/mybatis/QQ截图20190310120122.png"></p>
+<p>我们可以通过Mybatis的源码 org.apache.ibatis.type.TypeAliasRegistry 可以看出其自定义注册的信息，如下所示：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">  public TypeAliasRegistry() &#123;<br>    registerAlias(&quot;string&quot;, String.class);<br><br>    registerAlias(&quot;byte&quot;, Byte.class);<br>    registerAlias(&quot;long&quot;, Long.class);<br>    registerAlias(&quot;short&quot;, Short.class);<br>    registerAlias(&quot;int&quot;, Integer.class);<br>    registerAlias(&quot;integer&quot;, Integer.class);<br>    registerAlias(&quot;double&quot;, Double.class);<br>    registerAlias(&quot;float&quot;, Float.class);<br>    registerAlias(&quot;boolean&quot;, Boolean.class);<br>    ·····<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>这些就是Mybatis系统定义的别名，我们无需重复注册它们。</p>
+<h4 id="自定义别名"><a href="#自定义别名" class="headerlink" title="自定义别名"></a>自定义别名</h4><p>系统所定义的别名往往是不够用的，因为不同的应用有着不同的需要，所以Mybatis允许自定义别名。</p>
+<p>代码如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;typeAliases&gt;<br>  &lt;typeAlias alias=&quot;Author&quot; type=&quot;domain.blog.Author&quot;/&gt;<br>  &lt;typeAlias alias=&quot;Blog&quot; type=&quot;domain.blog.Blog&quot;/&gt;<br>  &lt;typeAlias alias=&quot;Comment&quot; type=&quot;domain.blog.Comment&quot;/&gt;<br>  &lt;typeAlias alias=&quot;Post&quot; type=&quot;domain.blog.Post&quot;/&gt;<br>  &lt;typeAlias alias=&quot;Section&quot; type=&quot;domain.blog.Section&quot;/&gt;<br>  &lt;typeAlias alias=&quot;Tag&quot; type=&quot;domain.blog.Tag&quot;/&gt;<br>&lt;/typeAliases&gt;<br></code></pre></td></tr></table></figure></p>
+<p>当这样配置时，Blog可以用在任何使用domain.blog.Blog的地方。</p>
+<p>如果POJO对象过多的时候，配置也是非常多的。因此允许我们通过包扫描的方式来注册自定义别名，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;typeAliases&gt;<br>  &lt;package name=&quot;domain.blog&quot;/&gt;<br>&lt;/typeAliases&gt;<br></code></pre></td></tr></table></figure></p>
+<p>每一个在包 domain.blog 中的 Java Bean，<strong><code>在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。</code></strong></p>
+<p>比如 domain.blog.Author 的别名为 author。</p>
+<p>也可以使用注解的方法，自定义别名，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Alias(&quot;author&quot;)<br>public class Author &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>当配合上面的配置，Mybatis就会自动扫描包，将扫描到的类装载到上下文中，以便将来使用。这样就算是多个POJO也可以通过包扫描的方式装载到Mybatis的上下文中。</p>
+<hr>
+<h3 id="typeHandler-类型处理器"><a href="#typeHandler-类型处理器" class="headerlink" title="typeHandler(类型处理器)"></a>typeHandler(类型处理器)</h3><p>无论是 MyBatis 在预处理语句（PreparedStatement）中设置一个参数时，还是从结果集中取出一个值时， 都会用类型处理器将获取的值以合适的方式转换成 Java 类型。</p>
+<p>由于数据库可能来自于不同的厂商，不同的厂商设置的参数可能有所不同，同时数据库也可以自定义数据类型，typeHandler允许根据项目的需要自定义设置Java传递到数据库的参数中，或者从数据库读取数据，我们也需要进行特殊的处理，这些都可以在自定义的typeHandler中处理，尤其是在使用枚举的时候，我们常常需要使用typeHandler进行转换。</p>
+<p>typeHandler和别名一样，分为Mybatis系统定义的和用户自定义两种。一般来说，使用Mybatis系统定义的typeHandler就可以实现大部分的功能，如果使用用户自定义的typeHandler，我们在处理的时候务必要小心谨慎，以避免出现不必要的错误。</p>
+<p>typeHandler常用的配置为Java类型（javaType）、JDBC类型（jdbcType）。typeHandler的作用就是将参数从javaType转化为jdbcType，或者从数据库取出数据时把jdbcType转化为javaType。</p>
+<h4 id="系统定义的typeHandler"><a href="#系统定义的typeHandler" class="headerlink" title="系统定义的typeHandler"></a>系统定义的typeHandler</h4><p>Mybatis系统内部定义了一系列的typeHandler，我们可以看看 org.apache.ibatis.type.TypeHandlerRegistry</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">  public TypeHandlerRegistry() &#123;<br>    register(Boolean.class, new BooleanTypeHandler());<br>    register(boolean.class, new BooleanTypeHandler());<br>    register(JdbcType.BOOLEAN, new BooleanTypeHandler());<br>    register(JdbcType.BIT, new BooleanTypeHandler());<br><br>    register(Byte.class, new ByteTypeHandler());<br>    register(byte.class, new ByteTypeHandler());<br>    register(JdbcType.TINYINT, new ByteTypeHandler());<br><br>    register(Short.class, new ShortTypeHandler());<br>    register(short.class, new ShortTypeHandler());<br>    register(JdbcType.SMALLINT, new ShortTypeHandler());<br>    <br>    ····<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>下表描述了一些默认的类型处理器。<br><img src="/images/mybatis/QQ截图20190310123016.png"><br><img src="/images/mybatis/QQ截图20190310123134.png"><br><img src="/images/mybatis/QQ截图20190310123216.png"></p>
+<hr>
+<p>我们需要注意下面几点。</p>
+<ul>
+<li><p>数值类型的精度，数据库 int、double、decimal这些类型 和 java的 精度、长度都是不一样的。</p>
+</li>
+<li><p>时间精度，取数据，精确到日用DateOnlyTypeHandler即可，精确到秒就用SqlTimestampTypeHandler等。</p>
+</li>
+</ul>
+<h4 id="自定义typeHandler"><a href="#自定义typeHandler" class="headerlink" title="自定义typeHandler"></a>自定义typeHandler</h4><p>在我们自定义typeHandler之前，我们先学习一下，Mybatis为我们提供的系统typeHandler，这样我们可以照着标准来自定义我们的typeHandler了。</p>
+<p>我们来看一下最常见的：StringTypeHandler。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StringTypeHandler extends BaseTypeHandler&lt;String&gt; &#123;<br><br>  @Override<br>  public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType)<br>      throws SQLException &#123;<br>    ps.setString(i, parameter);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(ResultSet rs, String columnName)<br>      throws SQLException &#123;<br>    return rs.getString(columnName);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(ResultSet rs, int columnIndex)<br>      throws SQLException &#123;<br>    return rs.getString(columnIndex);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(CallableStatement cs, int columnIndex)<br>      throws SQLException &#123;<br>    return cs.getString(columnIndex);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>简单说明一下上面的代码。</p>
+<p>StringTypeHandler 继承了 BaseTypeHandler。 而 BaseTypeHandler 实现了接口 typeHandler，并且自己定义了4个抽象的方法。所以继承它的时候，正如本例一样需要实现其定义的4个抽象方法，这些方法已经在StringTypeHandler中使用@Override注解注明了。</p>
+<p>setParameter 是 PreparedStatement 对象设置参数，它允许我们自己填写变换的规则。</p>
+<p>getResult 则是ResultSet用列名（columnName）或者使用列下标（columnIndex）来获取结果数据的。其中还包括了用CallableStatement（存储过程）获取结果及数据的方法。</p>
+<hr>
+<p>一般而言，Mybatis系统提供的typeHandler已经能够应付大部分的场景了，但是我们不能排除不够用的情况。首先需要明确两个问题：我们自定义的TypeHandler需要处理什么类型？现有的TypeHandler适合我们使用吗？我们需要特殊的处理java的那些类型（JavaType）和对应处理数据库的那些类型（JdbcType），比如字典项的枚举。</p>
+<p>这里让我们重新覆盖一个字符串参数的TypeHandler，我们首先先配置XML文件，确定我们需要处理什么类型的参数和结果，如下所示：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- mybatis-config.xml --&gt;<br>&lt;typeHandlers&gt;<br>  &lt;typeHandler handler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;<br>&lt;/typeHandlers&gt;<br></code></pre></td></tr></table></figure></p>
+<p>上面定义的数据库类型为VARCHAR型。当java的参数类型为string的时候，我们就可以使用MyStringTypeHandler来处理了，但是只有这个配置，Mybatis不会自动帮你去使用这个TypeHandler去转化的，你需要更多的配置。</p>
+<p>对于MyStringTypehandler，我们需要实现：</p>
+<p><code>org.apache.ibatis.type.TypeHandler</code> 接口，或者是继承：<code>org.apache.ibatis.type.BaseTypeHandler</code>。</p>
+<p>以上就是实现自定义TypeHandler的两种方式（其实BaseTypeHandler就是实现了TypeHandler接口的类）<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@MappedJdbcTypes(JdbcType.VARCHAR)<br>@MappedTypes(&#123;String.class&#125;)<br>public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; &#123;<br><br>  @Override<br>  public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException &#123;<br>    System.out.println(&quot;使用了我的TypeHandler&quot;);<br>    ps.setString(i, parameter);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(ResultSet rs, String columnName) throws SQLException &#123;<br>    System.out.println(&quot;使用了我的TypeHandler，ResultSet列名获取字符串&quot;);<br>    return rs.getString(columnName);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(ResultSet rs, int columnIndex) throws SQLException &#123;<br>    System.out.println(&quot;使用了我的TypeHandler，ResultSet下标获取字符串&quot;);<br>    return rs.getString(columnIndex);<br>  &#125;<br><br>  @Override<br>  public String getNullableResult(CallableStatement cs, int columnIndex) throws SQLException &#123;<br>    System.out.println(&quot;使用了我的TypeHandler，CallableStatement下标获取字符串&quot;);<br>    return cs.getString(columnIndex);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>自定义的TypeHandler里，使用了注解 @MappedTypes 和 @MappedJdbcTypes 来配置 javaType 和 jdbcType。</p>
+<ul>
+<li><p>@MappedTypes：定义的是JavaType类型，可以指定哪些java类型被拦截</p>
+</li>
+<li><p>@MappedJdbcTypes：定义的是JdbcType类型，它需要满足枚举类型 org.apache.ibatis.type.JdbcType所列的枚举类型。</p>
+</li>
+</ul>
+<font color="red">要注意 MyBatis 不会窥探数据库元信息来决定使用哪种类型，所以你必须在参数和结果映射中指明那是 VARCHAR 类型的字段， 以使其能够绑定到正确的类型处理器上。 这是因为：MyBatis 直到语句被执行才清楚数据类型。</font>
+
+<hr>
+<p>通过类型处理器的泛型，MyBatis 可以得知该类型处理器处理的 Java 类型，不过这种行为可以通过两种方法改变：</p>
+<ul>
+<li><p>在类型处理器的配置元素（typeHandler element）上增加一个 javaType 属性（比如：javaType=”String”）；</p>
+</li>
+<li><p>在类型处理器的类上（TypeHandler class）增加一个 @MappedTypes 注解来指定与其关联的 Java 类型列表。 如果在 javaType 属性中也同时指定，则注解方式将被忽略。</p>
+</li>
+</ul>
+<p>可以通过两种方式来指定被关联的 JDBC 类型：</p>
+<ul>
+<li><p>在类型处理器的配置元素上增加一个 jdbcType 属性（比如：jdbcType=”VARCHAR”）；</p>
+</li>
+<li><p>在类型处理器的类上（TypeHandler class）增加一个 @MappedJdbcTypes 注解来指定与其关联的 JDBC 类型列表。 如果在 jdbcType 属性中也同时指定，则注解方式将被忽略。</p>
+</li>
+</ul>
+<p>即优先级是：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;typeHandler handler=&quot;xxx&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;  中的 javaType 和 jdbcType 大于 @MappedTypes 和 @MappedJdbcTypes<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>当决定在ResultMap中使用某一TypeHandler时，此时java类型是已知的（从结果类型中获得），但是JDBC类型是未知的。 </p>
+<p>因此Mybatis使用 javaType=[TheJavaType], jdbcType=null 的组合来选择一个TypeHandler。 </p>
+<p>这意味着使用@MappedJdbcTypes注解可以限制TypeHandler的范围，同时除非显式的设置，否则TypeHandler在ResultMap中将是无效的。 </p>
+<p>如果希望在ResultMap中使用TypeHandler，那么设置@MappedJdbcTypes注解的includeNullJdbcType=true即可。 </p>
+<p>然而从Mybatis 3.4.0开始，如果只有一个注册的TypeHandler来处理Java类型，那么它将是ResultMap使用Java类型时的默认值（即使没有includeNullJdbcType=true）。</p>
+<hr>
+<p>最后，类型处理器也可以和别名一样，使用包扫描的方式，注册多个类型处理器<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- mybatis-config.xml --&gt;<br>&lt;typeHandlers&gt;<br>  &lt;package name=&quot;org.mybatis.example&quot;/&gt;<br>&lt;/typeHandlers&gt;<br></code></pre></td></tr></table></figure></p>
+<p>注意在使用自动检索（autodiscovery）功能的时候，只能通过注解方式来指定 JDBC 的类型。（@MappedJdbcTypes）</p>
+<hr>
+<p>到现在，我们还是不能测试，因为还需要去标识哪些参数或者结果类型去用我们自定义的TypeHandler去转化，在没有任何标识的情况下，Mybatis是不会启用你定义的TypeHandler进行转化的，所以还需要给予对应的标识，比如配置jdbcType 和 javaType，或者直接使用typeHandler属性指定，因此还需要修改映射器的XML配置。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br><br>&lt;mapper namespace=&quot;com.liuzhuo.dao.UserMapper&quot;&gt;<br>	&lt;resultMap id=&quot;usermap&quot; type=&quot;user&quot;&gt;&lt;!--因为添加了别名，所以直接使用user--&gt;<br>		&lt;id column=&quot;userId&quot; property=&quot;userId&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;<br>		&lt;result column=&quot;user_age&quot; property=&quot;userAge&quot;/&gt;<br>	    	&lt;!--定义结果类型转化器标识，才能使用类型转换器--&gt;<br>		&lt;result column=&quot;user_name&quot; property=&quot;userName&quot; typeHandler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&quot;/&gt;<br>	&lt;/resultMap&gt;<br><br>    &lt;select id=&quot;selectById&quot; parameterType=&quot;long&quot; resultMap=&quot;usermap&quot;&gt;<br>        select userId,user_name as userName,user_age as userAge from user where userId = #&#123;id&#125;<br>    &lt;/select&gt;<br><br>    &lt;select id=&quot;selectById03&quot; parameterType=&quot;string&quot; resultMap=&quot;usermap&quot;&gt;<br>        select userId,user_name as userName,user_age as userAge from user where user_name = #&#123;userName,javaType=&quot;string&quot;,jdbcType=&quot;VARCHAR&quot;&#125;<br>    &lt;/select&gt;<br><br>    &lt;select id=&quot;selectById02&quot; parameterType=&quot;string&quot; resultMap=&quot;usermap&quot;&gt;<br>        select userId,user_name as userName,user_age as userAge from user where user_name = #&#123;userName,typeHandler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&#125;<br>    &lt;/select&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>我们这里引入了resultMap，它提供了映射规则，这里给出了3种typeHandler的使用方法。</p>
+<ul>
+<li><p>在配置文件里面配置，在结果集的的id定义：javaType 和 jdbcType。只要定义的javaType 和 jdbcType 与我们定义在配置里面的typeHandler是一致的，Mybatis才会知道用我们自定义的类型转化器进行转换。</p>
+</li>
+<li><p>映射集里面直接定义具体的typeHandler，这样就不需要再在配置里面定义了。</p>
+</li>
+<li><p>在参数中制定typeHandler，这样Mybatis就会用对应的typeHandler进行转换，这样也不需要在配置里面定义了。</p>
+</li>
+</ul>
+<hr>
+<p>配置好后，运行我们的项目的MybatisMain主函数，接着上篇博客来写的：<br><img src="/images/mybatis/QQ截图20190310151142.png"></p>
+<p>从结果看，程序运行了我们自定义的typeHandler，输出了打印语句。</p>
+<hr>
+<h4 id="处理枚举类型"><a href="#处理枚举类型" class="headerlink" title="处理枚举类型"></a>处理枚举类型</h4><p>在Mybatis中枚举类型的typeHandler有自己特殊的规则，Mybatis内部提供了两个枚举typeHandler：</p>
+<ul>
+<li><p>EnumTypeHandler </p>
+</li>
+<li><p>EnumOrdinalTypeHandler </p>
+</li>
+</ul>
+<p>EnumTypeHandler 和 EnumOrdinalTypeHandler 都是泛型类型处理器（generic TypeHandlers）</p>
+<p>其中，EnumTypeHandler是使用枚举字符串名称来作为参数的，EnumOrdinalTypeHandler是使用整数下标作为参数的。</p>
+<p><strong>注意 EnumTypeHandler 在某种意义上来说是比较特别的，其他的处理器只针对某个特定的类，而它不同，它会处理任意继承了 Enum 的类。</strong></p>
+<p>然而这两个枚举类型应用却不是那么广泛，更多的时候我们希望使用自定义的typeHandler处理它们。所以在这里我们也会谈及自定义的typeHandler实现枚举映射。</p>
+<h5 id="EnumOrdinalTypeHandler"><a href="#EnumOrdinalTypeHandler" class="headerlink" title="EnumOrdinalTypeHandler"></a>EnumOrdinalTypeHandler</h5><p>下面以性别为例，讲述如何实现枚举类。现在我们有一个性别枚举，它定义了字典：男（male），女（female）。</p>
+<p>在com.liuzhuo.enums包下，创建Sex枚举类<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public enum Sex &#123;<br><br>    MALE(1, &quot;男&quot;), FEMALE(2, &quot;女&quot;);<br><br>    private int id;<br>    private String name;<br><br>    private Sex(int id, String name) &#123;<br>        this.id = id;<br>        this.name = name;<br>    &#125;<br><br>    public int getId() &#123;<br>        return id;<br>    &#125;<br><br>    public void setId(int id) &#123;<br>        this.id = id;<br>    &#125;<br><br>    public String getName() &#123;<br>        return name;<br>    &#125;<br><br>    public void setName(String name) &#123;<br>        this.name = name;<br>    &#125;<br><br>    public static Sex getSex(int id) &#123;<br>        if (id == 1) &#123;<br>            return MALE;<br>        &#125; else if (id == 2) &#123;<br>            return FEMALE;<br>        &#125;<br>        return null;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>在没有配置的时候，EnumOrdinalTypeHandler是Mybatis的默认枚举类型的处理器，为了让EnumOrdinalTypeHandler能够处理它，我们在Mybatis中做如下配置：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;typeHandlers&gt;<br>    ···<br>    &lt;typeHandler handler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot; javaType=&quot;com.liuzhuo.enums.Sex&quot;/&gt;<br>&lt;/typeHandlers&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这样当Mybatis遇到这个枚举类时就可以识别这个枚举了，然后修改userMapper.xml文件</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br>&lt;mapper namespace=&quot;com.liuzhuo.dao.UserMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;userMap&quot; type=&quot;user&quot;&gt;&lt;!--因为添加了别名，所以直接使用user--&gt;<br>        &lt;id column=&quot;userId&quot; property=&quot;userId&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;<br>        &lt;result column=&quot;user_age&quot; property=&quot;userAge&quot;/&gt;<br>        &lt;!--定义结果类型转化器标识，才能使用类型转换器--&gt;<br>        &lt;result column=&quot;user_name&quot; property=&quot;userName&quot; typeHandler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&quot;/&gt;<br>        &lt;!--新添加的字段--&gt;<br>        &lt;result column=&quot;user_sex&quot; property=&quot;userSex&quot; typeHandler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>    &lt;select id=&quot;selectById&quot; parameterType=&quot;long&quot; resultMap=&quot;userMap&quot;&gt;<br>        select userId,user_name as userName,user_age as userAge ,user_sex as userSex from user where userId = #&#123;id&#125;<br>    &lt;/select&gt;<br><br>    &lt;insert id=&quot;insertUser&quot; parameterType=&quot;user&quot;&gt;<br>        INSERT INTO user(userId,user_age,user_name,user_sex)<br>        VALUES (#&#123;userId&#125;,#&#123;userAge&#125;,#&#123;userName&#125;,#&#123;userSex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler&#125;)<br>    &lt;/insert&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure>
+<p>主要增加了一个新的字段，userSex 和 一个 insert方法。</p>
+<p>userMapper接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface UserMapper &#123;<br><br>    User selectById(Long id);<br><br>    @Select(&quot;select userId,user_age as useAge,user_name as userName from user where userId = #&#123;id&#125;&quot;)<br>    User selectById02(Long id);<br><br>    //新增加的方法<br>    int insertUser(User user);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>User类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class User &#123;<br>    private String userId;<br>    private Long userAge;<br>    private String userName;<br>    //多的字段<br>    private Sex userSex;  <br><br>    ···省略get、set、toSting方法<br></code></pre></td></tr></table></figure></p>
+<p>在mysql中，添加新的列，为user_sex<br><img src="/images/mybatis/QQ截图20190310155623.png"></p>
+<p>修改我们的MybatisMain类的main方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">    SqlSession sqlSession = null;<br>    try &#123;<br>        sqlSession = SqlSessionFactoryUtil.openSqlSession();<br>        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);<br>        User user = new User();<br>        user.setUserId(UUID.randomUUID().toString());<br>        user.setUserName(&quot;dj&quot;);<br>        user.setUserAge(18L);<br>        user.setUserSex(Sex.FEMALE);//插入新增加的枚举类型<br>        userMapper.insertUser(user);<br>        sqlSession.commit();<br>    &#125; catch (Exception e) &#123;<br>        System.out.println(e.getMessage());<br>        //出现异常，回滚<br>        sqlSession.rollback();<br>    &#125; finally &#123;<br>        //关闭sqlSession对象<br>        if (sqlSession != null) &#123;<br>            sqlSession.close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>执行结果：<br><img src="/images/mybatis/QQ截图20190310155821.png"><br>打开sql数据库：<br><img src="/images/mybatis/QQ截图20190310155921.png"></p>
+<p>发现它插入的是枚举类型的下标。</p>
+<hr>
+<p>然后，再次修改MybatisMain类的main方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">SqlSession sqlSession = null;<br>try &#123;<br>    sqlSession = SqlSessionFactoryUtil.openSqlSession();<br>    UserMapper userMapper = sqlSession.getMapper(UserMapper.class);<br>    //id是数据库的，请填写你的id<br>    User user = userMapper.selectById(&quot;a582c9ec-872b-4f6e-8520-a924e140efd7&quot;);<br>    System.out.println(user);<br>    sqlSession.commit();<br>&#125; catch (Exception e) &#123;<br>    System.out.println(e.getMessage());<br>    //出现异常，回滚<br>    sqlSession.rollback();<br>&#125; finally &#123;<br>    //关闭sqlSession对象<br>    if (sqlSession != null) &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>执行：<br><img src="/images/mybatis/QQ截图20190310161623.png"></p>
+<p>运行成功，取数据时，根据枚举的下标进行转化，变成了FEMALE。</p>
+<font color="red">注意，执行select后，打印出来的user的有可能有的字段没有值，这是因为当我们的使用resultMap后，select中就不要使用as了，这样会映射不对的！！！</font>
+
+<p>即：(去掉所有的as)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectById&quot; parameterType=&quot;string&quot; resultMap=&quot;userMap&quot;&gt;<br>    select userId,user_age ,user_name ,user_sex  from user where userId = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h5 id="EnumTypeHandler"><a href="#EnumTypeHandler" class="headerlink" title="EnumTypeHandler"></a>EnumTypeHandler</h5><p>EnumTypeHandler是使用枚举名称去处理Java枚举类型。EnumTypeHandler对应的是一个字符串，让我们来看看它的用法。</p>
+<p>首先将mysql中的user_sex改为<code>VARCHAR</code>类型，然后修改映射的xml文件。<br><img src="/images/mybatis/QQ截图20190310162436.png"></p>
+<p>将typeHandler换成：org.apache.ibatis.type.EnumTypeHandler 即可。</p>
+<p>再次插入数据后：<br><img src="/images/mybatis/QQ截图20190310162944.png"><br><img src="/images/mybatis/QQ截图20190310163028.png"></p>
+<hr>
+<h5 id="自定义枚举类的typeHandler"><a href="#自定义枚举类的typeHandler" class="headerlink" title="自定义枚举类的typeHandler"></a>自定义枚举类的typeHandler</h5><p>我们也看到了Mybatis系统内部的枚举类的typeHandler不太好，所以，一般情况下，我们都需要自己定义枚举类的typeHandler。</p>
+<p>创建SexEnumTypeHandler：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class SexEnumTypeHandler extends BaseTypeHandler&lt;Sex&gt; &#123;<br>    @Override<br>    public void setNonNullParameter(PreparedStatement ps, int i, Sex parameter, JdbcType jdbcType) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，set&quot;);<br>        ps.setInt(i, parameter.getId());<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(ResultSet rs, String columnName) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = rs.getInt(columnName);<br>        return Sex.getSex(id);<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(ResultSet rs, int columnIndex) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = rs.getInt(columnIndex);<br>        return Sex.getSex(id);<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(CallableStatement cs, int columnIndex) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = cs.getInt(columnIndex);<br>        return Sex.getSex(id);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>修改mbatis-config.xml配置文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;typeHandlers&gt;<br>    ···<br>    &lt;typeHandler handler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot; javaType=&quot;com.liuzhuo.enums.Sex&quot;/&gt;<br>&lt;/typeHandlers&gt;<br></code></pre></td></tr></table></figure></p>
+<p>修改userMapper.xml文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br><br><br>&lt;mapper namespace=&quot;com.liuzhuo.dao.UserMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;userMap&quot; type=&quot;user&quot;&gt;<br>        &lt;id column=&quot;userId&quot; property=&quot;userId&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;<br>        &lt;result column=&quot;user_age&quot; property=&quot;userAge&quot;/&gt;<br>        &lt;!--定义结果类型转化器标识，才能使用类型转换器--&gt;<br>        &lt;result column=&quot;user_name&quot; property=&quot;userName&quot; typeHandler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&quot;/&gt;<br>        &lt;!--新添加的字段--&gt;<br>        &lt;result column=&quot;user_sex&quot; property=&quot;userSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>    &lt;select id=&quot;selectById&quot; parameterType=&quot;string&quot; resultMap=&quot;userMap&quot;&gt;<br>        select userId,user_age ,user_name ,user_sex  from user where userId = #&#123;id&#125;<br>&lt;/select&gt;<br><br>    &lt;insert id=&quot;insertUser&quot; parameterType=&quot;user&quot;&gt;<br>        INSERT INTO user(userId,user_age,user_name,user_sex)<br>        VALUES (#&#123;userId&#125;,#&#123;userAge&#125;,#&#123;userName&#125;,#&#123;userSex,typeHandler=com.liuzhuo.typehandler.SexEnumTypeHandler&#125;)<br>    &lt;/insert&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>修改主函数：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sqlSession = SqlSessionFactoryUtil.openSqlSession();<br>UserMapper userMapper = sqlSession.getMapper(UserMapper.class);<br>User user = new User();<br>user.setUserId(UUID.randomUUID().toString());<br>user.setUserName(&quot;gakkij&quot;);<br>user.setUserAge(18L);<br>user.setUserSex(Sex.FEMALE);<br>userMapper.insertUser(user);<br>sqlSession.commit();<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190310164451.png"><br><img src="/images/mybatis/QQ截图20190310164520.png"></p>
+<hr>
+<p>修改主函数：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sqlSession = SqlSessionFactoryUtil.openSqlSession();<br>UserMapper userMapper = sqlSession.getMapper(UserMapper.class);<br>User user = userMapper.selectById(&quot;635a61a2-1d0e-450a-bda1-20aa340567db&quot;);<br>System.out.println(user);<br>sqlSession.commit();<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190310164703.png"></p>
+<hr>
+<h3 id="ObjectFactory"><a href="#ObjectFactory" class="headerlink" title="ObjectFactory"></a>ObjectFactory</h3><p>当Mybatis在构建一个结果返回的时候，都会使用ObjectFactory（对象工厂）去构建POJO，在Mybatis中可以定制自己的对象工厂。一般来说我们使用默认的ObjectFactory即可，Mybatis中默认的ObjectFactory是由 org.apache.ibatis.reflection.DefaultObjectFactory来提供服务的。在大部分的场景下我们都不用修改，如果要定制特定的工厂则需要进行配置，如下所示：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;objectFactory type=&quot;com.liuzhuo.objectFactory.MyObjectFactory&quot;&gt;<br>	&lt;property name=&quot;name&quot; value=&quot;MyObjectFactory&quot;/&gt;<br>&lt;/objectFactory&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这里，我们配置了一个对象工厂MyObjectFactory，对它的要求是实现ObjectFactory的接口。实际上DefaultObjectFactory已经实现了ObjectFactory的接口，我们可以通过继承DefaultObjectFactory来简化编程。</p>
+<p>在com.liuzhuo.objectFactory包下，创建MyObjectFactory类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MyObjectFactory extends DefaultObjectFactory &#123;<br><br>    private static final long serialVersionUID = -4783947743847934344L;<br><br>    Logger log = Logger.getLogger(MyObjectFactory.class);<br><br>    @Override<br>    public void setProperties(Properties properties) &#123;<br>        log.info(&quot;定制属性：&quot; + properties);<br>        super.setProperties(properties);<br>    &#125;<br><br>    @Override<br>    public &lt;T&gt; T create(Class&lt;T&gt; type) &#123;<br>        log.info(&quot;使用定制对象工厂的create方法构建单个对象&quot;);<br>        return super.create(type);<br>    &#125;<br><br>    @Override<br>    public &lt;T&gt; T create(Class&lt;T&gt; type, List&lt;Class&lt;?&gt;&gt; constructorArgTypes, List&lt;Object&gt; constructorArgs) &#123;<br>        log.info(&quot;使用定制对象工厂的create方法构建列表对象&quot;);<br>        return super.create(type, constructorArgTypes, constructorArgs);<br>    &#125;<br><br>    @Override<br>    public &lt;T&gt; boolean isCollection(Class&lt;T&gt; type) &#123;<br>        return super.isCollection(type);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190310175851.png"></p>
+<p>运行我们的main方法：<br><img src="/images/mybatis/QQ截图20190310180429.png"></p>
+<p>从运行的结果可以看出，首先，setProperties方法可以获取到<code>&lt;property name=&quot;name&quot; value=&quot;MyObjectFactory&quot;/&gt;</code>定义的属性值。</p>
+<p>create方法分别是处理单个对象和列表对象。</p>
+<p>注意，大部分情况下，我们不需要使用自己配置的ObjectFactory，使用默认的即可。</p>
+<hr>
+<h3 id="plugins-插件"><a href="#plugins-插件" class="headerlink" title="plugins(插件)"></a>plugins(插件)</h3><p>MyBatis 允许你在已映射语句执行过程中的某一点进行拦截调用。默认情况下，MyBatis 允许使用插件来拦截的方法调用包括：</p>
+<ul>
+<li><p>Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</p>
+</li>
+<li><p>ParameterHandler (getParameterObject, setParameters)</p>
+</li>
+<li><p>ResultSetHandler (handleResultSets, handleOutputParameters)</p>
+</li>
+<li><p>StatementHandler (prepare, parameterize, batch, update, query)</p>
+</li>
+</ul>
+<p>这些类中方法的细节可以通过查看每个方法的签名来发现，或者直接查看 MyBatis 发行包中的源代码。 如果你想做的不仅仅是监控方法的调用，那么你最好相当了解要重写的方法的行为。 <strong>因为如果在试图修改或重写已有方法的行为的时候，你很可能在破坏 MyBatis 的核心模块。 这些都是更低层的类和方法，所以使用插件的时候要特别当心。</strong></p>
+<p>通过 MyBatis 提供的强大机制，使用插件是非常简单的，只需实现 Interceptor 接口，并指定想要拦截的方法签名即可。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">// ExamplePlugin.java<br>@Intercepts(&#123;@Signature(<br>  type= Executor.class,<br>  method = &quot;update&quot;,<br>  args = &#123;MappedStatement.class,Object.class&#125;)&#125;)<br>public class ExamplePlugin implements Interceptor &#123;<br>  public Object intercept(Invocation invocation) throws Throwable &#123;<br>    return invocation.proceed();<br>  &#125;<br>  public Object plugin(Object target) &#123;<br>    return Plugin.wrap(target, this);<br>  &#125;<br>  public void setProperties(Properties properties) &#123;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- mybatis-config.xml --&gt;<br>&lt;plugins&gt;<br>  &lt;plugin interceptor=&quot;org.mybatis.example.ExamplePlugin&quot;&gt;<br>    &lt;property name=&quot;someProperty&quot; value=&quot;100&quot;/&gt;<br>  &lt;/plugin&gt;<br>&lt;/plugins&gt;<br></code></pre></td></tr></table></figure>
+<p>上面的插件将会拦截在 Executor 实例中所有的 “update” 方法调用， 这里的 Executor 是负责执行低层映射语句的内部对象。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/mybatis/" rel="tag"><i class="fas fa-tags"></i>mybatis</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/09/Mybatis的第三天作用域/" rel="next" title="Mybatis的第三天作用域"><i class="fas fa-angle-left"></i><span class="nav-title">Mybatis的第三天作用域</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Mybatis中的主配置文件",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">106</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">53</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">41</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Mybatis配置文件层次结构"><span class="toc-text">Mybatis配置文件层次结构</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#properties元素"><span class="toc-text">properties元素</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#property子元素"><span class="toc-text">property子元素</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#properties配置文件"><span class="toc-text">properties配置文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#程序参数传递"><span class="toc-text">程序参数传递</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#优先级"><span class="toc-text">优先级</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#settings设置"><span class="toc-text">settings设置</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#typeAliases-别名"><span class="toc-text">typeAliases(别名)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#系统别名"><span class="toc-text">系统别名</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#自定义别名"><span class="toc-text">自定义别名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#typeHandler-类型处理器"><span class="toc-text">typeHandler(类型处理器)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#系统定义的typeHandler"><span class="toc-text">系统定义的typeHandler</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#自定义typeHandler"><span class="toc-text">自定义typeHandler</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#处理枚举类型"><span class="toc-text">处理枚举类型</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#EnumOrdinalTypeHandler"><span class="toc-text">EnumOrdinalTypeHandler</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#EnumTypeHandler"><span class="toc-text">EnumTypeHandler</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#自定义枚举类的typeHandler"><span class="toc-text">自定义枚举类的typeHandler</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ObjectFactory"><span class="toc-text">ObjectFactory</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#plugins-插件"><span class="toc-text">plugins(插件)</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

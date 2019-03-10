@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-09T13:40:46.877Z</updated>
+  <updated>2019-03-10T10:11:10.142Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mybatis中的主配置文件</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/10/Mybatis%E4%B8%AD%E7%9A%84%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/10/Mybatis中的主配置文件/</id>
+    <published>2019-03-10T02:03:48.000Z</published>
+    <updated>2019-03-10T10:11:10.142Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Mybatis的第三天作用域</title>
     <link href="http://liuzhuo19940206.github.io/2019/03/09/Mybatis%E7%9A%84%E7%AC%AC%E4%B8%89%E5%A4%A9%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
     <id>http://liuzhuo19940206.github.io/2019/03/09/Mybatis的第三天作用域/</id>
     <published>2019-03-09T11:36:51.000Z</published>
-    <updated>2019-03-09T13:40:46.877Z</updated>
+    <updated>2019-03-10T02:04:09.044Z</updated>
     
     <summary type="html">
     
@@ -446,30 +466,6 @@
     <summary type="html">
     
       &lt;p&gt;Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。&lt;br&gt;因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，数据丢失。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
-    
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker的镜像原理</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/10/Docker%E7%9A%84%E9%95%9C%E5%83%8F%E5%8E%9F%E7%90%86/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/10/Docker的镜像原理/</id>
-    <published>2019-01-10T07:23:28.000Z</published>
-    <updated>2019-01-10T09:24:35.057Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;今天来学习docker中镜像原理，以及相关的commit命令。&lt;br&gt;
     
     </summary>
     
