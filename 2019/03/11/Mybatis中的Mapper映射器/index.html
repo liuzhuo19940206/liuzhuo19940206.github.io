@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Mybatis中的Mapper映射器 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/03/11/Mybatis中的Mapper映射器/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Mybatis中的Mapper映射器</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-11T13:45:30+08:00">2019-03-11 13:45:30</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。<br><a id="more"></a></p>
+<p>MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC 代码进行对比，你会立即发现省掉了将近 95% 的代码。MyBatis 就是针对 SQL 构建的，并且比普通的方法做的更好。</p>
+<p>SQL 映射文件有很少的几个顶级元素（按照它们应该被定义的顺序）：</p>
+<ul>
+<li><p>cache – 给定命名空间的缓存配置。</p>
+</li>
+<li><p>cache-ref – 其他命名空间缓存配置的引用。</p>
+</li>
+<li><p>resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。</p>
+</li>
+<li><p>parameterMap – 已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。</p>
+</li>
+<li><p>sql – 可被其他语句引用的可重用语句块。</p>
+</li>
+<li><p>insert – 映射插入语句</p>
+</li>
+<li><p>update – 映射更新语句</p>
+</li>
+<li><p>delete – 映射删除语句</p>
+</li>
+<li><p>select – 映射查询语句</p>
+</li>
+</ul>
+<p>下一部分将从语句本身开始来描述每个元素的细节。</p>
+<hr>
+<h3 id="select元素"><a href="#select元素" class="headerlink" title="select元素"></a>select元素</h3><p>查询语句是 MyBatis 中最常用的元素之一，光能把数据存到数据库中价值并不大，如果还能重新取出来才有用，多数应用也都是查询比修改要频繁。对每个插入、更新或删除操作，通常对应多个查询操作。这是 MyBatis 的基本原则之一，也是将焦点和努力放到查询和结果映射的原因。简单查询的 select 元素是非常简单的。比如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectPerson&quot; parameterType=&quot;int&quot; resultType=&quot;hashmap&quot;&gt;<br>  SELECT * FROM PERSON WHERE ID = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这个语句被称作 selectPerson，接受一个 int（或 Integer）类型的参数，并返回一个 HashMap 类型的对象，其中的键是列名，值便是结果行中的对应值。</p>
+<p>注意参数符号：<br><code>#{id}</code></p>
+<p>这就告诉 MyBatis 创建一个预处理语句参数，通过 JDBC，这样的一个参数在 SQL 中会由一个“?”来标识，并被传递到一个新的预处理语句中，就像这样：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">// Similar JDBC code, NOT MyBatis…<br>String selectPerson = &quot;SELECT * FROM PERSON WHERE ID=?&quot;;<br>PreparedStatement ps = conn.prepareStatement(selectPerson);<br>ps.setInt(1,id);<br></code></pre></td></tr></table></figure></p>
+<p>当然，这需要很多单独的 JDBC 的代码来提取结果并将它们映射到对象实例中，这就是 MyBatis 节省你时间的地方。我们需要深入了解参数和结果映射，细节部分我们下面来了解。</p>
+<p>select 元素有很多属性允许你配置，来决定每条语句的作用细节。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select<br>  id=&quot;selectPerson&quot;<br>  parameterType=&quot;int&quot;<br>  parameterMap=&quot;deprecated&quot;<br>  resultType=&quot;hashmap&quot;<br>  resultMap=&quot;personResultMap&quot;<br>  flushCache=&quot;false&quot;<br>  useCache=&quot;true&quot;<br>  timeout=&quot;10000&quot;<br>  fetchSize=&quot;256&quot;<br>  statementType=&quot;PREPARED&quot;<br>  resultSetType=&quot;FORWARD_ONLY&quot;&gt;<br></code></pre></td></tr></table></figure>
+<p><img src="/images/mybatis/QQ截图20190311135926.png"></p>
+<h4 id="自动映射"><a href="#自动映射" class="headerlink" title="自动映射"></a>自动映射</h4><p>在简单的场景下，MyBatis可以替你自动映射查询结果。如果遇到复杂的场景，你需要构建一个resultMap，resultMap之后介绍。</p>
+<p>有这样一个参数autoMappingBehavior，当它不设置为NONE的时候，只要返回的SQL列名和POJO对象的属性名一致（忽略大小写），Mybatis就会帮助我们回填这些字段而无需任何配置，它可以在很大程度上简化我们的配置工作。</p>
+<p>在实际工作中，大部分数据库规范都是要求大写单词命名，单词间用下划线分隔，而java则是使用驼峰命名法，于是可以使用列的别名来使得Mybatis自动映射，或者直接在配置文件中开启驼峰命名方式。</p>
+<p>让我们来看一个简单的例子，体验一下自动映射的好处。</p>
+<p>javaBean:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Role&#123;<br>   private Long id;<br>   private String roleName;<br>   private String note;<br><br>   ···set、get、toString方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>数据库表（T_ROLE）<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">字段        类型<br>ID          INT(20)<br>ROLE_NAME   VACHAR(60)<br>NOTE        VARCHAR(1024)<br></code></pre></td></tr></table></figure></p>
+<p>让我们编写Mapper的映射语句：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;getRole&quot; parameterType=&quot;long&quot; resultType=&quot;role&quot;&gt;<br>     select id, role_name as roleName, note from t_role where id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>RoleMapper接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public Role getRole(Long id);<br></code></pre></td></tr></table></figure></p>
+<p>虽然数据中的列名和javaBean的属性名不是一一对应，但是我们在查询语句中使用了 <code>as</code> 别名，让它们一致了，所以Mybatis会自动帮我们映射。</p>
+<hr>
+<p>自动映射可以在 <code>settings元素</code> 中配置 autoMapperBehavior属性值来设置其策略，它含有三个值：</p>
+<ul>
+<li><p>NONE，取消自动映射。仅设置手动映射属性。</p>
+</li>
+<li><p>PARTIAL，只会自动映射，没有定义嵌套结果映射的结果集</p>
+</li>
+<li><p>FULL，会自动映射任意复杂的结果集（无论是否嵌套）</p>
+</li>
+</ul>
+<p><strong>默认值是PARTIAL</strong>，当使用FULL时，自动映射会在处理join结果时执行，并且join取得若干相同行的不同实体数据，因此这可能导致非预期的映射。</p>
+<p>下面的例子将展示这种风险：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectBlog&quot; resultMap=&quot;blogResult&quot;&gt;<br>  select<br>    B.id,<br>    B.title,<br>    A.username,<br>  from Blog B left outer join Author A on B.author_id = A.id<br>  where B.id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;blogResult&quot; type=&quot;Blog&quot;&gt;<br>  &lt;association property=&quot;author&quot; resultMap=&quot;authorResult&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;authorResult&quot; type=&quot;Author&quot;&gt;<br>  &lt;result property=&quot;username&quot; column=&quot;author_username&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure>
+<p>在结果中Blog和Author均将自动映射。但是注意Author有一个id属性，在ResultSet中有一个列名为id， 所以Author的id将被填充为Blog的id，这不是你所期待的。所以需要谨慎使用FULL。</p>
+<p>通过添加autoMapping属性可以忽略自动映射等级配置，你可以启用或者禁用自动映射指定的ResultMap。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;userResultMap&quot; type=&quot;User&quot; autoMapping=&quot;false&quot;&gt;<br>  &lt;result property=&quot;password&quot; column=&quot;hashed_password&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>如果你的数据库是规范命名的，即每个单词之间用下划线隔开，javaBean采用驼峰命名法，那么你可以使用设置 <code>mapUnderscoreToCamelCase = true</code>,这样不用使用 <code>as</code>来重新命名列名 , Mybatis也会帮我们自动映射的。</p>
+<h4 id="传递多个参数"><a href="#传递多个参数" class="headerlink" title="传递多个参数"></a>传递多个参数</h4><p>之前的例子，我们都是传递一个参数，但是，更多的时候我们需要传递多个参数给映射器。</p>
+<h5 id="使用Map传递多个参数"><a href="#使用Map传递多个参数" class="headerlink" title="使用Map传递多个参数"></a>使用Map传递多个参数</h5><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectByMap&quot; parameterType=&quot;map&quot; resultMap=&quot;userMap&quot;&gt;<br>    select userId,user_age ,user_name ,user_sex  from user where userId = #&#123;id&#125; and user_age=#&#123;userAge&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure>
+<p>这里，parameterType = “map”，说明参数是Map类型的。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface UserMapper &#123;<br><br>    User selectByMap(Map&lt;String,String&gt; map);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">sqlSession = SqlSessionFactoryUtil.openSqlSession();<br>UserMapper userMapper = sqlSession.getMapper(UserMapper.class);<br>Map&lt;String ,String &gt; userMap = new HashMap&lt;&gt;();<br>userMap.put(&quot;id&quot;,&quot;1&quot;);<br>userMap.put(&quot;userAge&quot;,&quot;18&quot;);<br>User user = userMapper.selectByMap(userMap);<br>System.out.println(user);<br></code></pre></td></tr></table></figure>
+<p><img src="/images/mybatis/QQ截图20190311144413.png"></p>
+<p>使用Map来传递多个参数的话，<font color="red">Map中的键名，必须和SQL语句中的：#{XXX}中的XXX一致才行。</font></p>
+<p>这里就是 id 和 userAge，现在我们修改一下，传递给Map的键名，将 userAge 变成 user_age.<br><img src="/images/mybatis/QQ截图20190311144942.png"></p>
+<hr>
+<p>使用Map传递多个参数的缺点：因为参数是封装在Map中的，由于业务关联性不强，你需要深入到程序中看代码，造成可读性下降。</p>
+<h5 id="使用注解的方式"><a href="#使用注解的方式" class="headerlink" title="使用注解的方式"></a>使用注解的方式</h5><p>我们需要使用Mybatis的参数注解@Param(org.apache.ibatis.annotations.Param)来实现想要的功能。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">User selectByAnnotation(@Param(&quot;id&quot;) String userId, @Param(&quot;userAge&quot;) long useAge);<br></code></pre></td></tr></table></figure>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectByMap&quot; parameterType=&quot;map&quot; resultMap=&quot;userMap&quot;&gt;<br>    select userId,user_age ,user_name ,user_sex  from user <br>    where userId = #&#123;id&#125; and user_age = #&#123;userAge&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure>
+<p>这样，Mybatis会把 @Param(“xxx”) 代表的值，传递给 SQL语句中的 #{xxx}.</p>
+<p>这样可读性性增强了，但是当需要传递的参数过多的时候，那么我们会写很多的@Param注解，麻烦。</p>
+<h5 id="使用javaBean的方式"><a href="#使用javaBean的方式" class="headerlink" title="使用javaBean的方式"></a>使用javaBean的方式</h5><p>当参数过多的时候，Mybatis允许组织一个JavaBean，通过简单的 setter 和 getter 方法设置参数，这样就可以提高我们的可读性。</p>
+<p>首先定义一个javaBean对象：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class User &#123;<br>    private String userId;<br>    private Long userAge;<br>    private String userName;<br>    private Sex userSex;<br>    ····set、get方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectByMap&quot; parameterType=&quot;com.liuzhuo.entities.User&quot; resultMap=&quot;userMap&quot;&gt;<br>    select userId,user_age ,user_name ,user_sex  from user <br>    where userId = #&#123;id&#125; and user_age = #&#123;userAge&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure>
+<p>这里，parameterType为javaBean的全限定名，如果你配置了别名的话，就直接使用别名也行，更方便。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public User selectByUser(User user);<br></code></pre></td></tr></table></figure>
+<hr>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><ul>
+<li><p>使用Map传递参数。因为Map导致业务可读性差，从而导致后续扩展和维护的困难，我们应该在实际开发中废弃这样的方式</p>
+</li>
+<li><p>使用@Param注解，这个方式适合于参数不多的情况下（参数&lt;=5）</p>
+</li>
+<li><p>javaB的方式，适合于参数过多的情况</p>
+</li>
+</ul>
+<hr>
+<h4 id="resultMap映射结果集"><a href="#resultMap映射结果集" class="headerlink" title="resultMap映射结果集"></a>resultMap映射结果集</h4><p>在自动映射章节，我们使用的是 <code>resultType=javaBean的全限定名</code> 来完成自动映射的，但是某些时候，我们需要处理更多复杂的映射。</p>
+<p>resultMap为我们提供了这样的模式，使用resultMap之前，我们需要首先定义它：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;userMap&quot; type=&quot;user&quot;&gt;<br>    &lt;id column=&quot;userId&quot; property=&quot;userId&quot; javaType=&quot;string&quot; jdbcType=&quot;VARCHAR&quot;/&gt;<br>    &lt;result column=&quot;user_age&quot; property=&quot;userAge&quot;/&gt;<br>    &lt;!--定义结果类型转化器标识，才能使用类型转换器--&gt;<br>    &lt;result column=&quot;user_name&quot; property=&quot;userName&quot; typeHandler=&quot;com.liuzhuo.typehandler.MyStringTypehandler&quot;/&gt;<br>    &lt;!--新添加的字段--&gt;<br>    &lt;result column=&quot;user_sex&quot; property=&quot;userSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;select id=&quot;selectById&quot; parameterType=&quot;string&quot; resultMap=&quot;userMap&quot;&gt;<br>    select userId,user_age ,user_name ,user_sex  from user where userId = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p><strong><code>使用&lt;resultMap&gt;标签来定义，然后在&lt;select&gt;标签中使用 resultMap = 在&lt;resultMap&gt;中定义的id 即可</code>。</strong></p>
+<p>解释一下resultMap的配置：</p>
+<ul>
+<li><p>id是resultMap的唯一标识，用type属性去定义它对应的是哪个javaBean（可以使用别名）</p>
+</li>
+<li><p>通过<code>&lt;id&gt;元素</code>定义这个对象的主键，column：列名，property：属性名</p>
+</li>
+<li><p>通过<code>&lt;result&gt;元素</code>定义普通列的映射关系，column：列名，property：属性名</p>
+</li>
+<li><p>这样select语句就不再需要使用自动映射规则了，直接使用resultMap属性指定的userMap即可，这样Mybatis就会使用这个自定义的映射规则了。</p>
+</li>
+</ul>
+<p>javaType，jdbcType，typeHandler是用来指定TypeHandler的，之前我们就讲过，现在应该有点感觉了吧~~~</p>
+<p>resultMap是映射器中最为复杂的元素，它一般用于复杂、级联这些关联的配置，后面会单独来讲解，这样就简单了解一下。</p>
+<hr>
+<h3 id="insert元素"><a href="#insert元素" class="headerlink" title="insert元素"></a>insert元素</h3><p>insert元素，相对于select元素而言简单许多了。Mybatis执行insert后会返回一个整数，代表插入到数据库的行数。<br>update、delete类似。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;insert<br>  id=&quot;insertAuthor&quot;<br>  parameterType=&quot;domain.blog.Author&quot;<br>  flushCache=&quot;true&quot;<br>  statementType=&quot;PREPARED&quot;<br>  keyProperty=&quot;&quot;<br>  keyColumn=&quot;&quot;<br>  useGeneratedKeys=&quot;&quot;<br>  timeout=&quot;20&quot;&gt;<br><br>&lt;update<br>  id=&quot;updateAuthor&quot;<br>  parameterType=&quot;domain.blog.Author&quot;<br>  flushCache=&quot;true&quot;<br>  statementType=&quot;PREPARED&quot;<br>  timeout=&quot;20&quot;&gt;<br><br>&lt;delete<br>  id=&quot;deleteAuthor&quot;<br>  parameterType=&quot;domain.blog.Author&quot;<br>  flushCache=&quot;true&quot;<br>  statementType=&quot;PREPARED&quot;<br>  timeout=&quot;20&quot;&gt;<br></code></pre></td></tr></table></figure></p>
+<p>详细介绍：<br><img src="/images/mybatis/QQ截图20190311153037.png"></p>
+<font color="red">注意：keyProperty 和 keyColumn不能同时使用，keyProperty表示以哪个列名作为属性的主键，keyColumn是表示哪一列，接受的是整数！！</font>
+
+<hr>
+<p>简单使用：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;insert id=&quot;insertUser&quot; parameterType=&quot;user&quot;&gt;<br>    INSERT INTO user(userId,user_age,user_name,user_sex)<br>    VALUES (#&#123;userId&#125;,#&#123;userAge&#125;,#&#123;userName&#125;,#&#123;userSex,typeHandler=com.liuzhuo.typehandler.SexEnumTypeHandler&#125;)<br>&lt;/insert&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="主键回填和自定义"><a href="#主键回填和自定义" class="headerlink" title="主键回填和自定义"></a>主键回填和自定义</h4><p>现实中有许多我们需要处理的问题，例如，主键自增字段；MySql里面的主键需要根据一些特殊的规则去生成，在插入后我们往往需要获取到这个主键，以便未来的操作，而Mybatis提供了实现的方法。</p>
+<p>首先，我们可以使用 keyProperty 属性指定哪个是主键字段，同时使用 useGeneratedKeys属性告诉Mybatis这个主键是否使用数据库内置策略生成。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;insert id=&quot;insertUser&quot; parameterType=&quot;user&quot;<br>        useGeneratedKeys=&quot;true&quot; keyColumn=&quot;userId&quot;&gt;<br>    INSERT INTO user(user_age,user_name,user_sex)<br>    VALUES (#&#123;userAge&#125;,#&#123;userName&#125;,#&#123;userSex,typeHandler=com.liuzhuo.typehandler.SexEnumTypeHandler&#125;)<br>&lt;/insert&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这样，我们传入的user对象，就不需要设置userId的值了，Mybatis会用数据库的设置进行处理。这样做的好处是在Mybatis插入的时候，它会回填javaBean的id值。</p>
+<p><strong>以上成功的前提是数据库支持自动生成主键的字段（比如 MySQL 和 SQL Server）</strong></p>
+<hr>
+<p>对于不支持自动生成类型的数据库或可能不支持自动生成主键的 JDBC 驱动，MyBatis 有另外一种方法来生成主键。</p>
+<p>这里有一个简单示例，表中没有记录 id就为 1，否则为最大的 id + 2：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;insert id=&quot;inserUser&quot; parameterType=&quot;user&quot; keyColumn=&quot;userId&quot;&gt;<br>  &lt;selectKey keyProperty=&quot;userId&quot; resultType=&quot;int&quot; order=&quot;BEFORE&quot;&gt;<br>    select if( max(user_id) is null , 1 , max(user_id) + 2 ) as newId from user<br>  &lt;/selectKey&gt;<br>  insert into user<br>    (user_id, user_name, user_age,user_sex)<br>  values<br>    (#&#123;userId&#125;, #&#123;userName&#125;, #&#123;userAge&#125;, #&#123;userSex&#125;)<br>&lt;/insert&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在上面的示例中，selectKey 元素将会首先运行，User 的 userId 会被设值，然后插入语句会被调用。这给你了一个和数据库中来处理自动生成的主键类似的行为，避免了使 Java 代码变得复杂。</p>
+<hr>
+<p>selectKey 元素描述如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;selectKey<br>  keyProperty=&quot;id&quot;<br>  resultType=&quot;int&quot;<br>  order=&quot;BEFORE&quot;<br>  statementType=&quot;PREPARED&quot;&gt;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190311155900.png"></p>
+<hr>
+<h3 id="update-delete"><a href="#update-delete" class="headerlink" title="update/delete"></a>update/delete</h3><p>这个两个元素比较简单，所以放在一起讨论，和insert元素一样，Mybatis执行update、delete元素后会返回一个整数，标出执行后影响的记录条数。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;update id=&quot;updateUser&quot;&gt;<br>  update user set<br>    user_name = #&#123;userName&#125;,<br>    user_age = #&#123;userAge&#125;,<br>  where id = #&#123;id&#125;<br>&lt;/update&gt;<br><br>&lt;delete id=&quot;deleteUser&quot;&gt;<br>  delete from user where user_id = #&#123;userId&#125;<br>&lt;/delete&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h4 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h4><p>正如你所见，我们可以传入一个简单的参数，比如int、double等，也可以传入javaBean，这些我们都讨论过了，有时候我们需要处理一个特殊的情况，我们可以指定特定的类型，以确定使用哪个typeHandler处理它们，以便我们进行特殊的处理。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#&#123; age, javaType=int , jdbcType = NUMERIC &#125;<br></code></pre></td></tr></table></figure>
+<p>当然，我们还可以指定用哪个typeHandler去处理参数</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#&#123; age, javaType=int , jdbcType = NUMERIC , typeHandler = MyTypeHandler&#125;<br></code></pre></td></tr></table></figure>
+<p>此外，我们还可以对一些数值型的参数设置其保存的精度<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#&#123; price , javaType= double , jdbcType = NUMERIC , numericScale = 2&#125;<br></code></pre></td></tr></table></figure></p>
+<p>可见Mybatis映射器可以通过EL的功能帮助完成我们所需要的多种的功能，使用还是很方便的。</p>
+<hr>
+<h4 id="特殊字符串处理-和"><a href="#特殊字符串处理-和" class="headerlink" title="特殊字符串处理(#和$)"></a>特殊字符串处理(#和$)</h4><p>在Mybatis中，我们常常传递字符串，我们设置的参数 #{name} 在大部分的情况下Mybatis会用创建<strong>预编译的语句</strong>，然后Mybatis为它设值，而有时候我们需要的是传递SQL语句本身，而不是SQL所需要的参数。</p>
+<p>例如，在一些动态表格中，我们需要传递SQL的列名，根据某些列进行排序，或者传递列名给SQL都是比较常见的场景，当然Mybatis也对这样的场景进行了支持，这些是Hibernate难以做到的。</p>
+<p>例如，在程序中传递变量 columns = “ col1 , col2 , col3 …” 给SQL，让其组装成为SQL语句。我们当然不想被Mybatis像处理普通参数一样把它设为” col1.col2,col3…”，那么我们就可以写成如下语句。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">select $&#123;columns&#125; from t tablename<br></code></pre></td></tr></table></figure>
+<p>这样Mybatis就不会帮我们转译 columns，而变为 <strong>直出</strong> ，而不是作为SQL的参数进行设置了。只是这样是对SQL而言是不安全的，Mybatis给了你灵活性的同时，也需要你自己去控制参数以保证SQL运转的正确性和安全性。</p>
+<h3 id="sql元素"><a href="#sql元素" class="headerlink" title="sql元素"></a>sql元素</h3><p>这个元素可以被用来定义可重用的 SQL 代码段，可以包含在其他语句中。它可以被静态地(在加载参数) 参数化. 不同的属性值通过包含的实例变化. 比如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;sql id=&quot;userColumns&quot;&gt; $&#123;alias&#125;.id , $&#123;alias&#125;.username , $&#123;alias&#125;.password &lt;/sql&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这个 SQL 片段可以被包含在其他语句中，例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectUsers&quot; resultType=&quot;map&quot;&gt;<br>  select<br>    &lt;include refid=&quot;userColumns&quot;&gt;<br>            &lt;property name=&quot;alias&quot; value=&quot;t1&quot;/&gt;<br>    &lt;/include&gt;,<br>    &lt;include refid=&quot;userColumns&quot;&gt;<br>            &lt;property name=&quot;alias&quot; value=&quot;t2&quot;/&gt;<br>    &lt;/include&gt;<br>  from some_table t1 cross join some_table t2<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>属性值也可以被用在 include 元素的 refid 属性里（</p>
+<p><code>&lt;include refid=&quot;${include_target}&quot;/&gt;</code> )</p>
+<p>或者 include 内部语句中（</p>
+<p><code>${prefix}Table</code> )</p>
+<p>例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;sql id=&quot;sometable&quot;&gt;<br>  $&#123;prefix&#125;Table<br>&lt;/sql&gt;<br><br>&lt;sql id=&quot;someinclude&quot;&gt;<br>  from<br>    &lt;include refid=&quot;$&#123;include_target&#125;&quot;/&gt;<br>&lt;/sql&gt;<br><br>&lt;select id=&quot;select&quot; resultType=&quot;map&quot;&gt;<br>  select<br>    field1, field2, field3<br>  &lt;include refid=&quot;someinclude&quot;&gt;<br>    &lt;property name=&quot;prefix&quot; value=&quot;Some&quot;/&gt;<br>    &lt;property name=&quot;include_target&quot; value=&quot;sometable&quot;/&gt;<br>  &lt;/include&gt;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/mybatis/" rel="tag"><i class="fas fa-tags"></i>mybatis</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/10/Mybatis中的主配置文件02/" rel="next" title="Mybatis中的主配置文件02"><i class="fas fa-angle-left"></i><span class="nav-title">Mybatis中的主配置文件02</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Mybatis中的Mapper映射器",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">108</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">53</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">41</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#select元素"><span class="toc-text">select元素</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#自动映射"><span class="toc-text">自动映射</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#传递多个参数"><span class="toc-text">传递多个参数</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#使用Map传递多个参数"><span class="toc-text">使用Map传递多个参数</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#使用注解的方式"><span class="toc-text">使用注解的方式</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#使用javaBean的方式"><span class="toc-text">使用javaBean的方式</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#resultMap映射结果集"><span class="toc-text">resultMap映射结果集</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#insert元素"><span class="toc-text">insert元素</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#主键回填和自定义"><span class="toc-text">主键回填和自定义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#update-delete"><span class="toc-text">update/delete</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#参数"><span class="toc-text">参数</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#参数设置"><span class="toc-text">参数设置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#特殊字符串处理-和"><span class="toc-text">特殊字符串处理(#和$)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#sql元素"><span class="toc-text">sql元素</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
