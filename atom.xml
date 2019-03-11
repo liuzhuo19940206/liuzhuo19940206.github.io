@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-10T10:11:10.142Z</updated>
+  <updated>2019-03-11T02:12:03.134Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis中的主配置文件02</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/10/Mybatis%E4%B8%AD%E7%9A%84%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B602/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/10/Mybatis中的主配置文件02/</id>
+    <published>2019-03-10T12:41:46.000Z</published>
+    <updated>2019-03-11T02:12:03.134Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis中的主配置文件</title>
@@ -442,30 +462,6 @@
     <summary type="html">
     
       &lt;p&gt;这篇专门来讲解Docker中比较重要的DockerFile文件&lt;br&gt;
-    
-    </summary>
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/categories/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/categories/docker/%E5%AE%B9%E5%99%A8/"/>
-    
-    
-      <category term="docker" scheme="http://liuzhuo19940206.github.io/tags/docker/"/>
-    
-      <category term="容器" scheme="http://liuzhuo19940206.github.io/tags/%E5%AE%B9%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker中的容器数据卷</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/10/Docker%E4%B8%AD%E7%9A%84%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%8D%B7/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/10/Docker中的容器数据卷/</id>
-    <published>2019-01-10T14:11:15.000Z</published>
-    <updated>2019-01-11T07:44:20.832Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。&lt;br&gt;因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，数据丢失。&lt;br&gt;
     
     </summary>
     
