@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Mybatis中的resultMap | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/03/13/Mybatis中的resultMap/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Mybatis中的resultMap</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-13T09:29:18+08:00">2019-03-13 09:29:18</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。<br><a id="more"></a></p>
+<p>resultMap 元素是 MyBatis 中最重要最强大的元素。它可以让你从 90% 的 JDBC ResultSets 数据提取代码中解放出来, 并在一些情形下允许你做一些 JDBC 不支持的事情。 实际上，在对复杂语句进行联合映射的时候，它很可能可以代替数千行的同等功能的代码。 ResultMap 的设计思想是，简单的语句不需要明确的结果映射，而复杂一点的语句只需要描述它们的关系就行了。</p>
+<hr>
+<h3 id="resultMap元素构成"><a href="#resultMap元素构成" class="headerlink" title="resultMap元素构成"></a>resultMap元素构成</h3><p>resultMap元素里面还有以下的元素：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap&gt;<br><br>	&lt;constructor&gt;<br>	&lt;idArg/&gt;<br>	&lt;arg/&gt;<br>	&lt;/constructor&gt;<br><br>	&lt;id/&gt;<br>	&lt;result/&gt;<br><br>	&lt;association/&gt;<br>	&lt;collection/&gt;<br>	&lt;discriminator&gt;<br>		&lt;case/&gt;<br>	&lt;/discriminator&gt;<br><br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>resultMap元素的属性：<br><img src="/images/mybatis/QQ截图20190313100156.png"></p>
+<p>下一部分将详细说明每个元素。</p>
+<hr>
+<p> constructor</p>
+<p>其中 constructor 元素用于配置构造方法。</p>
+<p><strong><code>一个POJO可能不存在没有参数的构造方法，这个时候我们就需要使用 constructor 进行配置。</code></strong></p>
+<p>假设角色类RoleBean不存在没有参数的构成方法，它的构造方法声明为 <code>public RoleBean(Integer id,String roleName)</code></p>
+<p>那么，我们需要配置如下的 resultMap：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap&gt;<br>	&lt;constructor&gt;<br>		&lt;idArg column = &quot;id&quot; javaType=&quot;int&quot;/&gt;<br>		&lt;arg column=&quot;role_name&quot; javaType=&quot;string&quot;/&gt;<br>	&lt;/constructor&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>这样Mybatis就知道需要使用这个构造方法来构造POJO了。</p>
+<p><code>idArg</code>: 表示哪个列是主键，<code>arg</code>：表示普通列表元素。</p>
+<hr>
+<h4 id="id和result"><a href="#id和result" class="headerlink" title="id和result"></a>id和result</h4><p><code>id</code>元素是表示哪个列是主键，允许有多个主键，多个主键则称为联合主键。</p>
+<p><code>result</code>元素是配置其他的SQL列名到POJO的映射关系。</p>
+<p>两者的一些属性：<br><img src="/images/mybatis/QQ截图20190313095715.png"></p>
+<hr>
+<p>此外的 <code>&lt;association/&gt;、&lt;collection/&gt;、&lt;discriminator&gt;</code> 这些元素，我们在级联那里详细介绍。</p>
+<hr>
+<h3 id="使用map存储结果集"><a href="#使用map存储结果集" class="headerlink" title="使用map存储结果集"></a>使用map存储结果集</h3><p>一般而言，任何的select语句都可以使用map存储，如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;findColorByNote&quot; parameterType=&quot;string&quot; reslutMap=&quot;map&quot;&gt;<br>     select id ,color,note from t_color where note like concat(&apos;%&apos;,#&#123;note&#125;,&apos;%&apos;)<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>使用map原则上是可以匹配所有结果集的，但是使用map接口就意味着可读性下降，所以这不是一种推荐的方式。更多的时候我们使用的是POJO的方式。</p>
+<hr>
+<h3 id="使用POJO存储结果集"><a href="#使用POJO存储结果集" class="headerlink" title="使用POJO存储结果集"></a>使用POJO存储结果集</h3><p>POJO是我们常用的方式，也是我们推荐的方式。</p>
+<p>一方面我们可以使用自动映射，正如 select 语句里论述的一样。</p>
+<p>另一方面，我们还可以使用 select 语句的属性 resultMap配置映射集合，只是使用前需要配置类似的resultMap。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;roleResultMap&quot; type=&quot;role&quot;&gt;<br>	&lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;<br>	&lt;result property=&quot;roleName&quot; column=&quot;role_name&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure>
+<p>resultMap元素的属性 id 代表这个 resultMap的标识，type代表着你需要映射的POJO（可以使用定义好的别名）。</p>
+<p>映射关系中，id 元素：表示这个对象的主键，property代表着POJO的属性名称，column表示数据库SQL的列名，于是POJO就和数据库SQL的结果一一对应起来了。</p>
+<p>接着在 select元素 里面使用即可：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;getRole&quot; parameterType=&quot;long&quot; reslutMap=&quot;roleResultMap&quot;&gt;<br>     select id , role_name , note from t_role where id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>我们可以发现<code>SQL语句的列名</code> 和 <code>roleResultMap的column</code> 是一一对应的。</p>
+<p>使用XML配置的结果集，还可以配置 typeHandler、javaType、jdbcType。</p>
+<font color="red">但是这条语句配置了resultMap，就不要配置resultType。</font>
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/mybatis/" rel="tag"><i class="fas fa-tags"></i>mybatis</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/11/Mybatis中的Mapper映射器/" rel="next" title="Mybatis中的Mapper映射器"><i class="fas fa-angle-left"></i><span class="nav-title">Mybatis中的Mapper映射器</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Mybatis中的resultMap",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">109</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">53</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">41</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#resultMap元素构成"><span class="toc-text">resultMap元素构成</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#id和result"><span class="toc-text">id和result</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用map存储结果集"><span class="toc-text">使用map存储结果集</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用POJO存储结果集"><span class="toc-text">使用POJO存储结果集</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
