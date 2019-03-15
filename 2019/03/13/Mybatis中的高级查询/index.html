@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>Mybatis中的高级查询 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/03/13/Mybatis中的高级查询/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Mybatis中的高级查询</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-13T10:53:31+08:00">2019-03-13 10:53:31</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上述内容之外的知识点进行详细介绍。<br><a id="more"></a></p>
+<p>本篇博客主要包含的内容为MyBatis的高级结果映射，主要处理数据库一对一、一对多的查询，另外就是在 MyBtis 中使用存储过程的方法，处理存储过程的入参和出参方法。</p>
+<hr>
+<h3 id="高级映射"><a href="#高级映射" class="headerlink" title="高级映射"></a>高级映射</h3><p>在关系型数据库中，我们经常要处理 一对一、一对多 的关系 例如， 一辆汽车需要有引擎，这是一对一的关系。 一辆汽车有4个或更多个轮子，这是一对多的关系。</p>
+<p>在Mybatis中使用3种方式来操作级联：</p>
+<ul>
+<li><p>association，代表一对一的关系，比如中国公民和身份证是一对一的关系。</p>
+</li>
+<li><p>collection，代表一对多的关系，比如班级和学生是一对多的关系，一个班级有多个学生。</p>
+</li>
+<li><p>discriminator，是鉴别器，它可以根据实际情况，选择采用哪个类作为实例，允许你根据特定的条件去关联不同的结果集。</p>
+</li>
+</ul>
+<hr>
+<p>为了方便讲解，我们来创建一系列的数据库表，它们的模型关系，如下所示：<br><img src="/images/mybatis/QQ截图20190313130557.png"></p>
+<p>学生表为核心，学生表与学生证表是一对一的关系；学生表与课程成绩表是一对多的关系，一个学生有多门课；课程表与课程成绩表也是一对多的关系。</p>
+<p>学生有男生与女生，所以健康项目不一样，这里我就列举了一个不同点，简化一下。根据学生的性别不同来决定使用哪个表，而鉴别性别就需要使用鉴别器了。</p>
+<hr>
+<p>这里，大家可能会想到，数据库中不是还有多对多的关系嘛？为啥这里没有体现呢？</p>
+<p>这是因为在实际中，多对多的关系应用不多，因为它比较复杂，会增加理解和关联的复杂性，推荐的方法是，使用一对多的关系把它分解为双向关系，以降低关系的复杂度，简化程序。</p>
+<hr>
+<p>根据上述的数据库表的描述，生成相应的表，然后创建新的maven工程。</p>
+<p>（1）生成Mybatis数据库：<br><img src="/images/mybatis/QQ截图20190313131616.png"></p>
+<p>（2）创建相关的表：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><br>use mybatis;<br><br>drop table if exists student;<br><br>drop table if exists student_selfcard;<br><br>drop table if exists lecture;<br><br>drop table if exists student_lecture;<br><br>drop table if exists student_female_health;<br><br>drop table if exists student_male_health;<br><br>create table student(<br><br> id  INT(20) not null auto_increment COMMENT &apos;学生编号&apos;,<br> stu_name VARCHAR(60) not null comment &apos;学生姓名&apos;,<br> stu_sex TINYINT(4) not null comment &apos;性别&apos;,<br> stu_id int(20) not NULL COMMENT &apos;学生证号&apos;,<br> PRIMARY key(id)<br>);<br><br>create table student_selfcard(<br><br> id INT(20) not null auto_increment COMMENT &apos;编号&apos;,<br> stu_number int(20) not null COMMENT &apos;学生证号&apos;,<br> stu_birthplace VARCHAR(60) COMMENT &apos;籍贯&apos;,<br> stu_start_time date COMMENT &apos;发证日期&apos;,<br> stu_end_time date COMMENT &apos;结束日期&apos;,<br> primary key(id)<br>);<br><br>create table lecture(<br><br> id int(20) not null comment &apos;编号&apos;,<br> lecture_name varchar(60) not null comment &apos;课程名称&apos;,<br> primary key(id)<br>);<br><br>create table student_lecture(<br><br> id int(20) not null auto_increment comment &apos;编号&apos;,<br> stu_id int(20) not null comment &apos;学生编号&apos;,<br> lecture_id int(20) not null comment &apos;课程编号&apos;,<br> grade DECIMAL(16,2) not null comment &apos;课程成绩&apos;,<br> primary key(id)<br>);<br><br>create table student_female_health(<br> id int(20) not null auto_increment comment &apos;编号&apos;,<br> stu_id int(20) not null comment &apos;学生编号&apos;,<br> check_date date not null comment &apos;检查日期&apos;,<br> heart varchar(60) not null comment &apos;心&apos;,<br> uterus varchar(60) not null comment &apos;子宫&apos;,<br> primary key(id)<br>);<br><br>create table student_male_health(<br> id int(20) not null auto_increment comment &apos;编号&apos;,<br> stu_id int(20) not null comment &apos;学生编号&apos;,<br> check_date date not null comment &apos;检查日期&apos;,<br> heart varchar(60) not null comment &apos;心&apos;,<br> prostate varchar(60) not null comment &apos;前列腺&apos;,<br> primary key(id)<br>);<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190313135537.png"></p>
+<p>(3) 创建新的maven工程</p>
+<p>项目的整体结构：<br><img src="/images/mybatis/QQ截图20190313145410.png"></p>
+<p>entities：<br><img src="/images/mybatis/QQ截图20190313145502.png"></p>
+<p>mappers：<br><img src="/images/mybatis/QQ截图20190313145550.png"></p>
+<p>typeHanler：<br><img src="/images/mybatis/QQ截图20190313145813.png"></p>
+<p>pom.xml:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;<br>         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;<br>    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;<br><br>    &lt;groupId&gt;com.liuzhuo&lt;/groupId&gt;<br>    &lt;artifactId&gt;mybatis&lt;/artifactId&gt;<br>    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;<br>    &lt;properties&gt;<br>        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;<br>    &lt;/properties&gt;<br><br>    &lt;dependencies&gt;<br><br>        &lt;dependency&gt;<br>            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;<br>            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;<br>            &lt;version&gt;3.4.6&lt;/version&gt;<br>        &lt;/dependency&gt;<br><br>        &lt;dependency&gt;<br>            &lt;groupId&gt;mysql&lt;/groupId&gt;<br>            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;<br>            &lt;version&gt;8.0.13&lt;/version&gt;<br>        &lt;/dependency&gt;<br><br>        &lt;dependency&gt;<br>            &lt;groupId&gt;junit&lt;/groupId&gt;<br>            &lt;artifactId&gt;junit&lt;/artifactId&gt;<br>            &lt;version&gt;4.12&lt;/version&gt;<br>            &lt;scope&gt;test&lt;/scope&gt;<br>        &lt;/dependency&gt;<br><br>        &lt;dependency&gt;<br>            &lt;groupId&gt;log4j&lt;/groupId&gt;<br>            &lt;artifactId&gt;log4j&lt;/artifactId&gt;<br>            &lt;version&gt;1.2.17&lt;/version&gt;<br>        &lt;/dependency&gt;<br><br>    &lt;/dependencies&gt;<br><br>    &lt;build&gt;<br>        &lt;plugins&gt;<br>            &lt;plugin&gt;<br>                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;<br>                &lt;configuration&gt;<br>                    &lt;source&gt;1.8&lt;/source&gt;<br>                    &lt;target&gt;1.8&lt;/target&gt;<br>                &lt;/configuration&gt;<br>            &lt;/plugin&gt;<br>        &lt;/plugins&gt;<br>        &lt;!--配置即使xml不在resources中，也能读取到xml文件--&gt;<br>        &lt;resources&gt;<br>            &lt;resource&gt;<br>                &lt;directory&gt;src/main/java&lt;/directory&gt;<br>                &lt;includes&gt;<br>                    &lt;include&gt;**/*.xml&lt;/include&gt;<br>                &lt;/includes&gt;<br>            &lt;/resource&gt;<br>        &lt;/resources&gt;<br>    &lt;/build&gt;<br><br>&lt;/project&gt;<br></code></pre></td></tr></table></figure></p>
+<p>jdbc.properties：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">jdbc.driver=com.mysql.cj.jdbc.Driver<br>jdbc.url=jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8<br>jdbc.username=root<br>jdbc.password=123456<br></code></pre></td></tr></table></figure></p>
+<p>log4j.properties:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#全局配置<br>log4j.rootLogger=ERROR,stdout<br>#MyBatis日志配置<br>log4j.logger.com.liuzhuo=TRACE<br>#控制台输出配置<br>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n<br></code></pre></td></tr></table></figure></p>
+<p>mybatis-config.xml:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE configuration<br>        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;<br>&lt;configuration&gt;<br>    &lt;properties resource=&quot;jdbc.properties&quot;&gt;<br>    &lt;/properties&gt;<br>    &lt;settings&gt;<br>        &lt;setting name=&quot;logImpl&quot; value=&quot;LOG4J&quot;/&gt;<br>    &lt;/settings&gt;<br>    &lt;!--别名--&gt;<br>    &lt;typeAliases&gt;<br>        &lt;package name=&quot;com.liuzhuo.entities&quot;/&gt;<br>    &lt;/typeAliases&gt;<br>    &lt;typeHandlers&gt;<br>        &lt;typeHandler handler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot; javaType=&quot;com.liuzhuo.enums.Sex&quot;/&gt;<br>    &lt;/typeHandlers&gt;<br>    &lt;!--定义数据库信息，默认使用development数据库构建环境--&gt;<br>    &lt;environments default=&quot;development&quot;&gt;<br>        &lt;environment id=&quot;development&quot;&gt;<br>            &lt;!--采用JDBC事务管理--&gt;<br>            &lt;transactionManager type=&quot;JDBC&quot;&gt;<br>            &lt;/transactionManager&gt;<br>            &lt;!--配置数据源的信息--&gt;<br>            &lt;dataSource type=&quot;POOLED&quot;&gt;<br>                &lt;property name=&quot;driver&quot; value=&quot;$&#123;jdbc.driver&#125;&quot;/&gt;<br>                &lt;property name=&quot;url&quot; value=&quot;$&#123;jdbc.url&#125;&quot;/&gt;<br>                &lt;property name=&quot;username&quot; value=&quot;$&#123;jdbc.username&#125;&quot;/&gt;<br>                &lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot;/&gt;<br>            &lt;/dataSource&gt;<br>        &lt;/environment&gt;<br>    &lt;/environments&gt;<br>    &lt;mappers&gt;<br>        &lt;package name=&quot;com.liuzhuo.mapper&quot;/&gt;<br>    &lt;/mappers&gt;<br>&lt;/configuration&gt;<br></code></pre></td></tr></table></figure></p>
+<p>entities中的POJO，我就不列出来了，大家自行解决。</p>
+<p>Sex:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public enum Sex &#123;<br><br>    MALE(1, &quot;男&quot;), FEMALE(2, &quot;女&quot;);<br><br>    private int id;<br>    private String name;<br><br>    private Sex(int id, String name) &#123;<br>        this.id = id;<br>        this.name = name;<br>    &#125;<br><br>    public int getId() &#123;<br>        return id;<br>    &#125;<br><br>    public void setId(int id) &#123;<br>        this.id = id;<br>    &#125;<br><br>    public String getName() &#123;<br>        return name;<br>    &#125;<br><br>    public void setName(String name) &#123;<br>        this.name = name;<br>    &#125;<br><br>    public static Sex getSex(int id) &#123;<br>        if (id == 1) &#123;<br>            return MALE;<br>        &#125; else if (id == 2) &#123;<br>            return FEMALE;<br>        &#125;<br>        return null;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>SexEnumTypeHandler:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class SexEnumTypeHandler extends BaseTypeHandler&lt;Sex&gt; &#123;<br>    @Override<br>    public void setNonNullParameter(PreparedStatement ps, int i, Sex parameter, JdbcType jdbcType) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，set&quot;);<br>        ps.setInt(i, parameter.getId());<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(ResultSet rs, String columnName) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = rs.getInt(columnName);<br>        return Sex.getSex(id);<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(ResultSet rs, int columnIndex) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = rs.getInt(columnIndex);<br>        return Sex.getSex(id);<br>    &#125;<br><br>    @Override<br>    public Sex getNullableResult(CallableStatement cs, int columnIndex) throws SQLException &#123;<br>        System.out.println(&quot;自定义的枚举类型，get&quot;);<br>        int id = cs.getInt(columnIndex);<br>        return Sex.getSex(id);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>StudentMapper.xml:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>        &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>        &lt;!--新添加的字段--&gt;<br>        &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>    &lt;select id=&quot;findStudentById&quot; resultMap=&quot;studentMap&quot;&gt;<br>         select * from student where id = #&#123;id&#125;<br>     &lt;/select&gt;<br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>test:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MainTest &#123;<br><br>    private static SqlSessionFactory sqlSessionFactory;<br><br>    @BeforeClass<br>    public static void init() &#123;<br>        try &#123;<br>            String mybatisConfig = &quot;mybatis-config.xml&quot;;<br>            InputStream inputStream = Resources.getResourceAsStream(mybatisConfig);<br>            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);<br>            inputStream.close();<br>        &#125; catch (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>    @Test<br>    public void testSelectStudent() &#123;<br>        SqlSession sqlSession = sqlSessionFactory.openSession();<br>            StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>            Student student = studentMapper.findStudentById(1L);<br>            System.out.println(student);<br>            try &#123;<br>        &#125; finally &#123;<br>            //不要忘记关闭SqlSession<br>            sqlSession.close();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190313150007.png"></p>
+<hr>
+<p>运行测试：<br><img src="/images/mybatis/QQ截图20190313150123.png"></p>
+<p><strong>数据库中的数据，自己随意添加呀，没有要求的。</strong></p>
+<p>以上就是我们的新的项目工程，现在已经能够运行了，下面，我们开始讲解Mybatis中的高级映射功能。</p>
+<h3 id="一对一映射"><a href="#一对一映射" class="headerlink" title="一对一映射"></a>一对一映射</h3><p>一个学生对应一个学生证，属于一对一映射。</p>
+<h4 id="使用自动映射处理一对一映射"><a href="#使用自动映射处理一对一映射" class="headerlink" title="使用自动映射处理一对一映射"></a>使用自动映射处理一对一映射</h4><p>添加新的POJO对象：StudentAndSelfcard类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentAndSelfcard extends Student &#123;<br><br>    private StudentSelfcard studentSelfcard;<br><br>    public StudentSelfcard getStudentSelfcard() &#123;<br>        return studentSelfcard;<br>    &#125;<br>    public void setStudentSelfcard(StudentSelfcard studentSelfcard) &#123;<br>        this.studentSelfcard = studentSelfcard;<br>    &#125;<br><br>    @Override<br>    public String toString() &#123;<br>        return super.toString() +<br>                &quot; + StudentAndSelfcard&#123; &quot; +<br>                &quot;studentSelfcard=&quot; + studentSelfcard +<br>                &apos;&#125;&apos;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>该类就是一个Student类中添加一个StudentSelfcard属性。</p>
+<p>修改：StudentMapper.xml</p>
+<p>添加一个新的<code>selectStudentAndSelfcardById</code> select 标签：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectStudentAndSelfcardById&quot; resultType=&quot;studentAndSelfcard&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name as &apos;stuName&apos; ,<br>    s.stu_sex as &apos;stuSex&apos;,<br>    s.stu_id as &apos;stuId&apos; ,<br>    ss.id as &apos;studentSelfcard.id&apos;,<br>    ss.stu_number as &apos;studentSelfcard.stuNumber&apos;,<br>    ss.stu_birthplace as &apos;studentSelfcard.stuBirthplace&apos;,<br>    ss.stu_start_time as &apos;studentSelfcard.stuStartTime&apos;,<br>    ss.stu_end_time as &apos;studentSelfcard.stuEndTime&apos;<br>    from student as s<br>    JOIN student_selfcard as ss on s.stu_id = ss.stu_number<br>    where s.id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>注意上面，因为使用的是Mybatis的自动映射，所以，从student_selfcard表中获取的数据，在使用别名时，都加上了<code>studentSelfcard</code>前缀，通过这种方式将student_selfcard表中的数据映射到StudentAndSelfcard类中的studentSelfcard属性中。</p>
+<hr>
+<p>在StudentMapper中添加新的方法：<code>selectStudentAndSelfcardById</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface StudentMapper &#123;<br><br>    public Student findStudentById(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById(Long id);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>在MainTest中添加新的测试方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void testSelectStudentAndSelfcardById() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        StudentAndSelfcard studentAndSelfcard = studentMapper.selectStudentAndSelfcardById(1L);<br><br>        //student不为空<br>        Assert.assertNotNull(studentAndSelfcard);<br>        //studentSelfcard不为空<br>        Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());<br><br>        System.out.println(studentAndSelfcard);<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/images/mybatis/QQ截图20190313154824.png"></p>
+<p>可以看到映射成功，通过 SQL 日志可以看到已经查询出的一条数据， Mybatis 将这条数据映射到了两个类中。</p>
+<p>像这样通过一次查询，将结果映射到不同对象的方式，称之为：<strong><font color="red">关联的嵌套结果映射。</font></strong></p>
+<p>关联 嵌套结果 映射 ，需要关联多张表，将所有需要的值一次性查询出来。这种方式的好处是减少数据库查询次数 ，减轻数据库的压力， 缺点是要写很复杂的 SQL，并且当嵌套结果更复杂时， 不容易一次写正确 ，由于要在应用服务器上将结果映射到不同的类上。 因此 ，会增加应用服务器的压力。当一定要使用 嵌套结果 并且整个复杂的 SQL 执行速度很快时 ，建议使用关联的嵌套结果映射。</p>
+<hr>
+<h4 id="resultMap处理一对一映射"><a href="#resultMap处理一对一映射" class="headerlink" title="resultMap处理一对一映射"></a>resultMap处理一对一映射</h4><p>除了使用Mybatis的自动映射来处理一对一嵌套外，还可以在XML映射文件中配置结果映射。</p>
+<p>使用resultMap来实现与上一节相同的效果。</p>
+<p>在 <code>StudentMapper.xml</code> 文件中：</p>
+<p>添加新的resultMap：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap&quot; type=&quot;studentAndSelfcard&quot;&gt;<br><br>    &lt;!--student的映射--&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br><br>    &lt;!--studentselfcard的映射--&gt;<br>    &lt;result column=&quot;studentSelfcard_id&quot; property=&quot;studentSelfcard.id&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_number&quot; property=&quot;studentSelfcard.stuNumber&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_birthplace&quot; property=&quot;studentSelfcard.stuBirthplace&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_start_time&quot; property=&quot;studentSelfcard.stuStartTime&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_end_time&quot; property=&quot;studentSelfcard.stuEndTime&quot;/&gt;<br><br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在映射studentSelfcard表时，列名我都加上了 <code>studentSelfcard_</code> 的前缀了，为了防止与student中有相同的列名。</p>
+<p>添加新的select：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectStudentAndSelfcardById02&quot; resultMap=&quot;studentSelfcardMap&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id,<br>    ss.id as &apos;studentSelfcard_id&apos;,<br>    ss.stu_number as &apos;studentSelfcard_stu_number&apos;,<br>    ss.stu_birthplace as &apos;studentSelfcard_stu_birthplace&apos;,<br>    ss.stu_start_time as &apos;studentSelfcard_stu_start_time&apos;,<br>    ss.stu_end_time as &apos;studentSelfcard_stu_end_time&apos;<br>    from student as s<br>    JOIN student_selfcard as ss on s.stu_id = ss.stu_number<br>    where s.id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>看到，查询student时，我们都没有使用别名，因为此时，我们在resultMap中配置了，此时查询出来的列名要与resultMap中的<code>column</code>同名才行。</p>
+<p>所以，查询student_selfcard表时，我们都使用了<code>studentSelfcard_</code>前缀的别名，来与resultMap中的<code>column</code>同名。</p>
+<font color="red">此时，是不是已经看出了与自动映射的区别了，在自动映射中，列名的别名是对应着POJO的属性名，而使用resultMap的话，select中查询出来的列名的别名，要与resultMap中的column的属性值一模一样！！！</font>
+
+<p><strong>此时在select标签中，使用的是resultMap元素，而不是resultType元素了。select标签中的resultMap元素等于resultMap标签中的id元素值。</strong></p>
+<hr>
+<p>在StudentMapper接口中添加:<code>selectStudentAndSelfcardById02</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface StudentMapper &#123;<br><br>    public Student findStudentById(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById02(Long id);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>在MainTest中添加新的测试方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void testSelectStudentAndSelfcardById02() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        StudentAndSelfcard studentAndSelfcard = studentMapper.selectStudentAndSelfcardById02(1L);<br><br>        //student不为空<br>        Assert.assertNotNull(studentAndSelfcard);<br>        //studentSelfcard不为空<br>        Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());<br><br>        System.out.println(studentAndSelfcard);<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>运行结果：<br><img src="/images/mybatis/QQ截图20190313162728.png"></p>
+<p>结果和使用自动映射的效果一模一样，但是，大家肯定会觉得这样岂不是更加麻烦了，还多写了一个resultMap标签来映射，不仅没有方便开发，还增加了工作量。</p>
+<p>下面就使用resultMap的继承功能：</p>
+<h5 id="resultMap的继承功能"><a href="#resultMap的继承功能" class="headerlink" title="resultMap的继承功能"></a>resultMap的继承功能</h5><p>在我们的 xxxMapper.xml中都会有一个基本的xxxtMap的resultMap映射，这个映射可以使用 <strong><code>MyBatis的代码生成器生成</code></strong>，所以可以省略手动工作。</p>
+<p>关于MyBatis的代码生成器生成，后面我会讲到，大家不要急，现在只需要知道就行。</p>
+<hr>
+<p>在我们的 StudentMapper.xml 中的基类resultMap为：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>只映射了student的属性。</p>
+<p>添加新的resultMap标签：（studentSelfcardMap02）<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;studentSelfcardMap02&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;!--studentselfcard的映射--&gt;<br>    &lt;result column=&quot;studentSelfcard_id&quot; property=&quot;studentSelfcard.id&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_number&quot; property=&quot;studentSelfcard.stuNumber&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_birthplace&quot; property=&quot;studentSelfcard.stuBirthplace&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_start_time&quot; property=&quot;studentSelfcard.stuStartTime&quot;/&gt;<br>    &lt;result column=&quot;studentSelfcard_stu_end_time&quot; property=&quot;studentSelfcard.stuEndTime&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>可以看到新的<code>studentSelfcardMap02</code> 中使用 <code>extends</code>关键字继承了 <code>studentMap</code>。</p>
+<p>此时只需要书写：studentSelfcard的相关属性即可，简化了我们的书写。</p>
+<p>而且如果要修改：student表的话，我们只需要修改：studentMap一次即可，不需要修改多个resultMap。</p>
+<p>将 <code>select id=selectStudentAndSelfcardById02</code>的 <strong><code>resultMap</code></strong> 改为：<code>selectStudentAndSelfcardById02</code>,然后运行<code>testSelectStudentAndSelfcardById02</code></p>
+<p>发现运行还是成功的。</p>
+<hr>
+<h4 id="使用resultMap的association"><a href="#使用resultMap的association" class="headerlink" title="使用resultMap的association"></a>使用resultMap的association</h4><p>添加新的resultMap标签：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap03&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;!--studentselfcard的映射--&gt;<br>    &lt;association property=&quot;studentSelfcard&quot; columnPrefix=&quot;studentSelfcard_&quot; javaType=&quot;studentSelfcard&quot;&gt;<br>        &lt;result property=&quot;id&quot; column=&quot;id&quot;/&gt;<br>        &lt;result property=&quot;stuNumber&quot; column=&quot;stu_number&quot;/&gt;<br>        &lt;result property=&quot;stuBirthplace&quot; column=&quot;stu_stu_birthplace&quot;/&gt;<br>        &lt;result property=&quot;stuStartTime&quot; column=&quot;stu_start_time&quot;/&gt;<br>        &lt;result property=&quot;stuEndTime&quot; column=&quot;stu_end_time&quot;/&gt;<br>    &lt;/association&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>association标签包含以下属性：</p>
+<ul>
+<li><p>property：对应POJO中的属性名，必须填</p>
+</li>
+<li><p>javaType：属性对应的Java类型（可以使用别名）</p>
+</li>
+<li><p>resultMap：可以直接使用现有的resultMap，然后就不要在这里配置了。</p>
+</li>
+<li><p>columnPrefix：查询列的前缀，在子标签配置result的column时可以省略前缀。</p>
+</li>
+</ul>
+<p>还有其他的属性，此处不做过多的介绍了。</p>
+<p>然后运行，结果会是一样的，这里就不演示了。</p>
+<hr>
+<p>使用association配置时，还可以使用resultMap配置一个已经存在的resultMap映射，一般情况下，如果使用了Mybatis代码生成器，都会生成每个表对应实体的resultMap配置，也可以手动写一个resultMap。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardBaseMap&quot; type=&quot;studentSelfcard&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_number&quot; property=&quot;stuNumber&quot;/&gt;<br>    &lt;result column=&quot;stu_birthplace&quot; property=&quot;stuBirthplace&quot;/&gt;<br>    &lt;result column=&quot;stu_start_time&quot; property=&quot;stuStartTime&quot;/&gt;<br>    &lt;result column=&quot;stu_end_time&quot; property=&quot;stuEndTime&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>添加新的resultMap：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap04&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>   <br>    &lt;association property=&quot;studentSelfcard&quot; columnPrefix=&quot;studentSelfcard_&quot;  resultMap=&quot;studentSelfcardBaseMap&quot;/&gt;<br><br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>此时，就很简单了，看起来很清爽了。</p>
+<p>需要注意的是，<code>studentSelfcardBaseMap</code>：现在是写在：<code>StudentMapper.xml</code>中的，但是实际开发中，<code>studentSelfcardBaseMap</code>应该在<code>StudentSelfcardMapper.xml</code>文件中，此时，<code>studentSelfcardMap04</code>就不能简单的直接使用: <code>resultMap=studentSelfcardBaseMap</code>了，必须要加上 namespace命名空间。</p>
+<p>如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap04&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>   <br>    &lt;association property=&quot;studentSelfcard&quot; columnPrefix=&quot;studentSelfcard_&quot;  resultMap=&quot;com.liuzhuo.mapper.StudentSelfcardMapper.studentSelfcardBaseMap&quot;/&gt;<br><br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="association标签的嵌套查询"><a href="#association标签的嵌套查询" class="headerlink" title="association标签的嵌套查询"></a>association标签的嵌套查询</h4><p>除了前面3种通过复杂的SQL查询获取结果外，还可以利用简单的SQL通过多次查询转换为我们需要的结果，这种方式与根据业务逻辑手动执行多次SQL的方式相像，最后将结果组合成一个对象。</p>
+<p>association标签的嵌套查询常用的属性：</p>
+<ul>
+<li><p>select：另一个映射查询的id，Mybatis会额外执行这个查询获取嵌套对象的结果。</p>
+</li>
+<li><p>column：列名（或别名），将主查询中列的结果作为嵌套查询的参数，配置方式如：<code>column={prop1=col1,prop2=col2}</code>,其中prop1和prop2将作为嵌套查询的参数，就像#{prop1}一样，col1和col2就是主查询出来的列名。</p>
+</li>
+<li><p>fetchType：数据加载方式，可选值为：<code>lazy</code> 和 <code>eager</code>，分别为延迟加载和积极加载，这个配置会覆盖全局的lazyLoadingEnabled配置。</p>
+</li>
+</ul>
+<hr>
+<p>使用嵌套查询的方式配置一个和前面功能一样的方法，首先在 <code>StudentMapper.xml</code> 中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap05&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;association property=&quot;studentSelfcard&quot; column=&quot;stuNumber=stu_id&quot;<br>                 select=&quot;com.liuzhuo.mapper.StudentSelfcardMapper.selectStudentSelfcardBystuNumber&quot;&gt;<br>    &lt;/association&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>然后创建一个select标签：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectStudentAndSelfcardById03&quot; resultMap=&quot;studentSelfcardMap05&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id,<br>    from student as s<br>    where s.id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>注意关联中已经没有了 <code>studentSelfcard</code>了 ，因为我们不再是通过一个SQL语句来获取全部的信息了，学生证表的信息是通过配置的<code>select=&quot;com.liuzhuo.mapper.StudentSelfcardMapper.selectStudentSelfcardBystuNumber&quot;</code> 来查询的，这个方法写在 <code>StudentSelfcardMapper.xml</code>中。</p>
+<p><img src="/images/mybatis/QQ截图20190313173138.png"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentSelfcardMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;studentSelfcard&quot; type=&quot;studentSelfcard&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;stu_number&quot; property=&quot;stuNumber&quot;/&gt;<br>        &lt;result column=&quot;stu_birthplace&quot; property=&quot;stuBirthplace&quot;/&gt;<br>        &lt;result column=&quot;stu_start_time&quot; property=&quot;stuStartTime&quot;/&gt;<br>        &lt;result column=&quot;stu_end_time&quot; property=&quot;stuEndTime&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>   &lt;select id=&quot;selectStudentSelfcardBystuNumber&quot; resultMap=&quot;studentSelfcard&quot;&gt;<br>        select<br>        ss.id,<br>        ss.stu_number as &apos;stuNumber&apos;,<br>        ss.stu_birthplace as &apos;stuBirthplace&apos;,<br>        ss.stu_start_time as &apos;stuStartTime&apos;,<br>        ss.stu_end_time as &apos;stuEndTime&apos;<br>        from student_selfcard as ss<br>        where ss.stu_number = #&#123;stuNumber&#125;<br>   &lt;/select&gt;<br>    <br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure>
+<p>注意，可用的参数是通过上面的 <code>column=&quot;{stuNumber=stu_id}&quot;</code>进行配置的，因此在嵌套的SQL中只能使用#{stuNumber}参数，当需要多个参数的时候，可用配置多个，使用逗号隔开即可，例如：</p>
+<p> <code>column=&quot;{id = id,stuNumber=stu_id}&quot;</code>。</p>
+<hr>
+<p>针对上面的方法，在MainTest中编写测试的方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void testSelectStudentAndSelfcardById03() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        StudentAndSelfcard studentAndSelfcard = studentMapper.selectStudentAndSelfcardById03(1L);<br><br>        //student不为空<br>        Assert.assertNotNull(studentAndSelfcard);<br>        //studentSelfcard不为空<br>        Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());<br><br>        System.out.println(studentAndSelfcard);<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>运行：<br><img src="/images/mybatis/QQ截图20190313174148.png"></p>
+<p>结果和我们想的一致，因为第一条SQL语句的查询结果只有一条，所以根据这一条数据的 <code>stu_id</code> 来关联另一个查询，因此执行了两次SQL。</p>
+<p>这种配置方式符合开始预期的结果，但是由于嵌套查询会执行多条SQL语句，所以还要考虑更多的情况。在这个例子中，是否一定会用到<code>StudentSelfcard</code>呢？</p>
+<p>如果查询出来并没有使用，那不就是白白浪费了一次查询吗？如果查询的不是1条数据，而是N条数据，那就会出现 N+1 的问题，主SQL会查询一次，查询出N条结果，这N条结果，那就需要进行N此查询。如何解决这个问题呢？</p>
+<p>在上面在介绍：association标签的属性时，介绍了<code>fetchType</code>数据加载方式，这个方式可以帮我们实现延迟加载，解决 N+1 的问题。</p>
+<p>按照上面的介绍，需要把 <code>fetchType</code> 设置为：lazy，这样设置后，只有当调用：<code>studentAndSelfcard.getStudentSelfcard()</code>方法获取：StudentSelfcard的时候，Mybatis才会执行嵌套查询去获取数据。</p>
+<p>首先修改：<code>studentSelfcardMap05</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentSelfcardMap05&quot; type=&quot;studentAndSelfcard&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;association property=&quot;studentSelfcard&quot; column=&quot;stuNumber=stu_id&quot;<br>                 select=&quot;com.liuzhuo.mapper.StudentSelfcardMapper.selectStudentSelfcardBystuNumber&quot;<br>                 fetchType=&quot;lazy&quot;&gt;<br>    &lt;/association&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>添加了：<code>fetchType=&quot;lazy&quot;</code></p>
+<p>然后修改测试方法，在调用<code>studentAndSelfcard.getStudentSelfcard()</code>方法之前增加一行输出：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//student不为空<br>Assert.assertNotNull(studentAndSelfcard);<br>System.out.println(&quot;调用studentAndSelfcard.getStudentSelfcard()&quot;);<br>//studentSelfcard不为空<br>Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());<br></code></pre></td></tr></table></figure></p>
+<p>再运行测试方法：<br><img src="/images/mybatis/QQ截图20190313175722.png"></p>
+<p>发现，现在是按需加载了。</p>
+<p>现在将 <code>Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());</code> 注释掉，再测试：<br><img src="/images/mybatis/QQ截图20190313175940.png"></p>
+<hr>
+<p>我们在把 <code>fetchType</code> 去掉后，再测试：<br><img src="/images/mybatis/QQ截图20190313180224.png"></p>
+<hr>
+<p>现在最新的Mybatis中，只需要把 <code>fetchType=lazy</code> 就可以实现按需执行SQL语句了。</p>
+<p>如果你的不是最新的Mybatis的话，还需要配置一个全局的参数 <code>aggressiveLazyLoading</code>。</p>
+<p>这个参数的含义是，当参数设置为：true时，对任意延迟属性的调用，会使带有延迟加载属性的对象<strong><code>完整加载</code></strong>，反之，每种属性都将按需加载。</p>
+<p>以前版本默认是：true。所以即使你配置了：<code>fetchType=lazy</code>，也会全部加载！！！</p>
+<p>需要在mybatis-config.xml中配置：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;settings&gt;<br>    &lt;!--其他配置--&gt;<br>    &lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;false&quot;/&gt;<br>&lt;/settings&gt;<br></code></pre></td></tr></table></figure></p>
+<p>增加这个配合后，再次执行测试，就会和新版的一样了。</p>
+<hr>
+<font color="red"><br>注意：<br><br>许多对延迟加载原理不太熟悉的朋友会经常遇到一些莫名其妙的问题：有些时候延迟加载可以得到数据，有些时候延迟加载就会报错，为什么会出现这种情况呢？<br><br>Mybatis延迟加载是通过动态代理实现的，当调用配置为延迟加载的属性方法时，动态代理的操作会被触发，这些额外的操作就是通过Mybatis的SqlSession去执行嵌套SQl的。<br><br>由于在和某些框架集成的时候，SqlSession的生命周期交给了框架管理，因为当对象超出SqlSession生命周期调用时，会由于链接关闭等问题而抛出异常。在和Spring集成时，要确保只能在Service层延迟加载属性。当结果从Service层返回至Controller层时，如果获取延迟加载的属性值时，会因为SqlSession已经关闭而抛出异常。<br></font>
+
+<hr>
+<h3 id="一对多映射"><a href="#一对多映射" class="headerlink" title="一对多映射"></a>一对多映射</h3><p>在上一节中，我们使用了4种方式实现了一对一映射。这一节中，<font color="red"><strong>一对多映射只有两种配置方式，都是使用collection标签进行的</strong></font>，下面来看看具体的介绍。</p>
+<h4 id="collection集合的嵌套结果映射"><a href="#collection集合的嵌套结果映射" class="headerlink" title="collection集合的嵌套结果映射"></a>collection集合的嵌套结果映射</h4><p>和association类似，集合的嵌套结果映射就是指通过一次SQl语句，查询出所有的结果，然后通过配置的结果映射，将数据映射到不同的对象中。在一对多的关系中，主表的一条数据会对应关联表中的多条数据，因此一般查询时会查询出多个结果，按照一对多的数据结构存储数据的时候，最终的结果数会小于等于查询的总记录数。</p>
+<hr>
+<p>在我们的数据库中，有两个级联关系，一个是学生和课程成绩的级联，这是一对多的关系，另一个是课程成绩与课程的级联，这是一对一的关系。</p>
+<p>现在我们首先来看一对多的关系，学生与课程成绩的关系。</p>
+<p>创建一个新的POJO对象：StudentBean<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentBean extends Student &#123;<br><br>    List&lt;StudentLecture&gt; studentLectureList;<br><br>    public List&lt;StudentLecture&gt; getStudentLectureList() &#123;<br>        return studentLectureList;<br>    &#125;<br><br>    public void setStudentLectureList(List&lt;StudentLecture&gt; studentLectureList) &#123;<br>        this.studentLectureList = studentLectureList;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>使用List集合来对应：一对多中的多的一方。在这里就是<code>List&lt;StudentLecture&gt;</code>。</p>
+<hr>
+<p>打开：StudentMapper.xml，添加新的resultMap：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentBeanMap&quot; type=&quot;studentBean&quot;&gt;<br>    &lt;!--student的基本信息--&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>    &lt;!--studentLecture--&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; columnPrefix=&quot;studentLecture_&quot; ofType=&quot;studentLecture&quot;&gt;<br>        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;<br>        &lt;result property=&quot;stuId&quot; column=&quot;stu_id&quot;/&gt;<br>        &lt;result property=&quot;lectureId&quot; column=&quot;lecture_id&quot;/&gt;<br>        &lt;result property=&quot;grade&quot; column=&quot;grade&quot;/&gt;<br>    &lt;/collection&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure>
+<font color="red"><strong>注意：在collection中，ofType：为List中的java类型，此时不是使用javaType，javaType是在association中使用的，注意差别！！！</strong></font>
+
+<hr>
+<p>select标签：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectStudentBeanById&quot; resultMap=&quot;studentBeanMap&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id,<br>    sl.id as &apos;studentLecture_id&apos;,<br>    sl.stu_id as &apos;studentLecture_stu_id&apos;,<br>    sl.lecture_id as &apos;studentLecture_lecture_id&apos;,<br>    sl.grade as &apos;studentLecture_grade&apos;<br>    from student as s join student_lecture as sl on s.stu_id = sl.stu_id<br>    where s.id = #&#123;id&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentMapper接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public interface StudentMapper &#123;<br><br>    public Student findStudentById(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById02(Long id);<br><br>    public StudentAndSelfcard selectStudentAndSelfcardById03(Long id);<br><br>    //增加的新的方法<br>    public StudentBean selectStudentBeanById(Long id);<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>MainTest：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void testSelectStudentBeanById() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        StudentBean studentBean = studentMapper.selectStudentBeanById(1L);<br><br>        Assert.assertNotNull(studentBean);<br>        List&lt;StudentLecture&gt; studentLectureList = studentBean.getStudentLectureList();<br><br>        System.out.println(studentBean.getStuName() + &quot; : 选修了：&quot; + studentLectureList.size() + &quot; 门功课!&quot;);<br><br>        for (StudentLecture studentLecture : studentLectureList) &#123;<br>            System.out.println(studentLecture);<br>        &#125;<br><br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>运行结果：<br><img src="/images/mybatis/QQ截图20190314160845.png"></p>
+<p>一条SQL语句，查询出所有的结果，然后Mybatis帮我们组合起来。</p>
+<hr>
+<p>然后，我们还能简化，在collection中，还可以使用已存在的resultMap。</p>
+<p>在 StudentLectureMapper.xml中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br><br>&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentLectureMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;studentLectureMap&quot; type=&quot;studentLecture&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>        &lt;result column=&quot;lecture_id&quot; property=&quot;lectureId&quot;/&gt;<br>        &lt;result column=&quot;grade&quot; property=&quot;grade&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>有一个基本的 <code>studentLectureMap</code> 映射配置</p>
+<hr>
+<p>在 StudentMapper.xml中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentBeanMap02&quot; type=&quot;studentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; columnPrefix=&quot;studentLecture_&quot; resultMap=&quot;com.liuzhuo.mapper.StudentLectureMapper.studentLectureMap&quot;&gt;<br>    &lt;/collection&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>首先，第一个resultMap，使用 extends 继承了 studentMap 了，所以此时student的映射就不需要写了。</p>
+<p>然后，在collection中，使用resultMap等于StudentLectureMapper.xml中的studentLectureMap，来映射studentLecture，此时ofType就不需要写了！！！</p>
+<hr>
+<p>现在测试，发现结果也是好使的。</p>
+<hr>
+<p>现在，我们往数据库中，添加一些新的数据：<br><img src="/images/mybatis/QQ截图20190314162837.png"></p>
+<p><img src="/images/mybatis/QQ截图20190314162915.png"></p>
+<p>能看到，jack有三条课程成绩数据，gakki有两条课程成绩数据，应该会有五条记录。</p>
+<p>在 StudentMapper.xml中添加新的select标签：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;select id=&quot;selectStudentBeanAll&quot; resultMap=&quot;studentBeanMap02&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id,<br>    sl.id as &apos;studentLecture_id&apos;,<br>    sl.stu_id as &apos;studentLecture_stu_id&apos;,<br>    sl.lecture_id as &apos;studentLecture_lecture_id&apos;,<br>    sl.grade as &apos;studentLecture_grade&apos;<br>    from student as s join student_lecture as sl on s.stu_id = sl.stu_id<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>在StudentMapper接口添加新的接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public List&lt;StudentBean&gt; selectStudentBeanAll();<br></code></pre></td></tr></table></figure></p>
+<p>在MainTest中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Test<br>public void testSelectStudentBeanAll() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        List&lt;StudentBean&gt; studentBeanList = studentMapper.selectStudentBeanAll();<br><br>        System.out.println(&quot;有:&quot; + studentBeanList.size() + &quot;个学生&quot;);<br>        for (StudentBean studentBean : studentBeanList) &#123;<br>            System.out.println(&quot;学生名：&quot; + studentBean.getStuName());<br>            for (StudentLecture studentLecture : studentBean.getStudentLectureList()) &#123;<br>                System.out.println(&quot;课程Id：&quot; + studentLecture.getLectureId());<br>            &#125;<br><br>        &#125;<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>执行测试方法，验证一下：<br><img src="/images/mybatis/QQ截图20190314164045.png"></p>
+<hr>
+<p>通过日志可以清楚地看出，SQL执行的结果数有5条，后面输出的学生数是2，也就说本来查询出来的5条结果经过Mybatis对collection数据的处理后，变成了两条。</p>
+<p>我们都知道，因为第一个学生有三门课程，所以转换为一对多的数据结构后就变成了三条结果。那么Mybatis是怎么知道将5条数据中的哪三条给第一个学生呢？</p>
+<p>理解Mybatis处理的规则对使用一对多配置是非常重要的，如果只是一知半解，很容易就会遇到各种莫名其妙的问题，所以针对Mybatis处理中的要点，下面进行一个详细的阐述。</p>
+<p>Mybatis在处理结果的时候，会判断结果是否相同，如果是相同的的结果，则只会保留第一结果，所以这个问题的关键点就是Mybatis如何判断结果是否相同。</p>
+<p>Mybatis判断是否相同时，最简单的情况就是在映射配置中至少有一个id标签，在studentMap中配置如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;id property=&apos;id&apos; column=&apos;id&apos;/&gt;<br></code></pre></td></tr></table></figure></p>
+<p>我们对id（构造方法中为idArg）的理解一般是，它配置的字段为表的主键（联合主键时可以配置多个id标签），因为Mybatis的resultMap只用于配置结果如何映射，并不知道这个表具体如何。<font color="red">id的唯一作用就是嵌套的映射配置时判断数据是否相同</font>，当配置id标签时，Mybatis只需要比较所有数据中id标签配置字段值是否相同即可。在配置嵌套结果查询时，配置id标签可以提高处理效率。</p>
+<p>这样一来，上面的查询就不难理解了。因为前三条数据的studentMap部分的id相同，所以它们属于同一个学生，因此这条数据会合并到同一个学生中。</p>
+<p>为了让大家更清楚的理解id的作用，可以临时对studentMap的映射进行如下的修改：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;!--&lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;--&gt;<br>    &lt;id column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;!--&lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;--&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>将stu_sex 设置为id元素，然后将数据库中的两个学生的stu_sex字段设置为相同的值。</p>
+<p>然后执行测试：</p>
+<p><img src="/images/mybatis/QQ截图20190314171115.png"></p>
+<hr>
+<p>我们能看到，变成了一个学生！！！学生信息保留的是第一个学生的信息，因此学生姓名为jack。</p>
+<p>大家通过这个简单的例子应该明白id的作用了。需要注意的是，很有可能会出现一种没有配置id的情况。没有配置id时，Mybatis就会把resultMap中配置的所有字段进行比较，如果所有字段的值都相同就合并，只要有一个字段值不同，就不合并。</p>
+<font color="red"><strong>提示：在嵌套结果配置时id属性时，如果查询语句中没有查询id属性配置的列，就会导致id对应的值为null。这种情况下，所有值的id都相同，因此会使嵌套的集合中只有一条数据。所以在配置id列时，查询语句中必须包含该列。</strong></font>
+
+<hr>
+<p>可以对studentMap再次修改，将id标签改为result：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;!--&lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;--&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;!--&lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;--&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>此时，已经不存id标签了，执行测试方法：</p>
+<p><img src="/images/mybatis/QQ截图20190314172153.png"></p>
+<p>发现此时的结果，与配置id标签时的结果相同。因为学生在studentMap这部分配置的属性都相同，因此合并。</p>
+<p>虽然结果相同，但是由于Mybatis要对所有字段进行比较，因此字段数为M时，如果查询结果又N条，就需要进行M * N 次比较，相比配置id时的N次比较，效率相差更多，所以要尽可能配置id标签！！！</p>
+<p>在studentMap比较完毕后，会接着比较studentLecture，如果不多，就会增加一个studentLecture对象，如果两个studentLecture相同就保留一个。假设studentLecture还有下一级，仍然按照该规则去比较。</p>
+<hr>
+<p>上面就是学生与课程成绩的一对多的映射配置，我们还有一个课程表与课程成绩表是一对一的映射，现在我们将这个映射也加上。</p>
+<p>添加的POJO类：StudentLectureBean<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentLectureBean extends StudentLecture &#123;<br><br>    private Lecture lecture;<br><br>    public Lecture getLecture() &#123;<br>        return lecture;<br>    &#125;<br><br>    public void setLecture(Lecture lecture) &#123;<br>        this.lecture = lecture;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>修改：StudentBean<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentBean extends Student &#123;<br><br>    //将List中类型修改为我们添加的POJO对象<br>    List&lt;StudentLectureBean&gt; studentLectureList;<br><br>    public List&lt;StudentLectureBean&gt; getStudentLectureList() &#123;<br>        return studentLectureList;<br>    &#125;<br><br>    public void setStudentLectureList(List&lt;StudentLectureBean&gt; studentLectureList) &#123;<br>        this.studentLectureList = studentLectureList;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>添加：LectureMapper.xml<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;<br>&lt;!DOCTYPE mapper<br>        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;<br>        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;<br><br>&lt;mapper namespace=&quot;com.liuzhuo.mapper.LectureMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;lectureMap&quot; type=&quot;lecture&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;lecture_name&quot; property=&quot;lectureName&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在：StudentLectureMapper.xml 添加新的映射配置：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentLectureMap02&quot; type=&quot;studentLectureBean&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;lecture_id&quot; property=&quot;lectureId&quot;/&gt;<br>    &lt;result column=&quot;grade&quot; property=&quot;grade&quot;/&gt;<br><br>    &lt;association property=&quot;lecture&quot; columnPrefix=&quot;lecture_&quot;<br>                 resultMap=&quot;com.liuzhuo.mapper.LectureMapper.lectureMap&quot;/&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>在 StudentMapper.xml 中修改：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentBeanMap02&quot; type=&quot;studentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;!--student的基本信息--&gt;<br>    &lt;!--studentLecture--&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; columnPrefix=&quot;studentLecture_&quot;<br>                resultMap=&quot;com.liuzhuo.mapper.StudentLectureMapper.studentLectureMap02&quot;&gt; &lt;!--修改为02了--&gt;<br>    &lt;/collection&gt;<br>&lt;/resultMap&gt;<br></code></pre></td></tr></table></figure></p>
+<p>修改测试方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void testSelectStudentBeanAll() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        List&lt;StudentBean&gt; studentBeanList = studentMapper.selectStudentBeanAll();<br><br>        System.out.println(&quot;有:&quot; + studentBeanList.size() + &quot;个学生&quot;);<br>        for (StudentBean studentBean : studentBeanList) &#123;<br>            System.out.println(&quot;学生名：&quot; + studentBean.getStuName());<br>            for (StudentLectureBean studentLecture : studentBean.getStudentLectureList()) &#123;<br>                System.out.println(&quot;课程Id：&quot; + studentLecture.getLectureId());<br>                System.out.println(&quot;课程的名字: &quot; + studentLecture.getLecture().getLectureName());<br>            &#125;<br><br>        &#125;<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>运行结果：</p>
+<p><img src="/images/mybatis/QQ截图20190314180033.png"></p>
+<hr>
+<p>虽然association和collection标签是分开介绍的，但是这两者可以组合使用或者互相嵌套使用，也可以使用符合自己需要的任何数据结构，不需要局限于数据库表之间的关系联系。</p>
+<hr>
+<h4 id="collection集合的嵌套查询"><a href="#collection集合的嵌套查询" class="headerlink" title="collection集合的嵌套查询"></a>collection集合的嵌套查询</h4><p>接着上一节的内容，我们来将上诉的collection嵌套结果映射改为嵌套查询。</p>
+<p>StudentMapper接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public List&lt;StudentBean&gt; selectStudentBeanAll02();<br></code></pre></td></tr></table></figure></p>
+<p>StudentMapper.xml：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;studentBeanMap03&quot; type=&quot;studentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                select=&quot;com.liuzhuo.mapper.StudentLectureMapper.selectStudentLectureByStuId&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;select id=&quot;selectStudentBeanAll02&quot; resultMap=&quot;studentBeanMap03&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id<br>    from<br>    student as s<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>StudentLectureMapper.xml:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentLectureMap03&quot; type=&quot;studentLectureBean&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;lecture_id&quot; property=&quot;lectureId&quot;/&gt;<br>    &lt;result column=&quot;grade&quot; property=&quot;grade&quot;/&gt;<br><br>    &lt;association property=&quot;lecture&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;lectureId = lecture_id&#125;&quot;<br>                 select=&quot;com.liuzhuo.mapper.LectureMapper.selectLectureById&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;select id=&quot;selectStudentLectureByStuId&quot; resultMap=&quot;studentLectureMap03&quot;&gt;<br>     SELECT id , stu_id , lecture_id , grade from student_lecture where stu_id = #&#123;stuId&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>LectureMapper.xml:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;lectureMap&quot; type=&quot;lecture&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;lecture_name&quot; property=&quot;lectureName&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;select id=&quot;selectLectureById&quot; resultMap=&quot;lectureMap&quot;&gt;<br>    SELECT id , lecture_name FROM lecture WHERE id = #&#123;lectureId&#125;<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure></p>
+<p>testSelectStudentBeanAll02测试方法：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void testSelectStudentBeanAll02() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        List&lt;StudentBean&gt; studentBeanList = studentMapper.selectStudentBeanAll02();<br><br>        System.out.println(&quot;有:&quot; + studentBeanList.size() + &quot;个学生&quot;);<br>        for (StudentBean studentBean : studentBeanList) &#123;<br>            System.out.println(&quot;学生名：&quot; + studentBean.getStuName());<br>            for (StudentLectureBean studentLecture : studentBean.getStudentLectureList()) &#123;<br>                System.out.println(&quot;课程Id：&quot; + studentLecture.getLectureId());<br>                System.out.println(&quot;课程的名字: &quot; + studentLecture.getLecture().getLectureName());<br>            &#125;<br>        &#125;<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>运行测试结果：</p>
+<p><img src="/images/mybatis/QQ截图20190314191100.png"><br><img src="/images/mybatis/QQ截图20190314191130.png"><br><img src="/images/mybatis/QQ截图20190314191147.png"></p>
+<p>从结果可以看出，是按需发送SQL语句，然后获取数据的。</p>
+<p>首先只是获取了学生的基本信息。</p>
+<p>然后获取学生的课程成绩时，会发送第二条SQL语句，获取课程的id。</p>
+<p>最后获取学生课程的名称时，会发送第三条SQL语句，获取课程的名称。</p>
+<p>我们也可以发现，当获取第二个学生的时候，只是获取它的课程信息时发送了SQL语句，后面的课程名称没有发送SQL语句，因为在第一个学生那里已经发送过了，Mybatis会自动帮我们缓存，这个缓存的知识点，我们后面会讲到，大家不要急~~~</p>
+<hr>
+<h3 id="discriminator鉴别器"><a href="#discriminator鉴别器" class="headerlink" title="discriminator鉴别器"></a>discriminator鉴别器</h3><p>鉴别器级联是在特定的条件下去使用不同的POJO。比如本例中要了解学生的健康情况，如果是男生总不能去了解他的女性生理指标吧，这样就会闹出笑话了，同样女生也不能去了解男性的生理指标。这个时候就需要使用到鉴别器了。</p>
+<hr>
+<p>我们可以根据学生信息中的性别属性进行判断去关联男性的健康指标或者女性的健康指标，然后进行关联即可，在Mybatis中我们采用的是鉴别器discriminator，由它来处理这些需要鉴别的场景，它相当于Java语言中的switch语句。让我们来看看它是如何实现的。</p>
+<p><code>discriminator</code>标签常用的两个属性如下：</p>
+<ul>
+<li><p>column：该属性用于设置要进行鉴别比较值的列。</p>
+</li>
+<li><p>javaType：该属性用于指定列的类型，保证使用相同的java类型来比较值。</p>
+</li>
+</ul>
+<p><code>discriminator</code> 标签可以有1个或多个<code>case标签</code>，case标签包含以下三个属性：</p>
+<ul>
+<li><p>value：该值为discriminator指定column用来匹配的值。</p>
+</li>
+<li><p>resultMap：当column的值和value的值匹配时，可以配置使用resultMap指定的映射，resultMap优先级高于resulType。</p>
+</li>
+<li><p>resultType：当column的值和value的值匹配时，用于配置使用resultType指定的映射。</p>
+</li>
+</ul>
+<p>case标签下面可以包含的标签和resultMap中一样，用法也一样。</p>
+<hr>
+<p>Student类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class Student &#123;<br><br>    private Long id;  //学生编号<br>    private String stuName; //学生姓名<br>    private Integer stuSex;//性别<br>    private Long stuId;//学生证号<br><br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentBean类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentBean extends Student &#123;<br><br>    private List&lt;StudentLectureBean&gt; studentLectureList;<br><br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentMaleHealth类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentMaleHealth &#123;<br><br>    private Long id;<br>    private Long stuId;<br>    private Date checkDate;<br>    private String heart;<br>    private String prostate;<br>    <br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentFemaleHealth类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class StudentFemaleHealth &#123;<br><br>    private Long id;<br>    private Long stuId;<br>    private Date checkDate;<br>    private String heart;<br>    private String uterus;<br><br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p><strong>上面的都是之前创建的POJO，现在开始创建新的POJO类：</strong></p>
+<hr>
+<p>MaleStudentBean类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MaleStudentBean extends StudentBean &#123;<br><br>    private StudentMaleHealth studentMaleHealth;<br><br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>FemaleStudentBean类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class FemaleStudentBean extends StudentBean &#123;<br><br>    private StudentFemaleHealth studentFemaleHealth;<br><br>    ····省略get、set方法<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentMapper.xml文件：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;<br>    &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>    &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;<br>    &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>    &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;studentBeanMap04&quot; type=&quot;studentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                select=&quot;com.liuzhuo.mapper.StudentLectureMapper.selectStudentLectureByStuId&quot;/&gt;<br>    &lt;discriminator javaType=&quot;int&quot; column=&quot;stu_sex&quot;&gt;<br>        &lt;case value=&quot;1&quot; resultMap=&quot;maleStudentMap&quot;/&gt;<br>        &lt;case value=&quot;2&quot; resultMap=&quot;femaleStudentMap&quot;/&gt;<br>    &lt;/discriminator&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;maleStudentMap&quot; type=&quot;maleStudentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;association property=&quot;studentMaleHealth&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                 select=&quot;com.liuzhuo.mapper.StudentMaleHealthMapper.selectStudentMaleHealthByStuId&quot;/&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                select=&quot;com.liuzhuo.mapper.StudentLectureMapper.selectStudentLectureByStuId&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;resultMap id=&quot;femaleStudentMap&quot; type=&quot;femaleStudentBean&quot; extends=&quot;studentMap&quot;&gt;<br>    &lt;association property=&quot;studentFemaleHealth&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                 select=&quot;com.liuzhuo.mapper.StudentFemaleHealthMapper.selectStudentFemaleHealthByStuId&quot;/&gt;<br>    &lt;collection property=&quot;studentLectureList&quot; fetchType=&quot;lazy&quot; column=&quot;&#123;stuId = stu_id&#125;&quot;<br>                select=&quot;com.liuzhuo.mapper.StudentLectureMapper.selectStudentLectureByStuId&quot;/&gt;<br>&lt;/resultMap&gt;<br><br>&lt;select id=&quot;selectStudentBeanAll03&quot; resultMap=&quot;studentBeanMap04&quot;&gt;<br>    select<br>    s.id,<br>    s.stu_name,<br>    s.stu_sex,<br>    s.stu_id<br>    from<br>    student as s<br>&lt;/select&gt;<br></code></pre></td></tr></table></figure>
+<hr>
+<p>StudentMaleHealthMapper.xml文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMaleHealthMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;studentMaleHealthMap&quot; type=&quot;studentMaleHealth&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>        &lt;result column=&quot;check_date&quot; property=&quot;checkDate&quot;/&gt;<br>        &lt;result column=&quot;heart&quot; property=&quot;heart&quot;/&gt;<br>        &lt;result column=&quot;prostate&quot; property=&quot;prostate&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>    &lt;select id=&quot;selectStudentMaleHealthByStuId&quot; resultMap=&quot;studentMaleHealthMap&quot;&gt;<br>        SELECT id , stu_id ,check_date,heart,prostate FROM student_male_health WHERE stu_id = #&#123;stuId&#125;<br>    &lt;/select&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentFemaleHealthMapper.xml文件：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentFemaleHealthMapper&quot;&gt;<br><br>    &lt;resultMap id=&quot;studentFemaleHealthMap&quot; type=&quot;studentFemaleHealth&quot;&gt;<br>        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;<br>        &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;<br>        &lt;result column=&quot;check_date&quot; property=&quot;checkDate&quot;/&gt;<br>        &lt;result column=&quot;heart&quot; property=&quot;heart&quot;/&gt;<br>        &lt;result column=&quot;uterus&quot; property=&quot;uterus&quot;/&gt;<br>    &lt;/resultMap&gt;<br><br>    &lt;select id=&quot;selectStudentFemaleHealthByStuId&quot; resultMap=&quot;studentFemaleHealthMap&quot;&gt;<br>        SELECT id , stu_id ,check_date,heart,uterus FROM student_female_health WHERE stu_id = #&#123;stuId&#125;<br>    &lt;/select&gt;<br><br>&lt;/mapper&gt;<br></code></pre></td></tr></table></figure></p>
+<hr>
+<p>StudentMapper接口：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public List&lt;StudentBean&gt; selectStudentBeanAll03();<br></code></pre></td></tr></table></figure></p>
+<p>这里返回的是<code>StudentBean</code>类型，因为 MaleStudentBean、FemaleStudentBean都是它的子类。</p>
+<hr>
+<p>MainTest类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public void testSelectStudentBeanAll03() &#123;<br><br>    SqlSession sqlSession = sqlSessionFactory.openSession();<br>    try &#123;<br>        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);<br>        List&lt;StudentBean&gt; studentBeanList = studentMapper.selectStudentBeanAll03();<br><br>        System.out.println(&quot;有:&quot; + studentBeanList.size() + &quot;个学生&quot;);<br>        for (StudentBean studentBean : studentBeanList) &#123;<br>            System.out.println(&quot;学生名：&quot; + studentBean.getStuName());<br>            System.out.println(&quot;学生的性别：&quot; + studentBean.getStuSex());<br><br>            //判断是哪个类型的学生类型<br>            if (studentBean instanceof MaleStudentBean) &#123;<br>                MaleStudentBean maleStudentBean = (MaleStudentBean) studentBean;<br>                System.out.println(maleStudentBean.getStudentMaleHealth().getHeart());<br>                System.out.println(maleStudentBean.getStudentMaleHealth().getProstate());<br>            &#125; else if (studentBean instanceof FemaleStudentBean) &#123;<br>                FemaleStudentBean femaleStudentBean = (FemaleStudentBean) studentBean;<br>                System.out.println(femaleStudentBean.getStudentFemaleHealth().getHeart());<br>                System.out.println(femaleStudentBean.getStudentFemaleHealth().getUterus());<br>            &#125; else &#123;<br>                System.out.println(&quot;没有映射成功!!!&quot;);<br>            &#125;<br><br>            for (StudentLectureBean studentLecture : studentBean.getStudentLectureList()) &#123;<br>                System.out.println(&quot;课程Id：&quot; + studentLecture.getLectureId());<br>                System.out.println(&quot;课程的名字: &quot; + studentLecture.getLecture().getLectureName());<br>            &#125;<br>        &#125;<br>    &#125; finally &#123;<br>        sqlSession.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<p>上面通过：<code>studentBean instanceof MaleStudentBean</code> 来判断Mybatis帮我们返回的具体类型是哪个。</p>
+<hr>
+<p>测试结果：<br><img src="/images/mybatis/QQ截图20190315110511.png"></p>
+<p>当判断具体是哪个类型时，再发生SQL语句，查询具体的信息：<br><img src="/images/mybatis/QQ截图20190315110619.png"></p>
+<p>当要获取学生的课程成绩时，再发生SQL语句：<br><img src="/images/mybatis/QQ截图20190315110738.png"></p>
+<p>当要获取学生的课程名是，再发生SQL语句：<br><img src="/images/mybatis/QQ截图20190315110819.png"></p>
+<p>接下来就是类似的操作了：<br><img src="/images/mybatis/QQ截图20190315110934.png"></p>
+<p><img src="/images/mybatis/QQ截图20190315110953.png"></p>
+<hr>
+<font color="red">鉴别器是一种很少使用的方式，在使用之前一定要完全掌握，没有把握的情况下尽可能避免使用。</font>
+
+
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/mybatis/" rel="tag"><i class="fas fa-tags"></i>mybatis</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/13/Mybatis中的resultMap/" rel="next" title="Mybatis中的resultMap"><i class="fas fa-angle-left"></i><span class="nav-title">Mybatis中的resultMap</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Mybatis中的高级查询",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">110</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">53</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">41</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#高级映射"><span class="toc-text">高级映射</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#一对一映射"><span class="toc-text">一对一映射</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#使用自动映射处理一对一映射"><span class="toc-text">使用自动映射处理一对一映射</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#resultMap处理一对一映射"><span class="toc-text">resultMap处理一对一映射</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#resultMap的继承功能"><span class="toc-text">resultMap的继承功能</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#使用resultMap的association"><span class="toc-text">使用resultMap的association</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#association标签的嵌套查询"><span class="toc-text">association标签的嵌套查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#一对多映射"><span class="toc-text">一对多映射</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#collection集合的嵌套结果映射"><span class="toc-text">collection集合的嵌套结果映射</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#collection集合的嵌套查询"><span class="toc-text">collection集合的嵌套查询</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#discriminator鉴别器"><span class="toc-text">discriminator鉴别器</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>
