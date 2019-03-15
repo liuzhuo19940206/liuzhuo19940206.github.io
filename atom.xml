@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-15T03:11:47.282Z</updated>
+  <updated>2019-03-15T12:48:12.713Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis中的缓存</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/15/Mybatis%E4%B8%AD%E7%9A%84%E7%BC%93%E5%AD%98/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/15/Mybatis中的缓存/</id>
+    <published>2019-03-15T07:21:39.000Z</published>
+    <updated>2019-03-15T12:48:12.713Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis中的高级查询</title>
@@ -437,30 +457,6 @@
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="volatile" scheme="http://liuzhuo19940206.github.io/tags/volatile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试中的单例问题</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/13/%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B%E9%97%AE%E9%A2%98/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/13/面试中的单例问题/</id>
-    <published>2019-01-13T04:26:52.000Z</published>
-    <updated>2019-01-13T05:10:03.383Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;给大家普及一下，我在面试中遇到的单例问题。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="单例" scheme="http://liuzhuo19940206.github.io/categories/%E5%8D%95%E4%BE%8B/"/>
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E5%8D%95%E4%BE%8B/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="单例" scheme="http://liuzhuo19940206.github.io/tags/%E5%8D%95%E4%BE%8B/"/>
     
   </entry>
   
