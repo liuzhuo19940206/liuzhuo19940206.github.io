@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-15T12:48:12.713Z</updated>
+  <updated>2019-03-16T12:37:20.732Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis中的动态SQL</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/16/Mybatis%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81SQL/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/16/Mybatis中的动态SQL/</id>
+    <published>2019-03-16T05:48:27.000Z</published>
+    <updated>2019-03-16T12:37:20.732Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis中的缓存</title>
@@ -433,30 +453,6 @@
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="原子类" scheme="http://liuzhuo19940206.github.io/tags/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈java中的volatile</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/13/%E8%B0%88%E8%B0%88java%E4%B8%AD%E7%9A%84volatile/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/13/谈谈java中的volatile/</id>
-    <published>2019-01-13T05:13:54.000Z</published>
-    <updated>2019-01-13T05:49:22.024Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;浅谈java中的volatile关键字&lt;br&gt;
-    
-    </summary>
-    
-      <category term="volatile" scheme="http://liuzhuo19940206.github.io/categories/volatile/"/>
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/volatile/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="volatile" scheme="http://liuzhuo19940206.github.io/tags/volatile/"/>
     
   </entry>
   
