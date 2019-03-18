@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-16T12:37:20.732Z</updated>
+  <updated>2019-03-18T02:03:29.373Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis代码生成器</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/17/Mybatis%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/17/Mybatis代码生成器/</id>
+    <published>2019-03-17T01:46:35.000Z</published>
+    <updated>2019-03-18T02:03:29.373Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MyBatis Generator：代码生成器，帮助我们自动生成基本的增、删、改、查的代码，方便我们开发，减少不必要的体力活动。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis中的动态SQL</title>
@@ -429,30 +449,6 @@
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
       <category term="HashMap" scheme="http://liuzhuo19940206.github.io/tags/HashMap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java原子类实现原理分析</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/13/java%E5%8E%9F%E5%AD%90%E7%B1%BB%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/13/java原子类实现原理分析/</id>
-    <published>2019-01-13T06:01:26.000Z</published>
-    <updated>2019-01-13T06:18:35.737Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;浅谈java中的原子类实现原理&lt;br&gt;
-    
-    </summary>
-    
-      <category term="原子类" scheme="http://liuzhuo19940206.github.io/categories/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E5%8E%9F%E5%AD%90%E7%B1%BB/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="原子类" scheme="http://liuzhuo19940206.github.io/tags/%E5%8E%9F%E5%AD%90%E7%B1%BB/"/>
     
   </entry>
   
