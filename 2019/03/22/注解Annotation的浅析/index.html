@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-TileColor" content="#333333">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>注解Annotation的浅析 | 解忧杂货店 - 爱生活爱解忧</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #333333;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">解忧杂货店</a></h1>
+        <h2 class="subtitle">爱生活爱解忧</h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/">首页</a></li>
+        
+        <li role="menuitem"><a href="/archives/">归档</a></li>
+        
+        <li role="menuitem"><a href="/categories/">分类</a></li>
+        
+        <li role="menuitem"><a href="/tags/">标签</a></li>
+        
+        <li role="menuitem"><a href="/about/">关于</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2019/03/22/注解Annotation的浅析/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="刘卓">
+       <meta itemprop="description" content="hello,every body!">
+       <meta itemprop="image" content="/images/avatar.jpg">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="解忧杂货店">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">注解Annotation的浅析</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-03-22T15:21:50+08:00">2019-03-22 15:21:50</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/注解/" itemprop="url" rel="index"><span itemprop="name">注解</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/注解/annotation/" itemprop="url" rel="index"><span itemprop="name">annotation</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。<br><a id="more"></a></p>
+<h3 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h3><p>对于很多初次接触的开发者来说应该都会有这个疑惑？<code>annotation</code> 是java5开始引入的新特征，中文名称叫做注解。</p>
+<p>它提供了一种安全的类似注解的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。为程序的元素（类、方法、成员变量）加上更直观更名了的说明，这些说明信息是与程序的业务逻辑无关，并且供指定的工具或框架使用。</p>
+<p><code>Annotation</code> 像一个修饰符一样，应用于包、类、构造方法、成员方法、成员变量、参数以及本地变量的声明语句中。</p>
+<p>Java注解是附加在代码中的一些元信息。用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。注解不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。包含在<code>java.lang.annotation</code>包中。</p>
+<h3 id="注解的用处"><a href="#注解的用处" class="headerlink" title="注解的用处"></a>注解的用处</h3><p>1、生成文档。这是最常见的，也是java最早提供的注解。常用的用<code>@Param @return</code>等</p>
+<p>2、跟踪代码依赖性，实现替代配置文件功能。比如Dagger 2 依赖注入，未来java 开发，将大量注解配置，具有很大用处。</p>
+<p>3、在编译时进行格式检查。如<code>@override</code> 放在方法前，如果你这个方法并不是覆盖了超类方法，则编译时就能检查出。</p>
+<h3 id="注解的原理"><a href="#注解的原理" class="headerlink" title="注解的原理"></a>注解的原理</h3><p>注解本质是一个继承了<code>Annotation 的特殊接口</code>，其具体实现类是Java 运行时生成的动态代理类。而我们通过<code>反射</code>获取注解时，返回的是Java 运行时生成的动态代理对象<code>$Proxy1</code>。通过代理对象调用自定义注解（接口）的方法，会最终调用<code>AnnotationInvocationHandler</code> 的<code>invoke方法</code>。该方法会从<code>memberValues</code> 这个Map 中索引出对应的值。而<code>memberValues</code>的来源是Java 常量池。</p>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><code>java.lang.annotation</code>:提供了四种元注解，专门注解其他的注解（在自定义注解的时候，需要使用到元注解）：</p>
+<p><code>@Documented</code> 注解是否将包含在JavaDoc中</p>
+<p><code>@Retention</code> 什么时候使用该注解</p>
+<p><code>@Target</code> 注解用于什么地方</p>
+<p><code>@Inherited</code> 是否允许子类继承该注解</p>
+<hr>
+<h4 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h4><p>表示什么时候使用该注解，可用 RetentionPolicy 参数包括。</p>
+<p><code>RetentionPolicy.SOURCE</code>: 在编译阶段丢弃。这些注解在编译结束之后就不再有任何意义，所以它们不会写入字节码。@Override, @SuppressWarnings 都属于这类注解。</p>
+<p><code>RetentionPolicy.CLASS</code>: 在类加载的时候丢弃。在字节码文件的处理中有用。注解默认使用这种方式。</p>
+<p><code>RetentionPolicy.RUNTIME</code>：始终不会丢弃，运行期也保留该注解，因此可以使用反射机制读取该注解的信息。我们自定义的注解通常使用这种方式。</p>
+<hr>
+<h4 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h4><p>表示该注解用于什么地方。默认值为任何元素，表示该注解用于什么地方。可用 ElementType 参数包括。</p>
+<p><code>ElementType.PACKAGE</code>: 用于描述包</p>
+<p><code>ElementType.TYPE</code>: 用于描述类、接口(包括注解类型) 或enum声明</p>
+<p><code>ElementType.CONSTRUCTOR</code>: 用于描述构造器</p>
+<p><code>ElementType.FIELD</code> : 成员变量、对象、属性（包括enum实例）</p>
+<p><code>ElementType.METHOD</code> : 用于描述方法</p>
+<p><code>ElementType.PARAMETER</code>: 用于描述参数</p>
+<p><code>ElementType.LOCAL_VARIABLE</code> : 用于描述局部变量</p>
+<hr>
+<h4 id="Documented"><a href="#Documented" class="headerlink" title="Documented"></a>Documented</h4><p>一个简单的Annotations 标记注解，表示是否将注解信息添加在java 文档中。</p>
+<hr>
+<h4 id="Inherited"><a href="#Inherited" class="headerlink" title="Inherited"></a>Inherited</h4><p>定义该注释和子类的关系。</p>
+<p><code>@Inherited</code> 元注解是一个标记注解，<code>@Inherited</code> 阐述了某个被标注的类型是被继承的。如果一个使用了<code>@Inherited</code> 修饰的 <code>annotation</code> 类型被用于一个<code>class</code>，则这个<code>annotation</code> 将被用于该<strong><code>class 的子类</code></strong>。</p>
+<hr>
+<h3 id="常见标准的Annotation"><a href="#常见标准的Annotation" class="headerlink" title="常见标准的Annotation"></a>常见标准的Annotation</h3><ol>
+<li>Override</li>
+</ol>
+<p><code>java.lang.Override</code>是一个标记类型注解，它被用作标注方法。它说明了被标注的方法重载了父类的方法，起到了断言的作用。如果我们使用了这种注解在一个没有覆盖父类方法的方法时，java 编译器将以一个编译错误来警示。</p>
+<ol start="2">
+<li>Deprecated</li>
+</ol>
+<p><code>Deprecated</code> 也是一种标记类型注解。当一个类型或者类型成员使用<code>@Deprecated</code> 修饰的话，编译器将不鼓励使用这个被标注的程序元素。所以使用这种修饰具有一定的“延续性”：如果我们在代码中通过继承或者覆盖的方式使用了这个过时的类型或者成员，虽然继承或者覆盖后的类型或者成员并不是被声明为<code>@Deprecated</code>，但编译器仍然要报警。</p>
+<ol start="3">
+<li>SuppressWarnings</li>
+</ol>
+<p><code>SuppressWarning</code> 不是一个标记类型注解。它有一个类型为String[] 的成员，这个成员的值为被禁止的警告名。对于javac 编译器来讲，被-Xlint 选项有效的警告名也同样对<code>@SuppressWarings</code> 有效，同时编译器忽略掉无法识别的警告名。</p>
+<p><code>@SuppressWarnings(&quot;unchecked&quot;)</code></p>
+<hr>
+<h3 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h3><p>自定义注解类编写的一些规则:</p>
+<p>Annotation 型定义为<code>@interface</code>, 所有的<code>Annotation</code> 会自动继承<code>java.lang.Annotation</code>这一接口,并且不能再去继承别的类或是接口.</p>
+<p>参数成员只能用public 或默认(default) 这两个访问权修饰.</p>
+<p>参数成员只能用基本类型byte、short、char、int、long、float、double、boolean八种基本数据类型和String、Enum、Class、annotations等数据类型，以及这一些类型的数组.</p>
+<p>要获取类方法和字段的注解信息，必须通过<font color="red">Java的反射技术</font>来获取 Annotation 对象，因为你除此之外没有别的获取注解对象的方法.</p>
+<p>注解也可以没有定义成员，不过这样注解就没啥用了.</p>
+<hr>
+<h3 id="自定义注解实例"><a href="#自定义注解实例" class="headerlink" title="自定义注解实例"></a>自定义注解实例</h3><p><code>FruitName.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.annotation.Documented;<br><span class="hljs-keyword">import</span> java.lang.annotation.Retention;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.ElementType.FIELD;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.RetentionPolicy.RUNTIME;<br><br><span class="hljs-comment">/**<br> * 水果名称注解<br> */</span><br><span class="hljs-meta">@Target</span>(FIELD)<br><span class="hljs-meta">@Retention</span>(RUNTIME)<br><span class="hljs-meta">@Documented</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> FruitName &#123;<br>    <span class="hljs-function">String <span class="hljs-title">value</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> ""</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>FruitColor.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.annotation.Documented;<br><span class="hljs-keyword">import</span> java.lang.annotation.Retention;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.ElementType.FIELD;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.RetentionPolicy.RUNTIME;<br><br><span class="hljs-comment">/**<br> * 水果颜色注解<br> */</span><br><span class="hljs-meta">@Target</span>(FIELD)<br><span class="hljs-meta">@Retention</span>(RUNTIME)<br><span class="hljs-meta">@Documented</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> FruitColor &#123;<br>    <span class="hljs-comment">/**<br>     * 颜色枚举<br>     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Color&#123; BLUE,RED,GREEN&#125;;<br><br>    <span class="hljs-comment">/**<br>     * 颜色属性<br>     */</span><br>    <span class="hljs-function">Color <span class="hljs-title">fruitColor</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> Color.GREEN</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>FruitProvider.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.annotation.Documented;<br><span class="hljs-keyword">import</span> java.lang.annotation.Retention;<br><span class="hljs-keyword">import</span> java.lang.annotation.Target;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.ElementType.FIELD;<br><span class="hljs-keyword">import</span> <span class="hljs-keyword">static</span> java.lang.annotation.RetentionPolicy.RUNTIME;<br><br><br><span class="hljs-comment">/**<br> * 水果供应者注解<br> */</span><br><span class="hljs-meta">@Target</span>(FIELD)<br><span class="hljs-meta">@Retention</span>(RUNTIME)<br><span class="hljs-meta">@Documented</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> FruitProvider &#123;<br>    <span class="hljs-comment">/**<br>     * 供应商编号<br>     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">id</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> -1</span>;<br><br>    <span class="hljs-comment">/**<br>     * 供应商名称<br>     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">name</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> ""</span>;<br><br>    <span class="hljs-comment">/**<br>     * 供应商地址<br>     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">address</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> ""</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>FruitInfoUtil.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><br><span class="hljs-comment">/**<br> * 注解处理器<br> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FruitInfoUtil</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getFruitInfo</span><span class="hljs-params">(Class&lt;?&gt; clazz)</span></span>&#123;<br><br>        String strFruitName=<span class="hljs-string">" 水果名称："</span>;<br>        String strFruitColor=<span class="hljs-string">" 水果颜色："</span>;<br>        String strFruitProvicer=<span class="hljs-string">"供应商信息："</span>;<br><br>        Field[] fields = clazz.getDeclaredFields();<br><br>        <span class="hljs-keyword">for</span>(Field field :fields)&#123;<br>            <span class="hljs-keyword">if</span>(field.isAnnotationPresent(FruitName.class))&#123;<br>                FruitName fruitName = (FruitName) field.getAnnotation(FruitName.class);<br>                strFruitName=strFruitName+fruitName.value();<br>                System.out.println(strFruitName);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(field.isAnnotationPresent(FruitColor.class))&#123;<br>                FruitColor fruitColor= (FruitColor) field.getAnnotation(FruitColor.class);<br>                strFruitColor=strFruitColor+fruitColor.fruitColor().toString();<br>                System.out.println(strFruitColor);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(field.isAnnotationPresent(FruitProvider.class))&#123;<br>                FruitProvider fruitProvider= (FruitProvider) field.getAnnotation(FruitProvider.class);<br>                strFruitProvicer=<span class="hljs-string">" 供应商编号："</span>+fruitProvider.id()+<span class="hljs-string">" 供应商名称："</span>+fruitProvider.name()+<span class="hljs-string">" 供应商地址："</span>+fruitProvider.address();<br>                System.out.println(strFruitProvicer);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>Apple.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> test.FruitColor.Color;<br><br><span class="hljs-comment">/**<br> * 注解使用<br> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span> </span>&#123;<br><br>    <span class="hljs-meta">@FruitName</span>(<span class="hljs-string">"Apple"</span>)<br>    <span class="hljs-keyword">private</span> String appleName;<br><br>    <span class="hljs-meta">@FruitColor</span>(fruitColor=Color.RED)<br>    <span class="hljs-keyword">private</span> String appleColor;<br><br>    <span class="hljs-meta">@FruitProvider</span>(id=<span class="hljs-number">1</span>,name=<span class="hljs-string">"陕西红富士集团"</span>,address=<span class="hljs-string">"陕西省西安市延安路89号红富士大厦"</span>)<br>    <span class="hljs-keyword">private</span> String appleProvider;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAppleColor</span><span class="hljs-params">(String appleColor)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.appleColor = appleColor;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAppleColor</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> appleColor;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAppleName</span><span class="hljs-params">(String appleName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.appleName = appleName;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAppleName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> appleName;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAppleProvider</span><span class="hljs-params">(String appleProvider)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.appleProvider = appleProvider;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAppleProvider</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> appleProvider;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">displayName</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">"水果的名字是：苹果"</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>FruitRun.java</code></p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**<br> * 输出结果<br> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FruitRun</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        FruitInfoUtil.getFruitInfo(Apple.class);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>水果名称：Apple<br>水果颜色：RED<br>供应商编号：1 供应商名称：陕西红富士集团 供应商地址：陕西省西安市延安路89号红富士大厦</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/注解/" rel="tag"><i class="fas fa-tags"></i>注解</a>
+        
+        <a class="post-tag button" href="/tags/annotation/" rel="tag"><i class="fas fa-tags"></i>annotation</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
+  <button id="reward-button" class="button" disable="enable">打赏</button>
+  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/03/17/Mybatis代码生成器/" rel="next" title="Mybatis代码生成器"><i class="fas fa-angle-left"></i><span class="nav-title">Mybatis代码生成器</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "liuzhuo19940206",
+      "repo": "liuzhuo19940206.github.io",
+      "client_id": "d67adf7d637efbea7a69",
+      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "注解Annotation的浅析",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
+  
+  <h1 class="author-name">刘卓</h1>
+  <h2 class="author-description">hello,every body!</h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">114</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">55</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">43</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#什么是注解"><span class="toc-text">什么是注解</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#注解的用处"><span class="toc-text">注解的用处</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#注解的原理"><span class="toc-text">注解的原理</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#元注解"><span class="toc-text">元注解</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Retention"><span class="toc-text">Retention</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Target"><span class="toc-text">Target</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Documented"><span class="toc-text">Documented</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Inherited"><span class="toc-text">Inherited</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#常见标准的Annotation"><span class="toc-text">常见标准的Annotation</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#自定义注解"><span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#自定义注解实例"><span class="toc-text">自定义注解实例</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
+        
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #333333;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  </body>
+</html>

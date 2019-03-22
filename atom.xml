@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-18T02:03:29.373Z</updated>
+  <updated>2019-03-22T08:20:25.106Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>注解Annotation的浅析</title>
+    <link href="http://liuzhuo19940206.github.io/2019/03/22/%E6%B3%A8%E8%A7%A3Annotation%E7%9A%84%E6%B5%85%E6%9E%90/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/22/注解Annotation的浅析/</id>
+    <published>2019-03-22T07:21:50.000Z</published>
+    <updated>2019-03-22T08:20:25.106Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="注解" scheme="http://liuzhuo19940206.github.io/categories/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="annotation" scheme="http://liuzhuo19940206.github.io/categories/%E6%B3%A8%E8%A7%A3/annotation/"/>
+    
+    
+      <category term="注解" scheme="http://liuzhuo19940206.github.io/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="annotation" scheme="http://liuzhuo19940206.github.io/tags/annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis代码生成器</title>
@@ -425,30 +449,6 @@
       <category term="ConcurrentHashMap" scheme="http://liuzhuo19940206.github.io/tags/ConcurrentHashMap/"/>
     
       <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HashMap的实现原理</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/14/HashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/14/HashMap的实现原理/</id>
-    <published>2019-01-14T05:00:15.000Z</published>
-    <updated>2019-01-14T05:56:51.406Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;帮助大家理解，HashMap的底层原理，方便大家面试&lt;br&gt;
-    
-    </summary>
-    
-      <category term="HashMap" scheme="http://liuzhuo19940206.github.io/categories/HashMap/"/>
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/HashMap/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-      <category term="HashMap" scheme="http://liuzhuo19940206.github.io/tags/HashMap/"/>
     
   </entry>
   
