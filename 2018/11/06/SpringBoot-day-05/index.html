@@ -1,199 +1,553 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#333333">
-    <meta name="msapplication-TileColor" content="#333333">
-    
-    
-    
-    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    
-    
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
-    
-    
-    <link rel="manifest" href="/favicons/site.webmanifest">
-    
-    
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    
-    
-    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
-    
-    
-    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
-    
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
-    
-    
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<link rel="stylesheet" type="text/css" href="/css/post.css">
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SpringBoot_day_05, 解忧杂货店">
+    <meta name="description" content="今天，学习Springboot中的SpringMVC的自动配置原理
+Springboot的官方参考文档
+Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
+以下是SpringBo">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SpringBoot_day_05 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length === 0) {
-        searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/index.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>SpringBoot_day_05 | 解忧杂货店 - 爱生活爱解忧</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
     
-<header id="header" class="header" style="background: #333333;">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">解忧杂货店</a></h1>
-        <h2 class="subtitle">爱生活爱解忧</h2>
-      </div>
-      
-      <div class="logo">
-        <img src="/images/logo.png" alt="logo">
-      </div>
-      
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
     </div>
-    <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
-      <ul id="menu" role="menubar" aria-hidden="false">
+
+    
+
+    <ul class="menu-list mobile-menu-list">
         
-        <li role="menuitem"><a href="/">首页</a></li>
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/archives/">归档</a></li>
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/categories/">分类</a></li>
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/tags/">标签</a></li>
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/about/">关于</a></li>
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
         
-      </ul>
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
     </nav>
-  </div>
+
 </header>
 
 
-    <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
-            
-<div id="post" class="page">
-  
-  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/06/SpringBoot-day-05/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="刘卓">
-       <meta itemprop="description" content="hello,every body!">
-       <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="解忧杂货店">
-      </span>
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SpringBoot_day_05
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">SpringBoot_day_05</h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-06T10:56:30+08:00">2018-11-06 10:56:30</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      <p>今天，学习Springboot中的SpringMVC的自动配置原理<br><a id="more"></a></p>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/" target="_blank">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                            <a href="/tags/SpringBoot/" target="_blank">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                SpringBoot
+                            </a>
+                        
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-06
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        8.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        38 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>今天，学习Springboot中的SpringMVC的自动配置原理<br><a id="more"></a></p>
 <p><a href="https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications" target="_blank" rel="noopener">Springboot的官方参考文档</a></p>
 <h2 id="Spring-MVC-auto-configuration"><a href="#Spring-MVC-auto-configuration" class="headerlink" title="Spring MVC auto-configuration"></a>Spring MVC auto-configuration</h2><p>Spring Boot 自动配置好了SpringMVC</p>
 <p>以下是SpringBoot对SpringMVC的默认配置:（<strong>WebMvcAutoConfiguration</strong>）</p>
-<h3 id="ContentNegotiatingViewResolver-and-BeanNameViewResolver"><a href="#ContentNegotiatingViewResolver-and-BeanNameViewResolver" class="headerlink" title="ContentNegotiatingViewResolver and  BeanNameViewResolver"></a>ContentNegotiatingViewResolver and  BeanNameViewResolver</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>@ConditionalOnBean(View.class)<br>@ConditionalOnMissingBean<br>public BeanNameViewResolver beanNameViewResolver() &#123;<br>	BeanNameViewResolver resolver = new BeanNameViewResolver();<br>	resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 10);<br>	return resolver;<br>&#125;<br><br>@Bean<br>@ConditionalOnBean(ViewResolver.class)<br>@ConditionalOnMissingBean(name = &quot;viewResolver&quot;, value = ContentNegotiatingViewResolver.class)<br>public ContentNegotiatingViewResolver viewResolver(BeanFactory beanFactory) &#123;<br>	ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();<br>	resolver.setContentNegotiationManager(<br>			beanFactory.getBean(ContentNegotiationManager.class));<br>	// ContentNegotiatingViewResolver uses all the other view resolvers to locate<br>	// a view so it should have a high precedence<br>	resolver.setOrder(Ordered.HIGHEST_PRECEDENCE);<br>	return resolver;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>　　1) 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何<br>　　渲染（转发？重定向？））</p>
+<h3 id="ContentNegotiatingViewResolver-and-BeanNameViewResolver"><a href="#ContentNegotiatingViewResolver-and-BeanNameViewResolver" class="headerlink" title="ContentNegotiatingViewResolver and  BeanNameViewResolver"></a>ContentNegotiatingViewResolver and  BeanNameViewResolver</h3><pre><code>        @Bean
+        @ConditionalOnBean(View.class)
+        @ConditionalOnMissingBean
+        public BeanNameViewResolver beanNameViewResolver() {
+            BeanNameViewResolver resolver = new BeanNameViewResolver();
+            resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 10);
+            return resolver;
+        }
+
+        @Bean
+        @ConditionalOnBean(ViewResolver.class)
+        @ConditionalOnMissingBean(name = &quot;viewResolver&quot;, value = ContentNegotiatingViewResolver.class)
+        public ContentNegotiatingViewResolver viewResolver(BeanFactory beanFactory) {
+            ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+            resolver.setContentNegotiationManager(
+                    beanFactory.getBean(ContentNegotiationManager.class));
+            // ContentNegotiatingViewResolver uses all the other view resolvers to locate
+            // a view so it should have a high precedence
+            resolver.setOrder(Ordered.HIGHEST_PRECEDENCE);
+            return resolver;
+        }
+</code></pre><p>　　1) 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何<br>　　渲染（转发？重定向？））</p>
 <p>　　2) ContentNegotiatingViewResolver：组合所有的视图解析器的；</p>
 <p>　　3) 如何定制：<font color="#FF3E96"><strong>我们可以自己给容器中添加一个视图解析器；ContentNegotiatingViewResolver会自动将其组合进来；</strong></font></p>
 <h3 id="Support-for-serving-static-resources-including-support-for-WebJars"><a href="#Support-for-serving-static-resources-including-support-for-WebJars" class="headerlink" title="Support for serving static resources, including support for WebJars"></a>Support for serving static resources, including support for WebJars</h3><p>　　静态资源文件夹路径,webjars（上一天，我们已经学过了）</p>
 <h3 id="Static-index-html-support"><a href="#Static-index-html-support" class="headerlink" title="Static  index.html support"></a>Static  index.html support</h3><p>　　静态首页index.html访问.</p>
 <h3 id="Custom-Favicon-support"><a href="#Custom-Favicon-support" class="headerlink" title="Custom  Favicon support"></a>Custom  Favicon support</h3><p>　　favicon.ico图标的访问。</p>
 <h3 id="自动注册了-Converter、GenericConverter、Formatter-beans"><a href="#自动注册了-Converter、GenericConverter、Formatter-beans" class="headerlink" title="自动注册了 Converter、GenericConverter、Formatter beans."></a>自动注册了 Converter、GenericConverter、Formatter beans.</h3><p>　　1）Converter：转换器； public String hello(User user)：类型转换使用Converter。</p>
-<p>　　2）Formatter：格式化器； 2017.12.17===Date。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean        <br>@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;date‐format&quot;)//在文件中配置日期格式化的规则<br>public Formatter&lt;Date&gt; dateFormatter() &#123;        <br>return new DateFormatter(this.mvcProperties.getDateFormat());//日期格式化组件            <br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>　　3）<font color="#FF3E96"><strong>自己添加的格式化器转换器，我们只需要放在容器中即可.</strong></font></p>
+<p>　　2）Formatter：格式化器； 2017.12.17===Date。</p>
+<pre><code>@Bean        
+@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;date‐format&quot;)//在文件中配置日期格式化的规则
+public Formatter&lt;Date&gt; dateFormatter() {        
+return new DateFormatter(this.mvcProperties.getDateFormat());//日期格式化组件            
+} 
+</code></pre><p>　　3）<font color="#FF3E96"><strong>自己添加的格式化器转换器，我们只需要放在容器中即可.</strong></font></p>
 <h3 id="HttpMessageConverters"><a href="#HttpMessageConverters" class="headerlink" title="HttpMessageConverters"></a>HttpMessageConverters</h3><p>　　1) HttpMessageConverter: SpringMVC用来转换Http请求和响应的；User—Json；</p>
 <p>　　2) HttpMessageConverters:是从容器中获取所有的HttpMessageConverter；</p>
-<p>　　3) <font color="#FF3E96"><strong>自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）</strong></font><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class MyConfiguration &#123;<br><br>    @Bean<br>    public HttpMessageConverters customConverters() &#123;<br>        HttpMessageConverter&lt;?&gt; additional = ...<br>        HttpMessageConverter&lt;?&gt; another = ...<br>        return new HttpMessageConverters(additional, another);//多参数<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h3 id="MessageCodesResolver"><a href="#MessageCodesResolver" class="headerlink" title="MessageCodesResolver"></a>MessageCodesResolver</h3><p>　　定义错误代码生成规则 (参考官方文档)</p>
+<p>　　3) <font color="#FF3E96"><strong>自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）</strong></font></p>
+<pre><code>@Configuration
+public class MyConfiguration {
+
+    @Bean
+    public HttpMessageConverters customConverters() {
+        HttpMessageConverter&lt;?&gt; additional = ...
+        HttpMessageConverter&lt;?&gt; another = ...
+        return new HttpMessageConverters(additional, another);//多参数
+    }
+
+}
+</code></pre><h3 id="MessageCodesResolver"><a href="#MessageCodesResolver" class="headerlink" title="MessageCodesResolver"></a>MessageCodesResolver</h3><p>　　定义错误代码生成规则 (参考官方文档)</p>
 <h3 id="ConfigurableWebBindingInitializer"><a href="#ConfigurableWebBindingInitializer" class="headerlink" title="ConfigurableWebBindingInitializer"></a>ConfigurableWebBindingInitializer</h3><p>　　1）数据绑定的功能</p>
-<p>　　2）<font color="#FF3E96"><strong>我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）</strong></font><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">初始化WebDataBinder；<br>请求数据=====JavaBean；<br></code></pre></td></tr></table></figure></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><font color="red"><strong>org.springframework.boot.autoconfigure.web：web的所有自动场景；</strong></font>
+<p>　　2）<font color="#FF3E96"><strong>我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）</strong></font></p>
+<pre><code>初始化WebDataBinder；
+请求数据=====JavaBean；
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><font color="red"><strong>org.springframework.boot.autoconfigure.web：web的所有自动场景；</strong></font>
 
 <p><strong>如果，你想使用Springboot的默认配置的Web功能，然后添加自己额外的Web组件，就：添加一个@Configuration的配置类，然后继承WebMvcConfigurerAdapter抽象类。（不能添加@EnableWebMvc注解）</strong></p>
 <p><strong>如果，你不想使用Springboot的默认Web功能，那么，就：添加一个@Configuration的配置类，并且加上@EnableWebMvc注解，那么就你完全自定义SpringMVC组件。</strong></p>
-<p>官网文档中，这么说明的：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">If you want to keep Spring Boot MVC features, and you just want to add additional MVC configuration<br>(interceptors, formatters, view controllers etc.) you can add your own  @Configuration class of type<br>WebMvcConfigurerAdapter , but without  @EnableWebMvc . If you wish to provide custom instances of<br>RequestMappingHandlerMapping ,  RequestMappingHandlerAdapter or  ExceptionHandlerExceptionResolver<br>you can declare a  WebMvcRegistrationsAdapter instance providing such components.<br>If you want to take complete control of Spring MVC, you can add your own  @Configuration annotated with<br>@EnableWebMvc .<br></code></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="扩展SpringMVC"><a href="#扩展SpringMVC" class="headerlink" title="扩展SpringMVC"></a>扩展SpringMVC</h2><p>我们以前开发SpringMVC的时候，都会在xml中配置如下设置（自定义配置）：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;mvc:view‐controller path=&quot;/hello&quot; view‐name=&quot;success&quot;/&gt;<br><br>&lt;mvc:interceptors&gt;<br>	        &lt;mvc:interceptor&gt;<br>	            &lt;mvc:mapping path=&quot;/hello&quot;/&gt;<br>	            &lt;bean&gt;&lt;/bean&gt;<br>	        &lt;/mvc:interceptor&gt;<br>    &lt;/mvc:interceptors&gt;<br></code></pre></td></tr></table></figure></p>
-<p>那么现在呢？</p>
+<p>官网文档中，这么说明的：</p>
+<pre><code>If you want to keep Spring Boot MVC features, and you just want to add additional MVC configuration
+(interceptors, formatters, view controllers etc.) you can add your own  @Configuration class of type
+WebMvcConfigurerAdapter , but without  @EnableWebMvc . If you wish to provide custom instances of
+RequestMappingHandlerMapping ,  RequestMappingHandlerAdapter or  ExceptionHandlerExceptionResolver
+you can declare a  WebMvcRegistrationsAdapter instance providing such components.
+If you want to take complete control of Spring MVC, you can add your own  @Configuration annotated with
+@EnableWebMvc .
+</code></pre><hr>
+<h2 id="扩展SpringMVC"><a href="#扩展SpringMVC" class="headerlink" title="扩展SpringMVC"></a>扩展SpringMVC</h2><p>我们以前开发SpringMVC的时候，都会在xml中配置如下设置（自定义配置）：</p>
+<pre><code>   &lt;mvc:view‐controller path=&quot;/hello&quot; view‐name=&quot;success&quot;/&gt;
+
+   &lt;mvc:interceptors&gt;
+            &lt;mvc:interceptor&gt;
+                &lt;mvc:mapping path=&quot;/hello&quot;/&gt;
+                &lt;bean&gt;&lt;/bean&gt;
+            &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
+</code></pre><p>那么现在呢？</p>
 <font color="#FF3E96">编写一个配置类（@Configuration），是WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc;</font>
 
 <p>既保留了所有的Springboot自动配置，也能用我们扩展的配置；</p>
-<p>在我们的昨天的项目中，在com.liuzhuo.springboot包下，创建config包，并且创建Myconfig类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class Myconfig extends WebMvcConfigurerAdapter &#123;<br><br>    @Override<br>    public void addViewControllers(ViewControllerRegistry registry) &#123;<br>        //super.addViewControllers(registry);<br><br>        //浏览器发送 /liuzhuo 请求来到 success<br>        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>然后在resources下的templates中：创建sucess.html文件：<br><img src="/images/QQ截图20181106141537.png"></p>
+<p>在我们的昨天的项目中，在com.liuzhuo.springboot包下，创建config包，并且创建Myconfig类：</p>
+<pre><code>@Configuration
+public class Myconfig extends WebMvcConfigurerAdapter {
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        //super.addViewControllers(registry);
+
+        //浏览器发送 /liuzhuo 请求来到 success
+        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);
+    }
+}
+</code></pre><p>然后在resources下的templates中：创建sucess.html文件：<br><img src="/images/QQ截图20181106141537.png"></p>
 <p>启动Springboot应用：</p>
 <p>在浏览器中输入：<code>http://localhost:8080/liuzhuo</code><br><img src="/images/QQ截图20181106141651.png"></p>
 <p>说明：我们自己配置的映射url成功。</p>
@@ -202,28 +556,97 @@
 <p>为什么，此时我们既能使用Springboot的默认配置，又能使用自己的配置呢？</p>
 <p><strong>原理：</strong></p>
 <p>1）查看WebMvcAutoConfiguration是SpringMVC的自动配置类</p>
-<p>2）在WebMvcAutoConfiguration中，能发现一个静态内部类：WebMvcAutoConfigurationAdapter<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">// Defined as a nested config to ensure WebMvcConfigurerAdapter is not read when not<br>	// on the classpath<br>	@Configuration<br>	@Import(EnableWebMvcConfiguration.class)<br>	@EnableConfigurationProperties(&#123; WebMvcProperties.class, ResourceProperties.class &#125;)<br>	public static class WebMvcAutoConfigurationAdapter extends WebMvcConfigurerAdapter &#123;<br></code></pre></td></tr></table></figure></p>
-<p>该类上面有一个注解：@Import(EnableWebMvcConfiguration.class)。说明导入了EnableWebMvcConfiguration类。</p>
-<p>3）打开EnableWebMvcConfiguration类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration<br></code></pre></td></tr></table></figure></p>
-<p>继承了DelegatingWebMvcConfiguration类，打开DelegatingWebMvcConfiguration类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport &#123;<br><br>      private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();<br><br>      //从容器中获取所有的WebMvcConfigurer    <br>      @Autowired(required = false)<br>      public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) &#123;<br>          if (!CollectionUtils.isEmpty(configurers)) &#123;<br>              this.configurers.addWebMvcConfigurers(configurers);<br>             //一个参考实现；将所有的WebMvcConfigurer相关配置都来一起调用；      <br>             @Override    <br>             // public void addViewControllers(ViewControllerRegistry registry) &#123;<br>              //    for (WebMvcConfigurer delegate : this.delegates) &#123;<br>               //       delegate.addViewControllers(registry);<br>               //   &#125;<br>              &#125;<br>          &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>4) 容器中所有的WebMvcConfigurer都会一起起作用</p>
+<p>2）在WebMvcAutoConfiguration中，能发现一个静态内部类：WebMvcAutoConfigurationAdapter</p>
+<pre><code>// Defined as a nested config to ensure WebMvcConfigurerAdapter is not read when not
+    // on the classpath
+    @Configuration
+    @Import(EnableWebMvcConfiguration.class)
+    @EnableConfigurationProperties({ WebMvcProperties.class, ResourceProperties.class })
+    public static class WebMvcAutoConfigurationAdapter extends WebMvcConfigurerAdapter {
+</code></pre><p>该类上面有一个注解：@Import(EnableWebMvcConfiguration.class)。说明导入了EnableWebMvcConfiguration类。</p>
+<p>3）打开EnableWebMvcConfiguration类：</p>
+<pre><code>@Configuration
+public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration 
+</code></pre><p>继承了DelegatingWebMvcConfiguration类，打开DelegatingWebMvcConfiguration类：</p>
+<pre><code>@Configuration
+public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+
+      private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+
+      //从容器中获取所有的WebMvcConfigurer    
+      @Autowired(required = false)
+      public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) {
+          if (!CollectionUtils.isEmpty(configurers)) {
+              this.configurers.addWebMvcConfigurers(configurers);
+             //一个参考实现；将所有的WebMvcConfigurer相关配置都来一起调用；      
+             @Override    
+             // public void addViewControllers(ViewControllerRegistry registry) {
+              //    for (WebMvcConfigurer delegate : this.delegates) {
+               //       delegate.addViewControllers(registry);
+               //   }
+              }
+          }
+} 
+</code></pre><p>4) 容器中所有的WebMvcConfigurer都会一起起作用</p>
 <p>5) 我们的配置类也会被调用</p>
 <p>效果：SpringMVC的自动配置和我们的扩展配置都会起作用</p>
 <h2 id="全面接管SpringMVC"><a href="#全面接管SpringMVC" class="headerlink" title="全面接管SpringMVC"></a>全面接管SpringMVC</h2><p>SpringBoot对SpringMVC的自动配置不需要了，所有都是我们自己配置；所有的SpringMVC的自动配置都失效了</p>
 <p><strong>我们需要在配置类中添加@EnableWebMvc即可</strong></p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能<br>@EnableWebMvc<br>@Configuration<br>public class MyMvcConfig extends WebMvcConfigurerAdapter &#123;<br>    @Override<br>    public void addViewControllers(ViewControllerRegistry registry) &#123;<br>       // super.addViewControllers(registry);<br>        //浏览器发送 /atguigu 请求来到 success<br>        registry.addViewController(&quot;/atguigu&quot;).setViewName(&quot;success&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106143304.png"></p>
+<pre><code>//使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
+@EnableWebMvc
+@Configuration
+public class MyMvcConfig extends WebMvcConfigurerAdapter {
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+       // super.addViewControllers(registry);
+        //浏览器发送 /atguigu 请求来到 success
+        registry.addViewController(&quot;/atguigu&quot;).setViewName(&quot;success&quot;);
+    }
+}
+</code></pre><p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106143304.png"></p>
 <p>默认的静态主页失效了。去掉@EnableWebMvc，静态主页映射就会成功。</p>
 <p>静态主页映射：META-INF/resources、resourcs、static、public下的index.html都会映射：/**</p>
 <hr>
 <p>为啥配置了@EnableWebMvc注解，SpringBoot的默认配置会失效呢？</p>
 <p><strong>原理：</strong></p>
-<p>1）打开@EnableWebMvc注解：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Retention(RetentionPolicy.RUNTIME)<br>@Target(ElementType.TYPE)<br>@Documented<br>@Import(DelegatingWebMvcConfiguration.class)<br>public @interface EnableWebMvc &#123;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>导入了DelegatingWebMvcConfiguration类。</p>
-<p>2）打开DelegatingWebMvcConfiguration类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport &#123;<br><br>	private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();<br><br><br>	@Autowired(required = false)<br>	public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) &#123;<br>		if (!CollectionUtils.isEmpty(configurers)) &#123;<br>			this.configurers.addWebMvcConfigurers(configurers);<br>		&#125;<br>	&#125;<br><br>   ···<br><br>｝<br></code></pre></td></tr></table></figure></p>
-<p>DelegatingWebMvcConfiguration类：配置了SpringMVC的基本设置。</p>
-<p>3）打开WebMvcAutoConfiguration：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>@ConditionalOnWebApplication<br>@ConditionalOnClass(&#123; Servlet.class, DispatcherServlet.class,<br>		WebMvcConfigurerAdapter.class &#125;)<br>//容器中没有这个组件的时候，这个自动配置类才生效<br>@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)<br>@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)<br>@AutoConfigureAfter(&#123; DispatcherServletAutoConfiguration.class,<br>		ValidationAutoConfiguration.class &#125;)<br>public class WebMvcAutoConfiguration &#123;<br></code></pre></td></tr></table></figure></p>
-<p>上面的一个条件注解：@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</p>
+<p>1）打开@EnableWebMvc注解：</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Documented
+@Import(DelegatingWebMvcConfiguration.class)
+public @interface EnableWebMvc {
+}
+</code></pre><p>导入了DelegatingWebMvcConfiguration类。</p>
+<p>2）打开DelegatingWebMvcConfiguration类：</p>
+<pre><code>@Configuration
+public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+
+    private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+
+
+    @Autowired(required = false)
+    public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) {
+        if (!CollectionUtils.isEmpty(configurers)) {
+            this.configurers.addWebMvcConfigurers(configurers);
+        }
+    }
+
+   ···
+
+｝
+</code></pre><p>DelegatingWebMvcConfiguration类：配置了SpringMVC的基本设置。</p>
+<p>3）打开WebMvcAutoConfiguration：</p>
+<pre><code>@Configuration
+@ConditionalOnWebApplication
+@ConditionalOnClass({ Servlet.class, DispatcherServlet.class,
+        WebMvcConfigurerAdapter.class })
+//容器中没有这个组件的时候，这个自动配置类才生效
+@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
+@AutoConfigureAfter({ DispatcherServletAutoConfiguration.class,
+        ValidationAutoConfiguration.class })
+public class WebMvcAutoConfiguration {
+</code></pre><p>上面的一个条件注解：@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</p>
 <p>当没有WebMvcConfigurationSupport存在时，WebMvcAutoConfiguration自动配置才会生效。</p>
 <p>而DelegatingWebMvcConfiguration就是WebMvcConfigurationSupport。</p>
 <p>所以@EnableWebMvc将WebMvcConfigurationSupport组件导入进来，从而使WebMvcAutoConfiguration自动配置失效。</p>
@@ -247,27 +670,52 @@
 <p>发现出现的页面是：static下的index.html页面，而不是template下的index.html页面。<br><img src="/images/QQ截图20181106151609.png" style="width:50%"></p>
 <p>因为静态主页会加载：META-INF/resources、resourcs、static、public下的index.html</p>
 <p>所以，我们不要重新映射我们的主页。</p>
-<p>在我们的config下的Myconfig配置中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration<br>public class Myconfig extends WebMvcConfigurerAdapter &#123;<br><br>    @Override<br>    public void addViewControllers(ViewControllerRegistry registry) &#123;<br>        //super.addViewControllers(registry);<br>        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);<br><br>        //添加主页的映射<br>        registry.addViewController(&quot;/&quot;).setViewName(&quot;login&quot;);<br>        registry.addViewController(&quot;/index.html&quot;).setViewName(&quot;login&quot;);<br>        registry.addViewController(&quot;/login.html&quot;).setViewName(&quot;login&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>然后，将templates下的index.html 改为 login.html</p>
+<p>在我们的config下的Myconfig配置中：</p>
+<pre><code>@Configuration
+public class Myconfig extends WebMvcConfigurerAdapter {
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        //super.addViewControllers(registry);
+        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);
+
+        //添加主页的映射
+        registry.addViewController(&quot;/&quot;).setViewName(&quot;login&quot;);
+        registry.addViewController(&quot;/index.html&quot;).setViewName(&quot;login&quot;);
+        registry.addViewController(&quot;/login.html&quot;).setViewName(&quot;login&quot;);
+    }
+}
+</code></pre><p>然后，将templates下的index.html 改为 login.html</p>
 <p>重新启动应用：</p>
 <p>在浏览器中输入：<br><code>http://localhost:8080/</code><br><code>http://localhost:8080/login.html</code><br><code>http://localhost:8080/index.html</code></p>
 <p>都是以下的页面：<br><img src="/images/QQ截图20181106152941.png"></p>
 <p>5）因为我们使用thymeleaf，所以需要在每个页面头部添加命名空间：</p>
-<p>   <code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot; &gt;<br></code></pre></td></tr></table></figure></p>
-<p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="/images/QQ截图20181106153622.png"><br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!--bootstrap的jar包--&gt;<br>&lt;dependency&gt;<br>    &lt;groupId&gt;org.webjars&lt;/groupId&gt;<br>    &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;<br>    &lt;version&gt;4.0.0&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
-<p>在我们的login.html页面的中。找到引用bootstrap的地方：</p>
+<p>   <code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code></p>
+<pre><code>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot; &gt;
+</code></pre><p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="/images/QQ截图20181106153622.png"></p>
+<pre><code>        &lt;!--bootstrap的jar包--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.webjars&lt;/groupId&gt;
+            &lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
+            &lt;version&gt;4.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><p>在我们的login.html页面的中。找到引用bootstrap的地方：</p>
 <p>th:href=”@{/webjars/bootstrap/4.0.0/css/bootstrap.css}”</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- Bootstrap core CSS --&gt;<br>&lt;link href=&quot;asserts/css/bootstrap.min.css&quot; th:href=&quot;@&#123;/webjars/bootstrap/4.0.0/css/bootstrap.css&#125;&quot; rel=&quot;stylesheet&quot;&gt;<br></code></pre></td></tr></table></figure>
-<p>查看有么有配置对？ctrl + 鼠标左键：能跳转到该文件处。</p>
+<pre><code>    &lt;!-- Bootstrap core CSS --&gt;
+    &lt;link href=&quot;asserts/css/bootstrap.min.css&quot; th:href=&quot;@{/webjars/bootstrap/4.0.0/css/bootstrap.css}&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre><p>查看有么有配置对？ctrl + 鼠标左键：能跳转到该文件处。</p>
 <p>使用thymeleaf的th:href=”@{}”的好处：当我们给项目添加根目录时，也能自动帮我们添加上跟目录。</p>
-<p>在application.properties中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">server.context-path=/curd<br></code></pre></td></tr></table></figure></p>
-<p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106154552.png"></p>
+<p>在application.properties中：</p>
+<pre><code>server.context-path=/curd
+</code></pre><p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106154552.png"></p>
 <p>输入：<code>http://localhost:8080/curd</code><br><img src="/images/QQ截图20181106154631.png"></p>
 <p>右键审查元素：<br><img src="/images/QQ截图20181106154730.png"></p>
 <p><strong>能看到：link 中 href：自动帮我们添加上了curd的根目录</strong></p>
 <p>7）修改我们的css配置路径：</p>
-<p>在login.html中：<br>th:href=”@{/asserts/css/signin.css}”<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- Custom styles for this template --&gt;<br>&lt;link href=&quot;asserts/css/signin.css&quot; th:href=&quot;@&#123;/asserts/css/signin.css&#125;&quot; rel=&quot;stylesheet&quot;&gt;<br></code></pre></td></tr></table></figure></p>
-<p>页面中的其他引入资源，依次类推改写完毕即可。</p>
+<p>在login.html中：<br>th:href=”@{/asserts/css/signin.css}”</p>
+<pre><code>    &lt;!-- Custom styles for this template --&gt;
+    &lt;link href=&quot;asserts/css/signin.css&quot; th:href=&quot;@{/asserts/css/signin.css}&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre><p>页面中的其他引入资源，依次类推改写完毕即可。</p>
 <hr>
 <h3 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h3><p>以前，我们在SpringMVC中编写国际化时的步骤：</p>
 <p>1）<strong>编写国际化配置文件</strong></p>
@@ -293,10 +741,38 @@
 <p>添加上。</p>
 <hr>
 <p>2） SpringBoot自动配置好了管理国际化资源文件的组件(<strong>MessageSourceAutoConfiguration</strong>)</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@ConfigurationProperties(prefix = &quot;spring.messages&quot;)<br>public class MessageSourceAutoConfiguration &#123;<br>   <br>    /**<br>	 * Comma‐separated list of basenames (essentially a fully‐qualified classpath    <br>	 * location), each following the ResourceBundle convention with relaxed support for    <br>	 * slash based locations. If it doesn&apos;t contain a package qualifier (such as    <br>	 * &quot;org.mypackage&quot;), it will be resolved from the classpath root.    <br>	 */    <br>    private String basename = &quot;messages&quot;;      <br>    //我们的配置文件可以直接放在类路径下叫messages.properties；<br>   <br>        @Bean<br>	public MessageSource messageSource() &#123;    <br>	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();        <br>	   if (StringUtils.hasText(this.basename)) &#123;        <br>             //设置国际化资源文件的基础名（去掉语言国家代码的）<br>		    messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(            <br>		    StringUtils.trimAllWhitespace(this.basename)));                    <br>		&#125;        <br>		if (this.encoding != null) &#123;        <br>		   messageSource.setDefaultEncoding(this.encoding.name());            <br>		&#125;        <br>		messageSource.setFallbackToSystemLocale(this.fallbackToSystemLocale);        <br>		messageSource.setCacheSeconds(this.cacheSeconds);        <br>		messageSource.setAlwaysUseMessageFormat(this.alwaysUseMessageFormat);        <br>		return messageSource;        <br>	&#125;<br></code></pre></td></tr></table></figure>
-<p>如果，我们的国际化文件的名字就是messages的话，而放在类路径下的话，我们直接就可以使用了。</p>
-<p>但是，现在我们使用了i18n文件，所以，我们需要在application.properties配置文件中：配置国际化的信息：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring.messages.basename=i18n.login<br></code></pre></td></tr></table></figure></p>
-<p>i18n文件夹，login是文件的名字。</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;spring.messages&quot;)
+public class MessageSourceAutoConfiguration {
+
+    /**
+     * Comma‐separated list of basenames (essentially a fully‐qualified classpath    
+     * location), each following the ResourceBundle convention with relaxed support for    
+     * slash based locations. If it doesn&#39;t contain a package qualifier (such as    
+     * &quot;org.mypackage&quot;), it will be resolved from the classpath root.    
+     */    
+    private String basename = &quot;messages&quot;;      
+    //我们的配置文件可以直接放在类路径下叫messages.properties；
+
+        @Bean
+    public MessageSource messageSource() {    
+    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();        
+       if (StringUtils.hasText(this.basename)) {        
+             //设置国际化资源文件的基础名（去掉语言国家代码的）
+            messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(            
+            StringUtils.trimAllWhitespace(this.basename)));                    
+        }        
+        if (this.encoding != null) {        
+           messageSource.setDefaultEncoding(this.encoding.name());            
+        }        
+        messageSource.setFallbackToSystemLocale(this.fallbackToSystemLocale);        
+        messageSource.setCacheSeconds(this.cacheSeconds);        
+        messageSource.setAlwaysUseMessageFormat(this.alwaysUseMessageFormat);        
+        return messageSource;        
+    }
+</code></pre><p>如果，我们的国际化文件的名字就是messages的话，而放在类路径下的话，我们直接就可以使用了。</p>
+<p>但是，现在我们使用了i18n文件，所以，我们需要在application.properties配置文件中：配置国际化的信息：</p>
+<pre><code>spring.messages.basename=i18n.login
+</code></pre><p>i18n文件夹，login是文件的名字。</p>
 <p>3）修改login.html中的需要国际化的部分</p>
 <p>我们从thymeleaf的官方文档中，看到了如果使用国际化的话，使用 <strong>#{}</strong><br><img src="/images/QQ截图20181106171830.png"></p>
 <p>4）启动应用：<br><img src="/images/QQ截图20181106172121.png"></p>
@@ -307,8 +783,20 @@
 <hr>
 <p><strong>原理：</strong></p>
 <p>国际化Locale（区域信息对象）；LocaleResolver（获取区域信息对象）；</p>
-<p>打开WebMvcAutoConfiguration类：寻找与国际化有关的类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>@ConditionalOnMissingBean<br>@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;locale&quot;)<br>public LocaleResolver localeResolver() &#123;<br>	if (this.mvcProperties<br>			.getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) &#123;<br>		return new FixedLocaleResolver(this.mvcProperties.getLocale());<br>	&#125;<br>	AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();<br>	localeResolver.setDefaultLocale(this.mvcProperties.getLocale());<br>	return localeResolver;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>通过此类：我们能发现，Springboot给我们配置的默认的国家化Locale的是一个AcceptHeaderLocaleResolver。</p>
+<p>打开WebMvcAutoConfiguration类：寻找与国际化有关的类：</p>
+<pre><code>        @Bean
+        @ConditionalOnMissingBean
+        @ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;locale&quot;)
+        public LocaleResolver localeResolver() {
+            if (this.mvcProperties
+                    .getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) {
+                return new FixedLocaleResolver(this.mvcProperties.getLocale());
+            }
+            AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
+            localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
+            return localeResolver;
+        }
+</code></pre><p>通过此类：我们能发现，Springboot给我们配置的默认的国家化Locale的是一个AcceptHeaderLocaleResolver。</p>
 <p>AcceptHeaderLocaleResolver：是通过每次请求时，在请求头在获取请求的语言来进行国际化识别的。</p>
 <p>启动我们的应用：<br><img src="/images/QQ截图20181106174300.png"><br><img src="/images/QQ截图20181106174349.png" style="width:50%"></p>
 <p>我们发现了Accept-Language：zh-CN.</p>
@@ -323,10 +811,38 @@
 <hr>
 <p>1）在component包下：创建MyLocaleResolver类(实现LocaleResolver)：</p>
 <p><img src="/images/QQ截图20181106175524.png"></p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MyLocaleResolver implements LocaleResolver &#123;<br><br><br>    @Override<br>    public Locale resolveLocale(HttpServletRequest request) &#123;<br><br>        //获取请求的参数信息<br>        String language = request.getParameter(&quot;language&quot;);<br>        //获取默认的地域信息。<br>        Locale locale = Locale.getDefault();<br><br>        if (!StringUtils.isEmpty(language)) &#123;<br>            String[] split = language.split(&quot;_&quot;);<br>            //第一个参数：语言信息<br>            //第二个参数：国家信息<br>            locale = new Locale(split[0], split[1]);<br>        &#125;<br>        return locale;<br>    &#125;<br><br>    @Override<br>    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) &#123;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>2）将我们的LocaleResolver添加到容器中：</p>
-<p>在Myconfig类中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>public LocaleResolver localeResolver() &#123;<br>    return new MyLocaleResolver();<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>3）修改login.html页面：<br><img src="/images/QQ截图20181106180204.png"></p>
+<pre><code>public class MyLocaleResolver implements LocaleResolver {
+
+
+    @Override
+    public Locale resolveLocale(HttpServletRequest request) {
+
+        //获取请求的参数信息
+        String language = request.getParameter(&quot;language&quot;);
+        //获取默认的地域信息。
+        Locale locale = Locale.getDefault();
+
+        if (!StringUtils.isEmpty(language)) {
+            String[] split = language.split(&quot;_&quot;);
+            //第一个参数：语言信息
+            //第二个参数：国家信息
+            locale = new Locale(split[0], split[1]);
+        }
+        return locale;
+    }
+
+    @Override
+    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+
+    }
+}
+</code></pre><p>2）将我们的LocaleResolver添加到容器中：</p>
+<p>在Myconfig类中：</p>
+<pre><code>    @Bean
+    public LocaleResolver localeResolver() {
+        return new MyLocaleResolver();
+    }
+</code></pre><p>3）修改login.html页面：<br><img src="/images/QQ截图20181106180204.png"></p>
 <p>4）启动应用：</p>
 <p>点击底下的：中文<br><img src="/images/QQ截图20181106180248.png"></p>
 <p>点击底下的：English<br><img src="/images/QQ截图20181106180353.png"></p>
@@ -336,17 +852,41 @@
 <p>因为，此时：我们使用的是自己的LocaleResovler：</p>
 <p>当获取的language：String language = request.getParameter(“language”);<br>为空时，我们的Locale locale = Locale.getDefault();是获取的是本地的，我们这里就是中文。<br>不再是使用请求头中的那种方式了。</p>
 <h3 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h3><p>1）修改我们的登入页面：login.html</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;form class=&quot;form-signin&quot; action=&quot;dashboard.html&quot; th:action=&quot;@&#123;/user/login&#125;&quot; method=&quot;post&quot;&gt;<br></code></pre></td></tr></table></figure>
-<p>登入的action改为：/user/login。请求方式：post。</p>
-<p>2）在controller包下，创建LoginController：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class LoginController &#123;<br><br>    //@RequestMapping(value = &quot;/user/login&quot;,method = RequestMethod.POST)<br>    @PostMapping(value = &quot;/user/login&quot;)<br>    public String login(@RequestParam(&quot;username&quot;) String username,<br>                        @RequestParam(&quot;password&quot;) String password,<br>                        Map&lt;String, Object&gt; map) &#123;<br><br>        if (!StringUtils.isEmpty(username) &amp;&amp;<br>                !StringUtils.isEmpty(password) &amp;&amp;<br>                &quot;admin&quot;.equals(username) &amp;&amp;<br>                &quot;123456&quot;.equals(password)) &#123;<br>            //登入成功！<br>            return &quot;dashboard&quot;;<br>        &#125; else &#123;<br>            //登入失败！<br>            map.put(&quot;msg&quot;, &quot;登入用户名或密码错误！&quot;);<br>            return &quot;login&quot;;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>3) 启动项目：</p>
+<pre><code>&lt;form class=&quot;form-signin&quot; action=&quot;dashboard.html&quot; th:action=&quot;@{/user/login}&quot; method=&quot;post&quot;&gt;
+</code></pre><p>登入的action改为：/user/login。请求方式：post。</p>
+<p>2）在controller包下，创建LoginController：</p>
+<pre><code>@Controller
+public class LoginController {
+
+    //@RequestMapping(value = &quot;/user/login&quot;,method = RequestMethod.POST)
+    @PostMapping(value = &quot;/user/login&quot;)
+    public String login(@RequestParam(&quot;username&quot;) String username,
+                        @RequestParam(&quot;password&quot;) String password,
+                        Map&lt;String, Object&gt; map) {
+
+        if (!StringUtils.isEmpty(username) &amp;&amp;
+                !StringUtils.isEmpty(password) &amp;&amp;
+                &quot;admin&quot;.equals(username) &amp;&amp;
+                &quot;123456&quot;.equals(password)) {
+            //登入成功！
+            return &quot;dashboard&quot;;
+        } else {
+            //登入失败！
+            map.put(&quot;msg&quot;, &quot;登入用户名或密码错误！&quot;);
+            return &quot;login&quot;;
+        }
+    }
+
+}
+</code></pre><p>3) 启动项目：</p>
 <p>输入用户名和密码<br><img src="/images/QQ截图20181106213523.png"></p>
 <p>报错了：<br><img src="/images/QQ截图20181106213554.png"></p>
 <p>原来是我们的login.html页面，没有给username和password添加name属性！<br>现在添加上：<br><img src="/images/QQ截图20181106213732.png"></p>
 <p>重启项目，并添加正确的用户名和密码（admin，123456）<br><img src="/images/QQ截图20181106213924.png"></p>
 <p><strong>注意：</strong></p>
-<p>1）此时有可能还是刚刚的错误，因为thymeleaf默认是开启缓存功能的，所以我们开发的时候，要记住关闭缓存的功能<br>在配置文件中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">spring.thymeleaf.cache=false<br></code></pre></td></tr></table></figure></p>
-<p>2）我们在项目启动的时候，修改页面后，直接刷新页面，还是不会变的，要在修改后的页面处：ctrl+F9（重新编译页面）</p>
+<p>1）此时有可能还是刚刚的错误，因为thymeleaf默认是开启缓存功能的，所以我们开发的时候，要记住关闭缓存的功能<br>在配置文件中：</p>
+<pre><code>spring.thymeleaf.cache=false
+</code></pre><p>2）我们在项目启动的时候，修改页面后，直接刷新页面，还是不会变的，要在修改后的页面处：ctrl+F9（重新编译页面）</p>
 <p>使用（1）和（2）之后，就可以在项目启动的时候，直接修改页面也能得到最新的体验了。</p>
 <hr>
 <p>现在，我们输入错误的用户名和密码：不会出现错误的信息。</p>
@@ -367,12 +907,58 @@
 <p>发现样式也正确了。因为是重定向而来的。<strong>此时刷新页面，也不会重发请求了。</strong></p>
 <h3 id="拦截器进行登陆检查"><a href="#拦截器进行登陆检查" class="headerlink" title="拦截器进行登陆检查"></a>拦截器进行登陆检查</h3><p>此时，我们在另一个浏览器中：直接输入<code>http://localhost:8080/curd/main.html</code>.<br><img src="/images/QQ截图20181107101109.png"></p>
 <p>发现，没有登入就直接进来了，这是因为加拦截器的缘故。</p>
-<p>1）在component包下：创建LoginHandleInterceptor：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class LoginHandleInterceptor implements HandlerInterceptor &#123;<br><br>    //在方法执行之前，调用。<br>    @Override<br>    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception &#123;<br>        //从session中获取是否有loginUser属性的值<br>        Object loginUser = request.getSession().getAttribute(&quot;loginUser&quot;);<br>        if (StringUtils.isEmpty(loginUser)) &#123;<br>            //没有成功登入过。<br>            //转发登入页面<br>            request.getRequestDispatcher(&quot;/login.html&quot;).forward(request, response);<br>            return false;<br>        &#125; else &#123;<br>            //成功登入过<br>            return true;<br>        &#125;<br><br>    &#125;<br><br>    @Override<br>    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception &#123;<br><br>    &#125;<br><br>    @Override<br>    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception &#123;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>2）将我们自己定义的拦截器添加到拦截器链中：</p>
-<p>　　在Myconfig类中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Override<br>public void addInterceptors(InterceptorRegistry registry) &#123;<br>    //super.addInterceptors(registry);<br>    //添加拦截器我们自定义的拦截器<br>    registry.addInterceptor(new LoginHandleInterceptor())<br>            .addPathPatterns(&quot;/**&quot;) //拦截路径：/**:拦截所有的请求<br>            .excludePathPatterns(&quot;/&quot;,&quot;/index.html&quot;,&quot;/login.html&quot;,&quot;/user/login&quot;);//排除登入和登入请求的拦截路径<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p><b><code>这里虽然是拦截了所有的请求（/**），但是静态资源是不会被拦截的，Springboot已经帮我们排除掉了，所以放心使用.</code></b></p>
-<p>3) 在我们的登入控制器LoginController中添加session的操作：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">if (!StringUtils.isEmpty(username) &amp;&amp;<br>        !StringUtils.isEmpty(password) &amp;&amp;<br>        &quot;admin&quot;.equals(username) &amp;&amp;<br>        &quot;123456&quot;.equals(password)) &#123;<br>    //登入成功！<br>    //将用户名放入到session当中<br>    session.setAttribute(&quot;loginUser&quot;, username);<br>    //重定向到我们指定的登入成功的页面<br>    return &quot;redirect:/main.html&quot;;<br></code></pre></td></tr></table></figure></p>
-<p>4) 重启我们的应用。</p>
+<p>1）在component包下：创建LoginHandleInterceptor：</p>
+<pre><code>public class LoginHandleInterceptor implements HandlerInterceptor {
+
+    //在方法执行之前，调用。
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //从session中获取是否有loginUser属性的值
+        Object loginUser = request.getSession().getAttribute(&quot;loginUser&quot;);
+        if (StringUtils.isEmpty(loginUser)) {
+            //没有成功登入过。
+            //转发登入页面
+            request.getRequestDispatcher(&quot;/login.html&quot;).forward(request, response);
+            return false;
+        } else {
+            //成功登入过
+            return true;
+        }
+
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+
+    }
+}
+</code></pre><p>2）将我们自己定义的拦截器添加到拦截器链中：</p>
+<p>　　在Myconfig类中：</p>
+<pre><code>    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        //super.addInterceptors(registry);
+        //添加拦截器我们自定义的拦截器
+        registry.addInterceptor(new LoginHandleInterceptor())
+                .addPathPatterns(&quot;/**&quot;) //拦截路径：/**:拦截所有的请求
+                .excludePathPatterns(&quot;/&quot;,&quot;/index.html&quot;,&quot;/login.html&quot;,&quot;/user/login&quot;);//排除登入和登入请求的拦截路径
+    }
+</code></pre><p><b><code>这里虽然是拦截了所有的请求（/**），但是静态资源是不会被拦截的，Springboot已经帮我们排除掉了，所以放心使用.</code></b></p>
+<p>3) 在我们的登入控制器LoginController中添加session的操作：</p>
+<pre><code>        if (!StringUtils.isEmpty(username) &amp;&amp;
+                !StringUtils.isEmpty(password) &amp;&amp;
+                &quot;admin&quot;.equals(username) &amp;&amp;
+                &quot;123456&quot;.equals(password)) {
+            //登入成功！
+            //将用户名放入到session当中
+            session.setAttribute(&quot;loginUser&quot;, username);
+            //重定向到我们指定的登入成功的页面
+            return &quot;redirect:/main.html&quot;;
+</code></pre><p>4) 重启我们的应用。</p>
 <p>在谷歌浏览器中，成功登入成功后，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="/images/QQ截图20181107103005.png"></p>
 <p>发现，可以直接直接访问，因为已经成功登入过了，在session中已经保存了我们的用户信息。</p>
 <p>在另外的浏览器中，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="/images/QQ截图20181107103240.png"></p>
@@ -384,16 +970,79 @@
 <p>2) 实验的请求架构<br><img src="/images/QQ截图20181107114230.png"></p>
 <p>3) 员工列表：</p>
 <p><strong>thymeleaf公共页面元素抽取</strong></p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">1、抽取公共片段<br>&lt;div th:fragment=&quot;copy&quot;&gt;<br>   &amp;copy; 2011 The Good Thymes Virtual Grocery<br>&lt;/div&gt;<br><br>2、引入公共片段<br>&lt;div th:insert=&quot;~&#123;footer :: copy&#125;&quot;&gt;&lt;/div&gt;<br>~&#123;templatename::selector&#125;：模板名::选择器<br>~&#123;templatename::fragmentname&#125;:模板名::片段名<br><br>模板名就是：aaa.html中的aaa<br>片段名就是：th:fragment=&quot;bbb&quot;中的bbb<br>选择器就是：id选择器，class选择器等<br><br>3、默认效果：<br>insert的公共片段在div标签中<br>如果使用th:insert等属性进行引入，可以不用写~&#123;&#125;：<br>行内写法必须加上：[[~&#123;&#125;]] ：不转义特殊字符（/n） 、  [(~&#123;&#125;)] ：转义特殊字符<br></code></pre></td></tr></table></figure>
-<p>三种引入公共片段的th属性：</p>
+<pre><code>1、抽取公共片段
+&lt;div th:fragment=&quot;copy&quot;&gt;
+   &amp;copy; 2011 The Good Thymes Virtual Grocery
+&lt;/div&gt;
+
+2、引入公共片段
+&lt;div th:insert=&quot;~{footer :: copy}&quot;&gt;&lt;/div&gt;
+~{templatename::selector}：模板名::选择器
+~{templatename::fragmentname}:模板名::片段名
+
+模板名就是：aaa.html中的aaa
+片段名就是：th:fragment=&quot;bbb&quot;中的bbb
+选择器就是：id选择器，class选择器等
+
+3、默认效果：
+insert的公共片段在div标签中
+如果使用th:insert等属性进行引入，可以不用写~{}：
+行内写法必须加上：[[~{}]] ：不转义特殊字符（/n） 、  [(~{})] ：转义特殊字符
+</code></pre><p>三种引入公共片段的th属性：</p>
 <p>th:insert：将公共片段整个插入到声明引入的元素中</p>
 <p>th:replace：将声明引入的元素替换为公共片段</p>
 <p>th:include：将被引入的片段的内容包含进这个标签中</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;footer th:fragment=&quot;copy&quot;&gt;<br>	&amp;copy; 2011 The Good Thymes Virtual Grocery<br>&lt;/footer&gt;<br><br><br>引入方式:<br>&lt;div th:insert=&quot;footer :: copy&quot;&gt;&lt;/div&gt;<br>&lt;div th:replace=&quot;footer :: copy&quot;&gt;&lt;/div&gt;<br>&lt;div th:include=&quot;footer :: copy&quot;&gt;&lt;/div&gt;<br><br>效果:<br>&lt;div&gt;<br>    &lt;footer&gt;<br>    	&amp;copy; 2011 The Good Thymes Virtual Grocery<br>    &lt;/footer&gt;<br>&lt;/div&gt;<br><br><br>&lt;footer&gt;<br>	&amp;copy; 2011 The Good Thymes Virtual Grocery<br>&lt;/footer&gt;<br><br><br>&lt;div&gt;<br>	&amp;copy; 2011 The Good Thymes Virtual Grocery<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure>
-<p>1) 将登入成功后的dashboard.html页面中的顶部和左边的侧单栏抽取出来：</p>
+<pre><code>&lt;footer th:fragment=&quot;copy&quot;&gt;
+    &amp;copy; 2011 The Good Thymes Virtual Grocery
+&lt;/footer&gt;
+
+
+引入方式:
+&lt;div th:insert=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+&lt;div th:replace=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+&lt;div th:include=&quot;footer :: copy&quot;&gt;&lt;/div&gt;
+
+效果:
+&lt;div&gt;
+    &lt;footer&gt;
+        &amp;copy; 2011 The Good Thymes Virtual Grocery
+    &lt;/footer&gt;
+&lt;/div&gt;
+
+
+&lt;footer&gt;
+    &amp;copy; 2011 The Good Thymes Virtual Grocery
+&lt;/footer&gt;
+
+
+&lt;div&gt;
+    &amp;copy; 2011 The Good Thymes Virtual Grocery
+&lt;/div&gt;
+
+</code></pre><p>1) 将登入成功后的dashboard.html页面中的顶部和左边的侧单栏抽取出来：</p>
 <p>在templates下：创建page文件夹，并创建两个html页面：<br><img src="/images/QQ截图20181107154114.png" style="width:50%"></p>
-<p>top.html页面：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;<br>&lt;head&gt;<br>    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>    &lt;title&gt;Title&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>    &lt;nav th:fragment=&quot;top&quot; class=&quot;navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0&quot;&gt;<br>        &lt;a class=&quot;navbar-brand col-sm-3 col-md-2 mr-0&quot; href=&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;&gt;[[$&#123;session.loginUser&#125;]]&lt;/a&gt;<br>        &lt;input class=&quot;form-control form-control-dark w-100&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;&gt;<br>        &lt;ul class=&quot;navbar-nav px-3&quot;&gt;<br>            &lt;li class=&quot;nav-item text-nowrap&quot;&gt;<br>                &lt;a class=&quot;nav-link&quot; href=&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;&gt;退出&lt;/a&gt;<br>            &lt;/li&gt;<br>        &lt;/ul&gt;<br>    &lt;/nav&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure></p>
-<p>主要是其中的<code>&lt;nav&gt;&lt;/nav&gt;</code>片段，这个片段是dashboard.html中的顶部的片段复制过来的。</p>
+<p>top.html页面：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;nav th:fragment=&quot;top&quot; class=&quot;navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0&quot;&gt;
+        &lt;a class=&quot;navbar-brand col-sm-3 col-md-2 mr-0&quot; href=&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;&gt;[[${session.loginUser}]]&lt;/a&gt;
+        &lt;input class=&quot;form-control form-control-dark w-100&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; aria-label=&quot;Search&quot;&gt;
+        &lt;ul class=&quot;navbar-nav px-3&quot;&gt;
+            &lt;li class=&quot;nav-item text-nowrap&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;&gt;退出&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>主要是其中的<code>&lt;nav&gt;&lt;/nav&gt;</code>片段，这个片段是dashboard.html中的顶部的片段复制过来的。</p>
 <p>其中主要是在<code>&lt;nav&gt;</code>中加入了<strong>th:fragment=”top”</strong>属性</p>
 <p>slide.html页面：<br><img src="/images/QQ截图20181107154633.png"></p>
 <p>其中的<code>&lt;nav&gt;</code>片段：是dashboard.html中的左边的侧单栏的部分复制过来的。</p>
@@ -406,8 +1055,21 @@
 <p>2）修改dashboard.html中的Customer部分的action属性：<br>因为左部已经抽取到slide.html页面，所以到slide.html页面中修改：</p>
 <p>修改之前：<br><img src="/images/QQ截图20181107155857.png"></p>
 <p>修改之后：将Customer改为员工信息，修改a标签的href<br><img src="/images/QQ截图20181107160209.png"></p>
-<p>3）controller包下，创建EmployeeController：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class EmployeeController &#123;<br><br>    @Autowired<br>    private EmployeeDao employeeDao;<br><br>    @GetMapping(&quot;/emp&quot;)<br>    public String list(Model model) &#123;<br>        Collection&lt;Employee&gt; employees = employeeDao.getAll();<br>        model.addAttribute(&quot;employees&quot;, employees);<br>        return &quot;empl/list&quot;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>4) 启动应用<br><img src="/images/QQ截图20181107160734.png"></p>
+<p>3）controller包下，创建EmployeeController：</p>
+<pre><code>@Controller
+public class EmployeeController {
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    @GetMapping(&quot;/emp&quot;)
+    public String list(Model model) {
+        Collection&lt;Employee&gt; employees = employeeDao.getAll();
+        model.addAttribute(&quot;employees&quot;, employees);
+        return &quot;empl/list&quot;;
+    }
+}
+</code></pre><p>4) 启动应用<br><img src="/images/QQ截图20181107160734.png"></p>
 <p>点击：员工信息</p>
 <p><img src="/images/QQ截图20181107160813.png"></p>
 <p>此时员工信息里面还是Customer，因为没有抽取出公共部分。</p>
@@ -431,38 +1093,218 @@
 <p><img src="/images/QQ截图20181107164704.png"></p>
 <hr>
 <p>6）将员工信息换成我们的后端传递过来的数据：</p>
-<p>在list页面中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;<br>    &lt;h2&gt;&lt;button class=&quot;btn btn-sm btn-success&quot;&gt;员工添加&lt;/button&gt;&lt;/h2&gt;<br>    &lt;div class=&quot;table-responsive&quot;&gt;<br>        &lt;table class=&quot;table table-striped table-sm&quot;&gt;<br>            &lt;thead&gt;<br>            &lt;tr&gt;<br>                &lt;th&gt;id&lt;/th&gt;<br>                &lt;th&gt;lastName&lt;/th&gt;<br>                &lt;th&gt;email&lt;/th&gt;<br>                &lt;th&gt;gender&lt;/th&gt;<br>                &lt;th&gt;department&lt;/th&gt;<br>                &lt;th&gt;birth&lt;/th&gt;<br>                &lt;th&gt;操作&lt;/th&gt;<br>            &lt;/tr&gt;<br>            &lt;/thead&gt;<br>            &lt;tbody&gt;<br>            &lt;tr th:each=&quot;empl:$&#123;employees&#125;&quot;&gt;<br>                &lt;td th:text=&quot;$&#123;empl.id&#125;&quot;&gt;1001&lt;/td&gt;<br>                &lt;td&gt;[[$&#123;empl.lastName&#125;]]&lt;/td&gt;<br>                &lt;td th:text=&quot;$&#123;empl.email&#125;&quot;&gt;5589584@qq.com&lt;/td&gt;<br>                &lt;td th:text=&quot;$&#123;empl.gender&#125;==&apos;0&apos;?&apos;女&apos;:&apos;男&apos;&quot;&gt;男&lt;/td&gt;<br>                &lt;td th:text=&quot;$&#123;empl.department.departmentName&#125;&quot;&gt;商业提升部&lt;/td&gt;<br>                &lt;td th:text=&quot;$&#123;#dates.format(empl.birth, &apos;yyyy-MM-dd HH:mm:ss&apos;)&#125;&quot;&gt;2018/11/1&lt;/td&gt;<br>                &lt;td&gt;<br>                    &lt;button class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/button&gt;<br>                    &lt;button class=&quot;btn btn-sm btn-danger&quot;&gt;删除&lt;/button&gt;<br>                &lt;/td&gt;<br>            &lt;/tr&gt;<br>            &lt;/tbody&gt;<br>        &lt;/table&gt;<br>    &lt;/div&gt;<br>&lt;/main&gt;<br></code></pre></td></tr></table></figure></p>
-<p>ctrl+F9:<br><img src="/images/QQ截图20181107170503.png"></p>
+<p>在list页面中：</p>
+<pre><code>        &lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;
+            &lt;h2&gt;&lt;button class=&quot;btn btn-sm btn-success&quot;&gt;员工添加&lt;/button&gt;&lt;/h2&gt;
+            &lt;div class=&quot;table-responsive&quot;&gt;
+                &lt;table class=&quot;table table-striped table-sm&quot;&gt;
+                    &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;id&lt;/th&gt;
+                        &lt;th&gt;lastName&lt;/th&gt;
+                        &lt;th&gt;email&lt;/th&gt;
+                        &lt;th&gt;gender&lt;/th&gt;
+                        &lt;th&gt;department&lt;/th&gt;
+                        &lt;th&gt;birth&lt;/th&gt;
+                        &lt;th&gt;操作&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                    &lt;tr th:each=&quot;empl:${employees}&quot;&gt;
+                        &lt;td th:text=&quot;${empl.id}&quot;&gt;1001&lt;/td&gt;
+                        &lt;td&gt;[[${empl.lastName}]]&lt;/td&gt;
+                        &lt;td th:text=&quot;${empl.email}&quot;&gt;5589584@qq.com&lt;/td&gt;
+                        &lt;td th:text=&quot;${empl.gender}==&#39;0&#39;?&#39;女&#39;:&#39;男&#39;&quot;&gt;男&lt;/td&gt;
+                        &lt;td th:text=&quot;${empl.department.departmentName}&quot;&gt;商业提升部&lt;/td&gt;
+                        &lt;td th:text=&quot;${#dates.format(empl.birth, &#39;yyyy-MM-dd HH:mm:ss&#39;)}&quot;&gt;2018/11/1&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/button&gt;
+                            &lt;button class=&quot;btn btn-sm btn-danger&quot;&gt;删除&lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+</code></pre><p>ctrl+F9:<br><img src="/images/QQ截图20181107170503.png"></p>
 <h3 id="员工列表的添加"><a href="#员工列表的添加" class="headerlink" title="员工列表的添加"></a>员工列表的添加</h3><p>首先将员工信息的url换成/empls:代表获取所有的员工信息，而/empl：代表添加员工的信息。</p>
 <p>1.将员工添加的按钮换成a标签：<br><img src="/images/QQ截图20181107172030.png"></p>
-<p>2.在EmployeeController中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Autowired<br>private DepartmentDao departmentDao;<br><br><br>@GetMapping(&quot;/empl&quot;)<br>public String add(Model model) &#123;<br><br>    //获取所有的部门信息：<br>    Collection&lt;Department&gt; departments = departmentDao.getDepartments();<br>    model.addAttribute(&quot;departments&quot;, departments);<br>    return &quot;empl/employee&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>3.在templates下的empl中添加employee.html页面：</p>
+<p>2.在EmployeeController中：</p>
+<pre><code>    @Autowired
+    private DepartmentDao departmentDao;
+
+
+    @GetMapping(&quot;/empl&quot;)
+    public String add(Model model) {
+
+        //获取所有的部门信息：
+        Collection&lt;Department&gt; departments = departmentDao.getDepartments();
+        model.addAttribute(&quot;departments&quot;, departments);
+        return &quot;empl/employee&quot;;
+    }
+</code></pre><p>3.在templates下的empl中添加employee.html页面：</p>
 <p>首先，直接复制list.html为employee.html。</p>
-<p>然后，修改其中的main标签部分：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;<br>    &lt;form&gt;<br>        &lt;div class=&quot;form‐group&quot;&gt;<br>            &lt;label&gt;LastName&lt;/label&gt;<br>            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;div class=&quot;form‐group&quot;&gt;<br>             &lt;label&gt;Email&lt;/label&gt;<br>             &lt;input type=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;div class=&quot;form‐group&quot;&gt;<br>            &lt;label&gt;Gender&lt;/label&gt;&lt;br/&gt;<br>            &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;<br>                 &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot;   value=&quot;1&quot;&gt;<br>                 &lt;label class=&quot;form‐check‐label&quot;&gt;男&lt;/label&gt;<br>            &lt;/div&gt;<br>            &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;<br>                 &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot;   value=&quot;0&quot;&gt;<br>                 &lt;label class=&quot;form‐check‐label&quot;&gt;女&lt;/label&gt;<br>            &lt;/div&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;div class=&quot;form‐group&quot;&gt;<br>             &lt;label&gt;department&lt;/label&gt;<br>             &lt;select class=&quot;form-control&quot;&gt;<br>                &lt;option&gt;1&lt;/option&gt;<br>                &lt;option&gt;2&lt;/option&gt;<br>                &lt;option&gt;3&lt;/option&gt;<br>                &lt;option&gt;4&lt;/option&gt;<br>                &lt;option&gt;5&lt;/option&gt;<br>             &lt;/select&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;div class=&quot;form‐group&quot;&gt;<br>             &lt;label&gt;Birth&lt;/label&gt;<br>             &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;<br>    &lt;/form&gt;<br><br>&lt;/main&gt;<br></code></pre></td></tr></table></figure></p>
-<p>4.重启应用：<br><img src="/images/QQ截图20181107174348.png"></p>
-<p>5.此时的department部分还是死数据：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;div class=&quot;form‐group&quot;&gt;<br>     &lt;label&gt;department&lt;/label&gt;<br>     &lt;select class=&quot;form-control&quot;&gt;<br>        &lt;option th:value=&quot;$&#123;dept.id&#125;&quot; th:text=&quot;$&#123;dept.departmentName&#125;&quot; th:each=&quot;dept:$&#123;departments&#125;&quot;&gt;1&lt;/option&gt;<br>     &lt;/select&gt;<br>&lt;/div&gt;<br></code></pre></td></tr></table></figure></p>
-<p>刷新页面：<br><img src="/images/QQ截图20181107174754.png"></p>
-<p>6.给form表单添加action和method属性：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;form th:action=&quot;@&#123;/empl&#125;&quot; method=&quot;post&quot;&gt;<br></code></pre></td></tr></table></figure></p>
-<p>7.书写添加员工的控制器<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//添加员工<br>@PostMapping(&quot;/empl&quot;)<br>public String addEmployee(Employee employee) &#123;<br><br>    System.out.println(employee);<br>    //添加员工<br>    employeeDao.save(employee);<br><br>    return &quot;redirect:/empls&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>8.重启应用，点击添加：<br><img src="/images/QQ截图20181107183750.png"><br><img src="/images/QQ截图20181107183847.png"></p>
+<p>然后，修改其中的main标签部分：</p>
+<pre><code>        &lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;
+            &lt;form&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                    &lt;label&gt;LastName&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;Email&lt;/label&gt;
+                     &lt;input type=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                    &lt;label&gt;Gender&lt;/label&gt;&lt;br/&gt;
+                    &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;
+                         &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot;   value=&quot;1&quot;&gt;
+                         &lt;label class=&quot;form‐check‐label&quot;&gt;男&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;
+                         &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot;   value=&quot;0&quot;&gt;
+                         &lt;label class=&quot;form‐check‐label&quot;&gt;女&lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;department&lt;/label&gt;
+                     &lt;select class=&quot;form-control&quot;&gt;
+                        &lt;option&gt;1&lt;/option&gt;
+                        &lt;option&gt;2&lt;/option&gt;
+                        &lt;option&gt;3&lt;/option&gt;
+                        &lt;option&gt;4&lt;/option&gt;
+                        &lt;option&gt;5&lt;/option&gt;
+                     &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;Birth&lt;/label&gt;
+                     &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;
+            &lt;/form&gt;
+
+        &lt;/main&gt;
+
+</code></pre><p>4.重启应用：<br><img src="/images/QQ截图20181107174348.png"></p>
+<p>5.此时的department部分还是死数据：</p>
+<pre><code>&lt;div class=&quot;form‐group&quot;&gt;
+     &lt;label&gt;department&lt;/label&gt;
+     &lt;select class=&quot;form-control&quot;&gt;
+        &lt;option th:value=&quot;${dept.id}&quot; th:text=&quot;${dept.departmentName}&quot; th:each=&quot;dept:${departments}&quot;&gt;1&lt;/option&gt;
+     &lt;/select&gt;
+&lt;/div&gt;
+</code></pre><p>刷新页面：<br><img src="/images/QQ截图20181107174754.png"></p>
+<p>6.给form表单添加action和method属性：</p>
+<pre><code> &lt;form th:action=&quot;@{/empl}&quot; method=&quot;post&quot;&gt;
+</code></pre><p>7.书写添加员工的控制器</p>
+<pre><code>    //添加员工
+    @PostMapping(&quot;/empl&quot;)
+    public String addEmployee(Employee employee) {
+
+        System.out.println(employee);
+        //添加员工
+        employeeDao.save(employee);
+
+        return &quot;redirect:/empls&quot;;
+    }
+</code></pre><p>8.重启应用，点击添加：<br><img src="/images/QQ截图20181107183750.png"><br><img src="/images/QQ截图20181107183847.png"></p>
 <p>添加失败？因为我们的表单里面木有给属性添加name。<br>现在全部加上。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;input type=&quot;text&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br><br>   &lt;input type=&quot;email&quot; th:name=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;<br><br>   &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;<br><br> &lt;input type=&quot;text&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br></code></pre></td></tr></table></figure>
-<p>然后再次尝试添加：<br><img src="/images/QQ截图20181107184848.png"></p>
+<pre><code>   &lt;input type=&quot;text&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+
+   &lt;input type=&quot;email&quot; th:name=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;
+
+   &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;
+
+    &lt;input type=&quot;text&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+</code></pre><p>然后再次尝试添加：<br><img src="/images/QQ截图20181107184848.png"></p>
 <p>添加成功！！！</p>
 <p><strong>注意：这里填写生日的格式必须是 xxxx/xx/xx 的形式。其他形式就会出错，因为Springboot默认格式化的日期格式就是xxxx/xx/xx 的形式</strong></p>
 <p>如果，我们想改日期的格式呢？</p>
-<p>打开WebMvcAutoConfiguration类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;date-format&quot;)<br>public Formatter&lt;Date&gt; dateFormatter() &#123;<br>	return new DateFormatter(this.mvcProperties.getDateFormat());<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>默认帮我们配置好的时间格式转化器。</p>
-<p>点击：getDateFormat()：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public String getDateFormat() &#123;<br>	return this.dateFormat;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>再点击：this.dateFormat<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/**<br> * Date format to use (e.g. dd/MM/yyyy).<br> */<br>private String dateFormat;<br></code></pre></td></tr></table></figure></p>
-<p>说明默认的确实是：dd/MM/yyyy的形式。</p>
-<p>想要修改默认的格式：只需要在application.properties文件中修改spring.mvc.date-format=xxxx即可：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">#修改日期的格式<br>spring.mvc.date-format=yyyy-MM-dd<br></code></pre></td></tr></table></figure></p>
-<hr>
+<p>打开WebMvcAutoConfiguration类：</p>
+<pre><code>        @Bean
+        @ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;date-format&quot;)
+        public Formatter&lt;Date&gt; dateFormatter() {
+            return new DateFormatter(this.mvcProperties.getDateFormat());
+        }
+</code></pre><p>默认帮我们配置好的时间格式转化器。</p>
+<p>点击：getDateFormat()：</p>
+<pre><code>    public String getDateFormat() {
+        return this.dateFormat;
+    }
+</code></pre><p>再点击：this.dateFormat</p>
+<pre><code>    /**
+     * Date format to use (e.g. dd/MM/yyyy).
+     */
+    private String dateFormat;
+</code></pre><p>说明默认的确实是：dd/MM/yyyy的形式。</p>
+<p>想要修改默认的格式：只需要在application.properties文件中修改spring.mvc.date-format=xxxx即可：</p>
+<pre><code>#修改日期的格式
+spring.mvc.date-format=yyyy-MM-dd
+</code></pre><hr>
 <h3 id="员工列表的编辑"><a href="#员工列表的编辑" class="headerlink" title="员工列表的编辑"></a>员工列表的编辑</h3><p>修改添加二合一表单</p>
-<p>1）首先修改编辑按钮：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;a th:href=&quot;@&#123;/empl/&#125;+$&#123;empl.id&#125;&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/a&gt;<br></code></pre></td></tr></table></figure></p>
-<p>2) EmployeeController中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//去编辑员工的页面<br>@GetMapping(&quot;/empl/&#123;id&#125;&quot;)<br>public String toEditPage(@PathVariable(&quot;id&quot;) Integer id, Model model) &#123;<br><br>    //获取员工的信息：<br>    Employee employee = employeeDao.get(id);<br>    model.addAttribute(&quot;employee&quot;,employee);<br><br>    //获取所有的部门信息：<br>    Collection&lt;Department&gt; departments = departmentDao.getDepartments();<br>    model.addAttribute(&quot;departments&quot;, departments);<br><br>    //重定向到编辑员工的页面（add页面一样，共用）<br>    return &quot;empl/employee&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>3) 在employee.html页面中回显员工的信息。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;form th:action=&quot;@&#123;/empl&#125;&quot; method=&quot;post&quot;&gt;<br>    &lt;div class=&quot;form‐group&quot;&gt;<br>        &lt;label&gt;LastName&lt;/label&gt;<br>        &lt;input type=&quot;text&quot; th:value=&quot;$&#123;employee.lastName&#125;&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br>    &lt;/div&gt;<br>    &lt;br&gt;<br>    &lt;div class=&quot;form‐group&quot;&gt;<br>         &lt;label&gt;Email&lt;/label&gt;<br>         &lt;input type=&quot;email&quot; th:value=&quot;$&#123;employee.email&#125;&quot; th:name=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;<br>    &lt;/div&gt;<br>    &lt;br&gt;<br>    &lt;div class=&quot;form‐group&quot;&gt;<br>        &lt;label&gt;Gender&lt;/label&gt;&lt;br/&gt;<br>        &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;<br>             &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot; th:checked=&quot;$&#123;employee.gender&#125;==1&quot;&gt;<br>             &lt;label class=&quot;form‐check‐label&quot;&gt;男&lt;/label&gt;<br>        &lt;/div&gt;<br>        &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;<br>             &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;0&quot; th:checked=&quot;$&#123;employee.gender&#125;==0&quot;&gt;<br>             &lt;label class=&quot;form‐check‐label&quot;&gt;女&lt;/label&gt;<br>        &lt;/div&gt;<br>    &lt;/div&gt;<br>    &lt;br&gt;<br>    &lt;div class=&quot;form‐group&quot;&gt;<br>         &lt;label&gt;department&lt;/label&gt;<br>         &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;<br>        &lt;option th:selected=&quot;$&#123;employee.department.id&#125;==$&#123;dept.id&#125;&quot; th:value=&quot;$&#123;dept.id&#125;&quot; th:text=&quot;$&#123;dept.departmentName&#125;&quot; th:each=&quot;dept:$&#123;departments&#125;&quot;&gt;1<br>        &lt;/option&gt;<br>         &lt;/select&gt;<br>    &lt;/div&gt;<br>    &lt;br&gt;<br>    &lt;div class=&quot;form‐group&quot;&gt;<br>         &lt;label&gt;Birth&lt;/label&gt;<br>         &lt;input type=&quot;text&quot; th:value=&quot;$&#123;#dates.format(employee.birth, &apos;yyyy-MM-dd HH:mm:ss&apos;)&#125;&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;<br>    &lt;/div&gt;<br>    &lt;br&gt;<br>    &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;<br>&lt;/form&gt;<br></code></pre></td></tr></table></figure></p>
-<p>4) 重启应用，点击编辑<br><img src="/images/QQ截图20181107193709.png"></p>
+<p>1）首先修改编辑按钮：</p>
+<pre><code>  &lt;a th:href=&quot;@{/empl/}+${empl.id}&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/a&gt;
+</code></pre><p>2) EmployeeController中：</p>
+<pre><code>    //去编辑员工的页面
+    @GetMapping(&quot;/empl/{id}&quot;)
+    public String toEditPage(@PathVariable(&quot;id&quot;) Integer id, Model model) {
+
+        //获取员工的信息：
+        Employee employee = employeeDao.get(id);
+        model.addAttribute(&quot;employee&quot;,employee);
+
+        //获取所有的部门信息：
+        Collection&lt;Department&gt; departments = departmentDao.getDepartments();
+        model.addAttribute(&quot;departments&quot;, departments);
+
+        //重定向到编辑员工的页面（add页面一样，共用）
+        return &quot;empl/employee&quot;;
+    }
+</code></pre><p>3) 在employee.html页面中回显员工的信息。</p>
+<pre><code>            &lt;form th:action=&quot;@{/empl}&quot; method=&quot;post&quot;&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                    &lt;label&gt;LastName&lt;/label&gt;
+                    &lt;input type=&quot;text&quot; th:value=&quot;${employee.lastName}&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;Email&lt;/label&gt;
+                     &lt;input type=&quot;email&quot; th:value=&quot;${employee.email}&quot; th:name=&quot;email&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan@atguigu.com&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                    &lt;label&gt;Gender&lt;/label&gt;&lt;br/&gt;
+                    &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;
+                         &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot; th:checked=&quot;${employee.gender}==1&quot;&gt;
+                         &lt;label class=&quot;form‐check‐label&quot;&gt;男&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form‐check form‐check‐inline&quot;&gt;
+                         &lt;input class=&quot;form‐check‐input&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;0&quot; th:checked=&quot;${employee.gender}==0&quot;&gt;
+                         &lt;label class=&quot;form‐check‐label&quot;&gt;女&lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;department&lt;/label&gt;
+                     &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;
+                    &lt;option th:selected=&quot;${employee.department.id}==${dept.id}&quot; th:value=&quot;${dept.id}&quot; th:text=&quot;${dept.departmentName}&quot; th:each=&quot;dept:${departments}&quot;&gt;1
+                    &lt;/option&gt;
+                     &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;div class=&quot;form‐group&quot;&gt;
+                     &lt;label&gt;Birth&lt;/label&gt;
+                     &lt;input type=&quot;text&quot; th:value=&quot;${#dates.format(employee.birth, &#39;yyyy-MM-dd HH:mm:ss&#39;)}&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
+                &lt;/div&gt;
+                &lt;br&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;
+            &lt;/form&gt;
+</code></pre><p>4) 重启应用，点击编辑<br><img src="/images/QQ截图20181107193709.png"></p>
 <p><img src="/images/QQ截图20181107193721.png"></p>
 <p>回显成功。</p>
 <p>此时，再次点击添加时：<br><img src="/images/QQ截图20181107193842.png"></p>
@@ -470,10 +1312,12 @@
 <p>这是因为，我们点击添加的时候，model对象中根本没有employee对象，所以employee.html中的：<br><strong>th:value=”${employee.lastName}”等都会出现空指针异常。</strong></p>
 <p>5）再次修改employee.html页面：添加判断语句</p>
 <p>${employee!=null}?</p>
-<p>例如：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">th:value=&quot;$&#123;employee!=null&#125;?$&#123;employee.lastName&#125;&quot;<br></code></pre></td></tr></table></figure></p>
-<p>此时：再次点击员工添加，就不会出现问题了。</p>
-<p>6）button的按钮修改<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;button type=&quot;submit&quot; th:text=&quot;$&#123;employee!=null&#125;?&apos;修改&apos;:&apos;添加&apos;&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;<br></code></pre></td></tr></table></figure></p>
-<p>7）form表单的method的修改：</p>
+<p>例如：</p>
+<pre><code>th:value=&quot;${employee!=null}?${employee.lastName}&quot;
+</code></pre><p>此时：再次点击员工添加，就不会出现问题了。</p>
+<p>6）button的按钮修改</p>
+<pre><code>  &lt;button type=&quot;submit&quot; th:text=&quot;${employee!=null}?&#39;修改&#39;:&#39;添加&#39;&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;
+</code></pre><p>7）form表单的method的修改：</p>
 <p>当是添加操作时，就是method=post提交。<br>当是修改操作时，就是method=put提交。</p>
 <p>以前是SpringMVC的时候，想要使用put提交。</p>
 <ol>
@@ -481,270 +1325,827 @@
 <li>页面创建一个post表单</li>
 <li>创建一个input项，name=”_method”;值就是我们指定的请求方式</li>
 </ol>
-<p>Springboot已经默认帮我们配置好了HiddenHttpMethodFilter。在WebMvcAutoConfiguration中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Bean<br>@ConditionalOnMissingBean(HiddenHttpMethodFilter.class)<br>public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() &#123;<br>	return new OrderedHiddenHttpMethodFilter();<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>所以，现在我们只需要添加一个input项，name=”_method”的标签即可：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;input type=&quot;hidden&quot; name=&quot;_method&quot;  value=&quot;put&quot; th:if=&quot;$&#123;employee!=null&#125;&quot;/&gt;<br>&lt;input type=&quot;hidden&quot; name=&quot;id&quot; th:value=&quot;$&#123;employee.id&#125;&quot; th:if=&quot;$&#123;employee!=null&#125;&quot;/&gt;<br></code></pre></td></tr></table></figure></p>
-<p>8) EmployeeController中添加编辑的逻辑：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//修改员工<br>@PutMapping(&quot;/empl&quot;)<br>public String EditEmployee(Employee employee) &#123;<br>    System.out.println(employee);<br>    //修改员工<br>    employeeDao.save(employee);<br>    return &quot;redirect:/empls&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>9) 随便点击一个员工进行修改：<br><img src="/images/QQ截图20181107195757.png"><br><img src="/images/QQ截图20181107195859.png"><br><img src="/images/QQ截图20181107195923.png"></p>
+<p>Springboot已经默认帮我们配置好了HiddenHttpMethodFilter。在WebMvcAutoConfiguration中：</p>
+<pre><code>    @Bean
+    @ConditionalOnMissingBean(HiddenHttpMethodFilter.class)
+    public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() {
+        return new OrderedHiddenHttpMethodFilter();
+    }
+</code></pre><p>所以，现在我们只需要添加一个input项，name=”_method”的标签即可：</p>
+<pre><code>      &lt;input type=&quot;hidden&quot; name=&quot;_method&quot;  value=&quot;put&quot; th:if=&quot;${employee!=null}&quot;/&gt;
+      &lt;input type=&quot;hidden&quot; name=&quot;id&quot; th:value=&quot;${employee.id}&quot; th:if=&quot;${employee!=null}&quot;/&gt;
+</code></pre><p>8) EmployeeController中添加编辑的逻辑：</p>
+<pre><code>    //修改员工
+    @PutMapping(&quot;/empl&quot;)
+    public String EditEmployee(Employee employee) {
+        System.out.println(employee);
+        //修改员工
+        employeeDao.save(employee);
+        return &quot;redirect:/empls&quot;;
+    }
+</code></pre><p>9) 随便点击一个员工进行修改：<br><img src="/images/QQ截图20181107195757.png"><br><img src="/images/QQ截图20181107195859.png"><br><img src="/images/QQ截图20181107195923.png"></p>
 <p>修改成功！！！</p>
 <h3 id="员工列表的删除"><a href="#员工列表的删除" class="headerlink" title="员工列表的删除"></a>员工列表的删除</h3><p>1）修改删除的按钮以delete的方式提交</p>
 <p>不能简单的将button按钮标签改为a标签，因为a标签默认是get方式提交。</p>
 <p>我们使用js的方式来提交表单：<br><img src="/images/QQ截图20181107202935.png"></p>
-<p>2）添加js代码：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;script type=&quot;text/javascript&quot;&gt;<br>    $(&quot;.deleteBtn&quot;).click(function () &#123;<br>        var del_url = $(this).attr(&quot;del_url&quot;);<br>        $(&quot;#deleteEmpForm&quot;).attr(&quot;action&quot;, del_url).submit();<br>        //改变form默认的提交方式<br>        return false;<br>    &#125;)<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></p>
-<p>3) EmployeeController中：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//删除员工信息<br>@DeleteMapping(&quot;/empl/&#123;id&#125;&quot;)<br>public String deleteEmlp(@PathVariable(&quot;id&quot;) Integer id) &#123;<br>    //删除指定员工id的员工<br>    employeeDao.delete(id);<br>    return &quot;redirect:/empls&quot;;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>4) 重启应用，试试删除按钮</p>
+<p>2）添加js代码：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    $(&quot;.deleteBtn&quot;).click(function () {
+        var del_url = $(this).attr(&quot;del_url&quot;);
+        $(&quot;#deleteEmpForm&quot;).attr(&quot;action&quot;, del_url).submit();
+        //改变form默认的提交方式
+        return false;
+    })
+&lt;/script&gt;
+</code></pre><p>3) EmployeeController中：</p>
+<pre><code>    //删除员工信息
+    @DeleteMapping(&quot;/empl/{id}&quot;)
+    public String deleteEmlp(@PathVariable(&quot;id&quot;) Integer id) {
+        //删除指定员工id的员工
+        employeeDao.delete(id);
+        return &quot;redirect:/empls&quot;;
+    }
+</code></pre><p>4) 重启应用，试试删除按钮</p>
 <hr>
 
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
-        
-        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  
-<div class="reward" id="reward">
-  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
-  <button id="reward-button" class="button" disable="enable">打赏</button>
-  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
-    
-    <div id="wechat">
-      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
-      <span>微信支付</span>
-    </div>
-    
-    
-    <div id="alipay">
-      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
-      <span>支付宝</span>
-    </div>
-    
-    
-  </div>
-</div>
+            </div>
+            <hr/>
 
-
-  
-  
-  <nav class="page-nav">
-    <div class="page-nav-next page-nav-item">
-      
-      <a href="/2018/11/05/SpringBoot-day-04/" rel="next" title="SpringBoot_day_04"><i class="fas fa-angle-left"></i><span class="nav-title">SpringBoot_day_04</span></a>
-      
-    </div>
-    <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2018/11/08/SpringBoot-day-06/" rel="prev" title="SpringBoot_day_06"><span class="nav-title">SpringBoot_day_06</span><i class="fas fa-angle-right"></i></a>
-      
-    </div>
-  </nav>
-  
-  
-  
-
-<div class="comments" id="comments">
-  
-  
-  <div class="commentjs" id="comment-thread"></div>
-  <link rel="stylesheet" href="/css/commentjs.css">
-  <script defer type="text/javascript" src="/js/marked.min.js"></script>
-  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
-  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
-  <script defer type="text/javascript" src="/js/commentjs.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function () {
-    getComments({
-      "type": "github",
-      "user": "liuzhuo19940206",
-      "repo": "liuzhuo19940206.github.io",
-      "client_id": "d67adf7d637efbea7a69",
-      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
-      "no_comment": "这个页面还没有评论，现在就去评论吧！",
-      "go_to_comment": "去评论",
-      "issue_title": "SpringBoot_day_05",
-      "btn_class": "button",
-      "comments_target": "#comment-thread"
-    });
-    marked.setOptions({
-      "highlight": function (code, lang) {
-        return hljs.highlightAuto(code).value;
-      }
-    });
-    function mark() {
-      var markdowns = document.getElementsByClassName("markdown");
-      for (var i = 0; i < markdowns.length; ++i){
-        if (markdowns[i].innerHTML) {
-          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
-        }
-      }
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
     }
-    window.addEventListener("DOMContentLoaded", mark, false);
-    window.addEventListener("load", mark, false);
-  });
-  </script>
-  
-  
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
-  
-</div>
-
-          </div>
-          
-          
-          
-<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
-  
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
-    </div>
-  </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="info sidebar-item" id="info">
-  
-  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
-  
-  <h1 class="author-name">刘卓</h1>
-  <h2 class="author-description">hello,every body!</h2>
-  <div class="site-count">
-    
-    <div class="archives-count">
-      <div class="site-count-title">归档</div>
-      <div><a href="/archives/">114</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="categories-count">
-      <div class="site-count-title">分类</div>
-      <div><a href="/categories/">55</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="tags-count">
-      <div class="site-count-title">标签</div>
-      <div><a href="/tags/">43</a></div>
-    </div>
-    
-  </div>
-  
-  <div class="rss">
-    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
-  </div>
-  
-</div>
-
-
-  <div class="sidebar-sticky">
-    
-    
-    
-    
-    
-    <hr>
-    <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Spring-MVC-auto-configuration"><span class="toc-text">Spring MVC auto-configuration</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ContentNegotiatingViewResolver-and-BeanNameViewResolver"><span class="toc-text">ContentNegotiatingViewResolver and  BeanNameViewResolver</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Support-for-serving-static-resources-including-support-for-WebJars"><span class="toc-text">Support for serving static resources, including support for WebJars</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Static-index-html-support"><span class="toc-text">Static  index.html support</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Custom-Favicon-support"><span class="toc-text">Custom  Favicon support</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#自动注册了-Converter、GenericConverter、Formatter-beans"><span class="toc-text">自动注册了 Converter、GenericConverter、Formatter beans.</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#HttpMessageConverters"><span class="toc-text">HttpMessageConverters</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#MessageCodesResolver"><span class="toc-text">MessageCodesResolver</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#ConfigurableWebBindingInitializer"><span class="toc-text">ConfigurableWebBindingInitializer</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#扩展SpringMVC"><span class="toc-text">扩展SpringMVC</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#全面接管SpringMVC"><span class="toc-text">全面接管SpringMVC</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#如何修改SpringBoot的默认配置"><span class="toc-text">如何修改SpringBoot的默认配置</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#CRUD-restful实战"><span class="toc-text">CRUD-restful实战</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#默认访问首页"><span class="toc-text">默认访问首页</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#国际化"><span class="toc-text">国际化</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#登陆"><span class="toc-text">登陆</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#拦截器进行登陆检查"><span class="toc-text">拦截器进行登陆检查</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#CRUD-员工列表"><span class="toc-text">CRUD-员工列表</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#员工列表的添加"><span class="toc-text">员工列表的添加</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#员工列表的编辑"><span class="toc-text">员工列表的编辑</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#员工列表的删除"><span class="toc-text">员工列表的删除</span></a></li></ol></li></ol></div>
-    </div>
-    
-    
-    
-    <hr>
-    <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交链接</p></div>
-      <ul>
-        
-        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
-        
-        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
-        
-        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
-        
-      </ul>
-    </div>
-    
-    
-    <hr>
-    <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情链接</div>
-      <ul>
-        
-        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
-        
-      </ul>
-    </div>
-    
-  </div>
-</aside>
-
-
-          
-        </div>
-      </div>
-    </main>
-    
-<footer id="footer" class="footer" style="background: #333333;">
-  <div class="container">
-    <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
-        </div>
-        
-        <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
-        </div>
-        
-      </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
-          
-        </div>
-        <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 <script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/06/springboot-day-05/" class="b-link-green">SpringBoot_day_05</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/08/springboot-day-06/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SpringBoot_day_06">
+                        
+                        <span class="card-title">SpringBoot_day_06</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">今天，继续Web的开发，错误处理机制、配置嵌入式Servlet容器、使用外置的Servlet容器
+错误处理机制SpringBoot默认的错误处理机制默认效果：
+1）浏览器，返回一个默认的错误页面
+
+浏览器发送请求的请求头:
+
+2) 如果是其</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/05/springboot-day-04/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SpringBoot_day_04">
+                        
+                        <span class="card-title">SpringBoot_day_04</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">今天，我们开始Springboot的Web开发
+简介使用SpringBoot:
+1）、创建SpringBoot应用，选中我们需要的模块；
+2）、SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来.
+</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
 </script>
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
-  </body>
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>

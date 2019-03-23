@@ -1,0 +1,1467 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Tomcat的总体框架设计, 解忧杂货店">
+    <meta name="description" content="今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~
+tomcat的总体架构如下图所示：
+
+如上图所示，tomcat由：Server、Service、Engine、Connerctor、Host、Con">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tomcat的总体框架设计 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Tomcat的总体框架设计
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tomcat/" target="_blank">
+                                <span class="chip bg-color">tomcat</span>
+                            </a>
+                        
+                            <a href="/tags/源码/" target="_blank">
+                                <span class="chip bg-color">源码</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                tomcat
+                            </a>
+                        
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                源码
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-16
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.6k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        11 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~<br><a id="more"></a></p>
+<p>tomcat的总体架构如下图所示：</p>
+<p><img src="/images/QQ截图20190116163946.png"></p>
+<p>如上图所示，tomcat由：Server、Service、Engine、Connerctor、Host、Context组件组成，其中带有s的代表在一个tomcat实例上可以存在多个组件，比如Context(s)，tomcat允许我们部署多个应用，每个应用对应一个Context。这些组件在tomcat的<strong>conf/server.xml</strong>文件中可以找到，对tomcat的调优需要改动该文件。</p>
+<p><code>server.xml:</code></p>
+<pre><code>&lt;Server port=&quot;8005&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
+&lt;Service name=&quot;Catalina&quot;&gt;
+    &lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
+           connectionTimeout=&quot;20000&quot;
+           redirectPort=&quot;8443&quot; /&gt;
+
+    &lt;Connector port=&quot;8009&quot; protocol=&quot;AJP/1.3&quot; redirectPort=&quot;8443&quot; /&gt;
+
+    &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot;&gt;
+
+      &lt;Realm className=&quot;org.apache.catalina.realm.LockOutRealm&quot;&gt;
+        &lt;Realm className=&quot;org.apache.catalina.realm.UserDatabaseRealm&quot;
+               resourceName=&quot;UserDatabase&quot;/&gt;
+      &lt;/Realm&gt;
+
+      &lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;
+            unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+        &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+               prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;
+               pattern=&quot;%h %l %u %t &quot;%r&quot; %s %b&quot; /&gt;
+      &lt;/Host&gt;
+    &lt;/Engine&gt;
+&lt;/Service&gt;
+&lt;/Server&gt;
+</code></pre><p>Tomcat加载时，相应组件（容器）的配置参数都是从这个文件读进去的，这个文件也是Tomcat性能优化的关键。接下来我们就根据上图以及conf/server.xml的内容来一步步描述一下上面所说的各种组件吧。</p>
+<hr>
+<h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>Server是Tomcat中最顶层的组件，它可以包含多个Service组件。在Tomcat源代码中Server组件对应源码中的  org.apache.catalina.core.StandardServer 类。StandardServer的继承关系图如下图所示：<br><img src="/images/QQ截图20190116165355.png"></p>
+<p>Lifecycle是Tomcat的生命周期接口。保持组件启动和停止一致的的机制通过实现org.apache.catalina.Lifecycle接口来实现。</p>
+<ul>
+<li><p>Server继承至LifeCycle，LifeCycle是一个非常重要的接口，各大组件都继承了这个接口，用于管理tomcat的生命周期，比如init、start、stop、destory；另外，它使用了观察者模式，LifeCycle是一个监听者，它会向注册的LifecycleListener观察者发出各种事件</p>
+</li>
+<li><p>Server提供了findService、getCatalina、getCatalinaHome、getCatalinaBase等接口，支持查找、遍历Service组件，这里似乎看到了和Serivce组件的些许联系。</p>
+</li>
+</ul>
+<pre><code>public interface Server extends Lifecycle {
+
+    public NamingResourcesImpl getGlobalNamingResources();
+
+    public void setGlobalNamingResources(NamingResourcesImpl globalNamingResources);
+
+    public javax.naming.Context getGlobalNamingContext();
+
+    public int getPort();
+
+    public void setPort(int port);
+
+    public String getAddress();
+
+    public void setAddress(String address);
+
+    public String getShutdown();
+
+    public void setShutdown(String shutdown);
+
+    public ClassLoader getParentClassLoader();
+
+    public void setParentClassLoader(ClassLoader parent);
+
+    public Catalina getCatalina();
+
+    public void setCatalina(Catalina catalina);
+
+    public File getCatalinaBase();
+
+    public void setCatalinaBase(File catalinaBase);
+
+    public File getCatalinaHome();
+
+    public void setCatalinaHome(File catalinaHome);
+
+    public void await();
+
+    public Service findService(String name);
+
+    public Service[] findServices();
+
+    public void removeService(Service service);
+
+    public Object getNamingToken();
+}
+</code></pre><hr>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>Service的默认实现类是StardardService，类结构和StardardServer很相似，也是继承至LifecycleMBeanBase，实现了Service接口。</p>
+<p>Service组件相当于Connetor和Engine组件的包装器，它将一个或者多个Connector组件和一个Engine建立关联。上述配置文件中，定义一个叫Catalina的服务，并将Http,AJP（定向包的协议）这两个Connector关联到了一个名为Catalina的Service，注意一个Connetor对应处理一种协议。Service组件对应Tomcat源代码中的org.apache.catalina.core.StandardService,StandardService的继承关系图如下图所示：</p>
+<p><img src="/images/QQ截图20190116170002.png"></p>
+<p>由Service接口不难发现Service组件的内部结构 </p>
+<ul>
+<li><p>持有Engine实例</p>
+</li>
+<li><p>持有Server实例 </p>
+</li>
+<li><p>可以管理多个Connector实例</p>
+</li>
+<li><p>持有Executor引用</p>
+</li>
+</ul>
+<pre><code>public class StandardService extends LifecycleMBeanBase implements Service {
+    // 省略若干代码
+}
+
+public interface Service extends Lifecycle {
+
+    public Engine getContainer();
+
+    public void setContainer(Engine engine);
+
+    public String getName();
+
+    public void setName(String name);
+
+    public Server getServer();
+
+    public void setServer(Server server);
+
+    public ClassLoader getParentClassLoader();
+
+    public void setParentClassLoader(ClassLoader parent);
+
+    public String getDomain();
+
+    public void addConnector(Connector connector);
+
+    public Connector[] findConnectors();
+
+    public void removeConnector(Connector connector);
+
+    public void addExecutor(Executor ex);
+
+    public Executor[] findExecutors();
+
+    public Executor getExecutor(String name);
+
+    public void removeExecutor(Executor ex);
+
+    Mapper getMapper();
+}
+</code></pre><hr>
+<h3 id="Connector"><a href="#Connector" class="headerlink" title="Connector"></a>Connector</h3><p>Connector是tomcat中监听TCP端口的组件，server.xml默认定义了两个Connector，分别用于监听http、ajp端口。对应的代码是org.apache.catalina.connector.Connector，它是一个实现类，并且实现了Lifecycle接口。</p>
+<pre><code>&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot; /&gt;
+</code></pre><ul>
+<li>HTTP/1.1<br><connector port="8080" protocol="HTTP/1.1" connectiontimeout="20000" redirectport="8443"> 上面定义了一个Connector，它缺省监听端口8080,这个端口我们可以根据具体情况进行改动。connectionTimeout定义了连接超时时间，单位是毫秒，redirectPort定义了ssl的重定向接口，根据缺省的配置，Connector会将ssl请求重定向到8443端口。</connector></li>
+</ul>
+<pre><code>&lt;Connector port=&quot;8009&quot; protocol=&quot;AJP/1.3&quot; redirectPort=&quot;8443&quot; /&gt;
+</code></pre><ul>
+<li>AJP/1.3<br>AJP表示Apache Jserv Protocol,此连接器将处理Tomcat和Apache http服务器之间的交互，这个连接器是用来处理我们将Tomcat和Apache http服务器结合使用的情况。假如在同样的一台物理Server上面部署了一台Apache http服务器和多台Tomcat服务器，通过Apache服务器来处理静态资源以及负载均衡的时候，针对不同的Tomcat实例需要AJP监听不同的端口。<strong>但是，在实际的项目应用中，AJP协议并不常用，大多数应用场景会使用 nginx + tomcat 实现负载均衡。</strong></li>
+</ul>
+<p>Connector对应源代码中的org.apache.catalina.connector.Connector,它的继承关系图如下所示：</p>
+<p><img src="/images/QQ截图20190116170422.png"></p>
+<hr>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>org.apache.catalina.Container接口定义了容器的api，它是一个处理用户servlet请求并返回对象给web用户的模块，它有四种不同的容器： </p>
+<ul>
+<li><p>Engine，表示整个Catalina的servlet引擎 </p>
+</li>
+<li><p>Host，表示一个拥有若干个Context的虚拟主机 </p>
+</li>
+<li><p>Context，表示一个Web应用，一个context包含一个或多个wrapper </p>
+</li>
+<li><p>Wrapper，表示一个独立的servlet</p>
+</li>
+</ul>
+<p><img src="/images/QQ截图20190116171006.png"></p>
+<p>Engine、Host、Context、Wrapper都有一个默认的实现类StandardXXX，均继承至ContainerBase。此外，一个容器还包含一系列的Lodder、Logger、Manager、Realm和Resources等</p>
+<p>一个容器可以有一个或多个低层次上的子容器，并且一个Catalina功能部署并不一定需要全部四种容器。一个Context有一个或多个wrapper，而wrapper作为容器层次中的最底层，不能包含子容器。从一个容器添加到另一容器中可以使用在Container接口中定义的addChild()方法义：</p>
+<pre><code>public void addChild(Container child);
+</code></pre><p>删除一个容器可以使用Container接口中定义的removeChild()方法：</p>
+<pre><code>public void removeChild(Container child);
+</code></pre><p>另外容器接口支持子接口查找和获得所有子接口集合的方法findChild和findChildren方法：</p>
+<pre><code>public Container findChild(String name);
+public Container[] findChildren();
+</code></pre><hr>
+<h4 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h4><p>Tomcat中有一个容器的概念，而Engine,Host,Context,Wrapper都属于Contanier，我们先来说说最顶层的容器Engine.<br>一个Engine可以包含一个或者多个Host,也就是说我们一个Tomcat的实例可以配置多个虚拟主机。</p>
+<p>缺省的情况下<code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot;&gt;</code>定义了一个名称为 Cataline 的 Engine。</p>
+<p>Engine对应源代码中的org.apache.catalina.core.StandardEngine，它的继承关系图如下图所示：</p>
+<p><img src="/images/QQ截图20190116171521.png"></p>
+<p>Engine表示Catalina的Servlet引擎，如果使用了Engine的话，则它是Catalina的<strong>顶层容器</strong>，因此在StardardCataline的setParent()方法中是直接抛出异常的。</p>
+<pre><code>public interface Engine extends Container {
+
+    public String getDefaultHost();
+
+    public void setDefaultHost(String defaultHost);
+
+    public String getJvmRoute();
+
+    public void setJvmRoute(String jvmRouteId);
+
+    public Service getService();
+
+    public void setService(Service service);
+}
+
+public class StandardEngine extends ContainerBase implements Engine {
+
+    // other code...
+
+    public void setParent(Container container) {
+        throw new IllegalArgumentException(sm.getString(&quot;standardEngine.notParent&quot;));
+    }
+}
+</code></pre><p><code>server.xml:</code></p>
+<pre><code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot;&gt;
+  &lt;Realm className=&quot;org.apache.catalina.realm.LockOutRealm&quot;&gt;
+    &lt;Realm className=&quot;org.apache.catalina.realm.UserDatabaseRealm&quot;
+           resourceName=&quot;UserDatabase&quot;/&gt;
+  &lt;/Realm&gt;
+
+  &lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+           prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;
+           pattern=&quot;%h %l %u %t &quot;%r&quot; %s %b&quot; /&gt;
+  &lt;/Host&gt;
+&lt;/Engine&gt;
+</code></pre><hr>
+<h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>Host定义了一个虚拟主机，正所谓虚拟主机，当然是可以用来部署应用程序的，Tomcat的Host也是如此。它在server.xml中定义了一个localhost的Host，应用根目录在webapps下面，默认是支持解压重新部署的。</p>
+<pre><code>&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;...&lt;/Host&gt;
+</code></pre><p>其中appBase为webapps，也就是&lt;CATALINA_HOME&gt;\webapps目录，unpackingWARS属性指定在appBase指定的目录中的war包都自动的解压，缺省配置为true，autoDeploy属性指定是否对加入到appBase目录的war包进行自动的部署，缺省为true.</p>
+<p>Host对应源代码中的org.apache.catalina.core.StandardHost,它的继承关系图如下所示：</p>
+<p><img src="/images/QQ截图20190116172108.png"></p>
+<hr>
+<h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><p>Context代表一个独立的web应用，针对每个Context，tomcat都是使用不同的Classloader避免类冲突。如果我们希望使用一个自定义的目录作为部署路径的话，可以在server.xml中新增Context即可。</p>
+<p>在Tomcat中，每一个运行的webapp其实最终都是以Context的形成存在，<strong>每个Context都有一个根路径和请求URL路径</strong>，Context对应源代码中的org.apache.catalina.core.StandardContext,它的继承关系图如下图所示：</p>
+<p><img src="/images/QQ截图20190116172254.png"></p>
+<pre><code>&lt;Context path=&quot;/static&quot; docBase=&quot;D:/static&quot; reloadable=&quot;true&quot;&gt;&lt;/Context&gt;
+</code></pre><p>在Tomcat中我们通常采用如下的两种方式创建一个Context.下面分别描述一下：</p>
+<ol>
+<li><p>在<catalina-home>\webapps目录中创建一个目录，这个时候将自动创建一个context，默认context的访问url为<code>http://host:port/dirname</code>,你也可以通过在ContextRoot\META-INF中创建一个context.xml的文件，其中包含如下的内容来指定应用的访问路径。<code>&lt;Context path=&quot;/yourUrlPath&quot; /&gt;</code></catalina-home></p>
+</li>
+<li><p>conf\server.xml文件中增加context元素。 第二种创建context的方法，我们可以选择在server.xml文件的<host>元素，比如我们在server.xml文件中增加如下内容：</host></p>
+</li>
+</ol>
+<pre><code>&lt;Context path=&quot;/mypath&quot; docBase=&quot;/Users/xxx&quot; reloadable=&quot;true&quot;&gt;&lt;/Context&gt;
+</code></pre><p>这样的话，我们就可以通过 <code>http://host:port/mypath</code> 访问上面配置的 context 了。</p>
+<hr>
+<p><strong>Valve:</strong></p>
+<p>Valve中文意思是阀门，Valve是Tomcat中责任链模式的实现，通过链接多个Valve对请求进行处理。每个容器都有一个流水线Pipeline（过滤器链），每个流水线至少有一个阀门。其中Valve可以定义在任何的Container中，上面说的Engine,Host,Context都属于容器。tomcat 默认定义了一个名为org.apache.catalina.valves.AccessLogValve的Valve,这个Valve负责拦截每个请求，然后记录一条访问日志。</p>
+<p>通过上面的分析，我们发现Server,Service,Engine,Host,Context都实现了org.apache.catalina.Lifecycle接口，通过这个接口管理了这些核心组件的生命周期，关于这些组件的生命周期，我们在下一篇文章描述。</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/" class="b-link-green">Tomcat的总体框架设计</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tomcat的启动分析(一) Lifecycle">
+                        
+                        <span class="card-title">Tomcat的启动分析(一) Lifecycle</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Tomcat组件生命周期管理:Lifecycle
+Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由Lifecycle控制组件的初始化、启动、销毁等动作，方便应用程序获取、释放某些资源，或者是触发某些特</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                    tomcat
+                                </a>
+                            
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                    源码
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tomcat/" target="_blank">
+                        <span class="chip bg-color">tomcat</span>
+                    </a>
+                    
+                    <a href="/tags/源码/" target="_blank">
+                        <span class="chip bg-color">源码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/15/shen-ru-li-jie-cas/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深入理解CAS">
+                        
+                        <span class="card-title">深入理解CAS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">CAS，Compare And Swap，即比较并交换。Doug lea大神在同步组件中大量使用CAS技术鬼斧神工地实现了Java多线程的并发操作。
+
+整个AQS同步组件、Atomic原子类操作等等都是以CAS实现的，甚至Concurren</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CAS/" class="post-category" target="_blank">
+                                    CAS
+                                </a>
+                            
+                            <a href="/categories/CAS/面试/" class="post-category" target="_blank">
+                                    面试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/面试/" target="_blank">
+                        <span class="chip bg-color">面试</span>
+                    </a>
+                    
+                    <a href="/tags/CAS/" target="_blank">
+                        <span class="chip bg-color">CAS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

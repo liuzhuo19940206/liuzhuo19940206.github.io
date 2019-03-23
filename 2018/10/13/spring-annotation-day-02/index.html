@@ -1,490 +1,1476 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#333333">
-    <meta name="msapplication-TileColor" content="#333333">
-    
-    
-    
-    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    
-    
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
-    
-    
-    <link rel="manifest" href="/favicons/site.webmanifest">
-    
-    
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    
-    
-    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
-    
-    
-    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
-    
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
-    
-    
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<link rel="stylesheet" type="text/css" href="/css/post.css">
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="spring_annotation_day_02, 解忧杂货店">
+    <meta name="description" content="Spring注解开发  
+今天，学习包的扫描
+接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。
+接下来，我们看看包扫描怎么配置，因为">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>spring_annotation_day_02 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length === 0) {
-        searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/index.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>spring_annotation_day_02 | 解忧杂货店 - 爱生活爱解忧</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
     
-<header id="header" class="header" style="background: #333333;">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">解忧杂货店</a></h1>
-        <h2 class="subtitle">爱生活爱解忧</h2>
-      </div>
-      
-      <div class="logo">
-        <img src="/images/logo.png" alt="logo">
-      </div>
-      
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
     </div>
-    <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
-      <ul id="menu" role="menubar" aria-hidden="false">
+
+    
+
+    <ul class="menu-list mobile-menu-list">
         
-        <li role="menuitem"><a href="/">首页</a></li>
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/archives/">归档</a></li>
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/categories/">分类</a></li>
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/tags/">标签</a></li>
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/about/">关于</a></li>
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
         
-      </ul>
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
     </nav>
-  </div>
+
 </header>
 
 
-    <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
-            
-<div id="post" class="page">
-  
-  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/10/13/spring-annotation-day-02/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="刘卓">
-       <meta itemprop="description" content="hello,every body!">
-       <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="解忧杂货店">
-      </span>
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        spring_annotation_day_02
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">spring_annotation_day_02</h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-10-13T12:37:23+08:00">2018-10-13 12:37:23</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spring-annotation/" itemprop="url" rel="index"><span itemprop="name">spring_annotation</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      <p><strong>Spring注解开发</strong>  </p>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/spring-annotation/" target="_blank">
+                                <span class="chip bg-color">spring_annotation</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/spring-annotation/" class="post-category" target="_blank">
+                                spring_annotation
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-13
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        9 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>Spring注解开发</strong>  </p>
 <p>今天，学习包的扫描<br><a id="more"></a></p>
 <p>接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。</p>
 <p>接下来，我们看看包扫描怎么配置，因为我们不可能给每个类都配置，那样太花时间和精力，所以我们需要包扫描的配置，来自动帮我们把需要的bean对象注入到容器中。</p>
 <h3 id="一：xml版的包扫描"><a href="#一：xml版的包扫描" class="headerlink" title="一：xml版的包扫描"></a>一：xml版的包扫描</h3><hr>
-<p>注意：这里在Bean.xml文件中需要配置命名空间,加上context的命名空间.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;<br>       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;<br>       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>       xsi:schemaLocation=&quot;<br>         http://www.springframework.org/schema/beans<br>         http://www.springframework.org/schema/beans/spring-beans.xsd<br>         http://www.springframework.org/schema/context<br>         http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;<br></code></pre></td></tr></table></figure></p>
-<p>主要加入了xmlns:context=····和xsi:中的两个context(看结尾).</p>
-<p>bean.xml配置文件加入了：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!--包扫描、只要标注了@Controller、@Service、@Repository、@Component都会自动注入到容器中--&gt;<br>&lt;!-- base-package包名，在该包下的子包也会被扫描--&gt;<br>&lt;context:component-scan base-package=&quot;com.liuzhuo&quot;/&gt;<br></code></pre></td></tr></table></figure></p>
-<p>现在将bean.xml中的person配置注解掉。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!--以前的开发模式，使用配置文件--&gt;<br>&lt;!--&lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;<br>    &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;<br>    &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;<br>&lt;/bean&gt;--&gt;<br></code></pre></td></tr></table></figure></p>
-<p>在Person类上面加入@Component注解。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Component<br>public class Person<br></code></pre></td></tr></table></figure></p>
-<p>运行MainTest测试类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);<br>Person person = (Person) applicationContext.getBean(&quot;person&quot;);<br>System.out.println(person);<br></code></pre></td></tr></table></figure></p>
-<p>输出:</p>
+<p>注意：这里在Bean.xml文件中需要配置命名空间,加上context的命名空间.</p>
+<pre><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+</code></pre><p>主要加入了xmlns:context=····和xsi:中的两个context(看结尾).</p>
+<p>bean.xml配置文件加入了：</p>
+<pre><code>    &lt;!--包扫描、只要标注了@Controller、@Service、@Repository、@Component都会自动注入到容器中--&gt;
+    &lt;!-- base-package包名，在该包下的子包也会被扫描--&gt;
+    &lt;context:component-scan base-package=&quot;com.liuzhuo&quot;/&gt;
+</code></pre><p>现在将bean.xml中的person配置注解掉。</p>
+<pre><code>    &lt;!--以前的开发模式，使用配置文件--&gt;
+    &lt;!--&lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;
+        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;
+        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;
+    &lt;/bean&gt;--&gt;
+</code></pre><p>在Person类上面加入@Component注解。</p>
+<pre><code>@Component
+public class Person 
+</code></pre><p>运行MainTest测试类：</p>
+<pre><code>  ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
+  Person person = (Person) applicationContext.getBean(&quot;person&quot;);
+  System.out.println(person);
+</code></pre><p>输出:</p>
 <p><code>Person{name=&#39;null&#39;, age=null}</code>  </p>
 <p>说明包扫描成功!</p>
 <hr>
 <h3 id="二：java类版的包扫描"><a href="#二：java类版的包扫描" class="headerlink" title="二：java类版的包扫描"></a>二：java类版的包扫描</h3><hr>
 <p>首先将xml版本中的包扫描注解掉。</p>
 <p>在java配置类上加入@ComponentScan(value = “com.liuzhuo”)<br>value：就是扫描的具体包的路径。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScan(value = &quot;com.liuzhuo&quot;) //包扫描<br>public class MainConfig &#123;<br>   ·····<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>创建com.liuzhuo.controller、com.liuzhuo.service包、com.liuzhuo.dao<br>并创建相应的java类，BookController，BookService，BookDao。如下：</p>
+<pre><code>    //配置类==配置文件
+    @Configuration   //告诉spring这是一个配置类，用来生成bean
+    @ComponentScan(value = &quot;com.liuzhuo&quot;) //包扫描
+    public class MainConfig {
+       ·····
+    }
+</code></pre><p>创建com.liuzhuo.controller、com.liuzhuo.service包、com.liuzhuo.dao<br>并创建相应的java类，BookController，BookService，BookDao。如下：</p>
 <p><img src="/images/20181013170247.png" style="width:50%;">  </p>
 <p>并在相应的类上面标注相应的注解。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class BookController &#123;<br>&#125;<br>-----------------------------<br>@Service<br>public class BookService &#123;<br>&#125;<br>-----------------------------<br>@Repository<br>public class BookDao &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>主要是@Controller、@Service、@Repository三个注解。  </p>
+<pre><code>@Controller
+public class BookController {
+}
+-----------------------------
+@Service
+public class BookService {
+}
+-----------------------------
+@Repository
+public class BookDao {
+}
+</code></pre><p>主要是@Controller、@Service、@Repository三个注解。  </p>
 <p>现在在test文件夹下面的jave包下创建测试类。</p>
 <p>com.liuzhuo.test.IocTest类。</p>
-<p>并在pom.xml文件中加入依赖<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;<br>    &lt;groupId&gt;junit&lt;/groupId&gt;<br>    &lt;artifactId&gt;junit&lt;/artifactId&gt;<br>    &lt;version&gt;4.12&lt;/version&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure></p>
-<p>在IocTest类中写入一下代码:<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class IocTest &#123;<br><br>    @Test<br>    public void test01() &#123;<br>        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);<br>        //获取所有已经注入到容器中的Bean的id.<br>        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();<br>        for (String name : beanDefinitionNames) &#123;<br>            System.out.println(name);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>执行test01，结果：<br>除了spring内置的Bean对象外，主要有以下我们自己定义的Bean对象的id名<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookController<br>bookDao<br>bookService<br>person01<br></code></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="三、-ComponentScan的用法"><a href="#三、-ComponentScan的用法" class="headerlink" title="三、@ComponentScan的用法"></a>三、@ComponentScan的用法</h3><p>上面，我们已经初步了解了@ComponentScan包扫描的基本用法了。<br>点击@ComponentScan注解。我们会看到<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Retention(RetentionPolicy.RUNTIME)<br>@Target(&#123;ElementType.TYPE&#125;)<br>@Documented<br>@Repeatable(ComponentScans.class)<br>public @interface ComponentScan &#123;<br>    @AliasFor(&quot;basePackages&quot;)<br>    String[] value() default &#123;&#125;;<br>    ····<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>value这个字段，说明是一个字符串类型的数组。说明value值，我们可以填写多个值，数组的话，用大花括号来表示，{}.每个值用逗号，来隔开。</p>
+<p>并在pom.xml文件中加入依赖</p>
+<pre><code>        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;4.12&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><p>在IocTest类中写入一下代码:</p>
+<pre><code>public class IocTest {
+
+    @Test
+    public void test01() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
+        //获取所有已经注入到容器中的Bean的id.
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for (String name : beanDefinitionNames) {
+            System.out.println(name);
+        }
+    }
+}
+
+</code></pre><p>执行test01，结果：<br>除了spring内置的Bean对象外，主要有以下我们自己定义的Bean对象的id名</p>
+<pre><code>mainConfig
+bookController
+bookDao
+bookService
+person01
+</code></pre><hr>
+<h3 id="三、-ComponentScan的用法"><a href="#三、-ComponentScan的用法" class="headerlink" title="三、@ComponentScan的用法"></a>三、@ComponentScan的用法</h3><p>上面，我们已经初步了解了@ComponentScan包扫描的基本用法了。<br>点击@ComponentScan注解。我们会看到  </p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
+@Documented
+@Repeatable(ComponentScans.class)
+public @interface ComponentScan {
+    @AliasFor(&quot;basePackages&quot;)
+    String[] value() default {};
+    ····
+}
+</code></pre><p>value这个字段，说明是一个字符串类型的数组。说明value值，我们可以填写多个值，数组的话，用大花括号来表示，{}.每个值用逗号，来隔开。</p>
 <p>ps:提一个小技巧，在idea中，Alt+7可以查看这个类中所有的字段和方法。</p>
 <p>我们可以看到其中有一个includeFilters()的字段。<br><img src="/images/20181013173018.png" style="width:50%"></p>
 <p>ComponentScan.Filter[] includeFilters() default {};</p>
-<p>看到includeFilters也是一个数组，类型是ComponentScan的内部类Filter。<br>点击Filter，发现也是一个注解.<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Retention(RetentionPolicy.RUNTIME)<br>    @Target(&#123;&#125;)<br>    public @interface Filter &#123;<br>        FilterType type() default FilterType.ANNOTATION;<br><br>        @AliasFor(&quot;classes&quot;)<br>        Class&lt;?&gt;[] value() default &#123;&#125;;<br><br>        @AliasFor(&quot;value&quot;)<br>        Class&lt;?&gt;[] classes() default &#123;&#125;;<br><br>        String[] pattern() default &#123;&#125;;<br>    &#125;<br></code></pre></td></tr></table></figure></p>
-<p>发现有一个类型和字节码类的字段。</p>
+<p>看到includeFilters也是一个数组，类型是ComponentScan的内部类Filter。<br>点击Filter，发现也是一个注解.</p>
+<pre><code>@Retention(RetentionPolicy.RUNTIME)
+    @Target({})
+    public @interface Filter {
+        FilterType type() default FilterType.ANNOTATION;
+
+        @AliasFor(&quot;classes&quot;)
+        Class&lt;?&gt;[] value() default {};
+
+        @AliasFor(&quot;value&quot;)
+        Class&lt;?&gt;[] classes() default {};
+
+        String[] pattern() default {};
+    }
+</code></pre><p>发现有一个类型和字节码类的字段。</p>
 <p><strong>1.includeFilters</strong></p>
-<p>现在我们来使用这个includeFilters来在包扫描的时候，只扫描我们相要的类。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = &#123;<br>        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = &#123;Controller.class&#125;)<br>&#125;) //包扫描<br></code></pre></td></tr></table></figure></p>
-<p>type是来说明过滤的类型的，这里的类型是注解(FilterType.ANNOTATION)。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public enum FilterType &#123;<br>    ANNOTATION,<br>    ASSIGNABLE_TYPE,<br>    ASPECTJ,<br>    REGEX,<br>    CUSTOM;<br><br>    private FilterType() &#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>总共有以上五个类型。<br>ANNOTATION：注解类型<br>ASSIGNABLE_TYPE：赋值类型</p>
+<p>现在我们来使用这个includeFilters来在包扫描的时候，只扫描我们相要的类。</p>
+<pre><code>@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+}) //包扫描
+</code></pre><p>type是来说明过滤的类型的，这里的类型是注解(FilterType.ANNOTATION)。</p>
+<pre><code>public enum FilterType {
+    ANNOTATION,
+    ASSIGNABLE_TYPE,
+    ASPECTJ,
+    REGEX,
+    CUSTOM;
+
+    private FilterType() {
+    }
+}
+</code></pre><p>总共有以上五个类型。<br>ANNOTATION：注解类型<br>ASSIGNABLE_TYPE：赋值类型</p>
 <hr>
-<p>运行test01类，发现结果还是<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookController<br>bookDao<br>bookService<br>person01<br></code></pre></td></tr></table></figure></p>
-<p>是配置出现问题了嘛？不是，是因为我们忘记了，包扫描，默认是配置是扫描所有，所以，我们只需要将默认的配置设置为false就好了。<br>useDefaultFilters = false</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = &#123;<br>        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = &#123;Controller.class&#125;)<br>&#125;,useDefaultFilters = false) //包扫描<br>public class MainConfig<br></code></pre></td></tr></table></figure>
-<p>结果为：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookController<br>person01<br></code></pre></td></tr></table></figure></p>
-<p><strong>2.excludeFilters</strong></p>
+<p>运行test01类，发现结果还是</p>
+<pre><code>mainConfig
+bookController
+bookDao
+bookService
+person01
+</code></pre><p>是配置出现问题了嘛？不是，是因为我们忘记了，包扫描，默认是配置是扫描所有，所以，我们只需要将默认的配置设置为false就好了。<br>useDefaultFilters = false</p>
+<pre><code>@Configuration   //告诉spring这是一个配置类，用来生成bean
+@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+},useDefaultFilters = false) //包扫描
+public class MainConfig
+</code></pre><p>结果为：</p>
+<pre><code>mainConfig
+bookController
+person01
+</code></pre><p><strong>2.excludeFilters</strong></p>
 <p>excludeFilters：是和includeFilters对着来的，是排除哪些类不扫描。</p>
-<p>具体的配置情况如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScan(value = &quot;com.liuzhuo&quot;, excludeFilters = &#123;<br>        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = &#123;Controller.class&#125;)<br>&#125;) //包扫描<br>public class MainConfig<br></code></pre></td></tr></table></figure></p>
-<p>输出结果为：将@Controller注解的类就没有扫描。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookDao<br>bookService<br>person01<br></code></pre></td></tr></table></figure></p>
-<p>总结：<br>@ComponentScan value:指定要扫描的包<br>jdk1.8中@ComponentScan是可重复的，所以可以写两个@ComponentScan<br>不过，可以使用@ComponentScans来配置多个@ComponentScan<br>excludeFilters = Filter[]: 指定扫描的时候按照什么规则排除哪些组件<br>includeFilters = Filter[]: 指定扫描的时候只需要包含哪些组件<br>ps:includeFilters,需要将默认的配置设置为false。(useDefaultFilters = false)</p>
+<p>具体的配置情况如下：</p>
+<pre><code>//配置类==配置文件
+@Configuration   //告诉spring这是一个配置类，用来生成bean
+@ComponentScan(value = &quot;com.liuzhuo&quot;, excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+}) //包扫描
+public class MainConfig
+</code></pre><p>输出结果为：将@Controller注解的类就没有扫描。</p>
+<pre><code>mainConfig
+bookDao
+bookService
+person01
+</code></pre><p>总结：<br>@ComponentScan value:指定要扫描的包<br>jdk1.8中@ComponentScan是可重复的，所以可以写两个@ComponentScan<br>不过，可以使用@ComponentScans来配置多个@ComponentScan<br>excludeFilters = Filter[]: 指定扫描的时候按照什么规则排除哪些组件<br>includeFilters = Filter[]: 指定扫描的时候只需要包含哪些组件<br>ps:includeFilters,需要将默认的配置设置为false。(useDefaultFilters = false)</p>
 <hr>
 <h3 id="四、详解Filter的类型"><a href="#四、详解Filter的类型" class="headerlink" title="四、详解Filter的类型"></a>四、详解Filter的类型</h3><p>FilterType.ANNOTATION        按照注解<br>FilterType.ASSIGNABLE_TYPE   按照给定的类型<br>FilterType.ASPECTJ           使用ASPECTJ表达式<br>FilterType.REGEX             使用正则表达式<br>FilterType.CUSTOM            使用自定义的规则</p>
 <p>更新MainConfig类:</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScans(value = &#123;<br>        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = &#123;<br>                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = &#123;Controller.class&#125;)<br>        &#125;, useDefaultFilters = false)<br>&#125;)<br>public class MainConfig<br></code></pre></td></tr></table></figure>
-<p>现在的输出结果为：(包含有@Controller注解的类)<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookController<br>person01<br></code></pre></td></tr></table></figure></p>
-<p>现在我们使用FilterType.ASSIGNABLE_TYPE 类型(给定类的类型)</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScans(value = &#123;<br>        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = &#123;<br>                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = &#123;BookService.class&#125;)<br>        &#125;, useDefaultFilters = false)<br>&#125;)<br>public class MainConfig<br></code></pre></td></tr></table></figure>
-<p>输出结果是只要BookService类型的就行，他的子类也行。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>bookService<br>person01<br></code></pre></td></tr></table></figure></p>
-<p>现在我们使用自定义规则，FilterType.CUSTOM。</p>
+<pre><code>//配置类==配置文件
+@Configuration   //告诉spring这是一个配置类，用来生成bean
+@ComponentScans(value = {
+        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
+        }, useDefaultFilters = false)
+})
+public class MainConfig
+</code></pre><p>现在的输出结果为：(包含有@Controller注解的类)</p>
+<pre><code>mainConfig
+bookController
+person01
+</code></pre><p>现在我们使用FilterType.ASSIGNABLE_TYPE 类型(给定类的类型)</p>
+<pre><code>//配置类==配置文件
+@Configuration   //告诉spring这是一个配置类，用来生成bean
+@ComponentScans(value = {
+        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
+                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {BookService.class})
+        }, useDefaultFilters = false)
+})
+public class MainConfig 
+</code></pre><p>输出结果是只要BookService类型的就行，他的子类也行。</p>
+<pre><code>mainConfig
+bookService
+person01
+</code></pre><p>现在我们使用自定义规则，FilterType.CUSTOM。</p>
 <p>需要自己创建一个类并实现TypeFilter接口。(我放在com.liuzhuo.config包)</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MyTypeFilter implements TypeFilter &#123;<br>    @Override<br>    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException &#123;<br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>解释一下：<br>1.metadataReader  读取到当前正在扫描的类的信息<br>2.metadataReaderFactory  可以获取到其他任何类信息</p>
+<pre><code>public class MyTypeFilter implements TypeFilter {
+    @Override
+    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+        return false;
+    }
+}
+</code></pre><p>解释一下：<br>1.metadataReader  读取到当前正在扫描的类的信息<br>2.metadataReaderFactory  可以获取到其他任何类信息</p>
 <p>我们通过这两个参数可以获取很多当前扫描类的信息。</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MyTypeFilter implements TypeFilter &#123;<br>    @Override<br>    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException &#123;<br><br>        //获取当前类的注解信息<br>        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();<br>        //获取当前正在扫描的类信息<br>        ClassMetadata classMetadata = metadataReader.getClassMetadata();<br>        //获取当前类的资源(类的路径)<br>        Resource resource = metadataReader.getResource();<br><br>        String className = classMetadata.getClassName();<br>        System.out.println(&quot;---&gt;&quot; + className);<br><br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>上述的方法，我们可以打印出被扫描的类的名字；<br>在此之前，我们还需要修改MainConfig配置类：<br>将Filter类型改为自定义类型。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">//配置类==配置文件<br>@Configuration   //告诉spring这是一个配置类，用来生成bean<br>@ComponentScans(value = &#123;<br>        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = &#123;<br>                @ComponentScan.Filter(type = FilterType.CUSTOM, classes = &#123;MyTypeFilter.class&#125;)<br>        &#125;, useDefaultFilters = false)<br>&#125;)<br>public class MainConfig<br></code></pre></td></tr></table></figure></p>
-<p>运行test01测试类：<br>结果如下：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs undefined">---&gt;com.liuzhuo.test.IocTest<br>---&gt;com.liuzhuo.bean.Person<br>---&gt;com.liuzhuo.config.MyTypeFilter<br>---&gt;com.liuzhuo.controller.BookController<br>---&gt;com.liuzhuo.dao.BookDao<br>---&gt;com.liuzhuo.MainTest<br>---&gt;com.liuzhuo.service.BookService<br></code></pre></td></tr></table></figure></p>
-<p>现在我们的MyTypeFilter返回都是false，所以被注入到容器的是<br>mainConfig<br>person01</p>
-<p>现在，我们来更改MyTypeFilter类，我们只注入类名包含‘er’的类。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs undefined">public class MyTypeFilter implements TypeFilter &#123;<br>    @Override<br>    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException &#123;<br><br>        //获取当前类的注解信息<br>        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();<br>        //获取当前正在扫描的类信息<br>        ClassMetadata classMetadata = metadataReader.getClassMetadata();<br>        //获取当前类的资源(类的路径)<br>        Resource resource = metadataReader.getResource();<br><br>        String className = classMetadata.getClassName();<br>        System.out.println(&quot;---&gt;&quot; + className);<br><br>        if (className.contains(&quot;er&quot;)) return true;<br>        return false;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>其实就是加了一句代码：<br><code>if (className.contains(&quot;er&quot;)) return true;</code></p>
-<p>运动test01测试类：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">mainConfig<br>person<br>myTypeFilter<br>bookController<br>bookService<br>person01<br></code></pre></td></tr></table></figure></p>
-<p>除了本来的mainConfig、person01是配置文件帮我注入的。<br>其他的注入的类都是类名包含‘er’的。</p>
+<pre><code>public class MyTypeFilter implements TypeFilter {
+    @Override
+    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+
+        //获取当前类的注解信息
+        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
+        //获取当前正在扫描的类信息
+        ClassMetadata classMetadata = metadataReader.getClassMetadata();
+        //获取当前类的资源(类的路径)
+        Resource resource = metadataReader.getResource();
+
+        String className = classMetadata.getClassName();
+        System.out.println(&quot;---&gt;&quot; + className);
+
+        return false;
+    }
+}
+</code></pre><p>上述的方法，我们可以打印出被扫描的类的名字；<br>在此之前，我们还需要修改MainConfig配置类：<br>将Filter类型改为自定义类型。</p>
+<pre><code>//配置类==配置文件
+@Configuration   //告诉spring这是一个配置类，用来生成bean
+@ComponentScans(value = {
+        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
+                @ComponentScan.Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
+        }, useDefaultFilters = false)
+})
+public class MainConfig 
+</code></pre><p>运行test01测试类：<br>结果如下：</p>
+<pre><code>---&gt;com.liuzhuo.test.IocTest
+---&gt;com.liuzhuo.bean.Person
+---&gt;com.liuzhuo.config.MyTypeFilter
+---&gt;com.liuzhuo.controller.BookController
+---&gt;com.liuzhuo.dao.BookDao
+---&gt;com.liuzhuo.MainTest
+---&gt;com.liuzhuo.service.BookService
+</code></pre><p>现在我们的MyTypeFilter返回都是false，所以被注入到容器的是<br>mainConfig<br>person01</p>
+<p>现在，我们来更改MyTypeFilter类，我们只注入类名包含‘er’的类。</p>
+<pre><code>public class MyTypeFilter implements TypeFilter {
+    @Override
+    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+
+        //获取当前类的注解信息
+        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
+        //获取当前正在扫描的类信息
+        ClassMetadata classMetadata = metadataReader.getClassMetadata();
+        //获取当前类的资源(类的路径)
+        Resource resource = metadataReader.getResource();
+
+        String className = classMetadata.getClassName();
+        System.out.println(&quot;---&gt;&quot; + className);
+
+        if (className.contains(&quot;er&quot;)) return true;
+        return false;
+    }
+}
+
+</code></pre><p>其实就是加了一句代码：<br><code>if (className.contains(&quot;er&quot;)) return true;</code></p>
+<p>运动test01测试类：</p>
+<pre><code>mainConfig
+person
+myTypeFilter
+bookController
+bookService
+person01
+</code></pre><p>除了本来的mainConfig、person01是配置文件帮我注入的。<br>其他的注入的类都是类名包含‘er’的。</p>
 <p><strong>ps：都是在包扫描@ComponentScan(value = “com.liuzhuo”)</strong><br><strong>com.liuzhuo包下的’er’.</strong></p>
 
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/spring-annotation/" rel="tag"><i class="fas fa-tags"></i>spring_annotation</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  
-<div class="reward" id="reward">
-  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
-  <button id="reward-button" class="button" disable="enable">打赏</button>
-  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
-    
-    <div id="wechat">
-      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
-      <span>微信支付</span>
-    </div>
-    
-    
-    <div id="alipay">
-      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
-      <span>支付宝</span>
-    </div>
-    
-    
-  </div>
-</div>
+            </div>
+            <hr/>
 
-
-  
-  
-  <nav class="page-nav">
-    <div class="page-nav-next page-nav-item">
-      
-      <a href="/2018/10/12/spring-annotation-01/" rel="next" title="spring_annotation_day_01"><i class="fas fa-angle-left"></i><span class="nav-title">spring_annotation_day_01</span></a>
-      
-    </div>
-    <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2018/10/14/spring-annotation-day-03/" rel="prev" title="spring_annotation_day_03"><span class="nav-title">spring_annotation_day_03</span><i class="fas fa-angle-right"></i></a>
-      
-    </div>
-  </nav>
-  
-  
-  
-
-<div class="comments" id="comments">
-  
-  
-  <div class="commentjs" id="comment-thread"></div>
-  <link rel="stylesheet" href="/css/commentjs.css">
-  <script defer type="text/javascript" src="/js/marked.min.js"></script>
-  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
-  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
-  <script defer type="text/javascript" src="/js/commentjs.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function () {
-    getComments({
-      "type": "github",
-      "user": "liuzhuo19940206",
-      "repo": "liuzhuo19940206.github.io",
-      "client_id": "d67adf7d637efbea7a69",
-      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
-      "no_comment": "这个页面还没有评论，现在就去评论吧！",
-      "go_to_comment": "去评论",
-      "issue_title": "spring_annotation_day_02",
-      "btn_class": "button",
-      "comments_target": "#comment-thread"
-    });
-    marked.setOptions({
-      "highlight": function (code, lang) {
-        return hljs.highlightAuto(code).value;
-      }
-    });
-    function mark() {
-      var markdowns = document.getElementsByClassName("markdown");
-      for (var i = 0; i < markdowns.length; ++i){
-        if (markdowns[i].innerHTML) {
-          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
-        }
-      }
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
     }
-    window.addEventListener("DOMContentLoaded", mark, false);
-    window.addEventListener("load", mark, false);
-  });
-  </script>
-  
-  
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
-  
-</div>
-
-          </div>
-          
-          
-          
-<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
-  
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
-    </div>
-  </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="info sidebar-item" id="info">
-  
-  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
-  
-  <h1 class="author-name">刘卓</h1>
-  <h2 class="author-description">hello,every body!</h2>
-  <div class="site-count">
-    
-    <div class="archives-count">
-      <div class="site-count-title">归档</div>
-      <div><a href="/archives/">114</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="categories-count">
-      <div class="site-count-title">分类</div>
-      <div><a href="/categories/">55</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="tags-count">
-      <div class="site-count-title">标签</div>
-      <div><a href="/tags/">43</a></div>
-    </div>
-    
-  </div>
-  
-  <div class="rss">
-    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
-  </div>
-  
-</div>
-
-
-  <div class="sidebar-sticky">
-    
-    
-    
-    
-    
-    <hr>
-    <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#一：xml版的包扫描"><span class="toc-text">一：xml版的包扫描</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#二：java类版的包扫描"><span class="toc-text">二：java类版的包扫描</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#三、-ComponentScan的用法"><span class="toc-text">三、@ComponentScan的用法</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#四、详解Filter的类型"><span class="toc-text">四、详解Filter的类型</span></a></li></ol></div>
-    </div>
-    
-    
-    
-    <hr>
-    <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交链接</p></div>
-      <ul>
-        
-        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
-        
-        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
-        
-        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
-        
-      </ul>
-    </div>
-    
-    
-    <hr>
-    <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情链接</div>
-      <ul>
-        
-        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
-        
-      </ul>
-    </div>
-    
-  </div>
-</aside>
-
-
-          
-        </div>
-      </div>
-    </main>
-    
-<footer id="footer" class="footer" style="background: #333333;">
-  <div class="container">
-    <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
-        </div>
-        
-        <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
-        </div>
-        
-      </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
-          
-        </div>
-        <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 <script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/10/13/spring-annotation-day-02/" class="b-link-green">spring_annotation_day_02</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/10/14/spring-annotation-day-03/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="spring_annotation_day_03">
+                        
+                        <span class="card-title">spring_annotation_day_03</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Spring注解开发  
+今天，学习Spring中的@Scope注解
+@Scope注解@Scope注解：是用来控制创建对象的作用域的，这里的作用域是我们平时所说的作用域。这里是：单例模式、多例模式等。  
+现在创建新的配置类com.liuz</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring-annotation/" class="post-category" target="_blank">
+                                    spring_annotation
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spring-annotation/" target="_blank">
+                        <span class="chip bg-color">spring_annotation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/12/spring-annotation-01/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="spring_annotation_day_01">
+                        
+                        <span class="card-title">spring_annotation_day_01</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Spring注解开发  
+今天学习Spring的第一天，大家一起跟着我动手搭建环境，最后一定会有收获。
+开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring-annotation/" class="post-category" target="_blank">
+                                    spring_annotation
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spring-annotation/" target="_blank">
+                        <span class="chip bg-color">spring_annotation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
 </script>
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
-  </body>
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>

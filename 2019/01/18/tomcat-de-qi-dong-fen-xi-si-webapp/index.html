@@ -1,0 +1,1552 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Tomcat的启动分析(四)webapp, 解忧杂货店">
+    <meta name="description" content="上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tomcat的启动分析(四)webapp | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Tomcat的启动分析(四)webapp
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tomcat/" target="_blank">
+                                <span class="chip bg-color">tomcat</span>
+                            </a>
+                        
+                            <a href="/tags/源码/" target="_blank">
+                                <span class="chip bg-color">源码</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                tomcat
+                            </a>
+                        
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                源码
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-18
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        14 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的启动，这一块是最贴近我们开发的应用程序。在这一篇文章中，我们将要分析 tomcat 是如何解析并初始化应用程序定义的 Servlet、Filter、Listener 等<br><a id="more"></a></p>
+<p>首先我们思考几个问题： </p>
+<p>1.tomcat 如何支持 servlet3.0 的注解编程，比如对 javax.servlet.annotation.WebListener 注解的支持？</p>
+<pre><code>如果 tomcat 利用 ClassLoader 加载 webapp 下面所有的 class，从而分析 Class 对象的注解，这样子肯定会导致很多问题，
+比如 MetaSpace 出现内存溢出，而且加载了很多不想干的类，我们知道 jvm 卸载 class 的条件非常苛刻，这显然是不可取的。
+因此，tomcat 开发了字节码解析的工具类，位于  org.apache.tomcat.util.bcel，bcel 即 ：Byte Code Engineering Library，
+专门用于解析 class 字节码，而不是像我们前面猜测的那样，把类加载到 jvm 中.
+</code></pre><p>2.假如 webapp 目录有多个应用，使用的开源框架的 jar 版本不尽一致，tomcat 是怎样避免出现类冲突？</p>
+<pre><code>不同的 webapp 使用不同的 ClassLoader 实例加载 class，因此 webapp 内部加载的 class 是不同的，自然不会出现类冲突，
+当然这里要排除 ClassLoader 的 parent 能够加载的 class。关于 ClassLoader 这一块，后续会专门写一篇博客进行分析
+</code></pre><h3 id="Context-容器"><a href="#Context-容器" class="headerlink" title="Context 容器"></a>Context 容器</h3><p>首先，我们来看下StandardContext重要的几个属性，包括了我们熟悉的 ServletContext、servlet容器相关的Listener(比如 SessionListener 和 ContextListener)、FilterConfig</p>
+<pre><code>protected ApplicationContext context：即ServletContext上下文
+
+private InstanceManager instanceManager：根据 class 实例化对象，比如 Listener、Filter、Servlet 实例对象
+
+private List&lt;Object&gt; applicationEventListenersList：SessionListener、ContextListner 等集合
+
+private HashMap&lt;String, ApplicationFilterConfig&gt; filterConfigs：filer 名字与 FilterConfig 的映射关系
+
+private Loader loader：用于加载class等资源
+
+private final ReadWriteLock loaderLock：用于对loader的读写操作
+
+protected Manager manager：Session管理器
+
+private final ReadWriteLock managerLock：用于对manager的读写操作
+
+private HashMap&lt;String, String&gt; servletMappings：url与Servlet名字的映射关系
+
+private HashMap&lt;Integer, ErrorPage&gt; statusPages：错误码与错误页的映射
+
+private JarScanner jarScanner：用于扫描jar包资源
+
+private CookieProcessor cookieProcessor：cookies处理器，默认使用Rfc6265CookieProcessor
+</code></pre><p>StandardContext 和其他 Container 一样，也是重写了 startInternal 方法。由于涉及到 webapp 的启动流程，需要很多准备工作，比如使用 WebResourceRoot 加载资源文件、利用 Loader 加载 class、使用 JarScanner 扫描 jar 包，等等。因此StandardContext 的启动逻辑比较复杂，这里描述下几个重要的步骤：</p>
+<ol>
+<li><p>创建工作目录，比如$CATALINA_HOME\work\Catalina\localhost\examples；实例化 ContextServlet，应用程序拿到的是 ApplicationContext的外观模式 </p>
+</li>
+<li><p>实例化 WebResourceRoot，默认实现类是 StandardRoot，用于读取 webapp 的文件资源 </p>
+</li>
+<li><p>实例化 Loader 对象，Loader 是 tomcat 对于 ClassLoader 的封装，用于支持在运行期间热加载 class </p>
+</li>
+<li><p>发出 CONFIGURE_START_EVENT 事件，ContextConfig 会处理该事件，主要目的是从 webapp 中读取 servlet 相关的 Listener、Servlet、Filter 等 </p>
+</li>
+<li><p>实例化 Sesssion 管理器，默认使用 StandardManager </p>
+</li>
+<li><p>调用 listenerStart，实例化 servlet 相关的各种 Listener，并且调用ServletContextListener </p>
+</li>
+<li><p>处理 Filter </p>
+</li>
+<li><p>加载 Servlet</p>
+</li>
+</ol>
+<p>下面，将分析下几个重要的步骤</p>
+<h4 id="触发-CONFIGURE-START-EVENT-事件"><a href="#触发-CONFIGURE-START-EVENT-事件" class="headerlink" title="触发 CONFIGURE_START_EVENT 事件"></a>触发 CONFIGURE_START_EVENT 事件</h4><p>ContextConfig 它是一个 LifycycleListener，它在 Context 启动过程中是承担了一个非常重要的角色。StandardContext 会发出 CONFIGURE_START_EVENT 事件，而 ContextConfig 会处理该事件，主要目的是通过 web.xml 或者 Servlet3.0 的注解配置，读取 Servlet 相关的配置信息，比如 Filter、Servlet、Listener 等，其核心逻辑在 ContextConfig#webConfig() 方法中实现。下面，我们对 ContextConfig 进行详细分析</p>
+<ol>
+<li>首先，是通过 WebXmlParser 对 web.xml 进行解析，如果存在 web.xml 文件，则会把文件中定义的 Servlet、Filter、Listener 注册到 WebXml 实例中</li>
+</ol>
+<pre><code>WebXmlParser webXmlParser = new WebXmlParser(context.getXmlNamespaceAware(),
+            context.getXmlValidation(), context.getXmlBlockExternal());
+Set&lt;WebXml&gt; defaults = new HashSet&lt;&gt;();
+defaults.add(getDefaultWebXmlFragment(webXmlParser));
+
+// 创建 WebXml实例，并解析 web.xml 文件
+WebXml webXml = createWebXml();
+InputSource contextWebXml = getContextWebXmlSource();
+if (!webXmlParser.parseWebXml(contextWebXml, webXml, false)) {
+    ok = false;
+}
+</code></pre><p>1、 接下来，会处理 javax.servlet.ServletContainerInitializer，把对象实例保存到 ContextConfig 的 Map 中，待 Wrapper 子容器添加到 StandardContext 子容器中之后，再把 ServletContainerInitializer 加入 ServletContext 中。ServletContainerInitializer 是 servlet3.0 提供的一个 SPI，可以通过 HandlesTypes 筛选出相关的 servlet 类，并可以对 ServletContext 进行额外处理，下面是一个自定义的 ServletContainerInitializer，实现了 ServletContainerInitializer 接口，和 jdk 提供的其它 SPI 一样，需要在 META-INF/services/javax.servlet.ServletContainerInitializer 文件中指定该类名 net.dwade.tomcat.CustomServletContainerInitializer</p>
+<pre><code>@HandlesTypes( Filter.class )
+public class CustomServletContainerInitializer implements ServletContainerInitializer {
+    @Override
+    public void onStartup(Set&lt;Class&lt;?&gt;&gt; c, ServletContext ctx) throws ServletException {
+        for ( Class&lt;?&gt; type : c ) {
+            System.out.println( type.getName() );
+        }
+    }
+}
+</code></pre><p>2、如果没有 web.xml 文件，tomcat 会先扫描 WEB-INF/classes 目录下面的 class 文件，然后扫描 WEB-INF/lib 目录下面的 jar 包，解析字节码读取 servlet 相关的注解配置类，这里不得不吐槽下 serlvet3.0 注解，对 servlet 注解的处理相当重量级。tomcat 不会预先把该 class 加载到 jvm 中，而是通过解析字节码文件，获取对应类的一些信息，比如注解、实现的接口等，核心代码如下所示：</p>
+<pre><code>protected void processAnnotationsStream(InputStream is, WebXml fragment,
+            boolean handlesTypesOnly, Map&lt;String,JavaClassCacheEntry&gt; javaClassCache)
+            throws ClassFormatException, IOException {
+    // is 即 class 字节码文件的 IO 流
+    ClassParser parser = new ClassParser(is);
+
+    // 使用 JavaClass 封装 class 相关的信息
+    JavaClass clazz = parser.parse();
+    checkHandlesTypes(clazz, javaClassCache);
+
+    if (handlesTypesOnly) {
+        return;
+    }
+
+    AnnotationEntry[] annotationsEntries = clazz.getAnnotationEntries();
+    if (annotationsEntries != null) {
+        String className = clazz.getClassName();
+        for (AnnotationEntry ae : annotationsEntries) {
+            String type = ae.getAnnotationType();
+            if (&quot;Ljavax/servlet/annotation/WebServlet;&quot;.equals(type)) {
+                processAnnotationWebServlet(className, ae, fragment);
+            }else if (&quot;Ljavax/servlet/annotation/WebFilter;&quot;.equals(type)) {
+                processAnnotationWebFilter(className, ae, fragment);
+            }else if (&quot;Ljavax/servlet/annotation/WebListener;&quot;.equals(type)) {
+                fragment.addListener(className);
+            } else {
+                // Unknown annotation - ignore
+            }
+        }
+    }
+}
+</code></pre><p>tomcat 使用自己的工具类 ClassParser 通过对字节码文件进行解析，获取其注解，并把 WebServlet、WebFilter、WebListener 注解的类添加到 WebXml 实例中，统一由它对 ServletContext 进行参数配置。tomcat 对字节码的处理是由<br>org.apache.tomcat.util.bcel 包完成的，bcel 即 Byte Code Engineering Library，其实现比较繁锁，需要对字节码结构有一定的了解，感兴趣的童鞋可以研究下底层实现。</p>
+<p>3、配置信息读取完毕之后，会把 WebXml 装载的配置赋值给 ServletContext，在这个时候，ContextConfig 会往 StardardContext 容器中添加子容器（即 Wrapper 容器），部分代码如下所示：</p>
+<pre><code>private void configureContext(WebXml webxml) {
+    // 设置 Filter 定义
+    for (FilterDef filter : webxml.getFilters().values()) {
+        if (filter.getAsyncSupported() == null) {
+            filter.setAsyncSupported(&quot;false&quot;);
+        }
+        context.addFilterDef(filter);
+    }
+
+    // 设置 FilterMapping，即 Filter 的 URL 映射
+    for (FilterMap filterMap : webxml.getFilterMappings()) {
+        context.addFilterMap(filterMap);
+    }
+
+    // 往 Context 中添加子容器 Wrapper，即 Servlet
+    for (ServletDef servlet : webxml.getServlets().values()) {
+        Wrapper wrapper = context.createWrapper();
+        // 省略若干代码。。。
+        wrapper.setOverridable(servlet.isOverridable());
+        context.addChild(wrapper);
+    }
+}
+</code></pre><p>4、 tomcat 还会加载 WEB-INF/classes/META-INF/resources/、WEB-INF/lib/xxx.jar/META-INF/resources/ 的静态资源，这一块的作用暂时不清楚，关键代码如下所示：</p>
+<pre><code>// fragments 包括了 WEB-INF/classes、WEB-INF/lib/xxx.jar
+protected void processResourceJARs(Set&lt;WebXml&gt; fragments) {
+    for (WebXml fragment : fragments) {
+        URL url = fragment.getURL();
+        if (&quot;jar&quot;.equals(url.getProtocol()) || url.toString().endsWith(&quot;.jar&quot;)) {
+            try (Jar jar = JarFactory.newInstance(url)) {
+                jar.nextEntry();
+                String entryName = jar.getEntryName();
+                while (entryName != null) {
+                    if (entryName.startsWith(&quot;META-INF/resources/&quot;)) {
+                        context.getResources().createWebResourceSet(
+                                WebResourceRoot.ResourceSetType.RESOURCE_JAR,
+                                &quot;/&quot;, url, &quot;/META-INF/resources&quot;);
+                        break;
+                    }
+                    jar.nextEntry();
+                    entryName = jar.getEntryName();
+                }
+            }
+        } else if (&quot;file&quot;.equals(url.getProtocol())) {
+            File file = new File(url.toURI());
+            File resources = new File(file, &quot;META-INF/resources/&quot;);
+            if (resources.isDirectory()) {
+                context.getResources().createWebResourceSet(
+                        WebResourceRoot.ResourceSetType.RESOURCE_JAR,
+                        &quot;/&quot;, resources.getAbsolutePath(), null, &quot;/&quot;);
+            }
+        }
+    }
+}
+</code></pre><h4 id="启动-Wrapper-容器"><a href="#启动-Wrapper-容器" class="headerlink" title="启动 Wrapper 容器"></a>启动 Wrapper 容器</h4><p>ContextConfig 把 Wrapper 子容器添加到 StandardContext 容器中之后，便会挨个启动 Wrapper 子容器。但是实际上，由于 StandardContext 至 ContainerBase，在添加子容器的时候，便会调用 start 方法启动 Wrapper，关于 Wrapper 的启动在下文进行详细分析</p>
+<pre><code>for (Container child : findChildren()) {
+    if (!child.getState().isAvailable()) {
+        child.start();
+    }
+}
+</code></pre><h4 id="调用-ServletContainerInitializer"><a href="#调用-ServletContainerInitializer" class="headerlink" title="调用 ServletContainerInitializer"></a>调用 ServletContainerInitializer</h4><p>在初始化 Servlet、Listener 之前，便会先调用 ServletContainerInitializer，进行额外的初始化处理。注意：ServletContainerInitializer 需要的是 Class 对象，而不是具体的实例对象，这个时候 servlet 相关的 Listener 并没有被实例化，因此不会产生矛盾</p>
+<pre><code>// 指定 ServletContext 的相关参数
+mergeParameters();
+
+// 调用 ServletContainerInitializer#onStartup()
+for (Map.Entry&lt;ServletContainerInitializer, Set&lt;Class&lt;?&gt;&gt;&gt; entry :
+    initializers.entrySet()) {
+    try {
+        entry.getKey().onStartup(entry.getValue(),
+                getServletContext());
+    } catch (ServletException e) {
+        log.error(sm.getString(&quot;standardContext.sciFail&quot;), e);
+        ok = false;
+        break;
+    }
+}
+</code></pre><h4 id="启动-Servlet-相关的-Listener"><a href="#启动-Servlet-相关的-Listener" class="headerlink" title="启动 Servlet 相关的 Listener"></a>启动 Servlet 相关的 Listener</h4><p>WebConfig 加载 Listener 时，只是保存了 className，实例化动作由 StandardContext 触发。前面在介绍 StandardContext 的时候提到了 InstanceManager，创建实例的逻辑由 InstanceManager 完成。</p>
+<p>Listener 监听器分为 Event、Lifecycle 监听器，WebConfig 在加载 Listener 的时候是不会区分的，实例化之后才会分开存储。在完成 Listener 实例化之后，tomcat 容器便启动 OK 了。此时，tomcat 需要通知应用程序定义的 ServletContextListener，方便应用程序完成自己的初始化逻辑，它会遍历 ServletContextListener 实例，并调用其 contextInitialized 方法，比如 spring 的 ContextLoaderListener</p>
+<p>有以下 Event 监听器，主要是针对事件通知：</p>
+<ul>
+<li><p>ServletContextAttributeListener</p>
+</li>
+<li><p>ServletRequestAttributeListener</p>
+</li>
+<li><p>ServletRequestListener </p>
+</li>
+<li><p>HttpSessionIdListener </p>
+</li>
+</ul>
+<p>*　HttpSessionAttributeListener</p>
+<p>有以下两种 Lifecycle 监听器，主要是针对 ServletContext、HttpSession 的生命周期管理，比如创建、销毁等 </p>
+<ul>
+<li><p>ServletContextListener</p>
+</li>
+<li><p>HttpSessionListener</p>
+</li>
+</ul>
+<h3 id="初始化-Filter"><a href="#初始化-Filter" class="headerlink" title="初始化 Filter"></a>初始化 Filter</h3><p>ContextConfig 在处理 CONFIGURE_START_EVENT 事件的时候，会使用 FilterDef 保存 Filter 信息。而 StandardContext 会把 FilterDef 转化成 ApplicationFilterConfig，在 ApplicationFilterConfig 构造方法中完成 Filter 的实例化，并且调用 Filter 接口的 init 方法，完成 Filter 的初始化。ApplicationFilterConfig 是 javax.servlet.FilterConfig<br>接口的实现类。</p>
+<pre><code>public boolean filterStart() {
+    boolean ok = true;
+    synchronized (filterConfigs) {
+        filterConfigs.clear();
+        for (Entry&lt;String,FilterDef&gt; entry : filterDefs.entrySet()) {
+            String name = entry.getKey();
+            try {
+                // 在构造方法中完成 Filter 的实例化，并且调用 Filter 接口的 init 方法，完成 Filter 的初始化
+                ApplicationFilterConfig filterConfig =
+                        new ApplicationFilterConfig(this, entry.getValue());
+                filterConfigs.put(name, filterConfig);
+            } catch (Throwable t) {
+                // 省略 logger 处理
+                ok = false;
+            }
+        }
+    }
+    return ok;
+}
+</code></pre><h3 id="处理-Wrapper-容器"><a href="#处理-Wrapper-容器" class="headerlink" title="处理 Wrapper 容器"></a>处理 Wrapper 容器</h3><p>Servlet 对应 tomcat 的 Wrapper 容器，完成 Filter 初始化之后便会对 Wrapper 容器进行处理，如果 Servlet 的 loadOnStartup &gt;= 0，便会在这一阶段完成 Servlet 的加载，并且值越小越先被加载，否则在接受到请求的时候才会加载 Servlet。</p>
+<p>加载过程，主要是完成 Servlet 的实例化，并且调用 Servlet 接口的 init 方法，具体的逻辑将在下文进行详细分析</p>
+<pre><code>// StandardWrapper 实例化并且启动 Servlet，由于 Servlet 存在 loadOnStartup 属性
+// 因此使用了 TreeMap，根据 loadOnStartup 值 对 Wrapper 容器进行排序，然后依次启动 Servlet
+if (ok) {
+    if (!loadOnStartup(findChildren())){
+        log.error(sm.getString(&quot;standardContext.servletFail&quot;));
+        ok = false;
+    }
+}
+</code></pre><p>loadOnStartup 方法使用 TreeMap 对 Wrapper 进行排序，loadOnStartup 值越小越靠前，值相同的 Wrapper 放在同一个 List 中，代码如下所示：</p>
+<pre><code>public boolean loadOnStartup(Container children[]) {
+
+    // 使用 TreeMap 对 Wrapper 进行排序，loadOnStartup 值越小越靠前，值相同的 Wrapper 放在同一个 List 中
+    TreeMap&lt;Integer, ArrayList&lt;Wrapper&gt;&gt; map = new TreeMap&lt;&gt;();
+    for (int i = 0; i &lt; children.length; i++) {
+        Wrapper wrapper = (Wrapper) children[i];
+        int loadOnStartup = wrapper.getLoadOnStartup();
+        if (loadOnStartup &lt; 0)
+            continue;
+        Integer key = Integer.valueOf(loadOnStartup);
+        ArrayList&lt;Wrapper&gt; list = map.get(key);
+        if (list == null) {
+            list = new ArrayList&lt;&gt;();
+            map.put(key, list);
+        }
+        list.add(wrapper);
+    }
+
+    // 根据 loadOnStartup 值有序加载 Wrapper 容器
+    for (ArrayList&lt;Wrapper&gt; list : map.values()) {
+        for (Wrapper wrapper : list) {
+            try {
+                wrapper.load();
+            } catch (ServletException e) {
+                if(getComputedFailCtxIfServletStartFails()) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+</code></pre><h3 id="Wrapper-容器"><a href="#Wrapper-容器" class="headerlink" title="Wrapper 容器"></a>Wrapper 容器</h3><p>Wrapper 容器是 tomcat 所有容器中最底层子容器，它没有子容器，并且父容器是 Context，对这一块不了解的童鞋请移步前面的博客《tomcat框架设计》。默认实现是 StandardWrapper，我们先来看看类定义，它继承至 ContainBase，实现了 servlet 的 ServletConfig 接口，以及 tomcat 的 Wrapper 接口，说明 StandardWrapper 不仅仅是一个 Wrapper 容器实现，还是 ServletConfig 实现，部分代码如下所示：</p>
+<pre><code>public class StandardWrapper extends ContainerBase
+    implements ServletConfig, Wrapper, NotificationEmitter {
+
+    // Wrapper 的门面模式，调用 Servlet 的 init 方法传入的是该对象
+    protected final StandardWrapperFacade facade = new StandardWrapperFacade(this);    
+    protected volatile Servlet instance = null; // Servlet 实例对象
+    protected int loadOnStartup = -1;   // 默认值为 -1，不立即启动 Servlet
+    protected String servletClass = null;
+
+    public StandardWrapper() {
+        super();
+        swValve=new StandardWrapperValve();
+        pipeline.setBasic(swValve);
+        broadcaster = new NotificationBroadcasterSupport();
+    }
+}
+</code></pre><p>由前面对 Context 的分析可知，StandardContext 在启动的时候会发出 CONFIGURE_START_EVENT 事件，ContextConfig 会处理该事件，通过解析 web.xml 或者读取注解信息获取 Wrapper 子容器，并且会添加到 Context 容器中。由于 StandardContext 继承至 ContainerBase，在调用 addChild 的时候默认会启动 child 容器(即 Wrapper)，我们来看看 StandardWrapper 的启动逻辑。</p>
+<h4 id="启动-Wrapper-容器-1"><a href="#启动-Wrapper-容器-1" class="headerlink" title="启动 Wrapper 容器"></a>启动 Wrapper 容器</h4><p>StandardWrapper 没有子容器，启动逻辑相对比较简单清晰，它重写了 startInternal 方法，主要是完成了 jmx 的事件通知，先后向 jmx 发出 starting、running 事件，代码如下所示：</p>
+<pre><code>protected synchronized void startInternal() throws LifecycleException {
+    // 发出 j2ee.state.starting 事件通知
+    if (this.getObjectName() != null) {
+        Notification notification =
+            new Notification(&quot;j2ee.state.starting&quot;, this.getObjectName(), sequenceNumber++);
+        broadcaster.sendNotification(notification);
+    }
+
+    // ConainerBase 的启动逻辑
+    super.startInternal();
+    setAvailable(0L);
+
+    // 发出 j2ee.state.running 事件通知
+    if (this.getObjectName() != null) {
+        Notification notification =
+            new Notification(&quot;j2ee.state.running&quot;, this.getObjectName(), sequenceNumber++);
+        broadcaster.sendNotification(notification);
+    }
+}
+</code></pre><h4 id="加载-Wrapper"><a href="#加载-Wrapper" class="headerlink" title="加载 Wrapper"></a>加载 Wrapper</h4><p>由前面对 Context 容器的分析可知，Context 完成 Filter 初始化之后，如果 loadOnStartup &gt;= 0 便会调用 load 方法加载 Wrapper 容器。StandardWrapper 使用 InstanceManager 实例化 Servlet，并且调用 Servlet 的 init 方法进行初始化，传入的 ServletConfig 是 StandardWrapperFacade 对象</p>
+<pre><code>public synchronized void load() throws ServletException {
+
+    // 实例化 Servlet，并且调用 init 方法完成初始化
+    instance = loadServlet();
+
+    if (!instanceInitialized) {
+        initServlet(instance);
+    }
+
+    if (isJspServlet) {
+        // 处理 jsp Servlet
+    }
+}
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>tomcat 实现了 javax.servlet.ServletContext 接口，在 Context 启动的时候会实例化该对象。由 Context 容器通过 web.xml 或者 扫描 class 字节码读取 servlet3.0 的注解配置，从而加载 webapp 定义的 Listener、Servlet、Filter 等 servlet 组件，但是并不会立即实例化对象。</p>
+<p>全部加载完毕之后，依次对 Listener、Filter、Servlet 进行实例化、并且调用其初始化方法，比如 ServletContextListener#contextInitialized()、Flter#init() 等。</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/" class="b-link-green">Tomcat的启动分析(四)webapp</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java中的父子类的执行顺序">
+                        
+                        <span class="card-title">Java中的父子类的执行顺序</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Java中的父子类执行顺序
+结论类的加载顺序。
+(1) 父类静态代码块(包括静态初始化块，静态属性，但不包括静态方法)
+(2) 子类静态代码块(包括静态初始化块，静态属性，但不包括静态方法 )
+(3) 父类非静态代码块( 包括非静态初始化块</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/父子类/" class="post-category" target="_blank">
+                                    父子类
+                                </a>
+                            
+                            <a href="/categories/父子类/面试/" class="post-category" target="_blank">
+                                    面试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/面试/" target="_blank">
+                        <span class="chip bg-color">面试</span>
+                    </a>
+                    
+                    <a href="/tags/父子类/" target="_blank">
+                        <span class="chip bg-color">父子类</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Tomcat的启动分析(三)Catalina启动">
+                        
+                        <span class="card-title">Tomcat的启动分析(三)Catalina启动</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动weba</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                    tomcat
+                                </a>
+                            
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                    源码
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tomcat/" target="_blank">
+                        <span class="chip bg-color">tomcat</span>
+                    </a>
+                    
+                    <a href="/tags/源码/" target="_blank">
+                        <span class="chip bg-color">源码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

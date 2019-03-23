@@ -1,0 +1,1804 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Redis的sorted set命令操作, 解忧杂货店">
+    <meta name="description" content="redis中的有序集合：sorted set。
+上一篇文章中，我们学习了redis中的集合set的相关操作，今天来学redis中的有序集合。set集合中，我们知道是无序性的，所以redis就出了一个有序的集合，方便用户操作使用。
+有序集合的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Redis的sorted set命令操作 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Redis的sorted set命令操作
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/redis/" target="_blank">
+                                <span class="chip bg-color">redis</span>
+                            </a>
+                        
+                            <a href="/tags/缓存/" target="_blank">
+                                <span class="chip bg-color">缓存</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/redis/" class="post-category" target="_blank">
+                                redis
+                            </a>
+                        
+                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
+                                缓存
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-23
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        22 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>redis中的有序集合：sorted set。<br><a id="more"></a></p>
+<p>上一篇文章中，我们学习了redis中的集合set的相关操作，今天来学redis中的有序集合。set集合中，我们知道是无序性的，所以redis就出了一个有序的集合，方便用户操作使用。</p>
+<p>有序集合的相关命令对比set集合，就是将s变成了z。</p>
+<h2 id="zadd-key-NX-XX-CH-INCR-score-member-score-member-…"><a href="#zadd-key-NX-XX-CH-INCR-score-member-score-member-…" class="headerlink" title="zadd key [NX|XX] [CH] [INCR] score member [score member …]"></a>zadd key [NX|XX] [CH] [INCR] score member [score member …]</h2><pre><code>Redis Zadd 命令用于将一个或多个成员元素及其分数值加入到有序集当中。
+
+如果某个成员已经是有序集的成员，那么更新这个成员的分数值，并通过重新插入这个成员元素，来保证该成员在正确的位置上。
+
+分数值可以是整数值或双精度浮点数。
+
+如果有序集合 key 不存在，则创建一个空的有序集并执行 ZADD 操作。
+
+当 key 存在但不是有序集类型时，返回一个错误。
+
+XX：仅更新已存在的元素。 永远不要添加元素
+NX：不要更新现有元素。   始终添加新元素。
+CH：将返回值从添加的新元素数修改为更改的元素总数（CH是已更改的缩写）。 
+    更改的元素是添加的新元素和已更新分数的已存在元素。 因此，命令行中指定的元素具有与过去相同的分数，不计算在内。 
+    注意：通常ZADD的返回值仅计算添加的新元素的数量。
+INCR：指定此选项时，ZADD的作用类似于ZINCRBY。 在此模式下只能指定一个得分元素对。
+
+注意： 在 Redis 2.4 版本以前， ZADD 每次只能添加一个元素。
+
+
+redis 127.0.0.1:6379&gt; ZADD myset 1 &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myset 1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myset 2 &quot;world&quot; 3 &quot;bar&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; ZRANGE myzset 0 -1 WITHSCORES
+1) &quot;hello&quot;
+2) &quot;1&quot;
+3) &quot;foo&quot;
+4) &quot;1&quot;
+5) &quot;world&quot;
+6) &quot;2&quot;
+7) &quot;bar&quot;
+8) &quot;3&quot;
+</code></pre><h2 id="zcard-key"><a href="#zcard-key" class="headerlink" title="zcard key"></a>zcard key</h2><pre><code>Redis Zcard 命令用于计算集合中元素的数量。
+
+redis 127.0.0.1:6379&gt; ZADD myset 1 &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myset 1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myset 2 &quot;world&quot; 3 &quot;bar&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; ZCARD myzset
+(integer) 4
+</code></pre><h2 id="zcount-key-min-max"><a href="#zcount-key-min-max" class="headerlink" title="zcount key min max"></a>zcount key min max</h2><pre><code>计算在有序集合中指定区间分数的成员数
+
+min和max指的是score分数，不是排名！！！
+
+
+redis 127.0.0.1:6379&gt; ZADD myzset 1 &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myzset 1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myzset 2 &quot;world&quot; 3 &quot;bar&quot;
+(integer) 2
+redis 127.0.0.1:6379&gt; ZCOUNT myzset 1 3
+(integer) 4
+</code></pre><h2 id="zincrby-key-increment-member"><a href="#zincrby-key-increment-member" class="headerlink" title="zincrby key increment member"></a>zincrby key increment member</h2><pre><code>Redis Zincrby 命令对有序集合中指定成员member的分数加上增量 increment
+
+可以通过传递一个负数值 increment ，让分数减去相应的值，比如 ZINCRBY key -5 member ，就是让 member 的 score 值减去 5 。
+
+当 key 不存在，或member不是 key 的成员时， ZINCRBY key increment member 等同于 ZADD key increment member 。
+
+当 key 不是有序集类型时，返回一个错误。
+
+分数值可以是整数值或双精度浮点数。
+
+redis 127.0.0.1:6379&gt; ZADD myzset 1 &quot;hello&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZADD myzset 1 &quot;foo&quot;
+(integer) 1
+redis 127.0.0.1:6379&gt; ZINCRBY myzset 2 &quot;hello&quot;
+(integer) 3
+redis 127.0.0.1:6379&gt; ZRANGE myzset 0 -1 WITHSCORES
+1) &quot;foo&quot;
+2) &quot;2&quot;
+3) &quot;hello&quot;
+4) &quot;3&quot;
+</code></pre><h2 id="zrange-key-start-stop-withscores"><a href="#zrange-key-start-stop-withscores" class="headerlink" title="zrange key start stop [withscores]"></a>zrange key start stop [withscores]</h2><pre><code>Redis Zrange 返回有序集中，指定区间内的成员。
+
+其中成员的位置按分数值递增(从小到大)来排序。
+
+具有相同分数值的成员按字典序(lexicographical order )来排列。
+
+如果你需要成员按
+
+值递减(从大到小)来排列，请使用 zrevrange 命令。
+
+下标参数 start 和 stop 都以 0 为底，也就是说，以 0 表示有序集第一个成员，以 1 表示有序集第二个成员，以此类推。
+
+你也可以使用负数下标，以 -1 表示最后一个成员， -2 表示倒数第二个成员，以此类推。
+
+[withscores]:选项用来表示是否输出分数score。
+
+redis 127.0.0.1:6379&gt; ZRANGE salary 0 -1 WITHSCORES             # 显示整个有序集成员
+1) &quot;jack&quot;
+2) &quot;3500&quot;
+3) &quot;tom&quot;
+4) &quot;5000&quot;
+5) &quot;boss&quot;
+6) &quot;10086&quot;
+
+redis 127.0.0.1:6379&gt; ZRANGE salary 1 2 WITHSCORES              # 显示有序集下标区间 1 至 2 的成员
+1) &quot;tom&quot;
+2) &quot;5000&quot;
+3) &quot;boss&quot;
+4) &quot;10086&quot;
+
+redis 127.0.0.1:6379&gt; ZRANGE salary 0 200000 WITHSCORES         # 测试 end 下标超出最大下标时的情况
+1) &quot;jack&quot;
+2) &quot;3500&quot;
+3) &quot;tom&quot;
+4) &quot;5000&quot;
+5) &quot;boss&quot;
+6) &quot;10086&quot;
+
+redis &gt; ZRANGE salary 200000 3000000 WITHSCORES                  # 测试当给定区间不存在于有序集时的情况
+(empty list or set)
+</code></pre><h2 id="zrangebylex-key-min-max-LIMIT-offset-count"><a href="#zrangebylex-key-min-max-LIMIT-offset-count" class="headerlink" title="zrangebylex key min max [LIMIT offset count]"></a>zrangebylex key min max [LIMIT offset count]</h2><pre><code>ZRANGEBYLEX 返回指定成员区间内的成员，按成员字典正序排序, 分数必须相同。 
+
+在某些业务场景中,需要对一个字符串数组按名称的字典顺序进行排序时,
+
+可以使用Redis中SortSet这种数据结构来处理。
+
+min: 字典中排序位置较小的成员,必须以&quot;[&quot;开头,或者以&quot;(&quot;开头,可使用&quot;-&quot;代替
+max: 字典中排序位置较大的成员,必须以&quot;[&quot;开头,或者以&quot;(&quot;开头,可使用&quot;+&quot;代替
+limit: 返回结果是否分页,指令中包含LIMIT后 offset 、count必须输入
+offset: 返回结果起始位置
+count: 返回结果数量
+
+提示:
+分数必须相同! 如果有序集合中的成员分数有不一致的,返回的结果就不准。
+成员字符串作为二进制数组的字节数进行比较。
+默认是以ASCII字符集的顺序进行排列。如果成员字符串包含utf-8这类字符集的内容,就会影响返回结果,所以建议不要使用。
+默认情况下, “max” 和 “min” 参数前必须加 “[” 符号作为开头。”[” 符号与成员之间不能有空格, 返回成员结果集会包含参数 “min” 和 “max” 。
+“max” 和 “min” 参数前可以加 “(“ 符号作为开头表示小于, “(“ 符号与成员之间不能有空格。返回成员结果集不会包含 “max” 和 “min” 成员。
+可以使用 “-“ 和 “+” 表示得分最小值和最大值
+“min” 和 “max” 不能反, “max” 放前面 “min”放后面会导致返回结果为空
+与ZRANGEBYLEX获取顺序相反的指令是ZREVRANGEBYLEX。
+源码中采用C语言中 memcmp() 函数, 从字符的第0位到最后一位进行排序,如果前面部分相同,那么较长的字符串比较短的字符串排序靠后。
+
+可以使用 “-“ 和 “+” 表示得分最小值和最大值:
+redis&gt; zadd zset 0 a 0 aa 0 abc 0 apple 0 b 0 c 0 d 0 d1 0 dd 0 dobble 0 z 0 z1
+(integer) 12
+redis&gt; ZRANGEBYLEX zset - +
+ 1) &quot;a&quot;
+ 2) &quot;aa&quot;
+ 3) &quot;abc&quot;
+ 4) &quot;apple&quot;
+ 5) &quot;b&quot;
+ 6) &quot;c&quot;
+ 7) &quot;d&quot;
+ 8) &quot;d1&quot;
+ 9) &quot;dd&quot;
+10) &quot;dobble&quot;
+11) &quot;z&quot;
+12) &quot;z1&quot;
+
+获取分页数据:
+redis&gt; ZRANGEBYLEX zset - + LIMIT 0 3
+1) &quot;a&quot;
+2) &quot;aa&quot;
+3) &quot;abc&quot;
+redis&gt; ZRANGEBYLEX zset - + LIMIT 3 3
+1) &quot;apple&quot;
+2) &quot;b&quot;
+3) &quot;c&quot;
+
+获取成员之间的元素:
+默认情况下, “max” 和 “min” 参数前必须加 “[” 符号作为开头。
+“[” 符号与成员之间不能有空格, 返回成员结果集会包含参数 “min” 和 “max” 。
+
+redis&gt; ZRANGEBYLEX zset [aa [c
+1) &quot;aa&quot;
+2) &quot;abc&quot;
+3) &quot;apple&quot;
+4) &quot;b&quot;
+5) &quot;c&quot;
+
+“min” 和 “max” 不能反, “max” 放前面 “min”放后面会导致返回结果为空
+redis&gt; ZRANGEBYLEX zset [c [aa
+(empty list or set)
+
+使用 “(“ 小于号获取成员之间的元素:
+“max” 和 “min” 参数前可以加 “(“ 符号作为开头表示小于, “(“ 符号与成员之间不能有空格。
+返回成员结果集不会包含 “max” 和 “min” 成员。
+
+redis&gt; ZRANGEBYLEX zset [aa (c
+1) &quot;aa&quot;
+2) &quot;abc&quot;
+3) &quot;apple&quot;
+4) &quot;b&quot;
+</code></pre><h2 id="zrangebyscore-key-min-max-withscores-limit-offset-count"><a href="#zrangebyscore-key-min-max-withscores-limit-offset-count" class="headerlink" title="zrangebyscore key min max [withscores] [limit offset count]"></a>zrangebyscore key min max [withscores] [limit offset count]</h2><pre><code>返回key的有序集合中的分数在min和max之间的所有元素（包括分数等于max或者min的元素）。
+
+元素被认为是从低分到高分排序的。
+
+具有相同分数的元素按字典序排列（这个根据redis对有序集合实现的情况而定，并不需要进一步计算）。
+
+可选的LIMIT参数指定返回结果的数量及区间（类似SQL中SELECT LIMIT offset, count）。注意，如果offset太大，定位offset就可能遍历整个有序集合，这会增加O(N)的复杂度。
+
+可选参数WITHSCORES会返回元素和其分数，而不只是元素。这个选项在redis2.0之后的版本都可用。
+
+##区间及无限
+
+min和max可以是-inf和+inf，这样一来，你就可以在不知道有序集的最低和最高score值的情况下，使用ZRANGEBYSCORE这类命令。
+
+默认情况下，区间的取值使用闭区间(小于等于或大于等于)，你也可以通过给参数前增加(符号来使用可选的开区间(小于或大于)。
+
+ZRANGEBYSCORE zset (1 5     返回所有符合条件 1 &lt; score &lt;= 5的成员。
+
+ZRANGEBYSCORE zset (5 (10   返回所有符合条件 5 &lt; score &lt;  10的成员。
+
+例子：
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZRANGEBYSCORE myzset -inf +inf
+1) &quot;one&quot;
+2) &quot;two&quot;
+3) &quot;three&quot;
+redis&gt; ZRANGEBYSCORE myzset 1 2
+1) &quot;one&quot;
+2) &quot;two&quot;
+redis&gt; ZRANGEBYSCORE myzset (1 2
+1) &quot;two&quot;
+redis&gt; ZRANGEBYSCORE myzset (1 (2
+(empty list or set)
+redis&gt; 
+</code></pre><h2 id="zrank-key-member"><a href="#zrank-key-member" class="headerlink" title="zrank key member"></a>zrank key member</h2><pre><code>返回有序集key中成员member的排名。其中有序集成员按score值递增(从小到大)顺序排列。
+
+排名以0为底，也就是说，score值最小的成员排名为0。
+
+使用ZREVRANK命令可以获得成员按score值递减(从大到小)排列的排名。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZRANK myzset &quot;three&quot;
+(integer) 2
+redis&gt; ZRANK myzset &quot;four&quot;
+(nil)
+redis&gt; 
+</code></pre><h2 id="zrem-key-member-member-…"><a href="#zrem-key-member-member-…" class="headerlink" title="zrem key member [member …]"></a>zrem key member [member …]</h2><pre><code>删除有序集合key中的member。
+
+当key存在，但是其不是有序集合类型，就返回一个错误。
+
+返回的是从有序集合中删除的成员个数，不包括不存在的成员。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZREM myzset &quot;two&quot;
+(integer) 1
+redis&gt; ZRANGE myzset 0 -1 WITHSCORES
+1) &quot;one&quot;
+2) &quot;1&quot;
+3) &quot;three&quot;
+4) &quot;3&quot;
+redis&gt; 
+</code></pre><h2 id="zremrangebylex-key-min-max"><a href="#zremrangebylex-key-min-max" class="headerlink" title="zremrangebylex key min max"></a>zremrangebylex key min max</h2><pre><code>ZREMRANGEBYLEX 删除名称按字典由低到高排序成员之间所有成员。
+不要在成员分数不同的有序集合中使用此命令, 因为它是基于分数一致的有序集合设计的,如果使用,会导致删除的结果不正确。
+待删除的有序集合中,分数最好相同,否则删除结果会不正常。
+
+min：字典中排序位置较小的成员,必须以&quot;[&quot;开头,或者以&quot;(&quot;开头,可使用&quot;-&quot;代替
+
+max：字典中排序位置较大的成员,必须以&quot;[&quot;开头,或者以&quot;(&quot;开头,可使用&quot;+&quot;代替
+
+删除所有元素：
+可以使用 “-“ 和 “+” 表示最小值和最大值
+
+redis&gt; zadd zset 0 a 0 aa 0 abc 0 apple 0 b 0 c 0 d 0 d1 0 dd 0 dobble 0 z 0 z1
+(integer) 12
+redis&gt; zrangebylex zset - +
+ 1) &quot;a&quot;
+ 2) &quot;aa&quot;
+ 3) &quot;abc&quot;
+ 4) &quot;apple&quot;
+ 5) &quot;b&quot;
+ 6) &quot;c&quot;
+ 7) &quot;d&quot;
+ 8) &quot;d1&quot;
+ 9) &quot;dd&quot;
+10) &quot;dobble&quot;
+11) &quot;z&quot;
+12) &quot;z1&quot;
+redis&gt; zremrangebylex zset - +
+(integer) 7
+redis&gt; zrangebylex zset - +
+(empty list or set)
+
+按名称删除某个元素：
+下面是删除d1这个元素
+
+redis&gt; zadd zset 0 a 0 aa 0 abc 0 apple 0 b 0 c 0 d 0 d1 0 dd 0 dobble 0 z 0 z1
+(integer) 12
+redis&gt; zrangebylex  zset - +
+ 1) &quot;a&quot;
+ 2) &quot;aa&quot;
+ 3) &quot;abc&quot;
+ 4) &quot;apple&quot;
+ 5) &quot;b&quot;
+ 6) &quot;c&quot;
+ 7) &quot;d&quot;
+ 8) &quot;d1&quot;
+ 9) &quot;dd&quot;
+10) &quot;dobble&quot;
+11) &quot;z&quot;
+12) &quot;z1&quot;
+redis&gt; zremrangebylex zset [d1 (dd
+(integer) 1
+redis&gt; zrangebylex  zset - +
+ 1) &quot;a&quot;
+ 2) &quot;aa&quot;
+ 3) &quot;abc&quot;
+ 4) &quot;apple&quot;
+ 5) &quot;b&quot;
+ 6) &quot;c&quot;
+ 7) &quot;d&quot;
+ 8) &quot;dd&quot;
+ 9) &quot;dobble&quot;
+10) &quot;z&quot;
+11) &quot;z1&quot;
+
+按名称删除成员之间的元素,包含”max” 和 “min”成员：
+
+redis&gt; ZRANGEBYLEX zset - +
+ 1) &quot;a&quot;
+ 2) &quot;aa&quot;
+ 3) &quot;abc&quot;
+ 4) &quot;apple&quot;
+ 5) &quot;b&quot;
+ 6) &quot;c&quot;
+ 7) &quot;d&quot;
+ 8) &quot;dd&quot;
+ 9) &quot;dobble&quot;
+10) &quot;z&quot;
+11) &quot;z1&quot;
+redis&gt; ZREMRANGEBYLEX zset [a [apple
+(integer) 4
+redis&gt; ZRANGEBYLEX zset - +
+1) &quot;b&quot;
+2) &quot;c&quot;
+3) &quot;d&quot;
+4) &quot;dd&quot;
+5) &quot;dobble&quot;
+6) &quot;z&quot;
+7) &quot;z1&quot;
+
+按名称删除成员之间的元素,不包含”max” 和 “min”成员：
+
+redis&gt; ZRANGEBYLEX zset - +
+1) &quot;b&quot;
+2) &quot;c&quot;
+3) &quot;d&quot;
+4) &quot;dd&quot;
+5) &quot;dobble&quot;
+6) &quot;z&quot;
+7) &quot;z1&quot;     
+redis&gt; ZREMRANGEBYLEX zset (d (dobble
+(integer) 1
+redis&gt; ZRANGEBYLEX zset - +
+1) &quot;b&quot;
+2) &quot;c&quot;
+3) &quot;d&quot;
+4) &quot;dobble&quot;
+5) &quot;z&quot;
+6) &quot;z1&quot;
+</code></pre><h2 id="zremrangebyrank-key-start-stop"><a href="#zremrangebyrank-key-start-stop" class="headerlink" title="zremrangebyrank key start stop"></a>zremrangebyrank key start stop</h2><pre><code>移除有序集key中，指定排名(rank)区间内的所有成员。
+下标参数start和stop都以0为底，0处是分数最小的那个元素。
+这些索引也可是负数，表示位移从最高分处开始数。
+例如，-1是分数最高的元素，-2是分数第二高的，依次类推。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZREMRANGEBYRANK myzset 0 1
+(integer) 2
+redis&gt; ZRANGE myzset 0 -1 WITHSCORES
+1) &quot;three&quot;
+2) &quot;3&quot;
+redis&gt; 
+</code></pre><h2 id="zremrangebyscore-key-min-max"><a href="#zremrangebyscore-key-min-max" class="headerlink" title="zremrangebyscore key min max"></a>zremrangebyscore key min max</h2><pre><code>移除有序集key中，所有score值介于min和max之间(包括等于min或max)的成员。 
+自版本2.1.6开始，score值等于min或max的成员也可以不包括在内，语法请参见ZRANGEBYSCORE命令。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZREMRANGEBYSCORE myzset -inf (2
+(integer) 1
+redis&gt; ZRANGE myzset 0 -1 WITHSCORES
+1) &quot;two&quot;
+2) &quot;2&quot;
+3) &quot;three&quot;
+4) &quot;3&quot;
+redis&gt; 
+</code></pre><hr>
+<h2 id="zrevrank-key-member"><a href="#zrevrank-key-member" class="headerlink" title="zrevrank key member"></a>zrevrank key member</h2><pre><code>返回有序集key中成员member的排名，其中有序集成员按score值从大到小排列。排名以0为底，也就是说，score值最大的成员排名为0。
+
+使用ZRANK命令可以获得成员按score值递增(从小到大)排列的排名。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZREVRANK myzset &quot;one&quot;
+(integer) 2
+redis&gt; ZREVRANK myzset &quot;four&quot;
+(nil)
+redis&gt; 
+</code></pre><h2 id="zrevrange-key-start-stop-withscores"><a href="#zrevrange-key-start-stop-withscores" class="headerlink" title="zrevrange key start stop [withscores]"></a>zrevrange key start stop [withscores]</h2><pre><code>返回有序集key中，指定区间内的成员。其中成员的位置按score值递减(从大到小)来排列。
+具有相同score值的成员按字典序的反序排列。 
+除了成员按score值递减的次序排列这一点外，ZREVRANGE命令的其他方面和ZRANGE命令一样
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZREVRANGE myzset 0 -1
+1) &quot;three&quot;
+2) &quot;two&quot;
+3) &quot;one&quot;
+redis&gt; ZREVRANGE myzset 2 3
+1) &quot;one&quot;
+redis&gt; ZREVRANGE myzset -2 -1
+1) &quot;two&quot;
+2) &quot;one&quot;
+redis&gt; 
+</code></pre><h2 id="zrevrangebylex-key-max-min-limit-offset-count"><a href="#zrevrangebylex-key-max-min-limit-offset-count" class="headerlink" title="zrevrangebylex key max min [limit offset count]"></a>zrevrangebylex key max min [limit offset count]</h2><pre><code>zrevrangebylex 返回指定成员区间内的成员，按成员字典倒序排序, 分数必须相同。
+在某些业务场景中,需要对一个字符串数组按名称的字典顺序进行倒序排列时,可以使用Redis中SortSet这种数据结构来处理。
+
+</code></pre><h2 id="zrevrangebyscore-key-max-min-withscores-limit-offset-count"><a href="#zrevrangebyscore-key-max-min-withscores-limit-offset-count" class="headerlink" title="zrevrangebyscore key max min [withscores] [limit offset count]"></a>zrevrangebyscore key max min [withscores] [limit offset count]</h2><pre><code>zrevrangebyscore 返回有序集合中指定分数区间内的成员，分数由高到低排序。
+</code></pre><h2 id="zscore-key-member"><a href="#zscore-key-member" class="headerlink" title="zscore key member"></a>zscore key member</h2><pre><code>返回有序集key中，成员member的score值。
+
+如果member元素不是有序集key的成员，或key不存在，返回nil。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZSCORE myzset &quot;one&quot;
+&quot;1&quot;
+redis&gt; 
+</code></pre><h2 id="zpopmax-key-count"><a href="#zpopmax-key-count" class="headerlink" title="zpopmax key [count]"></a>zpopmax key [count]</h2><pre><code>删除并返回有序集合key中的最多count个具有最高得分的成员。
+
+如未指定，count的默认值为1。指定一个大于有序集合的基数的count不会产生错误。 
+
+当返回多个元素时候，得分最高的元素将是第一个元素，然后是分数较低的元素。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZPOPMAX myzset
+1) &quot;3&quot;
+2) &quot;three&quot;
+redis&gt; 
+</code></pre><h2 id="zpopmin-key-count"><a href="#zpopmin-key-count" class="headerlink" title="zpopmin key [count]"></a>zpopmin key [count]</h2><pre><code>删除并返回有序集合key中的最多count个具有最低得分的成员。
+
+如未指定，count的默认值为1。指定一个大于有序集合的基数的count不会产生错误。 
+
+当返回多个元素时候，得分最低的元素将是第一个元素，然后是分数较高的元素。
+
+redis&gt; ZADD myzset 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD myzset 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD myzset 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZPOPMIN myzset
+1) &quot;1&quot;
+2) &quot;one&quot;
+redis&gt; 
+</code></pre><h2 id="zinterstore-destination-numkeys-key-key-…-weights-weight-aggregate-sum-min-max"><a href="#zinterstore-destination-numkeys-key-key-…-weights-weight-aggregate-sum-min-max" class="headerlink" title="zinterstore destination numkeys key [key …] [weights weight] [aggregate sum|min|max]"></a>zinterstore destination numkeys key [key …] [weights weight] [aggregate sum|min|max]</h2><pre><code>计算给定的numkeys个有序集合的交集，并且把结果放到destination中。 
+
+在给定要计算的key和其它参数之前，必须先给定key个数(numberkeys)。
+
+默认情况下，结果中一个元素的分数是有序集合中该元素分数之和，前提是该元素在这些有序集合中都存在。
+
+因为交集要求其成员必须是给定的每个有序集合中的成员，结果集中的每个元素的分数和输入的有序集合个数相等。
+
+numkeys: 有序集合key的个数。
+
+weights：后面加上的是每个key的权重，就是后面的数字乘以每个key的score。
+
+aggregate：计算方式，默认是sum：求和。min：numkeys个key中score最小的，max：最大的。
+
+如果destination存在，就把它覆盖。
+
+127.0.0.1:6379&gt; zadd liu 3 cat 5 dog 7 horse 
+(integer) 3
+127.0.0.1:6379&gt; zadd deng 4 cat 6 dog 8 horse 1 monkey
+(integer) 4
+
+127.0.0.1:6379&gt; zinterstore result 2 liu deng
+(integer) 3
+
+127.0.0.1:6379&gt; zrange result 0 -1 withscores
+1) &quot;cat&quot;
+2) &quot;7&quot;
+3) &quot;dog&quot;
+4) &quot;11&quot;
+5) &quot;horse&quot;
+6) &quot;15&quot;
+
+通过上述的结果看出，默认是求和。
+
+127.0.0.1:6379&gt; zinterstore result 2 liu deng weights 2 1
+(integer) 3
+127.0.0.1:6379&gt; zrange result 0 -1 withscores
+1) &quot;cat&quot;
+2) &quot;10&quot;
+3) &quot;dog&quot;
+4) &quot;16&quot;
+5) &quot;horse&quot;
+6) &quot;22&quot;
+
+liu的权重就是2了，就是liu中的每个score乘以2，deng乘以1；然后求和。
+
+127.0.0.1:6379&gt; zinterstore result 2 liu deng aggregate max
+(integer) 3
+127.0.0.1:6379&gt; zrange result 0 -1 withscores
+1) &quot;cat&quot;
+2) &quot;4&quot;
+3) &quot;dog&quot;
+4) &quot;6&quot;
+5) &quot;horse&quot;
+6) &quot;8&quot;
+127.0.0.1:6379&gt; 
+
+改变了计算方式：为max了，就是求keys中每个score分数最大的了，不是求和了。
+</code></pre><h2 id="zunionstore-destination-numkeys-key-key-…-weights-weight-sum-min-max"><a href="#zunionstore-destination-numkeys-key-key-…-weights-weight-sum-min-max" class="headerlink" title="zunionstore destination numkeys key [key …] [weights weight] [sum|min|max]"></a>zunionstore destination numkeys key [key …] [weights weight] [sum|min|max]</h2><pre><code>和zinterstore一样，只是求并集而已。
+
+redis&gt; ZADD zset1 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD zset1 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD zset2 1 &quot;one&quot;
+(integer) 1
+redis&gt; ZADD zset2 2 &quot;two&quot;
+(integer) 1
+redis&gt; ZADD zset2 3 &quot;three&quot;
+(integer) 1
+redis&gt; ZUNIONSTORE out 2 zset1 zset2 WEIGHTS 2 3
+(integer) 3
+redis&gt; ZRANGE out 0 -1 WITHSCORES
+1) &quot;one&quot;
+2) &quot;5&quot;
+3) &quot;three&quot;
+4) &quot;9&quot;
+5) &quot;two&quot;
+6) &quot;10&quot;
+redis&gt;
+</code></pre>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/12/23/redis-de-sorted-set-ming-ling-cao-zuo/" class="b-link-green">Redis的sorted set命令操作</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/12/25/redis-de-hash-ming-ling-cao-zuo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Redis的hash命令操作">
+                        
+                        <span class="card-title">Redis的hash命令操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">今天来学习redis中的最后一个数据结构hash结构。
+redis中的hash的key-value，我一般称为field-value：域和值。主要是为了区别设置时候的key。
+hset key field value设置 key 指定的哈希</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/redis/" class="post-category" target="_blank">
+                                    redis
+                                </a>
+                            
+                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
+                                    缓存
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/" target="_blank">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/缓存/" target="_blank">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/12/23/redis-de-set-ming-ling-cao-zuo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Redis的set命令操作">
+                        
+                        <span class="card-title">Redis的set命令操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">今天来学习redis中的集合操作命令。
+集合的性质: 唯一性,无序性,确定性
+注: 在string 和 list的命令中,可以通过 range 来访问 string 中的某几个字符或某几个元素
+但,因为集合的无序性,无法通过下标或范围来访问</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/redis/" class="post-category" target="_blank">
+                                    redis
+                                </a>
+                            
+                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
+                                    缓存
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/redis/" target="_blank">
+                        <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/缓存/" target="_blank">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

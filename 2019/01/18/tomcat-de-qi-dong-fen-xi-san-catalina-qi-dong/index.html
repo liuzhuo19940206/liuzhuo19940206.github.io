@@ -1,0 +1,1628 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Tomcat的启动分析(三)Catalina启动, 解忧杂货店">
+    <meta name="description" content="在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动weba">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tomcat的启动分析(三)Catalina启动 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Tomcat的启动分析(三)Catalina启动
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/tomcat/" target="_blank">
+                                <span class="chip bg-color">tomcat</span>
+                            </a>
+                        
+                            <a href="/tags/源码/" target="_blank">
+                                <span class="chip bg-color">源码</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                tomcat
+                            </a>
+                        
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                源码
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-18
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        14 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的ServletContextListener，以及Servlet呢？我们将在这篇文章进行分析。<br><a id="more"></a></p>
+<p>我们先来看下整体的启动逻辑，tomcat由上往下，挨个启动各个组件： </p>
+<p><img src="/images/QQ截图20190118133508.png"></p>
+<p>针对如此复杂的组件关系，tomcat 又是如何将各个组件串联起来，实现统一的生命周期管控呢？在这篇文章中，我们将分析 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，进一步理解tomcat的架构设计</p>
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>启动过程和初始化一样，由Bootstrap反射调用Catalina的 start 方法</p>
+<pre><code>public void start() throws Exception {
+    if( catalinaDaemon==null ) init();
+    Method method = catalinaDaemon.getClass().getMethod(&quot;start&quot;, (Class [] )null);
+    method.invoke(catalinaDaemon, (Object [])null);
+}
+</code></pre><h3 id="Catalina"><a href="#Catalina" class="headerlink" title="Catalina"></a>Catalina</h3><p>主要分为以下三个步骤，其核心逻辑在于Server组件： </p>
+<ol>
+<li><p>调用Server的start方法，启动Server组件 </p>
+</li>
+<li><p>注册jvm关闭的勾子程序，用于安全地关闭Server组件，以及其它组件</p>
+</li>
+<li><p>开启shutdown端口的监听并阻塞，用于监听关闭指令</p>
+</li>
+</ol>
+<pre><code>public void start() {
+    // 省略若干代码......
+    // Start the new server
+    try {
+        getServer().start();
+    } catch (LifecycleException e) {
+        // 省略......
+        return;
+    }
+
+    // 注册勾子，用于安全关闭tomcat
+    if (useShutdownHook) {
+        if (shutdownHook == null) {
+            shutdownHook = new CatalinaShutdownHook();
+        }
+        Runtime.getRuntime().addShutdownHook(shutdownHook);
+    }
+
+    // Bootstrap中会设置await为true，其目的在于让tomcat在shutdown端口阻塞监听关闭命令
+    if (await) {
+        await();
+        stop();
+    }
+}
+</code></pre><h3 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h3><p>在前面的Lifecycle文章中，我们介绍了StandardServer重写了startInternal方法，完成自己的逻辑，如果对tomcat的Lifecycle还不熟悉的童鞋，先学习下Lifecycle，<font color="red">《Tomcat8源码分析系列-启动分析(一) Lifecycle》</font></p>
+<p>StandardServer的代码如下所示：</p>
+<pre><code>protected void startInternal() throws LifecycleException {
+
+    fireLifecycleEvent(CONFIGURE_START_EVENT, null);
+    setState(LifecycleState.STARTING);
+
+    globalNamingResources.start();
+
+    // Start our defined Services
+    synchronized (servicesLock) {
+        for (int i = 0; i &lt; services.length; i++) {
+            services[i].start();
+        }
+    }
+}
+</code></pre><p>先是由LifecycleBase统一发出STARTING_PREP事件，StandardServer额外还会发出CONFIGURE_START_EVENT、STARTING事件，用于通知LifecycleListener在启动前做一些准备工作，比如NamingContextListener会处理CONFIGURE_START_EVENT事件，实例化tomcat相关的上下文，以及ContextResource资源</p>
+<p>然后，启动内部的NamingResourcesImpl实例，这个类封装了各种各样的数据，比如ContextEnvironment、ContextResource、Container等等，它用于Resource资源的初始化，以及为webapp应用提供相关的数据资源，比如 JNDI 数据源(对应ContextResource)</p>
+<p>接着，启动Service组件，这一块的逻辑将在下面进行详细分析，最后由LifecycleBase发出STARTED事件，完成start</p>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>StandardService的start代码如下所示： </p>
+<ol>
+<li><p>启动Engine，Engine的child容器都会被启动，webapp的部署会在这个步骤完成； </p>
+</li>
+<li><p>启动Executor，这是tomcat用Lifecycle封装的线程池，继承至java.util.concurrent.Executor以及tomcat的Lifecycle接口 </p>
+</li>
+<li><p>启动Connector组件，由Connector完成Endpoint的启动，这个时候意味着tomcat可以对外提供请求服务了</p>
+</li>
+</ol>
+<pre><code>protected void startInternal() throws LifecycleException {
+
+    setState(LifecycleState.STARTING);
+
+    // 启动Engine
+    if (engine != null) {
+        synchronized (engine) {
+            engine.start();
+        }
+    }
+
+    // 启动Executor线程池
+    synchronized (executors) {
+        for (Executor executor: executors) {
+            executor.start();
+        }
+    }
+
+    // 启动MapperListener
+    mapperListener.start();
+
+    // 启动Connector
+    synchronized (connectorsLock) {
+        for (Connector connector: connectors) {
+            try {
+                // If it has already failed, don&#39;t try and start it
+                if (connector.getState() != LifecycleState.FAILED) {
+                    connector.start();
+                }
+            } catch (Exception e) {
+                // logger......
+            }
+        }
+    }
+}
+</code></pre><h3 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h3><p>在Server调用startInternal启动的时候，首先会调用start启动StandardEngine，而StandardEngine继承至ContainerBase，我们再来回顾下Lifecycle类图，关于Container，我们只需要关注右下角的部分即可。</p>
+<p><img src="/images/QQ截图20190118134119.png"></p>
+<p>StandardEngine、StandardHost、StandardContext、StandardWrapper各个容器存在父子关系，一个父容器包含多个子容器，并且一个子容器对应一个父容器。Engine是顶层父容器，它不存在父容器，关于各个组件的详细介绍，请参考《tomcat框架设计》。各个组件的包含关系如下图所示，默认情况下，StandardEngine只有一个子容器StandardHost，一个StandardContext对应一个webapp应用，而一个StandardWrapper对应一个webapp里面的一个 Servlet。</p>
+<p><img src="/images/QQ截图20190118134247.png"></p>
+<p>由类图可知，StandardEngine、StandardHost、StandardContext、StandardWrapper都是继承至ContainerBase，各个容器的启动，都是由父容器调用子容器的start方法，也就是说由StandardEngine启动StandardHost，再StandardHost启动StandardContext，以此类推。</p>
+<p>由于它们都是继续至ContainerBase，当调用 start 启动Container容器时，首先会执行 ContainerBase 的 start 方法，它会寻找子容器，并且在线程池中启动子容器，StandardEngine也不例外。</p>
+<h4 id="ContainerBase"><a href="#ContainerBase" class="headerlink" title="ContainerBase"></a>ContainerBase</h4><p>ContainerBase的startInternal方法如下所示，主要分为以下3个步骤： </p>
+<ol>
+<li><p>启动子容器 </p>
+</li>
+<li><p>启动Pipeline，并且发出STARTING事件</p>
+</li>
+<li><p>如果backgroundProcessorDelay参数 &gt;= 0，则开启ContainerBackgroundProcessor线程，用于调用子容器的backgroundProcess</p>
+</li>
+</ol>
+<pre><code>protected synchronized void startInternal() throws LifecycleException {
+    // 省略若干代码......
+
+    // 把子容器的启动步骤放在线程中处理，默认情况下线程池只有一个线程处理任务队列
+    Container children[] = findChildren();
+    List&lt;Future&lt;Void&gt;&gt; results = new ArrayList&lt;&gt;();
+    for (int i = 0; i &lt; children.length; i++) {
+        results.add(startStopExecutor.submit(new StartChild(children[i])));
+    }
+
+    // 阻塞当前线程，直到子容器start完成
+    boolean fail = false;
+    for (Future&lt;Void&gt; result : results) {
+        try {
+            result.get();
+        } catch (Exception e) {
+            log.error(sm.getString(&quot;containerBase.threadedStartFailed&quot;), e);
+            fail = true;
+        }
+    }
+
+    // 启用Pipeline
+    if (pipeline instanceof Lifecycle)
+        ((Lifecycle) pipeline).start();
+    setState(LifecycleState.STARTING);
+
+    // 开启ContainerBackgroundProcessor线程用于调用子容器的backgroundProcess方法，默认情况下backgroundProcessorDelay=-1，不会启用该线程
+    threadStart();
+}
+</code></pre><h4 id="启动子容器"><a href="#启动子容器" class="headerlink" title="启动子容器"></a>启动子容器</h4><p>startStopExecutor是在init阶段创建的线程池，默认情况下 coreSize = maxSize = 1，也就是说默认只有一个线程处理子容器的 start，通过调用 <font color="red">Container.setStartStopThreads(int startStopThreads) 可以改变默认值 1</font> 。</p>
+<p>如果我们有4个webapp，希望能够尽快启动应用，我们只需要设置Host的startStopThreads值即可，如下所示。</p>
+<pre><code>server.xml
+
+&lt;Host name=&quot;localhost&quot;  appBase=&quot;webapps&quot;
+            unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot; startStopThreads=&quot;4&quot;&gt;
+  &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+         prefix=&quot;localhost_access_log&quot; suffix=&quot;.txt&quot;
+         pattern=&quot;%h %l %u %t &quot;%r&quot; %s %b&quot; /&gt;
+&lt;/Host&gt;
+</code></pre><p>ContainerBase会把StartChild任务丢给线程池处理，得到Future，并且会遍历所有的Future进行阻塞result.get()，这个操作是将异步启动转同步，子容器启动完成才会继续运行。我们再来看看submit到线程池的StartChild任务，它实现了java.util.concurrent.Callable接口，在call里面完成子容器的start动作</p>
+<pre><code>private static class StartChild implements Callable&lt;Void&gt; {
+
+    private Container child;
+
+    public StartChild(Container child) {
+        this.child = child;
+    }
+
+    @Override
+    public Void call() throws LifecycleException {
+        child.start();
+        return null;
+    }
+}
+</code></pre><h4 id="启动Pipeline"><a href="#启动Pipeline" class="headerlink" title="启动Pipeline"></a>启动Pipeline</h4><p><strong>pipeline是什么？</strong></p>
+<pre><code>Pipeline是管道组件，用于封装了一组有序的Valve，便于Valve顺序地传递或者处理请求
+</code></pre><p>Pipeline的接口定义如下，定义了 Valve 的常用操作，以及 Container 的 getter/setter 方法，它的默认实现类是org.apache.catalina.core.StandardPipeline，同时它也是一个Lifecycle组件</p>
+<pre><code>public interface Pipeline {
+    public Valve getBasic();
+    public void setBasic(Valve valve);
+    public void addValve(Valve valve);
+    public Valve[] getValves();
+    public void removeValve(Valve valve);
+    public Valve getFirst();
+    public boolean isAsyncSupported();
+    public Container getContainer();
+    public void setContainer(Container container);
+    public void findNonAsyncValves(Set&lt;String&gt; result);
+}
+</code></pre><p><strong>Valve是什么？</strong></p>
+<pre><code>Valve 是阀门组件，穿插在 Container 容器中，可以把它理解成请求拦截器，在 tomcat 接收到网络请求与触发 Servlet 之间执行
+</code></pre><p>Valve的接口如下所示，我们主要关注它的invoke方法，Request、Response分别是HttpServletRequest、HttpServletResponse的实现类</p>
+<pre><code>public interface Valve {
+    public Valve getNext();
+    public void backgroundProcess();
+    public void invoke(Request request, Response response) throws IOException, ServletException;
+    public boolean isAsyncSupported();
+}
+</code></pre><p>我们再来看看 Pipeline 启动过程，默认使用 StandardPipeline 实现类，它也是一个Lifecycle。在容器启动的时候，StandardPipeline 会遍历 Valve 链表，如果 Valve 是 Lifecycle 的子类，则会调用其 start 方法启动 Valve 组件，代码如下:</p>
+<pre><code>public class StandardPipeline extends LifecycleBase
+        implements Pipeline, Contained {
+
+    // 省略若干代码......
+
+    protected synchronized void startInternal() throws LifecycleException {
+
+        Valve current = first;
+        if (current == null) {
+            current = basic;
+        }
+        while (current != null) {
+            if (current instanceof Lifecycle)
+                ((Lifecycle) current).start();
+            current = current.getNext();
+        }
+
+        setState(LifecycleState.STARTING);
+    }
+
+}
+</code></pre><p>tomcat为我们提供了一系列的Valve :</p>
+<ul>
+<li><p>AccessLogValve，记录请求日志，默认会开启 </p>
+</li>
+<li><p>RemoteAddrValve，可以做访问控制，比如限制IP黑白名单 </p>
+</li>
+<li><p>RemoteIpValve，主要用于处理 X-Forwarded-For 请求头，用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段</p>
+</li>
+</ul>
+<p>关于更详细的说明，请参考<a href="http://tomcat.apache.org/tomcat-8.5-doc/config/valve.html" target="_blank" rel="noopener"><font color="red">tomcat官方文档</font></a></p>
+<h3 id="StandardHost"><a href="#StandardHost" class="headerlink" title="StandardHost"></a>StandardHost</h3><p>前面我们分析了 StandardEngine 的启动逻辑，它会启动其子容器 StandardHost，接下来我们看下 StandardHost 的 start 逻辑。其实， StandardHost 重写的 startInternal 方法主要是为了查找报告错误的 Valve 阀门</p>
+<pre><code>protected synchronized void startInternal() throws LifecycleException {
+
+    // errorValve默认使用org.apache.catalina.valves.ErrorReportValve
+    String errorValve = getErrorReportValveClass();
+    if ((errorValve != null) &amp;&amp; (!errorValve.equals(&quot;&quot;))) {
+        try {
+            boolean found = false;
+
+            // 如果所有的阀门中已经存在这个实例，则不进行处理，否则添加到  Pipeline 中
+            Valve[] valves = getPipeline().getValves();
+            for (Valve valve : valves) {
+                if (errorValve.equals(valve.getClass().getName())) {
+                    found = true;
+                    break;
+                }
+            }
+
+            // 如果未找到则添加到 Pipeline 中，注意是添加到 basic valve 的前面
+            // 默认情况下，first valve 是 AccessLogValve，basic 是 StandardHostValve
+            if(!found) {
+                Valve valve =
+                    (Valve) Class.forName(errorValve).getConstructor().newInstance();
+                getPipeline().addValve(valve);
+            }
+        } catch (Throwable t) {
+            // 处理异常，省略......
+        }
+    }
+
+    // 调用父类 ContainerBase，完成统一的启动动作
+    super.startInternal();
+}
+</code></pre><p>StandardHost Pipeline 包含的 Valve 组件： </p>
+<ol>
+<li><p>basic：org.apache.catalina.core.StandardHostValve </p>
+</li>
+<li><p>first：org.apache.catalina.valves.AccessLogValve</p>
+</li>
+</ol>
+<p>需要注意的是，在往 Pipeline 中添加 Valve 阀门时，是添加到 first 后面，basic 前面</p>
+<p>由上面的代码可知，在 start 的时候，StandardHost 并没有做太多的处理，<strong>那么 StandardHost 又是怎么知道它有哪些 child 容器需要启动呢？</strong></p>
+<pre><code>tomcat 在这块的逻辑处理有点特殊，使用 HostConfig 加载子容器，而这个 HostConfig 是一个 LifecycleListener，它会处理 start、stop 事件通知，并且会在线程池中启动、停止 Context 容器，接下来看下 HostConfig 是如何工作的
+</code></pre><h4 id="HostConfig"><a href="#HostConfig" class="headerlink" title="HostConfig"></a>HostConfig</h4><p>以下是 HostConfig 处理事件通知的代码，我们着重关注下 start 方法，这个方法里面主要是做一些应用部署的准备工作，比如过滤无效的webapp、解压war包等，而主要的逻辑在于 deployDirectories 中，它会往线程池中提交一个 DeployDirectory 任务，并且调用 Future#get() 阻塞当前线程，直到 deploy 工作完成。</p>
+<pre><code>public void lifecycleEvent(LifecycleEvent event) {
+
+    // (省略若干代码) 判断事件是否由 Host 发出，并且为 HostConfig 设置属性
+
+    if (event.getType().equals(Lifecycle.PERIODIC_EVENT)) {
+        check();
+    } else if (event.getType().equals(Lifecycle.BEFORE_START_EVENT)) {
+        beforeStart();
+    } else if (event.getType().equals(Lifecycle.START_EVENT)) {
+        start();
+    } else if (event.getType().equals(Lifecycle.STOP_EVENT)) {
+        stop();
+    }
+}
+
+public void start() {
+    // (省略若干代码)
+    if (host.getDeployOnStartup())
+        deployApps();
+}
+
+protected void deployApps() {
+
+    File appBase = host.getAppBaseFile();
+    File configBase = host.getConfigBaseFile();
+
+    // 过滤出 webapp 要部署应用的目录
+    String[] filteredAppPaths = filterAppPaths(appBase.list());
+
+    // 部署 xml 描述文件
+    deployDescriptors(configBase, configBase.list());
+
+    // 解压 war 包，但是这里还不会去启动应用
+    deployWARs(appBase, filteredAppPaths);
+
+    // 处理已经存在的目录，前面解压的 war 包不会再行处理
+    deployDirectories(appBase, filteredAppPaths);
+
+}
+···
+
+而这个 DeployDirectory 任务很简单，只是调用 `HostConfig#deployDirectory(cn, dir)`
+
+```java
+private static class DeployDirectory implements Runnable {
+    // (省略若干代码)
+
+    @Override
+    public void run() {
+        config.deployDirectory(cn, dir);
+    }
+
+}
+···
+
+我们再回到 HostConfig，看看 deployDirectory 的具体逻辑，分为以下几个步骤： 
+
+1. 使用 digester，或者反射实例化 StandardContext 
+2. 实例化 ContextConfig，并且为 Context 容器注册事件监听器，和 StandardHost 的套路一样，借助 XXXConfig 完成容器的启动、停止工作 
+3. 将当前 Context 实例作为子容器添加到 Host 容器中，添加子容器的逻辑在 ContainerBase 中已经实现了，如果当前 Container 的状态是 STARTING_PREP 并且 startChildren 为 true，则还会启动子容器
+
+```java
+protected void deployDirectory(ContextName cn, File dir) {
+
+    Context context = null;
+    File xml = new File(dir, Constants.ApplicationContextXml);
+    File xmlCopy = new File(host.getConfigBaseFile(), cn.getBaseName() + &quot;.xml&quot;);
+
+    // 实例化 StandardContext
+    if (deployThisXML &amp;&amp; xml.exists()) {
+        synchronized (digesterLock) {
+            // 省略若干异常处理的代码
+            context = (Context) digester.parse(xml);
+        }
+
+        // (省略)为 Context 设置 configFile
+    } else if (!deployThisXML &amp;&amp; xml.exists()) {
+        // 异常处理
+        context = new FailedContext();
+    } else {
+        context = (Context) Class.forName(contextClass).getConstructor().newInstance();
+    }
+
+    // 实例化 ContextConfig，作为 LifecycleListener 添加到 Context 容器中，这和 StandardHost 的套路一样，都是使用 XXXConfig
+    Class&lt;?&gt; clazz = Class.forName(host.getConfigClass());
+    LifecycleListener listener = (LifecycleListener) clazz.getConstructor().newInstance();
+    context.addLifecycleListener(listener);
+
+    context.setName(cn.getName());
+    context.setPath(cn.getPath());
+    context.setWebappVersion(cn.getVersion());
+    context.setDocBase(cn.getBaseName());
+
+    // 实例化 Context 之后，为 Host 添加子容器
+    host.addChild(context);
+
+}
+</code></pre><p>现在有两个疑问： </p>
+<p>1.为什么要使用 HostConfig 组件启动 Context 容器呢，不可以直接在 Host 容器中直接启动吗？</p>
+<pre><code>HostConfig 不仅仅是启动、停止 Context 容器，还封装了很多应用部署的逻辑，此外，还会对 web.xml、context.xml 文件的改动进行监听，默认情况会重新启动 Context 容器。而这个 Host 只是负责管理 Context 的生命周期，基于单一职责的原则，tomcat 利用事件通知的方式，很好地解决了藕合问题，Context 容器也是如此，它会对应一个 ContextConfig
+</code></pre><p>2.Context 容器又是如何启动的？</p>
+<pre><code>前面我们也提到了，HostConfig 将当前 Context 实例作为子容器添加到 Host 容器中（调用 ContainerBase.addChild 方法 ），而 Context 的启动就是在添加的时候调用的，ContainerBase 的关键代码如下所示，Context 启动的时候会解析web.xml，以及启动 Servlet、Listener，Servlet3.0还支持注解配置，等等这一系列逻辑将在下一篇文章进行分析
+</code></pre><pre><code>@Override
+public void addChild(Container child) {
+    if (Globals.IS_SECURITY_ENABLED) {
+        PrivilegedAction&lt;Void&gt; dp = new PrivilegedAddChild(child);
+        AccessController.doPrivileged(dp);
+    } else {
+        addChildInternal(child);
+    }
+}
+
+private void addChildInternal(Container child) {
+    synchronized(children) {
+        // 省略部分代码，避免重复添加子容器
+    }
+
+    try {
+        if ((getState().isAvailable()
+                || LifecycleState.STARTING_PREP.equals(getState()))
+                &amp;&amp; startChildren) {
+            // 启动添加的子容器
+            child.start();
+        }
+    } catch (LifecycleException e) {
+        throw new IllegalStateException(&quot;ContainerBase.addChild: start: &quot; + e);
+    } finally {
+        fireContainerEvent(ADD_CHILD_EVENT, child);
+    }
+}
+</code></pre>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/" class="b-link-green">Tomcat的启动分析(三)Catalina启动</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Tomcat的启动分析(四)webapp">
+                        
+                        <span class="card-title">Tomcat的启动分析(四)webapp</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-18
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                    tomcat
+                                </a>
+                            
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                    源码
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tomcat/" target="_blank">
+                        <span class="chip bg-color">tomcat</span>
+                    </a>
+                    
+                    <a href="/tags/源码/" target="_blank">
+                        <span class="chip bg-color">源码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Tomcat的启动分析(二)Catalina初始化">
+                        
+                        <span class="card-title">Tomcat的启动分析(二)Catalina初始化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Tomcat的启动分析：Catalina
+Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootstrap的main方法，便可以启动tomcat进行代码调试和分析。Bootstrap是tomcat的入</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tomcat/" class="post-category" target="_blank">
+                                    tomcat
+                                </a>
+                            
+                            <a href="/categories/tomcat/源码/" class="post-category" target="_blank">
+                                    源码
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tomcat/" target="_blank">
+                        <span class="chip bg-color">tomcat</span>
+                    </a>
+                    
+                    <a href="/tags/源码/" target="_blank">
+                        <span class="chip bg-color">源码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

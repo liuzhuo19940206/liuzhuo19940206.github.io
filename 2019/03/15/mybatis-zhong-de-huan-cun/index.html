@@ -1,0 +1,1625 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Mybatis中的缓存, 解忧杂货店">
+    <meta name="description" content="使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。
+一般提到Mybati">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Mybatis中的缓存 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Mybatis中的缓存
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/mybatis/" target="_blank">
+                                <span class="chip bg-color">mybatis</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/mybatis/" class="post-category" target="_blank">
+                                mybatis
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-03-15
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        5.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        22 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。<br><a id="more"></a></p>
+<p>一般提到Mybatis的缓存都是指二级缓存。一级缓存（也叫本地缓存）默认会启动，并且不能控制，因此很少会提到。首先，我会简单的介绍一下Mybatis的一级缓存，了解Mybatis的一级缓存可以避免产生一些难以发现的错误。其次，我会全面介绍Mybatis的二级缓存，包括二级缓存的基本配置用法，还有一些常用的缓存框架和缓存数据库的结合。</p>
+<h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><h4 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h4><p>我们来看一个简单的例子：</p>
+<pre><code>    public void testSelectStudent() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        Student student = studentMapper.findStudentById(1L);
+        System.out.println(&quot;使用同一个SqlSession再执行一次同样的方法&quot;);
+        Student student2 = studentMapper.findStudentById(1L);
+        sqlSession.commit();
+
+        //开启一个新的SqlSession
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        StudentMapper studentMapper2 = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(&quot;开启一个新的SqlSession再执行一次：&quot;);
+        Student student3 = studentMapper.findStudentById(1L);
+        sqlSession2.commit();
+        try {
+        } finally {
+            //不要忘记关闭SqlSession
+            sqlSession.close();
+            sqlSession2.close();
+        }
+    }
+</code></pre><p>注意：这里要调用：sqlSession.commit()，才会启动缓存。</p>
+<p>运行结果如下：<br><img src="/images/mybatis/QQ截图20190315154304.png"></p>
+<p>发现，Mybatis的一级缓存存在于：<font color="red">SqlSession的生命周期中</font>，在同一个SqlSession中查询时，Mybatis会把执行的方法和参数通过算法生成缓存的键值，将键值和查询结果存入一个Map对象中。如果同一个SqlSession中执行的方法和参数完全一致，那么通过算法会生成相同的键值，当Map缓存对象中已经存在了该键值时，则会返回缓存中的对象。</p>
+<hr>
+<h4 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h4><p>再看一个例子：</p>
+<pre><code>    public void testSelectStudent() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        Student student = studentMapper.findStudentById(1L);
+        System.out.println(student);
+
+        //修改student中的Name属性
+        student.setStuName(&quot;dj&quot;);
+        System.out.println(&quot;使用同一个SqlSession再执行一次同样的方法&quot;);
+
+        Student student2 = studentMapper.findStudentById(1L);
+        System.out.println(student2);
+        sqlSession.commit();
+
+        //开启一个新的SqlSession
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        StudentMapper studentMapper2 = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(&quot;开启一个新的SqlSession再执行一次：&quot;);
+        Student student3 = studentMapper.findStudentById(1L);
+        System.out.println(student3);
+        sqlSession2.commit();
+        try {
+        } finally {
+            //不要忘记关闭SqlSession
+            sqlSession.close();
+            sqlSession2.close();
+        }
+    }
+</code></pre><p>运行结果：<br><img src="/images/mybatis/QQ截图20190315155617.png"></p>
+<p>我们可以看到的是，当我获取 <code>id=1</code> 的 student学生后，修改它的姓名，然后再次调用同样的方法，获取 <code>id=1</code> 的学生，它的姓名也跟着发生了改变。说明此时，student2 和 student 是同一个对象，都是从缓存中获取的，所以会发生上面的问题。开启一个新的SqlSession后，获取 <code>id=1</code> 的学生，又会从数据库中重新获取了。</p>
+<hr>
+<p>如果不想让该方法使用一级缓存的话，可以添加：<code>flushCache=true</code> ，表示，每次调用该方法，都会重新发送SQL语句，从数据库中获取最新的数据。</p>
+<pre><code>    &lt;select id=&quot;findStudentById&quot;  flushCache=&quot;true&quot; resultMap=&quot;studentMap&quot;&gt;
+         select * from student where id = #{id}
+     &lt;/select&gt;
+</code></pre><p><code>flushCache=true</code> ，这个属性配置为：true后，会在查询数据前清空当前的一级缓存，因此该方法每次都会重新从数据库中查询数据，此时的student和student2就会变成两个不同的实例，可以避免上面的问题。</p>
+<p>但是由于这个方法清空了一级缓存，<strong><code>会影响到当前SqlSession中所有的缓存的查询</code></strong>，因此在需要反复查询获取只读数据的情况下，会增加数据库的查询次数，所以要避免这么使用。</p>
+<font color="red">注意：调用 flushCache=true 的方法后，一级缓存会被清空，即之前的所有方法的调用缓存都会被清空，不仅仅是指：flushCache=true 的方法</font>
+
+<hr>
+<h4 id="第三个例子"><a href="#第三个例子" class="headerlink" title="第三个例子"></a>第三个例子</h4><pre><code>    public void testSelectStudent() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(&quot;第一次调用&quot;);
+        Student student = studentMapper.findStudentById(1L);
+        System.out.println(&quot;第二次调用&quot;);
+        Student student2 = studentMapper.findStudentById(1L);
+        System.out.println(&quot;两个对象是否相等：&quot; + (student == student2));
+        sqlSession.commit();
+
+        System.out.println(&quot;====================================&quot;);
+
+        //开启一个新的SqlSession
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        StudentMapper studentMapper2 = sqlSession.getMapper(StudentMapper.class);
+        System.out.println(&quot;开启一个新的SqlSession再执行一次：&quot;);
+        Student student3 = studentMapper.findStudentById(1L);
+        //执行删除操作
+        studentMapper2.deleteById(3L);
+        System.out.println(&quot;执行删除操作后，再调用一次&quot;);
+        Student student4 = studentMapper.findStudentById(1L);
+        sqlSession2.commit();
+        try {
+        } finally {
+            //不要忘记关闭SqlSession
+            sqlSession.close();
+            sqlSession2.close();
+        }
+    }
+</code></pre><p>前提：删除 findStudentById 方法：<code>flushCache=true</code>。</p>
+<p>执行之后的结果如下：<br><img src="/images/mybatis/QQ截图20190315162557.png"></p>
+<p>发现，在同一个SqlSession的情况下，只要执行了：insert、update、delete操作，都会清空一级缓存，所以查询 student4 时由于缓存不存在，就会再次发送SQL语句去执行数据库的查询操作。</p>
+<hr>
+<p>以上就是Mybatis中的一级缓存的各种情况了，由于一级缓存是在默默地工作，因此要避免在使用的过程中由于不了解而发生察觉不到的错误。</p>
+<h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p>Mybatis的二级缓存非常强大，它不同于一级缓存只存在于SqlSession的生命周期中，而是可以理解为存在于：SqlSessionFactory的生命周期中。虽然目前还没有接触过同时存在多个SqlSessionFactory的情况，但可以知道，当存在多个SqlSessionFactory时，它们的缓存都是绑定在各自对象上的，缓存数据在一般情况下是不相通的。只有在使用如Redis这样的缓存数据库时，才可以共享缓存。</p>
+<h4 id="配置二级缓存"><a href="#配置二级缓存" class="headerlink" title="配置二级缓存"></a>配置二级缓存</h4><p>在Mybatis的全局配置settings中有一个参数为：<code>cacheEnabled</code>，这个参数是二级缓存的全局开关。默认值是：true，所以不必配置，如果想要配置，可以在：mybatis-config.xml中添加：</p>
+<pre><code>    &lt;settings&gt;
+        &lt;!--其他setting配置--&gt;
+        &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
+    &lt;/settings&gt;
+</code></pre><p>二级缓存是和命名空间绑定的，即二级缓存需要配置在<code>Mapper.xml</code>映射文件中，或者配置在Mapper.java接口中。在映射文件中，命名空间就是XML根节点mapper的namespace属性。在Mapper接口中，命名空间就是接口的全限定名。</p>
+<h5 id="Mapper-xml中配置二级缓存"><a href="#Mapper-xml中配置二级缓存" class="headerlink" title="Mapper.xml中配置二级缓存"></a>Mapper.xml中配置二级缓存</h5><p>在保证二级缓存的全局配置开启的情况下，给 <code>StudentMapper.xml</code> 开启二级缓存只需要添加：<code>&lt;cache/&gt;</code> 标签即可：</p>
+<pre><code>&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;&gt;
+
+    &lt;cache/&gt;
+
+    &lt;resultMap id=&quot;studentMap&quot; type=&quot;student&quot;&gt;
+        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;stu_name&quot; property=&quot;stuName&quot;/&gt;
+        &lt;result column=&quot;stu_id&quot; property=&quot;stuId&quot;/&gt;
+        &lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot;/&gt;
+    &lt;/resultMap&gt;
+
+    &lt;!--其他配置--&gt;
+&lt;/mapper&gt;
+</code></pre><p>默认的二级缓存会有如下效果：</p>
+<ul>
+<li><p>映射语句文件中的所有select语句将会被缓存。</p>
+</li>
+<li><p>映射语句文件中的所有insert、update、delete语句会刷新缓存。</p>
+</li>
+<li><p>缓存会使用 LRU（最近最少使用）算法来回收。</p>
+</li>
+<li><p>根据时间表，比如 No Flush Interval（没有刷新间隔），缓存不会以任何时间顺序来刷新。</p>
+</li>
+<li><p>缓存会存储集合或对象的1024个引用</p>
+</li>
+<li><p>缓存会被视为 read/write（可读/可写）的，意味着对象检索不是共享的，而且可以安全地被调用者修改，而不干扰其他调用者或线程所做的潜在修改。</p>
+</li>
+</ul>
+<hr>
+<p>所有的这些属性都可以通过缓存元素的属性来修改：</p>
+<pre><code>    &lt;cache
+        eviction=&quot;FIFO&quot;
+        flushInterval=&quot;60000&quot;
+        size=&quot;512&quot;
+        readOnly=&quot;true&quot;/&gt;
+</code></pre><p>这个更高级的配置，创建了一个FIFO缓存，并每隔60秒刷新一次，存储集合或对象的512个引用，而且返回的对象被认为是只读的，因此在不同线程中的调用者之间修改它们会导致冲突。</p>
+<p>cache可以配置的属性如下：</p>
+<ul>
+<li>eviction（回收策略）</li>
+</ul>
+<p>（1）LRU（最近最少使用）：移除最长时间不被使用的对象，这是默认值。</p>
+<p>（2）FIFO（先进先出）：按对象进入缓存的顺序来移除它们。</p>
+<p>（3）SOFT（软引用）：移除基于垃圾回收器状态和软引用规则的对象。</p>
+<p>（4）WEAK（弱引用）：更积极地移除基于垃圾回收器状态和弱引用规则的对象。</p>
+<ul>
+<li><p>flushInterval（刷新间隔）：可以被设置为任意的正整数，而且它们代表一个合理的毫秒形式的时间段。默认情况不设置，即没有刷新间隔，缓存仅仅在调用语句时刷新。</p>
+</li>
+<li><p>size（引用数目）：可以被设置为任意的正整数，要记住缓存的对象数目和运行环境的可用内存资源数目。默认值是：1024.</p>
+</li>
+<li><p>readOnly（只读）：属性可以被设置为：true 或 false。只读的缓存会给所有调用者返回缓存对象的相同实例，因此这些对象不能被修改，这提供了很重要的性能优势。默认值是：false，允许修改。</p>
+</li>
+</ul>
+<h5 id="Mapper接口中设置二级缓存"><a href="#Mapper接口中设置二级缓存" class="headerlink" title="Mapper接口中设置二级缓存"></a>Mapper接口中设置二级缓存</h5><p>在使用注解方式时，如果想对注解方法启用二级缓存，还需要在Mapper接口中进行配置，如果Mapper接口也存在对应的XML映射文件，两者同时开启缓存时，还需要特殊配置。</p>
+<p>(1)当只使用注解方式配置二级缓存时，如果在 <code>StudentMapper</code>接口中，则需要增加如下配置。</p>
+<pre><code>@CacheNamespace
+public interface StudentMapper {
+
+    //接口方法
+}
+</code></pre><p>只需增加该注解即可，该注解还可以配置各项属性：</p>
+<pre><code>@CacheNamespace(
+        eviction = FifoCache.class,
+        flushInterval = 600000,
+        size = 512,
+        readWrite = true
+)
+public interface StudentMapper {
+
+    //接口方法
+}
+</code></pre><hr>
+<p>(2)当同时使用注解方式和XML映射文件时，如果同时配置了上述的二级缓存，就会抛出如下异常：</p>
+<pre><code>Caches collection already contains value for com.liuzhuo.mapper.StudentMapper
+</code></pre><p><img src="/images/mybatis/QQ截图20190315171320.png"></p>
+<p>这是因为Mapper接口和对应的XML文件是相同的命名空间，想使用二级缓存，两者必须同时配置（如果接口不存在使用注解方式的方法，可以只在XML中配置），因此按照上面的方式进行配置就会出错，这个时候应该使用参数缓存。在Mapper接口中，参照缓存配置如下：</p>
+<pre><code>@CacheNamespaceRef(StudentMapper.class)
+public interface StudentMapper {
+
+}
+</code></pre><p>注意使用的注解是：<code>@CacheNamespaceRef</code> 多了Ref的后缀！！！</p>
+<p>因为想让StudentMapper接口中的注解方法和XML中的方法使用相同的缓存，因此使用参数缓存配置 StudentMapper.class，这样就会使用命名空间 com.liuzhuo.mapper.StudentMapper的缓存配置，即：StudentMapper.xml中配置的缓存。</p>
+<p>Mapper接口可以通过注解引用XML映射文件或者其他接口的缓存，在XML中也可以配置参数缓存，如在 StudentMapper.xml中：</p>
+<pre><code>&lt;cache-ref namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;/&gt;
+</code></pre><p>这样配置后，XML就会引用Mapper接口中配置的二级缓存，同样可以避免同时配置二级缓存导致的冲突。</p>
+<hr>
+<p>Mybatis中很少会同时使用Mapper接口注解方式和XML映射文件，所以参照缓存并不是为了解决这个问题而设计的。参照缓存除了能够通过引用其他缓存减少配置外，主要的作用是解决脏读。</p>
+<p>为了保持后续测试一致，对 StudentMapper 接口和XML映射文件进行如下配置。</p>
+<pre><code>@CacheNamespaceRef(StudentMapper.class)
+public interface StudentMapper {
+
+}
+
+&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;&gt;
+    &lt;cache
+        eviction=&quot;FIFO&quot;
+        flushInterval=&quot;60000&quot;
+        size=&quot;512&quot;
+        readOnly=&quot;false&quot;/&gt;
+&lt;/mapper&gt;
+</code></pre><hr>
+<h4 id="使用二级缓存"><a href="#使用二级缓存" class="headerlink" title="使用二级缓存"></a>使用二级缓存</h4><p>上面讲到了二级缓存的配置，现在开始讲解二级缓存的使用，当调用 StudentMapper的所有select查询方法时，二级缓存就已经开始起作用了。需要注意的是，由于配置的是可读写的缓存，而Mybatis使用 <code>SerializedCache</code> 序列化缓存来实现可读写缓存类，并通过序列化和反序列化来保证通过缓存获取数据时，得到的是一个新的实例。因此，如果配置为只读缓存时，Mybatis就会使用Map来存储缓存值，这种情况下，从缓存中获取的对象就是同一个实例。</p>
+<p>因为使用可读写缓存，可以使用  <code>SerializedCache</code> 序列化缓存。这个缓存类要求所有被序列化的对象必须实现 <code>Serializable</code> 接口，所以还需要修改Student对象。</p>
+<pre><code>public class Student implements Serializable {
+
+    private static final long serializableUID = 7483479274923474792L;
+
+    //其他属性和set、get方法
+}
+</code></pre><hr>
+<p>编写测试方法：</p>
+<pre><code>    public void testSelectStudent() {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Student student = null;
+        try {
+            StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
+            System.out.println(&quot;第一次调用&quot;);
+            student = studentMapper.findStudentById(1L);
+            System.out.println(student);
+            student.setStuName(&quot;dj&quot;);
+            System.out.println(&quot;第二次调用&quot;);
+            Student student2 = studentMapper.findStudentById(1L);
+            System.out.println(student2);
+            System.out.println(&quot;两个对象是否相等：&quot; + (student == student2));
+        } finally {
+            sqlSession.close();
+        }
+        System.out.println(&quot;开启新的Sqlsession~~~~&quot;);
+        //开启一个新的SqlSession
+        sqlSession = sqlSessionFactory.openSession();
+        try {
+            StudentMapper studentMapper2 = sqlSession.getMapper(StudentMapper.class);
+            System.out.println(&quot;开启一个新的SqlSession后，执行第一次：&quot;);
+            Student student3 = studentMapper2.findStudentById(1L);
+            System.out.println(student3);
+            System.out.println(&quot;开启一个新的SqlSession后，执行第二次：&quot;);
+            Student student4 = studentMapper2.findStudentById(1L);
+            System.out.println(student4);
+            System.out.println(&quot;两个对象是否相等：&quot; + (student3 == student4));
+            sqlSession.commit();
+        } finally {
+            //不要忘记关闭SqlSession
+            sqlSession.close();
+        }
+    }
+</code></pre><p>运行结果：<br><img src="/images/mybatis/QQ截图20190315180036.png"></p>
+<p>日志中：出现的以：<code>Cache Hit Ratio</code> 开头的语句，这行语句后面输出的值为当前执行方法的缓存命中率（二级缓存的，不包括一级缓存）。</p>
+<p>在测试第一部分中，第一次查询student时由于没有缓存，所以执行了数据库查询，在第二次查询获取student2时，student和student2是完全相同的实例，这里是使用了一级缓存，所以返回的是同一个实例，此时的命中率还是：0。</p>
+<p>当调用SqlSession.close（）后，SqlSession才会保存查询数据到二级缓存中。在这之后二级缓存才有了缓存数据。所以可以看到在第一部分的两次查询时，命中率都是：0。</p>
+<p>在第二部分测试代码中，再次获取student3对象时，日志中并没有输出数据库查询，而是输出了命中率，这时的命中率是：0.33333333333。这是第三次查询，并且得到了二级缓存中的数据，因此该方法一共被请求了3次，有一次命中，所以命中率就是三分之。后面再获取student4时，就是4次请求，2次命中，命中率为：0.5。并且因为是读写缓存的缘故，student3 和student4 都是反序列化得到的结果，所以它们不是相同的实例。在这一部分，这两个实例是读写安全的，其属性不会互相影响。</p>
+<hr>
+<font color="red"><strong>提示：</strong></font>
+
+<p>在这个例子中并没有实现真正的读写安全，为啥？</p>
+<p>因为这个测试中加入了一段不该有的代码，即：<code>student.setStuName(&quot;dj&quot;);</code> 这里修改了：student的属性后，按照常理应该更新数据到数据库中，更新后会清空一级、二级缓存，这样第二部分代码中就不出现查询结果的 stuName 都是 <code>&#39;dj&#39;</code> 的情况了。所以想要安全使用，需要避免毫无意义的修改，这样可以避免人为产生的脏数据，避免缓存和数据库的数据不一致的情况。</p>
+<hr>
+<p>Mybatis默认提供的缓存实现都是基于Map实现的内存缓存，已经可以满足基本的应用。但是当需要缓存大量的数据时，不能仅仅通过提高内存来使用Mybatis的二级缓存，还可以选择一些类似 <code>EhCache</code>的缓存框架或 <code>Redis</code>缓存数据库等工具来保存Mybatis的二级缓存数据。</p>
+<hr>
+<h3 id="集成EhCache缓存"><a href="#集成EhCache缓存" class="headerlink" title="集成EhCache缓存"></a>集成EhCache缓存</h3><p>EhCache是一个纯粹的Java进程内的缓存框架，具有快速、精干等特点。具体来说，EhCache主要的特性如下。</p>
+<ul>
+<li><p>快速</p>
+</li>
+<li><p>简单</p>
+</li>
+<li><p>多种缓存策略</p>
+</li>
+<li><p>缓存数据有内存和磁盘两级，无须担心容量问题</p>
+</li>
+<li><p>缓存数据会在虚拟机重启的过程中写入磁盘</p>
+</li>
+<li><p>可以通过RMI、可插入API等方式进行分布式缓存</p>
+</li>
+<li><p>具体缓存和缓存管理器的侦听接口</p>
+</li>
+</ul>
+<p>因为以上诸多优点，Mybatis项目开发者最早提供了EhCache的Mybatis二级缓存实现，该项目名为 <code>ehcache-cache</code></p>
+<p>地址是：<a href="https://github.com/mybatis/ehcache-cache" target="_blank" rel="noopener">https://github.com/mybatis/ehcache-cache</a></p>
+<hr>
+<p>（1）添加项目依赖</p>
+<p>在pom.xml中添加如下的依赖：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.caches&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-ehcache&lt;/artifactId&gt;
+    &lt;version&gt;1.1.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>（2）配置EhCache</p>
+<p>在 src/main/resources 目录下新增 <code>ehcache.xml</code>文件。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ehcache xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:noNamespaceSchemaLocation=&quot;http://ehcache.org/ehcache.xsd&quot;&gt;
+
+    &lt;!-- 磁盘缓存位置 --&gt;
+    &lt;diskStore path=&quot;E:\DEV_ENV\ehcache&quot;/&gt;
+
+    &lt;!-- 默认缓存 --&gt;
+    &lt;defaultCache
+            maxEntriesLocalHeap=&quot;10000&quot;
+            eternal=&quot;false&quot;
+            copyOnRead=&quot;true&quot;
+            copyOnWrite=&quot;true&quot;
+            timeToIdleSeconds=&quot;120&quot;
+            timeToLiveSeconds=&quot;120&quot;
+            maxEntriesLocalDisk=&quot;10000000&quot;
+            diskExpiryThreadIntervalSeconds=&quot;120&quot;
+            memoryStoreEvictionPolicy=&quot;LRU&quot;&gt;
+        &lt;persistence strategy=&quot;localTempSwap&quot;/&gt;
+    &lt;/defaultCache&gt;
+
+&lt;/ehcache&gt;
+</code></pre><p>有关EhCache的详细配置可以参考地址：<a href="http://www.ehcache.org/ehcache.xml" target="_blank" rel="noopener">http://www.ehcache.org/ehcache.xml</a></p>
+<p>在上面的配置中重点要看两个属性，<code>copyOnRead</code> 和 <code>copyOnWrite</code> 属性。这两个属性的配置会对后面使用二级缓存产生很大影响。</p>
+<p><code>copyOnRead的含义：</code> 判断从缓存中读取数据时是返回对象的引用还是复制一个对象返回。默认情况下是false，即返回数据的引用，这种情况下返回的都是相同的对象，和Mybatis默认缓存中的只读对象是相同的。如果设置为：true，那就是可读写缓存，每次读取缓存时都会复制一个新的实例。</p>
+<p><code>copyOnWrite的含义：</code> 判断写入缓存时是直接缓存对象的引用还是复制一个对象，然后缓存，默认也是false。如果想使用可读写缓存，就需要将这两个属性配置为true，如果使用只读缓存，可以不配置这两个属性，使用默认值false即可。</p>
+<hr>
+<p>（3）修改StudentMapper.xml中的缓存配置</p>
+<p>ehcache-cache提供了如下2个可选的缓存实现。</p>
+<ul>
+<li><p>org.mybatis.caches.ehcache.EhcacheCache</p>
+</li>
+<li><p>org.mybatis.caches.ehcache.LoggingEhcache</p>
+</li>
+</ul>
+<p>这两个缓存中，第二个是带日志的缓存，由于Mybatis初始化缓存时，如果Cache不是继承自LoggingEhcache(org.mybatis.caches.ehcache.LoggingEhcache)，Mybatis便会使用Logging Ehcache 装饰代理缓存，所以上面两个缓存使用时并没有区别，都会输出缓存命中率的日志。</p>
+<p>修改 StudentMapper.xml 中的配置：</p>
+<pre><code>&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;&gt;
+
+    &lt;cache type=&quot;org.mybatis.caches.ehcache.EhcacheCache&quot;/&gt;
+
+    &lt;!--其他配置--&gt;
+&lt;/mapper&gt;
+</code></pre><p>只通过设置type属性就可以使用EhCache缓存了，这时cache的其他属性都不会起到任何作用，针对缓存的配置都在ehcache.xml中进行。在ehcache.xml配置文件中，只有一个默认的缓存配置，所以配置使用EhCache缓存的Mapper映射文件都会有一个以映射文件命名空间命名的缓存。如果想针对某一个命名空间进行配置，需要在ehcache.xml中添加一个和映射文件命名空间一致的缓存配置，例如针对：StudentMapper，可以进行如下配置：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;ehcache xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:noNamespaceSchemaLocation=&quot;http://ehcache.org/ehcache.xsd&quot;&gt;
+
+    &lt;!-- 磁盘缓存位置 --&gt;
+    &lt;diskStore path=&quot;E:\DEV_ENV\ehcache&quot;/&gt;
+
+    &lt;!-- 默认缓存 --&gt;
+    &lt;defaultCache
+            maxEntriesLocalHeap=&quot;10000&quot;
+            eternal=&quot;false&quot;
+            copyOnRead=&quot;true&quot;
+            copyOnWrite=&quot;true&quot;
+            timeToIdleSeconds=&quot;120&quot;
+            timeToLiveSeconds=&quot;120&quot;
+            maxEntriesLocalDisk=&quot;10000000&quot;
+            diskExpiryThreadIntervalSeconds=&quot;120&quot;
+            memoryStoreEvictionPolicy=&quot;LRU&quot;&gt;
+        &lt;persistence strategy=&quot;localTempSwap&quot;/&gt;
+    &lt;/defaultCache&gt;
+
+    &lt;!-- StudentMapper缓存 --&gt;
+    &lt;cache
+            name=&quot;com.liuzhuo.mapper.StudentMapper&quot;
+            maxElementsInMemory=&quot;1000&quot;
+            eternal=&quot;false&quot;
+            copyOnRead=&quot;true&quot;
+            copyOnWrite=&quot;true&quot;
+            timeToIdleSeconds=&quot;5000&quot;
+            timeToLiveSeconds=&quot;5000&quot;
+            diskPersistent=&quot;true&quot;
+            overflowToDisk=&quot;false&quot;
+            memoryStoreEvictionPolicy=&quot;LRU&quot;/&gt;
+&lt;/ehcache&gt;
+</code></pre><hr>
+<p>执行之前的测试方法，会发现：<code>E:\DEV_ENV\ehcache</code>目录下会多出几个文件：<br><img src="/images/mybatis/QQ截图20190315201938.png"></p>
+<hr>
+<h3 id="集成Redis缓存"><a href="#集成Redis缓存" class="headerlink" title="集成Redis缓存"></a>集成Redis缓存</h3><p>Redis是一个高性能的 key-value 数据库，之前的博客中有一系列的Redis讲解，大家可以去看看，回顾一下。</p>
+<p>Mybatis项目开发者提供了Redis的Mybatis二级缓存实现，该项目名为：<code>redis-cache</code>，目前只有beta版，项目地址是：</p>
+<p><a href="https://github.com/mybatis/redis-cache" target="_blank" rel="noopener">https://github.com/mybatis/redis-cache</a></p>
+<hr>
+<p>（1）添加项目依赖</p>
+<p>在pom.xml文件中添加如下依赖：</p>
+<pre><code>  &lt;dependency&gt;
+    &lt;groupId&gt;org.mybatis.caches&lt;/groupId&gt;
+    &lt;artifactId&gt;mybatis-redis&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-beta2&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre><p>mybatis-redis 目前只有beta版本。</p>
+<p>（2）配置Redis</p>
+<p>使用Redis前，必须有一个Redis服务，有关Redis安装启动的相关内容，请看我之前的博客。</p>
+<p>参考地址：<a href="https://redis.io/topics/quickstart" target="_blank" rel="noopener">https://redis.io/topics/quickstart</a></p>
+<p>Redis服务启动后，在 src/main/resources 目录下新增redis.properties文件。</p>
+<pre><code>host=localhost
+port=6379
+connectionTimeout=5000
+soTimeout=5000
+password=
+database=0
+clientName=
+</code></pre><p>上面这几项是redis-cache项目提供的可以配置的参数，这里配置了服务器地址、端口号和超时时间。</p>
+<p>（3）修改StudentMapper.xml中的缓存配置</p>
+<p>redis-cache 提供了1个 MyBatis 缓存实现， <code>org.mybatis.caches.redis.RedisCache</code>。</p>
+<pre><code>&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentMapper&quot;&gt;
+
+    &lt;cache type=&quot;org.mybatis.caches.redis.RedisCache&quot;/&gt;
+
+    &lt;!--其他配置--&gt;
+&lt;/mapper&gt;
+</code></pre><p>配置很简单，RedisCache在保存缓存数据和获取缓存数据时，使用了Java的序列化和反序列化，因此还需要保证被缓存的对象必须实现Serializable接口。</p>
+<p>Redis缓存并不会因为应用的关闭而失效。</p>
+<hr>
+<p>当需要分布式部署应用时，如果使用Mybatis自带缓存或基础的EhCache缓存，分布式应用会各自拥有自己的缓存，它们之间不会共享缓存，这种方式会消耗更多的服务器资源。如果使用类似Redis的缓存服务，就可以将分布式应用连接到同一个缓存服务器，实现分布式应用间的缓存共享。</p>
+<hr>
+<h3 id="二级缓存适用场景"><a href="#二级缓存适用场景" class="headerlink" title="二级缓存适用场景"></a>二级缓存适用场景</h3><p>二级缓存虽然好处很多，但并不是什么时候都可以使用。在以下场景中，推荐使用二级缓存。</p>
+<ul>
+<li><p>以查询为主的应用中，只有尽可能少的增、删、改操作。</p>
+</li>
+<li><p>绝大多数以单表操作存在时，由于很少存在互相关联的情况，因此不会出现脏数据。</p>
+</li>
+<li><p>可以按业务划分对表进行分组时，如关联的表比较少时，可以通过参照缓存进行配置。</p>
+</li>
+</ul>
+<p>除了推荐使用的情况，如果脏读对系统没有影响，也可以考虑使用。在无法保证数据不出现脏读的情况下，建议在业务层使用可控制的缓存代替二级缓存。</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/03/15/mybatis-zhong-de-huan-cun/" class="b-link-green">Mybatis中的缓存</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/03/16/mybatis-zhong-de-dong-tai-sql/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Mybatis中的动态SQL">
+                        
+                        <span class="card-title">Mybatis中的动态SQL</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/mybatis/" class="post-category" target="_blank">
+                                    mybatis
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mybatis/" target="_blank">
+                        <span class="chip bg-color">mybatis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Mybatis中的高级查询">
+                        
+                        <span class="card-title">Mybatis中的高级查询</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上述内容之外的知识点进行详细介绍。
+本篇博客主要包含的内容为MyBatis的高级结果映射，主要处理数据</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/mybatis/" class="post-category" target="_blank">
+                                    mybatis
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mybatis/" target="_blank">
+                        <span class="chip bg-color">mybatis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>

@@ -1,167 +1,456 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#333333">
-    <meta name="msapplication-TileColor" content="#333333">
-    
-    
-    
-    <meta name="keywords" content="Life, ARIA, Hexo, liuzhuo, Cakki, gakki">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    
-    
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#333333">
-    
-    
-    <link rel="manifest" href="/favicons/site.webmanifest">
-    
-    
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    
-    
-    <link rel="alternate" href="/atom.xml" title="解忧杂货店" type="application/atom+xml" />
-    
-    
-    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
-    
-    
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    
-    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
-    
-    
-<link rel="stylesheet" type="text/css" href="/css/page.css">
-<link rel="stylesheet" type="text/css" href="/css/post.css">
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SpringBoot_day_01, 解忧杂货店">
+    <meta name="description" content="Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。
+背景J2EE笨重的开发、繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大。
+解决“Spring">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SpringBoot_day_01 | 解忧杂货店</title>
+    <link rel="icon" type="image/png" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
     
-    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length === 0) {
-        searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/index.js"></script>
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
     
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>SpringBoot_day_01 | 解忧杂货店 - 爱生活爱解忧</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
     
-<header id="header" class="header" style="background: #333333;">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">解忧杂货店</a></h1>
-        <h2 class="subtitle">爱生活爱解忧</h2>
-      </div>
-      
-      <div class="logo">
-        <img src="/images/logo.png" alt="logo">
-      </div>
-      
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            hello,every body!
+            
+        </div>
     </div>
-    <nav id="nav" class="nav">
-      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
-      <ul id="menu" role="menubar" aria-hidden="false">
+
+    
+
+    <ul class="menu-list mobile-menu-list">
         
-        <li role="menuitem"><a href="/">首页</a></li>
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/archives/">归档</a></li>
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/categories/">分类</a></li>
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/tags/">标签</a></li>
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
         
-        <li role="menuitem"><a href="/about/">关于</a></li>
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
         
-      </ul>
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
     </nav>
-  </div>
+
 </header>
 
 
-    <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
-            
-<div id="post" class="page">
-  
-  <article class="article post card animate" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://liuzhuo19940206.github.io/2018/11/02/SpringBoot-day-01/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="刘卓">
-       <meta itemprop="description" content="hello,every body!">
-       <meta itemprop="image" content="/images/avatar.jpg">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="解忧杂货店">
-      </span>
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SpringBoot_day_01
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">SpringBoot_day_01</h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-11-02T14:31:37+08:00">2018-11-02 14:31:37</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SpringBoot/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      <p>Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。<br><a id="more"></a></p>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/" target="_blank">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                            <a href="/tags/SpringBoot/" target="_blank">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                SpringBoot
+                            </a>
+                        
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-02
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        13 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。<br><a id="more"></a></p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>J2EE笨重的开发、繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大。</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>“Spring全家桶”时代.</p>
 <p>SpringBoot -&gt; J2EE一站式解决方案</p>
@@ -192,8 +481,19 @@
 <p>统一环境；</p>
 <p><strong>1.Maven设置</strong></p>
 <p>给maven 的 settings.xml配置文件的profiles标签添加</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;profile&gt;<br>  &lt;id&gt;jdk‐1.8&lt;/id&gt;<br>  &lt;activation&gt;<br>    &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;<br>    &lt;jdk&gt;1.8&lt;/jdk&gt;<br>  &lt;/activation&gt;<br>  &lt;properties&gt;<br>    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;<br>    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;<br>    &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;<br>  &lt;/properties&gt;<br>&lt;/profile&gt;<br></code></pre></td></tr></table></figure>
-<p><strong>2.IDEA设置</strong></p>
+<pre><code>&lt;profile&gt;
+  &lt;id&gt;jdk‐1.8&lt;/id&gt;
+  &lt;activation&gt;
+    &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+    &lt;jdk&gt;1.8&lt;/jdk&gt;
+  &lt;/activation&gt;
+  &lt;properties&gt;
+    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+    &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;
+  &lt;/properties&gt;
+&lt;/profile&gt;
+</code></pre><p><strong>2.IDEA设置</strong></p>
 <p>整合maven进来</p>
 <p><img src="/images/QQ截图20181102151849.png"><br><img src="/images/QQ截图20181102152017.png"></p>
 <p>将maven配置成我们的maven，不使用idea自带的maven。</p>
@@ -203,21 +503,59 @@
 <h3 id="Spring-Boot-HelloWorld"><a href="#Spring-Boot-HelloWorld" class="headerlink" title="Spring Boot HelloWorld"></a>Spring Boot HelloWorld</h3><p>一个功能：</p>
 <p>浏览器发送hello请求，服务器接受请求并处理，响应Hello World字符串；</p>
 <h4 id="创建一个maven项目-jar"><a href="#创建一个maven项目-jar" class="headerlink" title="创建一个maven项目(jar)"></a>创建一个maven项目(jar)</h4><p><img src="/images/QQ截图20181102154909.png"><br><img src="/images/QQ截图20181102155112.png"><br><img src="/images/QQ截图20181102155230.png"><br><img src="/images/QQ截图20181102155348.png"><br><img src="/images/QQ截图20181102155708.png"></p>
-<h4 id="导入spring-boot相关的依赖"><a href="#导入spring-boot相关的依赖" class="headerlink" title="导入spring boot相关的依赖"></a>导入spring boot相关的依赖</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;parent&gt;<br>        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>        &lt;artifactId&gt;spring‐boot‐starter‐parent&lt;/artifactId&gt;<br>        &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;<br>   &lt;/parent&gt;<br><br>    &lt;dependencies&gt;<br>        &lt;dependency&gt;<br>            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>            &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;<br>        &lt;/dependency&gt;<br>    &lt;/dependencies&gt;<br></code></pre></td></tr></table></figure>
-<p><strong>现在的spring boot的1.x的版本没有1.5.9，所以我们使用1.5.17.RELEASE。</strong></p>
+<h4 id="导入spring-boot相关的依赖"><a href="#导入spring-boot相关的依赖" class="headerlink" title="导入spring boot相关的依赖"></a>导入spring boot相关的依赖</h4><pre><code>   &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring‐boot‐starter‐parent&lt;/artifactId&gt;
+        &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;
+   &lt;/parent&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+</code></pre><p><strong>现在的spring boot的1.x的版本没有1.5.9，所以我们使用1.5.17.RELEASE。</strong></p>
 <p>我们可以参考Spring的官网的文档。<a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a><br><img src="/images/QQ截图20181102160852.png"><br><img src="/images/QQ截图20181102161036.png"><br><img src="/images/QQ截图20181102161400.png"></p>
 <p>添加依赖后，idea就会帮我们开始下载依赖，如果没有自动下载，可以点击idea的右边的Maven Projects，然后点击上面的循环标志。<br><img src="/images/QQ截图20181102162613.png" style="width:50%"></p>
 <p>依赖下载完毕后，可以看到我们的依赖文件：<br><img src="/images/QQ截图20181102162819.png"></p>
 <h4 id="编写一个主程序"><a href="#编写一个主程序" class="headerlink" title="编写一个主程序"></a>编写一个主程序</h4><p>在src/main/java下创建com.liuzhuo的包，并创建HelloWorldApplication类：<br><img src="/images/QQ截图20181102163202.png"></p>
-<p>添加@SpringBootApplication注解，并编写一个主函数。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@SpringBootApplication  //表明这是一个Springboot的启动类<br>public class HelloWorldApplication &#123;<br><br>    public static void main(String[] args) &#123;<br>        //启动Springboot应用。<br>        SpringApplication.run(HelloWorldApplication.class);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h4 id="编写相关的Controller"><a href="#编写相关的Controller" class="headerlink" title="编写相关的Controller"></a>编写相关的Controller</h4><p>在com.liuzhuo.controller下，创建HelloController<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Controller<br>public class HelloController &#123;<br>    @ResponseBody<br>    @RequestMapping(&quot;/hello&quot;)<br>    public String hello()&#123;<br>        return &quot;Hello World!&quot;;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h4 id="运行主程序测试"><a href="#运行主程序测试" class="headerlink" title="运行主程序测试"></a>运行主程序测试</h4><p>回到Springboot的启动类中，直接运行main函数：<br><img src="/images/QQ截图20181102163832.png"><br><img src="/images/QQ截图20181102163913.png"><br><img src="/images/QQ截图20181102163946.png"></p>
+<p>添加@SpringBootApplication注解，并编写一个主函数。</p>
+<pre><code>@SpringBootApplication  //表明这是一个Springboot的启动类
+public class HelloWorldApplication {
+
+    public static void main(String[] args) {
+        //启动Springboot应用。
+        SpringApplication.run(HelloWorldApplication.class);
+    }
+
+}
+</code></pre><h4 id="编写相关的Controller"><a href="#编写相关的Controller" class="headerlink" title="编写相关的Controller"></a>编写相关的Controller</h4><p>在com.liuzhuo.controller下，创建HelloController</p>
+<pre><code>@Controller
+public class HelloController {
+    @ResponseBody
+    @RequestMapping(&quot;/hello&quot;)
+    public String hello(){
+        return &quot;Hello World!&quot;;
+    }
+}
+</code></pre><h4 id="运行主程序测试"><a href="#运行主程序测试" class="headerlink" title="运行主程序测试"></a>运行主程序测试</h4><p>回到Springboot的启动类中，直接运行main函数：<br><img src="/images/QQ截图20181102163832.png"><br><img src="/images/QQ截图20181102163913.png"><br><img src="/images/QQ截图20181102163946.png"></p>
 <p>出现上图所示的效果就说明Springboot应用启动成功。</p>
 <p>在浏览器中输入：<code>http://localhost:8080/hello</code></p>
 <p><img src="/images/QQ截图20181102164146.png"></p>
 <h4 id="简化部署"><a href="#简化部署" class="headerlink" title="简化部署"></a>简化部署</h4><p>以前，部署Web应用，需要将我们的Web项目生成War，然后在服务器中安装服务器，比如Tomcat等，然后将War放在Tomcat容器中，启动Tomcat容器。</p>
-<p>现在，我们不需要这么麻烦了，我们直接生成jar就行。生成jar之前，我们需要在pom文件中添加Springboot的构建插件。<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;!-- 这个插件，可以将应用打包成一个可执行的jar包--&gt;<br>&lt;build&gt;<br>    &lt;plugins&gt;<br>        &lt;plugin&gt;<br>            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;<br>        &lt;/plugin&gt;<br>    &lt;/plugins&gt;<br>&lt;/build&gt;<br></code></pre></td></tr></table></figure></p>
-<p>然后生成jar包：<br><img src="/images/QQ截图20181102164849.png" style="width:50%"></p>
+<p>现在，我们不需要这么麻烦了，我们直接生成jar就行。生成jar之前，我们需要在pom文件中添加Springboot的构建插件。</p>
+<pre><code>    &lt;!-- 这个插件，可以将应用打包成一个可执行的jar包--&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre><p>然后生成jar包：<br><img src="/images/QQ截图20181102164849.png" style="width:50%"></p>
 <p>双击：package。</p>
 <p>控制台输出：BUILD SUCCESS<br><img src="/images/QQ截图20181102165053.png"></p>
 <p>我们，可以在target包下，看到我们生成的可运行的jar。<br><img src="/images/QQ截图20181102165310.png"></p>
@@ -227,28 +565,103 @@
 <p>在浏览器中输入：<code>http://localhost:8080/hello</code></p>
 <p><img src="/images/QQ截图20181102164146.png"></p>
 <h3 id="Hello-World-的探究"><a href="#Hello-World-的探究" class="headerlink" title="Hello World 的探究"></a>Hello World 的探究</h3><h4 id="POM文件"><a href="#POM文件" class="headerlink" title="POM文件"></a>POM文件</h4><p>1）父项目</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;parent&gt;<br>    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>    &lt;artifactId&gt;spring‐boot‐starter‐parent&lt;/artifactId&gt;<br>    &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;<br>&lt;/parent&gt;<br>他的父项目是<br>&lt;parent&gt;<br>  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>  &lt;artifactId&gt;spring‐boot‐dependencies&lt;/artifactId&gt;<br>  &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;<br>  &lt;relativePath&gt;../../spring‐boot‐dependencies&lt;/relativePath&gt;<br>&lt;/parent&gt;<br>他来真正管理Spring Boot应用里面的所有依赖版本；<br></code></pre></td></tr></table></figure>
-<p>Spring Boot的版本仲裁中心；</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring‐boot‐starter‐parent&lt;/artifactId&gt;
+    &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+他的父项目是
+&lt;parent&gt;
+  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+  &lt;artifactId&gt;spring‐boot‐dependencies&lt;/artifactId&gt;
+  &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;
+  &lt;relativePath&gt;../../spring‐boot‐dependencies&lt;/relativePath&gt;
+&lt;/parent&gt;
+他来真正管理Spring Boot应用里面的所有依赖版本；
+</code></pre><p>Spring Boot的版本仲裁中心；</p>
 <p>以后我们导入依赖,默认是不需要写版本；（没有在dependencies里面管理的依赖自然需要声明版本号）</p>
 <p>2) 启动器</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;dependency&gt;<br>    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>    &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;<br>&lt;/dependency&gt;<br></code></pre></td></tr></table></figure>
-<p>spring-boot-starter-web：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><p>spring-boot-starter-web：</p>
 <p>spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所依赖的组件；</p>
 <p>Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter.<br>相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器.</p>
-<h4 id="主程序类，主入口类"><a href="#主程序类，主入口类" class="headerlink" title="主程序类，主入口类"></a>主程序类，主入口类</h4><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">/**<br> * 描述:<br> *<br> * @author liuzhuo<br> * @create 2018-11-02 16:31<br> */<br>@SpringBootApplication  //表明这是一个Springboot的启动类<br>public class HelloWorldApplication &#123;<br><br>    public static void main(String[] args) &#123;<br>        //启动Springboot应用。<br>        SpringApplication.run(HelloWorldApplication.class);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>@SpringBootApplication:</strong> Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot<br>就应该运行这个类的main方法来启动SpringBoot应用；</p>
-<p>点击@SpringBootApplication注解：<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Inherited<br>@SpringBootConfiguration<br>@EnableAutoConfiguration<br>@ComponentScan(excludeFilters = &#123;<br>		@Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),<br>		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) &#125;)<br>public @interface SpringBootApplication<br></code></pre></td></tr></table></figure></p>
-<p>发现@SpringBootApplication注解是一个组合注解，下面我们一一来看。</p>
+<h4 id="主程序类，主入口类"><a href="#主程序类，主入口类" class="headerlink" title="主程序类，主入口类"></a>主程序类，主入口类</h4><pre><code>/**
+ * 描述:
+ *
+ * @author liuzhuo
+ * @create 2018-11-02 16:31
+ */
+@SpringBootApplication  //表明这是一个Springboot的启动类
+public class HelloWorldApplication {
+
+    public static void main(String[] args) {
+        //启动Springboot应用。
+        SpringApplication.run(HelloWorldApplication.class);
+    }
+
+}
+</code></pre><p><strong>@SpringBootApplication:</strong> Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot<br>就应该运行这个类的main方法来启动SpringBoot应用；</p>
+<p>点击@SpringBootApplication注解：</p>
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = {
+        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication
+</code></pre><p>发现@SpringBootApplication注解是一个组合注解，下面我们一一来看。</p>
 <p><strong>@SpringBootConfiguration:</strong> Spring Boot的配置类；</p>
-<p>标注在某个类上，表示这是一个Spring Boot的配置类；<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(&#123;ElementType.TYPE&#125;)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Configuration<br>public @interface SpringBootConfiguration &#123;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>其实就是一个@Configuration注解，只是@Configuration注解，我们是在Spring中使用，@SpringBootConfiguration是在Springboot中使用，本质都一个配置类。</p>
+<p>标注在某个类上，表示这是一个Spring Boot的配置类；</p>
+<pre><code>@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Configuration
+public @interface SpringBootConfiguration {
+}
+</code></pre><p>其实就是一个@Configuration注解，只是@Configuration注解，我们是在Spring中使用，@SpringBootConfiguration是在Springboot中使用，本质都一个配置类。</p>
 <p>配置类 —– 配置文件；配置类也是容器中的一个组件；@Component</p>
 <p><strong>@EnableAutoConfiguration</strong>：开启自动配置功能；</p>
-<p>以前我们需要配置的东西，Spring Boot帮我们自动配置；@EnableAutoConfiguration告诉SpringBoot开启自<br>动配置功能；这样自动配置才能生效；<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@SuppressWarnings(&quot;deprecation&quot;)<br>@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Inherited<br>@AutoConfigurationPackage<br>@Import(EnableAutoConfigurationImportSelector.class)<br>public @interface EnableAutoConfiguration<br></code></pre></td></tr></table></figure></p>
-<p><strong>@AutoConfigurationPackage</strong>：自动配置包<br><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Target(ElementType.TYPE)<br>@Retention(RetentionPolicy.RUNTIME)<br>@Documented<br>@Inherited<br>@Import(AutoConfigurationPackages.Registrar.class)<br>public @interface AutoConfigurationPackage &#123;<br><br>&#125;<br></code></pre></td></tr></table></figure></p>
-<p>@Import(AutoConfigurationPackages.Registrar.class)：<br>Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class注入；</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs undefined">@Order(Ordered.HIGHEST_PRECEDENCE)<br>static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImports &#123;<br><br>	@Override<br>	public void registerBeanDefinitions(AnnotationMetadata metadata,<br>			BeanDefinitionRegistry registry) &#123;<br>		register(registry, new PackageImport(metadata).getPackageName());<br>	&#125;<br><br>	@Override<br>	public Set&lt;Object&gt; determineImports(AnnotationMetadata metadata) &#123;<br>		return Collections.&lt;Object&gt;singleton(new PackageImport(metadata));<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>给这个方法打上断点。debug下</p>
+<p>以前我们需要配置的东西，Spring Boot帮我们自动配置；@EnableAutoConfiguration告诉SpringBoot开启自<br>动配置功能；这样自动配置才能生效；</p>
+<pre><code>@SuppressWarnings(&quot;deprecation&quot;)
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import(EnableAutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration
+</code></pre><p><strong>@AutoConfigurationPackage</strong>：自动配置包</p>
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@Import(AutoConfigurationPackages.Registrar.class)
+public @interface AutoConfigurationPackage {
+
+}
+</code></pre><p>@Import(AutoConfigurationPackages.Registrar.class)：<br>Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class注入；</p>
+<pre><code>    @Order(Ordered.HIGHEST_PRECEDENCE)
+    static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImports {
+
+        @Override
+        public void registerBeanDefinitions(AnnotationMetadata metadata,
+                BeanDefinitionRegistry registry) {
+            register(registry, new PackageImport(metadata).getPackageName());
+        }
+
+        @Override
+        public Set&lt;Object&gt; determineImports(AnnotationMetadata metadata) {
+            return Collections.&lt;Object&gt;singleton(new PackageImport(metadata));
+        }
+
+    }
+</code></pre><p>给这个方法打上断点。debug下</p>
 <p><strong>会发现，Spring会把将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器；</strong></p>
 <p>@<strong>Import(EnableAutoConfigurationImportSelector.class)；</strong></p>
 <p>给容器中导入组件？</p>
@@ -300,257 +713,790 @@
 <p>8）启动Springboot应用<br><img src="/images/QQ截图20181102210019.png"></p>
 <p>9）在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181102210130.png"></p>
 
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/Spring/" rel="tag"><i class="fas fa-tags"></i>Spring</a>
-        
-        <a class="post-tag button" href="/tags/SpringBoot/" rel="tag"><i class="fas fa-tags"></i>SpringBoot</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  
-<div class="reward" id="reward">
-  <p>坚持原创技术分享，您的支持是我前进的动力！</p>
-  <button id="reward-button" class="button" disable="enable">打赏</button>
-  <div id="qr" class="qr" style="display: none;" aria-hidden="true">
-    
-    <div id="wechat">
-      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
-      <span>微信支付</span>
-    </div>
-    
-    
-    <div id="alipay">
-      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
-      <span>支付宝</span>
-    </div>
-    
-    
-  </div>
-</div>
+            </div>
+            <hr/>
 
-
-  
-  
-  <nav class="page-nav">
-    <div class="page-nav-next page-nav-item">
-      
-      <a href="/2018/10/29/idea创建maven-web工程/" rel="next" title="idea创建maven-web工程"><i class="fas fa-angle-left"></i><span class="nav-title">idea创建maven-web工程</span></a>
-      
-    </div>
-    <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2018/11/03/SpringBoot-day-02/" rel="prev" title="SpringBoot_day_02"><span class="nav-title">SpringBoot_day_02</span><i class="fas fa-angle-right"></i></a>
-      
-    </div>
-  </nav>
-  
-  
-  
-
-<div class="comments" id="comments">
-  
-  
-  <div class="commentjs" id="comment-thread"></div>
-  <link rel="stylesheet" href="/css/commentjs.css">
-  <script defer type="text/javascript" src="/js/marked.min.js"></script>
-  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
-  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
-  <script defer type="text/javascript" src="/js/commentjs.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function () {
-    getComments({
-      "type": "github",
-      "user": "liuzhuo19940206",
-      "repo": "liuzhuo19940206.github.io",
-      "client_id": "d67adf7d637efbea7a69",
-      "client_secret": "e3958a48de708ffda0c1ff603f8b48793d43d1ae",
-      "no_comment": "这个页面还没有评论，现在就去评论吧！",
-      "go_to_comment": "去评论",
-      "issue_title": "SpringBoot_day_01",
-      "btn_class": "button",
-      "comments_target": "#comment-thread"
-    });
-    marked.setOptions({
-      "highlight": function (code, lang) {
-        return hljs.highlightAuto(code).value;
-      }
-    });
-    function mark() {
-      var markdowns = document.getElementsByClassName("markdown");
-      for (var i = 0; i < markdowns.length; ++i){
-        if (markdowns[i].innerHTML) {
-          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
-        }
-      }
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
     }
-    window.addEventListener("DOMContentLoaded", mark, false);
-    window.addEventListener("load", mark, false);
-  });
-  </script>
-  
-  
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
-  
-</div>
-
-          </div>
-          
-          
-          
-<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
-  
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
-    </div>
-  </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="info sidebar-item" id="info">
-  
-  <img class="author-avatar" src="/images/avatar.jpg" alt="刘卓">
-  
-  <h1 class="author-name">刘卓</h1>
-  <h2 class="author-description">hello,every body!</h2>
-  <div class="site-count">
-    
-    <div class="archives-count">
-      <div class="site-count-title">归档</div>
-      <div><a href="/archives/">114</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="categories-count">
-      <div class="site-count-title">分类</div>
-      <div><a href="/categories/">55</a></div>
-    </div>
-    
-    
-    
-    <span class="site-count-divider divider">|</span>
-    
-    <div class="tags-count">
-      <div class="site-count-title">标签</div>
-      <div><a href="/tags/">43</a></div>
-    </div>
-    
-  </div>
-  
-  <div class="rss">
-    <a class="rss-link button sidebar-item" href="https://weibo.com/p/1005053310889015/home" target="_blank"><i class="fas fa-rss"></i>Click</a>
-  </div>
-  
-</div>
-
-
-  <div class="sidebar-sticky">
-    
-    
-    
-    
-    
-    <hr>
-    <div class="post-toc sidebar-item" id="toc-div">
-      <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#解决"><span class="toc-text">解决</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#微服务"><span class="toc-text">微服务</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#环境约束："><span class="toc-text">环境约束：</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Spring-Boot-HelloWorld"><span class="toc-text">Spring Boot HelloWorld</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#创建一个maven项目-jar"><span class="toc-text">创建一个maven项目(jar)</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#导入spring-boot相关的依赖"><span class="toc-text">导入spring boot相关的依赖</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#编写一个主程序"><span class="toc-text">编写一个主程序</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#编写相关的Controller"><span class="toc-text">编写相关的Controller</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#运行主程序测试"><span class="toc-text">运行主程序测试</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#简化部署"><span class="toc-text">简化部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Hello-World-的探究"><span class="toc-text">Hello World 的探究</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#POM文件"><span class="toc-text">POM文件</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#主程序类，主入口类"><span class="toc-text">主程序类，主入口类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#深入探索SpringApplication执行流程"><span class="toc-text">深入探索SpringApplication执行流程</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#使用Spring-Initializer快速创建Spring-Boot项目"><span class="toc-text">使用Spring Initializer快速创建Spring Boot项目</span></a></li></ol></div>
-    </div>
-    
-    
-    
-    <hr>
-    <div class="social-link sidebar-item">
-      <div><i class="far fa-address-card"></i>社交链接</p></div>
-      <ul>
-        
-        <li><i class="fas fa-envelope"></i><a href="mailto:575920824@qq.com" target="_blank">E-Mail</a></li>
-        
-        <li><i class="fab fa-github"></i><a href="https://github.com/liuzhuo19940206" target="_blank">GitHub</a></li>
-        
-        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/p/1005053310889015/home" target="_blank">Weibo</a></li>
-        
-      </ul>
-    </div>
-    
-    
-    <hr>
-    <div class="blogroll sidebar-item">
-      <div><i class="fas fa-link"></i>友情链接</div>
-      <ul>
-        
-        <li><i class="fas fa-link"></i><a href="http://gakkij.top" target="_blank">Gakki酱</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://dev.tencent.com/user" target="_blank">Coding</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-        
-        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
-        
-      </ul>
-    </div>
-    
-  </div>
-</aside>
-
-
-          
-        </div>
-      </div>
-    </main>
-    
-<footer id="footer" class="footer" style="background: #333333;">
-  <div class="container">
-    <div class="back-to-top">
-      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author">刘卓</span><span class="year"><i class="far fa-copyright"></i>2018/10/10 - 2019</span>
-        </div>
-        
-        <div class="busuanzi">
-          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
-        </div>
-        
-      </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-          托管于<i class="fab fa-github-alt"></i><a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" target="_blank">GitHub Pages</a>
-          
-        </div>
-        <div class="powered-by">
-          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 <script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://liuzhuo19940206.github.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/02/springboot-day-01/" class="b-link-green">SpringBoot_day_01</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/03/springboot-day-02/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="SpringBoot_day_02">
+                        
+                        <span class="card-title">SpringBoot_day_02</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Springboot的配置文件
+配置文件SpringBoot使用一个全局的配置文件，配置文件名是固定的；
+
+application.properties
+application.yml
+
+配置文件的作用：修改SpringBoot自动配置的默</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-03
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="idea创建maven-web工程">
+                        
+                        <span class="card-title">idea创建maven-web工程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">考虑到现在大家都是使用maven来创建web工程，不再使用创建原始的Dynamic Web工程了，所以，我们开始吧~~~
+首先先创建一个project(一个project就是一个工作空间)，在这里就是创建一个maven的工作空间
+你要选择m</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/idea/" class="post-category" target="_blank">
+                                    idea
+                                </a>
+                            
+                            <a href="/categories/idea/maven/" class="post-category" target="_blank">
+                                    maven
+                                </a>
+                            
+                            <a href="/categories/idea/maven/web/" class="post-category" target="_blank">
+                                    web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web/" target="_blank">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                    <a href="/tags/idea/" target="_blank">
+                        <span class="chip bg-color">idea</span>
+                    </a>
+                    
+                    <a href="/tags/maven/" target="_blank">
+                        <span class="chip bg-color">maven</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘卓<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
 </script>
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
 
-  </body>
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">290.9k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuzhuo19940206.github.io/"/>
-  <updated>2019-03-22T08:20:25.106Z</updated>
+  <updated>2019-03-23T12:56:02.113Z</updated>
   <id>http://liuzhuo19940206.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>注解Annotation的浅析</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/22/%E6%B3%A8%E8%A7%A3Annotation%E7%9A%84%E6%B5%85%E6%9E%90/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/22/注解Annotation的浅析/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
     <published>2019-03-22T07:21:50.000Z</published>
-    <updated>2019-03-22T08:20:25.106Z</updated>
+    <updated>2019-03-23T12:56:02.113Z</updated>
     
     <summary type="html">
     
@@ -42,8 +42,8 @@
   
   <entry>
     <title>Mybatis代码生成器</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/17/Mybatis%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/17/Mybatis代码生成器/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
     <published>2019-03-17T01:46:35.000Z</published>
     <updated>2019-03-18T02:03:29.373Z</updated>
     
@@ -62,8 +62,8 @@
   
   <entry>
     <title>Mybatis中的动态SQL</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/16/Mybatis%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81SQL/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/16/Mybatis中的动态SQL/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
     <published>2019-03-16T05:48:27.000Z</published>
     <updated>2019-03-16T12:37:20.732Z</updated>
     
@@ -82,8 +82,8 @@
   
   <entry>
     <title>Mybatis中的缓存</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/15/Mybatis%E4%B8%AD%E7%9A%84%E7%BC%93%E5%AD%98/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/15/Mybatis中的缓存/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
     <published>2019-03-15T07:21:39.000Z</published>
     <updated>2019-03-15T12:48:12.713Z</updated>
     
@@ -102,8 +102,8 @@
   
   <entry>
     <title>Mybatis中的高级查询</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/13/Mybatis%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/13/Mybatis中的高级查询/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
     <published>2019-03-13T02:53:31.000Z</published>
     <updated>2019-03-15T03:11:47.282Z</updated>
     
@@ -122,8 +122,8 @@
   
   <entry>
     <title>Mybatis中的resultMap</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/13/Mybatis%E4%B8%AD%E7%9A%84resultMap/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/13/Mybatis中的resultMap/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-resultmap/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-resultmap/</id>
     <published>2019-03-13T01:29:18.000Z</published>
     <updated>2019-03-13T02:27:42.844Z</updated>
     
@@ -142,8 +142,8 @@
   
   <entry>
     <title>Mybatis中的Mapper映射器</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/11/Mybatis%E4%B8%AD%E7%9A%84Mapper%E6%98%A0%E5%B0%84%E5%99%A8/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/11/Mybatis中的Mapper映射器/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
     <published>2019-03-11T05:45:30.000Z</published>
     <updated>2019-03-11T08:39:24.669Z</updated>
     
@@ -162,8 +162,8 @@
   
   <entry>
     <title>Mybatis中的主配置文件02</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/10/Mybatis%E4%B8%AD%E7%9A%84%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B602/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/10/Mybatis中的主配置文件02/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</id>
     <published>2019-03-10T12:41:46.000Z</published>
     <updated>2019-03-11T02:12:03.134Z</updated>
     
@@ -182,8 +182,8 @@
   
   <entry>
     <title>Mybatis中的主配置文件</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/10/Mybatis%E4%B8%AD%E7%9A%84%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/10/Mybatis中的主配置文件/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/</id>
     <published>2019-03-10T02:03:48.000Z</published>
     <updated>2019-03-10T10:11:10.142Z</updated>
     
@@ -202,8 +202,8 @@
   
   <entry>
     <title>Mybatis的第三天作用域</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/09/Mybatis%E7%9A%84%E7%AC%AC%E4%B8%89%E5%A4%A9%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/09/Mybatis的第三天作用域/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/</id>
     <published>2019-03-09T11:36:51.000Z</published>
     <updated>2019-03-10T02:04:09.044Z</updated>
     
@@ -222,8 +222,8 @@
   
   <entry>
     <title>Mybatis的第二天简单入门</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/08/Mybatis%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A4%A9%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/08/Mybatis的第二天简单入门/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/</id>
     <published>2019-03-08T13:40:26.000Z</published>
     <updated>2019-03-09T04:22:24.597Z</updated>
     
@@ -242,8 +242,8 @@
   
   <entry>
     <title>Mybatis的开发的第一天</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/08/Mybatis%E7%9A%84%E5%BC%80%E5%8F%91%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/08/Mybatis的开发的第一天/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/"/>
+    <id>http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</id>
     <published>2019-03-08T05:33:50.000Z</published>
     <updated>2019-03-08T06:53:12.312Z</updated>
     
@@ -262,8 +262,8 @@
   
   <entry>
     <title>Java中的父子类的执行顺序</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/22/Java%E4%B8%AD%E7%9A%84%E7%88%B6%E5%AD%90%E7%B1%BB%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/22/Java中的父子类的执行顺序/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/</id>
     <published>2019-01-22T06:06:36.000Z</published>
     <updated>2019-01-22T06:25:05.081Z</updated>
     
@@ -286,8 +286,8 @@
   
   <entry>
     <title>Tomcat的启动分析(四)webapp</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/18/Tomcat%E7%9A%84%E5%90%AF%E5%8A%A8%E5%88%86%E6%9E%90-%E5%9B%9B-webapp/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/18/Tomcat的启动分析-四-webapp/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</id>
     <published>2019-01-18T05:55:01.000Z</published>
     <updated>2019-01-18T06:21:32.261Z</updated>
     
@@ -310,8 +310,8 @@
   
   <entry>
     <title>Tomcat的启动分析(三)Catalina启动</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/18/Tomcat%E7%9A%84%E5%90%AF%E5%8A%A8%E5%88%86%E6%9E%90-%E4%B8%89-Catalina%E5%90%AF%E5%8A%A8/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/18/Tomcat的启动分析-三-Catalina启动/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/</id>
     <published>2019-01-18T05:31:55.000Z</published>
     <updated>2019-01-18T05:52:41.319Z</updated>
     
@@ -334,8 +334,8 @@
   
   <entry>
     <title>Tomcat的启动分析(二)Catalina初始化</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/17/Tomcat%E7%9A%84%E5%90%AF%E5%8A%A8%E5%88%86%E6%9E%90-%E4%BA%8C-Catalina%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/17/Tomcat的启动分析-二-Catalina初始化/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/</id>
     <published>2019-01-17T02:19:30.000Z</published>
     <updated>2019-01-17T03:17:39.010Z</updated>
     
@@ -358,8 +358,8 @@
   
   <entry>
     <title>Tomcat的启动分析(一) Lifecycle</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/16/Tomcat%E7%9A%84%E5%90%AF%E5%8A%A8%E5%88%86%E6%9E%90-%E4%B8%80-Lifecycle/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/16/Tomcat的启动分析-一-Lifecycle/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/</id>
     <published>2019-01-16T09:36:02.000Z</published>
     <updated>2019-01-16T11:07:41.295Z</updated>
     
@@ -382,8 +382,8 @@
   
   <entry>
     <title>Tomcat的总体框架设计</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/16/Tomcat%E7%9A%84%E6%80%BB%E4%BD%93%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/16/Tomcat的总体框架设计/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/</id>
     <published>2019-01-16T08:35:23.000Z</published>
     <updated>2019-01-16T09:33:38.661Z</updated>
     
@@ -406,8 +406,8 @@
   
   <entry>
     <title>深入理解CAS</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/15/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CAS/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/15/深入理解CAS/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/15/shen-ru-li-jie-cas/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/15/shen-ru-li-jie-cas/</id>
     <published>2019-01-15T05:34:42.000Z</published>
     <updated>2019-01-15T06:28:54.225Z</updated>
     
@@ -430,8 +430,8 @@
   
   <entry>
     <title>ConcurrentHashMap的实现原理</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/14/ConcurrentHashMap%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/14/ConcurrentHashMap的实现原理/</id>
+    <link href="http://liuzhuo19940206.github.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/"/>
+    <id>http://liuzhuo19940206.github.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/</id>
     <published>2019-01-14T06:16:34.000Z</published>
     <updated>2019-01-14T07:06:41.499Z</updated>
     
