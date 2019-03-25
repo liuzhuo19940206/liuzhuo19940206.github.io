@@ -5,9 +5,9 @@
   <subtitle>爱生活爱解忧</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://liuzhuo19940206.github.io/"/>
+  <link href="http://gakkil.gitee.io/"/>
   <updated>2019-03-23T12:56:02.113Z</updated>
-  <id>http://liuzhuo19940206.github.io/</id>
+  <id>http://gakkil.gitee.io/</id>
   
   <author>
     <name>刘卓</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>注解Annotation的浅析</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
+    <link href="http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
+    <id>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
     <published>2019-03-22T07:21:50.000Z</published>
     <updated>2019-03-23T12:56:02.113Z</updated>
     
@@ -29,21 +29,21 @@
     
     </summary>
     
-      <category term="注解" scheme="http://liuzhuo19940206.github.io/categories/%E6%B3%A8%E8%A7%A3/"/>
+      <category term="注解" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/"/>
     
-      <category term="annotation" scheme="http://liuzhuo19940206.github.io/categories/%E6%B3%A8%E8%A7%A3/annotation/"/>
+      <category term="annotation" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/annotation/"/>
     
     
-      <category term="注解" scheme="http://liuzhuo19940206.github.io/tags/%E6%B3%A8%E8%A7%A3/"/>
+      <category term="注解" scheme="http://gakkil.gitee.io/tags/%E6%B3%A8%E8%A7%A3/"/>
     
-      <category term="annotation" scheme="http://liuzhuo19940206.github.io/tags/annotation/"/>
+      <category term="annotation" scheme="http://gakkil.gitee.io/tags/annotation/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis代码生成器</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
+    <link href="http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
+    <id>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
     <published>2019-03-17T01:46:35.000Z</published>
     <updated>2019-03-18T02:03:29.373Z</updated>
     
@@ -53,17 +53,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的动态SQL</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
+    <link href="http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
+    <id>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
     <published>2019-03-16T05:48:27.000Z</published>
     <updated>2019-03-16T12:37:20.732Z</updated>
     
@@ -73,17 +73,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的缓存</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
+    <link href="http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
+    <id>http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
     <published>2019-03-15T07:21:39.000Z</published>
     <updated>2019-03-15T12:48:12.713Z</updated>
     
@@ -93,17 +93,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的高级查询</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
+    <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
+    <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
     <published>2019-03-13T02:53:31.000Z</published>
     <updated>2019-03-15T03:11:47.282Z</updated>
     
@@ -113,17 +113,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的resultMap</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-resultmap/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/13/mybatis-zhong-de-resultmap/</id>
+    <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/"/>
+    <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/</id>
     <published>2019-03-13T01:29:18.000Z</published>
     <updated>2019-03-13T02:27:42.844Z</updated>
     
@@ -133,17 +133,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的Mapper映射器</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
+    <link href="http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
+    <id>http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
     <published>2019-03-11T05:45:30.000Z</published>
     <updated>2019-03-11T08:39:24.669Z</updated>
     
@@ -153,17 +153,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的主配置文件02</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</id>
+    <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/"/>
+    <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</id>
     <published>2019-03-10T12:41:46.000Z</published>
     <updated>2019-03-11T02:12:03.134Z</updated>
     
@@ -173,17 +173,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis中的主配置文件</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/</id>
+    <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/"/>
+    <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/</id>
     <published>2019-03-10T02:03:48.000Z</published>
     <updated>2019-03-10T10:11:10.142Z</updated>
     
@@ -193,17 +193,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis的第三天作用域</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/</id>
+    <link href="http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/"/>
+    <id>http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/</id>
     <published>2019-03-09T11:36:51.000Z</published>
     <updated>2019-03-10T02:04:09.044Z</updated>
     
@@ -213,17 +213,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis的第二天简单入门</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/</id>
+    <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/"/>
+    <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/</id>
     <published>2019-03-08T13:40:26.000Z</published>
     <updated>2019-03-09T04:22:24.597Z</updated>
     
@@ -233,17 +233,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Mybatis的开发的第一天</title>
-    <link href="http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/"/>
-    <id>http://liuzhuo19940206.github.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</id>
+    <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/"/>
+    <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</id>
     <published>2019-03-08T05:33:50.000Z</published>
     <updated>2019-03-08T06:53:12.312Z</updated>
     
@@ -253,17 +253,17 @@
     
     </summary>
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/categories/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
     
     
-      <category term="mybatis" scheme="http://liuzhuo19940206.github.io/tags/mybatis/"/>
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
   <entry>
     <title>Java中的父子类的执行顺序</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/</id>
+    <link href="http://gakkil.gitee.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/"/>
+    <id>http://gakkil.gitee.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/</id>
     <published>2019-01-22T06:06:36.000Z</published>
     <updated>2019-01-22T06:25:05.081Z</updated>
     
@@ -273,21 +273,21 @@
     
     </summary>
     
-      <category term="父子类" scheme="http://liuzhuo19940206.github.io/categories/%E7%88%B6%E5%AD%90%E7%B1%BB/"/>
+      <category term="父子类" scheme="http://gakkil.gitee.io/categories/%E7%88%B6%E5%AD%90%E7%B1%BB/"/>
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/%E7%88%B6%E5%AD%90%E7%B1%BB/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/categories/%E7%88%B6%E5%AD%90%E7%B1%BB/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="父子类" scheme="http://liuzhuo19940206.github.io/tags/%E7%88%B6%E5%AD%90%E7%B1%BB/"/>
+      <category term="父子类" scheme="http://gakkil.gitee.io/tags/%E7%88%B6%E5%AD%90%E7%B1%BB/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat的启动分析(四)webapp</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</id>
+    <link href="http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/"/>
+    <id>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</id>
     <published>2019-01-18T05:55:01.000Z</published>
     <updated>2019-01-18T06:21:32.261Z</updated>
     
@@ -297,21 +297,21 @@
     
     </summary>
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
     
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat的启动分析(三)Catalina启动</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/</id>
+    <link href="http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/"/>
+    <id>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/</id>
     <published>2019-01-18T05:31:55.000Z</published>
     <updated>2019-01-18T05:52:41.319Z</updated>
     
@@ -321,21 +321,21 @@
     
     </summary>
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
     
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat的启动分析(二)Catalina初始化</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/</id>
+    <link href="http://gakkil.gitee.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/"/>
+    <id>http://gakkil.gitee.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/</id>
     <published>2019-01-17T02:19:30.000Z</published>
     <updated>2019-01-17T03:17:39.010Z</updated>
     
@@ -345,21 +345,21 @@
     
     </summary>
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
     
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat的启动分析(一) Lifecycle</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/</id>
+    <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/"/>
+    <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/</id>
     <published>2019-01-16T09:36:02.000Z</published>
     <updated>2019-01-16T11:07:41.295Z</updated>
     
@@ -369,21 +369,21 @@
     
     </summary>
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
     
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>Tomcat的总体框架设计</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/</id>
+    <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/"/>
+    <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/</id>
     <published>2019-01-16T08:35:23.000Z</published>
     <updated>2019-01-16T09:33:38.661Z</updated>
     
@@ -393,21 +393,21 @@
     
     </summary>
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/categories/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
     
     
-      <category term="tomcat" scheme="http://liuzhuo19940206.github.io/tags/tomcat/"/>
+      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
     
-      <category term="源码" scheme="http://liuzhuo19940206.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>深入理解CAS</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/15/shen-ru-li-jie-cas/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/15/shen-ru-li-jie-cas/</id>
+    <link href="http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/"/>
+    <id>http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/</id>
     <published>2019-01-15T05:34:42.000Z</published>
     <updated>2019-01-15T06:28:54.225Z</updated>
     
@@ -417,21 +417,21 @@
     
     </summary>
     
-      <category term="CAS" scheme="http://liuzhuo19940206.github.io/categories/CAS/"/>
+      <category term="CAS" scheme="http://gakkil.gitee.io/categories/CAS/"/>
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/CAS/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/categories/CAS/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
-      <category term="CAS" scheme="http://liuzhuo19940206.github.io/tags/CAS/"/>
+      <category term="CAS" scheme="http://gakkil.gitee.io/tags/CAS/"/>
     
   </entry>
   
   <entry>
     <title>ConcurrentHashMap的实现原理</title>
-    <link href="http://liuzhuo19940206.github.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/"/>
-    <id>http://liuzhuo19940206.github.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/</id>
+    <link href="http://gakkil.gitee.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/"/>
+    <id>http://gakkil.gitee.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/</id>
     <published>2019-01-14T06:16:34.000Z</published>
     <updated>2019-01-14T07:06:41.499Z</updated>
     
@@ -441,14 +441,14 @@
     
     </summary>
     
-      <category term="ConcurrentHashMap" scheme="http://liuzhuo19940206.github.io/categories/ConcurrentHashMap/"/>
+      <category term="ConcurrentHashMap" scheme="http://gakkil.gitee.io/categories/ConcurrentHashMap/"/>
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/categories/ConcurrentHashMap/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/categories/ConcurrentHashMap/%E9%9D%A2%E8%AF%95/"/>
     
     
-      <category term="ConcurrentHashMap" scheme="http://liuzhuo19940206.github.io/tags/ConcurrentHashMap/"/>
+      <category term="ConcurrentHashMap" scheme="http://gakkil.gitee.io/tags/ConcurrentHashMap/"/>
     
-      <category term="面试" scheme="http://liuzhuo19940206.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://gakkil.gitee.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
