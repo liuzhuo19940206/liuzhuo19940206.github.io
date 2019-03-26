@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html lang="zh-CN">
 
 
@@ -27,7 +28,10 @@
         
     </style>
 
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -252,6 +256,9 @@
 
 </header>
 
+<!-- <script src="/js/app.js"></script> -->
+
+<!-- <div id="pjax-container"> -->
 <div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
     <div class="container">
         <div class="row">
@@ -303,28 +310,19 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/docker/" title="docker: 8">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">docker
-                        <span class="tag-length">8</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/ConcurrentHashMap/" title="ConcurrentHashMap: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">ConcurrentHashMap
+                            style="background-color: #F5EEF8;">ConcurrentHashMap
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/docker/容器/" title="容器: 8">
+                <a href="/categories/docker/" title="docker: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">容器
+                            style="background-color: #D5F5E3;">docker
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -333,8 +331,17 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 <a href="/categories/ConcurrentHashMap/面试/" title="面试: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">面试
+                            style="background-color: #E8F8F5;">面试
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/docker/容器/" title="容器: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">容器
+                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -348,19 +355,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/HashMap/" title="HashMap: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #82E0AA;">HashMap
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Linux/" title="Linux: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Linux
+                            style="background-color: #82E0AA;">Linux
                         <span class="tag-length">9</span>
                     </span>
                 </a>
@@ -369,7 +367,25 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 <a href="/categories/父子类/" title="父子类: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">父子类
+                            style="background-color: #D7BDE2;">父子类
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/HashMap/" title="HashMap: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">HashMap
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/父子类/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">面试
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -378,17 +394,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 <a href="/categories/mybatis/" title="mybatis: 11">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">mybatis
+                            style="background-color: #F8C471;">mybatis
                         <span class="tag-length">11</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/redis/" title="redis: 20">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #F8C471;">redis
-                        <span class="tag-length">20</span>
                     </span>
                 </a>
                 
@@ -402,11 +409,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/父子类/面试/" title="面试: 1">
+                <a href="/categories/redis/" title="redis: 20">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #82E0AA;">redis
+                        <span class="tag-length">20</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/缓存/" title="缓存: 18">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">面试
-                        <span class="tag-length">1</span>
+                            style="background-color: #85C1E9;">缓存
+                        <span class="tag-length">18</span>
                     </span>
                 </a>
                 
@@ -429,6 +445,105 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
+                <a href="/categories/servlet3-0/SpringMVC/" title="SpringMVC: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">SpringMVC
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/检索/" title="检索: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">检索
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/分布式/" title="分布式: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">分布式
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/servlet3-0/web/" title="web: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">web
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/消息/" title="消息: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">消息
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/任务/" title="任务: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">任务
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/监控管理/" title="监控管理: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">监控管理
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/缓存/" title="缓存: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">缓存
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/安全/" title="安全: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">安全
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/Spring/" title="Spring: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">Spring
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/热部署/" title="热部署: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">热部署
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/SpringMVC/" title="SpringMVC: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -447,29 +562,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/redis/缓存/" title="缓存: 18">
+                <a href="/categories/tomcat/源码/" title="源码: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">缓存
-                        <span class="tag-length">18</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/原子类/" title="原子类: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">原子类
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/blog/" title="blog: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">blog
-                        <span class="tag-length">1</span>
+                            style="background-color: #FEF9E7;">源码
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -492,6 +589,15 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
+                <a href="/categories/blog/" title="blog: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">blog
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/spring-annotation/" title="spring_annotation: 16">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -501,10 +607,46 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
+                <a href="/categories/原子类/" title="原子类: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">原子类
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/maven/" title="maven: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">maven
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/技术/" title="技术: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F8F9F9;">技术
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/原子类/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/maven/web/" title="web: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">web
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -519,10 +661,37 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
+                <a href="/categories/redis/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/前端/" title="前端: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #FEF9E7;">前端
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/分布式锁/" title="分布式锁: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">分布式锁
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/乱码/" title="乱码: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">乱码
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -537,15 +706,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
-                <a href="/categories/redis/面试/" title="面试: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/volatile/" title="volatile: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -555,136 +715,19 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 </a>
                 
                 
+                <a href="/categories/单例/" title="单例: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">单例
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/面试/" title="面试: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/servlet3-0/SpringMVC/" title="SpringMVC: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">SpringMVC
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/servlet3-0/web/" title="web: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">web
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/安全/" title="安全: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8C471;">安全
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/分布式/" title="分布式: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">分布式
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/任务/" title="任务: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">任务
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/消息/" title="消息: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">消息
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/检索/" title="检索: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">检索
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/缓存/" title="缓存: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #85C1E9;">缓存
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/Spring/" title="Spring: 9">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">Spring
-                        <span class="tag-length">9</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/监控管理/" title="监控管理: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">监控管理
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/SpringBoot/热部署/" title="热部署: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">热部署
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/tomcat/源码/" title="源码: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">源码
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/原子类/面试/" title="面试: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/idea/maven/" title="maven: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">maven
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -721,42 +764,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">面试
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/idea/maven/web/" title="web: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">web
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/redis/分布式锁/" title="分布式锁: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">分布式锁
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/idea/乱码/" title="乱码: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #A3E4D7;">乱码
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/单例/" title="单例: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">单例
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -1474,6 +1481,8 @@ rdb的工作原理每隔 N分钟 或 N次写 操作后, 从内存dump数据形�
 </div>
 
 
+<!-- </div> -->
+
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1562,6 +1571,12 @@ $(function () {
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
+<!-- 自己瞎加的 -->
+<!-- <script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script src="/libs/echarts/echarts.min.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -1573,5 +1588,33 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<!--  
+        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+  <div id="footerAplayer" class="music"></div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('footerAplayer'),
+        fixed: true,
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.5'),
+        listFolded: 'true' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"五月雨变奏电音","artist":"AnimeVibe","url":"http://pouw5018u.bkt.clouddn.com/%E4%BA%94%E6%9C%88%E9%9B%A8%E5%8F%98%E5%A5%8F%E7%94%B5%E9%9F%B3.mp3","cover":"/medias/music/wu.gif"},{"name":"雨的印记","artist":"昼夜","url":"http://pouw5018u.bkt.clouddn.com/%E9%9B%A8%E7%9A%84%E5%8D%B0%E8%AE%B0.mp3","cover":"/medias/music/371.jpg"},{"name":"天空之城","artist":"久石让","url":"http://pouw5018u.bkt.clouddn.com/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E.mp3","cover":"/medias/music/04.jpg"}]')
+    });
+});
+</script>
+  -->
 </body>
+
 </html>

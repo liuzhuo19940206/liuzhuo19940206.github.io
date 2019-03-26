@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html lang="zh-CN">
 
 
@@ -27,7 +28,10 @@
         
     </style>
 
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -252,6 +256,9 @@
 
 </header>
 
+<!-- <script src="/js/app.js"></script> -->
+
+<!-- <div id="pjax-container"> -->
 <style type="text/css">
     /* don't remove. */
     .about-cover {
@@ -508,7 +515,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Spring","value":5},{"name":"docker","value":8},{"name":"ConcurrentHashMap","value":1},{"name":"容器","value":8},{"name":"面试","value":1},{"name":"git","value":1},{"name":"HashMap","value":1},{"name":"Linux","value":9},{"name":"父子类","value":1},{"name":"mybatis","value":11},{"name":"redis","value":20},{"name":"面试","value":1},{"name":"面试","value":1},{"name":"servlet3.0","value":2},{"name":"SpringBoot","value":17},{"name":"SpringMVC","value":4},{"name":"tomcat","value":5},{"name":"缓存","value":18},{"name":"原子类","value":1},{"name":"blog","value":1},{"name":"web","value":1},{"name":"idea","value":3},{"name":"spring_annotation","value":16},{"name":"技术","value":1},{"name":"注解","value":1},{"name":"前端","value":1},{"name":"CAS","value":1},{"name":"面试","value":1},{"name":"volatile","value":1},{"name":"面试","value":1},{"name":"SpringMVC","value":1},{"name":"web","value":1},{"name":"安全","value":1},{"name":"分布式","value":1},{"name":"任务","value":1},{"name":"消息","value":1},{"name":"检索","value":1},{"name":"缓存","value":1},{"name":"Spring","value":9},{"name":"监控管理","value":1},{"name":"热部署","value":1},{"name":"源码","value":5},{"name":"面试","value":1},{"name":"maven","value":1},{"name":"annotation","value":1},{"name":"后端","value":1},{"name":"面试","value":1},{"name":"面试","value":1},{"name":"web","value":1},{"name":"分布式锁","value":1},{"name":"乱码","value":1},{"name":"单例","value":1},{"name":"面试","value":1}],
+                data: [{"name":"Spring","value":5},{"name":"ConcurrentHashMap","value":1},{"name":"docker","value":8},{"name":"面试","value":1},{"name":"容器","value":8},{"name":"git","value":1},{"name":"Linux","value":9},{"name":"父子类","value":1},{"name":"HashMap","value":1},{"name":"面试","value":1},{"name":"mybatis","value":11},{"name":"面试","value":1},{"name":"redis","value":20},{"name":"缓存","value":18},{"name":"servlet3.0","value":2},{"name":"SpringBoot","value":17},{"name":"SpringMVC","value":1},{"name":"检索","value":1},{"name":"分布式","value":1},{"name":"web","value":1},{"name":"消息","value":1},{"name":"任务","value":1},{"name":"监控管理","value":1},{"name":"缓存","value":1},{"name":"安全","value":1},{"name":"Spring","value":9},{"name":"热部署","value":1},{"name":"SpringMVC","value":4},{"name":"tomcat","value":5},{"name":"源码","value":5},{"name":"web","value":1},{"name":"idea","value":3},{"name":"blog","value":1},{"name":"spring_annotation","value":16},{"name":"原子类","value":1},{"name":"maven","value":1},{"name":"技术","value":1},{"name":"面试","value":1},{"name":"web","value":1},{"name":"注解","value":1},{"name":"面试","value":1},{"name":"前端","value":1},{"name":"分布式锁","value":1},{"name":"乱码","value":1},{"name":"CAS","value":1},{"name":"volatile","value":1},{"name":"单例","value":1},{"name":"面试","value":1},{"name":"annotation","value":1},{"name":"后端","value":1},{"name":"面试","value":1},{"name":"面试","value":1},{"name":"面试","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -532,7 +539,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         xAxis: [
             {
                 type: 'category',
-                data: ["redis","缓存","SpringBoot","spring_annotation","Spring","mybatis","面试","Linux","容器","docker"]
+                data: ["redis","缓存","SpringBoot","spring_annotation","Spring","mybatis","面试","Linux","docker","容器"]
             }
         ],
         yAxis: [
@@ -719,18 +726,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/docker/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
-            </a>
-            
-            
-            
-            <a href="/tags/容器/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">容器</span>
-            </a>
-            
-            
-            
             <a href="/tags/ConcurrentHashMap/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">ConcurrentHashMap</span>
             </a>
@@ -743,14 +738,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/git/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">git</span>
+            <a href="/tags/docker/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">docker</span>
             </a>
             
             
             
-            <a href="/tags/HashMap/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">HashMap</span>
+            <a href="/tags/容器/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">容器</span>
+            </a>
+            
+            
+            
+            <a href="/tags/git/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">git</span>
             </a>
             
             
@@ -763,6 +764,12 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <a href="/tags/父子类/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">父子类</span>
+            </a>
+            
+            
+            
+            <a href="/tags/HashMap/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">HashMap</span>
             </a>
             
             
@@ -797,20 +804,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/web/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">web</span>
-            </a>
-            
-            
-            
             <a href="/tags/SpringBoot/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">SpringBoot</span>
-            </a>
-            
-            
-            
-            <a href="/tags/安全/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">安全</span>
             </a>
             
             
@@ -827,14 +822,26 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/消息/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">消息</span>
+            <a href="/tags/安全/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">安全</span>
             </a>
             
             
             
             <a href="/tags/检索/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">检索</span>
+            </a>
+            
+            
+            
+            <a href="/tags/web/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">web</span>
+            </a>
+            
+            
+            
+            <a href="/tags/消息/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">消息</span>
             </a>
             
             
@@ -863,8 +870,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/原子类/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">原子类</span>
+            <a href="/tags/idea/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">idea</span>
+            </a>
+            
+            
+            
+            <a href="/tags/maven/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">maven</span>
             </a>
             
             
@@ -875,26 +888,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/idea/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">idea</span>
-            </a>
-            
-            
-            
             <a href="/tags/spring-annotation/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">spring_annotation</span>
             </a>
             
             
             
-            <a href="/tags/markdown/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
+            <a href="/tags/原子类/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">原子类</span>
             </a>
             
             
             
-            <a href="/tags/maven/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">maven</span>
+            <a href="/tags/markdown/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">markdown</span>
             </a>
             
             
@@ -929,18 +936,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             
             
-            <a href="/tags/CAS/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">CAS</span>
-            </a>
-            
-            
-            
-            <a href="/tags/volatile/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">volatile</span>
-            </a>
-            
-            
-            
             <a href="/tags/分布式锁/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">分布式锁</span>
             </a>
@@ -949,6 +944,18 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <a href="/tags/乱码/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">乱码</span>
+            </a>
+            
+            
+            
+            <a href="/tags/CAS/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">CAS</span>
+            </a>
+            
+            
+            
+            <a href="/tags/volatile/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">volatile</span>
             </a>
             
             
@@ -1012,6 +1019,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         </div>
     </div>
 </main>
+<!-- </div> -->
+
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
@@ -1100,6 +1109,12 @@ $(function () {
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
+<!-- 自己瞎加的 -->
+<!-- <script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script src="/libs/echarts/echarts.min.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -1111,5 +1126,33 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<!--  
+        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+  <div id="footerAplayer" class="music"></div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('footerAplayer'),
+        fixed: true,
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.5'),
+        listFolded: 'true' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"五月雨变奏电音","artist":"AnimeVibe","url":"http://pouw5018u.bkt.clouddn.com/%E4%BA%94%E6%9C%88%E9%9B%A8%E5%8F%98%E5%A5%8F%E7%94%B5%E9%9F%B3.mp3","cover":"/medias/music/wu.gif"},{"name":"雨的印记","artist":"昼夜","url":"http://pouw5018u.bkt.clouddn.com/%E9%9B%A8%E7%9A%84%E5%8D%B0%E8%AE%B0.mp3","cover":"/medias/music/371.jpg"},{"name":"天空之城","artist":"久石让","url":"http://pouw5018u.bkt.clouddn.com/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E.mp3","cover":"/medias/music/04.jpg"}]')
+    });
+});
+</script>
+  -->
 </body>
+
 </html>

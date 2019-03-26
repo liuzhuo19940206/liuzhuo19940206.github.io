@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html lang="zh-CN">
 
 
@@ -29,7 +30,10 @@
         
     </style>
 
-    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -254,6 +258,9 @@
 
 </header>
 
+<!-- <script src="/js/app.js"></script> -->
+
+<!-- <div id="pjax-container"> -->
 
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
@@ -376,6 +383,7 @@
         line-height: 48px;
         font-size: 1.4rem;
     }
+
 </style>
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
@@ -1085,7 +1093,10 @@
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
     <a class="btn-floating btn-large bg-color">
         <i class="fa fa-list"></i>
     </a>
@@ -1171,6 +1182,8 @@
 
 </main>
 
+
+<!-- </div> -->
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
@@ -1260,6 +1273,12 @@ $(function () {
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
+<!-- 自己瞎加的 -->
+<!-- <script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script src="/libs/echarts/echarts.min.js"></script>
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
+<script src="/libs/tocbot/tocbot.min.js"></script> -->
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -1271,5 +1290,33 @@ $(function () {
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
+<!--  
+        
+
+<link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<div class="music-player">
+  <div id="footerAplayer" class="music"></div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('footerAplayer'),
+        fixed: true,
+        autoplay: 'false' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: Number('0.5'),
+        listFolded: 'true' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"五月雨变奏电音","artist":"AnimeVibe","url":"http://pouw5018u.bkt.clouddn.com/%E4%BA%94%E6%9C%88%E9%9B%A8%E5%8F%98%E5%A5%8F%E7%94%B5%E9%9F%B3.mp3","cover":"/medias/music/wu.gif"},{"name":"雨的印记","artist":"昼夜","url":"http://pouw5018u.bkt.clouddn.com/%E9%9B%A8%E7%9A%84%E5%8D%B0%E8%AE%B0.mp3","cover":"/medias/music/371.jpg"},{"name":"天空之城","artist":"久石让","url":"http://pouw5018u.bkt.clouddn.com/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E.mp3","cover":"/medias/music/04.jpg"}]')
+    });
+});
+</script>
+  -->
 </body>
+
 </html>
