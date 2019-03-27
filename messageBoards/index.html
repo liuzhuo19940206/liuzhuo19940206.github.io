@@ -313,56 +313,23 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 </style>
 
 <main class="content">
-<div class="container">
-<div class="card">
-<link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
-<div class="video-player">
-    <div class="title center-align">
-        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;二次元老婆
-    </div>
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s12">
-            <div id="dplayer" class="dplayer-video"
-                    ></div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-<script src="/libs/dplayer/DPlayer.min.js"></script>
-<script>
-    $(function () {
-        new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: 'true' === 'true',
-            theme: '#FF6EB4',
-            loop: 'true' === 'true',
-            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
-            preload: 'auto',
-            volume: Number('0.7'),
-            video: {
-                url: 'http://pouw5018u.bkt.clouddn.com/erciyuan.mp4',
-                pic: '/medias/movie/erciyuan.jpeg',
-                thumbnails: ''
-            },
-            danmaku: {
-                id: 'liuzhuoOfLaopao',
-                api: 'https://dplayer.moerats.com/',
-                addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=24543064']
-            }
-        });
-    });
-</script>
-
-<style>
-.valine-card {
-    margin: 0px auto;
-    width: 1126px;
-}
-</style>
-
-
-    <style>
+	<div class="container">
+		<div class="card">
+			<link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
+			<div class="video-player">
+				<div class="title center-align">
+				    <i class="fa fa-video-camera"></i>&nbsp;&nbsp;二次元老婆
+				</div>
+				<div class="row">
+				    <div class="col l8 offset-l2 m10 offset-m1 s12">
+				        <div id="dplayer" class="dplayer-video"
+				                ></div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		
+    			<style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -620,7 +587,32 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
     });
 </script>
-
+		
+	</div>
+<script src="/libs/dplayer/DPlayer.min.js"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: 'true' === 'true',
+            theme: '#FF6EB4',
+            loop: 'true' === 'true',
+            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: 'auto',
+            volume: Number('0.7'),
+            video: {
+                url: 'http://pouw5018u.bkt.clouddn.com/erciyuan.mp4',
+                pic: '/medias/movie/erciyuan.jpeg',
+                thumbnails: ''
+            },
+            danmaku: {
+                id: 'liuzhuoOfLaopao',
+                api: 'https://dplayer.moerats.com/',
+                addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=24543064']
+            }
+        });
+    });
+</script>
 
 </main>
 <!-- </div> -->
