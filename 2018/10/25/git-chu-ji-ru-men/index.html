@@ -21,7 +21,7 @@ Git的下载git的官网：https://git-scm.com/
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Git初级入门 | 解忧杂货店</title>
-    <link rel="icon" type="image/png" href="/favicon.bmp">
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -111,6 +111,15 @@ Git的下载git的官网：https://git-scm.com/
         </a>
     </li>
     
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -185,6 +194,15 @@ Git的下载git的官网：https://git-scm.com/
                 <i class="fa fa-fw fa-address-book"></i>
                 
                 友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
             </a>
         </li>
         
@@ -849,9 +867,9 @@ git status
 
 git log
 
-</code></pre><p>liuzhuo@Gakki MINGW64 /e/gitdemo/demo2 (master)<br>$ git log<br>commit b8412ec81784d6be4a5097fca881a811fe1b1a58 (HEAD -&gt; master)<br>Author: liuzhuo <a href="mailto:&#53;&#x37;&#x35;&#57;&#50;&#48;&#56;&#x32;&#52;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#53;&#x37;&#x35;&#57;&#50;&#48;&#56;&#x32;&#52;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a><br>Date:   Thu Oct 25 13:27:36 2018 +0800</p>
+</code></pre><p>liuzhuo@Gakki MINGW64 /e/gitdemo/demo2 (master)<br>$ git log<br>commit b8412ec81784d6be4a5097fca881a811fe1b1a58 (HEAD -&gt; master)<br>Author: liuzhuo <a href="mailto:&#53;&#55;&#53;&#57;&#50;&#x30;&#x38;&#x32;&#x34;&#64;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#53;&#55;&#53;&#57;&#50;&#x30;&#x38;&#x32;&#x34;&#64;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;</a><br>Date:   Thu Oct 25 13:27:36 2018 +0800</p>
 <pre><code>second commit
-</code></pre><p>commit 136ecd07ab2b0742dff45dcdcfbde1d51da2df42<br>Author: liuzhuo <a href="mailto:&#x35;&#55;&#x35;&#x39;&#50;&#x30;&#x38;&#50;&#52;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x35;&#55;&#x35;&#x39;&#50;&#x30;&#x38;&#50;&#52;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a><br>Date:   Thu Oct 25 13:10:32 2018 +0800</p>
+</code></pre><p>commit 136ecd07ab2b0742dff45dcdcfbde1d51da2df42<br>Author: liuzhuo <a href="mailto:&#53;&#x37;&#x35;&#x39;&#50;&#48;&#x38;&#50;&#52;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;" target="_blank" rel="noopener">&#53;&#x37;&#x35;&#x39;&#50;&#48;&#x38;&#50;&#52;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;</a><br>Date:   Thu Oct 25 13:10:32 2018 +0800</p>
 <pre><code>bash_demo first commit
 </code></pre><pre><code>
 找到：bash_demo第一次提交的序列号：
@@ -1826,10 +1844,10 @@ git branch -d 分支的名称
         el: '#vcomments',
         appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
         appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
-        notify: 'false' === 'true',
+        notify: 'true' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'identicon',
         pageSize: '10',
         lang: 'zh-cn',
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
