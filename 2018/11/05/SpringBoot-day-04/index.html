@@ -478,101 +478,108 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天，我们开始Springboot的Web开发<br><a id="more"></a></p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>使用SpringBoot:</p>
+                <p>今天，我们开始Springboot的Web开发</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>使用SpringBoot:</p>
 <p><strong>1）、创建SpringBoot应用，选中我们需要的模块；</strong></p>
 <p><strong>2）、SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来.</strong></p>
 <p><strong>3）、自己编写业务代码；</strong></p>
 <p>想要使用SpringBoot的自动配置的功能，我们必须熟知SpringBoot的自动配置的原理。</p>
-<p><strong>自动配置原理：</strong></p>
-<p>这个场景SpringBoot帮我们配置了什么？能不能修改？能修改哪些配置？能不能扩展？xxx</p>
-<p>自动配置原理，一般我们需要看：spring-boot-autoconfigure<br><img src="/images/QQ截图20181105134252.png" style="width:50%"></p>
+<h4 id="自动配置原理"><a href="#自动配置原理" class="headerlink" title="自动配置原理"></a>自动配置原理</h4><p>这个场景SpringBoot帮我们配置了什么？能不能修改？能修改哪些配置？能不能扩展？xxx</p>
+<p>自动配置原理，一般我们需要看：<strong>spring-boot-autoconfigure</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105134252.png" style="width:50%"></p>
 <p>然后再看我们想要的模块里面的：</p>
-<pre><code>xxxxAutoConfiguration：帮我们给容器中自动配置组件；
-xxxxProperties:配置类来封装配置文件的内容；
-</code></pre><p>比如：Web模块，看DispatchServletAutoConfiguration<br><img src="/images/QQ截图20181105134739.png" style="width:50%"></p>
-<h2 id="SpringBoot对静态资源的映射规则"><a href="#SpringBoot对静态资源的映射规则" class="headerlink" title="SpringBoot对静态资源的映射规则"></a>SpringBoot对静态资源的映射规则</h2><p>创建我们的今天的Web项目：（添加Web模块）<br><img src="/images/QQ截图20181105141110.png"></p>
-<p>在：spring-boot-autoconfigurejar下：</p>
-<p>web下的WebMvcAutoConfiguration：专门为我们配置了默认的Web应用的配置：<br><img src="/images/QQ截图20181105141946.png"></p>
+<pre class=" language-java"><code class="language-java">xxxxAutoConfiguration<span class="token operator">:</span> 帮我们给容器中自动配置组件；
+xxxxProperties<span class="token operator">:</span>        配置类来封装配置文件的内容；
+</code></pre>
+<p>比如：Web模块，看：DispatchServletAutoConfiguration<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105134739.png" style="width:50%"></p>
+<h2 id="SpringBoot对静态资源的映射规则"><a href="#SpringBoot对静态资源的映射规则" class="headerlink" title="SpringBoot对静态资源的映射规则"></a>SpringBoot对静态资源的映射规则</h2><p>创建我们的今天的Web项目：（添加Web模块）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105141110.png"></p>
+<p>在：<strong>spring-boot-autoconfigurejar</strong> 下：</p>
+<p>web下的 <strong>WebMvcAutoConfiguration</strong>：专门为我们配置了默认的Web应用的配置：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105141946.png"></p>
 <p><strong>设置：静态资源的相关配置的类：</strong></p>
-<pre><code>@ConfigurationProperties(prefix = &quot;spring.resources&quot;, ignoreUnknownFields = false)
-public class ResourceProperties implements ResourceLoaderAware, InitializingBean {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.resources"</span><span class="token punctuation">,</span> ignoreUnknownFields <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResourceProperties</span> <span class="token keyword">implements</span> <span class="token class-name">ResourceLoaderAware</span><span class="token punctuation">,</span> InitializingBean <span class="token punctuation">{</span>
 
-    private static final String[] SERVLET_RESOURCE_LOCATIONS = { &quot;/&quot; };
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> SERVLET_RESOURCE_LOCATIONS <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"/"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            &quot;classpath:/META-INF/resources/&quot;, &quot;classpath:/resources/&quot;,
-            &quot;classpath:/static/&quot;, &quot;classpath:/public/&quot; };
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> CLASSPATH_RESOURCE_LOCATIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">"classpath:/META-INF/resources/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/resources/"</span><span class="token punctuation">,</span>
+            <span class="token string">"classpath:/static/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/public/"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-    private static final String[] RESOURCE_LOCATIONS;
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> RESOURCE_LOCATIONS<span class="token punctuation">;</span>
 
-    static {
-        RESOURCE_LOCATIONS = new String[CLASSPATH_RESOURCE_LOCATIONS.length
-                + SERVLET_RESOURCE_LOCATIONS.length];
-        System.arraycopy(SERVLET_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS, 0,
-                SERVLET_RESOURCE_LOCATIONS.length);
-        System.arraycopy(CLASSPATH_RESOURCE_LOCATIONS, 0, RESOURCE_LOCATIONS,
-                SERVLET_RESOURCE_LOCATIONS.length, CLASSPATH_RESOURCE_LOCATIONS.length);
-    }
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        RESOURCE_LOCATIONS <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>CLASSPATH_RESOURCE_LOCATIONS<span class="token punctuation">.</span>length
+                <span class="token operator">+</span> SERVLET_RESOURCE_LOCATIONS<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>SERVLET_RESOURCE_LOCATIONS<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> RESOURCE_LOCATIONS<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+                SERVLET_RESOURCE_LOCATIONS<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>CLASSPATH_RESOURCE_LOCATIONS<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> RESOURCE_LOCATIONS<span class="token punctuation">,</span>
+                SERVLET_RESOURCE_LOCATIONS<span class="token punctuation">.</span>length<span class="token punctuation">,</span> CLASSPATH_RESOURCE_LOCATIONS<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
    ·····
 
-  //可以设置和静态资源有关的参数，缓存时间等
-</code></pre><p><strong>设置静态资源映射的默认方法：</strong></p>
-<pre><code>        @Override
-        public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            if (!this.resourceProperties.isAddMappings()) {
-                logger.debug(&quot;Default resource handling disabled&quot;);
-                return;
-            }
-            Integer cachePeriod = this.resourceProperties.getCachePeriod();
-            if (!registry.hasMappingForPattern(&quot;/webjars/**&quot;)) {
-                customizeResourceHandlerRegistration(registry
-                        .addResourceHandler(&quot;/webjars/**&quot;)
-                        .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;)
-                        .setCachePeriod(cachePeriod));
-            }
-            String staticPathPattern = this.mvcProperties.getStaticPathPattern();
-            if (!registry.hasMappingForPattern(staticPathPattern)) {
-                customizeResourceHandlerRegistration(
-                        registry.addResourceHandler(staticPathPattern)
-                                .addResourceLocations(
-                                        this.resourceProperties.getStaticLocations())
-                                .setCachePeriod(cachePeriod));
-            }
-        }
-</code></pre><h3 id="所有-webjars-，都去-classpath-META-INF-resources-webjars-找资源；"><a href="#所有-webjars-，都去-classpath-META-INF-resources-webjars-找资源；" class="headerlink" title="所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源；"></a>所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源；</h3><p>webjars：以jar包的方式引入静态资源.</p>
+  <span class="token comment" spellcheck="true">//可以设置和静态资源有关的参数，缓存时间等</span>
+</code></pre>
+<p><strong>设置静态资源映射的默认方法：</strong></p>
+<pre class=" language-java"><code class="language-java">        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addResourceHandlers</span><span class="token punctuation">(</span>ResourceHandlerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">isAddMappings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Default resource handling disabled"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            Integer cachePeriod <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getCachePeriod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>registry<span class="token punctuation">.</span><span class="token function">hasMappingForPattern</span><span class="token punctuation">(</span><span class="token string">"/webjars/**"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">customizeResourceHandlerRegistration</span><span class="token punctuation">(</span>registry
+                        <span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span><span class="token string">"/webjars/**"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span><span class="token string">"classpath:/META-INF/resources/webjars/"</span><span class="token punctuation">)</span>
+                        <span class="token punctuation">.</span><span class="token function">setCachePeriod</span><span class="token punctuation">(</span>cachePeriod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            String staticPathPattern <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>registry<span class="token punctuation">.</span><span class="token function">hasMappingForPattern</span><span class="token punctuation">(</span>staticPathPattern<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">customizeResourceHandlerRegistration</span><span class="token punctuation">(</span>
+                        registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span>staticPathPattern<span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span>
+                                        <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getStaticLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                                <span class="token punctuation">.</span><span class="token function">setCachePeriod</span><span class="token punctuation">(</span>cachePeriod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="webjars静态资源映射规则"><a href="#webjars静态资源映射规则" class="headerlink" title="webjars静态资源映射规则"></a>webjars静态资源映射规则</h3><p><code>所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源</code></p>
+<p>webjars：以jar包的方式引入静态资源.</p>
 <p><a href="https://www.webjars.org/" target="_blank" rel="noopener">webjars官网</a></p>
 <p>例子：引入jQuery的静态资源。</p>
-<p>打开webjars官网，找到jQuery的Maven配置信息：<br><img src="/images/QQ截图20181105143244.png"></p>
+<p>打开webjars官网，找到jQuery的Maven配置信息：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105143244.png"></p>
 <p>将拷贝的jQuery的Maven配置，导入到我们的项目中。</p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.webjars&lt;/groupId&gt;
             &lt;artifactId&gt;jquery&lt;/artifactId&gt;
             &lt;version&gt;3.3.1-1&lt;/version&gt;
         &lt;/dependency&gt;
-</code></pre><p>在我们的依赖jar中，找到jQuery的依赖：<br><img src="/images/QQ截图20181105143645.png" style="width:50%"></p>
-<p>发现，这个依赖的jar的目录格式，也是classpath:/META-INF/resources/webjars/</p>
+</code></pre><p>在我们的依赖jar中，找到jQuery的依赖：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105143645.png" style="width:50%"></p>
+<p>发现，这个依赖的jar的目录格式，也是 <code>classpath:/META-INF/resources/webjars/</code></p>
 <font color="red">所以：当我们访问/webjars/**的url时，SpringBoot会帮我们在classpath:/META-INF/resources/webjars/选择webjars的静态jar资源。</font>
 
 <p>启动我们的项目：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/webjars/jquery/3.3.1-1/jquery.js</code><br><img src="/images/QQ截图20181105144226.png"></p>
-<p>webjar的静态资源访问成功！</p>
-<h3 id="访问当前项目的任何资源，都去（静态资源的文件夹）找映射"><a href="#访问当前项目的任何资源，都去（静态资源的文件夹）找映射" class="headerlink" title="/**  访问当前项目的任何资源，都去（静态资源的文件夹）找映射"></a>/**  访问当前项目的任何资源，都去（静态资源的文件夹）找映射</h3><pre><code>String staticPathPattern = this.mvcProperties.getStaticPathPattern();
-    if (!registry.hasMappingForPattern(staticPathPattern)) {
-        customizeResourceHandlerRegistration(
-        registry.addResourceHandler(staticPathPattern)
-                .addResourceLocations(
-                        this.resourceProperties.getStaticLocations())
-                .setCachePeriod(cachePeriod));
-    }
-</code></pre><p>这里，注册了 staticPathPattern 和 this.resourceProperties.getStaticLocations() 的静态资源访问。</p>
+<p>在浏览器中输入：<code>http://localhost:8080/webjars/jquery/3.3.1-1/jquery.js</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105144226.png"></p>
+<p><strong>webjar的静态资源访问成功！</strong></p>
+<h3 id="静态资源的映射原理"><a href="#静态资源的映射原理" class="headerlink" title="静态资源的映射原理"></a>静态资源的映射原理</h3><p><code>/**  访问当前项目的任何资源，都去（静态资源的文件夹）找映射</code></p>
+<pre class=" language-java"><code class="language-java">String staticPathPattern <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>registry<span class="token punctuation">.</span><span class="token function">hasMappingForPattern</span><span class="token punctuation">(</span>staticPathPattern<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">customizeResourceHandlerRegistration</span><span class="token punctuation">(</span>
+        registry<span class="token punctuation">.</span><span class="token function">addResourceHandler</span><span class="token punctuation">(</span>staticPathPattern<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">addResourceLocations</span><span class="token punctuation">(</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getStaticLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setCachePeriod</span><span class="token punctuation">(</span>cachePeriod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>这里，注册了 <strong>staticPathPattern</strong> 和 <strong>this.resourceProperties.getStaticLocations()</strong> 的静态资源访问。</p>
 <p>点击：staticPathPattern：<code>private String staticPathPattern = &quot;/**&quot;;</code> </p>
 <p>点击：getStaticLocations()：</p>
-<pre><code>    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-            &quot;classpath:/META-INF/resources/&quot;, &quot;classpath:/resources/&quot;,
-            &quot;classpath:/static/&quot;, &quot;classpath:/public/&quot; };
-</code></pre><font color="red"><strong>总结</strong>：</font>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token keyword">private</span> <span class="token keyword">static</span> final String<span class="token punctuation">[</span><span class="token punctuation">]</span> CLASSPATH_RESOURCE_LOCATIONS <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">"classpath:/META-INF/resources/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/resources/"</span><span class="token punctuation">,</span>
+            <span class="token string">"classpath:/static/"</span><span class="token punctuation">,</span> <span class="token string">"classpath:/public/"</span> 
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<font color="red"><strong>总结</strong>：</font>
 
 <p>对于：/** 的静态资源的访问。</p>
 <p>会到以下的路径寻找静态资源：</p>
@@ -582,51 +589,55 @@ public class ResourceProperties implements ResourceLoaderAware, InitializingBean
 <p><strong>“classpath:/public/“</strong></p>
 <p>这里的”classpath”：就相当于我们项目的java、resources目录。</p>
 <p>印证我们的默认的静态资源访问：</p>
-<p>在以上的目录中随意放一张照片：<br><img src="/images/QQ截图20181105150445.png" style="width:50%"></p>
+<p>在以上的目录中随意放一张照片：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105150445.png" style="width:50%"></p>
 <p>三张，不同的照片，但是名字都是123.jpg的照片。</p>
 <p>启动项目，在浏览器中输入：<code>http://localhost:8080/123.jpg</code></p>
-<p><img src="/images/QQ截图20181105150124.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105150124.png"></p>
 <p>出现的是”META-INF/resources”下的123.jpg照片。 </p>
 <p>删除”META-INF/resources”下的123.jpg照片. 再次访问是”classpath:/resources/“下的123.jpg</p>
 <p>依次类推：再是”classpath:/static/“、”classpath:/public/“。</p>
 <font color="red"><strong>优先级是：从上到下，依次递减</strong></font>
 
 <hr>
-<h3 id="欢迎页-静态资源文件夹下的所有index-html页面；被”-”映射"><a href="#欢迎页-静态资源文件夹下的所有index-html页面；被”-”映射" class="headerlink" title="欢迎页: 静态资源文件夹下的所有index.html页面；被”/**”映射"></a>欢迎页: 静态资源文件夹下的所有index.html页面；被”/**”映射</h3><pre><code>@Bean
-public WelcomePageHandlerMapping welcomePageHandlerMapping(
-        ResourceProperties resourceProperties) {
-    return new WelcomePageHandlerMapping(resourceProperties.getWelcomePage(),
-            this.mvcProperties.getStaticPathPattern());
-}
-</code></pre><p>getWelcomePage():</p>
-<pre><code>    private String[] getStaticWelcomePageLocations() {
-        String[] result = new String[this.staticLocations.length];
-        for (int i = 0; i &lt; result.length; i++) {
-            String location = this.staticLocations[i];
-            if (!location.endsWith(&quot;/&quot;)) {
-                location = location + &quot;/&quot;;
-            }
-            result[i] = location + &quot;index.html&quot;;
-        }
-        return result;
-    }
-</code></pre><p>getStaticPathPattern():</p>
-<pre><code>private String staticPathPattern = &quot;/**&quot;;
-</code></pre><p><b>即对:　/**　 的访问。SpringBoot会自动到刚刚我们的提到的静态资源的文件夹下找index.html的页面</b></p>
+<h3 id="欢迎页-静态资源文件夹下的所有index-html页面；被”-”映射"><a href="#欢迎页-静态资源文件夹下的所有index-html页面；被”-”映射" class="headerlink" title="欢迎页: 静态资源文件夹下的所有index.html页面；被”/**”映射"></a>欢迎页: 静态资源文件夹下的所有index.html页面；被”/**”映射</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
+<span class="token keyword">public</span> WelcomePageHandlerMapping <span class="token function">welcomePageHandlerMapping</span><span class="token punctuation">(</span>
+        ResourceProperties resourceProperties<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WelcomePageHandlerMapping</span><span class="token punctuation">(</span>resourceProperties<span class="token punctuation">.</span><span class="token function">getWelcomePage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>getWelcomePage():</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getStaticWelcomePageLocations</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>staticLocations<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> result<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String location <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>staticLocations<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>location<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                location <span class="token operator">=</span> location <span class="token operator">+</span> <span class="token string">"/"</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> location <span class="token operator">+</span> <span class="token string">"index.html"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>getStaticPathPattern():</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> String staticPathPattern <span class="token operator">=</span> <span class="token string">"/**"</span><span class="token punctuation">;</span>
+</code></pre>
+<p><b>即对:　/**　 的访问。SpringBoot会自动到刚刚我们的提到的静态资源的文件夹下找index.html的页面</b></p>
 <p>localhost:8080/ 找index页面</p>
 <hr>
-<h3 id="所有的-favicon-ico-都是在静态资源文件下找"><a href="#所有的-favicon-ico-都是在静态资源文件下找" class="headerlink" title="所有的 **/favicon.ico 都是在静态资源文件下找"></a>所有的 **/favicon.ico 都是在静态资源文件下找</h3><pre><code>@Bean
-public SimpleUrlHandlerMapping faviconHandlerMapping() {
-    SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
-    mapping.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
-    mapping.setUrlMap(Collections.singletonMap(&quot;**/favicon.ico&quot;,
-            faviconRequestHandler()));
-    return mapping;
-}
-</code></pre><hr>
-<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>JSP、Velocity、Freemarker、Thymeleaf<br><img src="/images/QQ截图20181105153402.png"></p>
+<h3 id="所有的-favicon-ico-都是在静态资源文件下找"><a href="#所有的-favicon-ico-都是在静态资源文件下找" class="headerlink" title="所有的 **/favicon.ico 都是在静态资源文件下找"></a>所有的 **/favicon.ico 都是在静态资源文件下找</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
+<span class="token keyword">public</span> SimpleUrlHandlerMapping <span class="token function">faviconHandlerMapping</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SimpleUrlHandlerMapping mapping <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleUrlHandlerMapping</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mapping<span class="token punctuation">.</span><span class="token function">setOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    mapping<span class="token punctuation">.</span><span class="token function">setUrlMap</span><span class="token punctuation">(</span>Collections<span class="token punctuation">.</span><span class="token function">singletonMap</span><span class="token punctuation">(</span><span class="token string">"**/favicon.ico"</span><span class="token punctuation">,</span>
+            <span class="token function">faviconRequestHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> mapping<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>JSP、Velocity、Freemarker、Thymeleaf<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105153402.png"></p>
 <p>Springboot默认是不支持jsp模板引擎的，因为SpringBoot是打成jar包，使用嵌入式的Tomcat容器。</p>
-<p>这里，我们使用SpringBoot官方推荐的Thymeleaf模板引擎。语法更简单，功能更强大</p>
+<p>这里，我们使用SpringBoot官方推荐的 <strong>Thymeleaf </strong>模板引擎。语法更简单，功能更强大。</p>
 <h3 id="引入thymeleaf"><a href="#引入thymeleaf" class="headerlink" title="引入thymeleaf"></a>引入thymeleaf</h3><pre><code>  &lt;!-- Springboot默认是：2.1.6 的版本 --&gt;  
   &lt;dependency&gt;        
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;            
@@ -641,27 +652,29 @@ public SimpleUrlHandlerMapping faviconHandlerMapping() {
   &lt;/properties&gt;
 </code></pre><p><strong>注意，SpringBoot默认导入的thymeleaf只是2.1.6的版本，如果想切换更高的版本，查看thymeleaf的github中的发行版</strong></p>
 <p><a href="https://github.com/thymeleaf/thymeleaf/releases" target="_blank" rel="noopener">thymeleaf版本</a></p>
-<p><strong>thymeleaf‐layout‐dialect.version：布局的版本，请注意，如果使用thymeleaf3以上的版本，那么布局的版本必须是2.0.0以上</strong>：<br><img src="/images/QQ截图20181105155420.png"></p>
-<h3 id="Thymeleaf使用"><a href="#Thymeleaf使用" class="headerlink" title="Thymeleaf使用"></a>Thymeleaf使用</h3><pre><code>@ConfigurationProperties(prefix = &quot;spring.thymeleaf&quot;)
-public class ThymeleafProperties {
+<p><strong>thymeleaf‐layout‐dialect.version：布局的版本，请注意，如果使用thymeleaf3以上的版本，那么布局的版本必须是2.0.0以上</strong>：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105155420.png"></p>
+<h3 id="Thymeleaf使用"><a href="#Thymeleaf使用" class="headerlink" title="Thymeleaf使用"></a>Thymeleaf使用</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.thymeleaf"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ThymeleafProperties</span> <span class="token punctuation">{</span>
 
-    private static final Charset DEFAULT_ENCODING = Charset.forName(&quot;UTF‐8&quot;);   
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Charset DEFAULT_ENCODING <span class="token operator">=</span> Charset<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"UTF‐8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
 
-    private static final MimeType DEFAULT_CONTENT_TYPE = MimeType.valueOf(&quot;text/html&quot;); 
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> MimeType DEFAULT_CONTENT_TYPE <span class="token operator">=</span> MimeType<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-    public static final String DEFAULT_PREFIX = &quot;classpath:/templates/&quot;;    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String DEFAULT_PREFIX <span class="token operator">=</span> <span class="token string">"classpath:/templates/"</span><span class="token punctuation">;</span>    
 
-    public static final String DEFAULT_SUFFIX = &quot;.html&quot;;    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String DEFAULT_SUFFIX <span class="token operator">=</span> <span class="token string">".html"</span><span class="token punctuation">;</span>    
 
-       //
-}
-</code></pre><p>Springboot默认的themleaf配置：</p>
+       <span class="token comment" spellcheck="true">//</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Springboot默认的 themleaf 配置：</p>
 <p>使用UTF-8字码，媒体类型：text/html，模板解析的前缀：classpath:/templates/，模板解析的后缀：.html</p>
 <p>即：只要我们把HTML页面放在classpath:/templates/，thymeleaf就能自动渲染；</p>
 <p>使用：</p>
 <p>1、导入thymeleaf的名称空间：(在idea中会有相应的提示功能)</p>
-<pre><code>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
-</code></pre><p>2、使用thymeleaf语法</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span> xmlns<span class="token operator">:</span>th<span class="token operator">=</span><span class="token string">"http://www.thymeleaf.org"</span><span class="token operator">></span>
+</code></pre>
+<p>2、使用thymeleaf语法</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
 &lt;head&gt;
@@ -675,8 +688,8 @@ public class ThymeleafProperties {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><h3 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h3><p><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html" target="_blank" rel="noopener">thymeleaf参考手册</a></p>
-<p>1）th:text；改变当前元素里面的文本内容；</p>
-<p>th：任意html属性；来替换原生属性的值<br><img src="/images/QQ截图20181105163700.png"></p>
+<p>1）th:text，改变当前元素里面的文本内容。</p>
+<p>th：任意html属性；来替换原生属性的值。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105163700.png"></p>
 <p>2）表达式</p>
 <p><strong>Simple expressions:（表达式语法）</strong></p>
 <p>Variable Expressions: ${…}：获取变量值；OGNL；</p>
@@ -1193,10 +1206,11 @@ Special tokens:
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">今天，学习Springboot中的SpringMVC的自动配置原理
-Springboot的官方参考文档
-Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
-以下是SpringBo</div>
+                    <div class="summary">
+                      
+                                Springboot中的SpringMVC的自动配置原理
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-06
@@ -1249,8 +1263,11 @@ Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringBoot的日志框架与配置
-日志框架小张；开发一个大型系统；1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.</div>
+                    <div class="summary">
+                       
+                                SpringBoot的日志框架与配置
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-04
@@ -1438,7 +1455,7 @@ Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

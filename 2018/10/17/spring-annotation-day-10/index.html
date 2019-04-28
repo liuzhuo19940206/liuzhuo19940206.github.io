@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="spring_annotation_day_10, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
-自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)
-自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件，A">
+自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)  
+自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -445,7 +445,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        978
+                        963
                     </div>
                     
 
@@ -469,37 +469,39 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)<br><a id="more"></a></p>
+<p>自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)  </p>
 <p>自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件，Aware会把Spring底层的一些组件注入到自定义的Bean中。</p>
 <p>xxxAware:功能使用xxxAwareProcessor现实的，比如：ApplicationContextAware是用ApplicationContextAwareProcessor注入的。</p>
 <h3 id="ApplicationContextAware"><a href="#ApplicationContextAware" class="headerlink" title="ApplicationContextAware"></a>ApplicationContextAware</h3><p>1）在com.liuzhuo.bean包，随便找个Bean来实验：</p>
 <p>这里使用Red类来实验：</p>
-<pre><code>@Component
-public class Red implements ApplicationContextAware {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Red</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> <span class="token punctuation">{</span>
 
-    private ApplicationContext applicationContext;
+    <span class="token keyword">private</span> ApplicationContext applicationContext<span class="token punctuation">;</span>
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-        System.out.println(&quot;容器:&quot; + applicationContext.toString());
-    }
-}
-</code></pre><p>2）将Red类注入到容器中，使用包扫描，修改MainConfigOfAutowired配置类：<br><strong>加入了com.liuzhuo.bean包的扫描</strong></p>
-<pre><code>@Configuration
-@ComponentScan(value = {&quot;com.liuzhuo.controller&quot;, &quot;com.liuzhuo.service&quot;, &quot;com.liuzhuo.dao&quot;,&quot;com.liuzhuo.bean&quot;})
-public class MainConfigOfAutowired
-</code></pre><p>3) 运行测试类IocTest_Autowired：</p>
-<pre><code>public class IocTest_Autowired {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span>ApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"容器:"</span> <span class="token operator">+</span> applicationContext<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）将Red类注入到容器中，使用包扫描，修改MainConfigOfAutowired配置类：<br><strong>加入了com.liuzhuo.bean包的扫描</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"com.liuzhuo.controller"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.service"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.dao"</span><span class="token punctuation">,</span><span class="token string">"com.liuzhuo.bean"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span>
+</code></pre>
+<p>3) 运行测试类IocTest_Autowired：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocTest_Autowired</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAutowired.class);
-        applicationContext.close();
-    }
-}
-
-</code></pre><p>4) 运行结果：</p>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAutowired<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 运行结果：</p>
 <pre><code>org.springframework.context.event.internalEventListenerProcessor------postProcessBeforeInitialization
 org.springframework.context.event.internalEventListenerProcessor------postProcessAfterInitialization
 org.springframework.context.event.internalEventListenerFactory------postProcessBeforeInitialization
@@ -535,16 +537,17 @@ Process finished with exit code 0
 <p><code>容器:org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Wed Oct 17 14:08:27 CST 2018]; root of context hierarchy</code></p>
 <p>说明在Red类中，注入了容器类。</p>
 <p>5）验证是否是同一个容器，修改测试方法：</p>
-<pre><code>public class IocTest_Autowired {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocTest_Autowired</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAutowired.class);
-        System.out.println(applicationContext);
-        applicationContext.close();
-    }
-}
-</code></pre><p>6) 运行测试方法：</p>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAutowired<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>6) 运行测试方法：</p>
 <pre><code>org.springframework.context.event.internalEventListenerProcessor------postProcessBeforeInitialization
 org.springframework.context.event.internalEventListenerProcessor------postProcessAfterInitialization
 org.springframework.context.event.internalEventListenerFactory------postProcessBeforeInitialization
@@ -577,93 +580,96 @@ Dog @PreDestroy ····
 Cat destroy ····
 
 Process finished with exit code 0
-</code></pre><p>观察到：<br>容器:org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: </p>
-<p>org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf:</p>
+</code></pre><p>观察到：<br>容器:</p>
+<p><code>org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf:</code></p>
+<p><code>org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf:</code></p>
 <p>一样，都是@2f410acf，说明是一个容器。</p>
 <hr>
 <h3 id="BeanNameAware"><a href="#BeanNameAware" class="headerlink" title="BeanNameAware"></a>BeanNameAware</h3><p>给自定义组件，注入自己在容器的id名。</p>
 <p>1）修改Red类：</p>
-<pre><code>@Component
-public class Red implements ApplicationContextAware,BeanNameAware {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Red</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span><span class="token punctuation">,</span>BeanNameAware <span class="token punctuation">{</span>
 
-    private ApplicationContext applicationContext;
+    <span class="token keyword">private</span> ApplicationContext applicationContext<span class="token punctuation">;</span>
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-        System.out.println(&quot;容器:&quot; + applicationContext.toString());
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span>ApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"容器:"</span> <span class="token operator">+</span> applicationContext<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void setBeanName(String name) {
-        System.out.println(&quot;自定义组件的id名字：&quot;+name);
-    }
-}
-
-</code></pre><p>2) 运行测试方法：</p>
-<pre><code>自定义组件的id名字：red
-容器:org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Wed Oct 17 14:21:56 CST 2018]; root of context hierarchy
-red------postProcessBeforeInitialization
-red------postProcessAfterInitialization
-</code></pre><p><strong>总结：</strong></p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setBeanName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"自定义组件的id名字："</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 运行测试方法：</p>
+<pre class=" language-java"><code class="language-java">自定义组件的id名字：red
+容器<span class="token operator">:</span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>AnnotationConfigApplicationContext<span class="token annotation punctuation">@2f410acf</span><span class="token operator">:</span> startup date <span class="token punctuation">[</span>Wed Oct <span class="token number">17</span> <span class="token number">14</span><span class="token operator">:</span><span class="token number">21</span><span class="token operator">:</span><span class="token number">56</span> CST <span class="token number">2018</span><span class="token punctuation">]</span><span class="token punctuation">;</span> root of context hierarchy
+red<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>postProcessBeforeInitialization
+red<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>postProcessAfterInitialization
+</code></pre>
+<p><strong>总结：</strong></p>
 <p>想让自定义组件使用Spring底层的组件，就实现xxxAware接口就行。</p>
 <p>ApplicationContextAware<br>ApplicationEventPublisherAware<br>BeanClassLoaderAware<br>BeanFactoryAware<br>BeanNameAware<br>BootstrapContextAware<br>EmbeddedValueResolverAware<br>EnvironmentAware<br>ImportAware<br>LoadTimeWeaverAware<br>MessageSourceAware<br>NotificationPublisherAware<br>PortletConfigAware<br>PortletContextAware<br>ResourceLoaderAware<br>SchedulerContextAware<br>ServletConfigAware<br>ServletContextAware</p>
 <hr>
 <h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>1）在Red类下的setApplicationContext方法上面打上断点</p>
 <p>2) 运行测试方法：</p>
 <p>发现ApplicationContextAware是由ApplicationContextAwareProcessor处理的：</p>
-<pre><code> @Override
-    public Object postProcessBeforeInitialization(final Object bean, String beanName) throws BeansException {
-        AccessControlContext acc = null;
+<pre class=" language-java"><code class="language-java"> <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span><span class="token keyword">final</span> Object bean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        AccessControlContext acc <span class="token operator">=</span> null<span class="token punctuation">;</span>
 
-        if (System.getSecurityManager() != null &amp;&amp;
-                (bean instanceof EnvironmentAware || bean instanceof EmbeddedValueResolverAware ||
-                        bean instanceof ResourceLoaderAware || bean instanceof ApplicationEventPublisherAware ||
-                        bean instanceof MessageSourceAware || bean instanceof ApplicationContextAware)) {
-            acc = this.applicationContext.getBeanFactory().getAccessControlContext();
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>System<span class="token punctuation">.</span><span class="token function">getSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span>
+                <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">EnvironmentAware</span> <span class="token operator">||</span> bean <span class="token keyword">instanceof</span> <span class="token class-name">EmbeddedValueResolverAware</span> <span class="token operator">||</span>
+                        bean <span class="token keyword">instanceof</span> <span class="token class-name">ResourceLoaderAware</span> <span class="token operator">||</span> bean <span class="token keyword">instanceof</span> <span class="token class-name">ApplicationEventPublisherAware</span> <span class="token operator">||</span>
+                        bean <span class="token keyword">instanceof</span> <span class="token class-name">MessageSourceAware</span> <span class="token operator">||</span> bean <span class="token keyword">instanceof</span> <span class="token class-name">ApplicationContextAware</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            acc <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">.</span><span class="token function">getBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAccessControlContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if (acc != null) {
-            AccessController.doPrivileged(new PrivilegedAction&lt;Object&gt;() {
-                @Override
-                public Object run() {
-                    invokeAwareInterfaces(bean);
-                    return null;
-                }
-            }, acc);
-        }
-        else {
-            invokeAwareInterfaces(bean);
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>acc <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AccessController<span class="token punctuation">.</span><span class="token function">doPrivileged</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PrivilegedAction</span><span class="token operator">&lt;</span>Object<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@Override</span>
+                <span class="token keyword">public</span> Object <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">invokeAwareInterfaces</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> acc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">invokeAwareInterfaces</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        return bean;
-    }
-
-</code></pre><p>内部执行postProcessBeforeInitialization方法来判断自定义的组件是否实现类xxxAware接口。</p>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>内部执行postProcessBeforeInitialization方法来判断自定义的组件是否实现类xxxAware接口。</p>
 <p>最后调用invokeAwareInterfaces(bean)方法</p>
-<pre><code>    private void invokeAwareInterfaces(Object bean) {
-        if (bean instanceof Aware) {
-            if (bean instanceof EnvironmentAware) {
-                ((EnvironmentAware) bean).setEnvironment(this.applicationContext.getEnvironment());
-            }
-            if (bean instanceof EmbeddedValueResolverAware) {
-                ((EmbeddedValueResolverAware) bean).setEmbeddedValueResolver(this.embeddedValueResolver);
-            }
-            if (bean instanceof ResourceLoaderAware) {
-                ((ResourceLoaderAware) bean).setResourceLoader(this.applicationContext);
-            }
-            if (bean instanceof ApplicationEventPublisherAware) {
-                ((ApplicationEventPublisherAware) bean).setApplicationEventPublisher(this.applicationContext);
-            }
-            if (bean instanceof MessageSourceAware) {
-                ((MessageSourceAware) bean).setMessageSource(this.applicationContext);
-            }
-            if (bean instanceof ApplicationContextAware) {
-                ((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
-            }
-        }
-    }
-</code></pre><p>调用相应的方法来实现注入。</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">invokeAwareInterfaces</span><span class="token punctuation">(</span>Object bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">Aware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">EnvironmentAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>EnvironmentAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setEnvironment</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">.</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">EmbeddedValueResolverAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>EmbeddedValueResolverAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setEmbeddedValueResolver</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>embeddedValueResolver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">ResourceLoaderAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>ResourceLoaderAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setResourceLoader</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">ApplicationEventPublisherAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>ApplicationEventPublisherAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setApplicationEventPublisher</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">MessageSourceAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>MessageSourceAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setMessageSource</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">ApplicationContextAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>ApplicationContextAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setApplicationContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>调用相应的方法来实现注入。</p>
 
             </div>
             <hr/>
@@ -1105,11 +1111,11 @@ red------postProcessAfterInitialization
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天学习，@Profile注解的使用。
-@Profile注解Profile：Spring为我们提供的可以根据当前环境，动态的激活和切换一系列组件的功能。
-比如：开发环境、测试环境、生产环境；
-根据不同是环境，我们自</div>
+                    <div class="summary">
+                      
+                                今天学习，@Profile注解的使用。
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
@@ -1154,10 +1160,11 @@ red------postProcessAfterInitialization
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-Spring的自动装配：  
-Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。
-@Autowired注解1）在com.liuzhuo.config包下，创建新的类MainConfigOf</div>
+                    <div class="summary">
+                       
+                                Spring的自动装配:@Autowired注解、@Resource注解、@Inject注解
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1337,7 +1344,7 @@ Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

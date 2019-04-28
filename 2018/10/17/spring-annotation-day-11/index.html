@@ -447,7 +447,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        982
+                        894
                     </div>
                     
 
@@ -471,91 +471,95 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天学习，@Profile注解的使用。<br><a id="more"></a></p>
+<p>今天学习，@Profile注解的使用。</p>
 <h3 id="Profile注解"><a href="#Profile注解" class="headerlink" title="@Profile注解"></a>@Profile注解</h3><p>Profile：Spring为我们提供的可以根据当前环境，动态的激活和切换一系列组件的功能。</p>
 <p>比如：开发环境、测试环境、生产环境；</p>
 <p>根据不同是环境，我们自动切换我们的数据源。</p>
 <p>1）添加c3p0的数据源和mysql的驱动依赖：</p>
-<pre><code>       &lt;!-- https://mvnrepository.com/artifact/com.mchange/c3p0 --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.mchange&lt;/groupId&gt;
-            &lt;artifactId&gt;c3p0&lt;/artifactId&gt;
-            &lt;version&gt;0.9.5.2&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;mysql&lt;/groupId&gt;
-            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-            &lt;version&gt;8.0.12&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre><p>2) 创建数据源的配置dbconfig.properties：</p>
+<pre class=" language-java"><code class="language-java">       <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mvnrepository<span class="token punctuation">.</span>com<span class="token operator">/</span>artifact<span class="token operator">/</span>com<span class="token punctuation">.</span>mchange<span class="token operator">/</span>c3p0 <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>mchange<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>c3p0<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">0.9</span><span class="token punctuation">.</span><span class="token number">5.2</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mvnrepository<span class="token punctuation">.</span>com<span class="token operator">/</span>artifact<span class="token operator">/</span>mysql<span class="token operator">/</span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>mysql<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">8.0</span><span class="token punctuation">.</span><span class="token number">12</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>2) 创建数据源的配置dbconfig.properties：</p>
 <pre><code>db.user=root
 db.password=123456
 db.driverClass=com.mysql.jdbc.Driver 
 </code></pre><p>3) 创建新的配置类MainConfigOfProfile：</p>
-<pre><code>@Configuration
-@PropertySource(value = &quot;classpath:/dbconfig.properties&quot;)
-public class MainConfigOfProfile implements EmbeddedValueResolverAware {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@PropertySource</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"classpath:/dbconfig.properties"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfProfile</span> <span class="token keyword">implements</span> <span class="token class-name">EmbeddedValueResolverAware</span> <span class="token punctuation">{</span>
 
-    @Value(&quot;${db.user}&quot;)
-    private String user;
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${db.user}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String user<span class="token punctuation">;</span>
 
-    private StringValueResolver valueResolver;
-    private String driverClass;
+    <span class="token keyword">private</span> StringValueResolver valueResolver<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String driverClass<span class="token punctuation">;</span>
 
-    @Override
-    public void setEmbeddedValueResolver(StringValueResolver resolver) {
-        this.valueResolver = resolver;
-        String driverClass = valueResolver.resolveStringValue(&quot;${db.driverClass}&quot;);
-        this.driverClass = driverClass;
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEmbeddedValueResolver</span><span class="token punctuation">(</span>StringValueResolver resolver<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>valueResolver <span class="token operator">=</span> resolver<span class="token punctuation">;</span>
+        String driverClass <span class="token operator">=</span> valueResolver<span class="token punctuation">.</span><span class="token function">resolveStringValue</span><span class="token punctuation">(</span><span class="token string">"${db.driverClass}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>driverClass <span class="token operator">=</span> driverClass<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
 
-    @Bean(&quot;testDataSource&quot;)
-    public DataSource dataSourceTest(@Value(&quot;${db.password}&quot;) String pwd) throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(user);
-        dataSource.setPassword(pwd);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test&quot;);
-        dataSource.setDriverClass(driverClass);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"testDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourceTest</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${db.password}"</span><span class="token punctuation">)</span> String pwd<span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>pwd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span>driverClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Bean(&quot;devDataSource&quot;)
-    public DataSource dataSourceDev() throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(user);
-        dataSource.setPassword(&quot;123456&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/school&quot;);
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"devDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourceDev</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/school"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Bean(&quot;proDataSource&quot;)
-    public DataSource dataSourcePro() throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(&quot;root&quot;);
-        dataSource.setPassword(&quot;123456&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/sell&quot;);
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"proDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourcePro</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/sell"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>上述，有三个不同环境的数据源，test，dev，pro数据源，使用了不同的方式来给数据源进行赋值。</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上述，有三个不同环境的数据源，test，dev，pro数据源，使用了不同的方式来给数据源进行赋值。</p>
 <p>4）创建新的测试类IoCTest_Profile:</p>
-<pre><code>public class IoCTest_Profile {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IoCTest_Profile</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfProfile.class);
-        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        for (String name : beanDefinitionNames) {
-            System.out.println(name);
-        }
-    }
-}
-</code></pre><p>5) 运行：</p>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> 
+        <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfProfile<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanDefinitionNames <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> beanDefinitionNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5) 运行：</p>
 <pre><code>mainConfigOfProfile
 testDataSource
 devDataSource
@@ -563,64 +567,65 @@ proDataSource
 </code></pre><p>说明数据源都已经注入到容器中了。</p>
 <hr>
 <p>现在我们需要根据不同的环境，来指定加载需要的配置。</p>
-<p>1)使用@Profile注解，是个属性、类加上一个标记的，标记这个属性或者类是属于这个环境的，只有激活了这个环境，才能被注册到容器中，默认激活default的环境，即@Profile(“default”）.</p>
+<p>1)使用@Profile注解，是给属性、类加上一个标记的，标记这个属性或者类是属于这个环境的，只有激活了这个环境，才能被注册到容器中，默认激活default的环境，即@Profile(“default”）.</p>
 <p>2)写在配置类上的@Profile，只能在该环境激活的情况下，整个配置类才能起作用，不管配置类里面的Bean是否是符合当前环境。</p>
 <p>3）没有标记环境的bean，在任何环境下都是加载的</p>
 <p><strong>验证：</strong></p>
 <p>1) 在配置类MainConfigOfProfile中，给三个数据源加上标记：</p>
-<pre><code>@Configuration
-@PropertySource(value = &quot;classpath:/dbconfig.properties&quot;)
-public class MainConfigOfProfile implements EmbeddedValueResolverAware {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@PropertySource</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"classpath:/dbconfig.properties"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfProfile</span> <span class="token keyword">implements</span> <span class="token class-name">EmbeddedValueResolverAware</span> <span class="token punctuation">{</span>
 
-    @Value(&quot;${db.user}&quot;)
-    private String user;
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${db.user}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String user<span class="token punctuation">;</span>
 
-    private StringValueResolver valueResolver;
-    private String driverClass;
+    <span class="token keyword">private</span> StringValueResolver valueResolver<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String driverClass<span class="token punctuation">;</span>
 
-    @Override
-    public void setEmbeddedValueResolver(StringValueResolver resolver) {
-        this.valueResolver = resolver;
-        String driverClass = valueResolver.resolveStringValue(&quot;${db.driverClass}&quot;);
-        this.driverClass = driverClass;
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEmbeddedValueResolver</span><span class="token punctuation">(</span>StringValueResolver resolver<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>valueResolver <span class="token operator">=</span> resolver<span class="token punctuation">;</span>
+        String driverClass <span class="token operator">=</span> valueResolver<span class="token punctuation">.</span><span class="token function">resolveStringValue</span><span class="token punctuation">(</span><span class="token string">"${db.driverClass}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>driverClass <span class="token operator">=</span> driverClass<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
 
-    @Profile(&quot;test&quot;)
-    @Bean(&quot;testDataSource&quot;)
-    public DataSource dataSourceTest(@Value(&quot;${db.password}&quot;) String pwd) throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(user);
-        dataSource.setPassword(pwd);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test&quot;);
-        dataSource.setDriverClass(driverClass);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Profile</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"testDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourceTest</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${db.password}"</span><span class="token punctuation">)</span> String pwd<span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>pwd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span>driverClass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Profile(&quot;dev&quot;)
-    @Bean(&quot;devDataSource&quot;)
-    public DataSource dataSourceDev() throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(user);
-        dataSource.setPassword(&quot;123456&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/school&quot;);
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Profile</span><span class="token punctuation">(</span><span class="token string">"dev"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"devDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourceDev</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/school"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Profile(&quot;pro&quot;)
-    @Bean(&quot;proDataSource&quot;)
-    public DataSource dataSourcePro() throws PropertyVetoException {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(&quot;root&quot;);
-        dataSource.setPassword(&quot;123456&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/sell&quot;);
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        return dataSource;
-    }
+    <span class="token annotation punctuation">@Profile</span><span class="token punctuation">(</span><span class="token string">"pro"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"proDataSource"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSourcePro</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> PropertyVetoException <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/sell"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>2) 设置当前的环境：</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 设置当前的环境：</p>
 <p><strong>方法一：</strong>  </p>
 <p> 配置虚拟机的运行参数。</p>
 <p>-Dspring.profiles.active=test</p>
@@ -636,28 +641,29 @@ devDataSource
 </code></pre><p>此时，容器中只有devDataSource数据源了。</p>
 <p><strong>方法二：</strong>  </p>
 <p>使用无参数的AnnotationConfigApplicationContext容器。</p>
-<pre><code>public class IoCTest_Profile {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IoCTest_Profile</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        //1.无参数
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        //2.设置环境,这里激活了test和dev
-        applicationContext.getEnvironment().setActiveProfiles(&quot;test&quot;,&quot;dev&quot;);
-        //3.设置配置类
-        applicationContext.register(MainConfigOfProfile.class);
-        //4.刷新容器
-        applicationContext.refresh();
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//1.无参数</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> 
+        <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//2.设置环境,这里激活了test和dev</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setActiveProfiles</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span><span class="token string">"dev"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3.设置配置类</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>MainConfigOfProfile<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//4.刷新容器</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        for (String name : beanDefinitionNames) {
-            System.out.println(name);
-        }
-    }
-}
-
-</code></pre><p>运行结果：</p>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanDefinitionNames <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> beanDefinitionNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行结果：</p>
 <pre><code>mainConfigOfProfile
 testDataSource
 devDataSource
@@ -1103,10 +1109,11 @@ devDataSource
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试被问烂的 Spring IOC(求求你别再问了)
-广义的Ioc1）IoC(Inversion of Control) 控制反转，即“不用打电话过来，我们会打给你”。
-两种实现： 依赖查找（DL）和 依赖注入（DI）。
-IoC 和 DI </div>
+                    <div class="summary">
+                      
+                                面试被问烂的Spring_IOC
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-18
@@ -1151,9 +1158,11 @@ IoC 和 DI </div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)
-自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件，A</div>
+                    <div class="summary">
+                       
+                                使用Spring容器底层的一些组件
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
@@ -1333,7 +1342,7 @@ IoC 和 DI </div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

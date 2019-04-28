@@ -477,118 +477,123 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Servlet3.0与SpringMVC的整合，永久告别web.xml的配置文件啦~~<br><a id="more"></a></p>
-<h3 id="创建maven-web工程"><a href="#创建maven-web工程" class="headerlink" title="创建maven-web工程"></a>创建maven-web工程</h3><p>如果大家对idea创建maven-web工程不熟悉的话，去看我的另一篇博客<a href="https://gakkil.top/2018/10/29/idea%E5%88%9B%E5%BB%BAmaven-web%E5%B7%A5%E7%A8%8B/" target="_blank" rel="noopener">idea创建maven-web工程</a></p>
-<p><img src="/images/QQ截图20181029201934.png" style="width:50%"></p>
+                <p>Servlet3.0与SpringMVC的整合，永久告别web.xml的配置文件啦~~</p>
+<h3 id="创建maven-web工程"><a href="#创建maven-web工程" class="headerlink" title="创建maven-web工程"></a>创建maven-web工程</h3><p>如果大家对idea创建maven-web工程不熟悉的话，去看我的另一篇博客<a href="/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/">idea创建maven-web工程</a></p>
+<p><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029201934.png" style="width:50%"></p>
 <h3 id="打开pom-xml文件"><a href="#打开pom-xml文件" class="headerlink" title="打开pom.xml文件"></a>打开pom.xml文件</h3><p>添加两个依赖，Springmvc和servlet的依赖</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-            &lt;version&gt;4.1.9.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-        &lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
-            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
-            &lt;version&gt;3.1.0&lt;/version&gt;  &lt;!-- 3.0以上的版本都可以--&gt;
-            &lt;scope&gt;provided&lt;/scope&gt;   &lt;!-- 因为Tomcat容器中有servlet的jar，所以打成war包的时候，不需要这个--&gt;
-        &lt;/dependency&gt;
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+    &lt;version&gt;4.1.9.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+    &lt;version&gt;3.1.0&lt;/version&gt;  &lt;!-- 3.0以上的版本都可以--&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;   &lt;!-- 因为Tomcat容器中有servlet的jar，所以打成war包的时候，不需要这个--&gt;
+&lt;/dependency&gt;
 </code></pre><h3 id="现在开始整合SpringMVC开发。打开Spring的官网。"><a href="#现在开始整合SpringMVC开发。打开Spring的官网。" class="headerlink" title="现在开始整合SpringMVC开发。打开Spring的官网。"></a>现在开始整合SpringMVC开发。打开Spring的官网。</h3><p>找到相关的文档处<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#spring-web" target="_blank" rel="noopener">Spring-web</a></p>
 <p>我们能发现在servlet3.0以后，官网推不再使用web.xml开发，直接使用java的配置类来替代web.xml文件。</p>
 <p>我们只需要编写一个类实现<strong>WebApplicationInitializer</strong>接口，就相当于web.xml文件了。</p>
-<pre><code>public class MyWebApplicationInitializer implements WebApplicationInitializer {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyWebApplicationInitializer</span> <span class="token keyword">implements</span> <span class="token class-name">WebApplicationInitializer</span> <span class="token punctuation">{</span>
 
-    @Override
-    public void onStartup(ServletContext servletCxt) {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onStartup</span><span class="token punctuation">(</span>ServletContext servletCxt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        // Load Spring web application configuration
-        AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
-        ac.register(AppConfig.class);
-        ac.refresh();
+        <span class="token comment" spellcheck="true">// Load Spring web application configuration</span>
+        AnnotationConfigWebApplicationContext ac <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigWebApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ac<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>AppConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ac<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Create and register the DispatcherServlet
-        DispatcherServlet servlet = new DispatcherServlet(ac);
-        ServletRegistration.Dynamic registration = servletCxt.addServlet(&quot;app&quot;, servlet);
-        registration.setLoadOnStartup(1);
-        registration.addMapping(&quot;/app/*&quot;);
-    }
-}
-</code></pre><p>容器启动后，会执行这个实现WebApplicationInitializer接口的实现类。然后执行onStartup()方法。</p>
+        <span class="token comment" spellcheck="true">// Create and register the DispatcherServlet</span>
+        DispatcherServlet servlet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DispatcherServlet</span><span class="token punctuation">(</span>ac<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ServletRegistration<span class="token punctuation">.</span>Dynamic registration <span class="token operator">=</span> servletCxt<span class="token punctuation">.</span><span class="token function">addServlet</span><span class="token punctuation">(</span><span class="token string">"app"</span><span class="token punctuation">,</span> servlet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registration<span class="token punctuation">.</span><span class="token function">setLoadOnStartup</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registration<span class="token punctuation">.</span><span class="token function">addMapping</span><span class="token punctuation">(</span><span class="token string">"/app/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>容器启动后，会执行这个实现WebApplicationInitializer接口的实现类。然后执行onStartup()方法。</p>
 <p>在该方法中，创建了注解式配置应用上下文，传入spring的配置文件。然后向该容器中注入DispatcherServlet，来完成SpringMVC的前端控制器。</p>
 <p><font color="red"><strong>重点</strong></font>:</p>
 <p>那为啥实现了WebApplicationInitializer接口的实现类，在容器启动时调用呢？</p>
 <p>首先打开这个接口：</p>
-<pre><code>public interface WebApplicationInitializer {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">WebApplicationInitializer</span> <span class="token punctuation">{</span>
 
-    /**
+    <span class="token comment" spellcheck="true">/**
      * Configure the given {@link ServletContext} with any servlets, filters, listeners
      * context-params and attributes necessary for initializing this web application. See
      * examples {@linkplain WebApplicationInitializer above}.
      * @param servletContext the {@code ServletContext} to initialize
      * @throws ServletException if any call against the given {@code ServletContext}
      * throws a {@code ServletException}
-     */
-    void onStartup(ServletContext servletContext) throws ServletException;
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">onStartup</span><span class="token punctuation">(</span>ServletContext servletContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">;</span>
 
-}
-</code></pre><p>只有一个方法，看不出什么头绪。但是，在这个包下有另外一个类，SpringServletContainerInitializer。它的实现如下：</p>
-<pre><code>@HandlesTypes(WebApplicationInitializer.class)
-public class SpringServletContainerInitializer implements ServletContainerInitializer {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>只有一个方法，看不出什么头绪。但是，在这个包下有另外一个类，SpringServletContainerInitializer。它的实现如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@HandlesTypes</span><span class="token punctuation">(</span>WebApplicationInitializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringServletContainerInitializer</span> <span class="token keyword">implements</span> <span class="token class-name">ServletContainerInitializer</span> <span class="token punctuation">{</span>
 
-    @Override
-    public void onStartup(Set&lt;Class&lt;?&gt;&gt; webAppInitializerClasses, ServletContext servletContext)
-            throws ServletException {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onStartup</span><span class="token punctuation">(</span>Set<span class="token operator">&lt;</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">>></span> webAppInitializerClasses<span class="token punctuation">,</span> ServletContext servletContext<span class="token punctuation">)</span>
+            <span class="token keyword">throws</span> ServletException <span class="token punctuation">{</span>
 
-        List&lt;WebApplicationInitializer&gt; initializers = new LinkedList&lt;WebApplicationInitializer&gt;();
+        List<span class="token operator">&lt;</span>WebApplicationInitializer<span class="token operator">></span> initializers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span>WebApplicationInitializer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        if (webAppInitializerClasses != null) {
-            for (Class&lt;?&gt; waiClass : webAppInitializerClasses) {
-                // Be defensive: Some servlet containers provide us with invalid classes,
-                // no matter what @HandlesTypes says...
-                if (!waiClass.isInterface() &amp;&amp; !Modifier.isAbstract(waiClass.getModifiers()) &amp;&amp;
-                        WebApplicationInitializer.class.isAssignableFrom(waiClass)) {
-                    try {
-                        initializers.add((WebApplicationInitializer) waiClass.newInstance());
-                    }
-                    catch (Throwable ex) {
-                        throw new ServletException(&quot;Failed to instantiate WebApplicationInitializer class&quot;, ex);
-                    }
-                }
-            }
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>webAppInitializerClasses <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> waiClass <span class="token operator">:</span> webAppInitializerClasses<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Be defensive: Some servlet containers provide us with invalid classes,</span>
+                <span class="token comment" spellcheck="true">// no matter what @HandlesTypes says...</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>waiClass<span class="token punctuation">.</span><span class="token function">isInterface</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Modifier<span class="token punctuation">.</span><span class="token function">isAbstract</span><span class="token punctuation">(</span>waiClass<span class="token punctuation">.</span><span class="token function">getModifiers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                        WebApplicationInitializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>waiClass<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                        initializers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">(</span>WebApplicationInitializer<span class="token punctuation">)</span> waiClass<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ServletException</span><span class="token punctuation">(</span><span class="token string">"Failed to instantiate WebApplicationInitializer class"</span><span class="token punctuation">,</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
 
-        if (initializers.isEmpty()) {
-            servletContext.log(&quot;No Spring WebApplicationInitializer types detected on classpath&quot;);
-            return;
-        }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>initializers<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            servletContext<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"No Spring WebApplicationInitializer types detected on classpath"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        AnnotationAwareOrderComparator.sort(initializers);
-        servletContext.log(&quot;Spring WebApplicationInitializers detected on classpath: &quot; + initializers);
+        AnnotationAwareOrderComparator<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>initializers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        servletContext<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Spring WebApplicationInitializers detected on classpath: "</span> <span class="token operator">+</span> initializers<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        for (WebApplicationInitializer initializer : initializers) {
-            initializer.onStartup(servletContext);
-        }
-    }
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>WebApplicationInitializer initializer <span class="token operator">:</span> initializers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            initializer<span class="token punctuation">.</span><span class="token function">onStartup</span><span class="token punctuation">(</span>servletContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>这个类就比较有意思了，先不管其他的，读一下这段代码，可以得到这样的意思。</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这个类就比较有意思了，先不管其他的，读一下这段代码，可以得到这样的意思。</p>
 <p>先判断webAppInitializerClasses这个Set是否为空。如果不为空的话，找到这个set中不是接口，不是抽象类，并且是WebApplicationInitializer接口实现类的类，将它们保存到list中。当这个list为空的时候，直接return。不为空的话就按照一定的顺序排序，并将它们按照一定的顺序实例化。调用<strong>其onStartup方法执行</strong>。到这里，就可以解释WebApplicationInitializer实现类的工作过程了。</p>
 <p><strong>但是，在web项目运行的时候，SpringServletContainerInitializer这个类又是怎样被调用的呢？</strong></p>
 <p>再看被它实现的ServletContainerInitializer这个接口<br>它只有一个接口方法onStartup()，通过它就可以解释SpringServletContainerInitializer是如何被调用的。它的内容如下：</p>
-<pre><code>package javax.servlet;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">;</span>
 
-import java.util.Set;
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Set<span class="token punctuation">;</span>
 
-public interface ServletContainerInitializer {
-    void onStartup(Set&lt;Class&lt;?&gt;&gt; var1, ServletContext var2) throws ServletException;
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ServletContainerInitializer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">onStartup</span><span class="token punctuation">(</span>Set<span class="token operator">&lt;</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">>></span> var1<span class="token punctuation">,</span> ServletContext var2<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">;</span>
 
-}
-</code></pre><p>首先，这个接口是javax.servlet下的，官方的解释是这样的：</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>首先，这个接口是javax.servlet下的，官方的解释是这样的：</p>
 <p>为了支持可以不使用web.xml。提供了ServletContainerInitializer，它可以通过SPI机制。</p>
 <p>当启动web容器的时候，会自动到添加的相应jar包下找到META-INF/services/javax.servlet.ServletContainerInitializer文件。</p>
 <p>它的内容为ServletContainerInitializer实现类的全路径，将它们实例化。</p>
-<p>既然这样的话，那么SpringServletContainerInitializer作为ServletContainerInitializer的实现类，它的jar包下也应该有相应的文件。<br><img src="/images/QQ截图20181029211845.png"></p>
-<p>哈，现在就可以解释清楚了。首先，SpringServletContainerInitializer作为ServletContainerInitializer的实现类，通过SPI机制，在web容器加载的时候会自动的被调用。（这个类上还有一个注解@HandlesTypes，它的作用是将感兴趣的一些类注入到ServletContainerInitializer）， 而这个类的方法又会扫描找到WebApplicationInitializer的实现类，调用它的onStartup方法，从而起到启动web.xml相同的作用。</p>
+<p>既然这样的话，那么SpringServletContainerInitializer作为ServletContainerInitializer的实现类，它的jar包下也应该有相应的文件。<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029211845.png"></p>
+<p>哈，现在就可以解释清楚了。首先，SpringServletContainerInitializer作为ServletContainerInitializer的实现类，通过<strong>SPI机制</strong>，在web容器加载的时候会自动的被调用。（这个类上还有一个注解@HandlesTypes，它的作用是将感兴趣的一些类注入到ServletContainerInitializer）， 而这个类的方法又会扫描找到WebApplicationInitializer的实现类，调用它的onStartup方法，从而起到启动web.xml相同的作用。</p>
 <hr>
 <p>等价于web.xml文件：</p>
 <pre><code>&lt;web-app&gt;
@@ -622,8 +627,8 @@ public interface ServletContainerInitializer {
 &lt;/web-app&gt;
 </code></pre><p>总结：</p>
 <p>1）servlet3.0以后的Web容器在启动的时候，会扫描每个jar包下的META-INF/services/javax.servlet.ServletContainerInitializer文件</p>
-<p>2）加载这个文件指定的类(实现了ServletContainerInitializer接口)，并调用这个接口的onStartup()方法。<br>void onStartup(Set&lt;Class&lt;?&gt;&gt; var1, ServletContext var2) throws ServletException;</p>
-<p>3）现在，我们在pom.xml文件中加入了spring-mvc的依赖，其中有一个jar：<br><img src="/images/QQ截图20181029214152.png" style="width:50%"></p>
+<p>2）加载这个文件指定的类(实现了ServletContainerInitializer接口类)，并调用这个接口的onStartup()方法。<br>void onStartup(Set&lt;Class&lt;?&gt;&gt; var1, ServletContext var2) throws ServletException;</p>
+<p>3）现在，我们在pom.xml文件中加入了spring-mvc的依赖，其中有一个jar：<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029214152.png" style="width:50%"></p>
 <p>在该META-INF/services/javax.servlet.ServletContainerInitializer文件下，有一个：org.springframework.web.SpringServletContainerInitializer的全路径。</p>
 <p>打开SpringServletContainerInitializer类。</p>
 <pre><code>@HandlesTypes(WebApplicationInitializer.class)
@@ -654,7 +659,8 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 </code></pre><p>最后调用WebApplicationInitializer的<br>onStartup(ServletContext servletContext) throws ServletException;</p>
 <hr>
 <p>我们可以直接实现WebApplicationInitializer接口，像Spring官网一样整合SpringMVC。</p>
-<p>但是，这里，我们来看看WebApplicationInitializer的继承体系：<br>会发现有三个抽象类：<br>AbstractContextLoaderInitializer<br>AbstractDispatcherServletInitializer<br>AbstractAnnotationConfigDispatcherServletInitializer</p>
+<p>但是，这里，我们来看看<strong>WebApplicationInitializer的继承体系</strong>：<br>会发现有三个抽象类：<br><code>AbstractContextLoaderInitializer</code><br><code>AbstractDispatcherServletInitializer</code><br><code>AbstractAnnotationConfigDispatcherServletInitializer</code></p>
+<hr>
 <p>AbstractContextLoaderInitializer：</p>
 <pre><code>public abstract class AbstractContextLoaderInitializer implements WebApplicationInitializer {
 
@@ -809,8 +815,8 @@ public class RootConfig {
 //禁用默认的规则(扫描所有)：useDefaultFilters = false
 public class AppConfig {
 }
-</code></pre><p>这样配置，是根据Spring的官方给的建议：<br><img src="/images/QQ截图20181030134334.png" style="width:50%"></p>
-<p>父容器:配置@service、@repository，数据连接池，事务管理等。<br>子容器：配置@Controller层，视图解析器，映射配置。</p>
+</code></pre><p>这样配置，是根据Spring的官方给的建议：<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030134334.png" style="width:50%"></p>
+<p>父容器:   配置@service、@repository，数据连接池，事务管理等。<br>子容器：配置@Controller层，视图解析器，映射配置。</p>
 <p>3）在com.liuzhuo.service包下，创建HelloService：</p>
 <pre><code>@Service
 public class HelloService {
@@ -833,9 +839,9 @@ public class HelloController {
         return hello;
     }
 }
-</code></pre><p>整体的项目结构：<br><img src="/images/QQ截图20181030134808.png" style="width:50%"></p>
+</code></pre><p>整体的项目结构：<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030134808.png" style="width:50%"></p>
 <p>5) 启动项目，运行</p>
-<p>浏览器输入：<br><code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181030134940.png"></p>
+<p>浏览器输入：<br><code>http://localhost:8080/hello</code><br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030134940.png"></p>
 <p>到现在为止，Servlet3.0与SpringMVC整合完成。</p>
 <h3 id="定性配置SpringMVC"><a href="#定性配置SpringMVC" class="headerlink" title="定性配置SpringMVC"></a>定性配置SpringMVC</h3><p>打开官网，查看 <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config" target="_blank" rel="noopener">MVC Config</a>章节。</p>
 <p>开启MVC的高级功能，需要@EnableWebMvc注解。</p>
@@ -855,7 +861,7 @@ public class WebConfig {
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;&gt;
 
-
+    &lt;mvc:annotation-driven/&gt;
 
 &lt;/beans&gt;
 </code></pre><p>只有开启了@EnableWebMvc或者<code>&lt;mvc:annotation-driven/&gt;</code>才能定制SpringMVC的其他信息。</p>
@@ -866,7 +872,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     // Implement configuration methods...
 }
-</code></pre><p>但是，这样，我们就必须实现其中的所有方法了，为了方便，我们可以继承WebMvcConfigurerAdapter 适配器，其中所有的方法帮我们实现了，只是返回空方法。然后我们通过重写自己想要定制的方法来完成自身的需求。</p>
+</code></pre><p>但是，这样，我们就必须实现其中的所有方法了，为了方便，我们可以继承：WebMvcConfigurerAdapter 适配器，其中所有的方法帮我们实现了，只是返回空方法。然后我们通过重写自己想要定制的方法来完成自身的需求。</p>
 <h4 id="定制视图解析器"><a href="#定制视图解析器" class="headerlink" title="定制视图解析器"></a>定制视图解析器</h4><p>1）改写我们的AppConfig配置类：</p>
 <p>添加@EnableWebMvc、并且继承WebMvcConfigurerAdapter抽象类</p>
 <pre><code>@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
@@ -882,21 +888,23 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 }
 </code></pre><p>2）添加自定义的视图解析器</p>
 <p>都是在AppConfig类中，直接重写方法</p>
-<pre><code>    //配置视图解析器
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        //定制jsp的视图解析器
-        //参数一：视图的前缀路径
-        //参数二：视图的后缀名
-        registry.jsp(&quot;WEB-INF/views/&quot;, &quot;.jsp&quot;);
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//配置视图解析器</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureViewResolvers</span><span class="token punctuation">(</span>ViewResolverRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//定制jsp的视图解析器</span>
+        <span class="token comment" spellcheck="true">//参数一：视图的前缀路径</span>
+        <span class="token comment" spellcheck="true">//参数二：视图的后缀名</span>
+        registry<span class="token punctuation">.</span><span class="token function">jsp</span><span class="token punctuation">(</span><span class="token string">"WEB-INF/views/"</span><span class="token punctuation">,</span> <span class="token string">".jsp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-</code></pre><p>3）在HelloController中</p>
-<pre><code>    @RequestMapping(&quot;/suc&quot;)
-    public String sucess() {
-        return &quot;sucess&quot;;
-    }
-</code></pre><p>4) 在WEB-INF/views下，添加一个sucess.jsp的文件</p>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3）在HelloController中</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/suc"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">sucess</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"sucess"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4) 在WEB-INF/views下，添加一个sucess.jsp的文件</p>
 <pre><code>&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -907,30 +915,31 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>5) 运行项目</p>
-<p>在浏览器中输入：<code>http://localhost:8080/suc</code><br><img src="/images/QQ截图20181030150751.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/suc</code><br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030150751.png"></p>
 <p>成功定制了jsp的视图解析器了。</p>
 <hr>
 <h4 id="定制静态资源"><a href="#定制静态资源" class="headerlink" title="定制静态资源"></a>定制静态资源</h4><p>没有配置之前：</p>
 <p>1）在webapp根目录下：</p>
-<p>放入一张图片，随便一张就行。<br><img src="/images/QQ截图20181030151708.png" style="width:50%"></p>
-<p>2）在index.jsp中，添加img标签<br><img src="/images/QQ截图20181030151855.png" style="width:50%"></p>
+<p>放入一张图片，随便一张就行。<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030151708.png" style="width:50%"></p>
+<p>2）在index.jsp中，添加img标签<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030151855.png" style="width:50%"></p>
 <p>3) 启动项目</p>
-<p>浏览器中输入：<code>http://localhost:8080</code><br><img src="/images/QQ截图20181030152023.png" style="width:50%"></p>
+<p>浏览器中输入：<code>http://localhost:8080</code><br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030152023.png" style="width:50%"></p>
 <p>发现，我们的照片出不来，这是为啥呢？这是因为，我们的静态资源也会被DispatchServlet拦截。</p>
 <p>在控制台中能发现：</p>
 <pre><code>30-Oct-2018 15:20:00.904 警告 [http-nio-8080-exec-4] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/gakki.jpg] in DispatcherServlet with name &#39;dispatcher&#39;
-</code></pre><p><img src="/images/QQ截图20181030152314.png"></p>
+</code></pre><p><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030152314.png"></p>
 <p>发现 /gakki.jpg 也被DispatchServlet拦截了。</p>
 <p>现在，我们需要不让DispatchServlet拦截我们的静态资源，使用Tomcat容器来加载静态资源。</p>
 <p>4）在AppConfig下：</p>
-<pre><code>    //静态资源访问
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        //默认是匹配路径：/**
-        configurer.enable();
-    }
-</code></pre><p>相等于xml中的：<code>&lt;mvc:default-servlet-handler/&gt;</code></p>
-<p>5) 启动项目<br><img src="/images/QQ截图20181030153052.png"></p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//静态资源访问</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureDefaultServletHandling</span><span class="token punctuation">(</span>DefaultServletHandlerConfigurer configurer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//默认是匹配路径：/**</span>
+        configurer<span class="token punctuation">.</span><span class="token function">enable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>相等于xml中的：<code>&lt;mvc:default-servlet-handler/&gt;</code></p>
+<p>5) 启动项目<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030153052.png"></p>
 <hr>
 <h4 id="定制拦截器"><a href="#定制拦截器" class="headerlink" title="定制拦截器"></a>定制拦截器</h4><p>1）在com.liuzhuo.interceptors在，创建MyInterceptor，实现HandlerInterceptor接口</p>
 <pre><code>//自定义的拦截器
@@ -967,9 +976,9 @@ public class MyInterceptor implements HandlerInterceptor {
         registry.addInterceptor(new MyInterceptor()).addPathPatterns(&quot;/**&quot;);
     }
 </code></pre><p>3) 启动项目</p>
-<p>在浏览器中输入：<code>http://localhost:8080/suc</code><br><img src="/images/QQ截图20181030155103.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/suc</code><br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030155103.png"></p>
 <p>拦截成功。</p>
-<p>如果还想定制其他功能，请查看<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config" target="_blank" rel="noopener">Spring的官方文档</a>。<br><img src="/images/QQ截图20181030155351.png"></p>
+<p>如果还想定制其他功能，请查看<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config" target="_blank" rel="noopener">Spring的官方文档</a>。<br><img src="http://ppab1ed33.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181030155351.png"></p>
 
             </div>
             <hr/>
@@ -1411,8 +1420,11 @@ public class MyInterceptor implements HandlerInterceptor {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">解决IntelliJ IDEA 控制台输出乱码问题
-找到安装Intellij idea目录bin下面的idea.exe.vmoptions和idea64.exe.vmoptions文件，我的安装目录是D:\IntelliJ IDEA\Int</div>
+                    <div class="summary">
+                      
+                                解决IntelliJ IDEA 控制台输出乱码问题
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-29
@@ -1455,31 +1467,38 @@ public class MyInterceptor implements HandlerInterceptor {
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/28/servlet3-0/">
+                <a href="/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Servlet3.0">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="idea创建maven-web工程">
                         
-                        <span class="card-title">Servlet3.0</span>
+                        <span class="card-title">idea创建maven-web工程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注解，还有运行时的组件式插拔开发。
-注意： ser</div>
+                    <div class="summary">
+                       
+                                idea创建maven-web工程
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-28
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/servlet3-0/" class="post-category" target="_blank">
-                                    servlet3.0
+                            <a href="/categories/idea/" class="post-category" target="_blank">
+                                    idea
                                 </a>
                             
-                            <a href="/categories/servlet3-0/web/" class="post-category" target="_blank">
+                            <a href="/categories/idea/maven/" class="post-category" target="_blank">
+                                    maven
+                                </a>
+                            
+                            <a href="/categories/idea/maven/web/" class="post-category" target="_blank">
                                     web
                                 </a>
                             
@@ -1490,12 +1509,16 @@ public class MyInterceptor implements HandlerInterceptor {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/servlet3-0/" target="_blank">
-                        <span class="chip bg-color">servlet3.0</span>
-                    </a>
-                    
                     <a href="/tags/web/" target="_blank">
                         <span class="chip bg-color">web</span>
+                    </a>
+                    
+                    <a href="/tags/idea/" target="_blank">
+                        <span class="chip bg-color">idea</span>
+                    </a>
+                    
+                    <a href="/tags/maven/" target="_blank">
+                        <span class="chip bg-color">maven</span>
                     </a>
                     
                 </div>
@@ -1654,7 +1677,7 @@ public class MyInterceptor implements HandlerInterceptor {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

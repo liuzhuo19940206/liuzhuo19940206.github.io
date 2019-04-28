@@ -7,9 +7,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="spring_annotation_day_02, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
-今天，学习包的扫描
+今天，学习包扫描的功能。
 接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。
-接下来，我们看看包扫描怎么配置，因为">
+接下来，我们看看包扫描怎么配置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,14 +446,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        8 分
                     </div>
                     
                 
@@ -470,266 +470,300 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天，学习包的扫描<br><a id="more"></a></p>
+<p>今天，学习包扫描的功能。<br><a id="more"></a></p>
 <p>接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。</p>
 <p>接下来，我们看看包扫描怎么配置，因为我们不可能给每个类都配置，那样太花时间和精力，所以我们需要包扫描的配置，来自动帮我们把需要的bean对象注入到容器中。</p>
 <h3 id="一：xml版的包扫描"><a href="#一：xml版的包扫描" class="headerlink" title="一：xml版的包扫描"></a>一：xml版的包扫描</h3><hr>
 <p>注意：这里在Bean.xml文件中需要配置命名空间,加上context的命名空间.</p>
-<pre><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-         http://www.springframework.org/schema/beans
-         http://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-</code></pre><p>主要加入了xmlns:context=····和xsi:中的两个context(看结尾).</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>beans xmlns<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/beans"</span>
+       xmlns<span class="token operator">:</span>context<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/context"</span>
+       xmlns<span class="token operator">:</span>xsi<span class="token operator">=</span><span class="token string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       xsi<span class="token operator">:</span>schemaLocation<span class="token operator">=</span>"
+         http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>beans
+         http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>beans<span class="token operator">/</span>spring<span class="token operator">-</span>beans<span class="token punctuation">.</span>xsd
+         http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context
+         http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context<span class="token operator">/</span>spring<span class="token operator">-</span>context<span class="token punctuation">.</span>xsd"<span class="token operator">></span>
+</code></pre>
+<p>主要加入了xmlns:context=····和xsi:中的两个context(看结尾).</p>
 <p>bean.xml配置文件加入了：</p>
-<pre><code>    &lt;!--包扫描、只要标注了@Controller、@Service、@Repository、@Component都会自动注入到容器中--&gt;
-    &lt;!-- base-package包名，在该包下的子包也会被扫描--&gt;
-    &lt;context:component-scan base-package=&quot;com.liuzhuo&quot;/&gt;
-</code></pre><p>现在将bean.xml中的person配置注解掉。</p>
-<pre><code>    &lt;!--以前的开发模式，使用配置文件--&gt;
-    &lt;!--&lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;
-        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;
-    &lt;/bean&gt;--&gt;
-</code></pre><p>在Person类上面加入@Component注解。</p>
-<pre><code>@Component
-public class Person 
-</code></pre><p>运行MainTest测试类：</p>
-<pre><code>  ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-  Person person = (Person) applicationContext.getBean(&quot;person&quot;);
-  System.out.println(person);
-</code></pre><p>输出:</p>
+<pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>包扫描、只要标注了<span class="token annotation punctuation">@Controller</span>、<span class="token annotation punctuation">@Service</span>、<span class="token annotation punctuation">@Repository</span>、<span class="token annotation punctuation">@Component</span>都会自动注入到容器中<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> base<span class="token operator">-</span><span class="token keyword">package</span>包名，在该包下的子包也会被扫描<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan base<span class="token operator">-</span><span class="token keyword">package</span><span class="token operator">=</span><span class="token string">"com.liuzhuo"</span><span class="token operator">/</span><span class="token operator">></span>
+</code></pre>
+<p>现在将bean.xml中的person配置注解掉。</p>
+<pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>以前的开发模式，使用配置文件<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"person"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"com.liuzhuo.bean.Person"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"zhangsan"</span><span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"age"</span> value<span class="token operator">=</span><span class="token string">"18"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span><span class="token operator">--</span><span class="token operator">></span>
+</code></pre>
+<p>在Person类上面加入@Component注解。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> 
+</code></pre>
+<p>运行MainTest测试类：</p>
+<pre class=" language-java"><code class="language-java">  ClassPathXmlApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"bean.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Person person <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>输出:</p>
 <p><code>Person{name=&#39;null&#39;, age=null}</code>  </p>
 <p>说明包扫描成功!</p>
 <hr>
 <h3 id="二：java类版的包扫描"><a href="#二：java类版的包扫描" class="headerlink" title="二：java类版的包扫描"></a>二：java类版的包扫描</h3><hr>
 <p>首先将xml版本中的包扫描注解掉。</p>
-<p>在java配置类上加入@ComponentScan(value = “com.liuzhuo”)<br>value：就是扫描的具体包的路径。</p>
-<pre><code>    //配置类==配置文件
-    @Configuration   //告诉spring这是一个配置类，用来生成bean
-    @ComponentScan(value = &quot;com.liuzhuo&quot;) //包扫描
-    public class MainConfig {
+<p>在java配置类上加入<code>@ComponentScan(value = &quot;com.liuzhuo&quot;)</code><br>value：就是要扫描的具体包的路径。</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//配置类==配置文件</span>
+    <span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+    <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//包扫描</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span> <span class="token punctuation">{</span>
        ·····
-    }
-</code></pre><p>创建com.liuzhuo.controller、com.liuzhuo.service包、com.liuzhuo.dao<br>并创建相应的java类，BookController，BookService，BookDao。如下：</p>
-<p><img src="/images/20181013170247.png" style="width:50%;">  </p>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>创建<code>com.liuzhuo.controller</code>、<code>com.liuzhuo.service</code>、<code>com.liuzhuo.dao包</code><br>并创建相应的java类，BookController，BookService，BookDao。如下：</p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181013170247.png" style="width:50%;">  </p>
 <p>并在相应的类上面标注相应的注解。</p>
-<pre><code>@Controller
-public class BookController {
-}
------------------------------
-@Service
-public class BookService {
-}
------------------------------
-@Repository
-public class BookDao {
-}
-</code></pre><p>主要是@Controller、@Service、@Repository三个注解。  </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookController</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+<span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookDao</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>主要是@Controller、@Service、@Repository三个注解。  </p>
 <p>现在在test文件夹下面的jave包下创建测试类。</p>
 <p>com.liuzhuo.test.IocTest类。</p>
 <p>并在pom.xml文件中加入依赖</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;junit&lt;/groupId&gt;
-            &lt;artifactId&gt;junit&lt;/artifactId&gt;
-            &lt;version&gt;4.12&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre><p>在IocTest类中写入一下代码:</p>
-<pre><code>public class IocTest {
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>junit<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>junit<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">4.12</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>在IocTest类中写入一下代码:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig.class);
-        //获取所有已经注入到容器中的Bean的id.
-        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        for (String name : beanDefinitionNames) {
-            System.out.println(name);
-        }
-    }
-}
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取所有已经注入到容器中的Bean的id.</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanDefinitionNames <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> beanDefinitionNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>执行test01，结果：<br>除了spring内置的Bean对象外，主要有以下我们自己定义的Bean对象的id名</p>
-<pre><code>mainConfig
+</code></pre>
+<p>执行test01，结果：<br>除了spring内置的Bean对象外，主要有以下我们自己定义的Bean对象的id名</p>
+<pre class=" language-java"><code class="language-java">mainConfig
 bookController
 bookDao
 bookService
 person01
-</code></pre><hr>
+</code></pre>
+<hr>
 <h3 id="三、-ComponentScan的用法"><a href="#三、-ComponentScan的用法" class="headerlink" title="三、@ComponentScan的用法"></a>三、@ComponentScan的用法</h3><p>上面，我们已经初步了解了@ComponentScan包扫描的基本用法了。<br>点击@ComponentScan注解。我们会看到  </p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE})
-@Documented
-@Repeatable(ComponentScans.class)
-public @interface ComponentScan {
-    @AliasFor(&quot;basePackages&quot;)
-    String[] value() default {};
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Repeatable</span><span class="token punctuation">(</span>ComponentScans<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">ComponentScan</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span><span class="token string">"basePackages"</span><span class="token punctuation">)</span>
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
     ····
-}
-</code></pre><p>value这个字段，说明是一个字符串类型的数组。说明value值，我们可以填写多个值，数组的话，用大花括号来表示，{}.每个值用逗号，来隔开。</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>value这个字段，说明是一个字符串类型的数组。说明value值，我们可以填写多个值，数组的话，用大花括号来表示: <code>{ }</code> 。每个值用逗号:   <code>，</code> 来隔开。</p>
 <p>ps:提一个小技巧，在idea中，Alt+7可以查看这个类中所有的字段和方法。</p>
-<p>我们可以看到其中有一个includeFilters()的字段。<br><img src="/images/20181013173018.png" style="width:50%"></p>
-<p>ComponentScan.Filter[] includeFilters() default {};</p>
+<p>我们可以看到其中有一个includeFilters()的字段。<br><img src="http://pp4rmtx78.bkt.clouddn.com/20181013173018.png" style="width:50%"></p>
+<p>ComponentScan.Filter[]  includeFilters()  default {};</p>
 <p>看到includeFilters也是一个数组，类型是ComponentScan的内部类Filter。<br>点击Filter，发现也是一个注解.</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-    @Target({})
-    public @interface Filter {
-        FilterType type() default FilterType.ANNOTATION;
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>
+        FilterType <span class="token function">type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> FilterType<span class="token punctuation">.</span>ANNOTATION<span class="token punctuation">;</span>
 
-        @AliasFor(&quot;classes&quot;)
-        Class&lt;?&gt;[] value() default {};
+        <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span><span class="token string">"classes"</span><span class="token punctuation">)</span>
+        Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-        @AliasFor(&quot;value&quot;)
-        Class&lt;?&gt;[] classes() default {};
+        <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span>
+        Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">classes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-        String[] pattern() default {};
-    }
-</code></pre><p>发现有一个类型和字节码类的字段。</p>
-<p><strong>1.includeFilters</strong></p>
-<p>现在我们来使用这个includeFilters来在包扫描的时候，只扫描我们相要的类。</p>
-<pre><code>@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
-}) //包扫描
-</code></pre><p>type是来说明过滤的类型的，这里的类型是注解(FilterType.ANNOTATION)。</p>
-<pre><code>public enum FilterType {
-    ANNOTATION,
-    ASSIGNABLE_TYPE,
-    ASPECTJ,
-    REGEX,
-    CUSTOM;
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">pattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>发现有一个类型和字节码类的字段。</p>
+<h4 id="1-includeFilters"><a href="#1-includeFilters" class="headerlink" title="1.includeFilters"></a>1.includeFilters</h4><p>现在我们来使用这个includeFilters来在包扫描的时候，只扫描我们相要的类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> includeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>ANNOTATION<span class="token punctuation">,</span> classes <span class="token operator">=</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//包扫描</span>
+</code></pre>
+<p>type是来说明过滤的类型的，这里的类型是注解<code>(FilterType.ANNOTATION)</code>。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> FilterType <span class="token punctuation">{</span>
+    ANNOTATION<span class="token punctuation">,</span>
+    ASSIGNABLE_TYPE<span class="token punctuation">,</span>
+    ASPECTJ<span class="token punctuation">,</span>
+    REGEX<span class="token punctuation">,</span>
+    CUSTOM<span class="token punctuation">;</span>
 
-    private FilterType() {
-    }
-}
-</code></pre><p>总共有以上五个类型。<br>ANNOTATION：注解类型<br>ASSIGNABLE_TYPE：赋值类型</p>
+    <span class="token keyword">private</span> <span class="token function">FilterType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>总共有以上五个类型。<br>ANNOTATION：注解类型<br>ASSIGNABLE_TYPE：赋值类型</p>
 <hr>
-<p>运行test01类，发现结果还是</p>
-<pre><code>mainConfig
+<p>运行test01类，发现结果还是扫描了所有的注解。</p>
+<pre class=" language-java"><code class="language-java">mainConfig
 bookController
 bookDao
 bookService
 person01
-</code></pre><p>是配置出现问题了嘛？不是，是因为我们忘记了，包扫描，默认是配置是扫描所有，所以，我们只需要将默认的配置设置为false就好了。<br>useDefaultFilters = false</p>
-<pre><code>@Configuration   //告诉spring这是一个配置类，用来生成bean
-@ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
-},useDefaultFilters = false) //包扫描
-public class MainConfig
-</code></pre><p>结果为：</p>
-<pre><code>mainConfig
+</code></pre>
+<p>是配置出现问题了嘛？<font color="red">不是，是因为我们忘记了，包扫描，默认的配置是扫描所有，所以，我们只需要将默认的配置设置为false就好了</font>。<br>useDefaultFilters = false</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> includeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>ANNOTATION<span class="token punctuation">,</span> classes <span class="token operator">=</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>useDefaultFilters <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//包扫描</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span>
+</code></pre>
+<p>结果为：</p>
+<pre class=" language-java"><code class="language-java">mainConfig
 bookController
 person01
-</code></pre><p><strong>2.excludeFilters</strong></p>
-<p>excludeFilters：是和includeFilters对着来的，是排除哪些类不扫描。</p>
+</code></pre>
+<h4 id="2-excludeFilters"><a href="#2-excludeFilters" class="headerlink" title="2.excludeFilters"></a>2.excludeFilters</h4><p>excludeFilters：是和includeFilters对着来的，<strong>是排除哪些类不扫描。</strong></p>
 <p>具体的配置情况如下：</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@ComponentScan(value = &quot;com.liuzhuo&quot;, excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
-}) //包扫描
-public class MainConfig
-</code></pre><p>输出结果为：将@Controller注解的类就没有扫描。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> excludeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>ANNOTATION<span class="token punctuation">,</span> classes <span class="token operator">=</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//包扫描</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span>
+</code></pre>
+<p>输出结果为：<code>@Controller注解</code>的类就没有被扫描。</p>
 <pre><code>mainConfig
 bookDao
 bookService
 person01
-</code></pre><p>总结：<br>@ComponentScan value:指定要扫描的包<br>jdk1.8中@ComponentScan是可重复的，所以可以写两个@ComponentScan<br>不过，可以使用@ComponentScans来配置多个@ComponentScan<br>excludeFilters = Filter[]: 指定扫描的时候按照什么规则排除哪些组件<br>includeFilters = Filter[]: 指定扫描的时候只需要包含哪些组件<br>ps:includeFilters,需要将默认的配置设置为false。(useDefaultFilters = false)</p>
+</code></pre><h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><p>@ComponentScan value: 指定要扫描的包<br>jdk1.8中@ComponentScan是可重复的，所以可以写两个@ComponentScan<br>不过，可以使用@ComponentScans来配置多个@ComponentScan<br>excludeFilters = Filter[]: 指定扫描的时候按照什么规则排除哪些组件<br>includeFilters = Filter[]: 指定扫描的时候只需要包含哪些组件</p>
+<font color="red">ps: includeFilters , 需要将默认的包扫描设置为false。(useDefaultFilters = false)</font>
+
 <hr>
-<h3 id="四、详解Filter的类型"><a href="#四、详解Filter的类型" class="headerlink" title="四、详解Filter的类型"></a>四、详解Filter的类型</h3><p>FilterType.ANNOTATION        按照注解<br>FilterType.ASSIGNABLE_TYPE   按照给定的类型<br>FilterType.ASPECTJ           使用ASPECTJ表达式<br>FilterType.REGEX             使用正则表达式<br>FilterType.CUSTOM            使用自定义的规则</p>
-<p>更新MainConfig类:</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@ComponentScans(value = {
-        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})
-        }, useDefaultFilters = false)
-})
-public class MainConfig
-</code></pre><p>现在的输出结果为：(包含有@Controller注解的类)</p>
+<h3 id="四、详解Filter的类型"><a href="#四、详解Filter的类型" class="headerlink" title="四、详解Filter的类型"></a>四、详解Filter的类型</h3><pre><code>FilterType.ANNOTATION　　　     按照注解
+FilterType.ASSIGNABLE_TYPE     按照给定的类型
+FilterType.ASPECTJ　　　　　    使用ASPECTJ表达式
+FilterType.REGEX 　　　　　　   使用正则表达式
+FilterType.CUSTOM　　　　　     使用自定义的规则
+</code></pre><p>更新MainConfig类:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@ComponentScans</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> includeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+                 <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>ANNOTATION<span class="token punctuation">,</span>
+                 classes <span class="token operator">=</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+                 <span class="token punctuation">,</span> useDefaultFilters <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span>
+</code></pre>
+<p>现在的输出结果为：(只扫描有@Controller注解的类)</p>
 <pre><code>mainConfig
 bookController
 person01
 </code></pre><p>现在我们使用FilterType.ASSIGNABLE_TYPE 类型(给定类的类型)</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@ComponentScans(value = {
-        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {BookService.class})
-        }, useDefaultFilters = false)
-})
-public class MainConfig 
-</code></pre><p>输出结果是只要BookService类型的就行，他的子类也行。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@ComponentScans</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> includeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>ASSIGNABLE_TYPE<span class="token punctuation">,</span>
+                classes <span class="token operator">=</span> <span class="token punctuation">{</span>BookService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> useDefaultFilters <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span> 
+</code></pre>
+<p>输出结果是：只要是BookService类型的就行，他的子类也行。</p>
 <pre><code>mainConfig
 bookService
 person01
 </code></pre><p>现在我们使用自定义规则，FilterType.CUSTOM。</p>
 <p>需要自己创建一个类并实现TypeFilter接口。(我放在com.liuzhuo.config包)</p>
-<pre><code>public class MyTypeFilter implements TypeFilter {
-    @Override
-    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-        return false;
-    }
-}
-</code></pre><p>解释一下：<br>1.metadataReader  读取到当前正在扫描的类的信息<br>2.metadataReaderFactory  可以获取到其他任何类信息</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyTypeFilter</span> <span class="token keyword">implements</span> <span class="token class-name">TypeFilter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">match</span><span class="token punctuation">(</span>MetadataReader metadataReader<span class="token punctuation">,</span>                 
+    MetadataReaderFactory metadataReaderFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>解释一下：<br>1.metadataReader  读取到当前正在扫描的类的信息<br>2.metadataReaderFactory  可以获取到其他任何类信息</p>
 <p>我们通过这两个参数可以获取很多当前扫描类的信息。</p>
-<pre><code>public class MyTypeFilter implements TypeFilter {
-    @Override
-    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyTypeFilter</span> <span class="token keyword">implements</span> <span class="token class-name">TypeFilter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">match</span><span class="token punctuation">(</span>MetadataReader metadataReader<span class="token punctuation">,</span> MetadataReaderFactory metadataReaderFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
 
-        //获取当前类的注解信息
-        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
-        //获取当前正在扫描的类信息
-        ClassMetadata classMetadata = metadataReader.getClassMetadata();
-        //获取当前类的资源(类的路径)
-        Resource resource = metadataReader.getResource();
+        <span class="token comment" spellcheck="true">//获取当前类的注解信息</span>
+        AnnotationMetadata annotationMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取当前正在扫描的类信息</span>
+        ClassMetadata classMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getClassMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取当前类的资源(类的路径)</span>
+        Resource resource <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        String className = classMetadata.getClassName();
-        System.out.println(&quot;---&gt;&quot; + className);
+        String className <span class="token operator">=</span> classMetadata<span class="token punctuation">.</span><span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--->"</span> <span class="token operator">+</span> className<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return false;
-    }
-}
-</code></pre><p>上述的方法，我们可以打印出被扫描的类的名字；<br>在此之前，我们还需要修改MainConfig配置类：<br>将Filter类型改为自定义类型。</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@ComponentScans(value = {
-        @ComponentScan(value = &quot;com.liuzhuo&quot;, includeFilters = {
-                @ComponentScan.Filter(type = FilterType.CUSTOM, classes = {MyTypeFilter.class})
-        }, useDefaultFilters = false)
-})
-public class MainConfig 
-</code></pre><p>运行test01测试类：<br>结果如下：</p>
-<pre><code>---&gt;com.liuzhuo.test.IocTest
----&gt;com.liuzhuo.bean.Person
----&gt;com.liuzhuo.config.MyTypeFilter
----&gt;com.liuzhuo.controller.BookController
----&gt;com.liuzhuo.dao.BookDao
----&gt;com.liuzhuo.MainTest
----&gt;com.liuzhuo.service.BookService
-</code></pre><p>现在我们的MyTypeFilter返回都是false，所以被注入到容器的是<br>mainConfig<br>person01</p>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上述的方法，我们可以打印出被扫描的类的名字；<br>在此之前，我们还需要修改MainConfig配置类：<br>将Filter类型改为自定义类型。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@ComponentScans</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">,</span> includeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+                <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">.</span><span class="token function">Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>CUSTOM<span class="token punctuation">,</span> classes <span class="token operator">=</span> 
+                                      <span class="token punctuation">{</span>MyTypeFilter<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> useDefaultFilters <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span> 
+</code></pre>
+<p>运行test01测试类：<br>结果如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>test<span class="token punctuation">.</span>IocTest
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>bean<span class="token punctuation">.</span>Person
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>MyTypeFilter
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>controller<span class="token punctuation">.</span>BookController
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>BookDao
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>MainTest
+<span class="token operator">--</span><span class="token operator">-</span><span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>service<span class="token punctuation">.</span>BookService
+</code></pre>
+<p>现在我们的MyTypeFilter返回都是false，所以被注入到容器的是<br>mainConfig<br>person01</p>
 <p>现在，我们来更改MyTypeFilter类，我们只注入类名包含‘er’的类。</p>
-<pre><code>public class MyTypeFilter implements TypeFilter {
-    @Override
-    public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyTypeFilter</span> <span class="token keyword">implements</span> <span class="token class-name">TypeFilter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">match</span><span class="token punctuation">(</span>MetadataReader metadataReader<span class="token punctuation">,</span> MetadataReaderFactory metadataReaderFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
 
-        //获取当前类的注解信息
-        AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
-        //获取当前正在扫描的类信息
-        ClassMetadata classMetadata = metadataReader.getClassMetadata();
-        //获取当前类的资源(类的路径)
-        Resource resource = metadataReader.getResource();
+        <span class="token comment" spellcheck="true">//获取当前类的注解信息</span>
+        AnnotationMetadata annotationMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getAnnotationMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取当前正在扫描的类信息</span>
+        ClassMetadata classMetadata <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getClassMetadata</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取当前类的资源(类的路径)</span>
+        Resource resource <span class="token operator">=</span> metadataReader<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        String className = classMetadata.getClassName();
-        System.out.println(&quot;---&gt;&quot; + className);
+        String className <span class="token operator">=</span> classMetadata<span class="token punctuation">.</span><span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--->"</span> <span class="token operator">+</span> className<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        if (className.contains(&quot;er&quot;)) return true;
-        return false;
-    }
-}
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>className<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"er"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>其实就是加了一句代码：<br><code>if (className.contains(&quot;er&quot;)) return true;</code></p>
+</code></pre>
+<p>其实就是加了一句代码：<br><code>if (className.contains(&quot;er&quot;)) return true;</code></p>
 <p>运动test01测试类：</p>
 <pre><code>mainConfig
 person
@@ -1180,10 +1214,11 @@ person01
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Spring中的@Scope注解
-@Scope注解@Scope注解：是用来控制创建对象的作用域的，这里的作用域是我们平时所说的作用域。这里是：单例模式、多例模式等。  
-现在创建新的配置类com.liuz</div>
+                    <div class="summary">
+                      
+                                今天，学习Spring中的@Scope注解、懒加载
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-14
@@ -1228,9 +1263,11 @@ person01
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天学习Spring的第一天，大家一起跟着我动手搭建环境，最后一定会有收获。
-开发流程：主要是使用idea来完成的，此教程是针对有spring开发经验的人看的。用来对比以前的配置文件来注入依赖和java类配置来注入</div>
+                    <div class="summary">
+                       
+                                Spring注解开发的第一天，介绍XML配置和JavaConfig配置的区别
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
@@ -1410,7 +1447,7 @@ person01
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

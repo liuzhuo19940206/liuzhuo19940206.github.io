@@ -476,7 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。<br><a id="more"></a></p>
+                <p>Spring boot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。</p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>J2EE笨重的开发、繁多的配置、低下的开发效率、复杂的部署流程、第三方技术集成难度大。</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>“Spring全家桶”时代.</p>
 <p>SpringBoot -&gt; J2EE一站式解决方案</p>
@@ -521,14 +521,14 @@
 &lt;/profile&gt;
 </code></pre><p><strong>2.IDEA设置</strong></p>
 <p>整合maven进来</p>
-<p><img src="/images/QQ截图20181102151849.png"><br><img src="/images/QQ截图20181102152017.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102151849.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102152017.png"></p>
 <p>将maven配置成我们的maven，不使用idea自带的maven。</p>
 <p>Maven home directory： maven的安装路径</p>
 <p>User setting file：maven的setting配置文件的路径</p>
 <p>Local repository：maven的本地仓库的路径。</p>
 <h3 id="Spring-Boot-HelloWorld"><a href="#Spring-Boot-HelloWorld" class="headerlink" title="Spring Boot HelloWorld"></a>Spring Boot HelloWorld</h3><p>一个功能：</p>
 <p>浏览器发送hello请求，服务器接受请求并处理，响应Hello World字符串；</p>
-<h4 id="创建一个maven项目-jar"><a href="#创建一个maven项目-jar" class="headerlink" title="创建一个maven项目(jar)"></a>创建一个maven项目(jar)</h4><p><img src="/images/QQ截图20181102154909.png"><br><img src="/images/QQ截图20181102155112.png"><br><img src="/images/QQ截图20181102155230.png"><br><img src="/images/QQ截图20181102155348.png"><br><img src="/images/QQ截图20181102155708.png"></p>
+<h4 id="创建一个maven项目-jar"><a href="#创建一个maven项目-jar" class="headerlink" title="创建一个maven项目(jar)"></a>创建一个maven项目(jar)</h4><p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102154909.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102155112.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102155230.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102155348.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102155708.png"></p>
 <h4 id="导入spring-boot相关的依赖"><a href="#导入spring-boot相关的依赖" class="headerlink" title="导入spring boot相关的依赖"></a>导入spring boot相关的依赖</h4><pre><code>   &lt;parent&gt;
         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
         &lt;artifactId&gt;spring‐boot‐starter‐parent&lt;/artifactId&gt;
@@ -543,33 +543,35 @@
     &lt;/dependencies&gt;
 
 </code></pre><p><strong>现在的spring boot的1.x的版本没有1.5.9，所以我们使用1.5.17.RELEASE。</strong></p>
-<p>我们可以参考Spring的官网的文档。<a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a><br><img src="/images/QQ截图20181102160852.png"><br><img src="/images/QQ截图20181102161036.png"><br><img src="/images/QQ截图20181102161400.png"></p>
-<p>添加依赖后，idea就会帮我们开始下载依赖，如果没有自动下载，可以点击idea的右边的Maven Projects，然后点击上面的循环标志。<br><img src="/images/QQ截图20181102162613.png" style="width:50%"></p>
-<p>依赖下载完毕后，可以看到我们的依赖文件：<br><img src="/images/QQ截图20181102162819.png"></p>
-<h4 id="编写一个主程序"><a href="#编写一个主程序" class="headerlink" title="编写一个主程序"></a>编写一个主程序</h4><p>在src/main/java下创建com.liuzhuo的包，并创建HelloWorldApplication类：<br><img src="/images/QQ截图20181102163202.png"></p>
+<p>我们可以参考Spring的官网的文档。<a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102160852.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102161036.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102161400.png"></p>
+<p>添加依赖后，idea就会帮我们开始下载依赖，如果没有自动下载，可以点击idea的右边的Maven Projects，然后点击上面的循环标志。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102162613.png" style="width:50%"></p>
+<p>依赖下载完毕后，可以看到我们的依赖文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102162819.png"></p>
+<h4 id="编写一个主程序"><a href="#编写一个主程序" class="headerlink" title="编写一个主程序"></a>编写一个主程序</h4><p>在src/main/java下创建com.liuzhuo的包，并创建HelloWorldApplication类：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102163202.png"></p>
 <p>添加@SpringBootApplication注解，并编写一个主函数。</p>
-<pre><code>@SpringBootApplication  //表明这是一个Springboot的启动类
-public class HelloWorldApplication {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>  <span class="token comment" spellcheck="true">//表明这是一个Springboot的启动类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorldApplication</span> <span class="token punctuation">{</span>
 
-    public static void main(String[] args) {
-        //启动Springboot应用。
-        SpringApplication.run(HelloWorldApplication.class);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//启动Springboot应用。</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>HelloWorldApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><h4 id="编写相关的Controller"><a href="#编写相关的Controller" class="headerlink" title="编写相关的Controller"></a>编写相关的Controller</h4><p>在com.liuzhuo.controller下，创建HelloController</p>
-<pre><code>@Controller
-public class HelloController {
-    @ResponseBody
-    @RequestMapping(&quot;/hello&quot;)
-    public String hello(){
-        return &quot;Hello World!&quot;;
-    }
-}
-</code></pre><h4 id="运行主程序测试"><a href="#运行主程序测试" class="headerlink" title="运行主程序测试"></a>运行主程序测试</h4><p>回到Springboot的启动类中，直接运行main函数：<br><img src="/images/QQ截图20181102163832.png"><br><img src="/images/QQ截图20181102163913.png"><br><img src="/images/QQ截图20181102163946.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="编写相关的Controller"><a href="#编写相关的Controller" class="headerlink" title="编写相关的Controller"></a>编写相关的Controller</h4><p>在com.liuzhuo.controller下，创建HelloController</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="运行主程序测试"><a href="#运行主程序测试" class="headerlink" title="运行主程序测试"></a>运行主程序测试</h4><p>回到Springboot的启动类中，直接运行main函数：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102163832.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102163913.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102163946.png"></p>
 <p>出现上图所示的效果就说明Springboot应用启动成功。</p>
 <p>在浏览器中输入：<code>http://localhost:8080/hello</code></p>
-<p><img src="/images/QQ截图20181102164146.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102164146.png"></p>
 <h4 id="简化部署"><a href="#简化部署" class="headerlink" title="简化部署"></a>简化部署</h4><p>以前，部署Web应用，需要将我们的Web项目生成War，然后在服务器中安装服务器，比如Tomcat等，然后将War放在Tomcat容器中，启动Tomcat容器。</p>
 <p>现在，我们不需要这么麻烦了，我们直接生成jar就行。生成jar之前，我们需要在pom文件中添加Springboot的构建插件。</p>
 <pre><code>    &lt;!-- 这个插件，可以将应用打包成一个可执行的jar包--&gt;
@@ -581,15 +583,15 @@ public class HelloController {
             &lt;/plugin&gt;
         &lt;/plugins&gt;
     &lt;/build&gt;
-</code></pre><p>然后生成jar包：<br><img src="/images/QQ截图20181102164849.png" style="width:50%"></p>
+</code></pre><p>然后生成jar包：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102164849.png" style="width:50%"></p>
 <p>双击：package。</p>
-<p>控制台输出：BUILD SUCCESS<br><img src="/images/QQ截图20181102165053.png"></p>
-<p>我们，可以在target包下，看到我们生成的可运行的jar。<br><img src="/images/QQ截图20181102165310.png"></p>
-<p>拷贝这个jar到我们的桌面上面：<br><img src="/images/QQ截图20181102165410.png"></p>
-<p>打开命令行界面：<br><img src="/images/QQ截图20181102165718.png"></p>
+<p>控制台输出：BUILD SUCCESS<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102165053.png"></p>
+<p>我们，可以在target包下，看到我们生成的可运行的jar。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102165310.png"></p>
+<p>拷贝这个jar到我们的桌面上面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102165410.png"></p>
+<p>打开命令行界面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102165718.png"></p>
 <p>我们的Springboot应用就启动了，这样是不是很简单，都不需要打成war包和安装Tomcat。</p>
 <p>在浏览器中输入：<code>http://localhost:8080/hello</code></p>
-<p><img src="/images/QQ截图20181102164146.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102164146.png"></p>
 <h3 id="Hello-World-的探究"><a href="#Hello-World-的探究" class="headerlink" title="Hello World 的探究"></a>Hello World 的探究</h3><h4 id="POM文件"><a href="#POM文件" class="headerlink" title="POM文件"></a>POM文件</h4><p>1）父项目</p>
 <pre><code>&lt;parent&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
@@ -597,6 +599,7 @@ public class HelloController {
     &lt;version&gt;1.5.17.RELEASE&lt;/version&gt;
 &lt;/parent&gt;
 他的父项目是
+
 &lt;parent&gt;
   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
   &lt;artifactId&gt;spring‐boot‐dependencies&lt;/artifactId&gt;
@@ -614,89 +617,95 @@ public class HelloController {
 </code></pre><p>spring-boot-starter-web：</p>
 <p>spring-boot-starter：spring-boot场景启动器；帮我们导入了web模块正常运行所依赖的组件；</p>
 <p>Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter.<br>相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器.</p>
-<h4 id="主程序类，主入口类"><a href="#主程序类，主入口类" class="headerlink" title="主程序类，主入口类"></a>主程序类，主入口类</h4><pre><code>/**
+<h4 id="主程序类，主入口类"><a href="#主程序类，主入口类" class="headerlink" title="主程序类，主入口类"></a>主程序类，主入口类</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 描述:
  *
  * @author liuzhuo
  * @create 2018-11-02 16:31
- */
-@SpringBootApplication  //表明这是一个Springboot的启动类
-public class HelloWorldApplication {
+ */</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>  <span class="token comment" spellcheck="true">//表明这是一个Springboot的启动类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorldApplication</span> <span class="token punctuation">{</span>
 
-    public static void main(String[] args) {
-        //启动Springboot应用。
-        SpringApplication.run(HelloWorldApplication.class);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//启动Springboot应用。</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>HelloWorldApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p><strong>@SpringBootApplication:</strong> Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot<br>就应该运行这个类的main方法来启动SpringBoot应用；</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>@SpringBootApplication:</strong> Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot<br>就应该运行这个类的main方法来启动SpringBoot应用；</p>
 <p>点击@SpringBootApplication注解：</p>
-<pre><code>@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@SpringBootConfiguration
-@EnableAutoConfiguration
-@ComponentScan(excludeFilters = {
-        @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
-        @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
-public @interface SpringBootApplication
-</code></pre><p>发现@SpringBootApplication注解是一个组合注解，下面我们一一来看。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Inherited</span>
+<span class="token annotation punctuation">@SpringBootConfiguration</span>
+<span class="token annotation punctuation">@EnableAutoConfiguration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>excludeFilters <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>CUSTOM<span class="token punctuation">,</span> classes <span class="token operator">=</span> TypeExcludeFilter<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token annotation punctuation">@Filter</span><span class="token punctuation">(</span>type <span class="token operator">=</span> FilterType<span class="token punctuation">.</span>CUSTOM<span class="token punctuation">,</span> classes <span class="token operator">=</span> AutoConfigurationExcludeFilter<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">SpringBootApplication</span>
+</code></pre>
+<p>发现@SpringBootApplication注解是一个组合注解，下面我们一一来看。</p>
 <p><strong>@SpringBootConfiguration:</strong> Spring Boot的配置类；</p>
 <p>标注在某个类上，表示这是一个Spring Boot的配置类；</p>
-<pre><code>@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Configuration
-public @interface SpringBootConfiguration {
-}
-</code></pre><p>其实就是一个@Configuration注解，只是@Configuration注解，我们是在Spring中使用，@SpringBootConfiguration是在Springboot中使用，本质都一个配置类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">SpringBootConfiguration</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>其实就是一个@Configuration注解，只是@Configuration注解，我们是在Spring中使用，@SpringBootConfiguration是在Springboot中使用，本质都一个配置类。</p>
 <p>配置类 —– 配置文件；配置类也是容器中的一个组件；@Component</p>
 <p><strong>@EnableAutoConfiguration</strong>：开启自动配置功能；</p>
 <p>以前我们需要配置的东西，Spring Boot帮我们自动配置；@EnableAutoConfiguration告诉SpringBoot开启自<br>动配置功能；这样自动配置才能生效；</p>
-<pre><code>@SuppressWarnings(&quot;deprecation&quot;)
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@AutoConfigurationPackage
-@Import(EnableAutoConfigurationImportSelector.class)
-public @interface EnableAutoConfiguration
-</code></pre><p><strong>@AutoConfigurationPackage</strong>：自动配置包</p>
-<pre><code>@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Inherited
-@Import(AutoConfigurationPackages.Registrar.class)
-public @interface AutoConfigurationPackage {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"deprecation"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Inherited</span>
+<span class="token annotation punctuation">@AutoConfigurationPackage</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>EnableAutoConfigurationImportSelector<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EnableAutoConfiguration</span>
+</code></pre>
+<p><strong>@AutoConfigurationPackage</strong>：自动配置包</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Inherited</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>AutoConfigurationPackages<span class="token punctuation">.</span>Registrar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">AutoConfigurationPackage</span> <span class="token punctuation">{</span>
 
-}
-</code></pre><p>@Import(AutoConfigurationPackages.Registrar.class)：<br>Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class注入；</p>
-<pre><code>    @Order(Ordered.HIGHEST_PRECEDENCE)
-    static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImports {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>@Import(AutoConfigurationPackages.Registrar.class)：<br>Spring的底层注解@Import，给容器中导入一个组件；导入的组件由AutoConfigurationPackages.Registrar.class注入；</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Order</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Registrar</span> <span class="token keyword">implements</span> <span class="token class-name">ImportBeanDefinitionRegistrar</span><span class="token punctuation">,</span> DeterminableImports <span class="token punctuation">{</span>
 
-        @Override
-        public void registerBeanDefinitions(AnnotationMetadata metadata,
-                BeanDefinitionRegistry registry) {
-            register(registry, new PackageImport(metadata).getPackageName());
-        }
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span>AnnotationMetadata metadata<span class="token punctuation">,</span>
+                BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">register</span><span class="token punctuation">(</span>registry<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">PackageImport</span><span class="token punctuation">(</span>metadata<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        @Override
-        public Set&lt;Object&gt; determineImports(AnnotationMetadata metadata) {
-            return Collections.&lt;Object&gt;singleton(new PackageImport(metadata));
-        }
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> Set<span class="token operator">&lt;</span>Object<span class="token operator">></span> <span class="token function">determineImports</span><span class="token punctuation">(</span>AnnotationMetadata metadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> Collections<span class="token punctuation">.</span>&lt;Object<span class="token operator">></span><span class="token function">singleton</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PackageImport</span><span class="token punctuation">(</span>metadata<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    }
-</code></pre><p>给这个方法打上断点。debug下</p>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>给这个方法打上断点。debug下</p>
 <p><strong>会发现，Spring会把将主配置类（@SpringBootApplication标注的类）的所在包及下面所有子包里面的所有组件扫描到Spring容器；</strong></p>
 <p>@<strong>Import(EnableAutoConfigurationImportSelector.class)；</strong></p>
 <p>给容器中导入组件？</p>
 <p>EnableAutoConfigurationImportSelector：导入哪些组件的选择器；</p>
 <p>将所有需要导入的组件以全类名的方式返回；这些组件就会被添加到容器中；</p>
-<p>会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；<br><img src="/images/QQ截图20181102192759.png"></p>
+<p>会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102192759.png"></p>
 <p>有了自动配置类，免去了我们手动编写配置注入功能组件等的工作；<br>SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class,classLoader)；</p>
-<p>Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将<br>这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；以前我们需要自己配置的东<br>西，自动配置类都帮我们；<br><img src="/images/QQ截图20181102193127.png"></p>
-<p>J2EE的整体整合解决方案和自动配置都在spring-boot-autoconfigure-1.5.17.RELEASE.jar；</p>
+<p>Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将<br>这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；以前我们需要自己配置的东<br>西，自动配置类都帮我们；<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102193127.png"></p>
+<p>J2EE的整体整合解决方案和自动配置都在:<code>spring-boot-autoconfigure-X.X.X.RELEASE.jar</code>；</p>
 <p>所以，@EnableAutoConfiguration自动配置的魔法骑士就变成了：</p>
 <p><strong>从classpath中搜寻所有的 META-INF/spring.factories 配置文件，并将其中org.springframework.boot.autoconfigure.EnableutoConfiguration对应的配置项</strong>  </p>
 <p><strong>通过反射（Java Refletion）实例化为对应的标注了@Configuration的JavaConfig形式的IoC容器配置类，然后汇总为一个并加载到IoC容器。</strong></p>
@@ -729,15 +738,15 @@ public @interface AutoConfigurationPackage {
 <li>templates：保存所有的模板页面；（Spring Boot默认jar包使用嵌入式的- - Tomcat，默认不支持JSP页面）；可以使用模板引擎（freemarker、thymeleaf）；</li>
 <li>application.properties：Spring Boot应用的配置文件；可以修改一些默认设置；</li>
 </ul>
-<p>1）打开idea，创建一个工程Project<br><img src="/images/QQ截图20181102201430.png"></p>
-<p>2）选择Spring Initializr<br><img src="/images/QQ截图20181102201714.png"></p>
-<p>3) 填写Group和Artifact<br><img src="/images/QQ截图20181102202215.png"></p>
-<p>4）选择Spring boot的版本 和 我们需要的模块（Web）<br><img src="/images/QQ截图20181102202456.png"></p>
-<p>5）填写项目名和项目的路径<br><img src="/images/QQ截图20181102202648.png"></p>
-<p>6）删除不需要的文件<br><img src="/images/QQ截图20181102202925.png"></p>
-<p>7）编写逻辑控制层<br>在com.liuzhuo.springboot的包下，创建controller包，并创建HelloController：<br><img src="/images/QQ截图20181102205841.png"></p>
-<p>8）启动Springboot应用<br><img src="/images/QQ截图20181102210019.png"></p>
-<p>9）在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181102210130.png"></p>
+<p>1）打开idea，创建一个工程Project<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102201430.png"></p>
+<p>2）选择Spring Initializr<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102201714.png"></p>
+<p>3) 填写Group和Artifact<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102202215.png"></p>
+<p>4）选择Spring boot的版本 和 我们需要的模块（Web）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102202456.png"></p>
+<p>5）填写项目名和项目的路径<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102202648.png"></p>
+<p>6）删除不需要的文件<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102202925.png"></p>
+<p>7）编写逻辑控制层<br>在com.liuzhuo.springboot的包下，创建controller包，并创建HelloController：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102205841.png"></p>
+<p>8）启动Springboot应用<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102210019.png"></p>
+<p>9）在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181102210130.png"></p>
 
             </div>
             <hr/>
@@ -1179,13 +1188,11 @@ public @interface AutoConfigurationPackage {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Springboot的配置文件
-配置文件SpringBoot使用一个全局的配置文件，配置文件名是固定的；
-
-application.properties
-application.yml
-
-配置文件的作用：修改SpringBoot自动配置的默</div>
+                    <div class="summary">
+                      
+                                Springboot的配置文件
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-03
@@ -1228,19 +1235,21 @@ application.yml
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/">
+                <a href="/2018/10/29/jie-jue-idea-kong-zhi-tai-shu-chu-luan-ma-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="idea创建maven-web工程">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="解决idea控制台输出乱码问题">
                         
-                        <span class="card-title">idea创建maven-web工程</span>
+                        <span class="card-title">解决idea控制台输出乱码问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">考虑到现在大家都是使用maven来创建web工程，不再使用创建原始的Dynamic Web工程了，所以，我们开始吧~~~
-首先先创建一个project(一个project就是一个工作空间)，在这里就是创建一个maven的工作空间
-你要选择m</div>
+                    <div class="summary">
+                       
+                                解决IntelliJ IDEA 控制台输出乱码问题
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-29
@@ -1253,12 +1262,8 @@ application.yml
                                     idea
                                 </a>
                             
-                            <a href="/categories/idea/maven/" class="post-category" target="_blank">
-                                    maven
-                                </a>
-                            
-                            <a href="/categories/idea/maven/web/" class="post-category" target="_blank">
-                                    web
+                            <a href="/categories/idea/乱码/" class="post-category" target="_blank">
+                                    乱码
                                 </a>
                             
                             
@@ -1268,16 +1273,12 @@ application.yml
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/" target="_blank">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
                     <a href="/tags/idea/" target="_blank">
                         <span class="chip bg-color">idea</span>
                     </a>
                     
-                    <a href="/tags/maven/" target="_blank">
-                        <span class="chip bg-color">maven</span>
+                    <a href="/tags/乱码/" target="_blank">
+                        <span class="chip bg-color">乱码</span>
                     </a>
                     
                 </div>
@@ -1436,7 +1437,7 @@ application.yml
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

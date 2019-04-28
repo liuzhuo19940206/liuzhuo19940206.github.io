@@ -9,9 +9,8 @@
     <meta name="description" content="Spring容器的创建过程
 今天，我们来统一学习一下，Spring容器的整个创建过程。
 
-
 Spring容器的refresh()[创建刷新]
-prepareRefresh();【刷新前的预处理】1）initPropertySources()">
+prepareRefresh();【刷新前的预处理】1）initPropertySources();">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -473,14 +472,14 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()">
             <div id="articleContent">
                 <p><strong>Spring容器的创建过程</strong></p>
 <p>今天，我们来统一学习一下，Spring容器的整个创建过程。</p>
-<a id="more"></a>
 <hr>
 <p><strong>Spring容器的refresh()[创建刷新]</strong></p>
 <h3 id="prepareRefresh-【刷新前的预处理】"><a href="#prepareRefresh-【刷新前的预处理】" class="headerlink" title="prepareRefresh();【刷新前的预处理】"></a>prepareRefresh();【刷新前的预处理】</h3><p>1）initPropertySources();初始化一些属性设置；子类自定义个性化的属性设置方法；</p>
-<pre><code>   protected void initPropertySources() {
-         // For subclasses: do nothing by default.
-     }
-</code></pre><p>2)  getEnvironment().validateRequiredProperties();检验属性的合法性等</p>
+<pre class=" language-java"><code class="language-java">   <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initPropertySources</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment" spellcheck="true">// For subclasses: do nothing by default.</span>
+     <span class="token punctuation">}</span>
+</code></pre>
+<p>2)  getEnvironment().validateRequiredProperties();检验属性的合法性等</p>
 <p>3）earlyApplicationEvents = new LinkedHashSet<applicationevent>();保存容器的一些早期的事件；</applicationevent></p>
 <h3 id="obtainFreshBeanFactory；【获取BeanFactory】"><a href="#obtainFreshBeanFactory；【获取BeanFactory】" class="headerlink" title="obtainFreshBeanFactory；【获取BeanFactory】"></a>obtainFreshBeanFactory；【获取BeanFactory】</h3><p>1）refreshBeanFactory();刷新BeanFactory<br>创建 this.beanFactory = new DefaultListableBeanFactory();<br>设置id。</p>
 <p>2）getBeanFactory();<br>返回GenericApplicationContext创建的beanFactory对象;return this.beanFactory;</p>
@@ -492,20 +491,23 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()">
 <p>4）注册可以解析的自动装配：我们能直接在任何组件中自动注入：BeanFactory、ResourceLoader、ApplicationEventPublisher、ApplicationContext。</p>
 <p>5）添加BeanPostProcessor【ApplicationListenerDetector】</p>
 <p>6）添加编译时Aspectj</p>
-<pre><code>   // Detect a LoadTimeWeaver and prepare for weaving, if found.
-        if (beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) {
-            beanFactory.addBeanPostProcessor(new LoadTimeWeaverAwareProcessor(beanFactory));
-            // Set a temporary ClassLoader for type matching.
-            beanFactory.setTempClassLoader(new ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader()));
-        }
-</code></pre><p>7) 给BeanFactory中注册一些能用的组件</p>
+<pre class=" language-java"><code class="language-java">   <span class="token comment" spellcheck="true">// Detect a LoadTimeWeaver and prepare for weaving, if found.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>beanFactory<span class="token punctuation">.</span><span class="token function">containsBean</span><span class="token punctuation">(</span>LOAD_TIME_WEAVER_BEAN_NAME<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            beanFactory<span class="token punctuation">.</span><span class="token function">addBeanPostProcessor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">LoadTimeWeaverAwareProcessor</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Set a temporary ClassLoader for type matching.</span>
+            beanFactory<span class="token punctuation">.</span><span class="token function">setTempClassLoader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ContextTypeMatchClassLoader</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">.</span><span class="token function">getBeanClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>7) 给BeanFactory中注册一些能用的组件</p>
 <p>environment【ConfigurableEnvironment】</p>
 <p>systemProperties【Map&lt;String, Object&gt;】</p>
 <p>systemEnvironment【Map&lt;String, Object&gt;】</p>
 <h3 id="postProcessBeanFactory-beanFactory"><a href="#postProcessBeanFactory-beanFactory" class="headerlink" title="postProcessBeanFactory(beanFactory);"></a>postProcessBeanFactory(beanFactory);</h3><p>BeanFactory准备工作完成后进行的后置处理工作</p>
-<pre><code>protected void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-    }
-</code></pre><p>子类通过覆写这个方法来在BeanFactory创建并准备完成以后做进一步的设置。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>ConfigurableListableBeanFactory beanFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>子类通过覆写这个方法来在BeanFactory创建并准备完成以后做进一步的设置。</p>
 <div style="text-align: center;"><font color="#00ffff" size="4">以上是BeanFactory的创建以及准备工作</font></div>
 
 <hr>
@@ -550,57 +552,61 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()">
 <p>1）从容器中拿到所有的ApplicationListener组件</p>
 <p>2）将每个监听器添加到事件派发器中：getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</p>
 <p>3）派发之前步骤中产生的事件：</p>
-<pre><code>  Set&lt;ApplicationEvent&gt; earlyEventsToProcess = this.earlyApplicationEvents;
-        this.earlyApplicationEvents = null;
-        if (earlyEventsToProcess != null) {
-            for (ApplicationEvent earlyEvent : earlyEventsToProcess) {
-                getApplicationEventMulticaster().multicastEvent(earlyEvent);
-            }
-        }
-</code></pre><h3 id="finishBeanFactoryInitialization-beanFactory"><a href="#finishBeanFactoryInitialization-beanFactory" class="headerlink" title="finishBeanFactoryInitialization(beanFactory);"></a>finishBeanFactoryInitialization(beanFactory);</h3><p>初始化所有的剩下的单实例Bean对象</p>
+<pre class=" language-java"><code class="language-java">  Set<span class="token operator">&lt;</span>ApplicationEvent<span class="token operator">></span> earlyEventsToProcess <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>earlyApplicationEvents<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>earlyApplicationEvents <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>earlyEventsToProcess <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span>ApplicationEvent earlyEvent <span class="token operator">:</span> earlyEventsToProcess<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">getApplicationEventMulticaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">multicastEvent</span><span class="token punctuation">(</span>earlyEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="finishBeanFactoryInitialization-beanFactory"><a href="#finishBeanFactoryInitialization-beanFactory" class="headerlink" title="finishBeanFactoryInitialization(beanFactory);"></a>finishBeanFactoryInitialization(beanFactory);</h3><p>初始化所有的剩下的单实例Bean对象</p>
 <p>1）beanFactory.preInstantiateSingletons();初始化剩下的单实例Bean</p>
 <p>1.1 获取容器中的所有Bean，依次初始化和创建对象</p>
 <p>1.2 获取Bean的定义信息：RootBeanDefinition</p>
-<p>1.3 Bean不是抽象的、是单实例、是懒加载<br>1.3.1 判断是不是FactoryBean；是否是实现FactoryBean接口的Bean<br>1.3.2 不是工厂Bean，就利用getBean()获取Bean对象。 </p>
+<p>1.3 Bean不是抽象的、是单实例、是懒加载  </p>
+<p>　　1.3.1 判断是不是FactoryBean；是否是实现FactoryBean接口的Bean  </p>
+<p>　　1.3.2 不是工厂Bean，就利用getBean()获取Bean对象。 </p>
 <hr>
-<p>1.3.2.1）getBean(beanName);ioc.getBean();</p>
-<p>1.3.2.2) doGetBean(name,null,null,false);</p>
-<p>1.3.2.3) 先获取缓存中保存的单实例bean。如果能获取说明这个Bean之前创建过（所有创建过的单实例Bean都会被保存起来）</p>
-<p>1.3.2.4）缓存中获取不到，开始Bean的创建对象流程</p>
-<p>1.3.2.5）标记当前Bean已经被创建，防止多线程下创建多个单实例Bean</p>
-<p>1.3.2.6）获取Bean的定义信息</p>
-<p>1.3.2.7）获取当前Bean依赖的其他Bean；如果有按照getBean()把依赖的Bean先创建出来；</p>
-<p>1.3.2.8）启动单实例Bean的创建过程：</p>
+<p>　　　　1.3.2.1）getBean(beanName);ioc.getBean();</p>
+<p>　　　　1.3.2.2) doGetBean(name,null,null,false);</p>
+<p>　　　　1.3.2.3) 先获取缓存中保存的单实例bean。如果能获取说明这个Bean之前创建过（所有创建过的单实例Bean都会被保存起来）</p>
+<p>　　　　1.3.2.4）缓存中获取不到，开始Bean的创建对象流程</p>
+<p>　　　　1.3.2.5）标记当前Bean已经被创建，防止多线程下创建多个单实例Bean</p>
+<p>　　　　1.3.2.6）获取Bean的定义信息</p>
+<p>　　　　1.3.2.7）获取当前Bean依赖的其他Bean；如果有按照getBean()把依赖的Bean先创建出来；</p>
+<p>　　　　1.3.2.8）启动单实例Bean的创建过程：</p>
 <hr>
-<p>1.3.2.8.1) createBean(beanName,mbd,args)</p>
-<p>1.3.2.8.2) resolveBeforeInstantiation(beanName, mbdToUse);让BeanPostProcessor在Bean的创建之前执行，是InstantiationAwareBeanPostProcessor类型的后置处理器。看是否是需要创建代理对象。</p>
+<p>　　　　　　1.3.2.8.1) createBean(beanName,mbd,args)</p>
+<p>　　　　　　1.3.2.8.2) resolveBeforeInstantiation(beanName, mbdToUse);让BeanPostProcessor在Bean的创建之前执行，是InstantiationAwareBeanPostProcessor类型的后置处理器。看是否是需要创建代理对象。</p>
 <p>先触发applyBeanPostProcessorsBeforeInstantiation：postProcessBeforeInstantiation()</p>
 <p>如果有返回值：applyBeanPostProcessorsAfterInitialization：postProcessAfterInitialization()</p>
-<p>1.3.2.8.3)如果前面InstantiationAwareBeanPostProcessor没有返回值，说明不需要创建代理对象。</p>
-<p>1.3.2.8.4)Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建Bean</p>
+<p>　　　　　　1.3.2.8.3)如果前面InstantiationAwareBeanPostProcessor没有返回值，说明不需要创建代理对象。</p>
+<p>　　　　　　1.3.2.8.4)Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建Bean</p>
 <hr>
-<p>1.3.2.8.4.1) instanceWrapper = createBeanInstance(beanName, mbd, args);创建Bean对象；利用工厂方法或者构造器创建出Bean对象</p>
-<p>1.3.2.8.4.2) applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);</p>
-<p>1.3.2.8.4.3) 【属性赋值】populateBean(beanName, mbd, instanceWrapper);</p>
+<p>　　　　　　　　1.3.2.8.4.1) instanceWrapper = createBeanInstance(beanName, mbd, args);创建Bean对象；利用工厂方法或者构造器创建出Bean对象</p>
+<p>　　　　　　　　1.3.2.8.4.2) applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);</p>
+<p>　　　　　　　　1.3.2.8.4.3) 【属性赋值】populateBean(beanName, mbd, instanceWrapper);</p>
 <hr>
-<p>赋值之前：<br>1.3.2.8.4.3.1) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessAfterInstrantiation();</p>
-<p>1.3.2.8.4.3.2) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessPropertyValues();</p>
-<p>赋值之后：<br>1.3.2.8.4.3.3) 应用Bean属性的值：为属性利用setter方法等进行赋值<br>applyPropertyValues(beanName, mbd, bw, pvs);</p>
-<p>1.3.2.8.4.4) 【Bean初始化】initializeBean(beanName, exposedObject, mbd)；</p>
+<p>赋值之前：<br>　　　　　　　　　　1.3.2.8.4.3.1) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessAfterInstrantiation();</p>
+<p>　　　　　　　　　　1.3.2.8.4.3.2) InstantiationAwareBeanPostProcessor后置处理器；<br>postProcessPropertyValues();</p>
+<p>赋值之后：<br>　　　　　　　　　　1.3.2.8.4.3.3) 应用Bean属性的值：为属性利用setter方法等进行赋值<br>applyPropertyValues(beanName, mbd, bw, pvs);</p>
+<p>　　　　　　　　　　1.3.2.8.4.4) 【Bean初始化】initializeBean(beanName, exposedObject, mbd)；</p>
 <hr>
 <p>1.3.2.8.4.4.1) 【执行Aware接口方法】invokeAwareMethods(beanName, bean);</p>
-<pre><code>     if (bean instanceof Aware) {
-            if (bean instanceof BeanNameAware) {
-                ((BeanNameAware) bean).setBeanName(beanName);
-            }
-            if (bean instanceof BeanClassLoaderAware) {
-                ((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());
-            }
-            if (bean instanceof BeanFactoryAware) {
-                ((BeanFactoryAware) bean).setBeanFactory(AbstractAutowireCapableBeanFactory.this);
-            }
-        }
-</code></pre><p>1.3.2.8.4.4.2) 【执行后置处理器初始化之前】 </p>
+<pre class=" language-java"><code class="language-java">     <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">Aware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanNameAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanNameAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanName</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanClassLoaderAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanClassLoaderAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanClassLoader</span><span class="token punctuation">(</span><span class="token function">getBeanClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanFactoryAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanFactoryAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanFactory</span><span class="token punctuation">(</span>AbstractAutowireCapableBeanFactory<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>1.3.2.8.4.4.2) 【执行后置处理器初始化之前】 </p>
 <p>applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);<br>beanProcessor.postProcessBeforeInitialization(result, beanName);</p>
 <p>1.3.2.8.4.4.3)【执行初始化方法】invokeInitMethods(beanName, wrappedBean, mbd);</p>
 <hr>
@@ -1077,10 +1083,11 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()">
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringMVC的架构与流程
-探究MVC在SpringMVC中的关系。前言：
-顾名思义SpringMVC是一个基于MVC设计思想的框架。
-什么是mvc？MVC是模型(model)－视图(view)－控制器(controller)的缩写 ，</div>
+                    <div class="summary">
+                      
+                                探究MVC在SpringMVC中的关系。
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
@@ -1125,10 +1132,11 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()">
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发 
-今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点
-BeanFactoryPostProcessorBeanPostProcessor：bean的后置处理器，bean创建对象初始化前后进行拦截工作的。  
-Bea</div>
+                    <div class="summary">
+                       
+                                讲解Spring其他的扩展原理
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-22
@@ -1308,7 +1316,7 @@ Bea</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

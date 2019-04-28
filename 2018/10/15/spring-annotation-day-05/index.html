@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="spring_annotation_day_05, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
-今天，学习给容器中注入组件
-@Import注解给容器中注册组件：1）、包扫描+组件标记注解（@Controller、@Service、@Repository、@Component)[导入我们自己写的组件]2）、@B">
+今天，学习给容器中注入组件，昨天，我们学习了条件注解，可以在满足一定的条件下，注入bean，今天的@Import注解也能帮我们完成相同的功能。
+@Import注解给容器中注册组件:1）、包扫描+组件标记注解（@Co">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -445,14 +445,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        6 分
                     </div>
                     
                 
@@ -469,30 +469,32 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天，学习给容器中注入组件<br><a id="more"></a></p>
-<h3 id="Import注解"><a href="#Import注解" class="headerlink" title="@Import注解"></a>@Import注解</h3><p>给容器中注册组件：<br>1）、包扫描+组件标记注解（@Controller、@Service、@Repository、@Component)[导入我们自己写的组件]<br>2）、@Bean[导入第三方包里面的组件]<br>3）、@Import[快速给容器中导入一个组件]  </p>
+<p>今天，学习给容器中注入组件，昨天，我们学习了条件注解，可以在满足一定的条件下，注入bean，今天的@Import注解也能帮我们完成相同的功能。</p>
+<h3 id="Import注解"><a href="#Import注解" class="headerlink" title="@Import注解"></a>@Import注解</h3><p>给容器中注册组件:<br>1）、包扫描+组件标记注解（@Controller、@Service、@Repository、@Component)[导入我们自己写的组件]<br>2）、@Bean[导入第三方包里面的组件]<br>3）、@Import[快速给容器中导入一个组件]  </p>
 <hr>
 <p>@Bean导入，只能一个一个的导入，不太方便，所以需要@Import注解。现在我们来看@Import的用法。</p>
-<h4 id="一、-Import"><a href="#一、-Import" class="headerlink" title="一、@Import"></a>一、@Import</h4><p>@Import：容器中会自动注册这个组件，id默认是全类名  </p>
+<h4 id="一、-Import"><a href="#一、-Import" class="headerlink" title="一、@Import"></a>一、@Import</h4><p>@Import：容器会自动注册加了该注解的组件，id默认是全类名  </p>
 <p>1）在com.liuzhuo.bean包下，创建Color对象。<br>2）修改配置类MainConfig2类：(看@Import注解)</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@Import(Color.class)
-public class MainConfig2
-</code></pre><p>3）在test类中，创建新的测试方法：</p>
-<pre><code>    @Test
-    public void testImport() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
-        printBeanName(applicationContext);
-    }
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>Color<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig2</span>
+</code></pre>
+<p>3）在test类中，创建新的测试方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testImport</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig2<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printBeanName</span><span class="token punctuation">(</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    private void printBeanName(AnnotationConfigApplicationContext applicationContext) {
-        String[] names = applicationContext.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println(name);
-        }
-    }
-</code></pre><p>4) 运行测试方法：</p>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">printBeanName</span><span class="token punctuation">(</span>AnnotationConfigApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> names <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> names<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4) 运行测试方法：</p>
 <pre><code>mainConfig2
 com.liuzhuo.bean.Color
 person
@@ -500,24 +502,27 @@ bier
 </code></pre><p>观察结果：发现Color组件已经注册到容器中了，而且id名是全类名。</p>
 <hr>
 <p>点击@Import。</p>
-<pre><code>@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface Import {
-    Class&lt;?&gt;[] value();
-}
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Import</span> <span class="token punctuation">{</span>
+    Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>发现，@Import中的value是一个Class类型的数组，说明可以注入多个Class类型  </p>
+</code></pre>
+<p>发现，@Import中的value是一个Class类型的数组，说明可以注入多个Class类型  </p>
 <p>1）现在，在com.liuzhuo.bean包下，再创建一个Red类：</p>
-<pre><code>public class Red {
-}
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Red</span> <span class="token punctuation">{</span>
 
-</code></pre><p>2）修改配置类MainConfig2：</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@Import({Color.class, Red.class})
-public class MainConfig2 
-</code></pre><p>3) 运行测试方法testImport:</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）修改配置类MainConfig2：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span>Color<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> Red<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig2</span> 
+</code></pre>
+<p>3) 运行测试方法testImport:</p>
 <pre><code>mainConfig2
 com.liuzhuo.bean.Color
 com.liuzhuo.bean.Red
@@ -525,43 +530,46 @@ person
 bier
 </code></pre><p>结果：Red类也被注册到容器中了。</p>
 <hr>
-<h4 id="二、ImportSelect"><a href="#二、ImportSelect" class="headerlink" title="二、ImportSelect"></a>二、ImportSelect</h4><p>ImporSelect：返回要导入的全类名数组。</p>
+<h4 id="二、ImportSelect"><a href="#二、ImportSelect" class="headerlink" title="二、ImportSelect"></a>二、ImportSelect</h4><p>ImportSelect：返回要导入的全类名数组。</p>
 <p>在@Import的value属性中，导入实现了ImportSelect接口的类，该实现类返回我们需要导入的组件的全类名即可。</p>
 <p>1）在com.liuzhuo.condition包下，创建MyImportSelect类并实现ImportSelect接口：</p>
-<pre><code>public class MyImportSelect implements ImportSelector {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyImportSelect</span> <span class="token keyword">implements</span> <span class="token class-name">ImportSelector</span> <span class="token punctuation">{</span>
 
-    /*
+    <span class="token comment" spellcheck="true">/*
     * annotationMetadata:获取注解的信息。
     * 返回值：全类名的字符串数组
-    * */
-    @Override
-    public String[] selectImports(AnnotationMetadata annotationMetadata) {
+    * */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">selectImports</span><span class="token punctuation">(</span>AnnotationMetadata annotationMetadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //返回值不能是null，否则会出空指针异常
-        return new String[0];
-    }
-}
-</code></pre><p>2) 在com.liuzhuo.bean包下，创建Bule、Yellow类。</p>
+        <span class="token comment" spellcheck="true">//返回值不能是null，否则会出空指针异常</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 在com.liuzhuo.bean包下，创建Bule、Yellow类。</p>
 <p>3）修改selectImports方法是返回值：</p>
-<pre><code>public class MyImportSelect implements ImportSelector {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyImportSelect</span> <span class="token keyword">implements</span> <span class="token class-name">ImportSelector</span> <span class="token punctuation">{</span>
 
-    /*
+    <span class="token comment" spellcheck="true">/*
     * annotationMetadata:获取注解的信息。
     * 返回值：全类名的字符串数组
-    * */
-    @Override
-    public String[] selectImports(AnnotationMetadata annotationMetadata) {
+    * */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">selectImports</span><span class="token punctuation">(</span>AnnotationMetadata annotationMetadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //返回值不能是null，否则会出空指针异常
-        return new String[]{&quot;com.liuzhuo.bean.Blue&quot;,&quot;com.liuzhuo.bean.Yellow&quot;};
-    }
-}
-</code></pre><p>4) 修改配置类MainConfig2:(添加类MyImportSelect类)</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@Import({Color.class, Red.class, MyImportSelect.class})
-public class MainConfig2
-</code></pre><p>5)运行测试方法testImport:</p>
+        <span class="token comment" spellcheck="true">//返回值不能是null，否则会出空指针异常</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"com.liuzhuo.bean.Blue"</span><span class="token punctuation">,</span><span class="token string">"com.liuzhuo.bean.Yellow"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 修改配置类MainConfig2:(添加类MyImportSelect类)</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span>Color<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> Red<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> MyImportSelect<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig2</span>
+</code></pre>
+<p>5)运行测试方法testImport:</p>
 <p>结果：</p>
 <pre><code>mainConfig2
 com.liuzhuo.bean.Color
@@ -575,47 +583,51 @@ bier
 <h4 id="三、ImportBeanDefinitionRegistrar"><a href="#三、ImportBeanDefinitionRegistrar" class="headerlink" title="三、ImportBeanDefinitionRegistrar"></a>三、ImportBeanDefinitionRegistrar</h4><p>ImportBeanDefinitionRegistrar ：手动注册Bean。</p>
 <p>使用的形式与ImportSelect类似。</p>
 <p>1）在com.liuzhuo.condition包下，创建MyImportBeanDefinitionRegistrar类实现ImportBeanDefinitionRegistrar接口。  </p>
-<pre><code>public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
-    /*
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyImportBeanDefinitionRegistrar</span> <span class="token keyword">implements</span> <span class="token class-name">ImportBeanDefinitionRegistrar</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
     *
     * importingClassMetadata:注解类的信息
     * registry：注册组件，使用register.registerBeanDefinition()方法，手动注册Bean。
-    * */
-    @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+    * */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span>AnnotationMetadata importingClassMetadata<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    }
-}
-</code></pre><p>2)在com.liuzhuo.bean包下，创建RainBow类。</p>
-<pre><code>public class RainBow {
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2)在com.liuzhuo.bean包下，创建RainBow类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RainBow</span> <span class="token punctuation">{</span>
 
-</code></pre><p>3) 修改registerBeanDefinitions方法：</p>
-<pre><code>    @Override
-    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 修改registerBeanDefinitions方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span>AnnotationMetadata importingClassMetadata<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        /*
+        <span class="token comment" spellcheck="true">/*
          * 这里，我们根据是否有Bule和Yellow组件来注册RainBow组件。
-         * */
+         * */</span>
 
-        //注意这里传入的是Bean的id。
-        boolean b = registry.containsBeanDefinition(&quot;com.liuzhuo.bean.Blue&quot;);
-        boolean y = registry.containsBeanDefinition(&quot;com.liuzhuo.bean.Yellow&quot;);
-        if (b &amp;&amp; y) {
-            //两个参数：String beanName
-            //         BeanDefinition beanDefinition
-            // beanName：要注册的Bean的id
-            //beanDefinition:Bean的定义。是一个接口，我们需要传入一个实现类。
-            RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(RainBow.class);
-            registry.registerBeanDefinition(&quot;rainBow&quot;, rootBeanDefinition);
-        }
-    }
-</code></pre><p>4) 修改配置类MainConfig2：(MyImportBeanDefinitionRegistrar.class)</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-@Import({Color.class, Red.class, MyImportSelect.class, MyImportBeanDefinitionRegistrar.class})
-public class MainConfig2
-</code></pre><p>5) 运行测试方法testImport:</p>
+        <span class="token comment" spellcheck="true">//注意这里传入的是Bean的id。</span>
+        <span class="token keyword">boolean</span> b <span class="token operator">=</span> registry<span class="token punctuation">.</span><span class="token function">containsBeanDefinition</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.bean.Blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> y <span class="token operator">=</span> registry<span class="token punctuation">.</span><span class="token function">containsBeanDefinition</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.bean.Yellow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">&amp;&amp;</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//两个参数：String beanName</span>
+            <span class="token comment" spellcheck="true">//         BeanDefinition beanDefinition</span>
+            <span class="token comment" spellcheck="true">// beanName：要注册的Bean的id</span>
+            <span class="token comment" spellcheck="true">//beanDefinition:Bean的定义。是一个接口，我们需要传入一个实现类。</span>
+            RootBeanDefinition rootBeanDefinition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootBeanDefinition</span><span class="token punctuation">(</span>RainBow<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            registry<span class="token punctuation">.</span><span class="token function">registerBeanDefinition</span><span class="token punctuation">(</span><span class="token string">"rainBow"</span><span class="token punctuation">,</span> rootBeanDefinition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4) 修改配置类MainConfig2：(MyImportBeanDefinitionRegistrar.class)</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span>Color<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> Red<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> MyImportSelect<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> MyImportBeanDefinitionRegistrar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig2</span>
+</code></pre>
+<p>5) 运行测试方法testImport:</p>
 <pre><code>mainConfig2
 com.liuzhuo.bean.Color
 com.liuzhuo.bean.Red
@@ -630,45 +642,48 @@ rainBow
 <p>使用Spring提供的FactoryBean（工厂Bean）<br> &nbsp;&nbsp;&nbsp;&nbsp;1）默认获取的是工厂bean调用getObject创建的对象<br> &nbsp;&nbsp;&nbsp;&nbsp;2）要想获取工厂Bean本身，需要给id前面加一个&amp;</p>
 <hr>
 <p>1) 在com.liuzhuo.bean包下，创建ColorFactoryBean类，实现FactoryBean接口：</p>
-<pre><code>public class ColorFactoryBean implements FactoryBean&lt;Color&gt; {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ColorFactoryBean</span> <span class="token keyword">implements</span> <span class="token class-name">FactoryBean</span><span class="token operator">&lt;</span>Color<span class="token operator">></span> <span class="token punctuation">{</span>
 
-    //返回的Bean对象
-    @Override
-    public Color getObject() throws Exception {
-        return new Color();
-    }
+    <span class="token comment" spellcheck="true">//返回的Bean对象</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Color <span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //Bean的类型
-    @Override
-    public Class&lt;?&gt; getObjectType() {
-        return Color.class;
-    }
+    <span class="token comment" spellcheck="true">//Bean的类型</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> <span class="token function">getObjectType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Color<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //是否是单例：
-    //true:单例
-    //false:多例
-    @Override
-    public boolean isSingleton() {
-        return true;
-    }
-}
+    <span class="token comment" spellcheck="true">//是否是单例：</span>
+    <span class="token comment" spellcheck="true">//true:单例</span>
+    <span class="token comment" spellcheck="true">//false:多例</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>2) 注册ColorFactoryBean到容器中，在配置文件MainConfig2中：</p>
-<pre><code>    @Bean
-    public ColorFactoryBean colorFactoryBean() {
-        return new ColorFactoryBean();
-    }
-</code></pre><p>3) 修改testImport方法：</p>
-<pre><code>    @Test
-    public void testImport() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
-        printBeanName(applicationContext);
+</code></pre>
+<p>2) 注册ColorFactoryBean到容器中，在配置文件MainConfig2中：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ColorFactoryBean <span class="token function">colorFactoryBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ColorFactoryBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3) 修改testImport方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testImport</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig2<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printBeanName</span><span class="token punctuation">(</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-        Object colorFactoryBean = applicationContext.getBean(&quot;colorFactoryBean&quot;);
-        System.out.println(colorFactoryBean);
-    }
-</code></pre><p>4) 结果：</p>
+        Object colorFactoryBean <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"colorFactoryBean"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>colorFactoryBean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4) 结果：</p>
 <pre><code>mainConfig2
 com.liuzhuo.bean.Color
 com.liuzhuo.bean.Red
@@ -679,14 +694,17 @@ bier
 colorFactoryBean
 rainBow
 com.liuzhuo.bean.Color@6107227e
-</code></pre><p>发现：com.liuzhuo.bean.Color@6107227e 已经注册到容器中了。<br><strong>注意：我们注册到容器中的是ColorFactoryBean，但是获取Bean的时候，却是Color。</strong></p>
+</code></pre><p>发现：com.liuzhuo.bean.Color@6107227e 已经注册到容器中了。</p>
+<font color="red"><strong>注意：我们注册到容器中的是ColorFactoryBean，但是获取Bean的时候，却是Color。</strong></font>
+
 <p>底层是调用ColorFactoryBean的getObject()来获取的。</p>
 <p>如果就是想要获取ColorFactoryBean本身的话，在id前面加一个&amp;：</p>
-<pre><code>        Object colorFactoryBean = applicationContext.getBean(&quot;colorFactoryBean&quot;);
-        System.out.println(colorFactoryBean);
-        Object colorFactoryBean2 = applicationContext.getBean(&quot;&amp;colorFactoryBean&quot;);
-        System.out.println(colorFactoryBean2);
-</code></pre><p>结果：</p>
+<pre class=" language-java"><code class="language-java">        Object colorFactoryBean <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"colorFactoryBean"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>colorFactoryBean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Object colorFactoryBean2 <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"&amp;colorFactoryBean"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>colorFactoryBean2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>结果：</p>
 <pre><code>com.liuzhuo.bean.Color@6107227e
 com.liuzhuo.bean.ColorFactoryBean@7c417213
 </code></pre><p>ps:点击BeanFactory：<br>会发现有一个字段：<br><code>String FACTORY_BEAN_PREFIX = &quot;&amp;&quot;;</code><br>这就是为啥加&amp;会获取FactoryBean本身的原因.</p>
@@ -1131,10 +1149,11 @@ com.liuzhuo.bean.ColorFactoryBean@7c417213
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Bean的生命周期
-Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化—–调用—–销毁。
-构造(对象的创建)：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb</div>
+                    <div class="summary">
+                      
+                                今天，学习Bean的生命周期
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
@@ -1179,12 +1198,11 @@ Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化�
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习条件注解！！！
-@Conditional作用：按照一定的条件进行判断，满足条件给容器中注入bean  
-现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。
-在配置类中，添加两个方法：
-   </div>
+                    <div class="summary">
+                       
+                                今天，学习条件注解！！！这个很重要、很重要、很重要！
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-14
@@ -1364,7 +1382,7 @@ Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

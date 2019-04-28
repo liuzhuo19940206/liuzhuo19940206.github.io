@@ -8,10 +8,9 @@
     <meta name="keywords" content="spring_annotation_day_04, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
 今天，学习条件注解！！！
-@Conditional作用：按照一定的条件进行判断，满足条件给容器中注入bean  
+@Conditional作用：按照一定的条件进行判断，满足条件的bean给注入到容器中  
 现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。
-在配置类中，添加两个方法：
-   ">
+在MainConfig2配置类">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -448,7 +447,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        830
+                        809
                     </div>
                     
 
@@ -473,33 +472,35 @@
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
 <p>今天，学习条件注解！！！<br><a id="more"></a></p>
-<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>作用：按照一定的条件进行判断，满足条件给容器中注入bean  </p>
+<h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>作用：按照一定的条件进行判断，满足条件的bean给注入到容器中  </p>
 <p>现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。</p>
-<p>在配置类中，添加两个方法：</p>
-<pre><code>    @Bean(&quot;bier&quot;)
-    public Person person01() { //如果是windows系统就注入到容器中
-        return new Person(&quot;Bier&quot;, 16);
-    }
+<p>在MainConfig2配置类中，再添加两个新方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"bier"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Person <span class="token function">person01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果是windows系统就注入到容器中</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Bier"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Bean(&quot;linux&quot;)
-    public Person person02() { //如果是Linux系统就注入到容器中
-        return new Person(&quot;Linux&quot;, 18);
-    }
-</code></pre><p>在测试类中，创建新的test03方法:</p>
-<pre><code>    @Test
-    public void test03() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
-        //根据Bean类来获取所有的Bean类的id名字
-        String[] beanNamesForType = applicationContext.getBeanNamesForType(Person.class);
-        for (String name : beanNamesForType) {
-            System.out.println(name);
-        }
-        //根据Bean类来获取Map结构
-        Map&lt;String, Person&gt; beansOfType = applicationContext.getBeansOfType(Person.class);
-        System.out.println(beansOfType);
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"linux"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Person <span class="token function">person02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果是Linux系统就注入到容器中</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Linux"</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>在测试类中，创建新的test03方法:</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig2<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//根据Bean类来获取所有的Bean类的id名字</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanNamesForType <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> beanNamesForType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//根据Bean类来获取Map结构</span>
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Person<span class="token operator">></span> beansOfType <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeansOfType</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>beansOfType<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-</code></pre><p>输出结果：</p>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果：</p>
 <pre><code>D:\Java1.8\bin\java  
 person
 bier
@@ -511,59 +512,62 @@ Process finished with exit code 0
 </code></pre><p>此时：获取了所有的person类的Bean的id的名字。</p>
 <hr>
 <p>现在，我们创建com.liuzhuo.conditaion包，并创建两个实现了condition接口的类。如下：</p>
-<p><img src="/images/20181014203017.png" style="width:50%">  </p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181014203017.png" style="width:50%">  </p>
 <p>WinCondition类：</p>
-<pre><code>public class WinCondition implements Condition {
-    /*
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinCondition</span> <span class="token keyword">implements</span> <span class="token class-name">Condition</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
      * conditionContext：     条件上下文（获取我们需要的资源）
      * annotatedTypeMetadata：注解类型的信息
-     * */
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+     * */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span>ConditionContext conditionContext<span class="token punctuation">,</span> AnnotatedTypeMetadata annotatedTypeMetadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //获取beanFactory工厂
-        ConfigurableListableBeanFactory beanFactory = conditionContext.getBeanFactory();
-        //获取加载类
-        ClassLoader classLoader = conditionContext.getClassLoader();
-        //获取注解类
-        BeanDefinitionRegistry registry = conditionContext.getRegistry();
-        //获取环境变量
-        Environment environment = conditionContext.getEnvironment();
-        //获取资源加载类
-        ResourceLoader resourceLoader = conditionContext.getResourceLoader();
+        <span class="token comment" spellcheck="true">//获取beanFactory工厂</span>
+        ConfigurableListableBeanFactory beanFactory <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取加载类</span>
+        ClassLoader classLoader <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取注解类</span>
+        BeanDefinitionRegistry registry <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getRegistry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取环境变量</span>
+        Environment environment <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取资源加载类</span>
+        ResourceLoader resourceLoader <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getResourceLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        /*
+        <span class="token comment" spellcheck="true">/*
         * 创建如果是windows系统的话，就注入到容器中
-        * */
-        String property = environment.getProperty(&quot;os.name&quot;);
-        if (property.contains(&quot;Windows&quot;)) return true;
-        return false;
-    }
-}
-</code></pre><p>LinuxCondition类：</p>
-<pre><code>public class LinuxCondition implements Condition {
-    @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        * */</span>
+        String property <span class="token operator">=</span> environment<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>property<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Windows"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>LinuxCondition类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LinuxCondition</span> <span class="token keyword">implements</span> <span class="token class-name">Condition</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span>ConditionContext conditionContext<span class="token punctuation">,</span> AnnotatedTypeMetadata annotatedTypeMetadata<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        Environment environment = conditionContext.getEnvironment();
-        String property = environment.getProperty(&quot;os.name&quot;);
-        if (property.contains(&quot;Linux&quot;)) return true;
-        return false;
-    }
-}
-</code></pre><p>修改配置类：给刚刚创建的两个方法添加@Conditional注解</p>
-<pre><code>    @Conditional({WinCondition.class})
-    @Bean(&quot;bier&quot;)
-    public Person person01() { //如果是windows系统就注入到容器中
-        return new Person(&quot;Bier&quot;, 16);
-    }
+        Environment environment <span class="token operator">=</span> conditionContext<span class="token punctuation">.</span><span class="token function">getEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String property <span class="token operator">=</span> environment<span class="token punctuation">.</span><span class="token function">getProperty</span><span class="token punctuation">(</span><span class="token string">"os.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>property<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"Linux"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>修改配置类：给刚刚创建的两个方法添加@Conditional注解</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Conditional</span><span class="token punctuation">(</span><span class="token punctuation">{</span>WinCondition<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"bier"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Person <span class="token function">person01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果是windows系统就注入到容器中</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Bier"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Conditional({LinuxCondition.class})
-    @Bean(&quot;linux&quot;)
-    public Person person02() { //如果是Linux系统就注入到容器中
-        return new Person(&quot;Linux&quot;, 18);
-    }
-</code></pre><p>输出结果：</p>
+    <span class="token annotation punctuation">@Conditional</span><span class="token punctuation">(</span><span class="token punctuation">{</span>LinuxCondition<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span><span class="token string">"linux"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Person <span class="token function">person02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//如果是Linux系统就注入到容器中</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Linux"</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果：</p>
 <pre><code>person
 bier
 加载person类到容器中~~~
@@ -574,8 +578,8 @@ Process finished with exit code 0
 </code></pre><p>看到结果：现在作者的操作系统是windows系统，所以现在是bier给注入到容器中了。</p>
 <p>现在修改操作系统的类型。</p>
 <p>修改test03的运行环境，在idea的右上角点击”Edit Configrations···”:</p>
-<p><img src="/images/20181014204146.png" style="width:50%"></p>
-<p>编辑里面的 VM options: -Dos.name=Linux </p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181014204146.png" style="width:50%"></p>
+<p>编辑里面的 VM options: <code>-Dos.name=Linux</code></p>
 <p>然后运行test03.</p>
 <pre><code>person
 linux
@@ -587,13 +591,14 @@ Process finished with exit code 0
 </code></pre><p>此时，注入到容器中的是linux。</p>
 <hr>
 <p>总结：@Conditional注解是用来按照一定的条件进行判断，满足条件给容器中注入bean。<br>点击@Conditional：</p>
-<pre><code>@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface Conditional {
-    Class&lt;? extends Condition&gt;[] value();
-}
-</code></pre><p>说明@Conditional里面是Condition&gt;[] value()数组。我们需要在@Conditional的value中写入数组。数组需要使用｛｝来写。传入的是实现了Condition接口的类。比如这里的WinCondition、LinuxCondition类。<br>实例：@Conditional({WinCondition.class})、@Conditional({LinuxCondition.class})。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Conditional</span> <span class="token punctuation">{</span>
+    Class<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Condition</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>说明@Conditional里面是Condition&gt;[] value()数组。我们需要在@Conditional的value中写入数组。数组需要使用｛｝来写。传入的是实现了Condition接口的类。比如这里的WinCondition、LinuxCondition类。<br>实例：@Conditional({WinCondition.class})、@Conditional({LinuxCondition.class})。</p>
 <p>@Conditional，不仅可以放在方法上面，还可以是类上面。<br>放在类上面，就是对这个类统一设置。</p>
 
             </div>
@@ -1036,9 +1041,11 @@ public @interface Conditional {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习给容器中注入组件
-@Import注解给容器中注册组件：1）、包扫描+组件标记注解（@Controller、@Service、@Repository、@Component)[导入我们自己写的组件]2）、@B</div>
+                    <div class="summary">
+                      
+                                今天,学习给容器中注入组件:@Import注解、FactoryBean
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
@@ -1083,10 +1090,11 @@ public @interface Conditional {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Spring中的@Scope注解
-@Scope注解@Scope注解：是用来控制创建对象的作用域的，这里的作用域是我们平时所说的作用域。这里是：单例模式、多例模式等。  
-现在创建新的配置类com.liuz</div>
+                    <div class="summary">
+                       
+                                今天，学习Spring中的@Scope注解、懒加载
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-14
@@ -1266,7 +1274,7 @@ public @interface Conditional {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

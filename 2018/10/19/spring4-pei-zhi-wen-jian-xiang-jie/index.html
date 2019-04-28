@@ -7,13 +7,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Spring4配置文件详解, 解忧杂货店">
     <meta name="description" content="总结Spring4中的各种配置文件的信息。
-
 欢迎大家补充，完善各种配置信息。
 好的习惯，将会伴随你的一生。
 开始今天的主题！！！
 配置数据源
 基本的加载properties配置文件
-&amp;lt;context:property-placeho">
+&amp;lt;context:property-placehol">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,7 +473,6 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>总结Spring4中的各种配置文件的信息。</p>
-<a id="more"></a>
 <p>欢迎大家补充，完善各种配置信息。</p>
 <p>好的习惯，将会伴随你的一生。</p>
 <p>开始今天的主题！！！</p>
@@ -760,7 +758,7 @@ public class UserDaoImpl implements IUserDao  {
   &lt;property name=&quot;generateDdl&quot; value=&quot;true&quot;/&gt;
   &lt;property name=&quot;databasePlatform&quot; value=&quot;org.hibernate.dialect.MySQL5Dialect&quot;/&gt;
 &lt;/bean&gt;
-</code></pre><p>【TIPS】database属性：属性值表示支持哪种数据库，下面Hibernate的JPA是一些支持的数据库：<br><img src="/images/20181019214107.png"></p>
+</code></pre><p>【TIPS】database属性：属性值表示支持哪种数据库，下面Hibernate的JPA是一些支持的数据库：<br><img src="http://pp66ww0jt.bkt.clouddn.com/20181019214107.png"></p>
 <p><strong>【注】JNDI获取实体管理工厂：</strong></p>
 <p>如果spring应用部署在应用服务器中，Spring可能已经创建好EntityManagerFactory并将其置于JNDI中等饭查询使用，这种情况可使用JNDI来获取对EntityManagerFactory的引用：</p>
 <pre><code>&lt;jee:jndi-lookup id=&quot;emf&quot; jndi-name=&quot;persistence/testDS&quot;/&gt;
@@ -899,7 +897,7 @@ class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;
      &lt;tx:method name=&quot;*&quot;       propagation=&quot;NOT_SUPPORTED&quot; read-only=&quot;true&quot; /&gt;
   &lt;/tx:attributes&gt;
 &lt;/tx:advice&gt;
-</code></pre><p>其中&lt;tx:method /&gt;有很多属性用来帮助定义方法的事务策略：<br><img src="/images/20181019215056.png"></p>
+</code></pre><p>其中&lt;tx:method /&gt;有很多属性用来帮助定义方法的事务策略：<br><img src="http://pp66ww0jt.bkt.clouddn.com/20181019215056.png"></p>
 <p>4）定义注解驱动的事务</p>
 <p>在XML配置文件中添加：</p>
 <pre><code>&lt;tx:annotation-driven/&gt;
@@ -1347,13 +1345,11 @@ class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发 
-今天来学习Spring的声明式事务。
-
-不使用事务环境搭建
-1）导入相关依赖
-数据源、数据驱动、Spring-jdbc模块.数据源、数据驱动之前已经导入过，现在只需要Spring-jdbc模块.
-        &l</div>
+                    <div class="summary">
+                      
+                                今天来学习Spring的声明式事务
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-20
@@ -1398,10 +1394,11 @@ class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。
-本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。
-
-Pr</div>
+                    <div class="summary">
+                       
+                                Spring里面的Properties
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1581,7 +1578,7 @@ Pr</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

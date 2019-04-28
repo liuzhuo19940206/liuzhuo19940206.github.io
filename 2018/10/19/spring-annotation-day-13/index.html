@@ -8,10 +8,9 @@
     <meta name="keywords" content="spring_annotation_day_13, 解忧杂货店">
     <meta name="description" content="Spring注解开发 
 今天来学习AOP原理。
-
 我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。
 
-@EnableAspectJAutoProxy1）点击@">
+@EnableAspectJAutoProxy1）点击@E">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -473,57 +472,60 @@
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong> </p>
 <p>今天来学习AOP原理。</p>
-<a id="more"></a>
 <p>我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。</p>
 <hr>
 <h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><p>1）点击@EnableAspectJAutoProxy注解：</p>
-<pre><code>@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(AspectJAutoProxyRegistrar.class)
-public @interface EnableAspectJAutoProxy 
-</code></pre><p>发现，使用了@Import注解来注入组件。组件是AspectJAutoProxyRegistrar类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>AspectJAutoProxyRegistrar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EnableAspectJAutoProxy</span> 
+</code></pre>
+<p>发现，使用了@Import注解来注入组件。组件是AspectJAutoProxyRegistrar类。</p>
 <p>2）点击AspectJAutoProxyRegistrar类：</p>
-<pre><code>class AspectJAutoProxyRegistrar implements ImportBeanDefinitionRegistrar{
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">AspectJAutoProxyRegistrar</span> <span class="token keyword">implements</span> <span class="token class-name">ImportBeanDefinitionRegistrar</span><span class="token punctuation">{</span>
   ···
-}
-</code></pre><p>该类，实现了ImportBeanDefinitionRegistrar接口，说明是用来自定义注入组件的。其中有一个registerBeanDefinitions（）方法。</p>
-<pre><code>public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>该类，实现了ImportBeanDefinitionRegistrar接口，说明是用来自定义注入组件的。其中有一个registerBeanDefinitions（）方法。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span>AnnotationMetadata importingClassMetadata<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);
+        AopConfigUtils<span class="token punctuation">.</span><span class="token function">registerAspectJAnnotationAutoProxyCreatorIfNecessary</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        AnnotationAttributes enableAspectJAutoProxy =
-                AnnotationConfigUtils.attributesFor(importingClassMetadata, EnableAspectJAutoProxy.class);
-        if (enableAspectJAutoProxy.getBoolean(&quot;proxyTargetClass&quot;)) {
-            AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry);
-        }
-        if (enableAspectJAutoProxy.getBoolean(&quot;exposeProxy&quot;)) {
-            AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry);
-        }
-    }
-</code></pre><p>查看其中的AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);</p>
+        AnnotationAttributes enableAspectJAutoProxy <span class="token operator">=</span>
+                AnnotationConfigUtils<span class="token punctuation">.</span><span class="token function">attributesFor</span><span class="token punctuation">(</span>importingClassMetadata<span class="token punctuation">,</span> EnableAspectJAutoProxy<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>enableAspectJAutoProxy<span class="token punctuation">.</span><span class="token function">getBoolean</span><span class="token punctuation">(</span><span class="token string">"proxyTargetClass"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AopConfigUtils<span class="token punctuation">.</span><span class="token function">forceAutoProxyCreatorToUseClassProxying</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>enableAspectJAutoProxy<span class="token punctuation">.</span><span class="token function">getBoolean</span><span class="token punctuation">(</span><span class="token string">"exposeProxy"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AopConfigUtils<span class="token punctuation">.</span><span class="token function">forceAutoProxyCreatorToExposeProxy</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>查看其中的AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);</p>
 <p>最终会调用registerOrEscalateApcAsRequired方法：</p>
-<pre><code>    private static BeanDefinition registerOrEscalateApcAsRequired(Class&lt;?&gt; cls, BeanDefinitionRegistry registry, Object source) {
-        Assert.notNull(registry, &quot;BeanDefinitionRegistry must not be null&quot;);
-        if (registry.containsBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME)) {
-            BeanDefinition apcDefinition = registry.getBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME);
-            if (!cls.getName().equals(apcDefinition.getBeanClassName())) {
-                int currentPriority = findPriorityForClass(apcDefinition.getBeanClassName());
-                int requiredPriority = findPriorityForClass(cls);
-                if (currentPriority &lt; requiredPriority) {
-                    apcDefinition.setBeanClassName(cls.getName());
-                }
-            }
-            return null;
-        }
-        RootBeanDefinition beanDefinition = new RootBeanDefinition(cls);
-        beanDefinition.setSource(source);
-        beanDefinition.getPropertyValues().add(&quot;order&quot;, Ordered.HIGHEST_PRECEDENCE);
-        beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
-        registry.registerBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME, beanDefinition);
-        return beanDefinition;
-    }
-</code></pre><p>最后是给容器注入了一个Bean：<br>id：internalAutoProxyCreator ==》 Class：AnnotationAwareAspectJAutoProxyCreator</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> BeanDefinition <span class="token function">registerOrEscalateApcAsRequired</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> cls<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">,</span> Object source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Assert<span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>registry<span class="token punctuation">,</span> <span class="token string">"BeanDefinitionRegistry must not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>registry<span class="token punctuation">.</span><span class="token function">containsBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            BeanDefinition apcDefinition <span class="token operator">=</span> registry<span class="token punctuation">.</span><span class="token function">getBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cls<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>apcDefinition<span class="token punctuation">.</span><span class="token function">getBeanClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> currentPriority <span class="token operator">=</span> <span class="token function">findPriorityForClass</span><span class="token punctuation">(</span>apcDefinition<span class="token punctuation">.</span><span class="token function">getBeanClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> requiredPriority <span class="token operator">=</span> <span class="token function">findPriorityForClass</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>currentPriority <span class="token operator">&lt;</span> requiredPriority<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    apcDefinition<span class="token punctuation">.</span><span class="token function">setBeanClassName</span><span class="token punctuation">(</span>cls<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        RootBeanDefinition beanDefinition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootBeanDefinition</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">setSource</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">getPropertyValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"order"</span><span class="token punctuation">,</span> Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">setRole</span><span class="token punctuation">(</span>BeanDefinition<span class="token punctuation">.</span>ROLE_INFRASTRUCTURE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">registerBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">,</span> beanDefinition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> beanDefinition<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>最后是给容器注入了一个Bean：<br>id：internalAutoProxyCreator ==》 Class：AnnotationAwareAspectJAutoProxyCreator</p>
 <hr>
 <h3 id="AnnotationAwareAspectJAutoProxyCreator"><a href="#AnnotationAwareAspectJAutoProxyCreator" class="headerlink" title="AnnotationAwareAspectJAutoProxyCreator"></a>AnnotationAwareAspectJAutoProxyCreator</h3><p>@EnableAspectJAutoProxy注解帮我们注入了AnnotationAwareAspectJAutoProxyCreator组件，这个组件有什么作用呢？</p>
 <p>我们观察一下AnnotationAwareAspectJAutoProxyCreator的继承关系：</p>
@@ -541,17 +543,20 @@ public @interface EnableAspectJAutoProxy
 <p>7）AnnotationAwareAspectJAutoProxyCreator.initBeanFactory(父类重写的方法也打上断点)</p>
 <p>8) MainConfigOfAOP配置类的中的两个Bean对象打上断点：<br>&nbsp;&nbsp;&nbsp;mathCalculator和logAspects</p>
 <h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><p>流程：<br>1）传入配置类，创建IoC容器</p>
-<pre><code> AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
-</code></pre><p>2) 注册配置类，调用refresh（）, 刷新容器</p>
-<pre><code>public AnnotationConfigApplicationContext(Class&lt;?&gt;... annotatedClasses) {
-        this();
-        register(annotatedClasses); //注入配置类
-        refresh();  //刷新容器
-    }
-</code></pre><p>3）registerBeanPostProcessors(beanFactory);注册bean的后置处理器，来拦截bean的初始化操作。  </p>
+<pre class=" language-java"><code class="language-java">AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAOP<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>2) 注册配置类，调用refresh（）, 刷新容器</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> annotatedClasses<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">register</span><span class="token punctuation">(</span>annotatedClasses<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//注入配置类</span>
+        <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//刷新容器</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3）registerBeanPostProcessors(beanFactory);注册bean的后置处理器，来拦截bean的初始化操作。  </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;1.先获取IoC容器已经定义了的需要创建对象的所有BeanPostProcessor  </p>
-<pre><code>String[] postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class, true, false);
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;2.给容器中加别的BeanPostProcessor</p>
+<pre class=" language-java"><code class="language-java">String<span class="token punctuation">[</span><span class="token punctuation">]</span> postProcessorNames <span class="token operator">=</span> beanFactory<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>BeanPostProcessor<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2.给容器中加别的BeanPostProcessor</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;3.优先注册实现了PriorityOrdered接口的BeanPostProcessor</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;4.再注册实现了Ordered接口的BeanPostProcessor</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;5.注册没有实现优先级接口的BeanPostProcessor</p>
@@ -561,20 +566,21 @@ public @interface EnableAspectJAutoProxy
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.populateBean：给bean的属性赋值</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.initializeBean：初始化bean</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.invokeAwareMethods：处理Aware接口的回调：</p>
-<pre><code>    private void invokeAwareMethods(final String beanName, final Object bean) {
-        if (bean instanceof Aware) {
-            if (bean instanceof BeanNameAware) {
-                ((BeanNameAware) bean).setBeanName(beanName);
-            }
-            if (bean instanceof BeanClassLoaderAware) {
-                ((BeanClassLoaderAware) bean).setBeanClassLoader(getBeanClassLoader());
-            }
-            if (bean instanceof BeanFactoryAware) {
-                ((BeanFactoryAware) bean).setBeanFactory(AbstractAutowireCapableBeanFactory.this);
-            }
-        }
-    }
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.applyBeanPostProcessorsBeforeInitialization:执行后置处理器的postProcessor：postProcessBeforeInitialization方法</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">invokeAwareMethods</span><span class="token punctuation">(</span><span class="token keyword">final</span> String beanName<span class="token punctuation">,</span> <span class="token keyword">final</span> Object bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">Aware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanNameAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanNameAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanName</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanClassLoaderAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanClassLoaderAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanClassLoader</span><span class="token punctuation">(</span><span class="token function">getBeanClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanFactoryAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanFactoryAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanFactory</span><span class="token punctuation">(</span>AbstractAutowireCapableBeanFactory<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.applyBeanPostProcessorsBeforeInitialization:执行后置处理器的postProcessor：postProcessBeforeInitialization方法</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.invokeInitMethods：自定义的初始化方法</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.applyBeanPostProcessorsAfterInitialization：执行postProcessor：postProcessAfterInitialization方法</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.BeanPostProcessor(AnnotationAwareAspectJAutoProxyCreator)创建成功；</p>
@@ -595,10 +601,11 @@ public @interface EnableAspectJAutoProxy
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.createBean():创建Bean</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.resolveBeforeInstantiation():解析BeanPostProcessors<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>想让后置处理器在次能返回一个代理对象</strong>，如果能返回代理对象就使用，如果不能就继续。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.后置处理器先尝试返回代理对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bean=applyBeanPostProcessorsBeforeInstantiation();拿到所有的后置处理器，如果是 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InstantiationAwareBeanPostProcessor；就执行postProcessBeforeInstantiation方法</p>
-<pre><code>  if (bean != null) {
-      bean = applyBeanPostProcessorsAfterInitialization(bean, beanName);
-    }
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.doCreateBean()：真正去创建一个bean实例；和3.6流程一样</p>
+<pre class=" language-java"><code class="language-java">  <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      bean <span class="token operator">=</span> <span class="token function">applyBeanPostProcessorsAfterInitialization</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.doCreateBean()：真正去创建一个bean实例；和3.6流程一样</p>
 <hr>
 <p>AnnotationAwareAspectJAutoProxyCreator[InstantiationAwareBeanPostProcessor]</p>
 <p>1) 每一个bean创建之前，调用postProcessBeforeInstantiation()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关心<strong>mathCalculator</strong>和<strong>logAspects</strong></p>
@@ -630,11 +637,11 @@ public @interface EnableAspectJAutoProxy
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）如果有拦截器链，把需要执行的目标对象，目标方法，拦截器链等信息传入，创建一个CglibMethodInvocation对象，并调用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object retVal = mi.proceed();</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) 拦截器链的触发过程</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）如果没有拦截器执行，就直接执行目标方法，或者拦截器的索引和拦截器数组的个数-1一样大，执行目标方法</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拦截器链的机制，保证通知方法与目标方法的执行顺序.<br><img src="/images/20181019201432.png"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拦截器链的机制，保证通知方法与目标方法的执行顺序.<br><img src="http://pp4rmtx78.bkt.clouddn.com/20181019201432.png"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1）@EnableAspectJAutoProxy注解 开启AOP功能</p>
 <p>2）@EnableAspectJAutoProxy 会给容器中注册一个组件 AnnotationAwareAspectJAutoProxyCreator</p>
 <p>3）AnnotationAwareAspectJAutoProxyCreator是一个后置处理器</p>
-<p>4）容器的创建流程：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）registerBeanPostProcessors()注册后置处理器，创建AnnotationAwareAspectJAutoProxyCreator对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）finishBeanFactoryInitialization()：初始化剩下的单实例bean<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）创建业务逻辑组件和切面组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）组件创建完之后，判断组件是否需要增强。是：切面的通知方法，包装成增强器(Advisor);给业务逻辑组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建一个代理对象 </p>
+<p>4）容器的创建流程：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）registerBeanPostProcessors()注册后置处理器，创建AnnotationAwareAspectJAutoProxyCreator对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）finishBeanFactoryInitialization()：初始化剩下的单实例bean<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）创建业务逻辑组件和切面组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）组件创建完之后，判断组件是否需要增强。是：切面的通知方法，包装成增强器(Advisor);给业务逻辑组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4)  创建一个代理对象 </p>
 <p>5）执行目标方法：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）代理对象执行目标方法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）CglibAopProxy.Intercept:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）得到目标方法的拦截器链(增强器包装成拦截器MethodIntercept)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）利用拦截器的链式机制，依次进入每一个拦截器进行执行；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）效果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 正常执行：前置通知 -》目标方法 -》后置通知 -》返回通知<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 出现异常：前置通知 -》目标方法 -》后置通知 -》异常通知  </p>
 
             </div>
@@ -1077,10 +1084,11 @@ public @interface EnableAspectJAutoProxy
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">对 Spring 里面的 Properties 不理解的开发者可能会觉得有点乱，主要是因为配置方式很多种，使用方式也很多种。
-本文不是原理分析、源码分析文章，只是希望可以帮助读者更好地理解和使用 Spring Properties。
-
-Pr</div>
+                    <div class="summary">
+                      
+                                Spring里面的Properties
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1125,8 +1133,11 @@ Pr</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系
-一、背景最近由于项目的包扫描出现了问题，在解决问题的过程中，偶然发现了Spring和SpringMVC是有父子容器关系的，而且正是因为这个才往往会出现包扫描的问</div>
+                    <div class="summary">
+                       
+                                Spring和SpringMVC父子容器关系
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1306,7 +1317,7 @@ Pr</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

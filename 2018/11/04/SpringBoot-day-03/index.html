@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="SpringBoot_day_03, 解忧杂货店">
     <meta name="description" content="SpringBoot的日志框架与配置
-日志框架小张；开发一个大型系统；1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.">
+日志框架小张，开发一个大型系统；1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,14 +452,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.1k
+                        4.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        22 分
+                        21 分
                     </div>
                     
                 
@@ -475,87 +475,91 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>SpringBoot的日志框架与配置<br><a id="more"></a></p>
-<h1 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h1><p>小张；开发一个大型系统；<br>1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？<br>2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.jar；<br>3、高大上的几个功能？异步模式？自动归档？xxxx？ zhanglogging-good.jar？<br>4、将以前框架卸下来？换上新的框架，重新修改之前相关的API；zhanglogging-prefect.jar；<br>5、JDBC—数据库驱动；<br>写了一个统一的接口层；日志门面（日志的一个抽象层）；logging-abstract.jar；<br>给项目中导入具体的日志实现就行了；我们之前的日志框架都是实现的抽象层；</p>
+                <p>SpringBoot的日志框架与配置</p>
+<h1 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h1><p>小张，开发一个大型系统；<br>1、System.out.println(“”)；将关键数据打印在控制台；去掉？写在一个文件？<br>2、框架来记录系统的一些运行时信息；日志框架 ； zhanglogging.jar；<br>3、高大上的几个功能？异步模式？自动归档？xxxx？ zhanglogging-good.jar？<br>4、将以前框架卸下来？换上新的框架，重新修改之前相关的API；zhanglogging-prefect.jar；<br>5、JDBC—数据库驱动；<br>写了一个统一的接口层；日志门面（日志的一个抽象层）；logging-abstract.jar；<br>给项目中导入具体的日志实现就行了；我们之前的日志框架都是实现的抽象层；</p>
 <hr>
 <p><strong>市面上的日志框架</strong></p>
 <p>JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….</p>
-<p><img src="/images/QQ截图20181104094606.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104094606.png"></p>
 <p>左边选一个门面（抽象层）、右边来选一个实现；</p>
 <p>日志门面： SLF4J；</p>
 <p>日志实现：Logback；</p>
 <p>SpringBoot：底层是Spring框架，Spring框架默认是用JCL；</p>
-<p><strong>SpringBoot选用 SLF4j和logback.</strong></p>
+<p><strong>SpringBoot选用 SLF4j 和 logback.</strong></p>
 <h1 id="SLF4j使用"><a href="#SLF4j使用" class="headerlink" title="SLF4j使用"></a>SLF4j使用</h1><h2 id="如何在系统中使用SLF4j"><a href="#如何在系统中使用SLF4j" class="headerlink" title="如何在系统中使用SLF4j"></a>如何在系统中使用SLF4j</h2><p><a href="https://www.slf4j.org/" target="_blank" rel="noopener">SLF4j参考文档</a></p>
 <p>以后开发的时候，日志记录方法的调用，<strong>不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法；</strong></p>
-<p>给系统里面导入slf4j的jar和 logback的实现jar</p>
-<pre><code>import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-public class HelloWorld {
-  public static void main(String[] args) {
-    Logger logger = LoggerFactory.getLogger(HelloWorld.class);
-    logger.info(&quot;Hello World&quot;);
-  }
-}
-</code></pre><p>图示:<br><img src="/images/QQ截图20181104095906.png"></p>
+<p>给系统里面导入 <strong>slf4j的jar</strong> 和  <strong>logback的实现jar</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>图示:<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104095906.png"></p>
 <p>每一个日志的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是要用日志实现框架自己本身的配置文件；</strong></p>
 <p>比如使用slf4j 和 logback，就用logback的配置文件，使用slf4j 和 log4j,就使用log4j的配置文件。而不是使用slf4j的配置文件。</p>
 <h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>a系统（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx</p>
 <p>我们自己的a系统想要使用slf4j+logback做日志框架，但是我们的a系统是基于Spring、HIbernate等其他框架的，而这些其他框架底层使用的是其他日志框架，Spring使用的是commons-logging，Hibernate使用的是jboss-logging。</p>
 <p>现在，我们想统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出，能做到吗？</p>
 <p>slf4j官网给出了答案，<a href="https://www.slf4j.org/legacy.html" target="_blank" rel="noopener">参考答案</a></p>
-<p><img src="/images/QQ截图20181104101357.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104101357.png"></p>
 <p><strong>如何让系统中所有的日志都统一到slf4j?</strong></p>
 <font color="red">1、将系统中其他日志框架的日志jar包先排除出去；<br><br>2、用中间包来替换原有的日志框架的jar；<br><br>3、导入slf4j其他的实现。</font>
 
-<h1 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h1><p>创建一个新的Springboot的应用，只需要Web模块即可。<br><img src="/images/QQ截图20181104103732.png"></p>
+<h1 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h1><p>创建一个新的Springboot的应用，只需要Web模块即可。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104103732.png"></p>
 <p>现在，我们来查看一下Springboot的依赖关系。</p>
 <p>查看依赖关系</p>
-<p>1）使用idea的自带的maven管理器工具<br><img src="/images/QQ截图20181104103856.png" style="width:50%"></p>
+<p>1）使用idea的自带的maven管理器工具<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104103856.png" style="width:50%"></p>
 <p>这样不够直观。</p>
 <p>2）查看依赖图</p>
-<p>在pom文件中，右键点击Diagrams -&gt; show dependencies<br><img src="/images/QQ截图20181104104228.png"><br><img src="/images/QQ截图20181104104542.png"></p>
+<p>在pom文件中，右键点击Diagrams -&gt; show dependencies<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104104228.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104104542.png"></p>
 <p>首先查看spring‐boot‐starter，因为这是Springboot的应用都必须依赖的jar包。</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre><p>然后发现，在spring‐boot‐starter下，有spring‐boot‐starter‐logging。</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+    <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>然后发现，在spring‐boot‐starter下，有spring‐boot‐starter‐logging。</p>
 <p>说明SpringBoot使用它来做日志功能</p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
             &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
         &lt;/dependency&gt;
-</code></pre><p>再来看spring-boot-starter-logging底层依赖：<br><img src="/images/QQ截图20181104105357.png"></p>
+</code></pre><p>再来看spring-boot-starter-logging底层依赖：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104105357.png"></p>
 <p>总结：</p>
-<p>1）、SpringBoot底层也是使用slf4j+logback的方式进行日志记录</p>
+<p>1）、SpringBoot底层也是使用 <strong>slf4j + logback</strong> 的方式进行日志记录</p>
 <p>2）、SpringBoot也把其他的日志都替换成了slf4j；</p>
 <p>3）、中间替换包？</p>
-<pre><code>@SuppressWarnings(&quot;rawtypes&quot;)
-public abstract class LogFactory {
-    static String UNSUPPORTED_OPERATION_IN_JCL_OVER_SLF4J =
-&quot;http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j&quot;;
-    static LogFactory logFactory = new SLF4JLogFactory();
-</code></pre><p><img src="/images/QQ截图20181104105601.png" style="width:50%"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"rawtypes"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">LogFactory</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> String UNSUPPORTED_OPERATION_IN_JCL_OVER_SLF4J <span class="token operator">=</span>
+<span class="token string">"http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j"</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span> LogFactory logFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SLF4JLogFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104105601.png" style="width:50%"></p>
 <p>其实这些jar包，本身还是原来的日志框架的jar包，只是在使用的过程中，偷换成了slf4j的日志框架，就和适配器模式很像。</p>
 <p><strong>这些操作，Springboot已经帮我们做好了，我们只需要在引入其他框架的时候，移除掉他们本身的日志框架就行了。</strong></p>
 <p>4）、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？</p>
 <p>　　　我们挑Spring来做一个列子：</p>
 <p>　　　Spring框架用的是commons-logging；</p>
-<pre><code>&lt;dependency&gt;        
-    &lt;groupId&gt;org.springframework&lt;/groupId&gt;            
-    &lt;artifactId&gt;spring‐core&lt;/artifactId&gt;            
-        &lt;exclusions&gt;            
-            &lt;exclusion&gt;                
-            &lt;groupId&gt;commons‐logging&lt;/groupId&gt;                    
-            &lt;artifactId&gt;commons‐logging&lt;/artifactId&gt;                    
-        &lt;/exclusion&gt;                
-    &lt;/exclusions&gt;            
-&lt;/dependency&gt;
-</code></pre><p>发现，Springboot也帮我们剔除掉了，Springboot真方便！！！</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>        
+    <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>            
+    <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring‐core<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>            
+    <span class="token operator">&lt;</span>exclusions<span class="token operator">></span>            
+         <span class="token operator">&lt;</span>exclusion<span class="token operator">></span>                
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>commons‐logging<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>                    
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>commons‐logging<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>                    
+         <span class="token operator">&lt;</span><span class="token operator">/</span>exclusion<span class="token operator">></span>                
+    <span class="token operator">&lt;</span><span class="token operator">/</span>exclusions<span class="token operator">></span>            
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>发现，Springboot也帮我们剔除掉了，Springboot真方便！！！</p>
 <font color="red"><strong>SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，引入其他框架的时候，只需要<br>把这个框架依赖的日志框架排除掉即可；</strong></font>
 
-<h1 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h1><h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>直接运行，我们刚刚创建的项目：<br><img src="/images/QQ截图20181104112034.png"></p>
+<h1 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h1><h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>直接运行，我们刚刚创建的项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104112034.png"></p>
 <p>发现，Springboot已经帮我们创建好了默认的配置。默认情况下，Spring Boot会用Logback来记录日志，并用INFO级别输出到控制台。在运行应用程序和其他例子时，你应该已经看到很多INFO级别的日志了。</p>
 <p>从上图可以看到，日志输出内容元素具体如下：</p>
 <ul>
@@ -569,39 +573,40 @@ public abstract class LogFactory {
 </ul>
 <p>使用：</p>
 <p>在测试类中：</p>
-<pre><code>@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringBoot03LoggingApplicationTests {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringBoot03LoggingApplicationTests</span> <span class="token punctuation">{</span>
 
-    //日志记录器
-    Logger logger = LoggerFactory.getLogger(getClass());
+    <span class="token comment" spellcheck="true">//日志记录器</span>
+    Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    @Test
-    public void contextLoads() {
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoads</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //System.out.println();  我们不再使用这种方法来记录了
+        <span class="token comment" spellcheck="true">//System.out.println();  我们不再使用这种方法来记录了</span>
 
-        //日志的级别，trace&lt;debug&lt;info&lt;warn&lt;error
-        //只会打印本级别和比本级别更高的日志
-        logger.trace(&quot;这是trace日志···&quot;);
-        logger.debug(&quot;这是debug日志···&quot;);
-        //Springboot默认的级别是info级别
-        logger.info(&quot;这是info日志···&quot;);
-        logger.warn(&quot;这是warn日志···&quot;);
-        logger.error(&quot;这error日志···&quot;);
-    }
+        <span class="token comment" spellcheck="true">//日志的级别，trace &lt; debug &lt; info &lt; warn &lt; error</span>
+        <span class="token comment" spellcheck="true">//只会打印本级别和比本级别更高的日志</span>
+        logger<span class="token punctuation">.</span><span class="token function">trace</span><span class="token punctuation">(</span><span class="token string">"这是trace日志···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"这是debug日志···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//Springboot默认的级别是info级别</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"这是info日志···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"这是warn日志···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"这error日志···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>运行测试方法：<br><img src="/images/QQ截图20181104113131.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104113131.png"></p>
 <p>只打印了info级别以及以上的。说明Springboot默认的日志级别是info。</p>
 <p>1) 修改日志的级别。</p>
 <p>在application.properties文件中。</p>
 <pre><code>logging.level.com.liuzhuo=trace
-</code></pre><p>再次运行测试方法：<br><img src="/images/QQ截图20181104113410.png"></p>
+</code></pre><p>再次运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104113410.png"></p>
 <p>格式为：logging.level.* = LEVEL</p>
 <ul>
 <li>logging.level：日志级别控制前缀，*为包名或Logger名</li>
-<li>LEVEL：选项TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF</li>
+<li>LEVEL：选项 TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF</li>
 </ul>
 <p>举例：</p>
 <ul>
@@ -637,25 +642,26 @@ logging.pattern.file=%d{yyyy‐MM‐dd} === [%thread] === %‐5level === %logger
 
 %d{yyyy‐MM‐dd HH:mm:ss.SSS} [%thread] %‐5level %logger{50} ‐ %msg%n
 </code></pre><h2 id="指定配置"><a href="#指定配置" class="headerlink" title="指定配置"></a>指定配置</h2><p>在使用我们自己定义的日志配置文件之前，我们先来看看，为啥我们不用配置日志文件，Springboot中也能使用日志功能？</p>
-<p>1) 打开org.springframework.boot:spring-boot:1.5.17.RELEASE<br>2) 打开org.springframework.boot<br>3) 打开logging、logback、base.xml<br><img src="/images/QQ截图20181104150319.png" style="width:50%"><br><img src="/images/QQ截图20181104150519.png" style="width:50%"></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<p>1) 打开org.springframework.boot:spring-boot:1.5.17.RELEASE<br>2) 打开org.springframework.boot<br>3) 打开logging、logback、base.xml<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104150319.png" style="width:50%"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104150519.png" style="width:50%"></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
 
-&lt;!--
-Base logback configuration provided for compatibility with Spring Boot 1.1
---&gt;
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+Base logback configuration provided <span class="token keyword">for</span> compatibility with Spring Boot <span class="token number">1.1</span>
+<span class="token operator">--</span><span class="token operator">></span>
 
-&lt;included&gt;
-    &lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;
-    &lt;property name=&quot;LOG_FILE&quot; value=&quot;${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}&quot;/&gt;
-    &lt;include resource=&quot;org/springframework/boot/logging/logback/console-appender.xml&quot; /&gt;
-    &lt;include resource=&quot;org/springframework/boot/logging/logback/file-appender.xml&quot; /&gt;
-    &lt;root level=&quot;INFO&quot;&gt;
-        &lt;appender-ref ref=&quot;CONSOLE&quot; /&gt;
-        &lt;appender-ref ref=&quot;FILE&quot; /&gt;
-    &lt;/root&gt;
-&lt;/included&gt;
+<span class="token operator">&lt;</span>included<span class="token operator">></span>
+    <span class="token operator">&lt;</span>include resource<span class="token operator">=</span><span class="token string">"org/springframework/boot/logging/logback/defaults.xml"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"LOG_FILE"</span> value<span class="token operator">=</span><span class="token string">"${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>include resource<span class="token operator">=</span><span class="token string">"org/springframework/boot/logging/logback/console-appender.xml"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>include resource<span class="token operator">=</span><span class="token string">"org/springframework/boot/logging/logback/file-appender.xml"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>root level<span class="token operator">=</span><span class="token string">"INFO"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>appender<span class="token operator">-</span>ref ref<span class="token operator">=</span><span class="token string">"CONSOLE"</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>appender<span class="token operator">-</span>ref ref<span class="token operator">=</span><span class="token string">"FILE"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>root<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>included<span class="token operator">></span>
 
-</code></pre><p>我们发现，Springboot已经帮我们默认配置好了。</p>
+</code></pre>
+<p>我们发现，Springboot已经帮我们默认配置好了。</p>
 <p>我们看到root下的 level的等于INFO，所以Springboot默认是info级别。</p>
 <p>再看<code>&lt;include resource=&quot;org/springframework/boot/logging/logback/defaults.xml&quot; /&gt;</code></p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
@@ -701,102 +707,103 @@ initialization performed by Boot
 <p>现在我们已经了解到了Springboot的默认日志文件的配置了。当我们具体使用日志框架时，需要使用哪个配置文件呢？</p>
 <p>打开Spring的官网，<a href="https://docs.spring.io/spring-boot/docs/1.5.17.RELEASE/reference/htmlsingle/#boot-features-logging" target="_blank" rel="noopener">logging参考文献</a></p>
 <p>找到：<strong>26.5 Custom log configuration</strong></p>
-<p><img src="/images/QQ截图20181104194411.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104194411.png"></p>
 <p>从图中，我们可以看出，使用logback日志框架，就使用logback-spring.xml、logback.xml等配置文件。</p>
 <p>其他的日志框架，类似logback。</p>
 <p><strong>给类路径下放上每个日志框架自己的配置文件即可；SpringBoot就不使用他默认配置的了。</strong></p>
-<p>现在，我们在类路径下，即resources下，放入一个logback.xml的日志配置文件。<br><img src="/images/QQ截图20181104195557.png"></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!--
-scan：当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
-scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒当scan为true时，此属性生效。默认的时间间隔为1分钟。
-debug：当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
---&gt;
-&lt;configuration scan=&quot;false&quot; scanPeriod=&quot;60 seconds&quot; debug=&quot;false&quot;&gt;
-    &lt;!-- 定义日志的根目录 --&gt;
-    &lt;property name=&quot;LOG_HOME&quot; value=&quot;/app/log&quot; /&gt;
-    &lt;!-- 定义日志文件名称 --&gt;
-    &lt;property name=&quot;appName&quot; value=&quot;atguigu-springboot&quot;&gt;&lt;/property&gt;
-    &lt;!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 --&gt;
-    &lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
-        &lt;!--
+<p>现在，我们在类路径下，即resources下，放入一个logback.xml的日志配置文件。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104195557.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+scan：当此属性设置为<span class="token boolean">true</span>时，配置文件如果发生改变，将会被重新加载，默认值为<span class="token boolean">true</span>。
+scanPeriod：设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒当scan为<span class="token boolean">true</span>时，此属性生效。默认的时间间隔为<span class="token number">1</span>分钟。
+debug：当此属性设置为<span class="token boolean">true</span>时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为<span class="token boolean">false</span>。
+<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>configuration scan<span class="token operator">=</span><span class="token string">"false"</span> scanPeriod<span class="token operator">=</span><span class="token string">"60 seconds"</span> debug<span class="token operator">=</span><span class="token string">"false"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 定义日志的根目录 <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"LOG_HOME"</span> value<span class="token operator">=</span><span class="token string">"/app/log"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 定义日志文件名称 <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"appName"</span> value<span class="token operator">=</span><span class="token string">"atguigu-springboot"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>property<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> ch<span class="token punctuation">.</span>qos<span class="token punctuation">.</span>logback<span class="token punctuation">.</span>core<span class="token punctuation">.</span>ConsoleAppender 表示控制台输出 <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>appender name<span class="token operator">=</span><span class="token string">"stdout"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.core.ConsoleAppender"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
         日志输出格式：
-            %d表示日期时间，
-            %thread表示线程名，
-            %-5level：级别从左显示5个字符宽度
-            %logger{50} 表示logger名字最长50个字符，否则按照句点分割。 
-            %msg：日志消息，
-            %n是换行符
-        --&gt;
-        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;
-            &lt;pattern&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n&lt;/pattern&gt;
-        &lt;/layout&gt;
-    &lt;/appender&gt;
+            <span class="token operator">%</span>d表示日期时间，
+            <span class="token operator">%</span>thread表示线程名，
+            <span class="token operator">%</span><span class="token operator">-</span>5level：级别从左显示<span class="token number">5</span>个字符宽度
+            <span class="token operator">%</span>logger<span class="token punctuation">{</span><span class="token number">50</span><span class="token punctuation">}</span> 表示logger名字最长<span class="token number">50</span>个字符，否则按照句点分割。 
+            <span class="token operator">%</span>msg：日志消息，
+            <span class="token operator">%</span>n是换行符
+        <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>layout <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.classic.PatternLayout"</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>pattern<span class="token operator">></span><span class="token operator">%</span>d<span class="token punctuation">{</span>yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>dd HH<span class="token operator">:</span>mm<span class="token operator">:</span>ss<span class="token punctuation">.</span>SSS<span class="token punctuation">}</span> <span class="token punctuation">[</span><span class="token operator">%</span>thread<span class="token punctuation">]</span> <span class="token operator">%</span><span class="token operator">-</span>5level <span class="token operator">%</span>logger<span class="token punctuation">{</span><span class="token number">50</span><span class="token punctuation">}</span> <span class="token operator">-</span> <span class="token operator">%</span>msg<span class="token operator">%</span>n<span class="token operator">&lt;</span><span class="token operator">/</span>pattern<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>layout<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>appender<span class="token operator">></span>
 
-    &lt;!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 --&gt;  
-    &lt;appender name=&quot;appLogAppender&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;
-        &lt;!-- 指定日志文件的名称 --&gt;
-        &lt;file&gt;${LOG_HOME}/${appName}.log&lt;/file&gt;
-        &lt;!--
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 <span class="token operator">--</span><span class="token operator">></span>  
+    <span class="token operator">&lt;</span>appender name<span class="token operator">=</span><span class="token string">"appLogAppender"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.core.rolling.RollingFileAppender"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 指定日志文件的名称 <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>file<span class="token operator">></span>$<span class="token punctuation">{</span>LOG_HOME<span class="token punctuation">}</span><span class="token operator">/</span>$<span class="token punctuation">{</span>appName<span class="token punctuation">}</span><span class="token punctuation">.</span>log<span class="token operator">&lt;</span><span class="token operator">/</span>file<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
         当发生滚动时，决定 RollingFileAppender 的行为，涉及文件移动和重命名
         TimeBasedRollingPolicy： 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动。
-        --&gt;
-        &lt;rollingPolicy class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;
-            &lt;!--
-            滚动时产生的文件的存放位置及文件名称 %d{yyyy-MM-dd}：按天进行日志滚动 
-            %i：当文件大小超过maxFileSize时，按照i进行文件滚动
-            --&gt;
-            &lt;fileNamePattern&gt;${LOG_HOME}/${appName}-%d{yyyy-MM-dd}-%i.log&lt;/fileNamePattern&gt;
-            &lt;!-- 
+        <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>rollingPolicy <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.core.rolling.TimeBasedRollingPolicy"</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+            滚动时产生的文件的存放位置及文件名称 <span class="token operator">%</span>d<span class="token punctuation">{</span>yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>dd<span class="token punctuation">}</span>：按天进行日志滚动 
+            <span class="token operator">%</span>i：当文件大小超过maxFileSize时，按照i进行文件滚动
+            <span class="token operator">--</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>fileNamePattern<span class="token operator">></span>$<span class="token punctuation">{</span>LOG_HOME<span class="token punctuation">}</span><span class="token operator">/</span>$<span class="token punctuation">{</span>appName<span class="token punctuation">}</span><span class="token operator">-</span><span class="token operator">%</span>d<span class="token punctuation">{</span>yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>dd<span class="token punctuation">}</span><span class="token operator">-</span><span class="token operator">%</span>i<span class="token punctuation">.</span>log<span class="token operator">&lt;</span><span class="token operator">/</span>fileNamePattern<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 
             可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每天滚动，
-            且maxHistory是365，则只保存最近365天的文件，删除之前的旧文件。注意，删除旧文件是，
+            且maxHistory是<span class="token number">365</span>，则只保存最近<span class="token number">365</span>天的文件，删除之前的旧文件。注意，删除旧文件是，
             那些为了归档而创建的目录也会被删除。
-            --&gt;
-            &lt;MaxHistory&gt;365&lt;/MaxHistory&gt;
-            &lt;!-- 
-            当日志文件超过maxFileSize指定的大小是，根据上面提到的%i进行日志文件滚动 注意此处配置SizeBasedTriggeringPolicy是无法实现按文件大小进行滚动的，必须配置timeBasedFileNamingAndTriggeringPolicy
-            --&gt;
-            &lt;timeBasedFileNamingAndTriggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;&gt;
-                &lt;maxFileSize&gt;100MB&lt;/maxFileSize&gt;
-            &lt;/timeBasedFileNamingAndTriggeringPolicy&gt;
-        &lt;/rollingPolicy&gt;
-        &lt;!-- 日志输出格式： --&gt;     
-        &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;
-            &lt;pattern&gt;%d{yyyy-MM-dd HH:mm:ss.SSS} [ %thread ] - [ %-5level ] [ %logger{50} : %line ] - %msg%n&lt;/pattern&gt;
-        &lt;/layout&gt;
-    &lt;/appender&gt;
+            <span class="token operator">--</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>MaxHistory<span class="token operator">></span><span class="token number">365</span><span class="token operator">&lt;</span><span class="token operator">/</span>MaxHistory<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 
+            当日志文件超过maxFileSize指定的大小是，根据上面提到的<span class="token operator">%</span>i进行日志文件滚动 注意此处配置SizeBasedTriggeringPolicy是无法实现按文件大小进行滚动的，必须配置timeBasedFileNamingAndTriggeringPolicy
+            <span class="token operator">--</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>timeBasedFileNamingAndTriggeringPolicy <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"</span><span class="token operator">></span>
+                <span class="token operator">&lt;</span>maxFileSize<span class="token operator">></span>100MB<span class="token operator">&lt;</span><span class="token operator">/</span>maxFileSize<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>timeBasedFileNamingAndTriggeringPolicy<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>rollingPolicy<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 日志输出格式： <span class="token operator">--</span><span class="token operator">></span>     
+        <span class="token operator">&lt;</span>layout <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"ch.qos.logback.classic.PatternLayout"</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>pattern<span class="token operator">></span><span class="token operator">%</span>d<span class="token punctuation">{</span>yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>dd HH<span class="token operator">:</span>mm<span class="token operator">:</span>ss<span class="token punctuation">.</span>SSS<span class="token punctuation">}</span> <span class="token punctuation">[</span> <span class="token operator">%</span>thread <span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token punctuation">[</span> <span class="token operator">%</span><span class="token operator">-</span>5level <span class="token punctuation">]</span> <span class="token punctuation">[</span> <span class="token operator">%</span>logger<span class="token punctuation">{</span><span class="token number">50</span><span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token operator">%</span>line <span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token operator">%</span>msg<span class="token operator">%</span>n<span class="token operator">&lt;</span><span class="token operator">/</span>pattern<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>layout<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>appender<span class="token operator">></span>
 
-    &lt;!-- 
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 
         logger主要用于存放日志对象，也可以定义日志类型、级别
         name：表示匹配的logger类型前缀，也就是包的前半部分
-        level：要记录的日志级别，包括 TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR
-        additivity：作用在于children-logger是否使用 rootLogger配置的appender进行输出，
-        false：表示只用当前logger的appender-ref，true：
-        表示当前logger的appender-ref和rootLogger的appender-ref都有效
-    --&gt;
-    &lt;!-- hibernate logger --&gt;
-    &lt;logger name=&quot;com.atguigu&quot; level=&quot;debug&quot; /&gt;
-    &lt;!-- Spring framework logger --&gt;
-    &lt;logger name=&quot;org.springframework&quot; level=&quot;debug&quot; additivity=&quot;false&quot;&gt;&lt;/logger&gt;
+        level：要记录的日志级别，包括 TRACE <span class="token operator">&lt;</span> DEBUG <span class="token operator">&lt;</span> INFO <span class="token operator">&lt;</span> WARN <span class="token operator">&lt;</span> ERROR
+        additivity：作用在于children<span class="token operator">-</span>logger是否使用 rootLogger配置的appender进行输出，
+        <span class="token boolean">false</span>：表示只用当前logger的appender<span class="token operator">-</span>ref，<span class="token boolean">true</span>：
+        表示当前logger的appender<span class="token operator">-</span>ref和rootLogger的appender<span class="token operator">-</span>ref都有效
+    <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> hibernate logger <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>logger name<span class="token operator">=</span><span class="token string">"com.atguigu"</span> level<span class="token operator">=</span><span class="token string">"debug"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> Spring framework logger <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>logger name<span class="token operator">=</span><span class="token string">"org.springframework"</span> level<span class="token operator">=</span><span class="token string">"debug"</span> additivity<span class="token operator">=</span><span class="token string">"false"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>logger<span class="token operator">></span>
 
 
 
-    &lt;!-- 
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 
     root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
     要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。 
-    --&gt;
-    &lt;root level=&quot;info&quot;&gt;
-        &lt;appender-ref ref=&quot;stdout&quot; /&gt;
-        &lt;appender-ref ref=&quot;appLogAppender&quot; /&gt;
-    &lt;/root&gt;
-&lt;/configuration&gt; 
-</code></pre><p>现在，我们修改一下日志的输出格式：</p>
+    <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>root level<span class="token operator">=</span><span class="token string">"info"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>appender<span class="token operator">-</span>ref ref<span class="token operator">=</span><span class="token string">"stdout"</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>appender<span class="token operator">-</span>ref ref<span class="token operator">=</span><span class="token string">"appLogAppender"</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>root<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>configuration<span class="token operator">></span> 
+</code></pre>
+<p>现在，我们修改一下日志的输出格式：</p>
 <pre><code> &lt;!-- 日志输出格式： --&gt;     
 &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;
     &lt;pattern&gt;%d{yyyy-MM-dd} -----&gt; [ %thread ] -----&gt; [ %-5level ] [ %logger{50} : %line ] -----&gt; %msg%n&lt;/pattern&gt;
 &lt;/layout&gt;
 </code></pre><p><strong>把时间的时分秒去掉，然后把分隔符改为箭头。</strong></p>
-<p>启动Springboot项目：<br><img src="/images/QQ截图20181104200138.png"></p>
+<p>启动Springboot项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104200138.png"></p>
 <p>我们的日志配置文件设置成功了。</p>
 <hr>
 <p>我们注意到了，官网上面写了logback.xml和logback-spring.xml两种配置文件的<strong>书写方式。</strong></p>
@@ -831,33 +838,33 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     &lt;/appender&gt;
 </code></pre><p>在dev环境下：使用上面的输出格式。</p>
 <p>在非dev环境下：使用下面的输出格式。</p>
-<p>现在运行Springboot项目：<br><img src="/images/QQ截图20181104201524.png"></p>
+<p>现在运行Springboot项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104201524.png"></p>
 <p><strong>发现，日志框架出现错误了。因为我们的日志配置文件的名字还没有改。</strong></p>
 <p>现在修改logback.xml —&gt; logback-spring.xml.</p>
-<p>再次启动Springboot应用：<br><img src="/images/QQ截图20181104201940.png"></p>
+<p>再次启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104201940.png"></p>
 <p>发现，启动的是非dev环境的日志控制台输出格式。</p>
 <p>我们在配置Springboot为dev环境。</p>
 <p>1）application.properties.</p>
 <p>spring.profiles.active=dev</p>
-<p>2) 配置命令行参数：<br><code>--spring.profiles.active=dev</code><br><img src="/images/QQ截图20181104202332.png"></p>
+<p>2) 配置命令行参数：<br><code>--spring.profiles.active=dev</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104202332.png"></p>
 <p>使用上面两种方法都可以改变Springboot的环境。</p>
-<p>然后启动Springboot应用：<br><img src="/images/QQ截图20181104202559.png"></p>
+<p>然后启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104202559.png"></p>
 <h1 id="切换日志框架"><a href="#切换日志框架" class="headerlink" title="切换日志框架"></a>切换日志框架</h1><h2 id="切换成log4j"><a href="#切换成log4j" class="headerlink" title="切换成log4j"></a>切换成log4j</h2><p>现在，我们使用的是slf4j+logback。但是我们想换成slf4j + log4j怎么办？</p>
 <p><strong>这里，说明一下，就是因为log4j有问题，所以才会推出logback日志框架的，这里只是做个例子演示日志框架的切换，实际情况下，直接使用logback日志框架就行。</strong></p>
-<p>切换日志框架，我们直接参考slf4j的官网的那个图，就行。<br><img src="/images/QQ截图20181104204428.png"></p>
-<p>现在打开我们的依赖图层：<br><img src="/images/QQ截图20181104204742.png"></p>
+<p>切换日志框架，我们直接参考slf4j的官网的那个图，就行。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104204428.png"></p>
+<p>现在打开我们的依赖图层：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104204742.png"></p>
 <p>去掉图中画红色框框的logback的依赖。</p>
-<p>快速移除依赖：在想要移除的依赖上面，右键Exclude<br><img src="/images/QQ截图20181104205023.png"></p>
-<p>移除完毕后：<br><img src="/images/QQ截图20181104205144.png" style="width:50%"></p>
-<p>打开pom.xml文件：<br><img src="/images/QQ截图20181104205307.png"></p>
+<p>快速移除依赖：在想要移除的依赖上面，右键Exclude<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205023.png"></p>
+<p>移除完毕后：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205144.png" style="width:50%"></p>
+<p>打开pom.xml文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205307.png"></p>
 <p>现在需要添加log4j的依赖。</p>
 <p>直接在pom.xml文件中添加：</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-            &lt;artifactId&gt;slf4j-log412&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-</code></pre><p><img src="/images/QQ截图20181104205726.png"></p>
-<p>启动Springboot应用：<br><img src="/images/QQ截图20181104205838.png"><br><strong>发出警告，因为在类路径下，没有log4j.properties的配置文件。</strong></p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log412&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205726.png"></p>
+<p>启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205838.png"><br><strong>发出警告，因为在类路径下，没有log4j.properties的配置文件。</strong></p>
 <p>在resources下，添加log4j.properties的配置文件</p>
 <pre><code>### set log levels ###
 log4j.rootLogger = debug ,  stdout ,  D ,  E
@@ -888,22 +895,23 @@ log4j.appender.stdout.layout.ConversionPattern =  %d{ABSOLUTE} %5p %c{ 1 }:%L - 
 <hr>
 <h2 id="切换成log4j2"><a href="#切换成log4j2" class="headerlink" title="切换成log4j2"></a>切换成log4j2</h2><p>在官网上面，我们能发现，Springboot默认是加载logback日志框架的，我们也可以直接改成log4j2日志框架。</p>
 <p>在pom.xml文件中：</p>
-<pre><code>    &lt;dependency&gt;
-       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-       &lt;artifactId&gt;spring‐boot‐starter‐web&lt;/artifactId&gt;
-          &lt;exclusions&gt;
-             &lt;exclusion&gt;
-                 &lt;artifactId&gt;spring‐boot‐starter‐logging&lt;/artifactId&gt;
-                 &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;/exclusion&gt;
-          &lt;/exclusions&gt;
-    &lt;/dependency&gt;
+<pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+       <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+       <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring‐boot‐starter‐web<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+          <span class="token operator">&lt;</span>exclusions<span class="token operator">></span>
+             <span class="token operator">&lt;</span>exclusion<span class="token operator">></span>
+                 <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring‐boot‐starter‐logging<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+                 <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>exclusion<span class="token operator">></span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>exclusions<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-      &lt;artifactId&gt;spring‐boot‐starter‐log4j2&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-</code></pre><p>直接移除spring‐boot‐starter‐logging依赖。然后添加spring‐boot‐starter‐log4j2的依赖。</p>
+    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+      <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+      <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring‐boot‐starter‐log4j2<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>直接移除spring‐boot‐starter‐logging依赖。然后添加spring‐boot‐starter‐log4j2的依赖。</p>
 <p>然后添加log4j2-spring.xml 或者 log4j2.xml 日志配置文件。</p>
 
             </div>
@@ -1346,11 +1354,11 @@ log4j.appender.stdout.layout.ConversionPattern =  %d{ABSOLUTE} %5p %c{ 1 }:%L - 
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">今天，我们开始Springboot的Web开发
-简介使用SpringBoot:
-1）、创建SpringBoot应用，选中我们需要的模块；
-2）、SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来.
-</div>
+                    <div class="summary">
+                      
+                                Springboot的Web开发
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-05
@@ -1403,13 +1411,11 @@ log4j.appender.stdout.layout.ConversionPattern =  %d{ABSOLUTE} %5p %c{ 1 }:%L - 
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Springboot的配置文件
-配置文件SpringBoot使用一个全局的配置文件，配置文件名是固定的；
-
-application.properties
-application.yml
-
-配置文件的作用：修改SpringBoot自动配置的默</div>
+                    <div class="summary">
+                       
+                                Springboot的配置文件
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-03
@@ -1597,7 +1603,7 @@ application.yml
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

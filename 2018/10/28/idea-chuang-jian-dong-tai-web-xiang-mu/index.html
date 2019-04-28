@@ -7,10 +7,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="idea 创建动态Web项目, 解忧杂货店">
     <meta name="description" content="intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。
-
 idea 创建动态Web项目打开idea
 我使用的是2017版本的。
-(1)点击">
+(1)点击左">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -471,34 +470,33 @@ idea 创建动态Web项目打开idea
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。</p>
-<a id="more"></a>
 <h3 id="idea-创建动态Web项目"><a href="#idea-创建动态Web项目" class="headerlink" title="idea 创建动态Web项目"></a>idea 创建动态Web项目</h3><p>打开idea</p>
 <p>我使用的是2017版本的。</p>
-<p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="/images/QQ截图20181028182054.png"></p>
-<p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="/images/QQ截图20181028191302.png"></p>
-<p>(3)填好项目名称，和项目路径，Finish。<br><img src="/images/QQ截图20181028191740.png"></p>
-<p>(4)完成后，需要添加web.xml文件。在idea201703版本之前。在第二步的选择Web Application时，可以选择版本号，并创建web.xml文件。但是之后的版本没有。我们可以手工创建，但是麻烦，教大家另外的创建方法。</p>
-<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里<strong>选中次级的 web 或者 在Modules 中选中web</strong>，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="/images/QQ截图20181028194446.png" style="width:50%"><br><img src="/images/QQ截图20181028194836.png"><br><img src="/images/QQ截图20181028195525.png" style="width:50%"></p>
-<p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="/images/QQ截图20181028195719.png" style="width:50%"></p>
+<p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028182054.png"></p>
+<p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028191302.png"></p>
+<p>(3)填好项目名称，和项目路径，Finish。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028191740.png"></p>
+<p>(4)完成后，需要添加web.xml文件。在<strong>idea201703版本之前</strong>。在第二步的选择Web Application时，可以选择版本号，并创建web.xml文件。但是之后的版本没有。我们可以手工创建，但是麻烦，教大家另外的创建方法。</p>
+<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里<strong>选中次级的 web 或者 在Modules 中选中web</strong>，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028194446.png" style="width:50%"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028194836.png"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028195525.png" style="width:50%"></p>
+<p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028195719.png" style="width:50%"></p>
 <p>.idea文件夹和webapp.iml是IDEA自动创建的，包含了工程和模块的配置数据<br>src文件夹是源码目录<br>web文件夹相当于eclipse创建的web工程WebContent文件夹，包含了WEB-INF/web.xml及index.jsp<br>External Libraries包含了JDK及Tomcat带的jsp-api、servlet-api jar文件</p>
-<p>(4)完善工程目录，点击WEF-INF  ,右键，NEW–&gt;Directory  创建两个文件夹，classes 和 lib  <strong>这个名字不要改哦！</strong></p>
-<p>4.1 创建classes文件夹<br><img src="/images/QQ截图20181028200211.png"><br><img src="/images/QQ截图20181028200344.png" style="width:50%"></p>
-<p>4.2 同理，创建lib文件夹<br><img src="/images/QQ截图20181028200618.png" style="width:50%"></p>
-<p>(5) 完成后再点击File ,选择Project Structure  </p>
-<p>点击Modules ,选择Paths,选中Use module compile output path ,将Outputpath 和Test output path 都设置为刚刚创建的classes文件夹。<br><img src="/images/QQ截图20181028201015.png"></p>
+<p>(4)完善工程目录，点击WEF-INF  ,右键，NEW–&gt;Directory  创建两个文件夹，<code>classes</code> 和 <code>lib</code>  <strong>这两个名字不要改哦！</strong></p>
+<p>4.1 创建classes文件夹<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200211.png"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200344.png" style="width:50%"></p>
+<p>4.2 同理，创建lib文件夹<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200618.png" style="width:50%"></p>
+<p>(5) 完成后再点击File , 选择Project Structure  </p>
+<p>点击Modules , 选择Paths , 选中 Use module compile output path , 将Outputpath 和 Test output path 都设置为刚刚创建的classes文件夹。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201015.png"></p>
 <p><strong>点击apply就行，接着第六步。</strong></p>
-<p>(6) 点击path旁边的Dependencies, 点击”+”号，选择1 JARs or directories<br><img src="/images/QQ截图20181028201526.png"></p>
-<p>选择刚刚创建的lib。<br><img src="/images/QQ截图20181028201634.png"></p>
-<p>选择第三个，jar Directory。一路ok到底！<br><img src="/images/QQ截图20181028201803.png" style="width:50%"></p>
-<p>(7) 配置servlet容器：Tomcat<br>点击右上角的tomcat的向下的小三角，然后点击Edit Configurations<br><img src="/images/QQ截图20181028202512.png" style="width:30%"></p>
-<p>看tomcat已经有啦，这是java Enterprise的好处啦，点击Deployment。<br><img src="/images/QQ截图20181028203004.png"><br>1，设置On frame deactivation : Update classes and resources<br>2，设置自己的jre位置路径。（jdk对应的jre）</p>
-<p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="/images/QQ截图20181028203156.png"><br>点击ok。</p>
-<p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="/images/QQ截图20181028203422.png"></p>
-<p>(9) 运行程序，就点击右上角的绿色图标<br><img src="/images/QQ截图20181028203713.png"></p>
+<p>(6) 点击path旁边的<code>Dependencies</code>, 点击”+”号，选择: 1 JARs or directories<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201526.png"></p>
+<p>选择刚刚创建的lib。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201634.png"></p>
+<p>选择第三个，jar Directory。一路ok到底！<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201803.png" style="width:50%"></p>
+<p>(7) 配置servlet容器：Tomcat<br>点击右上角的tomcat的向下的小三角，然后点击Edit Configurations<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028202512.png" style="width:30%"></p>
+<p>看tomcat已经有啦，这是java Enterprise的好处啦，点击Deployment。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203004.png"><br>1，设置On frame deactivation : Update classes and resources<br>2，设置自己的jre位置路径。（jdk对应的jre）</p>
+<p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203156.png"><br>点击ok。</p>
+<p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203422.png"></p>
+<p>(9) 运行程序，就点击右上角的绿色图标<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203713.png"></p>
 <h3 id="WEB-INF目录与META-INF目录的作用"><a href="#WEB-INF目录与META-INF目录的作用" class="headerlink" title="WEB-INF目录与META-INF目录的作用"></a>WEB-INF目录与META-INF目录的作用</h3><p>1) /WEB-INF/web.xml</p>
-<p>Web应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则。</p>
+<p>Web应用程序配置文件，描述了 servlet 和 其他的应用组件配置及命名规则。</p>
 <p>2) /WEB-INF/classes/</p>
-<p>包含了站点所有用的 class 文件，包括 servlet class 和非servlet class，他们不能包含在 .jar文件中。</p>
+<p>包含了站点所有用的 class 文件，包括 servlet.class 和 非servlet.class，他们不能包含在 .jar文件中。</p>
 <p>3) /WEB-INF/lib/</p>
 <p>存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件。</p>
 <p>4) /WEB-INF/src/</p>
@@ -506,7 +504,7 @@ idea 创建动态Web项目打开idea
 <p>5) /WEB-INF/database.properties</p>
 <p>数据库配置文件</p>
 <p>6) /WEB-INF/tags/</p>
-<p>存放了自定义标签文件，该目录并不一定为 tags，可以根据自己的喜好和习惯为自己的标签文件库命名，当使用自定义的标签文件库名称时，在使用标签文件时就必须声明正确的标签文件库路径。例如：当自定义标签文件库名称为 simpleTags 时，在使用 simpleTags 目录下的标签文件时，就必须在 jsp 文件头声明为：&lt;%@ taglibprefix=”tags” tagdir=”/WEB-INF /simpleTags” % &gt;。</p>
+<p>存放了自定义标签文件，该目录并不一定为 tags，可以根据自己的喜好和习惯为自己的标签文件库命名，当使用自定义的标签文件库名称时，在使用标签文件时就必须声明正确的标签文件库路径。例如：当自定义标签文件库名称为 simpleTags 时，在使用 simpleTags 目录下的标签文件时，就必须在 jsp 文件头声明为：&lt;%@ taglibprefix=”tags” tagdir=”/WEB-INF/simpleTags” % &gt;。</p>
 <p>7) /WEB-INF/jsp/</p>
 <p>jsp 1.2 以下版本的文件存放位置。改目录没有特定的声明，同样，可以根据自己的喜好与习惯来命名。此目录主要存放的是 jsp 1.2 以下版本的文件，为区分 jsp 2.0 文件，通常使用 jsp 命名，当然你也可以命名为 jspOldEdition 。</p>
 <p>8) /WEB-INF/jsp2/</p>
@@ -1002,8 +1000,11 @@ MD5-Digest: ZnTIQ2aQAtSNIOWXI1pQpw==　　
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注解，还有运行时的组件式插拔开发。
-注意： ser</div>
+                    <div class="summary">
+                      
+                                servlet3.0创建dynamic Web项目
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-28
@@ -1056,13 +1057,11 @@ MD5-Digest: ZnTIQ2aQAtSNIOWXI1pQpw==　　
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">git的初级用法
-
-Git的下载git的官网：https://git-scm.com/
-点击右下角的：Downloade xxxx for Windows
-由于是国外的网站，下载速度或许会很慢，请耐心等待~~
-下载完后，直接安装就行。
-安装</div>
+                    <div class="summary">
+                       
+                                git的基本使用方法
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-25
@@ -1242,7 +1241,7 @@ Git的下载git的官网：https://git-scm.com/
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

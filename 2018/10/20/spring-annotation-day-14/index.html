@@ -8,11 +8,10 @@
     <meta name="keywords" content="spring_annotation_day_14, 解忧杂货店">
     <meta name="description" content="Spring注解开发 
 今天来学习Spring的声明式事务。
-
 不使用事务环境搭建
 1）导入相关依赖
 数据源、数据驱动、Spring-jdbc模块.数据源、数据驱动之前已经导入过，现在只需要Spring-jdbc模块.
-        &amp;l">
+        &amp;lt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,8 +473,7 @@
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong> </p>
 <p>今天来学习Spring的声明式事务。</p>
-<a id="more"></a>
-<h3 id="不使用事务"><a href="#不使用事务" class="headerlink" title="不使用事务"></a>不使用事务</h3><p>环境搭建</p>
+<h4 id="不使用事务"><a href="#不使用事务" class="headerlink" title="不使用事务"></a>不使用事务</h4><p>环境搭建</p>
 <p>1）导入相关依赖</p>
 <p>数据源、数据驱动、Spring-jdbc模块.<br>数据源、数据驱动之前已经导入过，现在只需要Spring-jdbc模块.</p>
 <pre><code>        &lt;dependency&gt;
@@ -484,69 +482,74 @@
             &lt;version&gt;5.1.1.RELEASE&lt;/version&gt;
         &lt;/dependency&gt;
 </code></pre><p>2）创建com.liuzhuo.tx包，并创建TxConfig类：</p>
-<pre><code>@Configuration
-@ComponentScan(&quot;com.liuzhuo.tx&quot;)
-public class TxConfig {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.tx"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TxConfig</span> <span class="token punctuation">{</span>
 
-    //c3p0的数据源
-    @Bean
-    public DataSource dataSource() throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setUser(&quot;root&quot;);
-        dataSource.setPassword(&quot;123456&quot;);
-        dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8&quot;);
-        dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
-        return dataSource;
-    }
+    <span class="token comment" spellcheck="true">//c3p0的数据源</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> DataSource <span class="token function">dataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        ComboPooledDataSource dataSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComboPooledDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setUser</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setJdbcUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        dataSource<span class="token punctuation">.</span><span class="token function">setDriverClass</span><span class="token punctuation">(</span><span class="token string">"com.mysql.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> dataSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //注入jdbcTemplate模板
-    @Bean
-    public JdbcTemplate jdbcTemplate() throws Exception {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());
-        return jdbcTemplate;
-    }
-}
-</code></pre><p><strong>注意，这里的数据链接url，必须加上?serverTimezone=GMT%2B8，这是在使用MySQL 8.0以上版本时候必须加上的，否则会出现时区问题！！！！</strong></p>
+    <span class="token comment" spellcheck="true">//注入jdbcTemplate模板</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> JdbcTemplate <span class="token function">jdbcTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        JdbcTemplate jdbcTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JdbcTemplate</span><span class="token punctuation">(</span><span class="token function">dataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> jdbcTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>注意，这里的数据链接url，必须加上?serverTimezone=GMT%2B8，这是在使用MySQL 8.0以上版本时候必须加上的，否则会出现时区问题！！！！</strong></p>
 <p>3）在com.liuzhuo.tx包下，创建UserService和UserDao类：</p>
-<pre><code>@Service
-public class UserService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private UserDao userDao;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserDao userDao<span class="token punctuation">;</span>
 
-    public void insertUser(){
-        userDao.insert();
-        System.out.println(&quot;插入成功!!!!&quot;);
-    }
-}
-</code></pre><pre><code>@Repository
-public class UserDao {
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        userDao<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"插入成功!!!!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> JdbcTemplate jdbcTemplate<span class="token punctuation">;</span>
 
-    public void insert() {
-        String sql = &quot;insert into tbl_user(username,age) VALUES(?,?);&quot;;
-        String username = UUID.randomUUID().toString().substring(0, 4);
-        int age = 16;
-        jdbcTemplate.update(sql, username, age);
-    }
-}
-</code></pre><p>4) 创建新的测试类IoCTest_TX：</p>
-<pre><code>public class IoCTest_TX {
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String sql <span class="token operator">=</span> <span class="token string">"insert into tbl_user(username,age) VALUES(?,?);"</span><span class="token punctuation">;</span>
+        String username <span class="token operator">=</span> UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">16</span><span class="token punctuation">;</span>
+        jdbcTemplate<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>sql<span class="token punctuation">,</span> username<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 创建新的测试类IoCTest_TX：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IoCTest_TX</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(TxConfig.class);
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> 
+            <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>TxConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        UserService userService = applicationContext.getBean(UserService.class);
-        userService.insertUser();
+        UserService userService <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>UserService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        userService<span class="token punctuation">.</span><span class="token function">insertUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.close();
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><p>5) 运行测试方法：</p>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5) 运行测试方法：</p>
 <pre><code>十月 20, 2018 10:42:43 上午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Sat Oct 20 10:42:43 CST 2018]; root of context hierarchy
 十月 20, 2018 10:42:43 上午 org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor &lt;init&gt;
@@ -566,23 +569,23 @@ Sat Oct 20 10:42:45 CST 2018 WARN: Establishing SSL connection without server&#3
 信息: Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Sat Oct 20 10:42:43 CST 2018]; root of context hierarchy
 
 </code></pre><p>看到插入成功，打开数据库也能发现数据库中多了一条新的记录。</p>
-<p>ps：以上操作是建立在本地存在数据库test，和一个表，表的字段有id自增，username用户名，age用户的年龄，这里就不详细描述数据库的创建过程了。</p>
+<p>ps：以上操作是建立在本地存在数据库test，和一个表，表的字段有: id自增，username用户名，age用户的年龄，这里就不详细描述数据库的创建过程了。</p>
 <hr>
 <p>6）修改UserService类：<br>添加 int res = 1 / 0;</p>
-<pre><code>@Service
-public class UserService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private UserDao userDao;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserDao userDao<span class="token punctuation">;</span>
 
-    public void insertUser() {
-        userDao.insert();
-        System.out.println(&quot;插入成功!!!!&quot;);
-        int res = 1 / 0;
-    }
-}
-
-</code></pre><p>7）再次运行测试方法：</p>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        userDao<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"插入成功!!!!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>7）再次运行测试方法：</p>
 <pre><code>插入成功!!!!
 
 java.lang.ArithmeticException: / by zero
@@ -591,40 +594,43 @@ java.lang.ArithmeticException: / by zero
     at com.liuzhuo.test.IoCTest_TX.test01(IoCTest_TX.java:23)
 </code></pre><p><strong>会出现异常。打开数据库，发现还是会添加一条新的记录，这是因为没有添加事务的原因。</strong></p>
 <h3 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h3><p>1）修改UserService类：<br>添加@Transactional注解</p>
-<pre><code>@Service
-public class UserService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private UserDao userDao;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserDao userDao<span class="token punctuation">;</span>
 
-    @Transactional
-    public void insertUser() {
-        userDao.insert();
-        System.out.println(&quot;插入成功!!!!&quot;);
-        int res = 1 / 0;
-    }
-}
-</code></pre><p>2) 运行测试方法：</p>
+    <span class="token annotation punctuation">@Transactional</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        userDao<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"插入成功!!!!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 运行测试方法：</p>
 <pre><code>插入成功!!!!
 
 java.lang.ArithmeticException: / by zero
 </code></pre><p>出现ArithmeticException异常，打开数据库，发现还是会添加一条数据，说明事务还没有添加上去，<strong>因为没有开启注解时事务</strong>。</p>
 <p>3）修改配置类<br>添加@EnableTransactionManagement注解</p>
-<pre><code>@Configuration
-@ComponentScan(&quot;com.liuzhuo.tx&quot;)
-@EnableTransactionManagement
-public class TxConfig 
-</code></pre><p>4) 运行测试方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.tx"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@EnableTransactionManagement</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TxConfig</span> 
+</code></pre>
+<p>4) 运行测试方法：</p>
 <pre><code>No qualifying bean of type &#39;org.springframework.transaction.PlatformTransactionManager&#39; available
 </code></pre><p>发现出现没有PlatformTransactionManager这个组件的异常，此时虽然数据库没有添加一条数据，但是是出现了其他异常，而不是出现ArithmeticException异常。</p>
 <p>出现没有PlatformTransactionManager这个组件异常，说明我们还需要配置事务管理器。</p>
 <p>5) 添加事务管理器</p>
-<pre><code>   //添加事务管理器
-    @Bean
-    public PlatformTransactionManager transactionManager() throws Exception {
-        return new DataSourceTransactionManager(dataSource());
-    }
-</code></pre><p>6) 运行测试方法：</p>
+<pre class=" language-java"><code class="language-java">   <span class="token comment" spellcheck="true">//添加事务管理器</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> PlatformTransactionManager <span class="token function">transactionManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DataSourceTransactionManager</span><span class="token punctuation">(</span><span class="token function">dataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>6) 运行测试方法：</p>
 <pre><code>插入成功!!!!
 
 java.lang.ArithmeticException: / by zero
@@ -638,31 +644,33 @@ java.lang.ArithmeticException: / by zero
 </ol>
 <hr>
 <h3 id="事务原理"><a href="#事务原理" class="headerlink" title="事务原理"></a>事务原理</h3><p>点击@EnableTransactionManagement注解：</p>
-<pre><code>@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import({TransactionManagementConfigurationSelector.class})
-public @interface EnableTransactionManagement {
-    boolean proxyTargetClass() default false;
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span>TransactionManagementConfigurationSelector<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EnableTransactionManagement</span> <span class="token punctuation">{</span>
+    <span class="token keyword">boolean</span> <span class="token function">proxyTargetClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
-    AdviceMode mode() default AdviceMode.PROXY;
+    AdviceMode <span class="token function">mode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> AdviceMode<span class="token punctuation">.</span>PROXY<span class="token punctuation">;</span>
 
-    int order() default 2147483647;
-}
-</code></pre><p>@Import({TransactionManagementConfigurationSelector.class})</p>
-<pre><code>    @Override
-    protected String[] selectImports(AdviceMode adviceMode) {
-        switch (adviceMode) {
-            case PROXY:
-                return new String[] {AutoProxyRegistrar.class.getName(),
-                        ProxyTransactionManagementConfiguration.class.getName()};
-            case ASPECTJ:
-                return new String[] {determineTransactionAspectClass()};
-            default:
-                return null;
-        }
-    }
-</code></pre><p>会导入AutoProxyRegistrar和ProxyTransactionManagementConfiguration两个组件。</p>
+    <span class="token keyword">int</span> <span class="token function">order</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token number">2147483647</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>@Import({TransactionManagementConfigurationSelector.class})</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">selectImports</span><span class="token punctuation">(</span>AdviceMode adviceMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>adviceMode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> PROXY<span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>AutoProxyRegistrar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        ProxyTransactionManagementConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> ASPECTJ<span class="token operator">:</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token function">determineTransactionAspectClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>会导入AutoProxyRegistrar和ProxyTransactionManagementConfiguration两个组件。</p>
 <p>1）AutoProxyRegistrar会给容器注入InfrastructureAdvisorAutoProxyCreator组件（也是一个后置处理器）。</p>
 <p>InfrastructureAdvisorAutoProxyCreator组件利用后置处理器机制在对象创建时，包装对象，返回一个代理对象（增强器），代理对象执行方法利用拦截器链执行。</p>
 <p>2）ProxyTransactionManagementConfiguration</p>
@@ -1108,10 +1116,11 @@ public @interface EnableTransactionManagement {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发 
-今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点
-BeanFactoryPostProcessorBeanPostProcessor：bean的后置处理器，bean创建对象初始化前后进行拦截工作的。  
-Bea</div>
+                    <div class="summary">
+                      
+                                讲解Spring其他的扩展原理
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-22
@@ -1156,14 +1165,11 @@ Bea</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">总结Spring4中的各种配置文件的信息。
-
-欢迎大家补充，完善各种配置信息。
-好的习惯，将会伴随你的一生。
-开始今天的主题！！！
-配置数据源
-基本的加载properties配置文件
-&lt;context:property-placeho</div>
+                    <div class="summary">
+                       
+                                Spring4中的各种配置文件
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1343,7 +1349,7 @@ Bea</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

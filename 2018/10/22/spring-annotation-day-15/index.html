@@ -470,48 +470,52 @@ Bea">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong> </p>
-<p>今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点<br><a id="more"></a></p>
+<p>今天，来讲解其他的扩展原理，帮助大家学习其他的小知识点</p>
 <h3 id="BeanFactoryPostProcessor"><a href="#BeanFactoryPostProcessor" class="headerlink" title="BeanFactoryPostProcessor"></a>BeanFactoryPostProcessor</h3><p>BeanPostProcessor：bean的后置处理器，bean创建对象初始化前后进行拦截工作的。  </p>
 <p>BeanFactoryPostProcessor：BeanFactory的后置处理器，在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容，所有的Bean的定义已经保存加载到BeanFactory，<strong>但是bean的实例还没有创建</strong>。</p>
-<h4 id="创建ExConfig配置类："><a href="#创建ExConfig配置类：" class="headerlink" title="创建ExConfig配置类："></a>创建ExConfig配置类：</h4><pre><code>@Configuration
-@ComponentScan(&quot;com.liuzhuo.ext&quot;)
-public class ExtConfig {
+<h4 id="创建ExConfig配置类："><a href="#创建ExConfig配置类：" class="headerlink" title="创建ExConfig配置类："></a>创建ExConfig配置类：</h4><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.ext"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExtConfig</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public Blue blue() {
-        return new Blue();
-    }
-}
-</code></pre><h4 id="创建自定义的BeanFactoryPostProcessor："><a href="#创建自定义的BeanFactoryPostProcessor：" class="headerlink" title="创建自定义的BeanFactoryPostProcessor："></a>创建自定义的BeanFactoryPostProcessor：</h4><pre><code>@Component
-public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
-    /**
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> Blue <span class="token function">blue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Blue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="创建自定义的BeanFactoryPostProcessor："><a href="#创建自定义的BeanFactoryPostProcessor：" class="headerlink" title="创建自定义的BeanFactoryPostProcessor："></a>创建自定义的BeanFactoryPostProcessor：</h4><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBeanFactoryPostProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">BeanFactoryPostProcessor</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
      * @param beanFactory
      * @throws BeansException
      * 在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容，
      * 此时，所有的bean的定义信息已经保存到BeanFactory，但是Bean还没有创建
-     */
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>ConfigurableListableBeanFactory beanFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
 
-        System.out.println(&quot;postProcessBeanFactory·······&quot;);
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"postProcessBeanFactory·······"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        int count = beanFactory.getBeanDefinitionCount();
-        String[] names = beanFactory.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println(name);
-        }
-    }
-}
-</code></pre><h4 id="创建新的测试类："><a href="#创建新的测试类：" class="headerlink" title="创建新的测试类："></a>创建新的测试类：</h4><pre><code>public class IoCTest_EXT {
+        <span class="token keyword">int</span> count <span class="token operator">=</span> beanFactory<span class="token punctuation">.</span><span class="token function">getBeanDefinitionCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> names <span class="token operator">=</span> beanFactory<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> names<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="创建新的测试类："><a href="#创建新的测试类：" class="headerlink" title="创建新的测试类："></a>创建新的测试类：</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IoCTest_EXT</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ExtConfig.class);
-        applicationContext.close();
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> 
+            <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>ExtConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><h4 id="运行："><a href="#运行：" class="headerlink" title="运行："></a>运行：</h4><pre><code>postProcessBeanFactory·······
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="运行："><a href="#运行：" class="headerlink" title="运行："></a>运行：</h4><pre><code>postProcessBeanFactory·······
 org.springframework.context.annotation.internalConfigurationAnnotationProcessor
 org.springframework.context.annotation.internalAutowiredAnnotationProcessor
 org.springframework.context.annotation.internalRequiredAnnotationProcessor
@@ -524,70 +528,72 @@ blue
 </code></pre><p><strong>能看到，我们获取了所有的BeanFactory中定义的bean了，但是还没有创建bean的实例对象</strong>。</p>
 <h4 id="调试："><a href="#调试：" class="headerlink" title="调试："></a>调试：</h4><p>给MyBeanFactoryPostProcessor中的postProcessBeanFactory方法加上断点，并运行。</p>
 <p>过程：<br>1）加载容器。<br>2）refresh();刷新容器<br>3）invokeBeanFactoryPostProcessors(beanFactory);</p>
-<pre><code>@Override
-    public void refresh() throws BeansException, IllegalStateException {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException<span class="token punctuation">,</span> IllegalStateException <span class="token punctuation">{</span>
 
-    try {
-        // Allows post-processing of the bean factory in context subclasses.
-        postProcessBeanFactory(beanFactory);
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// Allows post-processing of the bean factory in context subclasses.</span>
+        <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Invoke factory processors registered as beans in the context.
-        invokeBeanFactoryPostProcessors(beanFactory);
+        <span class="token comment" spellcheck="true">// Invoke factory processors registered as beans in the context.</span>
+        <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Register bean processors that intercept bean creation.
-        registerBeanPostProcessors(beanFactory);
+        <span class="token comment" spellcheck="true">// Register bean processors that intercept bean creation.</span>
+        <span class="token function">registerBeanPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Initialize message source for this context.
-        initMessageSource();
+        <span class="token comment" spellcheck="true">// Initialize message source for this context.</span>
+        <span class="token function">initMessageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Initialize event multicaster for this context.
-        initApplicationEventMulticaster();
+        <span class="token comment" spellcheck="true">// Initialize event multicaster for this context.</span>
+        <span class="token function">initApplicationEventMulticaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Initialize other special beans in specific context subclasses.
-        onRefresh();
+        <span class="token comment" spellcheck="true">// Initialize other special beans in specific context subclasses.</span>
+        <span class="token function">onRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Check for listener beans and register them.
-        registerListeners();
+        <span class="token comment" spellcheck="true">// Check for listener beans and register them.</span>
+        <span class="token function">registerListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Instantiate all remaining (non-lazy-init) singletons.
-        finishBeanFactoryInitialization(beanFactory);
+        <span class="token comment" spellcheck="true">// Instantiate all remaining (non-lazy-init) singletons.</span>
+        <span class="token function">finishBeanFactoryInitialization</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        // Last step: publish corresponding event.
-        finishRefresh();
-    }
-}
-</code></pre><p>能发现，invokeBeanFactoryPostProcessors(beanFactory);是在finishBeanFactoryInitialization(beanFactory);方法之前的，就说明了BeanFactoryPostProcessor是在bean的实例化之前的，是在BeanFactory实例化之后的。</p>
+        <span class="token comment" spellcheck="true">// Last step: publish corresponding event.</span>
+        <span class="token function">finishRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>能发现，invokeBeanFactoryPostProcessors(beanFactory);是在finishBeanFactoryInitialization(beanFactory);方法之前的，就说明了BeanFactoryPostProcessor是在bean的实例化之前的，是在BeanFactory实例化之后的。</p>
 <hr>
 <h3 id="BeanDefinitionRegisterPostProcessor"><a href="#BeanDefinitionRegisterPostProcessor" class="headerlink" title="BeanDefinitionRegisterPostProcessor"></a>BeanDefinitionRegisterPostProcessor</h3><p>BeanDefinitionRegisterPostProcessor extends BeanFactoryPostProcessor</p>
 <p>在所有bean定义信息将要被加载，bean实例还未创建。</p>
 <p>优先于BeanFactoryPostProcessor执行<br>利用BeanDefinitionRegisterPostProcessor给容器中再额外添加一些组件。</p>
 <p>原理：<br>1）ioc创建对象<br>2）refresh() -&gt; invokeBeanFactoryPostProcessors(beanFactory);<br>3) 从容器中获取所有的BeanDefinitionRegisterPostProcessor组件。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1)依次触发所有的postProcessorBeanDefinitionRegistry()方法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2)再次触发postProcessorBeanFactory()方法的BeanFactoryPostProcessor；<br>4）再来从容器中找到BeanFactoryPostProcessor组件；然后依次触发postProcessorBeanFactory()方法</p>
-<h4 id="创建MyBeanDefinitionRegisterPostProcessor类："><a href="#创建MyBeanDefinitionRegisterPostProcessor类：" class="headerlink" title="创建MyBeanDefinitionRegisterPostProcessor类："></a>创建MyBeanDefinitionRegisterPostProcessor类：</h4><pre><code>@Component
-public class MyBeanDefinitionRegisterPostProcessor implements BeanDefinitionRegistryPostProcessor {
+<h4 id="创建MyBeanDefinitionRegisterPostProcessor类："><a href="#创建MyBeanDefinitionRegisterPostProcessor类：" class="headerlink" title="创建MyBeanDefinitionRegisterPostProcessor类："></a>创建MyBeanDefinitionRegisterPostProcessor类：</h4><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBeanDefinitionRegisterPostProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">BeanDefinitionRegistryPostProcessor</span> <span class="token punctuation">{</span>
 
-    //先执行
-    @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        System.out.println(&quot;postProcessBeanDefinitionRegistry······&quot;);
+    <span class="token comment" spellcheck="true">//先执行</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanDefinitionRegistry</span><span class="token punctuation">(</span>BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"postProcessBeanDefinitionRegistry······"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        int count = registry.getBeanDefinitionCount();
-        System.out.println(&quot;容器中注册的bean的个数(1)：&quot; + count);
+        <span class="token keyword">int</span> count <span class="token operator">=</span> registry<span class="token punctuation">.</span><span class="token function">getBeanDefinitionCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"容器中注册的bean的个数(1)："</span> <span class="token operator">+</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //还能注册新的bean组件
-        RootBeanDefinition beanDefinition = new RootBeanDefinition(Blue.class);
-        registry.registerBeanDefinition(&quot;hello&quot;, beanDefinition);
-    }
+        <span class="token comment" spellcheck="true">//还能注册新的bean组件</span>
+        RootBeanDefinition beanDefinition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootBeanDefinition</span><span class="token punctuation">(</span>Blue<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">registerBeanDefinition</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> beanDefinition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //后执行
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+    <span class="token comment" spellcheck="true">//后执行</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>ConfigurableListableBeanFactory beanFactory<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
 
-        System.out.println(&quot;postProcessBeanFactory··········&quot;);
-        int count = beanFactory.getBeanDefinitionCount();
-        System.out.println(&quot;容器中注册的bean的个数(2)：&quot; + count);
-    }
-}
-</code></pre><h4 id="运行测试类"><a href="#运行测试类" class="headerlink" title="运行测试类:"></a>运行测试类:</h4><pre><code>十月 22, 2018 11:32:15 上午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"postProcessBeanFactory··········"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> beanFactory<span class="token punctuation">.</span><span class="token function">getBeanDefinitionCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"容器中注册的bean的个数(2)："</span> <span class="token operator">+</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="运行测试类"><a href="#运行测试类" class="headerlink" title="运行测试类:"></a>运行测试类:</h4><pre><code>十月 22, 2018 11:32:15 上午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 11:32:15 CST 2018]; root of context hierarchy
 postProcessBeanDefinitionRegistry······
 容器中注册的bean的个数(1)：10
@@ -617,57 +623,63 @@ Process finished with exit code 0
 <h4 id="调试-原理"><a href="#调试-原理" class="headerlink" title="调试(原理)"></a>调试(原理)</h4><p>给MyBeanDefinitionRegisterPostProcessor的postProcessBeanDefinitionRegistry()方法打上断点，并debug。</p>
 <p>1）加载容器<br>2）refresh();刷新容器<br>3）invokeBeanFactoryPostProcessors(beanFactory);和BeanFactoryPostProcessor的流程一样<br>4）invokeBeanFactoryPostProcessors()</p>
 <p>在invokeBeanFactoryPostProcessors()方法中，可以看到<br>1）首先获取所有的BeanDefinitionRegistryPostProcessor的定义信息</p>
-<pre><code>String[] postProcessorNames =
-    beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
-        for (String ppName : postProcessorNames) {
-        if (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) {
-        currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
-        processedBeans.add(ppName);
-        }
-    }
-</code></pre><p>2）然后调用invokeBeanDefinitionRegistryPostProcessors()方法：</p>
-<pre><code>    private static void invokeBeanDefinitionRegistryPostProcessors(
-            Collection&lt;? extends BeanDefinitionRegistryPostProcessor&gt; postProcessors, BeanDefinitionRegistry registry) {
+<pre class=" language-java"><code class="language-java">String<span class="token punctuation">[</span><span class="token punctuation">]</span> postProcessorNames <span class="token operator">=</span>
+    beanFactory<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>BeanDefinitionRegistryPostProcessor<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String ppName <span class="token operator">:</span> postProcessorNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>beanFactory<span class="token punctuation">.</span><span class="token function">isTypeMatch</span><span class="token punctuation">(</span>ppName<span class="token punctuation">,</span> PriorityOrdered<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        currentRegistryProcessors<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>ppName<span class="token punctuation">,</span> BeanDefinitionRegistryPostProcessor<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        processedBeans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ppName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>2）然后调用invokeBeanDefinitionRegistryPostProcessors()方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">invokeBeanDefinitionRegistryPostProcessors</span><span class="token punctuation">(</span>
+            Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">BeanDefinitionRegistryPostProcessor</span><span class="token operator">></span> postProcessors<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        for (BeanDefinitionRegistryPostProcessor postProcessor : postProcessors) {
-            postProcessor.postProcessBeanDefinitionRegistry(registry);
-        }
-    }
-</code></pre><p>3) 再调用invokeBeanFactoryPostProcessors：</p>
-<pre><code>    private static void invokeBeanFactoryPostProcessors(
-            Collection&lt;? extends BeanFactoryPostProcessor&gt; postProcessors, ConfigurableListableBeanFactory beanFactory) {
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>BeanDefinitionRegistryPostProcessor postProcessor <span class="token operator">:</span> postProcessors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            postProcessor<span class="token punctuation">.</span><span class="token function">postProcessBeanDefinitionRegistry</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3) 再调用invokeBeanFactoryPostProcessors：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>
+            Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">BeanFactoryPostProcessor</span><span class="token operator">></span> postProcessors<span class="token punctuation">,</span> ConfigurableListableBeanFactory beanFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        for (BeanFactoryPostProcessor postProcessor : postProcessors) {
-            postProcessor.postProcessBeanFactory(beanFactory);
-        }
-    }
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>BeanFactoryPostProcessor postProcessor <span class="token operator">:</span> postProcessors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            postProcessor<span class="token punctuation">.</span><span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-</code></pre><p>4) 获取所有的BeanFactoryPostProcessor的定义信息</p>
-<pre><code>String[] postProcessorNames =
-        beanFactory.getBeanNamesForType(BeanFactoryPostProcessor.class, true, false);
-</code></pre><p>5）调用invokeBeanFactoryPostProcessors：</p>
-<pre><code>    private static void invokeBeanFactoryPostProcessors(
-            Collection&lt;? extends BeanFactoryPostProcessor&gt; postProcessors, ConfigurableListableBeanFactory beanFactory) {
+</code></pre>
+<p>4) 获取所有的BeanFactoryPostProcessor的定义信息</p>
+<pre class=" language-java"><code class="language-java">String<span class="token punctuation">[</span><span class="token punctuation">]</span> postProcessorNames <span class="token operator">=</span>
+        beanFactory<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>BeanFactoryPostProcessor<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>5）调用invokeBeanFactoryPostProcessors：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>
+            Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">BeanFactoryPostProcessor</span><span class="token operator">></span> postProcessors<span class="token punctuation">,</span> ConfigurableListableBeanFactory beanFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        for (BeanFactoryPostProcessor postProcessor : postProcessors) {
-            postProcessor.postProcessBeanFactory(beanFactory);
-        }
-    }
-</code></pre><hr>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>BeanFactoryPostProcessor postProcessor <span class="token operator">:</span> postProcessors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            postProcessor<span class="token punctuation">.</span><span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<hr>
 <h3 id="ApplicationListener"><a href="#ApplicationListener" class="headerlink" title="ApplicationListener:"></a>ApplicationListener:</h3><p>监听容器中发布的事件。事件驱动模型开发。</p>
 <p>步骤：</p>
 <p>1）写一个监听器(ApplicationListener实现类)来监听某个事件(ApplicationEvent及其子类)</p>
 <p>2) 把监听器加入到容器中</p>
 <p>3）只要容器中有相关事件的发布，我们就能监听到这个事件</p>
 <p>4）发布一个事件: applicationContext.publishEvent();</p>
-<h4 id="编写一个MyApplicationListener"><a href="#编写一个MyApplicationListener" class="headerlink" title="编写一个MyApplicationListener"></a>编写一个MyApplicationListener</h4><pre><code>@Component
-public class MyApplicationListener implements ApplicationListener&lt;ApplicationEvent&gt; {
+<h4 id="编写一个MyApplicationListener"><a href="#编写一个MyApplicationListener" class="headerlink" title="编写一个MyApplicationListener"></a>编写一个MyApplicationListener</h4><pre class=" language-javascript"><code class="language-javascript">@Component
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyApplicationListener</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationListener</span><span class="token operator">&lt;</span>ApplicationEvent<span class="token operator">></span> <span class="token punctuation">{</span>
     @Override
-    public void onApplicationEvent(ApplicationEvent event) {
-        System.out.println(&quot;监听:&quot; + event);
-    }
-}
-</code></pre><h4 id="运行测试类："><a href="#运行测试类：" class="headerlink" title="运行测试类："></a>运行测试类：</h4><pre><code>十月 22, 2018 8:42:11 下午 org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor &lt;init&gt;
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onApplicationEvent</span><span class="token punctuation">(</span>ApplicationEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"监听:"</span> <span class="token operator">+</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="运行测试类："><a href="#运行测试类：" class="headerlink" title="运行测试类："></a>运行测试类：</h4><pre><code>十月 22, 2018 8:42:11 下午 org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor &lt;init&gt;
 信息: JSR-330 &#39;javax.inject.Inject&#39; annotation found and supported for autowiring
 监听:org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 20:42:11 CST 2018]; root of context hierarchy]
 
@@ -675,17 +687,19 @@ public class MyApplicationListener implements ApplicationListener&lt;Application
 信息: Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 20:42:11 CST 2018]; root of context hierarchy
 监听:org.springframework.context.event.ContextClosedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 20:42:11 CST 2018]; root of context hierarchy]
 </code></pre><p>说明容器，为我们发布了两个事件：ContextRefreshedEvent 和 ContextClosedEvent</p>
-<h4 id="发布自己的事件"><a href="#发布自己的事件" class="headerlink" title="发布自己的事件"></a>发布自己的事件</h4><pre><code>    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(ExtConfig.class);
+<h4 id="发布自己的事件"><a href="#发布自己的事件" class="headerlink" title="发布自己的事件"></a>发布自己的事件</h4><pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> 
+            <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>ExtConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.publishEvent(new ApplicationEvent(new String(&quot;自定义事件&quot;)) {
-        });
+        applicationContext<span class="token punctuation">.</span><span class="token function">publishEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ApplicationEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"自定义事件"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.close();
-    }
-}
-</code></pre><p>运行：</p>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行：</p>
 <pre><code>监听:org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 20:47:38 CST 2018]; root of context hierarchy]
 监听:com.liuzhuo.test.IoCTest_EXT$1[source=自定义事件]
 监听:org.springframework.context.event.ContextClosedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Mon Oct 22 20:47:38 CST 2018]; root of context hierarchy]
@@ -711,15 +725,16 @@ public class MyApplicationListener implements ApplicationListener&lt;Application
 <p>2）registerListeners(); //注册监听器<br>从容器中拿到所有的监听器，把它们注册到applicationEventMulticaster中。<br>String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);<br>getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</p>
 <h3 id="EventListener"><a href="#EventListener" class="headerlink" title="@EventListener"></a>@EventListener</h3><p>@EventListener注解，可以使普通类的普通方法来监听事件，不用去实现ApplicationEvent接口。</p>
 <p>1）在com.liuzhuo.ext包下，创建UserService类：</p>
-<pre><code>@Service
-public class UserService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
 
-    @EventListener(value = {ApplicationEvent.class})
-    public void listen(ApplicationEvent event) {
-        System.out.println(&quot;UserService监听:&quot; + event);
-    }
-}
-</code></pre><p>2) 运行IoCTest_EXT测试类：</p>
+    <span class="token annotation punctuation">@EventListener</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>ApplicationEvent<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">listen</span><span class="token punctuation">(</span>ApplicationEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"UserService监听:"</span> <span class="token operator">+</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 运行IoCTest_EXT测试类：</p>
 <pre><code>UserService监听:org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Tue Oct 23 09:52:08 CST 2018]; root of context hierarchy]
 监听:org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Tue Oct 23 09:52:08 CST 2018]; root of context hierarchy]
 UserService监听:com.liuzhuo.test.IoCTest_EXT$1[source=自定义事件]
@@ -728,15 +743,16 @@ UserService监听:org.springframework.context.event.ContextClosedEvent[source=or
 监听:org.springframework.context.event.ContextClosedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@6d1e7682: startup date [Tue Oct 23 09:52:08 CST 2018]; root of context hierarchy]
 </code></pre><p>3) 原理：</p>
 <p>@EventListener使用EventListenerMethodProcessor处理器来完成的</p>
-<pre><code>* @author Stephane Nicoll
- * @since 4.2
- * @see EventListenerMethodProcessor
- */
-@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface EventListener
-</code></pre><p>点击EventListenerMethodProcessor处理器：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">*</span> <span class="token annotation punctuation">@author</span> Stephane Nicoll
+ <span class="token operator">*</span> <span class="token annotation punctuation">@since</span> <span class="token number">4.2</span>
+ <span class="token operator">*</span> <span class="token annotation punctuation">@see</span> EventListenerMethodProcessor
+ <span class="token operator">*</span><span class="token operator">/</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>ANNOTATION_TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EventListener</span>
+</code></pre>
+<p>点击EventListenerMethodProcessor处理器：</p>
 <pre><code>public class EventListenerMethodProcessor implements SmartInitializingSingleton, ApplicationContextAware
 </code></pre><p>实现了SmartInitializingSingleton接口，所有重点是SmartInitializingSingleton接口。</p>
 <p>点击SmartInitializingSingleton接口：</p>
@@ -1203,12 +1219,11 @@ public @interface EventListener
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring容器的创建过程
-今天，我们来统一学习一下，Spring容器的整个创建过程。
-
-
-Spring容器的refresh()[创建刷新]
-prepareRefresh();【刷新前的预处理】1）initPropertySources()</div>
+                    <div class="summary">
+                      
+                                Spring容器的创建过程
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-23
@@ -1253,13 +1268,11 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发 
-今天来学习Spring的声明式事务。
-
-不使用事务环境搭建
-1）导入相关依赖
-数据源、数据驱动、Spring-jdbc模块.数据源、数据驱动之前已经导入过，现在只需要Spring-jdbc模块.
-        &l</div>
+                    <div class="summary">
+                       
+                                今天来学习Spring的声明式事务
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-20
@@ -1439,7 +1452,7 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

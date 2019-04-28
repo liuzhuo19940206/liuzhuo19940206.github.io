@@ -470,79 +470,85 @@ Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天，学习Bean的生命周期<br><a id="more"></a></p>
+<p>今天，学习Bean的生命周期</p>
 <h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><p>在Spring中Bean的生命周期：<br>Bean的创建—-初始化—–调用—–销毁。</p>
 <p>构造(对象的创建)：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单实例：在容器启动的时候创建对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多实例：在每次获取的时候创建对象 </p>
 <p>初始化：<br>对象创建完成，并赋值好，调用初始化方法</p>
 <p>销毁：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单实例：容器关闭的时候<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多实例：容器不会管理这个Bean，容器不会调用销毁方法</p>
 <p>以前，我们定义初始化和销毁方法是在xml文件中配置的：</p>
-<pre><code>&lt;!--以前的开发模式，使用配置文件--&gt;
-    &lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot; init-method=&quot;&quot; destroy-method=&quot;&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;
-        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;
-    &lt;/bean&gt;
-</code></pre><p>init-method=””    : 定义初始化方法<br>destroy-method=”” : 定义销毁方法  </p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>以前的开发模式，使用配置文件<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"person"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"com.liuzhuo.bean.Person"</span> init<span class="token operator">-</span>method<span class="token operator">=</span><span class="token string">""</span> destroy<span class="token operator">-</span>method<span class="token operator">=</span><span class="token string">""</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"zhangsan"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"age"</span> value<span class="token operator">=</span><span class="token string">"18"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span>
+</code></pre>
+<p>init-method=””    : 定义初始化方法<br>destroy-method=”” : 定义销毁方法  </p>
 <hr>
 <p>现在，我们可以使用其他方式来完成生命周期。</p>
 <h4 id="通过-Bean指定init-method和destroy-method"><a href="#通过-Bean指定init-method和destroy-method" class="headerlink" title="通过@Bean指定init-method和destroy-method"></a>通过@Bean指定init-method和destroy-method</h4><p>1）在com.liuzhuo.config包下，创建MainConfigOfLife配置类：</p>
-<pre><code>@Configuration
-public class MainConfigOfLife {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfLife</span> <span class="token punctuation">{</span>
 
-}
-</code></pre><p>2) 在com.liuzhuo.bean包下，创建Car类：</p>
-<pre><code>public class Car {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 在com.liuzhuo.bean包下，创建Car类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
 
-    public Car() {
-        System.out.println(&quot;Car construct ····&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token function">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Car construct ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //定义初始化方法
-    public void init(){
-        System.out.println(&quot;Car init ·····&quot;);
-    }
+    <span class="token comment" spellcheck="true">//定义初始化方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Car init ·····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //定义销毁方法
-    public void destory(){
-        System.out.println(&quot;Car destory ·····&quot;);
-    }
-}
-</code></pre><p>3) 将Car注册到容器中：</p>
-<pre><code>@Configuration
-public class MainConfigOfLife {
+    <span class="token comment" spellcheck="true">//定义销毁方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Car destory ·····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 将Car注册到容器中：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfLife</span> <span class="token punctuation">{</span>
 
-    @Bean(initMethod = &quot;init&quot;,destroyMethod = &quot;destory&quot;)
-    public Car car() {
-        return new Car();
-    }
-}
-</code></pre><p>4) 在com.liuzhuo.test包下，创建新的测试类(IocOfLifeTest):</p>
-<pre><code>public class IocOfLifeTest {
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>initMethod <span class="token operator">=</span> <span class="token string">"init"</span><span class="token punctuation">,</span>destroyMethod <span class="token operator">=</span> <span class="token string">"destory"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Car <span class="token function">car</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 在com.liuzhuo.test包下，创建新的测试类(IocOfLifeTest):</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocOfLifeTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(MainConfigOfLife.class);
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfLife<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><p>5)运行测试test01方法：</p>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5)运行测试test01方法：</p>
 <pre><code>Car construct ····
 Car init ·····
 </code></pre><p>说明：单例模式下，容器启动就会将Bean对象注入到容器中，并执行了初始化方法。</p>
 <p>想要调用销毁方法，关闭容器就好。</p>
-<pre><code>public class IocOfLifeTest {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocOfLifeTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //启动容器
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(MainConfigOfLife.class);
-        //关闭容器
-        applicationContext.close();
-    }
-}
-</code></pre><p>运行结果：</p>
+        <span class="token comment" spellcheck="true">//启动容器</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfLife<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//关闭容器</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行结果：</p>
 <pre><code>D:\Java1.8\bin\java
 十月 15, 2018 9:08:11 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Mon Oct 15 21:08:11 CST 2018]; root of context hierarchy
@@ -556,44 +562,47 @@ Process finished with exit code 0
 </code></pre><hr>
 <h4 id="InitializingBean和DisposableBean"><a href="#InitializingBean和DisposableBean" class="headerlink" title="InitializingBean和DisposableBean"></a>InitializingBean和DisposableBean</h4><p>通过让Bean实现InitializingBean和DisposableBean两个接口来定义初始化和销毁。</p>
 <p>1）在com.liuzhuo.bean包下，创建Cat类，并实现上述两个接口：</p>
-<pre><code>@Component
-public class Cat implements InitializingBean, DisposableBean {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">implements</span> <span class="token class-name">InitializingBean</span><span class="token punctuation">,</span> DisposableBean <span class="token punctuation">{</span>
 
-    public Cat() {
-        System.out.println(&quot;Cat constructer ···&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token function">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Cat constructer ···"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println(&quot;Cat destroy ····&quot;);
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Cat destroy ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println(&quot;Cat afterPropertiesSet ····&quot;);
-    }
-}
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterPropertiesSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Cat afterPropertiesSet ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>2) 将Cat类注入到容器中，这里我使用了包扫描:</p>
-<pre><code>@Configuration
-@ComponentScan(value = &quot;com.liuzhuo&quot;)
-public class MainConfigOfLife 
-</code></pre><p>3) 运行测试方法test01:</p>
-<pre><code>public class IocOfLifeTest {
+</code></pre>
+<p>2) 将Cat类注入到容器中，这里我使用了包扫描:</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfLife</span> 
+</code></pre>
+<p>3) 运行测试方法test01:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocOfLifeTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //启动容器
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(MainConfigOfLife.class);
+        <span class="token comment" spellcheck="true">//启动容器</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfLife<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        Object cat = applicationContext.getBean(&quot;cat&quot;);
-        //关闭容器
-        applicationContext.close();
-    }
-}
-</code></pre><p>4) 结果：</p>
+        Object cat <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"cat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//关闭容器</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 结果：</p>
 <pre><code>十月 15, 2018 9:21:42 下午 org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
 信息: Overriding bean definition for bean &#39;person&#39; with a different definition: replacing [Generic bean: class [com.liuzhuo.bean.Person]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [E:\ideaProject\springannotation\target\classes\com\liuzhuo\bean\Person.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=true; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mainConfig2; factoryMethodName=person; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/liuzhuo/config/MainConfig2.class]]
 Cat constructer ···
@@ -607,42 +616,44 @@ Cat destroy ····
 </code></pre><hr>
 <h4 id="JSR250-PostConstruct和-PreDestory"><a href="#JSR250-PostConstruct和-PreDestory" class="headerlink" title="JSR250:@PostConstruct和@PreDestory"></a>JSR250:@PostConstruct和@PreDestory</h4><p>@PostConstruct: 在bean创建完成并且属性赋值完成，来执行初始化方法<br>@PreDestory：&nbsp;&nbsp;在容器销毁bean之前通知我们进行清理工作</p>
 <p>1) 在com.liuzhuo.bean包下，创建Dog类：</p>
-<pre><code>@Component
-public class Dog {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
 
-    public Dog() {
-        System.out.println(&quot;Dog construct ····&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Dog construct ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //在构造函数之后
-    @PostConstruct
-    public void init() {
-        System.out.println(&quot;Dog @PostConstruct ····&quot;);
-    }
+    <span class="token comment" spellcheck="true">//在构造函数之后</span>
+    <span class="token annotation punctuation">@PostConstruct</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Dog @PostConstruct ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //在销毁之前
-    @PreDestroy
-    public void destory() {
-        System.out.println(&quot;Dog @PreDestroy ····&quot;);
-    }
-}
-</code></pre><p>2) 运行测试类test01:</p>
-<pre><code>public class IocOfLifeTest {
+    <span class="token comment" spellcheck="true">//在销毁之前</span>
+    <span class="token annotation punctuation">@PreDestroy</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Dog @PreDestroy ····"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 运行测试类test01:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocOfLifeTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //启动容器
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(MainConfigOfLife.class);
+        <span class="token comment" spellcheck="true">//启动容器</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfLife<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.getBean(&quot;dog&quot;);
+        applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //关闭容器
-        applicationContext.close();
-    }
-}
-</code></pre><p>3) 结果：</p>
+        <span class="token comment" spellcheck="true">//关闭容器</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 结果：</p>
 <pre><code>十月 15, 2018 9:35:11 下午 org.springframework.beans.factory.support.DefaultListableBeanFactory registerBeanDefinition
 信息: Overriding bean definition for bean &#39;person&#39; with a different definition: replacing [Generic bean: class [com.liuzhuo.bean.Person]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [E:\ideaProject\springannotation\target\classes\com\liuzhuo\bean\Person.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=true; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mainConfig2; factoryMethodName=person; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/liuzhuo/config/MainConfig2.class]]
 Cat constructer ···
@@ -657,53 +668,55 @@ Car destory ·····
 Dog @PreDestroy ····
 Cat destroy ····
 </code></pre><hr>
-<h4 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h4><p>BeanPostProcessor:bean后置处理器（意思是bean初始化前后执行）</p>
+<h4 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h4><p>BeanPostProcessor: bean后置处理器（意思是bean初始化前后执行）</p>
 <p>postProcessBeforeInitialization：在初始化之前执行，这里是初始化指：上述的init-method、InitializingBean、@PostConstruct。</p>
 <p>postProcessAfterInitialization：在初始化之后执行。</p>
 <hr>
 <p>1）在com.liuzhuo.bean包下，创建MyBeanPostProcessor并实现BeanPostProcessor接口</p>
-<pre><code>@Component
-public class MyBeanPostProcessor implements BeanPostProcessor {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyBeanPostProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">{</span>
 
-    //初始化之前执行
-    /**
+    <span class="token comment" spellcheck="true">//初始化之前执行</span>
+    <span class="token comment" spellcheck="true">/**
      * @param bean     容器创建的Bean
      * @param beanName bean的id
      * @return
      * @throws BeansException
-     */
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span>Object bean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
 
-        System.out.println(beanName + &quot;------postProcessBeforeInitialization&quot;);
-        //返回值是原始的Bean，或者是包装后的Bean
-        return bean;
-    }
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>beanName <span class="token operator">+</span> <span class="token string">"------postProcessBeforeInitialization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//返回值是原始的Bean，或者是包装后的Bean</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //初始化之后执行
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println(beanName + &quot;------postProcessAfterInitialization&quot;);
-        return bean;
-    }
-}
-</code></pre><p>3) 运行测试方法test01：</p>
-<pre><code>public class IocOfLifeTest {
+    <span class="token comment" spellcheck="true">//初始化之后执行</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">postProcessAfterInitialization</span><span class="token punctuation">(</span>Object bean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>beanName <span class="token operator">+</span> <span class="token string">"------postProcessAfterInitialization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 运行测试方法test01：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocOfLifeTest</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //启动容器
-        AnnotationConfigApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext(MainConfigOfLife.class);
+        <span class="token comment" spellcheck="true">//启动容器</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfLife<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.getBean(&quot;dog&quot;);
+        applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //关闭容器
-        applicationContext.close();
-    }
-}
-</code></pre><p>4) 结果：</p>
+        <span class="token comment" spellcheck="true">//关闭容器</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 结果：</p>
 <pre><code>mainConfigOfLife------postProcessBeforeInitialization
 mainConfigOfLife------postProcessAfterInitialization
 Cat constructer ···
@@ -1168,9 +1181,11 @@ Process finished with exit code 0
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天学习BeanPostProcessor的生命周期流程
-BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处理器，是在Bean初始化前后执行一些列操作的，底层到底是怎</div>
+                    <div class="summary">
+                      
+                                今天学习BeanPostProcessor的生命周期流程
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1215,9 +1230,11 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习给容器中注入组件
-@Import注解给容器中注册组件：1）、包扫描+组件标记注解（@Controller、@Service、@Repository、@Component)[导入我们自己写的组件]2）、@B</div>
+                    <div class="summary">
+                       
+                                今天,学习给容器中注入组件:@Import注解、FactoryBean
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
@@ -1397,7 +1414,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

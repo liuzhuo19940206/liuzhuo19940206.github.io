@@ -445,14 +445,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        894
+                        838
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        3 分
                     </div>
                     
                 
@@ -475,111 +475,120 @@
 <pre><code>&lt;groupId&gt;com.liuzhuo&lt;/groupId&gt;
 &lt;artifactId&gt;spring-annotation&lt;/artifactId&gt;
 &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-</code></pre><p>创建后的工程如下：<br><img src="/images/20181012212912.png" style="width:300px; heigh:300px"></p>
+</code></pre><p>创建后的工程如下：<br><img src="http://pp4rmtx78.bkt.clouddn.com/20181012212912.png" style="width:300px; heigh:300px"></p>
 <hr>
 <p>现在打开pom.xml文件:添加依赖如下</p>
-<pre><code>&lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
-            &lt;version&gt;5.0.9.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre><p>更新pom文件，会自动导入jar包。 </p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>context<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">5.0</span><span class="token punctuation">.</span><span class="token number">9</span><span class="token punctuation">.</span>RELEASE<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
+</code></pre>
+<p>更新pom文件，会自动导入jar包。 </p>
 <hr>
 <p>在src下的main下的java中创建Person类。我的包名是com.liuzhuo.bean<br>Person类中主要是两个字段，一个name，一个age，如图:</p>
-<pre><code>public class Person {
-    private String name;
-    private Integer age;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Integer age<span class="token punctuation">;</span>
 
-    ···中间省略了无参、有参的构造函数和getter、setter方法以及toString方法.    
-}
-</code></pre><p>现在在main下的resources下创建bean.xml文件  </p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    ···中间省略了无参、有参的构造函数和getter、setter方法以及toString方法<span class="token punctuation">.</span>    
+<span class="token punctuation">}</span>
+</code></pre>
+<p>现在在main下的resources下创建bean.xml文件  </p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>beans xmlns<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/beans"</span>
+       xmlns<span class="token operator">:</span>xsi<span class="token operator">=</span><span class="token string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       xsi<span class="token operator">:</span>schemaLocation<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span><span class="token operator">></span>
 
-    &lt;!--以前的开发模式，使用配置文件--&gt;
-    &lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;
-        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;
-    &lt;/bean&gt;
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>以前的开发模式，使用配置文件<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"person"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"com.liuzhuo.bean.Person"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"zhangsan"</span><span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"age"</span> value<span class="token operator">=</span><span class="token string">"18"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span>
 
-&lt;/beans&gt;
-</code></pre><hr>
+<span class="token operator">&lt;</span><span class="token operator">/</span>beans<span class="token operator">></span>
+</code></pre>
+<hr>
 <p>现在在com.liuzhuo包下创建MainTest类：  </p>
-<pre><code>public class MainTest {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainTest</span> <span class="token punctuation">{</span>
 
-    public static void main(String[] args) {
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //以前的开发模式，使用xml来配置bean
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-        Person person = (Person) applicationContext.getBean(&quot;person&quot;);
-        System.out.println(person);
+        <span class="token comment" spellcheck="true">//以前的开发模式，使用xml来配置bean</span>
+        ClassPathXmlApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span>                            <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"bean.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Person person <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><hr>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
 <p>输出结果:就是在配置文件中的配置的person类。</p>
 <p><code>Person{name=&#39;zhangsan&#39;, age=18}</code></p>
 <hr>
 <p>现在创建com.liuzhuo.config包，并创建MainConfig类:</p>
-<pre><code>//配置类==配置文件
-@Configuration   //告诉spring这是一个配置类，用来生成bean
-public class MainConfig {
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//配置类==配置文件</span>
+<span class="token annotation punctuation">@Configuration</span>   <span class="token comment" spellcheck="true">//告诉spring这是一个配置类，用来生成bean</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span> <span class="token punctuation">{</span>
 
-    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名
-    @Bean
-    public Person person() {
-        return new Person(&quot;lisi&quot;, 16);
-    }
-}
-</code></pre><hr>
+    <span class="token comment" spellcheck="true">//给容器中注册一个Bean；类型为返回值的类型，id默认为方法名</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> Person <span class="token function">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"lisi"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
 <p>修改MainTest类：  </p>
-<pre><code>public class MainTest {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainTest</span> <span class="token punctuation">{</span>
 
-    public static void main(String[] args) {
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //以前的开发模式，使用xml来配置bean
-        /*ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;bean.xml&quot;);
-        Person person = (Person) applicationContext.getBean(&quot;person&quot;);
-        System.out.println(person);*/
+        <span class="token comment" spellcheck="true">//以前的开发模式，使用xml来配置bean</span>
+        <span class="token comment" spellcheck="true">/*ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
+        Person person = (Person) applicationContext.getBean("person");
+        System.out.println(person);*/</span>
 
-        //现在使用java类来配置上下文容器
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
-        Person person = context.getBean(Person.class);
-        System.out.println(person);
-    }
-}
-</code></pre><hr>
+        <span class="token comment" spellcheck="true">//现在使用java类来配置上下文容器</span>
+        AnnotationConfigApplicationContext context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Person person <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
 <p>输出结果：是MainConfig类中配置Person类(@Bean注解的类) </p>
 <p><code>Person{name=&#39;lisi&#39;, age=16}</code></p>
 <p>在配置文件类必须使用@Configuration注解，然后再注入自己想要的Bean对象<br>创建一个方法，使用@Bean注解，返回值就是注入到容器中的Bean类型，默认情况下方法名就是注入到容器中的id。  </p>
 <p>@Bean注解()中，可以输入参数，其中就有value来修改Bean的id名，如下：</p>
-<pre><code>public class MainConfig {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfig</span> <span class="token punctuation">{</span>
 
-    //给容器中注册一个Bean；类型为返回值的类型，id默认为方法名
-    @Bean(value = &quot;person01&quot;) //修改了Bean的id为person01
-    public Person person() {
-        return new Person(&quot;lisi&quot;, 16);
-    }
-}
+    <span class="token comment" spellcheck="true">//给容器中注册一个Bean；类型为返回值的类型，id默认为方法名</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"person01"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//修改了Bean的id为person01</span>
+    <span class="token keyword">public</span> Person <span class="token function">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"lisi"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>在MainTest文件中输入获取Person类的名字：</p>
-<pre><code>  //现在使用java类来配置上下文容器
-  AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
-  Person person = context.getBean(Person.class);
-  System.out.println(person);
+</code></pre>
+<p>在MainTest文件中输入获取Person类的名字：</p>
+<pre class=" language-java"><code class="language-java">  <span class="token comment" spellcheck="true">//现在使用java类来配置上下文容器</span>
+  AnnotationConfigApplicationContext context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  Person person <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  String[] beanNames = context.getBeanNamesForType(Person.class);
-  for(String name:beanNames){
-        System.out.println(name);
-  }
-</code></pre><p>输出结果： </p>
-<pre><code>Person{name=&#39;lisi&#39;, age=16}
+  String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanNames <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>Person<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>String name<span class="token operator">:</span>beanNames<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果： </p>
+<pre class=" language-java"><code class="language-java">Person<span class="token punctuation">{</span>name<span class="token operator">=</span><span class="token string">'lisi'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">}</span>
 person01
-</code></pre><p>说明此时，Bean的id名字是被@Bean(value=”person01”)给替换了，不再是方法名person了。</p>
+</code></pre>
+<p>说明此时，Bean的id名字是被@Bean(value=”person01”)给替换了，不再是方法名person了。</p>
 
             </div>
             <hr/>
@@ -1021,10 +1030,11 @@ person01
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习包的扫描
-接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。
-接下来，我们看看包扫描怎么配置，因为</div>
+                    <div class="summary">
+                      
+                                今天来学习Spring-annotation的包扫描功能
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-13
@@ -1069,8 +1079,11 @@ person01
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary"> 序言:
-很久没有写日记了，以前只是在QQ空间写，现在觉得在自己的平台写日记还是感觉不错的，还是要多写博客来加强自己学习的知识，学的知识点感觉还是记不住，渐渐地让我明白，看的越多，懂的越少（你这话不是有毛病吗？应该是看的越多，懂的越多才对）</div>
+                    <div class="summary">
+                       
+                                Markdown的基本使用方法
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
@@ -1250,7 +1263,7 @@ person01
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

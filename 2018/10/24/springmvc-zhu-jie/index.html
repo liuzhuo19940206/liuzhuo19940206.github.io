@@ -472,7 +472,7 @@ SpringMVC注解的详细解答
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>SpringMVC注解</strong></p>
-<p>SpringMVC注解的详细解答<br><a id="more"></a></p>
+<p>SpringMVC注解的详细解答</p>
 <h3 id="注解概观"><a href="#注解概观" class="headerlink" title="注解概观"></a>注解概观</h3><p><strong>Spring2.5 引入注解式处理器</strong></p>
 <p>@Controller：用于标识是处理器类；</p>
 <p>@RequestMapping：请求到处理器功能方法的映射规则；</p>
@@ -496,27 +496,28 @@ SpringMVC注解的详细解答
 <p>可以在 Controller 中定义一个标注 @InitBinder 注解的方法，</p>
 <p>可以在该方法中向 Controller 了注册若干个属性编辑器</p>
 <p>例如:</p>
-<pre><code>@InitBinder
-public void initBinder(WebDataBinder binder) {
-SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-dateFormat.setLenient(false);
-binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-}
-
-</code></pre><h4 id="RequestMapping-请求路径映射"><a href="#RequestMapping-请求路径映射" class="headerlink" title="@RequestMapping-请求路径映射"></a>@RequestMapping-请求路径映射</h4><p>RequestMapping是一个用来处理请求地址映射的注解（将请求映射到对应的控制器方法中），可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@InitBinder</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initBinder</span><span class="token punctuation">(</span>WebDataBinder binder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    SimpleDateFormat dateFormat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dateFormat<span class="token punctuation">.</span><span class="token function">setLenient</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    binder<span class="token punctuation">.</span><span class="token function">registerCustomEditor</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">CustomDateEditor</span><span class="token punctuation">(</span>dateFormat<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="RequestMapping-请求路径映射"><a href="#RequestMapping-请求路径映射" class="headerlink" title="@RequestMapping-请求路径映射"></a>@RequestMapping-请求路径映射</h4><p>RequestMapping是一个用来处理请求地址映射的注解（将请求映射到对应的控制器方法中），可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</p>
 <p>RequestMapping请求路径映射，如果标注在某个controller的类级别上，则表明访问此类路径下的方法都要加上其配置的路径；最常用是标注在方法上，表明哪个具体的方法来接受处理某次请求。</p>
 <p>属性:</p>
-<pre><code>RequestMapping注解有六个属性，下面我们把她分成三类进行说明（下面有相应示例）。
-1、 value， method；
+<pre class=" language-java"><code class="language-java">RequestMapping注解有六个属性，下面我们把她分成三类进行说明（下面有相应示例）。
+<span class="token number">1</span>、 value， method；
 value：   指定请求的实际地址，指定的地址可以是URI Template 模式（后面将会说明）；
 method：  指定请求的method类型， GET、POST、PUT、DELETE等；
-2、consumes，produces
-consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
-produces:  指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
-3、params，headers
+<span class="token number">2</span>、consumes，produces
+consumes： 指定处理请求的提交内容类型（Content<span class="token operator">-</span>Type），例如application<span class="token operator">/</span>json<span class="token punctuation">,</span> text<span class="token operator">/</span>html<span class="token punctuation">;</span>
+produces<span class="token operator">:</span>  指定返回的内容类型，仅当request请求头中的<span class="token punctuation">(</span>Accept<span class="token punctuation">)</span>类型中包含该指定类型才返回；
+<span class="token number">3</span>、params，headers
 params：  指定request中必须包含某些参数值是，才让该方法处理。
 headers： 指定request中必须包含某些指定的header值，才能让该方法处理请求。
-</code></pre><p>派生的子类：</p>
+</code></pre>
+<p>派生的子类：</p>
 <pre><code>Ø  @GetMapping
 
 Ø  @PostMapping
@@ -527,64 +528,72 @@ headers： 指定request中必须包含某些指定的header值，才能让该�
 
 Ø  @PatchMapping
 </code></pre><p>属性详解：</p>
-<h5 id="value"><a href="#value" class="headerlink" title="value"></a><font size="4">value</font></h5><p>用法</p>
-<p>(1)普通的具体值。如前面的 value=”/book”。</p>
-<pre><code>@RequestMapping(value=&quot;/get/{bookId}&quot;)
-public String getBookById(@PathVariable String bookId,Model model){
-  model.addAttribute(&quot;bookId&quot;, bookId);
-  return &quot;book&quot;;
-} 
-</code></pre><p>(2)含某变量的一类值。</p>
+<h5 id="value的用法"><a href="#value的用法" class="headerlink" title="value的用法"></a><font size="4">value</font>的用法</h5><p>(1)普通的具体值。如前面的 value=”/book”。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/{bookId}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> String <span class="token function">getBookById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> String bookId<span class="token punctuation">,</span>Model model<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"bookId"</span><span class="token punctuation">,</span> bookId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token string">"book"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<p>(2)含某变量的一类值。</p>
 <p>(3)ant风格</p>
-<pre><code>  @RequestMapping(value=&quot;/get/id?&quot;)：可匹配“/get/id1”或“/get/ida”，但不匹配“/get/id”或“/get/idaa”;
-  @RequestMapping(value=&quot;/get/id*&quot;)：可匹配“/get/idabc”或“/get/id”，但不匹配“/get/idabc/abc”;
-  @RequestMapping(value=&quot;/get/id/*&quot;)：可匹配“/get/id/abc”，但不匹配“/get/idabc”;
-  @RequestMapping(value=&quot;/get/id/**/{id}&quot;)：可匹配“/get/id/abc/abc/123”或“/get/id/123”，也就是Ant风格和URI模板变量风格可混用。
-</code></pre><p>(4)含正则表达式的一类值</p>
-<pre><code>@RequestMapping(value=&quot;/get/{idPre:\d+}-{idNum:\d+}&quot;)：
-可以匹配“/get/123-1”，但不能匹配“/get/abc-1”，这样可以设计更加严格的规则。
-可以通过@PathVariable 注解提取路径中的变量(idPre,idNum)
-</code></pre><p>(5)或关系</p>
-<pre><code>@RequestMapping(value={&quot;/get&quot;,&quot;/fetch&quot;} ) 即 /get或/fetch都会映射到该方法上。
-</code></pre><h5 id="method"><a href="#method" class="headerlink" title="method"></a><font size="4">method</font></h5><p>指定请求的method类型， GET、POST、PUT、DELETE等；</p>
+<pre class=" language-java"><code class="language-java">  <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/id?"</span><span class="token punctuation">)</span>：可匹配“<span class="token operator">/</span>get<span class="token operator">/</span>id1”或“<span class="token operator">/</span>get<span class="token operator">/</span>ida”，但不匹配“<span class="token operator">/</span>get<span class="token operator">/</span>id”或“<span class="token operator">/</span>get<span class="token operator">/</span>idaa”<span class="token punctuation">;</span>
+  <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/id*"</span><span class="token punctuation">)</span>：可匹配“<span class="token operator">/</span>get<span class="token operator">/</span>idabc”或“<span class="token operator">/</span>get<span class="token operator">/</span>id”，但不匹配“<span class="token operator">/</span>get<span class="token operator">/</span>idabc<span class="token operator">/</span>abc”<span class="token punctuation">;</span>
+  <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/id/*"</span><span class="token punctuation">)</span>：可匹配“<span class="token operator">/</span>get<span class="token operator">/</span>id<span class="token operator">/</span>abc”，但不匹配“<span class="token operator">/</span>get<span class="token operator">/</span>idabc”<span class="token punctuation">;</span>
+  <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/id/**/{id}"</span><span class="token punctuation">)</span>：可匹配“<span class="token operator">/</span>get<span class="token operator">/</span>id<span class="token operator">/</span>abc<span class="token operator">/</span>abc<span class="token operator">/</span><span class="token number">123</span>”或“<span class="token operator">/</span>get<span class="token operator">/</span>id<span class="token operator">/</span><span class="token number">123</span>”，也就是Ant风格和URI模板变量风格可混用。
+</code></pre>
+<p>(4)含正则表达式的一类值</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/{idPre:\d+}-{idNum:\d+}"</span><span class="token punctuation">)</span>：
+可以匹配“<span class="token operator">/</span>get<span class="token operator">/</span><span class="token number">123</span><span class="token operator">-</span><span class="token number">1</span>”，但不能匹配“<span class="token operator">/</span>get<span class="token operator">/</span>abc<span class="token operator">-</span><span class="token number">1</span>”，这样可以设计更加严格的规则。
+可以通过<span class="token annotation punctuation">@PathVariable</span> 注解提取路径中的变量<span class="token punctuation">(</span>idPre<span class="token punctuation">,</span>idNum<span class="token punctuation">)</span>
+</code></pre>
+<p>(5)或关系</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"/get"</span><span class="token punctuation">,</span><span class="token string">"/fetch"</span><span class="token punctuation">}</span> <span class="token punctuation">)</span> 即 <span class="token operator">/</span>get或<span class="token operator">/</span>fetch都会映射到该方法上。
+</code></pre>
+<h5 id="method"><a href="#method" class="headerlink" title="method"></a><font size="4">method</font></h5><p>指定请求的method类型， GET、POST、PUT、DELETE等；</p>
 <p>用法:</p>
-<pre><code>@RequestMapping(value=&quot;/get/{bookid}&quot;,method={RequestMethod.GET,RequestMethod.POST})
-</code></pre><h5 id="params："><a href="#params：" class="headerlink" title="params："></a><font size="4">params：</font></h5><p><strong>指定request中必须包含某些参数值是，才让该方法处理。</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/get/{bookid}"</span><span class="token punctuation">,</span>method<span class="token operator">=</span><span class="token punctuation">{</span>RequestMethod<span class="token punctuation">.</span>GET<span class="token punctuation">,</span>RequestMethod<span class="token punctuation">.</span>POST<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h5 id="params："><a href="#params：" class="headerlink" title="params："></a><font size="4">params：</font></h5><p><strong>指定request中必须包含某些参数值是，才让该方法处理。</strong></p>
 <p>@RequestMapping(params=”action=del”)，请求参数包含”action=del”,如：</p>
 <p><code>http://localhost:8080/book?action=del</code></p>
-<pre><code>@Controller
-@RequestMapping(&quot;/owners/{ownerId}&quot;)
-public class RelativePathUriTemplateController {
-@RequestMapping(value = &quot;/pets/{petId}&quot;, method = RequestMethod.GET, params=&quot;myParam=myValue&quot;)
-public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) {    
-  // implementation omitted
-}
-}
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/owners/{ownerId}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RelativePathUriTemplateController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/pets/{petId}"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> RequestMethod<span class="token punctuation">.</span>GET<span class="token punctuation">,</span> params<span class="token operator">=</span><span class="token string">"myParam=myValue"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">findPet</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> String ownerId<span class="token punctuation">,</span> <span class="token annotation punctuation">@PathVariable</span> String petId<span class="token punctuation">,</span> Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+        <span class="token comment" spellcheck="true">// implementation omitted</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 仅处理请求中包含了名为“myParam”，值为“myValue”的请求
-</code></pre><h5 id="headers："><a href="#headers：" class="headerlink" title="headers："></a><font size="4">headers：</font></h5><p>指定request中必须包含某些指定的header值，才能让该方法处理请求。</p>
+</code></pre>
+<h5 id="headers："><a href="#headers：" class="headerlink" title="headers："></a><font size="4">headers：</font></h5><p>指定request中必须包含某些指定的header值，才能让该方法处理请求。</p>
 <p>@RequestMapping(value=”/header/id”, headers = “Accept=application/json”)：</p>
 <p>表示请求的URL必须为“/header/id 且请求头中必须有“Accept =application/json”参数即可匹配。</p>
-<pre><code>@Controller
-@RequestMapping(&quot;/owners/{ownerId}&quot;)
-public class RelativePathUriTemplateController {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/owners/{ownerId}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RelativePathUriTemplateController</span> <span class="token punctuation">{</span>
 
-    @RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.GET, headers=&quot;Referer=http://www.ifeng.com/&quot;)
-    public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) {    
-      // implementation omitted
-    }
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/pets"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> RequestMethod<span class="token punctuation">.</span>GET<span class="token punctuation">,</span> headers<span class="token operator">=</span><span class="token string">"Referer=http://www.ifeng.com/"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">findPet</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> String ownerId<span class="token punctuation">,</span> <span class="token annotation punctuation">@PathVariable</span> String petId<span class="token punctuation">,</span> Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+      <span class="token comment" spellcheck="true">// implementation omitted</span>
+    <span class="token punctuation">}</span>
 
-}
-    仅处理request的header中包含了指定“Refer”请求头和对应值为“http://www.ifeng.com/”的请求。
-</code></pre><h5 id="consumes："><a href="#consumes：" class="headerlink" title="consumes："></a><font size="4">consumes：</font></h5><p>指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。</p>
+<span class="token punctuation">}</span>
+    仅处理request的header中包含了指定“Refer”请求头和对应值为“http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>ifeng<span class="token punctuation">.</span>com<span class="token operator">/</span>”的请求。
+</code></pre>
+<h5 id="consumes："><a href="#consumes：" class="headerlink" title="consumes："></a><font size="4">consumes：</font></h5><p>指定处理请求的提交内容类型（Content-Type），例如application/json, text/html。</p>
 <p>用法:</p>
 <p>@RequestMapping(value = “/pets”, method = RequestMethod.POST, consumes=”application/json”)</p>
-<pre><code>@Controller
-@RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.POST, consumes=&quot;application/json&quot;)
-public void addPet(@RequestBody Pet pet, Model model) {    
-  // implementation omitted
-}
-          方法仅处理request Content-Type为“application/json”类型的请求。
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/pets"</span><span class="token punctuation">,</span> method <span class="token operator">=</span> RequestMethod<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> consumes<span class="token operator">=</span><span class="token string">"application/json"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addPet</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> Pet pet<span class="token punctuation">,</span> Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+  <span class="token comment" spellcheck="true">// implementation omitted</span>
+<span class="token punctuation">}</span>
+  该方法仅处理request Content<span class="token operator">-</span>Type为“application<span class="token operator">/</span>json”类型的请求。
 </code></pre>
+
             </div>
             <hr/>
 
@@ -1025,13 +1034,11 @@ public void addPet(@RequestBody Pet pet, Model model) {
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">git的初级用法
-
-Git的下载git的官网：https://git-scm.com/
-点击右下角的：Downloade xxxx for Windows
-由于是国外的网站，下载速度或许会很慢，请耐心等待~~
-下载完后，直接安装就行。
-安装</div>
+                    <div class="summary">
+                      
+                                git的基本使用方法
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-25
@@ -1076,10 +1083,11 @@ Git的下载git的官网：https://git-scm.com/
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringMVC-参数绑定
-探究SpringMVC中控制层的方法中的参数绑定
-Model/ModelMap/ModelAndViewModelMap是Model接口的实现类，通过Model或ModelMap向页面传递数据，如下
-@Requ</div>
+                    <div class="summary">
+                       
+                                SpringMVC-参数绑定
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
@@ -1259,7 +1267,7 @@ Model/ModelMap/ModelAndViewModelMap是Model接口的实现类，通过Model或Mo
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

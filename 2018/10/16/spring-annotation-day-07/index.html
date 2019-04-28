@@ -445,7 +445,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        832
+                        841
                     </div>
                     
 
@@ -469,163 +469,170 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天学习BeanPostProcessor的生命周期流程<br><a id="more"></a></p>
+<p>今天学习BeanPostProcessor的生命周期流程</p>
 <h3 id="BeanPostProcessor的生命周期流程"><a href="#BeanPostProcessor的生命周期流程" class="headerlink" title="BeanPostProcessor的生命周期流程"></a>BeanPostProcessor的生命周期流程</h3><p>我们知道BeanPostProcessor是后置处理器，是在Bean初始化前后执行一些列操作的，底层到底是怎么执行的呢？现在debug一下。</p>
 <p>1）设置断点，在com.liuzhuo.bean包下的MyBeanPostProcessor类中，给postProcessBeforeInitialization方法设置断点。</p>
-<p><img src="/images/20181016100600.png"></p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016100600.png"></p>
 <p>2) debug一下。发现调用栈如下：</p>
-<p><img src="/images/20181016101036.png" style="width:50%"></p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016101036.png" style="width:50%"></p>
 <p>程序是从test01开始：</p>
 <p>1）创建AnnotationConfigApplicationContext对象  </p>
 <p>2）执行AnnotationConfigApplicationContext的构造方法：</p>
-<pre><code>    public AnnotationConfigApplicationContext(Class&lt;?&gt;... annotatedClasses) {
-        this();
-        register(annotatedClasses);
-        refresh();
-    }
-</code></pre><p>3) 调用refresh()方法：完成一系列资源配置操作。最后调用finishBeanFactoryInitialization()方法，初始化容器。</p>
-<pre><code>    public void refresh() throws BeansException, IllegalStateException {
-        synchronized (this.startupShutdownMonitor) {
-            // Prepare this context for refreshing.
-            prepareRefresh();
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token function">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> annotatedClasses<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">register</span><span class="token punctuation">(</span>annotatedClasses<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3) 调用refresh()方法：完成一系列资源配置操作。最后调用finishBeanFactoryInitialization()方法，初始化容器。</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException<span class="token punctuation">,</span> IllegalStateException <span class="token punctuation">{</span>
+        <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>startupShutdownMonitor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Prepare this context for refreshing.</span>
+            <span class="token function">prepareRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            // Tell the subclass to refresh the internal bean factory.
-            ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
+            <span class="token comment" spellcheck="true">// Tell the subclass to refresh the internal bean factory.</span>
+            ConfigurableListableBeanFactory beanFactory <span class="token operator">=</span> <span class="token function">obtainFreshBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            // Prepare the bean factory for use in this context.
-            prepareBeanFactory(beanFactory);
+            <span class="token comment" spellcheck="true">// Prepare the bean factory for use in this context.</span>
+            <span class="token function">prepareBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            try {
-                // Allows post-processing of the bean factory in context subclasses.
-                postProcessBeanFactory(beanFactory);
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Allows post-processing of the bean factory in context subclasses.</span>
+                <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Invoke factory processors registered as beans in the context.
-                invokeBeanFactoryPostProcessors(beanFactory);
+                <span class="token comment" spellcheck="true">// Invoke factory processors registered as beans in the context.</span>
+                <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Register bean processors that intercept bean creation.
-                registerBeanPostProcessors(beanFactory);
+                <span class="token comment" spellcheck="true">// Register bean processors that intercept bean creation.</span>
+                <span class="token function">registerBeanPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Initialize message source for this context.
-                initMessageSource();
+                <span class="token comment" spellcheck="true">// Initialize message source for this context.</span>
+                <span class="token function">initMessageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Initialize event multicaster for this context.
-                initApplicationEventMulticaster();
+                <span class="token comment" spellcheck="true">// Initialize event multicaster for this context.</span>
+                <span class="token function">initApplicationEventMulticaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Initialize other special beans in specific context subclasses.
-                onRefresh();
+                <span class="token comment" spellcheck="true">// Initialize other special beans in specific context subclasses.</span>
+                <span class="token function">onRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Check for listener beans and register them.
-                registerListeners();
+                <span class="token comment" spellcheck="true">// Check for listener beans and register them.</span>
+                <span class="token function">registerListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Instantiate all remaining (non-lazy-init) singletons.
-                finishBeanFactoryInitialization(beanFactory);
+                <span class="token comment" spellcheck="true">// Instantiate all remaining (non-lazy-init) singletons.</span>
+                <span class="token function">finishBeanFactoryInitialization</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Last step: publish corresponding event.
-                finishRefresh();
-            }
+                <span class="token comment" spellcheck="true">// Last step: publish corresponding event.</span>
+                <span class="token function">finishRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-            catch (BeansException ex) {
-                if (logger.isWarnEnabled()) {
-                    logger.warn(&quot;Exception encountered during context initialization - &quot; +
-                            &quot;cancelling refresh attempt: &quot; + ex);
-                }
+            <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">BeansException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isWarnEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"Exception encountered during context initialization - "</span> <span class="token operator">+</span>
+                            <span class="token string">"cancelling refresh attempt: "</span> <span class="token operator">+</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
 
-                // Destroy already created singletons to avoid dangling resources.
-                destroyBeans();
+                <span class="token comment" spellcheck="true">// Destroy already created singletons to avoid dangling resources.</span>
+                <span class="token function">destroyBeans</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Reset &#39;active&#39; flag.
-                cancelRefresh(ex);
+                <span class="token comment" spellcheck="true">// Reset 'active' flag.</span>
+                <span class="token function">cancelRefresh</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                // Propagate exception to caller.
-                throw ex;
-            }
+                <span class="token comment" spellcheck="true">// Propagate exception to caller.</span>
+                <span class="token keyword">throw</span> ex<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
 
-            finally {
-                // Reset common introspection caches in Spring&#39;s core, since we
-                // might not ever need metadata for singleton beans anymore...
-                resetCommonCaches();
-            }
-        }
-    }
-</code></pre><p>4）进入finishBeanFactoryInitialization：<br>调用<br><code>beanFactory.preInstantiateSingletons();</code></p>
+            <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// Reset common introspection caches in Spring's core, since we</span>
+                <span class="token comment" spellcheck="true">// might not ever need metadata for singleton beans anymore...</span>
+                <span class="token function">resetCommonCaches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4）进入finishBeanFactoryInitialization：<br>调用<br><code>beanFactory.preInstantiateSingletons();</code></p>
 <p>5) 最终调用doCreateBean()方法：<br>我们主要看其中的：</p>
-<pre><code>        // Initialize the bean instance.
-        Object exposedObject = bean;
-        try {
-            populateBean(beanName, mbd, instanceWrapper);
-            if (exposedObject != null) {
-                exposedObject = initializeBean(beanName, exposedObject, mbd);
-            }
-        }
-</code></pre><p>populateBean:给Bean的属性赋值等操作<br>initializeBean:Bean初始化操作。</p>
+<pre class=" language-java"><code class="language-java">        <span class="token comment" spellcheck="true">// Initialize the bean instance.</span>
+        Object exposedObject <span class="token operator">=</span> bean<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token function">populateBean</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> mbd<span class="token punctuation">,</span> instanceWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>exposedObject <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                exposedObject <span class="token operator">=</span> <span class="token function">initializeBean</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> exposedObject<span class="token punctuation">,</span> mbd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>populateBean: 给Bean的属性赋值等操作<br>initializeBean: Bean初始化操作。</p>
 <p>6）点击initializeBean方法:</p>
-<pre><code>        Object wrappedBean = bean;
-        if (mbd == null || !mbd.isSynthetic()) {
-            wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
-        }
+<pre class=" language-java"><code class="language-java">        Object wrappedBean <span class="token operator">=</span> bean<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mbd <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token operator">!</span>mbd<span class="token punctuation">.</span><span class="token function">isSynthetic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            wrappedBean <span class="token operator">=</span> <span class="token function">applyBeanPostProcessorsBeforeInitialization</span><span class="token punctuation">(</span>wrappedBean<span class="token punctuation">,</span> beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        try {
-            invokeInitMethods(beanName, wrappedBean, mbd);
-        }
-        catch (Throwable ex) {
-            throw new BeanCreationException(
-                    (mbd != null ? mbd.getResourceDescription() : null),
-                    beanName, &quot;Invocation of init method failed&quot;, ex);
-        }
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token function">invokeInitMethods</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> wrappedBean<span class="token punctuation">,</span> mbd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BeanCreationException</span><span class="token punctuation">(</span>
+                    <span class="token punctuation">(</span>mbd <span class="token operator">!=</span> null <span class="token operator">?</span> mbd<span class="token punctuation">.</span><span class="token function">getResourceDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> null<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    beanName<span class="token punctuation">,</span> <span class="token string">"Invocation of init method failed"</span><span class="token punctuation">,</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if (mbd == null || !mbd.isSynthetic()) {
-            wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
-        }
-        return wrappedBean;
-</code></pre><p>其中：<br>applyBeanPostProcessorsBeforeInitialization：完成初始化之前的操作。</p>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>mbd <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token operator">!</span>mbd<span class="token punctuation">.</span><span class="token function">isSynthetic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            wrappedBean <span class="token operator">=</span> <span class="token function">applyBeanPostProcessorsAfterInitialization</span><span class="token punctuation">(</span>wrappedBean<span class="token punctuation">,</span> beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> wrappedBean<span class="token punctuation">;</span>
+</code></pre>
+<p>其中：<br>applyBeanPostProcessorsBeforeInitialization：完成初始化之前的操作。</p>
 <p>invokeInitMethods：初始化是操作(@PostConstruc、init-method等)</p>
 <p>applyBeanPostProcessorsAfterInitialization：完成初始化之后的操作。</p>
 <p>7）点击applyBeanPostProcessorsBeforeInitialization：</p>
-<pre><code>    @Override
-    public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName)
-            throws BeansException {
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">applyBeanPostProcessorsBeforeInitialization</span><span class="token punctuation">(</span>Object existingBean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
 
-        Object result = existingBean;
-        for (BeanPostProcessor beanProcessor : getBeanPostProcessors()) {
-            result = beanProcessor.postProcessBeforeInitialization(result, beanName);
-            if (result == null) {
-                return result;
-            }
-        }
-        return result;
-    }
-</code></pre><p>发现：就是使用for循环来调用一系列BeanPostProcessor接口的实现类，包括Spring容器自身的和我们自定义的实现类。</p>
+        Object result <span class="token operator">=</span> existingBean<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>BeanPostProcessor beanProcessor <span class="token operator">:</span> <span class="token function">getBeanPostProcessors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> beanProcessor<span class="token punctuation">.</span><span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>发现：就是使用for循环来调用一系列BeanPostProcessor接口的实现类，包括Spring容器自身的和我们自定义的实现类。</p>
 <p><strong>注意:如果其中的某一个BeanPostProcessor实现类返回了null，那么后面的BeanPostProcessor实现类就不执行了！！！</strong></p>
 <p>大概的流程就走完了~~~</p>
 <hr>
 <h3 id="Spring底层对BeanPostProcessor的使用"><a href="#Spring底层对BeanPostProcessor的使用" class="headerlink" title="Spring底层对BeanPostProcessor的使用"></a>Spring底层对BeanPostProcessor的使用</h3><p>ps：在idea中：类名查找类:Ctrl+Shift+Alt+N; </p>
-<p><img src="/images/20181016104349.png"></p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016104349.png"></p>
 <p>1) 找到BeanPostProcessor接口：</p>
-<pre><code>public interface BeanPostProcessor {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">{</span>
 
 
-    Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException;
+    Object <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span>Object bean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException<span class="token punctuation">;</span>
 
 
-    Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException;
+    Object <span class="token function">postProcessAfterInitialization</span><span class="token punctuation">(</span>Object bean<span class="token punctuation">,</span> String beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException<span class="token punctuation">;</span>
 
-}
-</code></pre><p>2) 在BeanPostProcessor上Ctrl+T：找到所有的实现类：</p>
-<p><img src="/images/20181016105219.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 在BeanPostProcessor上Ctrl+T：找到所有的实现类：</p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016105219.png"></p>
 <p>我们能看到各种BeanPostProcessor的实现类</p>
 <p>3）ApplicationContextAwareProcessor</p>
-<p>我们使用一下ApplicationContextAwareProcessor这个处理器。这个处理器是给我们的自定义Bean注入容器的。</p>
+<p>我们使用一下ApplicationContextAwareProcessor这个处理器。这个处理器是给我们的自定义Bean注入上下文容器的。</p>
 <p>4）在com.liuzhuo.bean包下，随便找个一个Bean，并实现ApplicationContextAware接口：<br>ps:这里使用的Dog类</p>
-<pre><code>@Component
-public class Dog implements ApplicationContextAware 
-</code></pre><p>5）需要实现：setApplicationContext方法</p>
-<pre><code>    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-</code></pre><p>这样我们就将容器注入到Dog类中。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> 
+</code></pre>
+<p>5）需要实现：setApplicationContext方法</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApplicationContext</span><span class="token punctuation">(</span>ApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token keyword">throws</span> BeansException <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext <span class="token operator">=</span> applicationContext<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>这样我们就将上下文组件注入到Dog类中，在Dog类中就能使用ApplicationContext上下容器了。</p>
 <hr>
-<p>还有：<br>InitDestroyAnnotationBeanPostProcessor处理我们的@PostConstruct、@PreDestory注解。<br>AutowiredAnnotationBeanPostProcessor处理我们的@Autowired注解等。</p>
+<p>还有：<br>InitDestroyAnnotationBeanPostProcessor处理我们的: @PostConstruct、@PreDestory注解。<br>AutowiredAnnotationBeanPostProcessor处理我们的: @Autowired注解等。</p>
 <p><strong>总结：<br>&nbsp;&nbsp;&nbsp;&nbsp;Spring对底层BeanPostProcessor的使用：bean的赋值、注入其他组件、@Autowired、生命周期注解功能、@Async、xxxBeanPostProcessor等等。</strong></p>
 
             </div>
@@ -1068,11 +1075,11 @@ public class Dog implements ApplicationContextAware
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Spring的自动注入
-@Value注解使用@Value注解来注入值
-1）在com.liuzhuo.config包下，创建新的配置类MainConfigOfProperty：
-@Configuration</div>
+                    <div class="summary">
+                      
+                                今天，学习Spring的属性值的自动注入:@Value注解
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1117,10 +1124,11 @@ public class Dog implements ApplicationContextAware
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Bean的生命周期
-Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化—–调用—–销毁。
-构造(对象的创建)：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb</div>
+                    <div class="summary">
+                       
+                                今天，学习Bean的生命周期
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
@@ -1300,7 +1308,7 @@ Bean的生命周期在Spring中Bean的生命周期：Bean的创建—-初始化�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

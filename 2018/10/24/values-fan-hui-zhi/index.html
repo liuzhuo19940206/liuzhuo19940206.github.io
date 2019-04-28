@@ -9,8 +9,7 @@
     <meta name="description" content="SpringMVC-Return Values返回值
 本篇文章，主要讲解SpringMVC的返回值的使用。
 
-
-Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters">
+Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters转">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -472,7 +471,6 @@ Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters
             <div id="articleContent">
                 <p><strong>SpringMVC-Return Values返回值</strong></p>
 <p>本篇文章，主要讲解SpringMVC的返回值的使用。</p>
-<a id="more"></a>
 <hr>
 <h3 id="Handler-Return-Values返回值"><a href="#Handler-Return-Values返回值" class="headerlink" title="Handler-Return Values返回值"></a>Handler-Return Values返回值</h3><h4 id="ResponseBody"><a href="#ResponseBody" class="headerlink" title="@ResponseBody"></a>@ResponseBody</h4><p> 返回值通过HttpMessageConverters转换并写入响应。   请参阅@ResponseBody。<br> 处理器功能处理方法的返回值作为响应体（通过HttpMessageConverter进行类型转换）；<br> 作用： 该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。<br> 使用时机：返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用；</p>
 <h4 id="HttpEntity-ResponseEntity"><a href="#HttpEntity-ResponseEntity" class="headerlink" title="HttpEntity,ResponseEntity"></a>HttpEntity,ResponseEntity</h4><p>返回值:指定完整响应，包括HTTP标头和正文通过HttpMessageConverters转换并写入响应。 请参阅ResponseEntity。</p>
@@ -498,34 +496,38 @@ Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters
 <hr>
 <p>返回字符串</p>
 <p>这玩意需要用到@ResponseBody注解</p>
-<pre><code>@RestController
-public class TestController {
-  @RequestMapping(&quot;/test.action&quot;)
-  public String  test( int ids){
-      System.out.println(&quot;id:&quot;+ids);
-      return &quot;this is test&quot;;
-  }
-}
-</code></pre><p>逻辑视图名</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestController</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/test.action"</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> String  <span class="token function">test</span><span class="token punctuation">(</span> <span class="token keyword">int</span> ids<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"id:"</span><span class="token operator">+</span>ids<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token string">"this is test"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>逻辑视图名</p>
 <p>这玩意需要你配置视图解析器</p>
-<pre><code>INF/jsp/item/editItem.jsp
-return &quot;item/editItem&quot;;
-</code></pre><p>Redirect重定向</p>
+<pre class=" language-java"><code class="language-java">INF<span class="token operator">/</span>jsp<span class="token operator">/</span>item<span class="token operator">/</span>editItem<span class="token punctuation">.</span>jsp
+<span class="token keyword">return</span> <span class="token string">"item/editItem"</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Redirect重定向</p>
 <p>Contrller方法返回结果重定向到一个url地址，如下商品修改提交后重定向到商品查询方法，参数无法带到商品查询方法中.</p>
-<pre><code>//重定向到queryItem.action地址,request无法带过去
-return &quot;redirect:queryItem.action&quot;;
-</code></pre><p>redirect方式相当于“response.sendRedirect()”，转发后浏览器的地址栏变为转发后的地址，因为转发即执行了一个新的request和response。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//重定向到queryItem.action地址,request无法带过去</span>
+<span class="token keyword">return</span> <span class="token string">"redirect:queryItem.action"</span><span class="token punctuation">;</span>
+</code></pre>
+<p>redirect方式相当于“response.sendRedirect()”，转发后浏览器的地址栏变为转发后的地址，因为转发即执行了一个新的request和response。</p>
 <p>由于新发起一个request原来的参数在转发时就不能传递到下一个url，如果要传参数可以/item/queryItem.action后边加参数，如下：</p>
 <p>/item/queryItem?…&amp;…..</p>
 <p>对于model设置的值，重定向会拼接到？key=value…. 版本4.3以后好像改了，记不太清了，你们可以自己去玩一下</p>
 <hr>
 <p>forward转发</p>
 <p>跟Redirect一样的用法，不同的是 转发可以传递参数</p>
-<pre><code>//结果转发到editItem.action，request可以带过去
-return &quot;forward:editItem.action&quot;;
-forward方式相当于“request.getRequestDispatcher().forward(request,response)”，转发后浏览器地址栏还是原来的地址。转发并没有执行新的request和response，而是和转发前的请求共用一个request和response。所以转发前请求的参数在转发后仍然可以读取到。
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//结果转发到editItem.action，request可以带过去</span>
+<span class="token keyword">return</span> <span class="token string">"forward:editItem.action"</span><span class="token punctuation">;</span>
+forward方式相当于“request<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span>response<span class="token punctuation">)</span>”，转发后浏览器地址栏还是原来的地址。转发并没有执行新的request和response，而是和转发前的请求共用一个request和response。所以转发前请求的参数在转发后仍然可以读取到。
 带域的返回
 </code></pre>
+
             </div>
             <hr/>
 
@@ -966,10 +968,11 @@ forward方式相当于“request.getRequestDispatcher().forward(request,response
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringMVC-参数绑定
-探究SpringMVC中控制层的方法中的参数绑定
-Model/ModelMap/ModelAndViewModelMap是Model接口的实现类，通过Model或ModelMap向页面传递数据，如下
-@Requ</div>
+                    <div class="summary">
+                      
+                                SpringMVC-参数绑定
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
@@ -1014,10 +1017,11 @@ Model/ModelMap/ModelAndViewModelMap是Model接口的实现类，通过Model或Mo
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringMVC的架构与流程
-探究MVC在SpringMVC中的关系。前言：
-顾名思义SpringMVC是一个基于MVC设计思想的框架。
-什么是mvc？MVC是模型(model)－视图(view)－控制器(controller)的缩写 ，</div>
+                    <div class="summary">
+                       
+                                探究MVC在SpringMVC中的关系。
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
@@ -1197,7 +1201,7 @@ Model/ModelMap/ModelAndViewModelMap是Model接口的实现类，通过Model或Mo
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

@@ -447,14 +447,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        787
+                        728
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        3 分
                     </div>
                     
                 
@@ -471,39 +471,40 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天，学习Spring的自动注入<br><a id="more"></a></p>
+<p>今天，学习Spring的自动注入</p>
 <h3 id="Value注解"><a href="#Value注解" class="headerlink" title="@Value注解"></a>@Value注解</h3><p>使用@Value注解来注入值</p>
 <p>1）在com.liuzhuo.config包下，创建新的配置类MainConfigOfProperty：</p>
-<pre><code>@Configuration
-public class MainConfigOfProperty {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfProperty</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public Person person() {
-        return new Person();
-    }
-}
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> Person <span class="token function">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）在com.liuzhuo.test包下，创建新的测试类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PropertyTest</span> <span class="token punctuation">{</span>
 
-</code></pre><p>2）在com.liuzhuo.test包下，创建新的测试类：</p>
-<pre><code>public class PropertyTest {
+    <span class="token keyword">private</span> AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfProperty<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    private AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfProperty.class);
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printBeanName</span><span class="token punctuation">(</span>applicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Person person <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Test
-    public void test01() {
-        printBeanName(applicationContext);
-        Person person = (Person) applicationContext.getBean(&quot;person&quot;);
-        System.out.println(person);
-        applicationContext.close();
-    }
-
-    private void printBeanName(AnnotationConfigApplicationContext applicationContext) {
-        String[] names = applicationContext.getBeanDefinitionNames();
-        for (String name : names) {
-            System.out.println(name);
-        }
-    }
-}
-</code></pre><p>3) 运行测试方法：test01</p>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">printBeanName</span><span class="token punctuation">(</span>AnnotationConfigApplicationContext applicationContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> names <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBeanDefinitionNames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String name <span class="token operator">:</span> names<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 运行测试方法：test01</p>
 <pre><code>org.springframework.context.annotation.internalConfigurationAnnotationProcessor
 org.springframework.context.annotation.internalAutowiredAnnotationProcessor
 org.springframework.context.annotation.internalRequiredAnnotationProcessor
@@ -519,23 +520,23 @@ Person{name=&#39;null&#39;, age=null}
 Process finished with exit code 0
 </code></pre><p>我们能看到，打印出来的Person对象的属性都是null。</p>
 <p>4）修改Person类</p>
-<pre><code>public class Person {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
 
-    /*
+    <span class="token comment" spellcheck="true">/*
     * value:
     *     1.使用直接值，比如字符串，数值等
     *     2.使用SpEL表达式，#{}
     *     3.使用${},获取资源文件中的数据
-    * */
-    @Value(&quot;张三&quot;)
-    private String name;
-    @Value(&quot;#{20-2}&quot;)
-    private Integer age;
+    * */</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"#{20-2}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Integer age<span class="token punctuation">;</span>
 
     ·····
-}
-
-</code></pre><p>5）再次运行test01：</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5）再次运行test01：</p>
 <pre><code>org.springframework.context.annotation.internalConfigurationAnnotationProcessor
 org.springframework.context.annotation.internalAutowiredAnnotationProcessor
 org.springframework.context.annotation.internalRequiredAnnotationProcessor
@@ -554,52 +555,55 @@ Process finished with exit code 0
 <p>1）在resource包下，创建person.properties文件：</p>
 <pre><code>person.nickName=小张三
 </code></pre><p>2) 修改Person类：<br>添加nickName属性和对应的get、set方法：</p>
-<pre><code>public class Person {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
 
-    /*
+    <span class="token comment" spellcheck="true">/*
      * value:
      *     1.使用直接值，比如字符串，数值等
      *     2.使用SpEL表达式，#{}
      *     3.使用${},获取资源文件中的数据
-     * */
-    @Value(&quot;张三&quot;)
-    private String name;
-    @Value(&quot;#{20-2}&quot;)
-    private Integer age;
-    @Value(&quot;${person.nickName}&quot;)
-    private String nickName;
+     * */</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"#{20-2}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Integer age<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${person.nickName}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String nickName<span class="token punctuation">;</span>
 
     ·····
-}
-</code></pre><p>3）在配置文件中，加入资源文件的扫描：<br>&nbsp;&nbsp;&nbsp;@PropertySource(value = “classpath:person.properties”)</p>
-<pre><code>@Configuration
-@PropertySource(value = &quot;classpath:person.properties&quot;)
-public class MainConfigOfProperty
-</code></pre><p>这里的@PropertySource(value = “classpath:person.properties”)，相当于以前在xml中的配置的<br>&lt;context:property-placeholder location=”person.properties”/&gt;，如下：</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3）在配置文件中，加入资源文件的扫描：<br>&nbsp;&nbsp;&nbsp;@PropertySource(value = “classpath:person.properties”)</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@PropertySource</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"classpath:person.properties"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfProperty</span>
+</code></pre>
+<p>这里的@PropertySource(value = “classpath:person.properties”)，相当于以前在xml中的配置的<br>&lt;context:property-placeholder location=”person.properties”/&gt;，如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>beans xmlns<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/beans"</span>
+       xmlns<span class="token operator">:</span>context<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/context"</span>
+       xmlns<span class="token operator">:</span>xsi<span class="token operator">=</span><span class="token string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       xsi<span class="token operator">:</span>schemaLocation<span class="token operator">=</span>"
+        http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>beans
+        http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>beans<span class="token operator">/</span>spring<span class="token operator">-</span>beans<span class="token punctuation">.</span>xsd
+        http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context
+        http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context<span class="token operator">/</span>spring<span class="token operator">-</span>context<span class="token punctuation">.</span>xsd"<span class="token operator">></span>
 
-    &lt;!--包扫描、只要标注了@Controller、@Service、@Repository、@Component都会自动注入到容器中--&gt;
-    &lt;!--&lt;context:component-scan base-package=&quot;com.liuzhuo&quot;/&gt;--&gt;
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>包扫描、只要标注了<span class="token annotation punctuation">@Controller</span>、<span class="token annotation punctuation">@Service</span>、<span class="token annotation punctuation">@Repository</span>、<span class="token annotation punctuation">@Component</span>都会自动注入到容器中<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">&lt;</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan base<span class="token operator">-</span><span class="token keyword">package</span><span class="token operator">=</span><span class="token string">"com.liuzhuo"</span><span class="token operator">/</span><span class="token operator">></span><span class="token operator">--</span><span class="token operator">></span>
 
-    &lt;!--扫描资源文件--&gt;
-    &lt;context:property-placeholder location=&quot;person.properties&quot;/&gt;
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>扫描资源文件<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>context<span class="token operator">:</span>property<span class="token operator">-</span>placeholder location<span class="token operator">=</span><span class="token string">"person.properties"</span><span class="token operator">/</span><span class="token operator">></span>
 
-    &lt;!--以前的开发模式，使用配置文件--&gt;
-    &lt;bean id=&quot;person&quot; class=&quot;com.liuzhuo.bean.Person&quot; init-method=&quot;&quot; destroy-method=&quot;&quot;&gt;
-        &lt;property name=&quot;name&quot; value=&quot;zhangsan&quot;/&gt;
-        &lt;property name=&quot;age&quot; value=&quot;18&quot;/&gt;
-    &lt;/bean&gt;
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>以前的开发模式，使用配置文件<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"person"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"com.liuzhuo.bean.Person"</span> init<span class="token operator">-</span>method<span class="token operator">=</span><span class="token string">""</span> destroy<span class="token operator">-</span>method<span class="token operator">=</span><span class="token string">""</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"zhangsan"</span><span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"age"</span> value<span class="token operator">=</span><span class="token string">"18"</span><span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span>
 
-&lt;/beans&gt;
-</code></pre><p>4) 运行test01：</p>
+<span class="token operator">&lt;</span><span class="token operator">/</span>beans<span class="token operator">></span>
+</code></pre>
+<p>4) 运行test01：</p>
 <pre><code>mainConfigOfProperty
 person
 Person{name=&#39;张三&#39;, age=18, nickName=&#39;小张三&#39;}
@@ -1046,10 +1050,11 @@ Person{name=&#39;张三&#39;, age=18, nickName=&#39;小张三&#39;}
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-Spring的自动装配：  
-Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。
-@Autowired注解1）在com.liuzhuo.config包下，创建新的类MainConfigOf</div>
+                    <div class="summary">
+                      
+                                Spring的自动装配:@Autowired注解、@Resource注解、@Inject注解
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1094,9 +1099,11 @@ Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系�
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天学习BeanPostProcessor的生命周期流程
-BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处理器，是在Bean初始化前后执行一些列操作的，底层到底是怎</div>
+                    <div class="summary">
+                       
+                                今天学习BeanPostProcessor的生命周期流程
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1276,7 +1283,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

@@ -470,16 +470,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>SpringMVC的架构与流程</strong></p>
-<p>探究MVC在SpringMVC中的关系。<br><a id="more"></a><br><strong>前言：</strong></p>
+<p>探究MVC在SpringMVC中的关系。<br><strong>前言：</strong></p>
 <p>顾名思义SpringMVC是一个基于MVC设计思想的框架。</p>
 <p>什么是mvc？MVC是模型(model)－视图(view)－控制器(controller)的缩写 ，是一种软件设计思想，主要的作用就是解决应用开发的耦合性，将应用的输入、控制、输出进行强制解耦。</p>
 <p>mvc中的模型、视图、控制器分别担负着不同的角色：</p>
-<p>模型：页数的数据和业务的处理。我们平常用的service和dao层就属于这一层面</p>
+<p>模型：页面的数据和业务的处理。我们平常用的service和dao层就属于这一层面</p>
 <p>视图：只用于用户的显示，不进行任何的业务处理。主要用来获取和显示数据</p>
 <p>控制器：控制视图层与用户的交互，将对应的操作调用对应的模型。简单的说，就是管理交互的</p>
 <p>理解了mvc，我们就来说一说mvc的执行过程：用户通过view层向服务器发出请求，controller接收请求后，调用对应的model后获取数据，控制器在将数据返回给view。</p>
 <p><strong>好了，我们可以进入正题了，既然SpringMVC是基于MVC的软件设计思想的框架，我们就先看一下SpringMVC的M、V、C分别是什么</strong></p>
-<p><img src="/images/20181024152707.png"></p>
+<p><img src="http://pp6fofewe.bkt.clouddn.com/20181024152707.png"></p>
 <p>上图里的东西我们不用细看，只需要大概晓得对应的mvc是啥的就行</p>
 <p>M:这里的模型指定是具体执行的Handler(Controller)。</p>
 <p>V:就是试图View</p>
@@ -500,18 +500,19 @@
 <p>了解了流程，我们在详细了解一下里面讲到的部件：</p>
 <p>前端控制器（DispatcherServlet）：这玩意是 SpringMVC的入口（实际上呢就是一个Servlet对象），所有的请求都要通过它，因为是个Servlet所以不可避免的你要在web.xml进行配置(Servlet3.0以后，可以不使用web.xml配置文件了)。</p>
 <p>处理器映射器(HandlerMapper)，这个玩意就是根据不同的方式找到处理器（Handler），它支持的有配置文件形式，接口形式，注解形式等等</p>
-<p>处理器适配器（HandlAdapter ）这玩意就是 分析处理器是那种方式的处理器（配置文件，接口、注解等形式）然后执行Handler</p>
+<p>处理器适配器（HandlAdapter ）这玩意就是 分析处理器是哪种方式的处理器（配置文件，接口、注解等形式）然后执行Handler</p>
 <p>ModelAndView 封装了数据和视图信息，如果想进行页面的数据交互，可以选择这玩意进行传输，数据的存放位置，默认的是Request域</p>
 <p>视图解析器（ViewResolver ），负责将处理结果生成View视图。</p>
 <p>视图（View ） SpringMVC提供了很多视图，比如jstlView、freemarkerView、pdfView等。我们最常用的视图就是jsp</p>
 <hr>
 <p><strong>在spring-mvc.xml文件中配置：</strong></p>
-<pre><code>&lt;!-- 配置处理器映射器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;/&gt;
-&lt;!-- 配置处理器适配器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;/&gt; 
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 配置处理器映射器 <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 配置处理器适配器 <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"</span><span class="token operator">/</span><span class="token operator">></span> 
 为什么这么配置spring就能用呢？因为spring对bean的加载有一个顺序，同名称的spring只会认第一次加载的bean，也就是配置文件最先配置的bean
-</code></pre><p><strong>当然了还有更简洁的配置，添加这个配置即可 mvc:annotation-driven</strong></p>
+</code></pre>
+<p><strong>当然了还有更简洁的配置，添加这个配置即可 mvc:annotation-driven</strong></p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
@@ -964,11 +965,11 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">SpringMVC-Return Values返回值
-本篇文章，主要讲解SpringMVC的返回值的使用。
-
-
-Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters</div>
+                    <div class="summary">
+                      
+                                SpringMVC-Return Values返回值
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
@@ -1013,12 +1014,11 @@ Handler-Return Values返回值@ResponseBody 返回值通过HttpMessageConverters
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring容器的创建过程
-今天，我们来统一学习一下，Spring容器的整个创建过程。
-
-
-Spring容器的refresh()[创建刷新]
-prepareRefresh();【刷新前的预处理】1）initPropertySources()</div>
+                    <div class="summary">
+                       
+                                Spring容器的创建过程
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-23
@@ -1198,7 +1198,7 @@ prepareRefresh();【刷新前的预处理】1）initPropertySources()</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

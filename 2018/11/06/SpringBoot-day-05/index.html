@@ -454,14 +454,14 @@ Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        8.3k
+                        8.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        38 分
+                        36 分
                     </div>
                     
                 
@@ -477,32 +477,33 @@ Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天，学习Springboot中的SpringMVC的自动配置原理<br><a id="more"></a></p>
+                <p>今天，学习Springboot中的SpringMVC的自动配置原理</p>
 <p><a href="https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications" target="_blank" rel="noopener">Springboot的官方参考文档</a></p>
 <h2 id="Spring-MVC-auto-configuration"><a href="#Spring-MVC-auto-configuration" class="headerlink" title="Spring MVC auto-configuration"></a>Spring MVC auto-configuration</h2><p>Spring Boot 自动配置好了SpringMVC</p>
 <p>以下是SpringBoot对SpringMVC的默认配置:（<strong>WebMvcAutoConfiguration</strong>）</p>
-<h3 id="ContentNegotiatingViewResolver-and-BeanNameViewResolver"><a href="#ContentNegotiatingViewResolver-and-BeanNameViewResolver" class="headerlink" title="ContentNegotiatingViewResolver and  BeanNameViewResolver"></a>ContentNegotiatingViewResolver and  BeanNameViewResolver</h3><pre><code>        @Bean
-        @ConditionalOnBean(View.class)
-        @ConditionalOnMissingBean
-        public BeanNameViewResolver beanNameViewResolver() {
-            BeanNameViewResolver resolver = new BeanNameViewResolver();
-            resolver.setOrder(Ordered.LOWEST_PRECEDENCE - 10);
-            return resolver;
-        }
+<h3 id="ContentNegotiatingViewResolver-and-BeanNameViewResolver"><a href="#ContentNegotiatingViewResolver-and-BeanNameViewResolver" class="headerlink" title="ContentNegotiatingViewResolver and  BeanNameViewResolver"></a>ContentNegotiatingViewResolver and  BeanNameViewResolver</h3><pre class=" language-java"><code class="language-java">        <span class="token annotation punctuation">@Bean</span>
+        <span class="token annotation punctuation">@ConditionalOnBean</span><span class="token punctuation">(</span>View<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+        <span class="token annotation punctuation">@ConditionalOnMissingBean</span>
+        <span class="token keyword">public</span> BeanNameViewResolver <span class="token function">beanNameViewResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            BeanNameViewResolver resolver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BeanNameViewResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            resolver<span class="token punctuation">.</span><span class="token function">setOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>LOWEST_PRECEDENCE <span class="token operator">-</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> resolver<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        @Bean
-        @ConditionalOnBean(ViewResolver.class)
-        @ConditionalOnMissingBean(name = &quot;viewResolver&quot;, value = ContentNegotiatingViewResolver.class)
-        public ContentNegotiatingViewResolver viewResolver(BeanFactory beanFactory) {
-            ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
-            resolver.setContentNegotiationManager(
-                    beanFactory.getBean(ContentNegotiationManager.class));
-            // ContentNegotiatingViewResolver uses all the other view resolvers to locate
-            // a view so it should have a high precedence
-            resolver.setOrder(Ordered.HIGHEST_PRECEDENCE);
-            return resolver;
-        }
-</code></pre><p>　　1) 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何<br>　　渲染（转发？重定向？））</p>
+        <span class="token annotation punctuation">@Bean</span>
+        <span class="token annotation punctuation">@ConditionalOnBean</span><span class="token punctuation">(</span>ViewResolver<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+        <span class="token annotation punctuation">@ConditionalOnMissingBean</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"viewResolver"</span><span class="token punctuation">,</span> value <span class="token operator">=</span> ContentNegotiatingViewResolver<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+        <span class="token keyword">public</span> ContentNegotiatingViewResolver <span class="token function">viewResolver</span><span class="token punctuation">(</span>BeanFactory beanFactory<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            ContentNegotiatingViewResolver resolver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContentNegotiatingViewResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            resolver<span class="token punctuation">.</span><span class="token function">setContentNegotiationManager</span><span class="token punctuation">(</span>
+                    beanFactory<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>ContentNegotiationManager<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// ContentNegotiatingViewResolver uses all the other view resolvers to locate</span>
+            <span class="token comment" spellcheck="true">// a view so it should have a high precedence</span>
+            resolver<span class="token punctuation">.</span><span class="token function">setOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> resolver<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>　　1) 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何<br>　　渲染（转发？重定向？））</p>
 <p>　　2) ContentNegotiatingViewResolver：组合所有的视图解析器的；</p>
 <p>　　3) 如何定制：<font color="#FF3E96"><strong>我们可以自己给容器中添加一个视图解析器；ContentNegotiatingViewResolver会自动将其组合进来；</strong></font></p>
 <h3 id="Support-for-serving-static-resources-including-support-for-WebJars"><a href="#Support-for-serving-static-resources-including-support-for-WebJars" class="headerlink" title="Support for serving static resources, including support for WebJars"></a>Support for serving static resources, including support for WebJars</h3><p>　　静态资源文件夹路径,webjars（上一天，我们已经学过了）</p>
@@ -510,27 +511,29 @@ Spring MVC auto-configurationSpring Boot 自动配置好了SpringMVC
 <h3 id="Custom-Favicon-support"><a href="#Custom-Favicon-support" class="headerlink" title="Custom  Favicon support"></a>Custom  Favicon support</h3><p>　　favicon.ico图标的访问。</p>
 <h3 id="自动注册了-Converter、GenericConverter、Formatter-beans"><a href="#自动注册了-Converter、GenericConverter、Formatter-beans" class="headerlink" title="自动注册了 Converter、GenericConverter、Formatter beans."></a>自动注册了 Converter、GenericConverter、Formatter beans.</h3><p>　　1）Converter：转换器； public String hello(User user)：类型转换使用Converter。</p>
 <p>　　2）Formatter：格式化器； 2017.12.17===Date。</p>
-<pre><code>@Bean        
-@ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;date‐format&quot;)//在文件中配置日期格式化的规则
-public Formatter&lt;Date&gt; dateFormatter() {        
-return new DateFormatter(this.mvcProperties.getDateFormat());//日期格式化组件            
-} 
-</code></pre><p>　　3）<font color="#FF3E96"><strong>自己添加的格式化器转换器，我们只需要放在容器中即可.</strong></font></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>        
+<span class="token annotation punctuation">@ConditionalOnProperty</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.mvc"</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"date‐format"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//在文件中配置日期格式化的规则</span>
+<span class="token keyword">public</span> Formatter<span class="token operator">&lt;</span>Date<span class="token operator">></span> <span class="token function">dateFormatter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DateFormatter</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getDateFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//日期格式化组件            </span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<p>　　3）<font color="#FF3E96"><strong>自己添加的格式化器转换器，我们只需要放在容器中即可.</strong></font></p>
 <h3 id="HttpMessageConverters"><a href="#HttpMessageConverters" class="headerlink" title="HttpMessageConverters"></a>HttpMessageConverters</h3><p>　　1) HttpMessageConverter: SpringMVC用来转换Http请求和响应的；User—Json；</p>
 <p>　　2) HttpMessageConverters:是从容器中获取所有的HttpMessageConverter；</p>
 <p>　　3) <font color="#FF3E96"><strong>自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）</strong></font></p>
-<pre><code>@Configuration
-public class MyConfiguration {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyConfiguration</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public HttpMessageConverters customConverters() {
-        HttpMessageConverter&lt;?&gt; additional = ...
-        HttpMessageConverter&lt;?&gt; another = ...
-        return new HttpMessageConverters(additional, another);//多参数
-    }
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> HttpMessageConverters <span class="token function">customConverters</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HttpMessageConverter<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> additional <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        HttpMessageConverter<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> another <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HttpMessageConverters</span><span class="token punctuation">(</span>additional<span class="token punctuation">,</span> another<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//多参数</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><h3 id="MessageCodesResolver"><a href="#MessageCodesResolver" class="headerlink" title="MessageCodesResolver"></a>MessageCodesResolver</h3><p>　　定义错误代码生成规则 (参考官方文档)</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="MessageCodesResolver"><a href="#MessageCodesResolver" class="headerlink" title="MessageCodesResolver"></a>MessageCodesResolver</h3><p>　　定义错误代码生成规则 (参考官方文档)</p>
 <h3 id="ConfigurableWebBindingInitializer"><a href="#ConfigurableWebBindingInitializer" class="headerlink" title="ConfigurableWebBindingInitializer"></a>ConfigurableWebBindingInitializer</h3><p>　　1）数据绑定的功能</p>
 <p>　　2）<font color="#FF3E96"><strong>我们可以配置一个ConfigurableWebBindingInitializer来替换默认的；（添加到容器）</strong></font></p>
 <pre><code>初始化WebDataBinder；
@@ -562,20 +565,21 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 
 <p>既保留了所有的Springboot自动配置，也能用我们扩展的配置；</p>
 <p>在我们的昨天的项目中，在com.liuzhuo.springboot包下，创建config包，并且创建Myconfig类：</p>
-<pre><code>@Configuration
-public class Myconfig extends WebMvcConfigurerAdapter {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Myconfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurerAdapter</span> <span class="token punctuation">{</span>
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        //super.addViewControllers(registry);
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addViewControllers</span><span class="token punctuation">(</span>ViewControllerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//super.addViewControllers(registry);</span>
 
-        //浏览器发送 /liuzhuo 请求来到 success
-        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);
-    }
-}
-</code></pre><p>然后在resources下的templates中：创建sucess.html文件：<br><img src="/images/QQ截图20181106141537.png"></p>
+        <span class="token comment" spellcheck="true">//浏览器发送 /liuzhuo 请求来到 success</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/liuzhuo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"sucess"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后在resources下的templates中：创建sucess.html文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106141537.png"></p>
 <p>启动Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/liuzhuo</code><br><img src="/images/QQ截图20181106141651.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/liuzhuo</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106141651.png"></p>
 <p>说明：我们自己配置的映射url成功。</p>
 <p>此时，我们不仅可以使用Springboot的默认Web的配置，还能使用自己额外添加的控制器映射。</p>
 <hr>
@@ -583,142 +587,149 @@ public class Myconfig extends WebMvcConfigurerAdapter {
 <p><strong>原理：</strong></p>
 <p>1）查看WebMvcAutoConfiguration是SpringMVC的自动配置类</p>
 <p>2）在WebMvcAutoConfiguration中，能发现一个静态内部类：WebMvcAutoConfigurationAdapter</p>
-<pre><code>// Defined as a nested config to ensure WebMvcConfigurerAdapter is not read when not
-    // on the classpath
-    @Configuration
-    @Import(EnableWebMvcConfiguration.class)
-    @EnableConfigurationProperties({ WebMvcProperties.class, ResourceProperties.class })
-    public static class WebMvcAutoConfigurationAdapter extends WebMvcConfigurerAdapter {
-</code></pre><p>该类上面有一个注解：@Import(EnableWebMvcConfiguration.class)。说明导入了EnableWebMvcConfiguration类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Defined as a nested config to ensure WebMvcConfigurerAdapter is not read when not</span>
+    <span class="token comment" spellcheck="true">// on the classpath</span>
+    <span class="token annotation punctuation">@Configuration</span>
+    <span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>EnableWebMvcConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@EnableConfigurationProperties</span><span class="token punctuation">(</span><span class="token punctuation">{</span> WebMvcProperties<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> ResourceProperties<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcAutoConfigurationAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurerAdapter</span> <span class="token punctuation">{</span>
+</code></pre>
+<p>该类上面有一个注解：@Import(EnableWebMvcConfiguration.class)。说明导入了EnableWebMvcConfiguration类。</p>
 <p>3）打开EnableWebMvcConfiguration类：</p>
-<pre><code>@Configuration
-public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration 
-</code></pre><p>继承了DelegatingWebMvcConfiguration类，打开DelegatingWebMvcConfiguration类：</p>
-<pre><code>@Configuration
-public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">EnableWebMvcConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">DelegatingWebMvcConfiguration</span> 
+</code></pre>
+<p>继承了DelegatingWebMvcConfiguration类，打开DelegatingWebMvcConfiguration类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DelegatingWebMvcConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurationSupport</span> <span class="token punctuation">{</span>
 
-      private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+      <span class="token keyword">private</span> <span class="token keyword">final</span> WebMvcConfigurerComposite configurers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebMvcConfigurerComposite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-      //从容器中获取所有的WebMvcConfigurer    
-      @Autowired(required = false)
-      public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) {
-          if (!CollectionUtils.isEmpty(configurers)) {
-              this.configurers.addWebMvcConfigurers(configurers);
-             //一个参考实现；将所有的WebMvcConfigurer相关配置都来一起调用；      
-             @Override    
-             // public void addViewControllers(ViewControllerRegistry registry) {
-              //    for (WebMvcConfigurer delegate : this.delegates) {
-               //       delegate.addViewControllers(registry);
-               //   }
-              }
-          }
-} 
-</code></pre><p>4) 容器中所有的WebMvcConfigurer都会一起起作用</p>
+      <span class="token comment" spellcheck="true">//从容器中获取所有的WebMvcConfigurer    </span>
+      <span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+      <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setConfigurers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>WebMvcConfigurer<span class="token operator">></span> configurers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>CollectionUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>configurers<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span>configurers<span class="token punctuation">.</span><span class="token function">addWebMvcConfigurers</span><span class="token punctuation">(</span>configurers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+             <span class="token comment" spellcheck="true">//一个参考实现；将所有的WebMvcConfigurer相关配置都来一起调用；      </span>
+             <span class="token annotation punctuation">@Override</span>    
+             <span class="token comment" spellcheck="true">// public void addViewControllers(ViewControllerRegistry registry) {</span>
+              <span class="token comment" spellcheck="true">//    for (WebMvcConfigurer delegate : this.delegates) {</span>
+               <span class="token comment" spellcheck="true">//       delegate.addViewControllers(registry);</span>
+               <span class="token comment" spellcheck="true">//   }</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> 
+</code></pre>
+<p>4) 容器中所有的WebMvcConfigurer都会一起起作用</p>
 <p>5) 我们的配置类也会被调用</p>
 <p>效果：SpringMVC的自动配置和我们的扩展配置都会起作用</p>
 <h2 id="全面接管SpringMVC"><a href="#全面接管SpringMVC" class="headerlink" title="全面接管SpringMVC"></a>全面接管SpringMVC</h2><p>SpringBoot对SpringMVC的自动配置不需要了，所有都是我们自己配置；所有的SpringMVC的自动配置都失效了</p>
 <p><strong>我们需要在配置类中添加@EnableWebMvc即可</strong></p>
-<pre><code>//使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
-@EnableWebMvc
-@Configuration
-public class MyMvcConfig extends WebMvcConfigurerAdapter {
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-       // super.addViewControllers(registry);
-        //浏览器发送 /atguigu 请求来到 success
-        registry.addViewController(&quot;/atguigu&quot;).setViewName(&quot;success&quot;);
-    }
-}
-</code></pre><p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106143304.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能</span>
+<span class="token annotation punctuation">@EnableWebMvc</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyMvcConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurerAdapter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addViewControllers</span><span class="token punctuation">(</span>ViewControllerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token comment" spellcheck="true">// super.addViewControllers(registry);</span>
+        <span class="token comment" spellcheck="true">//浏览器发送 /atguigu 请求来到 success</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/atguigu"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"success"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106143304.png"></p>
 <p>默认的静态主页失效了。去掉@EnableWebMvc，静态主页映射就会成功。</p>
-<p>静态主页映射：META-INF/resources、resourcs、static、public下的index.html都会映射：/**</p>
+<p>静态主页映射：META-INF/resources、resourcs、static、public下的 index.html 都会映射：/**</p>
 <hr>
 <p>为啥配置了@EnableWebMvc注解，SpringBoot的默认配置会失效呢？</p>
 <p><strong>原理：</strong></p>
 <p>1）打开@EnableWebMvc注解：</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-@Documented
-@Import(DelegatingWebMvcConfiguration.class)
-public @interface EnableWebMvc {
-}
-</code></pre><p>导入了DelegatingWebMvcConfiguration类。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>DelegatingWebMvcConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EnableWebMvc</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>导入了DelegatingWebMvcConfiguration类。</p>
 <p>2）打开DelegatingWebMvcConfiguration类：</p>
-<pre><code>@Configuration
-public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DelegatingWebMvcConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurationSupport</span> <span class="token punctuation">{</span>
 
-    private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
+    <span class="token keyword">private</span> <span class="token keyword">final</span> WebMvcConfigurerComposite configurers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebMvcConfigurerComposite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-    @Autowired(required = false)
-    public void setConfigurers(List&lt;WebMvcConfigurer&gt; configurers) {
-        if (!CollectionUtils.isEmpty(configurers)) {
-            this.configurers.addWebMvcConfigurers(configurers);
-        }
-    }
+    <span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setConfigurers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>WebMvcConfigurer<span class="token operator">></span> configurers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>CollectionUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>configurers<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>configurers<span class="token punctuation">.</span><span class="token function">addWebMvcConfigurers</span><span class="token punctuation">(</span>configurers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
    ···
 
 ｝
-</code></pre><p>DelegatingWebMvcConfiguration类：配置了SpringMVC的基本设置。</p>
+</code></pre>
+<p>DelegatingWebMvcConfiguration类：配置了SpringMVC的基本设置。</p>
 <p>3）打开WebMvcAutoConfiguration：</p>
-<pre><code>@Configuration
-@ConditionalOnWebApplication
-@ConditionalOnClass({ Servlet.class, DispatcherServlet.class,
-        WebMvcConfigurerAdapter.class })
-//容器中没有这个组件的时候，这个自动配置类才生效
-@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
-@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
-@AutoConfigureAfter({ DispatcherServletAutoConfiguration.class,
-        ValidationAutoConfiguration.class })
-public class WebMvcAutoConfiguration {
-</code></pre><p>上面的一个条件注解：@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ConditionalOnWebApplication</span>
+<span class="token annotation punctuation">@ConditionalOnClass</span><span class="token punctuation">(</span><span class="token punctuation">{</span> Servlet<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> DispatcherServlet<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+        WebMvcConfigurerAdapter<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//容器中没有这个组件的时候，这个自动配置类才生效</span>
+<span class="token annotation punctuation">@ConditionalOnMissingBean</span><span class="token punctuation">(</span>WebMvcConfigurationSupport<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@AutoConfigureOrder</span><span class="token punctuation">(</span>Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@AutoConfigureAfter</span><span class="token punctuation">(</span><span class="token punctuation">{</span> DispatcherServletAutoConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+        ValidationAutoConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebMvcAutoConfiguration</span> <span class="token punctuation">{</span>
+</code></pre>
+<p>上面的一个条件注解：@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)</p>
 <p>当没有WebMvcConfigurationSupport存在时，WebMvcAutoConfiguration自动配置才会生效。</p>
 <p>而DelegatingWebMvcConfiguration就是WebMvcConfigurationSupport。</p>
 <p>所以@EnableWebMvc将WebMvcConfigurationSupport组件导入进来，从而使WebMvcAutoConfiguration自动配置失效。</p>
 <hr>
 <p><strong>总结：</strong></p>
-<p>推荐我们使用 SpringBoot的默认配置 + 自定义的配置，即：@Configuration + 继承WebMvcConfigurerAdapter 的配置类的形式。</p>
+<p>推荐我们使用 SpringBoot的默认配置 + 自定义的配置，即：<strong>@Configuration + 继承WebMvcConfigurerAdapter </strong>的配置类的形式。</p>
 <p>我们完全自定义的模式：适合于简单、不负责的Web应用。</p>
 <h2 id="如何修改SpringBoot的默认配置"><a href="#如何修改SpringBoot的默认配置" class="headerlink" title="如何修改SpringBoot的默认配置"></a>如何修改SpringBoot的默认配置</h2><p>模式：</p>
-<p>1）、 SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）<br>　　　如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户<br>　　　配置的和自己默认的组合起来；</p>
+<p>1）、 SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）<br>　　　如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）, 则将用户<br>　　　配置的和自己默认的组合起来；</p>
 <p>2）、在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置</p>
 <p>3）、在SpringBoot中会有很多的xxxCustomizer帮助我们进行定制配置</p>
 <h2 id="CRUD-restful实战"><a href="#CRUD-restful实战" class="headerlink" title="CRUD-restful实战"></a>CRUD-restful实战</h2><p><a href="https://pan.baidu.com/s/1_H3h5Vsw47R30mjldS68bA" target="_blank" rel="noopener">下载资料</a></p>
-<p>下载完毕后。找到文档中的restful-crud-实验<br><img src="/images/QQ截图20181106150457.png"></p>
-<h3 id="默认访问首页"><a href="#默认访问首页" class="headerlink" title="默认访问首页"></a>默认访问首页</h3><p>1）首先将目录下的静态页面，xxx.html导入到我们的项目中的template目录下：<br><img src="/images/QQ截图20181106150713.png" style="width:50%"></p>
-<p>2）asserts目录放到static目录下：<br><img src="/images/QQ截图20181106150756.png" style="width:50%"></p>
-<p>3) 将dao、entities放到com.liuzhuo.springboot包下：<br><img src="/images/QQ截图20181106151100.png" style="width:50%"></p>
+<p>下载完毕后。找到文档中的restful-crud-实验<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150457.png"></p>
+<h3 id="默认访问首页"><a href="#默认访问首页" class="headerlink" title="默认访问首页"></a>默认访问首页</h3><p>1）首先将目录下的静态页面，xxx.html导入到我们的项目中的template目录下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150713.png" style="width:50%"></p>
+<p>2）asserts目录放到static目录下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150756.png" style="width:50%"></p>
+<p>3) 将dao、entities放到com.liuzhuo.springboot包下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151100.png" style="width:50%"></p>
 <p>然后点击DepartmentDao、EmployeeDao，重写导入我们的Department、Employee的包名。</p>
 <hr>
 <p>4）启动应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106151352.png"></p>
-<p>发现出现的页面是：static下的index.html页面，而不是template下的index.html页面。<br><img src="/images/QQ截图20181106151609.png" style="width:50%"></p>
-<p>因为静态主页会加载：META-INF/resources、resourcs、static、public下的index.html</p>
-<p>所以，我们不要重新映射我们的主页。</p>
-<p>在我们的config下的Myconfig配置中：</p>
-<pre><code>@Configuration
-public class Myconfig extends WebMvcConfigurerAdapter {
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151352.png"></p>
+<p>发现出现的页面是：static下的index.html页面，而不是template下的index.html页面。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151609.png" style="width:50%"></p>
+<p>因为静态主页会加载：META-INF/resources、resourcs、static、public下的 index.html</p>
+<p>此时，我们不必要重新映射我们的主页，在我们的config下的Myconfig配置中：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Myconfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebMvcConfigurerAdapter</span> <span class="token punctuation">{</span>
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        //super.addViewControllers(registry);
-        registry.addViewController(&quot;/liuzhuo&quot;).setViewName(&quot;sucess&quot;);
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addViewControllers</span><span class="token punctuation">(</span>ViewControllerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//super.addViewControllers(registry);</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/liuzhuo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"sucess"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //添加主页的映射
-        registry.addViewController(&quot;/&quot;).setViewName(&quot;login&quot;);
-        registry.addViewController(&quot;/index.html&quot;).setViewName(&quot;login&quot;);
-        registry.addViewController(&quot;/login.html&quot;).setViewName(&quot;login&quot;);
-    }
-}
-</code></pre><p>然后，将templates下的index.html 改为 login.html</p>
+        <span class="token comment" spellcheck="true">//添加主页的映射</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">addViewController</span><span class="token punctuation">(</span><span class="token string">"/login.html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setViewName</span><span class="token punctuation">(</span><span class="token string">"login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后，将templates下的index.html 改为 login.html</p>
 <p>重新启动应用：</p>
 <p>在浏览器中输入：<br><code>http://localhost:8080/</code><br><code>http://localhost:8080/login.html</code><br><code>http://localhost:8080/index.html</code></p>
-<p>都是以下的页面：<br><img src="/images/QQ截图20181106152941.png"></p>
-<p>5）因为我们使用thymeleaf，所以需要在每个页面头部添加命名空间：</p>
+<p>都是以下的页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106152941.png"></p>
+<p>5）因为我们使用 <strong>thymeleaf</strong>，所以需要在每个页面头部添加命名空间：</p>
 <p>   <code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code></p>
 <pre><code>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot; &gt;
-</code></pre><p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="/images/QQ截图20181106153622.png"></p>
+</code></pre><p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106153622.png"></p>
 <pre><code>        &lt;!--bootstrap的jar包--&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;org.webjars&lt;/groupId&gt;
@@ -733,9 +744,9 @@ public class Myconfig extends WebMvcConfigurerAdapter {
 <p>使用thymeleaf的th:href=”@{}”的好处：当我们给项目添加根目录时，也能自动帮我们添加上跟目录。</p>
 <p>在application.properties中：</p>
 <pre><code>server.context-path=/curd
-</code></pre><p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181106154552.png"></p>
-<p>输入：<code>http://localhost:8080/curd</code><br><img src="/images/QQ截图20181106154631.png"></p>
-<p>右键审查元素：<br><img src="/images/QQ截图20181106154730.png"></p>
+</code></pre><p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154552.png"></p>
+<p>输入：<code>http://localhost:8080/curd</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154631.png"></p>
+<p>右键审查元素：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154730.png"></p>
 <p><strong>能看到：link 中 href：自动帮我们添加上了curd的根目录</strong></p>
 <p>7）修改我们的css配置路径：</p>
 <p>在login.html中：<br>th:href=”@{/asserts/css/signin.css}”</p>
@@ -751,83 +762,86 @@ public class Myconfig extends WebMvcConfigurerAdapter {
 <p>1） 编写国际化配置文件，抽取页面需要显示的国际化消息</p>
 <p>在resources下创建i18n文件来放置我们的国际化的配置文件。（国际化文件只能是properties）</p>
 <p>然后创建login.properties（默认的国际化配置）、login_en_US.properties。</p>
-<p>idea会帮我们自动生成 Resource Bundle ‘login’ 文件夹：<br><img src="/images/QQ截图20181106161921.png" style="width:50%"></p>
-<p>然后，我们在 Resource Bundle ‘login’ 上面右键：new<br><img src="/images/QQ截图20181106162042.png"></p>
-<p>点击加号：<br><img src="/images/QQ截图20181106162131.png" style="width:50%"></p>
-<p>填写: 语言_国家（en_US）<br><img src="/images/QQ截图20181106162648.png" style="width:50%"></p>
-<p>最后生成的效果：有三个国家化的配置文件：<br><img src="/images/QQ截图20181106162810.png" style="width:50%"></p>
+<p>idea会帮我们自动生成 Resource Bundle ‘login’ 文件夹：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106161921.png" style="width:50%"></p>
+<p>然后，我们在 Resource Bundle ‘login’ 上面右键：new<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162042.png"></p>
+<p>点击加号：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162131.png" style="width:50%"></p>
+<p>填写: 语言_国家（en_US）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162648.png" style="width:50%"></p>
+<p>最后生成的效果：有三个国家化的配置文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162810.png" style="width:50%"></p>
 <p>填写我们需要国际化的部分：</p>
 <p>观察login页面，发现，我们需要五次国家化的部分。</p>
 <p>login.tip (登入的标题)<br>login.username （用户名）<br>login.password （密码）<br>login.remembear （记住密码）<br>login.bt （登入按钮）</p>
-<p>然后，随便点击一个国家化文件。在下角处切换视图：<strong>Resource Bund</strong><br><img src="/images/QQ截图20181106163314.png"></p>
-<p>点击在该视图模式下的，左上角的加号：<br><img src="/images/QQ截图20181106163455.png"></p>
-<p>填写key：<br><img src="/images/QQ截图20181106163605.png"></p>
-<p>填写value：<br><img src="/images/QQ截图20181106165518.png"></p>
+<p>然后，随便点击一个国家化文件。在下角处切换视图：<strong>Resource Bund</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163314.png"></p>
+<p>点击在该视图模式下的，左上角的加号：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163455.png"></p>
+<p>填写key：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163605.png"></p>
+<p>填写value：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106165518.png"></p>
 <p>依次类推：把<br>login.username （用户名）<br>login.password （密码）<br>login.remembear （记住密码）<br>login.bt （登入按钮）</p>
 <p>添加上。</p>
 <hr>
 <p>2） SpringBoot自动配置好了管理国际化资源文件的组件(<strong>MessageSourceAutoConfiguration</strong>)</p>
-<pre><code>@ConfigurationProperties(prefix = &quot;spring.messages&quot;)
-public class MessageSourceAutoConfiguration {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.messages"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MessageSourceAutoConfiguration</span> <span class="token punctuation">{</span>
 
-    /**
+    <span class="token comment" spellcheck="true">/**
      * Comma‐separated list of basenames (essentially a fully‐qualified classpath    
      * location), each following the ResourceBundle convention with relaxed support for    
-     * slash based locations. If it doesn&#39;t contain a package qualifier (such as    
-     * &quot;org.mypackage&quot;), it will be resolved from the classpath root.    
-     */    
-    private String basename = &quot;messages&quot;;      
-    //我们的配置文件可以直接放在类路径下叫messages.properties；
+     * slash based locations. If it doesn't contain a package qualifier (such as    
+     * "org.mypackage"), it will be resolved from the classpath root.    
+     */</span>    
+    <span class="token keyword">private</span> String basename <span class="token operator">=</span> <span class="token string">"messages"</span><span class="token punctuation">;</span>      
+    <span class="token comment" spellcheck="true">//我们的配置文件可以直接放在类路径下叫messages.properties；</span>
 
-        @Bean
-    public MessageSource messageSource() {    
-    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();        
-       if (StringUtils.hasText(this.basename)) {        
-             //设置国际化资源文件的基础名（去掉语言国家代码的）
-            messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(            
-            StringUtils.trimAllWhitespace(this.basename)));                    
-        }        
-        if (this.encoding != null) {        
-           messageSource.setDefaultEncoding(this.encoding.name());            
-        }        
-        messageSource.setFallbackToSystemLocale(this.fallbackToSystemLocale);        
-        messageSource.setCacheSeconds(this.cacheSeconds);        
-        messageSource.setAlwaysUseMessageFormat(this.alwaysUseMessageFormat);        
-        return messageSource;        
-    }
-</code></pre><p>如果，我们的国际化文件的名字就是messages的话，而放在类路径下的话，我们直接就可以使用了。</p>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> MessageSource <span class="token function">messageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+    ResourceBundleMessageSource messageSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ResourceBundleMessageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">hasText</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>basename<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+             <span class="token comment" spellcheck="true">//设置国际化资源文件的基础名（去掉语言国家代码的）</span>
+            messageSource<span class="token punctuation">.</span><span class="token function">setBasenames</span><span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">commaDelimitedListToStringArray</span><span class="token punctuation">(</span>            
+            StringUtils<span class="token punctuation">.</span><span class="token function">trimAllWhitespace</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>basename<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    
+        <span class="token punctuation">}</span>        
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>encoding <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>        
+           messageSource<span class="token punctuation">.</span><span class="token function">setDefaultEncoding</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>encoding<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+        <span class="token punctuation">}</span>        
+        messageSource<span class="token punctuation">.</span><span class="token function">setFallbackToSystemLocale</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>fallbackToSystemLocale<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        messageSource<span class="token punctuation">.</span><span class="token function">setCacheSeconds</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>cacheSeconds<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        messageSource<span class="token punctuation">.</span><span class="token function">setAlwaysUseMessageFormat</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>alwaysUseMessageFormat<span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token keyword">return</span> messageSource<span class="token punctuation">;</span>        
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>如果，我们的国际化文件的名字就是messages的话，而放在类路径下的话，我们直接就可以使用了。</p>
 <p>但是，现在我们使用了i18n文件，所以，我们需要在application.properties配置文件中：配置国际化的信息：</p>
-<pre><code>spring.messages.basename=i18n.login
-</code></pre><p>i18n文件夹，login是文件的名字。</p>
+<pre class=" language-java"><code class="language-java">spring<span class="token punctuation">.</span>messages<span class="token punctuation">.</span>basename<span class="token operator">=</span>i18n<span class="token punctuation">.</span>login
+</code></pre>
+<p>i18n文件夹，login是文件的名字。</p>
 <p>3）修改login.html中的需要国际化的部分</p>
-<p>我们从thymeleaf的官方文档中，看到了如果使用国际化的话，使用 <strong>#{}</strong><br><img src="/images/QQ截图20181106171830.png"></p>
-<p>4）启动应用：<br><img src="/images/QQ截图20181106172121.png"></p>
-<p>切换我们的地域语言：打开浏览器的设置（我使用的谷歌浏览器）<br><img src="/images/QQ截图20181106172353.png"></p>
-<p>刷新浏览器：<br><img src="/images/QQ截图20181106172433.png"></p>
+<p>我们从thymeleaf的官方文档中，看到了如果使用国际化的话，使用 <strong>#{}</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106171830.png"></p>
+<p>4）启动应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172121.png"></p>
+<p>切换我们的地域语言：打开浏览器的设置（我使用的谷歌浏览器）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172353.png"></p>
+<p>刷新浏览器：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172433.png"></p>
 <p>以上为止，我们的国际化就搞定成功了。</p>
 <p>效果：根据浏览器语言设置的信息切换了国际化。</p>
 <hr>
 <p><strong>原理：</strong></p>
 <p>国际化Locale（区域信息对象）；LocaleResolver（获取区域信息对象）；</p>
 <p>打开WebMvcAutoConfiguration类：寻找与国际化有关的类：</p>
-<pre><code>        @Bean
-        @ConditionalOnMissingBean
-        @ConditionalOnProperty(prefix = &quot;spring.mvc&quot;, name = &quot;locale&quot;)
-        public LocaleResolver localeResolver() {
-            if (this.mvcProperties
-                    .getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) {
-                return new FixedLocaleResolver(this.mvcProperties.getLocale());
-            }
-            AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
-            localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
-            return localeResolver;
-        }
-</code></pre><p>通过此类：我们能发现，Springboot给我们配置的默认的国家化Locale的是一个AcceptHeaderLocaleResolver。</p>
+<pre class=" language-java"><code class="language-java">        <span class="token annotation punctuation">@Bean</span>
+        <span class="token annotation punctuation">@ConditionalOnMissingBean</span>
+        <span class="token annotation punctuation">@ConditionalOnProperty</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.mvc"</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"locale"</span><span class="token punctuation">)</span>
+        <span class="token keyword">public</span> LocaleResolver <span class="token function">localeResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties
+                    <span class="token punctuation">.</span><span class="token function">getLocaleResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> WebMvcProperties<span class="token punctuation">.</span>LocaleResolver<span class="token punctuation">.</span>FIXED<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FixedLocaleResolver</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getLocale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            AcceptHeaderLocaleResolver localeResolver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AcceptHeaderLocaleResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            localeResolver<span class="token punctuation">.</span><span class="token function">setDefaultLocale</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getLocale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> localeResolver<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+<p>通过此类：我们能发现，Springboot给我们配置的默认的国家化Locale的是一个AcceptHeaderLocaleResolver。</p>
 <p>AcceptHeaderLocaleResolver：是通过每次请求时，在请求头在获取请求的语言来进行国际化识别的。</p>
-<p>启动我们的应用：<br><img src="/images/QQ截图20181106174300.png"><br><img src="/images/QQ截图20181106174349.png" style="width:50%"></p>
-<p>我们发现了Accept-Language：zh-CN.</p>
-<p>修改我们的浏览器的语言：<br><img src="/images/QQ截图20181106174539.png"></p>
-<p>再次访问我们的登入页面：<br><img src="/images/QQ截图20181106174658.png" style="width:50%"><br>我们发现了Accept-Language：en-US.</p>
+<p>启动我们的应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174300.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174349.png" style="width:50%"></p>
+<p>我们发现了Accept-Language：<strong>zh-CN.</strong></p>
+<p>修改我们的浏览器的语言：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174539.png"></p>
+<p>再次访问我们的登入页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174658.png" style="width:50%"><br>我们发现了Accept-Language：en-US.</p>
 <p>这就是Springboot的默认的国际化原理。</p>
 <hr>
 <p>我们想要自己自定义国际化配置，该怎么办呢？</p>
@@ -836,42 +850,44 @@ public class MessageSourceAutoConfiguration {
 <p>所以，我们只需要向容器中，添加我们的localeResolver即可，默认的localeResolver就会失效。</p>
 <hr>
 <p>1）在component包下：创建MyLocaleResolver类(实现LocaleResolver)：</p>
-<p><img src="/images/QQ截图20181106175524.png"></p>
-<pre><code>public class MyLocaleResolver implements LocaleResolver {
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106175524.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyLocaleResolver</span> <span class="token keyword">implements</span> <span class="token class-name">LocaleResolver</span> <span class="token punctuation">{</span>
 
 
-    @Override
-    public Locale resolveLocale(HttpServletRequest request) {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Locale <span class="token function">resolveLocale</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //获取请求的参数信息
-        String language = request.getParameter(&quot;language&quot;);
-        //获取默认的地域信息。
-        Locale locale = Locale.getDefault();
+        <span class="token comment" spellcheck="true">//获取请求的参数信息</span>
+        String language <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"language"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取默认的地域信息。</span>
+        Locale locale <span class="token operator">=</span> Locale<span class="token punctuation">.</span><span class="token function">getDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        if (!StringUtils.isEmpty(language)) {
-            String[] split = language.split(&quot;_&quot;);
-            //第一个参数：语言信息
-            //第二个参数：国家信息
-            locale = new Locale(split[0], split[1]);
-        }
-        return locale;
-    }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>language<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String<span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> language<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"_"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//第一个参数：语言信息</span>
+            <span class="token comment" spellcheck="true">//第二个参数：国家信息</span>
+            locale <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Locale</span><span class="token punctuation">(</span>split<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> split<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> locale<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLocale</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Locale locale<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    }
-}
-</code></pre><p>2）将我们的LocaleResolver添加到容器中：</p>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）将我们的LocaleResolver添加到容器中：</p>
 <p>在Myconfig类中：</p>
-<pre><code>    @Bean
-    public LocaleResolver localeResolver() {
-        return new MyLocaleResolver();
-    }
-</code></pre><p>3）修改login.html页面：<br><img src="/images/QQ截图20181106180204.png"></p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> LocaleResolver <span class="token function">localeResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MyLocaleResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3）修改login.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180204.png"></p>
 <p>4）启动应用：</p>
-<p>点击底下的：中文<br><img src="/images/QQ截图20181106180248.png"></p>
-<p>点击底下的：English<br><img src="/images/QQ截图20181106180353.png"></p>
+<p>点击底下的：中文<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180248.png"></p>
+<p>点击底下的：English<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180353.png"></p>
 <p>我们自定义的国际化解析器成功！</p>
 <hr>
 <p><strong>发现：在此时，不管我们将浏览器中的语言设置什么，我们的默认登入都是中文的</strong></p>
@@ -881,119 +897,124 @@ public class MessageSourceAutoConfiguration {
 <pre><code>&lt;form class=&quot;form-signin&quot; action=&quot;dashboard.html&quot; th:action=&quot;@{/user/login}&quot; method=&quot;post&quot;&gt;
 </code></pre><p>登入的action改为：/user/login。请求方式：post。</p>
 <p>2）在controller包下，创建LoginController：</p>
-<pre><code>@Controller
-public class LoginController {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginController</span> <span class="token punctuation">{</span>
 
-    //@RequestMapping(value = &quot;/user/login&quot;,method = RequestMethod.POST)
-    @PostMapping(value = &quot;/user/login&quot;)
-    public String login(@RequestParam(&quot;username&quot;) String username,
-                        @RequestParam(&quot;password&quot;) String password,
-                        Map&lt;String, Object&gt; map) {
+    <span class="token comment" spellcheck="true">//@RequestMapping(value = "/user/login",method = RequestMethod.POST)</span>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/user/login"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">login</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span> String username<span class="token punctuation">,</span>
+                        <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span> String password<span class="token punctuation">,</span>
+                        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> map<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        if (!StringUtils.isEmpty(username) &amp;&amp;
-                !StringUtils.isEmpty(password) &amp;&amp;
-                &quot;admin&quot;.equals(username) &amp;&amp;
-                &quot;123456&quot;.equals(password)) {
-            //登入成功！
-            return &quot;dashboard&quot;;
-        } else {
-            //登入失败！
-            map.put(&quot;msg&quot;, &quot;登入用户名或密码错误！&quot;);
-            return &quot;login&quot;;
-        }
-    }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token operator">!</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token string">"admin"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token string">"123456"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//登入成功！</span>
+            <span class="token keyword">return</span> <span class="token string">"dashboard"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//登入失败！</span>
+            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"msg"</span><span class="token punctuation">,</span> <span class="token string">"登入用户名或密码错误！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token string">"login"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>3) 启动项目：</p>
-<p>输入用户名和密码<br><img src="/images/QQ截图20181106213523.png"></p>
-<p>报错了：<br><img src="/images/QQ截图20181106213554.png"></p>
-<p>原来是我们的login.html页面，没有给username和password添加name属性！<br>现在添加上：<br><img src="/images/QQ截图20181106213732.png"></p>
-<p>重启项目，并添加正确的用户名和密码（admin，123456）<br><img src="/images/QQ截图20181106213924.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 启动项目：</p>
+<p>输入用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213523.png"></p>
+<p>报错了：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213554.png"></p>
+<p>原来是我们的login.html页面，没有给username和password添加name属性！<br>现在添加上：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213732.png"></p>
+<p>重启项目，并添加正确的用户名和密码（admin，123456）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213924.png"></p>
 <p><strong>注意：</strong></p>
 <p>1）此时有可能还是刚刚的错误，因为thymeleaf默认是开启缓存功能的，所以我们开发的时候，要记住关闭缓存的功能<br>在配置文件中：</p>
-<pre><code>spring.thymeleaf.cache=false
-</code></pre><p>2）我们在项目启动的时候，修改页面后，直接刷新页面，还是不会变的，要在修改后的页面处：ctrl+F9（重新编译页面）</p>
-<p>使用（1）和（2）之后，就可以在项目启动的时候，直接修改页面也能得到最新的体验了。</p>
+<pre class=" language-java"><code class="language-java">spring<span class="token punctuation">.</span>thymeleaf<span class="token punctuation">.</span>cache<span class="token operator">=</span><span class="token boolean">false</span>
+</code></pre>
+<p>2）我们在项目已经启动的时候，修改页面后，直接刷新页面，还是不会变的，要在修改后的页面处：<strong>ctrl+F9</strong>（重新编译页面）</p>
+<p>使用（1）和（2）之后，就可以在项目已经启动的时候，直接修改页面也能得到最新的体验了。</p>
 <hr>
 <p>现在，我们输入错误的用户名和密码：不会出现错误的信息。</p>
 <p>怎么添加错误的信息在页面上呢？</p>
-<p>给login.html页面添加一个</p><p>标签<br><img src="/images/QQ截图20181106214738.png"></p>
+<p>给login.html页面添加一个</p><p>标签<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106214738.png"></p>
 <p>当msg不为空时，才会出现错误的<code>&lt;p&gt;标签。</code></p>
-<p>重启项目：输入错误的用户名和密码<br><img src="/images/QQ截图20181106214945.png"></p>
-<p>现在错误提示也完成了，再次输入正确的用户名和密码，<strong>现在一不小心按了F5，刷新了页面</strong><br><img src="/images/QQ截图20181106215200.png"></p>
-<p>发现出现了是否重新提交表单的情况，因为我们的后端是转发到登入成功页面的，地址栏还是之前的登入页面的地址，所以刷新会出现这种情况。</p>
-<p>现在修改后端的代码，将其改为重定向。</p>
-<p>在LoginController中：<br><img src="/images/QQ截图20181106215826.png"><br>在Myconfig中：<br><img src="/images/QQ截图20181106215631.png"></p>
-<p>重启我们的应用：输入正确的用户名和密码<br><img src="/images/QQ截图20181107095619.png"></p>
+<p>重启项目：输入错误的用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106214945.png"></p>
+<p>现在错误提示也完成了，再次输入正确的用户名和密码，<strong>现在一不小心按了F5，刷新了页面</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215200.png"></p>
+<p>发现出现了是否重新提交表单的情况，因为我们的后端是<strong>转发</strong>到登入成功页面的，地址栏还是之前的登入页面的地址，所以刷新会出现这种情况。</p>
+<p>现在修改后端的代码，将其改为<strong>重定向。</strong></p>
+<p>在LoginController中：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215826.png"><br>在Myconfig中：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215831.png"></p>
+<p>重启我们的应用：输入正确的用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107095619.png"></p>
 <p>什么？404？main.html没有找到？why？</p>
 <p>当我们看到地址栏时，发现我们重定向时：是在/user下重定向的，所以找不到main.html。</p>
 <p><strong>所以，在控制器Controller中：<code>return &quot;redirect:main.html&quot;;</code> main的前面不加<code>/</code>的话<br>会在@PostMapping(value = “/user/login”)中去掉最后一个路径下重定向，即在/user下重定向。<br>如果是@PostMapping(value = “/user/liuzhuo/login”)的话，就在/user/liuzhuo下重定向。</strong></p>
 <p>怎样在我们的根路径下重定向呢？即在我们的<code>/crud</code>根路径下重定向。只需在main的前面加<code>/</code>即可：<br><code>return &quot;redirect:/main.html&quot;;</code></p>
-<p>修改完毕后，重启我们的应用：输入正确的用户名和密码：<br><img src="/images/QQ截图20181107100653.png"></p>
+<p>修改完毕后，重启我们的应用：输入正确的用户名和密码：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107100653.png"></p>
 <p>发现样式也正确了。因为是重定向而来的。<strong>此时刷新页面，也不会重发请求了。</strong></p>
-<h3 id="拦截器进行登陆检查"><a href="#拦截器进行登陆检查" class="headerlink" title="拦截器进行登陆检查"></a>拦截器进行登陆检查</h3><p>此时，我们在另一个浏览器中：直接输入<code>http://localhost:8080/curd/main.html</code>.<br><img src="/images/QQ截图20181107101109.png"></p>
-<p>发现，没有登入就直接进来了，这是因为加拦截器的缘故。</p>
-<p>1）在component包下：创建LoginHandleInterceptor：</p>
-<pre><code>public class LoginHandleInterceptor implements HandlerInterceptor {
+<h3 id="拦截器进行登陆检查"><a href="#拦截器进行登陆检查" class="headerlink" title="拦截器进行登陆检查"></a>拦截器进行登陆检查</h3><p>此时，我们在另一个浏览器中：直接输入<code>http://localhost:8080/curd/main.html</code>.<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107101109.png"></p>
+<p>发现，没有登入就直接进来了，这是因为<strong>没有加拦截器</strong>的缘故。</p>
+<p>1）在component包下：创建 <strong>LoginHandleInterceptor </strong>：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginHandleInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">{</span>
 
-    //在方法执行之前，调用。
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //从session中获取是否有loginUser属性的值
-        Object loginUser = request.getSession().getAttribute(&quot;loginUser&quot;);
-        if (StringUtils.isEmpty(loginUser)) {
-            //没有成功登入过。
-            //转发登入页面
-            request.getRequestDispatcher(&quot;/login.html&quot;).forward(request, response);
-            return false;
-        } else {
-            //成功登入过
-            return true;
-        }
+    <span class="token comment" spellcheck="true">//在方法执行之前，调用。</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">preHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//从session中获取是否有loginUser属性的值</span>
+        Object loginUser <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"loginUser"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>loginUser<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//没有成功登入过。</span>
+            <span class="token comment" spellcheck="true">//转发登入页面</span>
+            request<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">"/login.html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//成功登入过</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> ModelAndView modelAndView<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterCompletion</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> Exception ex<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
 
-    }
-}
-</code></pre><p>2）将我们自己定义的拦截器添加到拦截器链中：</p>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）将我们自己定义的拦截器添加到拦截器链中：</p>
 <p>　　在Myconfig类中：</p>
-<pre><code>    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        //super.addInterceptors(registry);
-        //添加拦截器我们自定义的拦截器
-        registry.addInterceptor(new LoginHandleInterceptor())
-                .addPathPatterns(&quot;/**&quot;) //拦截路径：/**:拦截所有的请求
-                .excludePathPatterns(&quot;/&quot;,&quot;/index.html&quot;,&quot;/login.html&quot;,&quot;/user/login&quot;);//排除登入和登入请求的拦截路径
-    }
-</code></pre><p><b><code>这里虽然是拦截了所有的请求（/**），但是静态资源是不会被拦截的，Springboot已经帮我们排除掉了，所以放心使用.</code></b></p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addInterceptors</span><span class="token punctuation">(</span>InterceptorRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//super.addInterceptors(registry);</span>
+        <span class="token comment" spellcheck="true">//添加拦截器我们自定义的拦截器</span>
+        registry<span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">LoginHandleInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">addPathPatterns</span><span class="token punctuation">(</span><span class="token string">"/**"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//拦截路径：/**:拦截所有的请求</span>
+                <span class="token punctuation">.</span><span class="token function">excludePathPatterns</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span><span class="token string">"/index.html"</span><span class="token punctuation">,</span><span class="token string">"/login.html"</span><span class="token punctuation">,</span><span class="token string">"/user/login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//排除登入和登入请求的拦截路径</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p><b><code>这里虽然是拦截了所有的请求（/**），但是静态资源是不会被拦截的，Springboot已经帮我们排除掉了，所以放心使用.</code></b></p>
 <p>3) 在我们的登入控制器LoginController中添加session的操作：</p>
-<pre><code>        if (!StringUtils.isEmpty(username) &amp;&amp;
-                !StringUtils.isEmpty(password) &amp;&amp;
-                &quot;admin&quot;.equals(username) &amp;&amp;
-                &quot;123456&quot;.equals(password)) {
-            //登入成功！
-            //将用户名放入到session当中
-            session.setAttribute(&quot;loginUser&quot;, username);
-            //重定向到我们指定的登入成功的页面
-            return &quot;redirect:/main.html&quot;;
-</code></pre><p>4) 重启我们的应用。</p>
-<p>在谷歌浏览器中，成功登入成功后，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="/images/QQ截图20181107103005.png"></p>
+<pre class=" language-java"><code class="language-java">        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token operator">!</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token string">"admin"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token string">"123456"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//登入成功！</span>
+            <span class="token comment" spellcheck="true">//将用户名放入到session当中</span>
+            session<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"loginUser"</span><span class="token punctuation">,</span> username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//重定向到我们指定的登入成功的页面</span>
+            <span class="token keyword">return</span> <span class="token string">"redirect:/main.html"</span><span class="token punctuation">;</span>
+</code></pre>
+<p>4) 重启我们的应用。</p>
+<p>在谷歌浏览器中，成功登入成功后，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107103005.png"></p>
 <p>发现，可以直接直接访问，因为已经成功登入过了，在session中已经保存了我们的用户信息。</p>
-<p>在另外的浏览器中，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="/images/QQ截图20181107103240.png"></p>
+<p>在另外的浏览器中，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107103240.png"></p>
 <p>会转发到我们的登入页面，因为是转发，所以地址栏不变。</p>
 <hr>
 <h3 id="CRUD-员工列表"><a href="#CRUD-员工列表" class="headerlink" title="CRUD-员工列表"></a>CRUD-员工列表</h3><p>实验要求：</p>
 <p>1) RestfulCRUD：CRUD满足Rest风格</p>
-<p>URI： /资源名称/资源标识 　HTTP请求方式区分对资源CRUD操作<br><img src="/images/QQ截图20181107114154.png"></p>
-<p>2) 实验的请求架构<br><img src="/images/QQ截图20181107114230.png"></p>
+<p>URI： /资源名称/资源标识 　HTTP请求方式区分对资源CRUD操作<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107114154.png"></p>
+<p>2) 实验的请求架构<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107114230.png"></p>
 <p>3) 员工列表：</p>
 <p><strong>thymeleaf公共页面元素抽取</strong></p>
 <pre><code>1、抽取公共片段
@@ -1046,7 +1067,7 @@ insert的公共片段在div标签中
 &lt;/div&gt;
 
 </code></pre><p>1) 将登入成功后的dashboard.html页面中的顶部和左边的侧单栏抽取出来：</p>
-<p>在templates下：创建page文件夹，并创建两个html页面：<br><img src="/images/QQ截图20181107154114.png" style="width:50%"></p>
+<p>在templates下：创建page文件夹，并创建两个html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107154114.png" style="width:50%"></p>
 <p>top.html页面：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
@@ -1070,105 +1091,108 @@ insert的公共片段在div标签中
 &lt;/html&gt;
 </code></pre><p>主要是其中的<code>&lt;nav&gt;&lt;/nav&gt;</code>片段，这个片段是dashboard.html中的顶部的片段复制过来的。</p>
 <p>其中主要是在<code>&lt;nav&gt;</code>中加入了<strong>th:fragment=”top”</strong>属性</p>
-<p>slide.html页面：<br><img src="/images/QQ截图20181107154633.png"></p>
+<p>slide.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107154633.png"></p>
 <p>其中的<code>&lt;nav&gt;</code>片段：是dashboard.html中的左边的侧单栏的部分复制过来的。</p>
 <p>其中，主要加入了：<strong>id：slide</strong> 的属性。</p>
-<p>2）修改dashboard.html页面的顶部与左边部分：<br><img src="/images/QQ截图20181107155129.png"></p>
+<p>2）修改dashboard.html页面的顶部与左边部分：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155129.png"></p>
 <p>3）启动应用，运行发现顶部与左部运行完好。</p>
 <hr>
 <p>现在，我们开始完成员工信息的部分；即：左单栏的Customer部分。</p>
-<p>1）将templates下的list.html页面放到empl目录下，这样分文件夹管理更加合理<br><img src="/images/QQ截图20181107155615.png" style="width:50%"></p>
+<p>1）将templates下的list.html页面放到empl目录下，这样分文件夹管理更加合理<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155615.png" style="width:50%"></p>
 <p>2）修改dashboard.html中的Customer部分的action属性：<br>因为左部已经抽取到slide.html页面，所以到slide.html页面中修改：</p>
-<p>修改之前：<br><img src="/images/QQ截图20181107155857.png"></p>
-<p>修改之后：将Customer改为员工信息，修改a标签的href<br><img src="/images/QQ截图20181107160209.png"></p>
+<p>修改之前：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155857.png"></p>
+<p>修改之后：将Customer改为员工信息，修改a标签的href<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160209.png"></p>
 <p>3）controller包下，创建EmployeeController：</p>
-<pre><code>@Controller
-public class EmployeeController {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmployeeController</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private EmployeeDao employeeDao;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> EmployeeDao employeeDao<span class="token punctuation">;</span>
 
-    @GetMapping(&quot;/emp&quot;)
-    public String list(Model model) {
-        Collection&lt;Employee&gt; employees = employeeDao.getAll();
-        model.addAttribute(&quot;employees&quot;, employees);
-        return &quot;empl/list&quot;;
-    }
-}
-</code></pre><p>4) 启动应用<br><img src="/images/QQ截图20181107160734.png"></p>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/emp"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">list</span><span class="token punctuation">(</span>Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Collection<span class="token operator">&lt;</span>Employee<span class="token operator">></span> employees <span class="token operator">=</span> employeeDao<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"employees"</span><span class="token punctuation">,</span> employees<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"empl/list"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 启动应用<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160734.png"></p>
 <p>点击：员工信息</p>
-<p><img src="/images/QQ截图20181107160813.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160813.png"></p>
 <p>此时员工信息里面还是Customer，因为没有抽取出公共部分。</p>
 <p>修改list.html的顶部与左部，与dashboard.html类似。自己完成。</p>
-<p>完成后的效果：<br><img src="/images/QQ截图20181107161524.png"></p>
+<p>完成后的效果：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107161524.png"></p>
 <p>但是，我们发现此时<strong>左部的高亮部分还是Dashboard</strong></p>
 <p>5）怎么修改高亮为员工信息呢？</p>
 <p>thymeleaf模板引擎中，查看官方文档，发现可以有参数化的片段布局：8.2 Parameterizable fragment signatures<br><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#parameterizable-fragment-signatures" target="_blank" rel="noopener">官方参考</a></p>
 <p>引入片段的时候传入参数：</p>
 <p><code>&lt;div th:replace=&quot;commons/bar::#sidebar(activeUri=&#39;emps&#39;)&quot;&gt;&lt;/div&gt;</code></p>
 <p>即：就是在我们引入的同时，在后面加一个括号，里面填写：key=value。</p>
-<p>修改dashboard.html页面：<br><img src="/images/QQ截图20181107164137.png"></p>
-<p>修改list.html页面：<br><img src="/images/QQ截图20181107164221.png"></p>
+<p>修改dashboard.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164137.png"></p>
+<p>修改list.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164221.png"></p>
 <p>修改slide.html页面：</p>
-<p>在Dashboard处：<br><img src="/images/QQ截图20181107164336.png"></p>
-<p>在员工信息处：<br><img src="/images/QQ截图20181107164425.png"></p>
+<p>在Dashboard处：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164336.png"></p>
+<p>在员工信息处：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164425.png"></p>
 <p>重启我们的应用：</p>
 <p>点击Dashboard，Dashboard高亮。</p>
-<p><img src="/images/QQ截图20181107164640.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164640.png"></p>
 <p>点击员工信息，员工信息高亮。</p>
-<p><img src="/images/QQ截图20181107164704.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164704.png"></p>
 <hr>
 <p>6）将员工信息换成我们的后端传递过来的数据：</p>
 <p>在list页面中：</p>
-<pre><code>        &lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;
-            &lt;h2&gt;&lt;button class=&quot;btn btn-sm btn-success&quot;&gt;员工添加&lt;/button&gt;&lt;/h2&gt;
-            &lt;div class=&quot;table-responsive&quot;&gt;
-                &lt;table class=&quot;table table-striped table-sm&quot;&gt;
-                    &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;id&lt;/th&gt;
-                        &lt;th&gt;lastName&lt;/th&gt;
-                        &lt;th&gt;email&lt;/th&gt;
-                        &lt;th&gt;gender&lt;/th&gt;
-                        &lt;th&gt;department&lt;/th&gt;
-                        &lt;th&gt;birth&lt;/th&gt;
-                        &lt;th&gt;操作&lt;/th&gt;
-                    &lt;/tr&gt;
-                    &lt;/thead&gt;
-                    &lt;tbody&gt;
-                    &lt;tr th:each=&quot;empl:${employees}&quot;&gt;
-                        &lt;td th:text=&quot;${empl.id}&quot;&gt;1001&lt;/td&gt;
-                        &lt;td&gt;[[${empl.lastName}]]&lt;/td&gt;
-                        &lt;td th:text=&quot;${empl.email}&quot;&gt;5589584@qq.com&lt;/td&gt;
-                        &lt;td th:text=&quot;${empl.gender}==&#39;0&#39;?&#39;女&#39;:&#39;男&#39;&quot;&gt;男&lt;/td&gt;
-                        &lt;td th:text=&quot;${empl.department.departmentName}&quot;&gt;商业提升部&lt;/td&gt;
-                        &lt;td th:text=&quot;${#dates.format(empl.birth, &#39;yyyy-MM-dd HH:mm:ss&#39;)}&quot;&gt;2018/11/1&lt;/td&gt;
-                        &lt;td&gt;
-                            &lt;button class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/button&gt;
-                            &lt;button class=&quot;btn btn-sm btn-danger&quot;&gt;删除&lt;/button&gt;
-                        &lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;/tbody&gt;
-                &lt;/table&gt;
-            &lt;/div&gt;
-        &lt;/main&gt;
-</code></pre><p>ctrl+F9:<br><img src="/images/QQ截图20181107170503.png"></p>
-<h3 id="员工列表的添加"><a href="#员工列表的添加" class="headerlink" title="员工列表的添加"></a>员工列表的添加</h3><p>首先将员工信息的url换成/empls:代表获取所有的员工信息，而/empl：代表添加员工的信息。</p>
-<p>1.将员工添加的按钮换成a标签：<br><img src="/images/QQ截图20181107172030.png"></p>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span>main role<span class="token operator">=</span><span class="token string">"main"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>h2<span class="token operator">></span><span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-sm btn-success"</span><span class="token operator">></span>员工添加<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">></span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"table-responsive"</span><span class="token operator">></span>
+                <span class="token operator">&lt;</span>table <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"table table-striped table-sm"</span><span class="token operator">></span>
+                    <span class="token operator">&lt;</span>thead<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>tr<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>id<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>lastName<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>email<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>gender<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>department<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>birth<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>th<span class="token operator">></span>操作<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>tr<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>thead<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>tbody<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>tr th<span class="token operator">:</span>each<span class="token operator">=</span><span class="token string">"empl:${employees}"</span><span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${empl.id}"</span><span class="token operator">></span><span class="token number">1001</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td<span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">[</span>$<span class="token punctuation">{</span>empl<span class="token punctuation">.</span>lastName<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${empl.email}"</span><span class="token operator">></span><span class="token number">5589584</span><span class="token annotation punctuation">@qq</span><span class="token punctuation">.</span>com<span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${empl.gender}=='0'?'女':'男'"</span><span class="token operator">></span>男<span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${empl.department.departmentName}"</span><span class="token operator">></span>商业提升部<span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${#dates.format(empl.birth, 'yyyy-MM-dd HH:mm:ss')}"</span><span class="token operator">></span><span class="token number">2018</span><span class="token operator">/</span><span class="token number">11</span><span class="token operator">/</span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                        <span class="token operator">&lt;</span>td<span class="token operator">></span>
+                            <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-sm btn-primary"</span><span class="token operator">></span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+                            <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"btn btn-sm btn-danger"</span><span class="token operator">></span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+                        <span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>tr<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>tbody<span class="token operator">></span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>table<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">></span>
+</code></pre>
+<p>ctrl+F9:<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107170503.png"></p>
+<h3 id="员工列表的添加"><a href="#员工列表的添加" class="headerlink" title="员工列表的添加"></a>员工列表的添加</h3><p>首先将员工信息的url换成 <strong>/empls </strong>:代表获取所有的员工信息，而 <strong>/empl </strong>：代表添加员工的信息。</p>
+<p>1.将员工添加的按钮换成a标签：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107172030.png"></p>
 <p>2.在EmployeeController中：</p>
-<pre><code>    @Autowired
-    private DepartmentDao departmentDao;
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> DepartmentDao departmentDao<span class="token punctuation">;</span>
 
 
-    @GetMapping(&quot;/empl&quot;)
-    public String add(Model model) {
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">add</span><span class="token punctuation">(</span>Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //获取所有的部门信息：
-        Collection&lt;Department&gt; departments = departmentDao.getDepartments();
-        model.addAttribute(&quot;departments&quot;, departments);
-        return &quot;empl/employee&quot;;
-    }
-</code></pre><p>3.在templates下的empl中添加employee.html页面：</p>
+        <span class="token comment" spellcheck="true">//获取所有的部门信息：</span>
+        Collection<span class="token operator">&lt;</span>Department<span class="token operator">></span> departments <span class="token operator">=</span> departmentDao<span class="token punctuation">.</span><span class="token function">getDepartments</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"departments"</span><span class="token punctuation">,</span> departments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"empl/employee"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3.在templates下的empl中添加employee.html页面：</p>
 <p>首先，直接复制list.html为employee.html。</p>
 <p>然后，修改其中的main标签部分：</p>
 <pre><code>        &lt;main role=&quot;main&quot; class=&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;&gt;
@@ -1216,29 +1240,31 @@ public class EmployeeController {
 
         &lt;/main&gt;
 
-</code></pre><p>4.重启应用：<br><img src="/images/QQ截图20181107174348.png"></p>
+</code></pre><p>4.重启应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107174348.png"></p>
 <p>5.此时的department部分还是死数据：</p>
-<pre><code>&lt;div class=&quot;form‐group&quot;&gt;
-     &lt;label&gt;department&lt;/label&gt;
-     &lt;select class=&quot;form-control&quot;&gt;
-        &lt;option th:value=&quot;${dept.id}&quot; th:text=&quot;${dept.departmentName}&quot; th:each=&quot;dept:${departments}&quot;&gt;1&lt;/option&gt;
-     &lt;/select&gt;
-&lt;/div&gt;
-</code></pre><p>刷新页面：<br><img src="/images/QQ截图20181107174754.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"form‐group"</span><span class="token operator">></span>
+     <span class="token operator">&lt;</span>label<span class="token operator">></span>department<span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">></span>
+     <span class="token operator">&lt;</span>select <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"form-control"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>option th<span class="token operator">:</span>value<span class="token operator">=</span><span class="token string">"${dept.id}"</span> th<span class="token operator">:</span>text<span class="token operator">=</span><span class="token string">"${dept.departmentName}"</span> th<span class="token operator">:</span>each<span class="token operator">=</span><span class="token string">"dept:${departments}"</span><span class="token operator">></span><span class="token number">1</span><span class="token operator">&lt;</span><span class="token operator">/</span>option<span class="token operator">></span>
+     <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+</code></pre>
+<p>刷新页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107174754.png"></p>
 <p>6.给form表单添加action和method属性：</p>
 <pre><code> &lt;form th:action=&quot;@{/empl}&quot; method=&quot;post&quot;&gt;
 </code></pre><p>7.书写添加员工的控制器</p>
-<pre><code>    //添加员工
-    @PostMapping(&quot;/empl&quot;)
-    public String addEmployee(Employee employee) {
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//添加员工</span>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/empl"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">addEmployee</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        System.out.println(employee);
-        //添加员工
-        employeeDao.save(employee);
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//添加员工</span>
+        employeeDao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return &quot;redirect:/empls&quot;;
-    }
-</code></pre><p>8.重启应用，点击添加：<br><img src="/images/QQ截图20181107183750.png"><br><img src="/images/QQ截图20181107183847.png"></p>
+        <span class="token keyword">return</span> <span class="token string">"redirect:/empls"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>8.重启应用，点击添加：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107183750.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107183847.png"></p>
 <p>添加失败？因为我们的表单里面木有给属性添加name。<br>现在全部加上。</p>
 <pre><code>   &lt;input type=&quot;text&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
 
@@ -1247,7 +1273,7 @@ public class EmployeeController {
    &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;
 
     &lt;input type=&quot;text&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
-</code></pre><p>然后再次尝试添加：<br><img src="/images/QQ截图20181107184848.png"></p>
+</code></pre><p>然后再次尝试添加：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107184848.png"></p>
 <p>添加成功！！！</p>
 <p><strong>注意：这里填写生日的格式必须是 xxxx/xx/xx 的形式。其他形式就会出错，因为Springboot默认格式化的日期格式就是xxxx/xx/xx 的形式</strong></p>
 <p>如果，我们想改日期的格式呢？</p>
@@ -1276,22 +1302,23 @@ spring.mvc.date-format=yyyy-MM-dd
 <p>1）首先修改编辑按钮：</p>
 <pre><code>  &lt;a th:href=&quot;@{/empl/}+${empl.id}&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;编辑&lt;/a&gt;
 </code></pre><p>2) EmployeeController中：</p>
-<pre><code>    //去编辑员工的页面
-    @GetMapping(&quot;/empl/{id}&quot;)
-    public String toEditPage(@PathVariable(&quot;id&quot;) Integer id, Model model) {
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//去编辑员工的页面</span>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">toEditPage</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">,</span> Model model<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        //获取员工的信息：
-        Employee employee = employeeDao.get(id);
-        model.addAttribute(&quot;employee&quot;,employee);
+        <span class="token comment" spellcheck="true">//获取员工的信息：</span>
+        Employee employee <span class="token operator">=</span> employeeDao<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"employee"</span><span class="token punctuation">,</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //获取所有的部门信息：
-        Collection&lt;Department&gt; departments = departmentDao.getDepartments();
-        model.addAttribute(&quot;departments&quot;, departments);
+        <span class="token comment" spellcheck="true">//获取所有的部门信息：</span>
+        Collection<span class="token operator">&lt;</span>Department<span class="token operator">></span> departments <span class="token operator">=</span> departmentDao<span class="token punctuation">.</span><span class="token function">getDepartments</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"departments"</span><span class="token punctuation">,</span> departments<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //重定向到编辑员工的页面（add页面一样，共用）
-        return &quot;empl/employee&quot;;
-    }
-</code></pre><p>3) 在employee.html页面中回显员工的信息。</p>
+        <span class="token comment" spellcheck="true">//重定向到编辑员工的页面（add页面一样，共用）</span>
+        <span class="token keyword">return</span> <span class="token string">"empl/employee"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3) 在employee.html页面中回显员工的信息。</p>
 <pre><code>            &lt;form th:action=&quot;@{/empl}&quot; method=&quot;post&quot;&gt;
                 &lt;div class=&quot;form‐group&quot;&gt;
                     &lt;label&gt;LastName&lt;/label&gt;
@@ -1330,11 +1357,11 @@ spring.mvc.date-format=yyyy-MM-dd
                 &lt;br&gt;
                 &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;
             &lt;/form&gt;
-</code></pre><p>4) 重启应用，点击编辑<br><img src="/images/QQ截图20181107193709.png"></p>
-<p><img src="/images/QQ截图20181107193721.png"></p>
+</code></pre><p>4) 重启应用，点击编辑<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193709.png"></p>
+<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193721.png"></p>
 <p>回显成功。</p>
-<p>此时，再次点击添加时：<br><img src="/images/QQ截图20181107193842.png"></p>
-<p>控制台：<br><img src="/images/QQ截图20181107193935.png"></p>
+<p>此时，再次点击添加时：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193842.png"></p>
+<p>控制台：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193935.png"></p>
 <p>这是因为，我们点击添加的时候，model对象中根本没有employee对象，所以employee.html中的：<br><strong>th:value=”${employee.lastName}”等都会出现空指针异常。</strong></p>
 <p>5）再次修改employee.html页面：添加判断语句</p>
 <p>${employee!=null}?</p>
@@ -1352,47 +1379,50 @@ spring.mvc.date-format=yyyy-MM-dd
 <li>创建一个input项，name=”_method”;值就是我们指定的请求方式</li>
 </ol>
 <p>Springboot已经默认帮我们配置好了HiddenHttpMethodFilter。在WebMvcAutoConfiguration中：</p>
-<pre><code>    @Bean
-    @ConditionalOnMissingBean(HiddenHttpMethodFilter.class)
-    public OrderedHiddenHttpMethodFilter hiddenHttpMethodFilter() {
-        return new OrderedHiddenHttpMethodFilter();
-    }
-</code></pre><p>所以，现在我们只需要添加一个input项，name=”_method”的标签即可：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@ConditionalOnMissingBean</span><span class="token punctuation">(</span>HiddenHttpMethodFilter<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> OrderedHiddenHttpMethodFilter <span class="token function">hiddenHttpMethodFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OrderedHiddenHttpMethodFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>所以，现在我们只需要添加一个input项，name=”_method”的标签即可：</p>
 <pre><code>      &lt;input type=&quot;hidden&quot; name=&quot;_method&quot;  value=&quot;put&quot; th:if=&quot;${employee!=null}&quot;/&gt;
       &lt;input type=&quot;hidden&quot; name=&quot;id&quot; th:value=&quot;${employee.id}&quot; th:if=&quot;${employee!=null}&quot;/&gt;
 </code></pre><p>8) EmployeeController中添加编辑的逻辑：</p>
-<pre><code>    //修改员工
-    @PutMapping(&quot;/empl&quot;)
-    public String EditEmployee(Employee employee) {
-        System.out.println(employee);
-        //修改员工
-        employeeDao.save(employee);
-        return &quot;redirect:/empls&quot;;
-    }
-</code></pre><p>9) 随便点击一个员工进行修改：<br><img src="/images/QQ截图20181107195757.png"><br><img src="/images/QQ截图20181107195859.png"><br><img src="/images/QQ截图20181107195923.png"></p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//修改员工</span>
+    <span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/empl"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">EditEmployee</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//修改员工</span>
+        employeeDao<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"redirect:/empls"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>9) 随便点击一个员工进行修改：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195757.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195859.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195923.png"></p>
 <p>修改成功！！！</p>
 <h3 id="员工列表的删除"><a href="#员工列表的删除" class="headerlink" title="员工列表的删除"></a>员工列表的删除</h3><p>1）修改删除的按钮以delete的方式提交</p>
 <p>不能简单的将button按钮标签改为a标签，因为a标签默认是get方式提交。</p>
-<p>我们使用js的方式来提交表单：<br><img src="/images/QQ截图20181107202935.png"></p>
+<p>我们使用js的方式来提交表单：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107202935.png"></p>
 <p>2）添加js代码：</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    $(&quot;.deleteBtn&quot;).click(function () {
-        var del_url = $(this).attr(&quot;del_url&quot;);
-        $(&quot;#deleteEmpForm&quot;).attr(&quot;action&quot;, del_url).submit();
-        //改变form默认的提交方式
-        return false;
-    })
-&lt;/script&gt;
-</code></pre><p>3) EmployeeController中：</p>
-<pre><code>    //删除员工信息
-    @DeleteMapping(&quot;/empl/{id}&quot;)
-    public String deleteEmlp(@PathVariable(&quot;id&quot;) Integer id) {
-        //删除指定员工id的员工
-        employeeDao.delete(id);
-        return &quot;redirect:/empls&quot;;
-    }
-</code></pre><p>4) 重启应用，试试删除按钮</p>
-<hr>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
+    $<span class="token punctuation">(</span><span class="token string">".deleteBtn"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token function">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        var del_url <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"del_url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        $<span class="token punctuation">(</span><span class="token string">"#deleteEmpForm"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">,</span> del_url<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//改变form默认的提交方式</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p>3) EmployeeController中：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//删除员工信息</span>
+    <span class="token annotation punctuation">@DeleteMapping</span><span class="token punctuation">(</span><span class="token string">"/empl/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">deleteEmlp</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//删除指定员工id的员工</span>
+        employeeDao<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"redirect:/empls"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>4) 重启应用，试试删除按钮</p>
 
             </div>
             <hr/>
@@ -1834,13 +1864,11 @@ spring.mvc.date-format=yyyy-MM-dd
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">今天，继续Web的开发，错误处理机制、配置嵌入式Servlet容器、使用外置的Servlet容器
-错误处理机制SpringBoot默认的错误处理机制默认效果：
-1）浏览器，返回一个默认的错误页面
-
-浏览器发送请求的请求头:
-
-2) 如果是其</div>
+                    <div class="summary">
+                      
+                                继续Web的开发，错误处理机制、配置嵌入式Servlet容器、使用外置的Servlet容器
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-08
@@ -1893,11 +1921,11 @@ spring.mvc.date-format=yyyy-MM-dd
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">今天，我们开始Springboot的Web开发
-简介使用SpringBoot:
-1）、创建SpringBoot应用，选中我们需要的模块；
-2）、SpringBoot已经默认将这些场景配置好了，只需要在配置文件中指定少量配置就可以运行起来.
-</div>
+                    <div class="summary">
+                       
+                                Springboot的Web开发
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-05
@@ -2085,7 +2113,7 @@ spring.mvc.date-format=yyyy-MM-dd
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

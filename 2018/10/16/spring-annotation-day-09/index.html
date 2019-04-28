@@ -446,14 +446,14 @@ Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系�
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3k
+                        2.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        16 分
+                        12 分
                     </div>
                     
                 
@@ -471,63 +471,67 @@ Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系�
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
 <p>Spring的自动装配：  </p>
-<p>Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。<br><a id="more"></a></p>
+<p>Spring利用依赖注入(DI)，完成对IoC容器中各个组件的依赖关系赋值。</p>
 <h3 id="Autowired注解"><a href="#Autowired注解" class="headerlink" title="@Autowired注解"></a>@Autowired注解</h3><p>1）在com.liuzhuo.config包下，创建新的类MainConfigOfAutowired：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并扫描三个包.</p>
-<pre><code>@Configuration
-@ComponentScan(value = {&quot;com.liuzhuo.controller&quot;, &quot;com.liuzhuo.service&quot;, &quot;com.liuzhuo.dao&quot;})
-public class MainConfigOfAutowired {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"com.liuzhuo.controller"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.service"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.dao"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span> <span class="token punctuation">{</span>
 
-}
-</code></pre><p>2) 修改BookService类：</p>
-<pre><code>@Service
-public class BookService {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 修改BookService类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private BookDao bookDao;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>3) 修改BookDao类：</p>
-<pre><code>@Repository
-public class BookDao {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 修改BookDao类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookDao</span> <span class="token punctuation">{</span>
 
-    private Integer laber = 1;
+    <span class="token keyword">private</span> Integer laber <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-    public BookDao() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    public BookDao(Integer laber) {
-        this.laber = laber;
-    }
+    <span class="token keyword">public</span> <span class="token function">BookDao</span><span class="token punctuation">(</span>Integer laber<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>laber <span class="token operator">=</span> laber<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookDao{&quot; +
-                &quot;laber=&quot; + laber +
-                &#39;}&#39;;
-    }
-}
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookDao{"</span> <span class="token operator">+</span>
+                <span class="token string">"laber="</span> <span class="token operator">+</span> laber <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>4) 创建新的测试类IocTest_Autowired：</p>
-<pre><code>public class IocTest_Autowired {
+</code></pre>
+<p>4) 创建新的测试类IocTest_Autowired：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IocTest_Autowired</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAutowired.class);
-        BookService bookService = applicationContext.getBean(BookService.class);
-        System.out.println(bookService);
-        applicationContext.close();
-    }
-}
-</code></pre><p>5) 运行：</p>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAutowired<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BookService bookService <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>BookService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bookService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5) 运行：</p>
 <pre><code>十月 16, 2018 9:20:48 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:20:48 CST 2018]; root of context hierarchy
 BookService{bookDao=BookDao{laber=1}}
@@ -539,16 +543,17 @@ Process finished with exit code 0
 <hr>
 <p>当我们有多个相同类型的对象时，会注入哪个对象呢？</p>
 <p>1）我们在配置文件MainConfigOfAutowired中添加先的BookDao对象：</p>
-<pre><code>@Configuration
-@ComponentScan(value = {&quot;com.liuzhuo.controller&quot;, &quot;com.liuzhuo.service&quot;, &quot;com.liuzhuo.dao&quot;})
-public class MainConfigOfAutowired {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"com.liuzhuo.controller"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.service"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.dao"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public BookDao bookDao() {
-        return new BookDao(2);
-    }
-}
-</code></pre><p>2）运行测试：</p>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> BookDao <span class="token function">bookDao2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2）运行测试：</p>
 <pre><code>十月 16, 2018 9:27:35 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:27:35 CST 2018]; root of context hierarchy
 十月 16, 2018 9:27:36 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose
@@ -558,24 +563,24 @@ BookService{bookDao=BookDao{laber=1}}
 Process finished with exit code 0
 </code></pre><p><strong>结果不变，说明有多个相同类型时，注入到容器中的对象是与@AutoWired下面属性的名字相同的id的Bean对象。</strong></p>
 <p>3）验证我们的结论，修改BookService类下的属性BookDao的属性名字：</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private BookDao bookDao2;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> BookDao bookDao2<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao2 +
-                &#39;}&#39;;
-    }
-}
-
-</code></pre><p>4) 运行测试：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao2 <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>4) 运行测试：</p>
 <pre><code>十月 16, 2018 9:30:54 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:30:54 CST 2018]; root of context hierarchy
 十月 16, 2018 9:30:54 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose
@@ -588,24 +593,25 @@ Process finished with exit code 0
 <hr>
 <p>除了，上述的方法来处理多个相同类型的对象。我们还可以使用 @Qualifier来指定注入容器中的Bean的id名。</p>
 <p>1）修改BookService类：</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    @Qualifier(&quot;bookDao&quot;)
-    @Autowired
-    private BookDao bookDao2;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"bookDao"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> BookDao bookDao2<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao2 +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>2) 测试：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao2 <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 测试：</p>
 <pre><code>十月 16, 2018 9:34:12 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:34:12 CST 2018]; root of context hierarchy
 十月 16, 2018 9:34:12 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose
@@ -624,72 +630,30 @@ Process finished with exit code 0
 警告: Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#39;bookService&#39;: Unsatisfied dependency expressed through field &#39;bookDao2&#39;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &#39;com.liuzhuo.dao.BookDao&#39; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 
 org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name &#39;bookService&#39;: Unsatisfied dependency expressed through field &#39;bookDao2&#39;; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &#39;com.liuzhuo.dao.BookDao&#39; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-
-    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:588)
-    at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
-    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:366)
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
-    at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
-    at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
-    at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
-    at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
-    at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
-    at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
-    at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
-    at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
-    at org.springframework.context.annotation.AnnotationConfigApplicationContext.&lt;init&gt;(AnnotationConfigApplicationContext.java:84)
-    at com.liuzhuo.test.IocTest_Autowired.test01(IocTest_Autowired.java:18)
-    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-    at java.lang.reflect.Method.invoke(Method.java:498)
-    at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-    at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-    at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-    at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-    at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-    at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-    at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-    at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-    at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-    at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-    at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-    at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-    at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-    at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-    at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
-    at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
-    at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
-    at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
-Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type &#39;com.liuzhuo.dao.BookDao&#39; available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
-    at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1493)
-    at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
-    at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
-    at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:585)
-    ... 36 more
+···
 
 
 Process finished with exit code -1
-</code></pre><p>我们也可以使@Autowired注解的属性，不是必须的。<br>因为@Autowired注解里面有一个属性 boolean required() default true;<br>将required设置为：false</p>
-<pre><code>@Service
-public class BookService {
+</code></pre><h4 id="required属性"><a href="#required属性" class="headerlink" title="required属性"></a>required属性</h4><p>我们也可以使@Autowired注解的属性，不是必须的，即使容器中没有该Bean，也不会报错！<br>因为@Autowired注解里面有一个属性 boolean required() default true;<br>将required设置为：false</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    //@Qualifier(&quot;bookDao&quot;)
-    @Autowired(required = false)
-    private BookDao bookDao2;
+    <span class="token comment" spellcheck="true">//@Qualifier("bookDao")</span>
+    <span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> BookDao bookDao2<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao2 +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>运行：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao2 <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行：</p>
 <pre><code>十月 16, 2018 9:43:23 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:43:23 CST 2018]; root of context hierarchy
 十月 16, 2018 9:43:24 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose
@@ -697,40 +661,42 @@ public class BookService {
 BookService{bookDao=null}
 
 Process finished with exit code 0
-</code></pre><p>此时不报错了。修改了默认情况下，必须给@Autowired注解的属性，注入到容器中。</p>
+</code></pre><p>此时不报错了。默认情况下，必须给@Autowired注解的属性，注入到容器中。</p>
 <hr>
-<p>@primary注解：使用这个注解，就是当有多个类型的情况下，优先注入的bean对象：</p>
+<h4 id="primary注解"><a href="#primary注解" class="headerlink" title="@primary注解"></a>@primary注解</h4><p>@primary注解：使用这个注解，就是当有多个类型的情况下，优先注入的bean对象：</p>
 <p>1) 修改配置文件：</p>
-<pre><code>@Configuration
-@ComponentScan(value = {&quot;com.liuzhuo.controller&quot;, &quot;com.liuzhuo.service&quot;, &quot;com.liuzhuo.dao&quot;})
-public class MainConfigOfAutowired {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"com.liuzhuo.controller"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.service"</span><span class="token punctuation">,</span> <span class="token string">"com.liuzhuo.dao"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAutowired</span> <span class="token punctuation">{</span>
 
-    @Primary
-    @Bean(value = &quot;bookDao2&quot;)
-    public BookDao bookDao() {
-        return new BookDao(2);
-    }
-}
+    <span class="token annotation punctuation">@Primary</span>
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"bookDao2"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> BookDao <span class="token function">bookDao</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BookDao</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>2) 修改BookService：注释掉@Qualifier(“bookDao”)</p>
-<pre><code>@Service
-public class BookService {
+</code></pre>
+<p>2) 修改BookService：注释掉@Qualifier(“bookDao”)</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    //@Qualifier(&quot;bookDao&quot;)
-    @Autowired(required = false)
-    private BookDao bookDao;
+    <span class="token comment" spellcheck="true">//@Qualifier("bookDao")</span>
+    <span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>3) 运行测试：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 运行测试：</p>
 <pre><code>十月 16, 2018 9:47:44 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:47:44 CST 2018]; root of context hierarchy
 BookService{bookDao=BookDao{laber=2}}
@@ -740,24 +706,25 @@ BookService{bookDao=BookDao{laber=2}}
 Process finished with exit code 0
 </code></pre><p>此时，输出的是laber=2的BookDao对象了，不再根据@Autowired注解下的属性名来注入到容器中了。</p>
 <p>4）将BookService中的@Qualifier(“bookDao”)的注释去掉：</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    @Qualifier(&quot;bookDao&quot;)
-    @Autowired(required = false)
-    private BookDao bookDao;
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"bookDao"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Autowired</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>5) 运行测试：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5) 运行测试：</p>
 <pre><code>十月 16, 2018 9:51:00 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 21:51:00 CST 2018]; root of context hierarchy
 BookService{bookDao=BookDao{laber=1}}
@@ -768,25 +735,26 @@ Process finished with exit code 0
 </code></pre><p><strong>说明：当@Primary和@Qualifier同时存在时，是以@Qualifier为标准的！</strong></p>
 <hr>
 <h3 id="Resource注解"><a href="#Resource注解" class="headerlink" title="@Resource注解"></a>@Resource注解</h3><p>1）修改BookService类：</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    //@Qualifier(&quot;bookDao&quot;)
-    //@Autowired(required = false)
-    @Resource
-    private BookDao bookDao;
+    <span class="token comment" spellcheck="true">//@Qualifier("bookDao")</span>
+    <span class="token comment" spellcheck="true">//@Autowired(required = false)</span>
+    <span class="token annotation punctuation">@Resource</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>2) 运行：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 运行：</p>
 <pre><code>十月 16, 2018 10:09:41 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 22:09:41 CST 2018]; root of context hierarchy
 十月 16, 2018 10:09:41 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext doClose
@@ -795,25 +763,26 @@ BookService{bookDao=BookDao{laber=1}}
 
 Process finished with exit code 0
 </code></pre><p>此时，输出的是laber=1的bookService对象，说明@primary注解没有起作用。<br>@Resource注解，默认是注入属性的名。也可以通过@Resource的name属性来修改需要注入到容器中的Bean对象。</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    //@Qualifier(&quot;bookDao&quot;)
-    //@Autowired(required = false)
-    @Resource(name = &quot;bookDao2&quot;)
-    private BookDao bookDao;
+    <span class="token comment" spellcheck="true">//@Qualifier("bookDao")</span>
+    <span class="token comment" spellcheck="true">//@Autowired(required = false)</span>
+    <span class="token annotation punctuation">@Resource</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"bookDao2"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>运行：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行：</p>
 <pre><code>十月 16, 2018 10:13:02 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 22:13:02 CST 2018]; root of context hierarchy
 BookService{bookDao=BookDao{laber=2}}
@@ -824,32 +793,33 @@ Process finished with exit code 0
 </code></pre><hr>
 <h3 id="Inject注解"><a href="#Inject注解" class="headerlink" title="@Inject注解"></a>@Inject注解</h3><p>@Inject注解：需要导入javax.inject包。</p>
 <p>1）在pom文件中添加依赖：</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;javax.inject&lt;/groupId&gt;
-            &lt;artifactId&gt;javax.inject&lt;/artifactId&gt;
-            &lt;version&gt;1&lt;/version&gt;
-        &lt;/dependency&gt;
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;javax.inject&lt;/groupId&gt;
+    &lt;artifactId&gt;javax.inject&lt;/artifactId&gt;
+    &lt;version&gt;1&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre><p>2) 修改BookService类：</p>
-<pre><code>@Service
-public class BookService {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookService</span> <span class="token punctuation">{</span>
 
-    //@Qualifier(&quot;bookDao&quot;)
-    //@Autowired(required = false)
-    //@Resource(name = &quot;bookDao2&quot;)
-    @Inject
-    private BookDao bookDao;
+    <span class="token comment" spellcheck="true">//@Qualifier("bookDao")</span>
+    <span class="token comment" spellcheck="true">//@Autowired(required = false)</span>
+    <span class="token comment" spellcheck="true">//@Resource(name = "bookDao2")</span>
+    <span class="token annotation punctuation">@Inject</span>
+    <span class="token keyword">private</span> BookDao bookDao<span class="token punctuation">;</span>
 
-    public BookService() {
-    }
+    <span class="token keyword">public</span> <span class="token function">BookService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public String toString() {
-        return &quot;BookService{&quot; +
-                &quot;bookDao=&quot; + bookDao +
-                &#39;}&#39;;
-    }
-}
-</code></pre><p>3) 运行：</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"BookService{"</span> <span class="token operator">+</span>
+                <span class="token string">"bookDao="</span> <span class="token operator">+</span> bookDao <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 运行：</p>
 <pre><code>十月 16, 2018 10:16:52 下午 org.springframework.context.annotation.AnnotationConfigApplicationContext prepareRefresh
 信息: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2f410acf: startup date [Tue Oct 16 22:16:52 CST 2018]; root of context hierarchy
 十月 16, 2018 10:16:52 下午 org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor &lt;init&gt;
@@ -1307,9 +1277,11 @@ Process finished with exit code 0
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-自定义组件想要使用Spring容器底层的一些组件的开发(ApplicationContext,BeanFactory,xxx)
-自定义组件实现xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件，A</div>
+                    <div class="summary">
+                      
+                                使用Spring容器底层的一些组件
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
@@ -1354,11 +1326,11 @@ Process finished with exit code 0
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天，学习Spring的自动注入
-@Value注解使用@Value注解来注入值
-1）在com.liuzhuo.config包下，创建新的配置类MainConfigOfProperty：
-@Configuration</div>
+                    <div class="summary">
+                       
+                                今天，学习Spring的属性值的自动注入:@Value注解
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-16
@@ -1538,7 +1510,7 @@ Process finished with exit code 0
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

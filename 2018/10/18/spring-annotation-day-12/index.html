@@ -446,7 +446,7 @@ AOP采取横向抽取机制">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.6k
                     </div>
                     
 
@@ -470,7 +470,7 @@ AOP采取横向抽取机制">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天学习AOP的开发与使用<br><a id="more"></a></p>
+<p>今天学习AOP的开发与使用</p>
 <h3 id="AOP介绍"><a href="#AOP介绍" class="headerlink" title="AOP介绍"></a>AOP介绍</h3><p>AOP是Spring 框架的一个关键组件，全称为Aspect-Oriented-Programming（面向切面编程），目前已是一种比较成熟的编程方式。</p>
 <p>AOP采取横向抽取机制，将分散在各个方法中的重复代码提取出来，然后在编译或运行的时候，再将这些代码应用到需要执行的地方。</p>
 <p><strong>注：提取出来的代码应用到需要执行的地方，并不会把源代码加到需要的地方执行，即源代码文件不会更改，但是它会影响最终的机器编译代码</strong></p>
@@ -490,128 +490,133 @@ AOP采取横向抽取机制">
 <p>Weaving（织入）</p>
 <p>把切面连接到其它的应用程序类型或者对象上，并创建一个需要Advice对象的过程</p>
 <h3 id="AOP的例子（JDK代理）"><a href="#AOP的例子（JDK代理）" class="headerlink" title="AOP的例子（JDK代理）"></a>AOP的例子（JDK代理）</h3><p>1）首先建立一个java工程</p>
-<p><img src="/images/20181018211302.png" style="width:50%"></p>
+<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181018211302.png" style="width:50%"></p>
 <p>UserDao接口:</p>
-<pre><code>package com.aop.jdk;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">;</span>
 
-public interface UserDao {
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
 
- public void addUser();
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}
-</code></pre><p>UserDaoImpl:</p>
-<pre><code>package com.aop.jdk;
+<span class="token punctuation">}</span>
+</code></pre>
+<p>UserDaoImpl:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">;</span>
 
-public class UserDaoImpl implements UserDao {
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDaoImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
 
- @Override
- public void addUser() {
+ <span class="token annotation punctuation">@Override</span>
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-   System.out.println(&quot;新增用户&quot;);
- }
+   System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"新增用户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 
-}
-</code></pre><p>JdkProxy:</p>
-<pre><code>package com.aop.jdk;
+<span class="token punctuation">}</span>
+</code></pre>
+<p>JdkProxy:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">;</span>
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>InvocationHandler<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Proxy<span class="token punctuation">;</span>
 
-import com.aop.aspect.MyAspect;
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>aspect<span class="token punctuation">.</span>MyAspect<span class="token punctuation">;</span>
 
-/**
+<span class="token comment" spellcheck="true">/**
 * JDK代理类
-*/
-public class JdkProxy implements InvocationHandler{
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdkProxy</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span><span class="token punctuation">{</span>
 
- // 声明目标类接口
- private UserDao userDao;
+ <span class="token comment" spellcheck="true">// 声明目标类接口</span>
+ <span class="token keyword">private</span> UserDao userDao<span class="token punctuation">;</span>
 
- // 创建代理方法
- public  Object createProxy(UserDao userDao) {
+ <span class="token comment" spellcheck="true">// 创建代理方法</span>
+ <span class="token keyword">public</span>  Object <span class="token function">createProxy</span><span class="token punctuation">(</span>UserDao userDao<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-   this.userDao = userDao;
+   <span class="token keyword">this</span><span class="token punctuation">.</span>userDao <span class="token operator">=</span> userDao<span class="token punctuation">;</span>
 
-   // 1.类加载器
-   ClassLoader classLoader = JdkProxy.class.getClassLoader();
+   <span class="token comment" spellcheck="true">// 1.类加载器</span>
+   ClassLoader classLoader <span class="token operator">=</span> JdkProxy<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   // 2.被代理对象实现的所有接口
-   @SuppressWarnings(&quot;rawtypes&quot;)
-   Class[] clazz = userDao.getClass().getInterfaces();
+   <span class="token comment" spellcheck="true">// 2.被代理对象实现的所有接口</span>
+   <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"rawtypes"</span><span class="token punctuation">)</span>
+   Class<span class="token punctuation">[</span><span class="token punctuation">]</span> clazz <span class="token operator">=</span> userDao<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   // 3.使用代理类，进行增强，返回的是代理后的对象
-   return  Proxy.newProxyInstance(classLoader,clazz,this);
+   <span class="token comment" spellcheck="true">// 3.使用代理类，进行增强，返回的是代理后的对象</span>
+   <span class="token keyword">return</span>  Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>classLoader<span class="token punctuation">,</span>clazz<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
- }
+ <span class="token punctuation">}</span>
 
- /*
+ <span class="token comment" spellcheck="true">/*
   * 所有动态代理类的方法调用，都会交由invoke()方法去处理
   * proxy 被代理后的对象 
   * method 将要执行的方法
   * args 执行方法时需要的参数
-  */
- @Override
- public Object invoke(Object proxy, Method method, Object[] args) 
-     throws Throwable {
+  */</span>
+ <span class="token annotation punctuation">@Override</span>
+ <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> 
+     <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
 
-   // 声明切面
-   MyAspect myAspect = new MyAspect();
+   <span class="token comment" spellcheck="true">// 声明切面</span>
+   MyAspect myAspect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyAspect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   // 指定位置程序执行前执行这个方法
-   myAspect.start();
+   <span class="token comment" spellcheck="true">// 指定位置程序执行前执行这个方法</span>
+   myAspect<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   // 在目标类上调用方法
-   Object obj = method.invoke(userDao, args);
+   <span class="token comment" spellcheck="true">// 在目标类上调用方法</span>
+   Object obj <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>userDao<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   // 指定位置程序执行结束后执行
-   myAspect.end();
+   <span class="token comment" spellcheck="true">// 指定位置程序执行结束后执行</span>
+   myAspect<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   return obj;
- }
+   <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 
-}
-</code></pre><p>MyAspect:</p>
-<pre><code>package com.aop.aspect;
+<span class="token punctuation">}</span>
+</code></pre>
+<p>MyAspect:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>aspect<span class="token punctuation">;</span>
 
-/**
+<span class="token comment" spellcheck="true">/**
 *  切面
-*/
-public class MyAspect {
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyAspect</span> <span class="token punctuation">{</span>
 
- public void start(){
-   System.out.println(&quot;模拟事务处理功能 ...&quot;);
- }
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"模拟事务处理功能 ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 
- public void end(){
-   System.out.println(&quot;程序结束后执行此处 ...&quot;);
- }
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"程序结束后执行此处 ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 
-}
-</code></pre><p>JdkTest:</p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>JdkTest:</p>
 <p>测试结果项目编写完之后运行该类</p>
-<pre><code>package com.aop.test;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>test<span class="token punctuation">;</span>
 
-import com.aop.jdk.JdkProxy;
-import com.aop.jdk.UserDao;
-import com.aop.jdk.UserDaoImpl;
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">.</span>JdkProxy<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">.</span>UserDao<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>jdk<span class="token punctuation">.</span>UserDaoImpl<span class="token punctuation">;</span>
 
-public class JdkTest {
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdkTest</span> <span class="token punctuation">{</span>
 
- public static void main(String[] args) {
+ <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-   // 创建代理对象
-   JdkProxy jdkProxy = new JdkProxy();
-        // 创建目标对象
-   UserDao userDao= new UserDaoImpl();
-   // 从代理对象中获取增强后的目标对象
-   UserDao userDao1 = (UserDao) jdkProxy.createProxy(userDao);
-   // 执行方法
-   userDao1.addUser();
- }
+   <span class="token comment" spellcheck="true">// 创建代理对象</span>
+   JdkProxy jdkProxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JdkProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 创建目标对象</span>
+   UserDao userDao<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserDaoImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment" spellcheck="true">// 从代理对象中获取增强后的目标对象</span>
+   UserDao userDao1 <span class="token operator">=</span> <span class="token punctuation">(</span>UserDao<span class="token punctuation">)</span> jdkProxy<span class="token punctuation">.</span><span class="token function">createProxy</span><span class="token punctuation">(</span>userDao<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment" spellcheck="true">// 执行方法</span>
+   userDao1<span class="token punctuation">.</span><span class="token function">addUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
 
-}
-</code></pre><p>运行之后，我们可以看到以下结果：<br><img src="/images/20181018211845.png" style="width:50%"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>运行之后，我们可以看到以下结果：<br><img src="http://pp4rmtx78.bkt.clouddn.com/20181018211845.png" style="width:50%"></p>
 <hr>
 <p>我们可以看到，在我们执行新增用户的方法时，依据我们AOP编程，系统自动执行了start方法和end方法</p>
 <p>在实际运用中，我们可以把一些通用的方法放到start和end的位置，在需要的方法处加入切面即可</p>
@@ -620,136 +625,144 @@ public class JdkTest {
 <p>基于XML的声明式AspectJ要便捷一些，但是存在配置信息多的缺点</p>
 <p>基于注解的声明式AspectJ则通过注解的方式减少了很多配置信息</p>
 <h3 id="Spring中的AOP使用"><a href="#Spring中的AOP使用" class="headerlink" title="Spring中的AOP使用"></a>Spring中的AOP使用</h3><p>1）创建新的配置类MainConfigOfAOP</p>
-<pre><code>@Configuration
-public class MainConfigOfAOP {
-}
-</code></pre><p>2) 在com.liuzhuo.aop包下，创建MathCalculator类</p>
-<pre><code>public class MathCalculator {
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAOP</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 在com.liuzhuo.aop包下，创建MathCalculator类</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MathCalculator</span> <span class="token punctuation">{</span>
 
-    public int div(int a, int b) {
-        return a / b;
-    }
-}
-</code></pre><p>2) 在com.liuzhuo.aop包下，创建切面类MathCalculator</p>
-<pre><code>public class LogAspects {
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">div</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 在com.liuzhuo.aop包下，创建切面类MathCalculator</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LogAspects</span> <span class="token punctuation">{</span>
 
-    public void logStart(){
-        System.out.println(&quot;方法调用之前------&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法调用之前------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void logEnd(){
-        System.out.println(&quot;方法调用之后-------&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法调用之后-------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void logReturn(){
-        System.out.println(&quot;方法成功返回之后------&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logReturn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法成功返回之后------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void logThrowing(){
-        System.out.println(&quot;方法出现异常之后------&quot;);
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logThrowing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法出现异常之后------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void logRound(){
-        //环绕方法
-        System.out.println(&quot;环绕：方法调用之前----&quot;);
-        System.out.println(&quot;环绕：方法调用之后----&quot;);
-    }
-}
-</code></pre><p>3) 添加AOP的依赖，在pom文件中：</p>
-<pre><code>
-        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects --&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;
-            &lt;version&gt;5.1.1.RELEASE&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre><p>4) 将切面与目标方法进行连接：</p>
-<pre><code>@Aspect
-public class LogAspects {
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logRound</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//环绕方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环绕：方法调用之前----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环绕：方法调用之后----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 添加AOP的依赖，在pom文件中：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>mvnrepository<span class="token punctuation">.</span>com<span class="token operator">/</span>artifact<span class="token operator">/</span>org<span class="token punctuation">.</span>springframework<span class="token operator">/</span>spring<span class="token operator">-</span>aspects <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+    <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>aspects<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">5.1</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token punctuation">.</span>RELEASE<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p>4) 将切面与目标方法进行连接：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Aspect</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LogAspects</span> <span class="token punctuation">{</span>
 
-    @Pointcut(&quot;execution(public int com.liuzhuo.aop.MathCalculator.div(int,int))&quot;)
-    public void pointCut() {
-    }
+    <span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"execution(public int com.liuzhuo.aop.MathCalculator.div(int,int))"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pointCut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-    //调用本类的切点
-    @Before(&quot;pointCut()&quot;)
-    public void logStart() {
-        System.out.println(&quot;方法调用之前------&quot;);
-    }
+    <span class="token comment" spellcheck="true">//调用本类的切点</span>
+    <span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"pointCut()"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法调用之前------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //调用外面类的切点
-    @After(&quot;com.liuzhuo.aop.LogAspects.pointCut()&quot;)
-    public void logEnd() {
-        System.out.println(&quot;方法调用之后-------&quot;);
-    }
+    <span class="token comment" spellcheck="true">//调用外面类的切点</span>
+    <span class="token annotation punctuation">@After</span><span class="token punctuation">(</span><span class="token string">"com.liuzhuo.aop.LogAspects.pointCut()"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法调用之后-------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @AfterReturning(value = &quot;pointCut()&quot;, returning = &quot;returns&quot;)
-    public void logReturn(Object returns) {
-        System.out.println(&quot;方法成功返回之后------:&quot; + returns);
-    }
+    <span class="token annotation punctuation">@AfterReturning</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"pointCut()"</span><span class="token punctuation">,</span> returning <span class="token operator">=</span> <span class="token string">"returns"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logReturn</span><span class="token punctuation">(</span>Object returns<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法成功返回之后------:"</span> <span class="token operator">+</span> returns<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @AfterThrowing(value = &quot;pointCut()&quot;, throwing = &quot;e&quot;)
-    public void logThrowing(Exception e) {
-        System.out.println(&quot;方法出现异常之后------:&quot; + e);
-    }
+    <span class="token annotation punctuation">@AfterThrowing</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"pointCut()"</span><span class="token punctuation">,</span> throwing <span class="token operator">=</span> <span class="token string">"e"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">logThrowing</span><span class="token punctuation">(</span>Exception e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法出现异常之后------:"</span> <span class="token operator">+</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Around(&quot;pointCut()&quot;)
-    public Object logRound(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        //环绕方法
-        System.out.println(&quot;环绕：方法调用之前----&quot;);
-        Object proceed = proceedingJoinPoint.proceed();
-        System.out.println(&quot;环绕：方法调用之后----&quot;);
-        return proceed;
-    }
-}
-</code></pre><p>5) 将切面和目标类注入到容器中：</p>
-<pre><code>@Configuration
-public class MainConfigOfAOP {
+    <span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span><span class="token string">"pointCut()"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Object <span class="token function">logRound</span><span class="token punctuation">(</span>ProceedingJoinPoint proceedingJoinPoint<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//环绕方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环绕：方法调用之前----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Object proceed <span class="token operator">=</span> proceedingJoinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"环绕：方法调用之后----"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> proceed<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5) 将切面和目标类注入到容器中：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAOP</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public MathCalculator mathCalculator() {
-        return new MathCalculator();
-    }
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> MathCalculator <span class="token function">mathCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MathCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Bean
-    public LogAspects logAspects() {
-        return new LogAspects();
-    }
-}
-</code></pre><p>6) <strong>开启Aspect的注解驱动</strong>：@EnableAspectJAutoProxy </p>
-<pre><code>@Configuration
-@EnableAspectJAutoProxy //开启AOP注解驱动
-public class MainConfigOfAOP {
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> LogAspects <span class="token function">logAspects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">LogAspects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>6) <strong>开启Aspect的注解驱动</strong>：@EnableAspectJAutoProxy </p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableAspectJAutoProxy</span> <span class="token comment" spellcheck="true">//开启AOP注解驱动</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainConfigOfAOP</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public MathCalculator mathCalculator() {
-        return new MathCalculator();
-    }
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> MathCalculator <span class="token function">mathCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MathCalculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Bean
-    public LogAspects logAspects() {
-        return new LogAspects();
-    }
-}
-</code></pre><p>7) 创建新的测试类：</p>
-<pre><code>public class IoCTest_AOP {
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> LogAspects <span class="token function">logAspects</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">LogAspects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>7) 创建新的测试类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IoCTest_AOP</span> <span class="token punctuation">{</span>
 
-    @Test
-    public void test01() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test01</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> 
+            <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAOP<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //不要自己创建MathCalculator类
-        //MathCalculator mathCalculator = new MathCalculator();
-        //mathCalculator.div(1, 1);
+        <span class="token comment" spellcheck="true">//不要自己创建MathCalculator类</span>
+        <span class="token comment" spellcheck="true">//MathCalculator mathCalculator = new MathCalculator();</span>
+        <span class="token comment" spellcheck="true">//mathCalculator.div(1, 1);</span>
 
-        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
-        mathCalculator.div(1, 1);
+        MathCalculator mathCalculator <span class="token operator">=</span> applicationContext<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span>MathCalculator<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        mathCalculator<span class="token punctuation">.</span><span class="token function">div</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        applicationContext.close();
+        applicationContext<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><p>8) 运行结果：</p>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>8) 运行结果：</p>
 <pre><code>环绕：方法调用之前----
 方法调用之前------
 div:正在执行-----
@@ -1206,8 +1219,11 @@ Process finished with exit code 0
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系
-一、背景最近由于项目的包扫描出现了问题，在解决问题的过程中，偶然发现了Spring和SpringMVC是有父子容器关系的，而且正是因为这个才往往会出现包扫描的问</div>
+                    <div class="summary">
+                      
+                                Spring和SpringMVC父子容器关系
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1252,8 +1268,11 @@ Process finished with exit code 0
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring作为当前Java最流行、最强大的轻量级框架，受到了程序员的热烈欢迎。准确的了解Spring Bean的生命周期是非常必要的。
-我们通常使用ApplicationContext作为Spring容器。这里，我们讲的也是 Applic</div>
+                    <div class="summary">
+                       
+                                Spring Bean的生命周期
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-18
@@ -1433,7 +1452,7 @@ Process finished with exit code 0
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             

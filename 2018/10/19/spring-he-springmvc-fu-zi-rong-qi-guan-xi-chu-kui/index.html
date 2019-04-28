@@ -467,7 +467,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系<br><a id="more"></a></p>
+                <p>Spring和SpringMVC父子容器关系初窥，探究父容器与子容器之间的关系</p>
 <h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>最近由于项目的包扫描出现了问题，在解决问题的过程中，偶然发现了Spring和SpringMVC是有父子容器关系的，而且正是因为这个才往往会出现包扫描的问题，我们在此来分析和理解Spring和SpringMVC的父子容器关系并且给出Spring和SpringMVC配置文件中包扫描的官方推荐方式。</p>
 <h3 id="二、概念理解和知识铺垫"><a href="#二、概念理解和知识铺垫" class="headerlink" title="二、概念理解和知识铺垫"></a>二、概念理解和知识铺垫</h3><p>在Spring整体框架的核心概念中，容器是核心思想，就是用来管理Bean的整个生命周期的，而在一个项目中，容器不一定只有一个，Spring中可以包括多个容器，而且容器有上下层关系</p>
 <p>目前最常见的一种场景就是在一个项目中引入Spring和SpringMVC这两个框架，那么它其实就是两个容器，Spring是父容器，SpringMVC是其子容器</p>
@@ -482,16 +482,18 @@
 <p><strong>另外，还有一个和SpringMVC相关如下配置，经过验证，这个是SpringMVC必须要配置的，因为它声明了@RequestMapping、@RequestBody、@ResponseBody等。并且，该配置默认加载很多的参数绑定方法，比如json转换解析器等。</strong></p>
 <p><code>&lt;mvc:annotation-driven /&gt;</code></p>
 <p>而上面这句,配置Spring3.1之前的版本和以下配置方式等价</p>
-<pre><code>&lt;!--配置注解控制器映射器,它是SpringMVC中用来将Request请求URL到映射到具体Controller--&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping&quot;/&gt;
-&lt;!--配置注解控制器适配器,它是SpringMVC中用来将具体请求映射到具体方法--&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter&quot;/&gt;
-</code></pre><p>Spring3.1之后的版本和以下配置方式等价：</p>
-<pre><code>&lt;!--配置注解控制器映射器,它是SpringMVC中用来将Request请求URL到映射到具体Controller--&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;/&gt;
-&lt;!--配置注解控制器适配器,它是SpringMVC中用来将具体请求映射到具体方法--&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter&quot;/&gt;
-</code></pre><h3 id="三、具体场景分析"><a href="#三、具体场景分析" class="headerlink" title="三、具体场景分析"></a>三、具体场景分析</h3><p>下面让我们来详细扒一扒Spring与SpringMVC的容器冲突的原因到底在那里？</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置注解控制器映射器<span class="token punctuation">,</span>它是SpringMVC中用来将Request请求URL到映射到具体Controller<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置注解控制器适配器<span class="token punctuation">,</span>它是SpringMVC中用来将具体请求映射到具体方法<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"</span><span class="token operator">/</span><span class="token operator">></span>
+</code></pre>
+<p>Spring3.1之后的版本和以下配置方式等价：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置注解控制器映射器<span class="token punctuation">,</span>它是SpringMVC中用来将Request请求URL到映射到具体Controller<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置注解控制器适配器<span class="token punctuation">,</span>它是SpringMVC中用来将具体请求映射到具体方法<span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"</span><span class="token operator">/</span><span class="token operator">></span>
+</code></pre>
+<h3 id="三、具体场景分析"><a href="#三、具体场景分析" class="headerlink" title="三、具体场景分析"></a>三、具体场景分析</h3><p>下面让我们来详细扒一扒Spring与SpringMVC的容器冲突的原因到底在那里？</p>
 <p>我们共有Spring和SpringMVC两个容器，它们的配置文件分别为applicationContext.xml和applicationContext-MVC.xml</p>
 <p>1、在applicationContext.xml中配置了&lt;context:component-scan base-package=“com.hafiz.www” /&gt;，负责所有需要注册的Bean的扫描和注册工作</p>
 <p>2、在applicationContext-MVC.xml中配置&lt;mvc:annotation-driven /&gt;，负责SpringMVC相关注解的使用</p>
@@ -499,46 +501,51 @@
 <p>4、在applicationContext-MVC.xml中配置&lt;context:component-scan base-package=“com.hafiz.www” /&gt;，重启后，验证成功，springMVC跳转有效</p>
 <p>下面我们来查看具体原因，翻看源码，从SpringMVC的DispatcherServlet开始往下找，我们发现SpringMVC初始化时，会寻找SpringMVC容器中的所有使用了@Controller注解的Bean，来确定其是否是一个handler</p>
 <p>1、2两步的配置使得当前SpringMVC容器中并没有注册带有@Controller注解的Bean，而是把所有带有@Controller注解的Bean都注册在Spring这个父容器中了，所以SpringMVC找不到处理器，不能进行跳转。核心源码如下:</p>
-<pre><code>protected void initHandlerMethods() {
-　　if (logger.isDebugEnabled()) {
-　　　　logger.debug(&quot;Looking for request mappings in application context: &quot; + getApplicationContext());
-　　}
-　　String[] beanNames = (this.detectHandlerMethodsInAncestorContexts ?
-　　　　　　  BeanFactoryUtils.beanNamesForTypeIncludingAncestors(getApplicationContext(), Object.class) :
-　　　　　　　getApplicationContext().getBeanNamesForType(Object.class));
-　　for (String beanName : beanNames) {
-　　　　if (isHandler(getApplicationContext().getType(beanName))){
-　　　　　　detectHandlerMethods(beanName);
-　　　　}
-　　}
-　　handlerMethodsInitialized(getHandlerMethods());
-}
-</code></pre><p>在方法isHandler中会判断当前bean的注解是否是controller，源码如下：</p>
-<pre><code>protected boolean isHandler(Class&lt;?&gt; beanType) {
-　　return AnnotationUtils.findAnnotation(beanType, Controller.class) != null;
-}
-</code></pre><p>而在第4步配置中，SpringMVC容器中也注册了所有带有@Controller注解的Bean，故SpringMVC能找到处理器进行处理，从而正常跳转。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">initHandlerMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+　　<span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+　　　　logger<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"Looking for request mappings in application context: "</span> <span class="token operator">+</span> <span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+　　<span class="token punctuation">}</span>
+　　String<span class="token punctuation">[</span><span class="token punctuation">]</span> beanNames <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>detectHandlerMethodsInAncestorContexts <span class="token operator">?</span>
+　　　　　　  BeanFactoryUtils<span class="token punctuation">.</span><span class="token function">beanNamesForTypeIncludingAncestors</span><span class="token punctuation">(</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token operator">:</span>
+　　　　　　　<span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+　　<span class="token keyword">for</span> <span class="token punctuation">(</span>String beanName <span class="token operator">:</span> beanNames<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+　　　　<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isHandler</span><span class="token punctuation">(</span><span class="token function">getApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+　　　　　　<span class="token function">detectHandlerMethods</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+　　　　<span class="token punctuation">}</span>
+　　<span class="token punctuation">}</span>
+　　<span class="token function">handlerMethodsInitialized</span><span class="token punctuation">(</span><span class="token function">getHandlerMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在方法isHandler中会判断当前bean的注解是否是controller，源码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">boolean</span> <span class="token function">isHandler</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> beanType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+　　<span class="token keyword">return</span> AnnotationUtils<span class="token punctuation">.</span><span class="token function">findAnnotation</span><span class="token punctuation">(</span>beanType<span class="token punctuation">,</span> Controller<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>而在第4步配置中，SpringMVC容器中也注册了所有带有@Controller注解的Bean，故SpringMVC能找到处理器进行处理，从而正常跳转。</p>
 <p>我们找到了出现不能正确跳转的原因，那么它的解决办法是什么呢？</p>
 <p>我们注意到在initHandlerMethods()方法中，detectHandlerMethodsInAncestorContexts这个Switch，它主要控制获取哪些容器中的bean以及是否包括父容器，默认是不包括的。</p>
 <p>所以解决办法就是在SpringMVC的配置文件中配置HandlerMapping的detectHandlerMethodsInAncestorContexts属性为true即可（这里需要根据具体项目看使用的是哪种HandlerMapping），让它检测父容器的bean。如下：</p>
-<pre><code>&lt;bean class=&quot;org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping&quot;&gt;
-  &lt;property name=&quot;detectHandlerMethodsInAncestorContexts&quot;&gt;
-      &lt;value&gt;true&lt;/value&gt;
-  &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><p>但在实际工程中会包括很多配置，我们按照官方推荐根据不同的业务模块来划分不同容器中注册不同类型的Bean：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>bean <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"detectHandlerMethodsInAncestorContexts"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>value<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>value<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>property<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>bean<span class="token operator">></span>
+</code></pre>
+<p>但在实际工程中会包括很多配置，我们按照官方推荐根据不同的业务模块来划分不同容器中注册不同类型的Bean：</p>
 <p>Spring父容器负责所有其他非@Controller注解的Bean的注册，而SpringMVC只负责@Controller注解的Bean的注册，使得他们各负其责、明确边界。配置方式如下</p>
 <p>1、在applicationContext.xml中配置:</p>
-<pre><code>&lt;!-- Spring容器中注册非@controller注解的Bean --&gt;
-&lt;context:component-scan base-package=&quot;com.hafiz.www&quot;&gt;
-  &lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot;/&gt;
-&lt;/context:component-scan&gt;
-</code></pre><p>2、applicationContext-MVC.xml中配置</p>
-<pre><code>&lt;!-- SpringMVC容器中只注册带有@controller注解的Bean --&gt;
-&lt;context:component-scan base-package=&quot;com.hafiz.www&quot; use-default-filters=&quot;false&quot;&gt;
-  &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot; /&gt;
-&lt;/context:component-scan&gt;
-</code></pre><h3 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h3><p>这样我们在清楚了Spring和SpringMVC的父子容器关系、以及扫描注册的原理以后，根据官方建议我们就可以很好把不同类型的Bean分配到不同的容器中进行管理。再出现Bean找不到或者SpringMVC不能跳转以及事务的配置失效的问题，我们就可以很快的定位以及解决问题了。很开心，有木有~</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> Spring容器中注册非<span class="token annotation punctuation">@controller</span>注解的Bean <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan base<span class="token operator">-</span><span class="token keyword">package</span><span class="token operator">=</span><span class="token string">"com.hafiz.www"</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>context<span class="token operator">:</span>exclude<span class="token operator">-</span>filter type<span class="token operator">=</span><span class="token string">"annotation"</span> expression<span class="token operator">=</span><span class="token string">"org.springframework.stereotype.Controller"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan<span class="token operator">></span>
+</code></pre>
+<p>2、applicationContext-MVC.xml中配置</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> SpringMVC容器中只注册带有<span class="token annotation punctuation">@controller</span>注解的Bean <span class="token operator">--</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan base<span class="token operator">-</span><span class="token keyword">package</span><span class="token operator">=</span><span class="token string">"com.hafiz.www"</span> use<span class="token operator">-</span><span class="token keyword">default</span><span class="token operator">-</span>filters<span class="token operator">=</span><span class="token string">"false"</span><span class="token operator">></span>
+  <span class="token operator">&lt;</span>context<span class="token operator">:</span>include<span class="token operator">-</span>filter type<span class="token operator">=</span><span class="token string">"annotation"</span> expression<span class="token operator">=</span><span class="token string">"org.springframework.stereotype.Controller"</span> <span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan<span class="token operator">></span>
+</code></pre>
+<h3 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h3><p>这样我们在清楚了Spring和SpringMVC的父子容器关系、以及扫描注册的原理以后，根据官方建议我们就可以很好把不同类型的Bean分配到不同的容器中进行管理。再出现Bean找不到或者SpringMVC不能跳转以及事务的配置失效的问题，我们就可以很快的定位以及解决问题了。很开心，有木有~</p>
 
             </div>
             <hr/>
@@ -980,12 +987,11 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发 
-今天来学习AOP原理。
-
-我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。
-
-@EnableAspectJAutoProxy1）点击@</div>
+                    <div class="summary">
+                      
+                                今天来学习AOP原理
+                      
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
@@ -1030,10 +1036,11 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Spring注解开发  
-今天学习AOP的开发与使用
-AOP介绍AOP是Spring 框架的一个关键组件，全称为Aspect-Oriented-Programming（面向切面编程），目前已是一种比较成熟的编程方式。
-AOP采取横向抽取机制</div>
+                    <div class="summary">
+                       
+                                今天学习Spring-annotation的AOP开发与使用
+                      
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-18
@@ -1213,7 +1220,7 @@ AOP采取横向抽取机制</div>
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">290.9k</span>
+                <span class="white-color">289.4k</span>
             
 
             
