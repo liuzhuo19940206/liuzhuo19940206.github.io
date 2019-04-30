@@ -476,7 +476,7 @@ HashMap的实现原理HashMap的主干是一个Entry数组。Entry是HashMap的�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>帮助大家理解，HashMap的底层原理，方便大家面试<br><a id="more"></a></p>
+                <p>帮助大家理解，HashMap的底层原理，方便大家面试</p>
 <h3 id="HashMap的实现原理"><a href="#HashMap的实现原理" class="headerlink" title="HashMap的实现原理"></a>HashMap的实现原理</h3><p>HashMap的主干是一个Entry数组。Entry是HashMap的基本组成单元，每一个Entry包含一个key-value键值对。</p>
 <pre><code>//HashMap的主干数组，可以看到就是一个Entry数组，初始值为空数组{}，主干数组的长度一定是2的次幂，至于为什么这么做，后面会有详细分析。
 transient Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;
@@ -497,7 +497,7 @@ transient Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;
             value = v;
             next = n;
         } 
-</code></pre><p>所以，HashMap的整体结构如下:<br><img src="/images/QQ截图20190114130741.png"></p>
+</code></pre><p>所以，HashMap的整体结构如下:<br><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190114130741.png"></p>
 <p>简单来说，HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么对于查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度为O(n)，首先遍历链表，存在即覆盖，否则新增；对于查找操作来讲，仍需遍历链表，然后通过key对象的equals方法逐一比对查找。所以，性能考虑，HashMap中的链表出现越少，性能才会越好。</p>
 <p><strong>几个重要字段：</strong></p>
 <pre><code>//实际存储的key-value键值对的个数
@@ -602,7 +602,7 @@ final int hash(Object k) {
     __________________
         0  0  0  1  0    = 2
 </code></pre><p>最终计算出的index=2。有些版本的对于此处的计算会使用 取模运算，也能保证index一定在数组范围内，不过位运算对计算机来说，性能更高一些（HashMap中有大量位运算）。</p>
-<p>所以最终存储位置的确定流程是这样的：<br><img src="/images/QQ截图20190114133102.png"></p>
+<p>所以最终存储位置的确定流程是这样的：<br><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190114133102.png"></p>
 <p>再来看看<strong>addEntry</strong>的实现：</p>
 <pre><code>void addEntry(int hash, K key, V value, int bucketIndex) {
         // 如果当前 HashMap 大小已经达到了阈值，并且新值要插入的数组位置已经有元素了，那么要扩容
@@ -662,11 +662,11 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
     }
 </code></pre><p>这个方法将老数组中的数据逐个链表地遍历，扔到新的扩容后的数组中，我们的数组索引位置的计算是通过 对key值的hashcode进行hash扰乱运算后，再通过和 length-1进行位运算得到最终数组索引位置。</p>
 <p>hashMap的数组长度一定保持2的次幂，比如16的二进制表示为 10000，那么length-1就是15，二进制为01111，同理扩容后的数组长度为32，二进制表示为100000，length-1为31，二进制表示为011111。从下图可以我们也能看到这样会<strong>保证低位全为1</strong>，而扩容后只有一位差异，也就是多出了最左位的1，这样在通过 h&amp;(length-1)的时候，只要h对应的最左边的那一个差异位为0，就能保证得到的新的数组索引和老数组索引一致(大大减少了之前已经散列良好的老数组的数据位置重新调换)，个人理解。</p>
-<p><img src="/images/QQ截图20190114134358.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190114134358.png"></p>
 <p>还有，数组长度保持2的次幂，length-1的低位都为1，会使得获得的数组索引index更加均匀，比如：</p>
-<p><img src="/images/QQ截图20190114134446.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190114134446.png"></p>
 <p>我们看到，上面的&amp;运算，高位是不会对结果产生影响的（hash函数采用各种位运算可能也是为了使得低位更加散列），我们只关注低位bit，如果低位全部为1，那么对于h低位部分来说，任何一位的变化都会对结果产生影响，也就是说，要得到index=21这个存储位置，h的低位只有这一种组合。这也是数组长度设计为必须为2的次幂的原因。</p>
-<p><img src="/images/QQ截图20190114134636.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190114134636.png"></p>
 <p>如果不是2的次幂，也就是低位不是全为1此时，要使得index=21，h的低位部分不再具有唯一性了，哈希冲突的几率会变的更大，同时，index对应的这个bit位无论如何不会等于1了，而对应的那些数组位置也就被白白浪费了。(如上图)</p>
 <hr>
 <h4 id="get过程分析"><a href="#get过程分析" class="headerlink" title="get过程分析"></a>get过程分析</h4><pre><code> public V get(Object key) {
@@ -1180,8 +1180,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                接着上篇的HashMap的原理分析后，今天来学ConcurrentHashMap的实现原理
-在现实开发中，不可避免地会碰到一些多线程并发访问
+                                ConcurrentHashMap的实现原理
                       
                     </div>
                     <div class="publish-info">
@@ -1239,7 +1238,6 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
                     <div class="summary">
                        
                                 浅谈java中的原子类实现原理
-在谈谈java中的volatile一文中，我们提到过并发包中的原子类可以解决类似num++这样的复合类操作的
                       
                     </div>
                     <div class="publish-info">
@@ -1429,7 +1427,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

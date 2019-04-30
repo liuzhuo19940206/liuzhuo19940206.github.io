@@ -476,14 +476,14 @@ rdb恢复数据的速度是比aof快的，aof是通过将每次执行的操作">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>接着上篇的内容，来讲述redis中的aof日志持久化操作<br><a id="more"></a></p>
+                <p>接着上篇的内容，来讲述redis中的aof日志持久化操作</p>
 <p>通过上篇，我们知道了redis中的rdb快照持久化操作，但是由于其存在丢失数据的现象，所以提出了aof持久化的操作。</p>
 <p>rdb恢复数据的速度是比aof快的，aof是通过将每次执行的操作命令，写入到一个文件中保存起来，当作持久化的。</p>
-<h2 id="aof的原理"><a href="#aof的原理" class="headerlink" title="aof的原理"></a>aof的原理</h2><p><img src="/images/QQ截图20181231154133.png"></p>
+<h2 id="aof的原理"><a href="#aof的原理" class="headerlink" title="aof的原理"></a>aof的原理</h2><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231154133.png"></p>
 <p>现在提出两个问题：</p>
 <p>1:每次执行一次命令都要写入到aof文件中吗?<br>2:某key操作100次,产生100行记录,aof文件会很大,怎么解决?</p>
 <p>首先先思考，在后面的学习中，会依次解决这两个问题。</p>
-<h2 id="aof的配置选项"><a href="#aof的配置选项" class="headerlink" title="aof的配置选项"></a>aof的配置选项</h2><p>打开redis.conf文件<br><img src="/images/QQ截图20181231154509.png"><br><img src="/images/QQ截图20181231154616.png"><br><img src="/images/QQ截图20181231154717.png"></p>
+<h2 id="aof的配置选项"><a href="#aof的配置选项" class="headerlink" title="aof的配置选项"></a>aof的配置选项</h2><p>打开redis.conf文件<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231154509.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231154616.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231154717.png"></p>
 <p>主要关注aof中几个重点配置选项</p>
 <pre><code>appendonly no        # 是否仅要日志,就是是否开启aof日志
 
@@ -495,29 +495,29 @@ no-appendfsync-on-rewrite no     # 当重写aof文件时是否同步最新数据
 auto-AOF-rewrite-percentage 100  # 当前aof文件比上次重写时文件大N%时重写
 auto-AOF-rewrite-min-size 64mb   # aof重写至少要达到的大小
 
-</code></pre><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>1）开启aof日志，并设置aof文件的保存目录以及名字<br><img src="/images/QQ截图20181231155858.png"></p>
+</code></pre><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p>1）开启aof日志，并设置aof文件的保存目录以及名字<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231155858.png"></p>
 <p>2）开启redis服务器</p>
-<p>如果已经开启了，就杀死：<code>pkill -9 redis</code><br><img src="/images/QQ截图20181231160138.png"></p>
-<p>重新开启redis服务器，使用刚刚修改后的redis.conf配置文件<br><img src="/images/QQ截图20181231160423.png"><br><img src="/images/QQ截图20181231160619.png"><br><img src="/images/QQ截图20181231160709.png"></p>
-<p>3）开启redis的客户端<br><img src="/images/QQ截图20181231161005.png"><br><img src="/images/QQ截图20181231161144.png"></p>
+<p>如果已经开启了，就杀死：<code>pkill -9 redis</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231160138.png"></p>
+<p>重新开启redis服务器，使用刚刚修改后的redis.conf配置文件<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231160423.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231160619.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231160709.png"></p>
+<p>3）开启redis的客户端<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231161005.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231161144.png"></p>
 <hr>
 <p>如果aof是每执行一次命令，就向aof文件插入一条数据的话，那就不能体现redis快速缓存的优势了，因为每次都是写入到磁盘上面，和mysql一样了。</p>
 <p>为了平衡 快速读取数据与持久化 ，aof所以出现了：appendfsync 配置。</p>
 <p>根据你的实际需求，设置appendfsync的值，如果数据很重要，不能丢失一丁点，那就always。一般使用：everysec。</p>
 <hr>
-<p>我们也注意到了，每次对同一个key执行操作，都会写入到aof文件中。<br><img src="/images/QQ截图20181231161921.png"></p>
+<p>我们也注意到了，每次对同一个key执行操作，都会写入到aof文件中。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231161921.png"></p>
 <p>如果num想加到100，那么aof文件中就会出现很多incr指令，这样不是很浪费空间吗？aof文件会瞬间增涨很多，怎么解决呢？</p>
 <p>redis中，就出现了aof重写的方法。我们知道num最后的状态是100，那么直接存指令set num 100就好了，就不用存在那么多的incr指令，节约空间。</p>
 <p>使用：<code>auto-AOF-rewrite-percentage 和 auto-AOF-rewrite-min-size</code></p>
 <p>如果不使用：auto-AOF-rewrite-min-size的话，前期aof文件很小，每次写入一个命令，都是之前文件的100%倍，那样的话，每次都会重写，因此出现了设置aof文件最小重写的大小，当到达最小要求时，才会重写。</p>
 <p>现在我们来验证这个配置。</p>
 <p>修改aof的最小重写大小，这里是为了方便演示，所以设置成了20mb。</p>
-<p><img src="/images/QQ截图20181231162751.png"></p>
-<p>重启redis服务器<br><img src="/images/QQ截图20181231162920.png"></p>
-<p>使用测试redis性能的执行，来随机执行20000条指令<br><img src="/images/QQ截图20181231163103.png"><br><img src="/images/QQ截图20181231163337.png"></p>
-<p>接着再执行20000条数据。<br><img src="/images/QQ截图20181231163530.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231162751.png"></p>
+<p>重启redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231162920.png"></p>
+<p>使用测试redis性能的执行，来随机执行20000条指令<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231163103.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231163337.png"></p>
+<p>接着再执行20000条数据。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231163530.png"></p>
 <p>在右边的客户端执行redis命令时，左边的一直测试aof文件的大小，发现aof文件一开始是从13M开始增加，当超过20M后，就会突然变小成4.3M了，这是因为触发了aof的重写命令。</p>
-<p>也可以直接执行aof重写的命令来重写：<code>bgrewriteaof</code><br><img src="/images/QQ截图20181231164124.png"></p>
+<p>也可以直接执行aof重写的命令来重写：<code>bgrewriteaof</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231164124.png"></p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>注: 1）在dump rdb过程中 , aof如果停止同步 , 会不会丢失?<br>答: 不会 , 所有的操作缓存在内存的队列里, dump完成后,统一操作.</p>
 <p>注: 2）aof重写是指什么?<br>答: aof重写是指把内存中的数据,逆化成命令,写入到.aof日志里.<br>以解决 aof日志过大的问题.</p>
 <p><strong>问: 3）如果rdb文件,和aof文件都存在,优先用谁来恢复数据?</strong><br>答: <font color="red"><strong>aof</strong></font></p>
@@ -526,16 +526,16 @@ auto-AOF-rewrite-min-size 64mb   # aof重写至少要达到的大小
 <hr>
 <p>演示第三个问题。</p>
 <p>当rdb文件和aof文件同时存在时，会使用aof来恢复数据！！！</p>
-<p>1）首先查看是否存在rdb文件。<br><img src="/images/QQ截图20181231164640.png"></p>
-<p>2）删除aof文件，避免干扰<br><img src="/images/QQ截图20181231164851.png"></p>
-<p>3）查看现在redis缓存中存在哪些数据<br><img src="/images/QQ截图20181231164942.png"></p>
+<p>1）首先查看是否存在rdb文件。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231164640.png"></p>
+<p>2）删除aof文件，避免干扰<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231164851.png"></p>
+<p>3）查看现在redis缓存中存在哪些数据<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231164942.png"></p>
 <p>存在site数据。</p>
-<p>4）杀死redis服务器，重启redis服务器<br><img src="/images/QQ截图20181231165054.png"><br><img src="/images/QQ截图20181231165310.png"></p>
+<p>4）杀死redis服务器，重启redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231165054.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231165310.png"></p>
 <p>为啥site不存了呢？这是因为，我们开启了aof日志，但是，目前aof文件中还没有保存任何数据，所以恢复数据的时候，啥也没有！</p>
-<p>查看aof文件的保存目录：<br><img src="/images/QQ截图20181231165538.png"></p>
-<p>现在删除aof文件，并关闭aof日志。<br><img src="/images/QQ截图20181231165659.png"><br><img src="/images/QQ截图20181231165801.png"></p>
-<p>重启redis服务器<br><img src="/images/QQ截图20181231170047.png"></p>
-<p>此时site数据又存在了，这是因为，我们关闭了aof日志，此时是依靠rdb文件来恢复数据的。<br><img src="/images/QQ截图20181231170228.png"></p>
+<p>查看aof文件的保存目录：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231165538.png"></p>
+<p>现在删除aof文件，并关闭aof日志。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231165659.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231165801.png"></p>
+<p>重启redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231170047.png"></p>
+<p>此时site数据又存在了，这是因为，我们关闭了aof日志，此时是依靠rdb文件来恢复数据的。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day07/QQ截图20181231170228.png"></p>
 
             </div>
             <hr/>
@@ -979,8 +979,7 @@ auto-AOF-rewrite-min-size 64mb   # aof重写至少要达到的大小
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。
-集群的作用1:  主从备份 防止主机宕机2:  读写分离,
+                                redis中的集群部署
                       
                     </div>
                     <div class="publish-info">
@@ -1037,8 +1036,7 @@ auto-AOF-rewrite-min-size 64mb   # aof重写至少要达到的大小
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习redis中的持久化操作，这是redis缓存一大优势。
-rdb的工作原理每隔 N分钟 或 N次写 操作后, 从内存dump数据形成
+                                redis中的rdb持久化操作
                       
                     </div>
                     <div class="publish-info">
@@ -1228,7 +1226,7 @@ rdb的工作原理每隔 N分钟 或 N次写 操作后, 从内存dump数据形�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

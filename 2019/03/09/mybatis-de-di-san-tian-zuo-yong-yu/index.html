@@ -468,7 +468,7 @@ SqlSessio">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>探讨Mybatis中的各个对象的作用域和生命周期<br><a id="more"></a></p>
+                <p>探讨Mybatis中的各个对象的作用域和生命周期</p>
 <p>今天主要来正确的理解Mybatis中的SqlSessionFactoryBuilder、SqlSessionFactory、SqlSession和Mapper的生命周期。</p>
 <h3 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h3><p>SqlSessionFactoryBuilder是利用xml和java编码获取资源来构建SqlSessionFactory的，通过它可以构建多个SqlSessionFactory，它的作用就是一个构建器，一旦我们构建了SqlSessionFactory，它的作用就结束了，失去了存在的意义。因此 SqlSessionFactoryBuilder 实例的最佳作用域是<strong><code>方法作用域（也就是局部方法变量）</code></strong>。你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但是最好还是不要让其一直存在以保证所有的 XML 解析资源开放给更重要的事情。</p>
 <h3 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h3><p>SqlSessionFactory的作用就是创建SqlSession，而SqlSession就是一个会话，相当于JDBC中的Connection对象。每次应用程序访问数据库，我们就需要通过SqlSessionFactory创建的Sqlsession来访问数据库，所以SqlSessionFactory应该在Mybatis项目的整个生命周期中，而如果我们多次创建同一个数据库的SqlSessionFactory，则每次创建都会打开更多的数据库连接（Connection）资源，那么连接资源就会很快消耗殆尽。</p>
@@ -491,10 +491,10 @@ try {
   session.close();
 }
 </code></pre><hr>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有了上面的描述，我们已经清楚了Mybatis组件的生命周期了，如下图所示：<br><img src="/images/mybatis/QQ截图20190309202349.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有了上面的描述，我们已经清楚了Mybatis组件的生命周期了，如下图所示：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309202349.png"></p>
 <hr>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>这里简单的做一个实例，它可以帮助我们熟悉Mybatis主要组件的用法。我们需要满足Mybatis各个组件的生命周期。首先SqlSessionFactory是单例，然后让它生成SqlSession，进而拿到映射器来完成我们的业务逻辑。</p>
-<p>使用IDEA创建一个简单的maven项目，项目的整体结构如下：<br><img src="/images/mybatis/QQ截图20190309212333.png" style="width:50%"></p>
+<p>使用IDEA创建一个简单的maven项目，项目的整体结构如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309212333.png" style="width:50%"></p>
 <p>java源码中：</p>
 <ul>
 <li><p>com.liuzhuo.entities  =====&gt; 存放POJO对象</p>
@@ -706,9 +706,9 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
 
 }
 </code></pre><p>本地的数据库为school：</p>
-<p>表为user：<br><img src="/images/mybatis/QQ截图20190309213806.png"></p>
+<p>表为user：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309213806.png"></p>
 <hr>
-<p>运行MybatisMain类中的main方法：<br><img src="/images/mybatis/QQ截图20190309213950.png"></p>
+<p>运行MybatisMain类中的main方法：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309213950.png"></p>
 <p>打印出了日志信息，可以看到sql语句的打印信息，获取到了数据库中的数据。</p>
 
             </div>
@@ -1153,8 +1153,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。
-Mybatis配置文件层次结构先来
+                                讲解Mybatis中的主配置文件
                       
                     </div>
                     <div class="publish-info">
@@ -1203,8 +1202,7 @@ Mybatis配置文件层次结构先来
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习Mybatis的基本用法，带大家入门。
-开发环境学习编程是一门实操的科学，只有一边敲代码一边学习才能有更好的效果，所以需要搭建一个
+                                Mybatis的基本用法，带大家入门
                       
                     </div>
                     <div class="publish-info">
@@ -1386,7 +1384,7 @@ Mybatis配置文件层次结构先来
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

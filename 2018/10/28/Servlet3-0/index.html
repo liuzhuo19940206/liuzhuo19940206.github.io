@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Servlet3.0, 解忧杂货店">
-    <meta name="description" content="以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注入，还有运行时的组件式插拔开发。
-注意： ser">
+    <meta name="description" content="以前，不管是编写servlet、filter 和 Listener等等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用注解就可以完成组件的注入，还有运行时的组件式插拔开发。
+注">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -475,11 +475,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>以前，编写servlet，filter，Listener等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用<strong>注解</strong>就可以完成组件的注入，还有运行时的组件式插拔开发。</p>
+                <p>以前，不管是编写servlet、filter 和 Listener等等，还是编写SpringMVC的前端控制器，都是在web.xml中编写的。Servlet3.0版本之后，只需要使用<strong>注解</strong>就可以完成组件的注入，<font color="red">还有运行时的组件式插拔开发。</font></p>
 <p><strong>注意：</strong> servlet3.0的容器Tomcat 必须是<strong>7.0.x以上版本</strong>才能使用servlet3.0。</p>
 <h3 id="创建dynamic-Web项目"><a href="#创建dynamic-Web项目" class="headerlink" title="创建dynamic Web项目"></a>创建dynamic Web项目</h3><p>我这里使用的是idea，大家也可以使用eclipse开发。大家估计都对eclipse开发熟悉，如果对idea创建动态web项目不熟悉的话，可以看我另一篇博客<a href="/2018/10/28/idea-chuang-jian-dong-tai-web-xiang-mu/">idea 创建动态Web项目</a>。</p>
-<p>创建好工程后如下：<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029114758.png" style="width:50%"></p>
-<h4 id="使用web-xml的方式"><a href="#使用web-xml的方式" class="headerlink" title="使用web.xml的方式"></a>使用web.xml的方式</h4><p>1）在src下创建com.liuzhuo.servlet包，并创建HelloServlet</p>
+<p>创建好工程后如下：<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029114758.png" style="width:50%"></p>
+<h4 id="使用web-xml的方式"><a href="#使用web-xml的方式" class="headerlink" title="使用web.xml的方式"></a>使用web.xml的方式</h4><p>1）在src下创建com.liuzhuo.servlet包，并创建 HelloServlet（继承 HttpServlet）</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
     <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doPost</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
         <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">doPost</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -519,8 +519,8 @@
     &lt;/servlet-mapping&gt;
 
 &lt;/web-app&gt;
-</code></pre><p>4) 运行web应用<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029124916.png"></p>
-<p>点击hello的超链接<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029124951.png"></p>
+</code></pre><p>4) 运行web应用<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029124916.png"></p>
+<p>点击hello的超链接<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029124951.png"></p>
 <p>以上就是servlet3.0之前的版本开发web工程的演示。</p>
 <hr>
 <h4 id="不使用web-xml-servlet3-0"><a href="#不使用web-xml-servlet3-0" class="headerlink" title="不使用web.xml(servlet3.0)"></a>不使用web.xml(servlet3.0)</h4><p>1) 去掉web.xml中的servlet的配置：</p>
@@ -531,7 +531,7 @@
          version=&quot;3.1&quot;&gt;
 
 &lt;/web-app&gt;
-</code></pre><p>2) 此时再运行web项目，点击hello超链接<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029125311.png"></p>
+</code></pre><p>2) 此时再运行web项目，点击hello超链接<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029125311.png"></p>
 <p>3）使用@WebServlet注解</p>
 <p>在HelloServlet类上面写上@WebServlet注解<br>name : 就是servlet的名字<br>value：就是映射的路径</p>
 <p>@WebServlet上的name  &lt;==&gt; <code>&lt;servlet-name&gt;hello&lt;/servlet-name&gt;</code><br>@WebServlet上的value &lt;==&gt; <code>&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</code></p>
@@ -548,7 +548,7 @@
 </code></pre>
 <p>4) 重新启动web项目</p>
 <p>会发现，项目启动正常了。</p>
-<p><strong>ps：在idea中，有一个web的窗口，在编辑器的左下角，点开，会看见当前web项目的映射信息，很方便排错。</strong><br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029130641.png" style="width:50%"></p>
+<p><strong>ps：在idea中，有一个web的窗口，在编辑器的左下角，点开，会看见当前web项目的映射信息，很方便排错。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029130641.png" style="width:50%"></p>
 <p>其他注解：</p>
 <p>@WebFilter   ：注解过滤器<br>@WebListener ：注解监听器<br>@WebInitParam：注解初始化的参数</p>
 <p>具体的使用情况：看官方文档即可。</p>
@@ -560,7 +560,7 @@
 <p>文件中的内容就是：ServletContainerInitializer实现类的<strong>全类名</strong>。</p>
 <p>总结：容器在启动的时候，会扫描当前应用中每一个jar包里面的：META-INF/services/javax.servlet.ServletContainerInitializer文件中ServletContainerInitializer实现类，启动并运行这个实现类中的方法和传入感兴趣的类型。</p>
 <p>3）测试</p>
-<p>3.1) 这里就不创建jar包了，直接在src下创建META-INF/services目录，然后在该目录下，创建javax.servlet.ServletContainerInitializer文件。<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029135845.png" style="width:50%"></p>
+<p>3.1) 这里就不创建jar包了，直接在src下创建META-INF/services目录，然后在该目录下，创建javax.servlet.ServletContainerInitializer文件。<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029135845.png" style="width:50%"></p>
 <p><strong>注意：目录和文件名称不要打错！！！</strong></p>
 <p>3.2）在src下的com.liuzhuo.servlet下创建MyServletContainerInitializer，并实现ServletContainerInitializer接口。</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@HandlesTypes</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token punctuation">{</span>HelloService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -580,9 +580,9 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>3.3) 在src下的com.liuzhuo.service下创建<br>HelloService：接口<br>HelloServiceExt：实现了HelloService的子接口<br>AbstractHelloService：实现了HelloService的抽象类<br>HelloServiceImpl：HelloService的实现类<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029140510.png" style="width:50%"></p>
-<p>3.4）将MyServletContainerInitializer的全类名添加到：javax.servlet.ServletContainerInitializer文件中<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029140722.png"></p>
-<p>3.5）运行web项目<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029140828.png"></p>
+<p>3.3) 在src下的com.liuzhuo.service下创建<br>HelloService：接口<br>HelloServiceExt：实现了HelloService的子接口<br>AbstractHelloService：实现了HelloService的抽象类<br>HelloServiceImpl：HelloService的实现类<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029140510.png" style="width:50%"></p>
+<p>3.4）将MyServletContainerInitializer的全类名添加到：javax.servlet.ServletContainerInitializer文件中<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029140722.png"></p>
+<p>3.5）运行web项目<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029140828.png"></p>
 <p>能看到，输出感兴趣的类型：</p>
 <pre><code>class com.liuzhuo.service.HelloServiceImpl
 interface com.liuzhuo.service.HelloServiceExt
@@ -592,7 +592,7 @@ class com.liuzhuo.service.AbstractHelloService
 <h3 id="使用ServletContainerInitializer给容器添加组件"><a href="#使用ServletContainerInitializer给容器添加组件" class="headerlink" title="使用ServletContainerInitializer给容器添加组件"></a>使用ServletContainerInitializer给容器添加组件</h3><p>根据上文，我们已经了解到了，我们使用@WebServlet注解，给容器添加我们自己写的Servlet类，但是无法添加第三方的组件。只能使用Web.xml文件来添加。</p>
 <p>现在，我们了解了Servlet3.0的共享库和运行时机制，可以使用ServletContainerInitializer的机制来注册Web组件(Servlet、Filter、Listener)，不必使用Web.xml配置文件。</p>
 <p>接着现有的项目继续开发。</p>
-<p>1）在com.liuzhuo.servlet下创建UserServlet、UserFilter、UserListener三大组件<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029143900.png" style="width:50%"></p>
+<p>1）在com.liuzhuo.servlet下创建UserServlet、UserFilter、UserListener三大组件<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029143900.png" style="width:50%"></p>
 <p>UserServlet:</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
 
@@ -672,11 +672,11 @@ class com.liuzhuo.service.AbstractHelloService
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>3) 运行Web项目<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029150012.png"></p>
+<p>3) 运行Web项目<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029150012.png"></p>
 <p>说明userListener监听器注册成功。</p>
-<p>在浏览器中输入：<code>http://localhost:8080/user</code><br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029150247.png"><br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029150400.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/user</code><br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029150247.png"><br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029150400.png"></p>
 <p>说明UserServlet和userFliter注册也成功了。</p>
-<p>停止Web项目：<br><img src="http://ppa0sabb3.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181029150554.png"></p>
+<p>停止Web项目：<br><img src="https://gakkil.gitee.io/gakkil-image/servlet3.0/QQ%E6%88%AA%E5%9B%BE20181029150554.png"></p>
 <p>以上，就是不使用Web.xml的注册Servlet、Filter、Listener三大组件的过程，使用硬编码的形式。</p>
 <p><strong>注意：servlet3.0动态注册，只能在webapp启动时进行注册,可能是为了安全考虑吧.不能在运行时完成对servlet的注册和销毁</strong></p>
 <p>在初始化情况下的注册Servlet组件有除了上面的方式，还有另外一种方式：<br>就是在实现<code>ServletContextListener接口</code> , 在<code>contextInitialized</code>方法中完成注册.</p>
@@ -1371,7 +1371,7 @@ class com.liuzhuo.service.AbstractHelloService
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

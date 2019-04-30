@@ -485,15 +485,15 @@
 <p><strong>3）、自己编写业务代码；</strong></p>
 <p>想要使用SpringBoot的自动配置的功能，我们必须熟知SpringBoot的自动配置的原理。</p>
 <h4 id="自动配置原理"><a href="#自动配置原理" class="headerlink" title="自动配置原理"></a>自动配置原理</h4><p>这个场景SpringBoot帮我们配置了什么？能不能修改？能修改哪些配置？能不能扩展？xxx</p>
-<p>自动配置原理，一般我们需要看：<strong>spring-boot-autoconfigure</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105134252.png" style="width:50%"></p>
+<p>自动配置原理，一般我们需要看：<strong>spring-boot-autoconfigure</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105134252.png" style="width:50%"></p>
 <p>然后再看我们想要的模块里面的：</p>
 <pre class=" language-java"><code class="language-java">xxxxAutoConfiguration<span class="token operator">:</span> 帮我们给容器中自动配置组件；
 xxxxProperties<span class="token operator">:</span>        配置类来封装配置文件的内容；
 </code></pre>
-<p>比如：Web模块，看：DispatchServletAutoConfiguration<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105134739.png" style="width:50%"></p>
-<h2 id="SpringBoot对静态资源的映射规则"><a href="#SpringBoot对静态资源的映射规则" class="headerlink" title="SpringBoot对静态资源的映射规则"></a>SpringBoot对静态资源的映射规则</h2><p>创建我们的今天的Web项目：（添加Web模块）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105141110.png"></p>
+<p>比如：Web模块，看：DispatchServletAutoConfiguration<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105134739.png" style="width:50%"></p>
+<h2 id="SpringBoot对静态资源的映射规则"><a href="#SpringBoot对静态资源的映射规则" class="headerlink" title="SpringBoot对静态资源的映射规则"></a>SpringBoot对静态资源的映射规则</h2><p>创建我们的今天的Web项目：（添加Web模块）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105141110.png"></p>
 <p>在：<strong>spring-boot-autoconfigurejar</strong> 下：</p>
-<p>web下的 <strong>WebMvcAutoConfiguration</strong>：专门为我们配置了默认的Web应用的配置：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105141946.png"></p>
+<p>web下的 <strong>WebMvcAutoConfiguration</strong>：专门为我们配置了默认的Web应用的配置：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105141946.png"></p>
 <p><strong>设置：静态资源的相关配置的类：</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.resources"</span><span class="token punctuation">,</span> ignoreUnknownFields <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResourceProperties</span> <span class="token keyword">implements</span> <span class="token class-name">ResourceLoaderAware</span><span class="token punctuation">,</span> InitializingBean <span class="token punctuation">{</span>
@@ -547,19 +547,19 @@ xxxxProperties<span class="token operator">:</span>        配置类来封装配
 <p>webjars：以jar包的方式引入静态资源.</p>
 <p><a href="https://www.webjars.org/" target="_blank" rel="noopener">webjars官网</a></p>
 <p>例子：引入jQuery的静态资源。</p>
-<p>打开webjars官网，找到jQuery的Maven配置信息：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105143244.png"></p>
+<p>打开webjars官网，找到jQuery的Maven配置信息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105143244.png"></p>
 <p>将拷贝的jQuery的Maven配置，导入到我们的项目中。</p>
 <pre><code>        &lt;dependency&gt;
             &lt;groupId&gt;org.webjars&lt;/groupId&gt;
             &lt;artifactId&gt;jquery&lt;/artifactId&gt;
             &lt;version&gt;3.3.1-1&lt;/version&gt;
         &lt;/dependency&gt;
-</code></pre><p>在我们的依赖jar中，找到jQuery的依赖：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105143645.png" style="width:50%"></p>
+</code></pre><p>在我们的依赖jar中，找到jQuery的依赖：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105143645.png" style="width:50%"></p>
 <p>发现，这个依赖的jar的目录格式，也是 <code>classpath:/META-INF/resources/webjars/</code></p>
 <font color="red">所以：当我们访问/webjars/**的url时，SpringBoot会帮我们在classpath:/META-INF/resources/webjars/选择webjars的静态jar资源。</font>
 
 <p>启动我们的项目：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/webjars/jquery/3.3.1-1/jquery.js</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105144226.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/webjars/jquery/3.3.1-1/jquery.js</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105144226.png"></p>
 <p><strong>webjar的静态资源访问成功！</strong></p>
 <h3 id="静态资源的映射原理"><a href="#静态资源的映射原理" class="headerlink" title="静态资源的映射原理"></a>静态资源的映射原理</h3><p><code>/**  访问当前项目的任何资源，都去（静态资源的文件夹）找映射</code></p>
 <pre class=" language-java"><code class="language-java">String staticPathPattern <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>mvcProperties<span class="token punctuation">.</span><span class="token function">getStaticPathPattern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -589,10 +589,10 @@ xxxxProperties<span class="token operator">:</span>        配置类来封装配
 <p><strong>“classpath:/public/“</strong></p>
 <p>这里的”classpath”：就相当于我们项目的java、resources目录。</p>
 <p>印证我们的默认的静态资源访问：</p>
-<p>在以上的目录中随意放一张照片：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105150445.png" style="width:50%"></p>
+<p>在以上的目录中随意放一张照片：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105150445.png" style="width:50%"></p>
 <p>三张，不同的照片，但是名字都是123.jpg的照片。</p>
 <p>启动项目，在浏览器中输入：<code>http://localhost:8080/123.jpg</code></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105150124.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105150124.png"></p>
 <p>出现的是”META-INF/resources”下的123.jpg照片。 </p>
 <p>删除”META-INF/resources”下的123.jpg照片. 再次访问是”classpath:/resources/“下的123.jpg</p>
 <p>依次类推：再是”classpath:/static/“、”classpath:/public/“。</p>
@@ -635,7 +635,7 @@ xxxxProperties<span class="token operator">:</span>        配置类来封装配
 <span class="token punctuation">}</span>
 </code></pre>
 <hr>
-<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>JSP、Velocity、Freemarker、Thymeleaf<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105153402.png"></p>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>JSP、Velocity、Freemarker、Thymeleaf<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105153402.png"></p>
 <p>Springboot默认是不支持jsp模板引擎的，因为SpringBoot是打成jar包，使用嵌入式的Tomcat容器。</p>
 <p>这里，我们使用SpringBoot官方推荐的 <strong>Thymeleaf </strong>模板引擎。语法更简单，功能更强大。</p>
 <h3 id="引入thymeleaf"><a href="#引入thymeleaf" class="headerlink" title="引入thymeleaf"></a>引入thymeleaf</h3><pre><code>  &lt;!-- Springboot默认是：2.1.6 的版本 --&gt;  
@@ -652,7 +652,7 @@ xxxxProperties<span class="token operator">:</span>        配置类来封装配
   &lt;/properties&gt;
 </code></pre><p><strong>注意，SpringBoot默认导入的thymeleaf只是2.1.6的版本，如果想切换更高的版本，查看thymeleaf的github中的发行版</strong></p>
 <p><a href="https://github.com/thymeleaf/thymeleaf/releases" target="_blank" rel="noopener">thymeleaf版本</a></p>
-<p><strong>thymeleaf‐layout‐dialect.version：布局的版本，请注意，如果使用thymeleaf3以上的版本，那么布局的版本必须是2.0.0以上</strong>：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105155420.png"></p>
+<p><strong>thymeleaf‐layout‐dialect.version：布局的版本，请注意，如果使用thymeleaf3以上的版本，那么布局的版本必须是2.0.0以上</strong>：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105155420.png"></p>
 <h3 id="Thymeleaf使用"><a href="#Thymeleaf使用" class="headerlink" title="Thymeleaf使用"></a>Thymeleaf使用</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.thymeleaf"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ThymeleafProperties</span> <span class="token punctuation">{</span>
 
@@ -689,7 +689,7 @@ xxxxProperties<span class="token operator">:</span>        配置类来封装配
 &lt;/html&gt;
 </code></pre><h3 id="语法规则"><a href="#语法规则" class="headerlink" title="语法规则"></a>语法规则</h3><p><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html" target="_blank" rel="noopener">thymeleaf参考手册</a></p>
 <p>1）th:text，改变当前元素里面的文本内容。</p>
-<p>th：任意html属性；来替换原生属性的值。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181105163700.png"></p>
+<p>th：任意html属性；来替换原生属性的值。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day04/QQ%E6%88%AA%E5%9B%BE20181105163700.png"></p>
 <p>2）表达式</p>
 <p><strong>Simple expressions:（表达式语法）</strong></p>
 <p>Variable Expressions: ${…}：获取变量值；OGNL；</p>
@@ -1455,7 +1455,7 @@ Special tokens:
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

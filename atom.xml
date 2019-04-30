@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-04-28T09:18:33.691Z</updated>
+  <updated>2019-04-30T15:05:51.508Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/"/>
     <id>http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/</id>
     <published>2019-04-28T06:53:01.000Z</published>
-    <updated>2019-04-28T09:18:33.691Z</updated>
+    <updated>2019-04-30T15:05:51.508Z</updated>
     
     <summary type="html">
     
@@ -55,11 +55,18 @@
     <link href="http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
     <id>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
     <published>2019-03-22T07:21:50.000Z</published>
-    <updated>2019-03-23T12:56:02.113Z</updated>
+    <updated>2019-04-30T15:01:50.115Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。&lt;/p&gt;
+&lt;h3 id=&quot;什么是注解&quot;&gt;&lt;a href=&quot;#什么是注解&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -79,11 +86,17 @@
     <link href="http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
     <id>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
     <published>2019-03-17T01:46:35.000Z</published>
-    <updated>2019-03-18T02:03:29.373Z</updated>
+    <updated>2019-04-30T14:59:28.425Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;MyBatis Generator：代码生成器，帮助我们自动生成基本的增、删、改、查的代码，方便我们开发，减少不必要的体力活动。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;MyBatis
+        
+      
     
     </summary>
     
@@ -99,11 +112,18 @@
     <link href="http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
     <id>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
     <published>2019-03-16T05:48:27.000Z</published>
-    <updated>2019-03-16T12:37:20.732Z</updated>
+    <updated>2019-04-30T14:58:45.968Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;/p&gt;
+&lt;p&gt;在Myba
+        
+      
     
     </summary>
     
@@ -119,11 +139,17 @@
     <link href="http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
     <id>http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
     <published>2019-03-15T07:21:39.000Z</published>
-    <updated>2019-03-15T12:48:12.713Z</updated>
+    <updated>2019-04-30T14:57:48.810Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis
+        
+      
     
     </summary>
     
@@ -139,11 +165,17 @@
     <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
     <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
     <published>2019-03-13T02:53:31.000Z</published>
-    <updated>2019-03-15T03:11:47.282Z</updated>
+    <updated>2019-04-30T14:55:47.694Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上述内容之外的知识点进行详细介绍。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;通过前面几篇博客的学习，我们已经了解了 MyBatis
+        
+      
     
     </summary>
     
@@ -159,11 +191,18 @@
     <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/"/>
     <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/</id>
     <published>2019-03-13T01:29:18.000Z</published>
-    <updated>2019-03-13T02:27:42.844Z</updated>
+    <updated>2019-04-30T14:55:07.968Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。&lt;/p&gt;
+&lt;p&gt;resultMap 元素是 MyBatis 中最重要最强大的元素。它可以让你从 90% 的 JDBC ResultSets 数据提取代码中解放出来, 并在一些情形下允许你做一些 JDBC
+        
+      
     
     </summary>
     
@@ -179,11 +218,18 @@
     <link href="http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
     <id>http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
     <published>2019-03-11T05:45:30.000Z</published>
-    <updated>2019-03-11T08:39:24.669Z</updated>
+    <updated>2019-04-30T14:54:00.891Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。&lt;/p&gt;
+&lt;p&gt;MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC
+        
+      
     
     </summary>
     
@@ -199,11 +245,18 @@
     <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/"/>
     <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</id>
     <published>2019-03-10T12:41:46.000Z</published>
-    <updated>2019-03-11T02:12:03.134Z</updated>
+    <updated>2019-04-30T14:52:24.056Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件&lt;/p&gt;
+&lt;h3 id=&quot;environments-配置环境&quot;&gt;&lt;a href=&quot;#environments-配置环境&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -219,11 +272,18 @@
     <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/"/>
     <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/</id>
     <published>2019-03-10T02:03:48.000Z</published>
-    <updated>2019-03-10T10:11:10.142Z</updated>
+    <updated>2019-04-30T14:50:39.137Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。&lt;/p&gt;
+&lt;h3 id=&quot;Mybatis配置文件层次结构&quot;&gt;&lt;a href=&quot;#Mybatis配置文件层次结构&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -239,11 +299,19 @@
     <link href="http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/"/>
     <id>http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/</id>
     <published>2019-03-09T11:36:51.000Z</published>
-    <updated>2019-03-10T02:04:09.044Z</updated>
+    <updated>2019-04-30T14:49:42.651Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;探讨Mybatis中的各个对象的作用域和生命周期&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;探讨Mybatis中的各个对象的作用域和生命周期&lt;/p&gt;
+&lt;p&gt;今天主要来正确的理解Mybatis中的SqlSessionFactoryBuilder、SqlSessionFactory、SqlSession和Mapper的生命周期。&lt;/p&gt;
+&lt;h3
+        
+      
     
     </summary>
     
@@ -259,11 +327,18 @@
     <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/"/>
     <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/</id>
     <published>2019-03-08T13:40:26.000Z</published>
-    <updated>2019-03-09T04:22:24.597Z</updated>
+    <updated>2019-04-30T14:48:23.045Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;今天来学习Mybatis的基本用法，带大家入门。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;今天来学习Mybatis的基本用法，带大家入门。&lt;/p&gt;
+&lt;h3 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -279,11 +354,18 @@
     <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/"/>
     <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</id>
     <published>2019-03-08T05:33:50.000Z</published>
-    <updated>2019-03-08T06:53:12.312Z</updated>
+    <updated>2019-04-30T14:46:29.884Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt; 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt; 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别。&lt;/p&gt;
+&lt;h3 id=&quot;jdbc的概述&quot;&gt;&lt;a href=&quot;#jdbc的概述&quot; class=&quot;headerlink&quot; title=&quot;jdbc的概述&quot;&gt;&lt;/a&gt;jdbc的概述&lt;/h3&gt;&lt;p&gt; 
+        
+      
     
     </summary>
     
@@ -299,11 +381,19 @@
     <link href="http://gakkil.gitee.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/"/>
     <id>http://gakkil.gitee.io/2019/01/22/java-zhong-de-fu-zi-lei-de-zhi-xing-shun-xu/</id>
     <published>2019-01-22T06:06:36.000Z</published>
-    <updated>2019-01-22T06:25:05.081Z</updated>
+    <updated>2019-04-30T14:43:44.924Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Java中的父子类执行顺序&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;Java中的父子类执行顺序&lt;/p&gt;
+&lt;h3 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h3&gt;&lt;p&gt;类的加载顺序。&lt;/p&gt;
+&lt;p&gt;(1)
+        
+      
     
     </summary>
     
@@ -323,11 +413,17 @@
     <link href="http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/"/>
     <id>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</id>
     <published>2019-01-18T05:55:01.000Z</published>
-    <updated>2019-01-18T06:21:32.261Z</updated>
+    <updated>2019-04-30T14:43:13.659Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的启动，这一块是最贴近我们开发的应用程序。在这一篇文章中，我们将要分析 tomcat 是如何解析并初始化应用程序定义的 Servlet、Filter、Listener 等&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp
+        
+      
     
     </summary>
     
@@ -347,11 +443,17 @@
     <link href="http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/"/>
     <id>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/</id>
     <published>2019-01-18T05:31:55.000Z</published>
-    <updated>2019-01-18T05:52:41.319Z</updated>
+    <updated>2019-04-30T14:42:10.528Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的ServletContextListener，以及Servlet呢？我们将在这篇文章进行分析。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的S
+        
+      
     
     </summary>
     
@@ -371,11 +473,18 @@
     <link href="http://gakkil.gitee.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/"/>
     <id>http://gakkil.gitee.io/2019/01/17/tomcat-de-qi-dong-fen-xi-er-catalina-chu-shi-hua/</id>
     <published>2019-01-17T02:19:30.000Z</published>
-    <updated>2019-01-17T03:17:39.010Z</updated>
+    <updated>2019-04-30T14:41:10.730Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Tomcat的启动分析：Catalina&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;Tomcat的启动分析：Catalina&lt;/p&gt;
+&lt;p&gt;Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootstrap的main方法，便可以启动tomcat进行代码调试和分析。Bootstrap是tomcat的入口，它会完成初始化C
+        
+      
     
     </summary>
     
@@ -395,11 +504,18 @@
     <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/"/>
     <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/</id>
     <published>2019-01-16T09:36:02.000Z</published>
-    <updated>2019-01-16T11:07:41.295Z</updated>
+    <updated>2019-04-30T14:40:08.027Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Tomcat组件生命周期管理:Lifecycle&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;Tomcat组件生命周期管理:Lifecycle&lt;/p&gt;
+&lt;p&gt;Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由Lifecycle控制组件的初始化、启动、销毁等动作，方便应用程序获取、释放某些资源，或者是触发某些特定的事件。Tomca
+        
+      
     
     </summary>
     
@@ -419,11 +535,19 @@
     <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/"/>
     <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/</id>
     <published>2019-01-16T08:35:23.000Z</published>
-    <updated>2019-01-16T09:33:38.661Z</updated>
+    <updated>2019-04-30T14:39:04.872Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~&lt;/p&gt;
+&lt;p&gt;tomcat的总体架构如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
     
     </summary>
     
@@ -443,11 +567,17 @@
     <link href="http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/"/>
     <id>http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/</id>
     <published>2019-01-15T05:34:42.000Z</published>
-    <updated>2019-01-15T06:28:54.225Z</updated>
+    <updated>2019-04-30T14:33:23.460Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;CAS，Compare And Swap，即比较并交换。Doug lea大神在同步组件中大量使用CAS技术鬼斧神工地实现了Java多线程的并发操作。&lt;br&gt;
+      
+      
+        
+        
+          &lt;p&gt;CAS，Compare And Swap，即比较并交换。Doug
+        
+      
     
     </summary>
     

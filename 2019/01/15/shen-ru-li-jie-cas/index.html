@@ -476,10 +476,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>CAS，Compare And Swap，即比较并交换。Doug lea大神在同步组件中大量使用CAS技术鬼斧神工地实现了Java多线程的并发操作。<br><a id="more"></a></p>
+                <p>CAS，Compare And Swap，即比较并交换。Doug lea大神在同步组件中大量使用CAS技术鬼斧神工地实现了Java多线程的并发操作。</p>
 <hr>
 <p>整个AQS同步组件、Atomic原子类操作等等都是以CAS实现的，甚至ConcurrentHashMap在1.8的版本中也调整为了CAS+Synchronized。可以说CAS是整个JUC的基石。</p>
-<p><img src="/images/QQ截图20190115133741.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190115133741.png"></p>
 <h3 id="CAS分析"><a href="#CAS分析" class="headerlink" title="CAS分析"></a>CAS分析</h3><p>在CAS中有三个参数：内存值V、旧的预期值A、要更新的值B，当且仅当内存值V的值等于旧的预期值A时，才会将内存值V的值修改为B，否则什么都不干。其伪代码如下：</p>
 <pre><code>if(this.value == A){
     this.value = B
@@ -533,9 +533,9 @@
 <h4 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h4><p>CAS需要检查操作值有没有发生改变，如果没有发生改变则更新。但是存在这样一种情况：如果一个值原来是A，变成了B，然后又变成了A，那么在CAS检查的时候会发现没有改变，但是实质上它已经发生了改变，这就是所谓的ABA问题。对于ABA问题其解决方案是加上版本号，即在每个变量都加上一个版本号，每次改变时加1，即A —&gt; B —&gt; A，变成1A —&gt; 2B —&gt; 3A。</p>
 <p>用一个例子来阐述ABA问题所带来的影响。</p>
 <p>有如下链表：</p>
-<p><img src="/images/QQ截图20190115134714.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190115134714.png"></p>
 <p>假如我们想要把A替换成B，也就是compareAndSet(this,A,B)。线程1执行B替换A的操作，线程2主要执行如下动作，A 、B出栈，然后C、A入栈，最终该链表如下：</p>
-<p><img src="/images/QQ截图20190115134830.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190115134830.png"></p>
 <p>完成后，线程1发现仍然是A，那么compareAndSet(this,A,B)成功，但是这时会存在一个问题就是B.next = null,compareAndSet(this,A,B)后，会导致C丢失，该栈仅有一个B元素了，平白无故把C给丢失了。</p>
 <p>CAS的ABA隐患问题，解决方案则是<strong>版本号</strong>，Java提供了AtomicStampedReference来解决。AtomicStampedReference通过包装[E,Integer]的元组来对对象标记<strong>版本戳stamp</strong>，从而避免ABA问题。对于上面的案例应该线程1会失败。</p>
 <p>AtomicStampedReference的compareAndSet()方法定义如下：</p>
@@ -1088,10 +1088,7 @@ AtomicStampedReference:false
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~
-tomcat的总体架构如下图所示：
-
-如上图所示
+                                tomcat的总体框架设计
                       
                     </div>
                     <div class="publish-info">
@@ -1148,8 +1145,7 @@ tomcat的总体架构如下图所示：
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                接着上篇的HashMap的原理分析后，今天来学ConcurrentHashMap的实现原理
-在现实开发中，不可避免地会碰到一些多线程并发访问
+                                ConcurrentHashMap的实现原理
                       
                     </div>
                     <div class="publish-info">
@@ -1339,7 +1335,7 @@ tomcat的总体架构如下图所示：
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

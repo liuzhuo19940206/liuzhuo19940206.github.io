@@ -479,7 +479,7 @@ keys pattern 查询相应的key在redis里,允许模糊查询key
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习redis的通用操作命名。<br><a id="more"></a></p>
+                <p>今天来学习redis的通用操作命名。</p>
 <h2 id="keys-pattern-查询相应的key"><a href="#keys-pattern-查询相应的key" class="headerlink" title="keys pattern 查询相应的key"></a>keys pattern 查询相应的key</h2><pre><code>在redis里,允许模糊查询key
 有3个通配符 *, ? ,[]
 *: 通配任意多个字符 (包括0个)
@@ -488,10 +488,10 @@ keys pattern 查询相应的key在redis里,允许模糊查询key
 
 </code></pre><p>启动redis服务器：</p>
 <p><code>./bin/redis-server redis.conf</code></p>
-<p>如果不加后面的配置文件redis.conf,就会找默认的配置文件了。<br><img src="/images/QQ截图20181222115002.png"></p>
+<p>如果不加后面的配置文件redis.conf,就会找默认的配置文件了。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day02/QQ截图20181222115002.png"></p>
 <p>启动redis的客户端：</p>
-<p><code>./bin/redis-cli</code><br><img src="/images/QQ截图20181222115132.png"></p>
-<p>使用：keys *（查看当前数据库中的所有key）<br><img src="/images/QQ截图20181222115320.png"></p>
+<p><code>./bin/redis-cli</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day02/QQ截图20181222115132.png"></p>
+<p>使用：keys *（查看当前数据库中的所有key）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day02/QQ截图20181222115320.png"></p>
 <p>使用正则表达式：</p>
 <pre><code>127.0.0.1:6379&gt; KEYS *
 1) &quot;age&quot;
@@ -709,7 +709,7 @@ c不存在，所以修改a的名字为c成功。
 
 默认打开的是编号为0的数据库。
 
-</code></pre><p>打开redis.conf配置文件：<br><img src="/images/QQ截图20181222132858.png"></p>
+</code></pre><p>打开redis.conf配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day02/QQ截图20181222132858.png"></p>
 <pre><code>127.0.0.1:6379&gt; keys *
 1) &quot;b&quot;
 2) &quot;age&quot;
@@ -804,7 +804,7 @@ Redis2.8中,对于不存在的key,返回-2。
 
 设置b这个key的过期时间为：10秒，当b这个key快要过期的时候，将其设置为永久有效。
 
-</code></pre><p>还有更多的通用keys的操作，如看redis的官网：<br><img src="/images/QQ截图20181222134910.png"></p>
+</code></pre><p>还有更多的通用keys的操作，如看redis的官网：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day02/QQ截图20181222134910.png"></p>
 <p>在图中，可以看到还有：expire<strong>at</strong> key timestamp [设置key的在哪个时间戳过期]、pexpire<strong>at</strong> key milliseconds-timestamp</p>
 <pre><code>redis&gt; SET mykey &quot;Hello&quot;
 &quot;OK&quot;
@@ -1270,9 +1270,7 @@ redis&gt;
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习Redis中的字符串类型操作
-Redis字符串类型的操作
-set命令set key value [ex 秒数] / [px 毫秒数
+                                Redis中的字符串类型操作
                       
                     </div>
                     <div class="publish-info">
@@ -1330,7 +1328,6 @@ set命令set key value [ex 秒数] / [px 毫秒数
                     <div class="summary">
                        
                                 今天来学习Redis缓存，完成redis的下载与安装
-Redis的特点Redis is an open source, BSD licens
                       
                     </div>
                     <div class="publish-info">
@@ -1520,7 +1517,7 @@ Redis的特点Redis is an open source, BSD licens
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

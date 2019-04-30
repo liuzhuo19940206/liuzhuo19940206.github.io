@@ -475,7 +475,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>我在之前总结幂等性的时候，写过一种分布式锁的实现，可惜当时没有真正应用过，着实的心虚啊。正好这段时间对这部分实践了一下，也算是对之前填坑了。<br><a id="more"></a></p>
+                <p>我在之前总结幂等性的时候，写过一种分布式锁的实现，可惜当时没有真正应用过，着实的心虚啊。正好这段时间对这部分实践了一下，也算是对之前填坑了。</p>
 <p>分布式锁按照网上的结论，大致分为三种：1、数据库乐观锁； 2、基于Redis的分布式锁；3、基于ZooKeeper的分布式锁。</p>
 <p>关于数据库的乐观锁实现网上已经有很多了，如果有必要的话，留言一下，我以后会出相关的mysql乐观锁。</p>
 <p>今天先简单总结下redis的实现方法，后面详细研究过ZooKeeper的实现原理后再具体说说ZooKeeper的实现。</p>
@@ -488,7 +488,7 @@
 <h3 id="Expire"><a href="#Expire" class="headerlink" title="Expire"></a>Expire</h3><p>expire key timeout<br>为key设置一个超时时间，单位为second（秒），超过这个时间锁会自动释放，避免死锁。</p>
 <h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p>delete key<br>删除key。</p>
 <h2 id="获取锁"><a href="#获取锁" class="headerlink" title="获取锁"></a>获取锁</h2><p>首先讲一个目前网上应用最多的一种实现:</p>
-<p><img src="/images/QQ截图20190108214911.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day14/QQ截图20190108214911.png"></p>
 <p>实现思路：</p>
 <p>1.获取锁的时候，使用setnx加锁，并使用expire命令为锁添加一个超时时间，超过该时间则自动释放锁以免产生死锁，锁的value值为一个随机生成的UUID，通过此在释放锁的时候进行判断。</p>
 <p>2.获取锁的时候还设置一个获取的超时时间，若超过这个时间则放弃获取锁。</p>
@@ -519,7 +519,7 @@
     return null;
     }
 </code></pre><p>这种实现方法也是目前应用最多的实现，我一直以为这确实是正确的。<strong>然而由于这是两条Redis命令，不具有原子性</strong>，如果程序在执行完setnx()之后突然崩溃，导致锁没有设置过期时间。那么还是会发生死锁的情况。<strong>网上之所以有人这样实现，是因为低版本的 jedis 并不支持多参数的set()方法。</strong></p>
-<p>当然这种情况 jedis 的设计者也显然想到了，新版的 jedis 可以<strong>同时set多个参数</strong>，具体实现如下：<br><img src="/images/QQ截图20190108215608.png"></p>
+<p>当然这种情况 jedis 的设计者也显然想到了，新版的 jedis 可以<strong>同时set多个参数</strong>，具体实现如下：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day14/QQ截图20190108215608.png"></p>
 <p>实现思路：</p>
 <p>基本上和原来的逻辑类似，<strong>只是将 setnx 和 expire 的操作合并为一步</strong>，改为使用新的set多参的方法。</p>
 <p>set(final String key, final String value, final String nxxx, final String expx , final long time)</p>
@@ -549,7 +549,7 @@
 </code></pre><p>好了，获取锁的操作基本上就上面这些，有同学可能要问，为什么不直接返回一个Boolean型的true或false呢？</p>
 <p>正如我前面所说的，要保证解锁的一致性，所以就需要通过value值来保证解锁人就是加锁人，而不能直接返回true或false了。</p>
 <h2 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h2><p>还是先举一个错误的例子：</p>
-<p><img src="/images/QQ截图20190108220325.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day14/QQ截图20190108220325.png"></p>
 <p>实现思路：</p>
 <p>释放锁的时候，通过传入key和加锁时返回的value值，判断传入的value是否和key从redis中取出的相等。相等则证明解锁人就是加锁人，执行delete释放锁的操作。</p>
 <pre><code>// 释放redis锁
@@ -566,7 +566,7 @@ public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) {
 </code></pre><p>看着好像没啥问题哈。然而仔细想想又总感觉哪里不对。</p>
 <p>如果在执行jedis.del(lockKey)操作之前，刚好锁的过期时间到了，而这个时候又有别的客户端取到了锁，我们在此时执行删除操作，不是又不符合一致性的要求了嘛？</p>
 <p>然后我们修改为下述方案：</p>
-<p><img src="/images/QQ截图20190108220645.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day14/QQ截图20190108220645.png"></p>
 <p>修改后的代码为：</p>
 <pre><code>  public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) {
     try {
@@ -1031,7 +1031,7 @@ public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                考虑到绝大部分写业务的程序员，在实际开发中使用 Redis 的时候，只会 Set Value 和 Get Value 两个操作，对 Redi
+                                面试redis的问题总结
                       
                     </div>
                     <div class="publish-info">
@@ -1089,11 +1089,6 @@ public void unRedisLock(Jedis jedis, String lockKey, String identifierValue) {
                     <div class="summary">
                        
                                 列举redis中的常用配置选项
-==配置文件全解===
-
-===基本配置=======
-
-bind 127.0.0.1    #绑定的主机地
                       
                     </div>
                     <div class="publish-info">
@@ -1283,7 +1278,7 @@ bind 127.0.0.1    #绑定的主机地
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

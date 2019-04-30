@@ -475,7 +475,7 @@ Lifecycle在其他框架中也很常见，比如spring，它常用于具有生�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Tomcat组件生命周期管理:Lifecycle<br><a id="more"></a></p>
+                <p>Tomcat组件生命周期管理:Lifecycle</p>
 <p>Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由Lifecycle控制组件的初始化、启动、销毁等动作，方便应用程序获取、释放某些资源，或者是触发某些特定的事件。Tomcat也是如此，在学习整个启动流程之前，我们先行了解下Lifecycle的实现机制，便于理解整个流程。</p>
 <h3 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h3><p>Lifecycle接口是一个公用的接口，定义了组件生命周期的一些方法，用于启动、停止Catalina组件。它是一个非常重要的接口，组件的生命周期包括：init、start、stop、destory，以及各种事件的常量、操作LifecycleListener的API，典型的观察者模式。</p>
 <pre><code>public interface Lifecycle {
@@ -550,7 +550,7 @@ Lifecycle在其他框架中也很常见，比如spring，它常用于具有生�
     }
 }
 </code></pre><p>各大组件均实现了Lifecycle接口，类图如下所示： </p>
-<p><img src="/images/QQ截图20190116175426.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190116175426.png"></p>
 <ul>
 <li><p>LifecycleBase：它实现了Lifecycle的init、start、stop等主要逻辑，向注册在LifecycleBase内部的LifecycleListener发出对应的事件，并且预留了<strong>initInternal、startInternal、stopInternal</strong>等模板方法，便于子类完成自己的逻辑。</p>
 </li>
@@ -815,7 +815,7 @@ public final synchronized void init() throws LifecycleException {
 </li>
 </ol>
 <h4 id="start分析"><a href="#start分析" class="headerlink" title="start分析"></a>start分析</h4><p>start过程会触发LifecycleState的STARTING_PREP、STARTED事件，如果出现启动失败还会触发FAILED事件，并且调用stop。因为会涉及多线程操作，因此对方法加了锁。如果start期间出现了异常，则会调用stop停止tomcat，或者state状态有误也会抛出异常</p>
-<p><img src="/images/QQ截图20190116184357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190116184357.png"></p>
 <p>state状态变更时调用setStateInternal方法，遍历内部所有的LifecycleListener，并向其发起对应的事件通知，由LifecycleListener去完成某些动作。其子类可以直接调用fireLifecycleEvent，比如在StandardServer中，start过程会发出CONFIGURE_START_EVENT事件。注：所有事件的命名均定义在Lifecycle接口中。</p>
 <pre><code>public abstract class LifecycleBase implements Lifecycle {
     @Override
@@ -1397,8 +1397,7 @@ ensuring that super.initInternal() is the first call in the overriding method.
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                Tomcat的启动分析：Catalina
-Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootst
+                                Tomcat的启动分析Catalina
                       
                     </div>
                     <div class="publish-info">
@@ -1455,10 +1454,7 @@ Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只�
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~
-tomcat的总体架构如下图所示：
-
-如上图所示
+                                tomcat的总体框架设计
                       
                     </div>
                     <div class="publish-info">
@@ -1648,7 +1644,7 @@ tomcat的总体架构如下图所示：
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

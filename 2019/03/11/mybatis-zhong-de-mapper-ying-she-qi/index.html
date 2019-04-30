@@ -467,7 +467,7 @@ MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。<br><a id="more"></a></p>
+                <p>映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。</p>
 <p>MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC 代码进行对比，你会立即发现省掉了将近 95% 的代码。MyBatis 就是针对 SQL 构建的，并且比普通的方法做的更好。</p>
 <p>SQL 映射文件有很少的几个顶级元素（按照它们应该被定义的顺序）：</p>
 <ul>
@@ -517,7 +517,7 @@ ps.setInt(1,id);
   fetchSize=&quot;256&quot;
   statementType=&quot;PREPARED&quot;
   resultSetType=&quot;FORWARD_ONLY&quot;&gt;
-</code></pre><p><img src="/images/mybatis/QQ截图20190311135926.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311135926.png"></p>
 <h4 id="自动映射"><a href="#自动映射" class="headerlink" title="自动映射"></a>自动映射</h4><p>在简单的场景下，MyBatis可以替你自动映射查询结果。如果遇到复杂的场景，你需要构建一个resultMap，resultMap之后介绍。</p>
 <p>有这样一个参数autoMappingBehavior，当它不设置为NONE的时候，只要返回的SQL列名和POJO对象的属性名一致（忽略大小写），Mybatis就会帮助我们回填这些字段而无需任何配置，它可以在很大程度上简化我们的配置工作。</p>
 <p>在实际工作中，大部分数据库规范都是要求大写单词命名，单词间用下划线分隔，而java则是使用驼峰命名法，于是可以使用列的别名来使得Mybatis自动映射，或者直接在配置文件中开启驼峰命名方式。</p>
@@ -593,9 +593,9 @@ NOTE        VARCHAR(1024)
     userMap.put(&quot;userAge&quot;,&quot;18&quot;);
     User user = userMapper.selectByMap(userMap);
     System.out.println(user);
-</code></pre><p><img src="/images/mybatis/QQ截图20190311144413.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311144413.png"></p>
 <p>使用Map来传递多个参数的话，<font color="red">Map中的键名，必须和SQL语句中的：#{XXX}中的XXX一致才行。</font></p>
-<p>这里就是 id 和 userAge，现在我们修改一下，传递给Map的键名，将 userAge 变成 user_age.<br><img src="/images/mybatis/QQ截图20190311144942.png"></p>
+<p>这里就是 id 和 userAge，现在我们修改一下，传递给Map的键名，将 userAge 变成 user_age.<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311144942.png"></p>
 <hr>
 <p>使用Map传递多个参数的缺点：因为参数是封装在Map中的，由于业务关联性不强，你需要深入到程序中看代码，造成可读性下降。</p>
 <h5 id="使用注解的方式"><a href="#使用注解的方式" class="headerlink" title="使用注解的方式"></a>使用注解的方式</h5><p>我们需要使用Mybatis的参数注解@Param(org.apache.ibatis.annotations.Param)来实现想要的功能。</p>
@@ -684,7 +684,7 @@ NOTE        VARCHAR(1024)
   flushCache=&quot;true&quot;
   statementType=&quot;PREPARED&quot;
   timeout=&quot;20&quot;&gt;
-</code></pre><p>详细介绍：<br><img src="/images/mybatis/QQ截图20190311153037.png"></p>
+</code></pre><p>详细介绍：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311153037.png"></p>
 <font color="red">注意：keyProperty 和 keyColumn不能同时使用，keyProperty表示以哪个列名作为属性的主键，keyColumn是表示哪一列，接受的是整数！！</font>
 
 <hr>
@@ -723,7 +723,7 @@ NOTE        VARCHAR(1024)
   resultType=&quot;int&quot;
   order=&quot;BEFORE&quot;
   statementType=&quot;PREPARED&quot;&gt;
-</code></pre><p><img src="/images/mybatis/QQ截图20190311155900.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311155900.png"></p>
 <hr>
 <h3 id="update-delete"><a href="#update-delete" class="headerlink" title="update/delete"></a>update/delete</h3><p>这个两个元素比较简单，所以放在一起讨论，和insert元素一样，Mybatis执行update、delete元素后会返回一个整数，标出执行后影响的记录条数。</p>
 <pre><code>&lt;update id=&quot;updateUser&quot;&gt;
@@ -1227,8 +1227,7 @@ NOTE        VARCHAR(1024)
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。
-resultMap 元素是 MyBatis 中最重要最强大的元素。它
+                                Mybatis中的resultMap
                       
                     </div>
                     <div class="publish-info">
@@ -1277,8 +1276,7 @@ resultMap 元素是 MyBatis 中最重要最强大的元素。它
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件
-environments(配置环境)配置环境可以注册多个
+                                讲解Mybatis-config.xml配置文件
                       
                     </div>
                     <div class="publish-info">
@@ -1460,7 +1458,7 @@ environments(配置环境)配置环境可以注册多个
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Mybatis的开发的第一天, 解忧杂货店">
-    <meta name="description" content=" 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别
-jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接数据库的，这样，我们就能通过SQL对数据库编程了。JDBC">
+    <meta name="description" content=" 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别。
+jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接数据库的，这样，我们就能通过SQL对数据库编程了。JDB">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -467,11 +467,11 @@ jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p> 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别<br><a id="more"></a></p>
+                <p> 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别。</p>
 <h3 id="jdbc的概述"><a href="#jdbc的概述" class="headerlink" title="jdbc的概述"></a>jdbc的概述</h3><p>  Java程序都是通过JDBC（Java DataBase Connectivity）连接数据库的，这样，我们就能通过SQL对数据库编程了。JDBC是由SUN公司提出的一系列规范，但是它只定义了接口规范，而具体的实现是通过各个数据库厂商来实现的，因为每个数据库都有其特殊性，这些是Java规范没有办法来确定的，所以JDBC就是一种典型的桥接模式。</p>
 <h3 id="jdbc的使用"><a href="#jdbc的使用" class="headerlink" title="jdbc的使用"></a>jdbc的使用</h3><p>  传统的jdbc编程的使用给我们带来了连接数据库的功能，但是也引起了巨大的问题。</p>
 <p>  传统的代码如下：<br>  我使用的的编辑器是：idea<br>  打开idea，创建java普通项目即可：</p>
-<p>  <img src="/images/mybatis/QQ截图20190308135115.png"></p>
+<p>  <img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308135115.png"></p>
 <p>  创建com.liuzhuo.jdbc包<br>  然后，创建jdbcTempate类<br>  然后编写jdbc的固定代码：</p>
 <p>  <code>1.创建connection：连接器</code></p>
 <pre><code>     private Connection getConnection() {
@@ -544,16 +544,16 @@ jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接�
         System.out.println(user);
     }
 </code></pre><hr>
-<p> 以上成功的前提是，我们的mysql数据库中有数据呀，我的school数据库中，有user的表：<br>   <img src="/images/mybatis/QQ截图20190308142223.png"></p>
+<p> 以上成功的前提是，我们的mysql数据库中有数据呀，我的school数据库中，有user的表：<br>   <img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308142223.png"></p>
 <p> 现在，运行我们的main函数：</p>
 <p> 发现出现了ClassNotFound异常：</p>
 <p> 因为项目中还必须要包含mysql-connection的jar。</p>
-<p> 在我们的idea中，点击file：<br> <img src="/images/mybatis/QQ截图20190308142504.png" style="width: 50%"></p>
-<p>点击：Modules，然后点击Dependencies，再点击右边的绿色的加号：<br><img src="/images/mybatis/QQ截图20190308142758.png"></p>
+<p> 在我们的idea中，点击file：<br> <img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308142504.png" style="width: 50%"></p>
+<p>点击：Modules，然后点击Dependencies，再点击右边的绿色的加号：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308142758.png"></p>
 <p>然后，在出现的选项中，选择第一项，添加jar包：</p>
-<p>选中你的电脑中，下载的mysql-connector-java：jar包<br><img src="/images/mybatis/QQ截图20190308142926.png"></p>
-<p>点击确定后，在我们的项目中，会在External Libraries中出现相应的jar包：<br><img src="/images/mybatis/QQ截图20190308143135.png" style="width: 50%"></p>
-<p>再次运行main函数：<br><img src="/images/mybatis/QQ截图20190308143240.png"></p>
+<p>选中你的电脑中，下载的mysql-connector-java：jar包<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308142926.png"></p>
+<p>点击确定后，在我们的项目中，会在External Libraries中出现相应的jar包：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308143135.png" style="width: 50%"></p>
+<p>再次运行main函数：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308143240.png"></p>
 <p>输出了我们的数据库中的数据！！！</p>
 <h3 id="jdbc的总结"><a href="#jdbc的总结" class="headerlink" title="jdbc的总结"></a>jdbc的总结</h3><ol>
 <li><p>使用jdbc编程需要连接数据库，注册驱动和数据库信息</p>
@@ -1024,8 +1024,7 @@ jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接�
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习Mybatis的基本用法，带大家入门。
-开发环境学习编程是一门实操的科学，只有一边敲代码一边学习才能有更好的效果，所以需要搭建一个
+                                Mybatis的基本用法，带大家入门
                       
                     </div>
                     <div class="publish-info">
@@ -1075,9 +1074,6 @@ jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接�
                     <div class="summary">
                        
                                 Java中的父子类执行顺序
-结论类的加载顺序。
-(1) 父类静态代码块(包括静态初始化块，静态属性，但不包括静态方法)
-(2) 子类静态代码
                       
                     </div>
                     <div class="publish-info">
@@ -1267,7 +1263,7 @@ jdbc的概述  Java程序都是通过JDBC（Java DataBase Connectivity）连接�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

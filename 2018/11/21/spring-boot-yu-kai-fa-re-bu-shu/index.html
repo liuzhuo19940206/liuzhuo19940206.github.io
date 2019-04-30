@@ -476,7 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>SpringBoot中的热部署<br><a id="more"></a></p>
+                <p>SpringBoot中的热部署</p>
 <h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p>在开发中我们修改一个Java文件后想看到效果不得不重启应用，这导致大量时间花费，我们希望不重启应用的情况下，程序可以自动部署（热部署）。有以下四种情况，如何能实现热部署。</p>
 <h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>– 在Spring Boot中开发情况下禁用模板引擎的cache<br>– 页面模板改变ctrl+F9可以重新编译当前页面并生效</p>
 <h3 id="Spring-Loaded"><a href="#Spring-Loaded" class="headerlink" title="Spring Loaded"></a>Spring Loaded</h3><p>Spring官方提供的热部署程序，实现修改类文件的热部署<br>– 下载Spring Loaded（项目地址<a href="https://github.com/spring-projects/spring-loaded）" target="_blank" rel="noopener">https://github.com/spring-projects/spring-loaded）</a><br>– 添加运行时参数: -javaagent:C:/springloaded-1.2.5.RELEASE.jar -noverify</p>
@@ -486,33 +486,33 @@
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre><h2 id="演示Spring-Boot-Devtools"><a href="#演示Spring-Boot-Devtools" class="headerlink" title="演示Spring Boot Devtools"></a>演示Spring Boot Devtools</h2><p>1）创建一个Thymeleaf的Springboot的项目：<br><img src="/images/QQ截图20181121143729.png"><br><img src="/images/QQ截图20181121144641.png"><br><img src="/images/QQ截图20181121143827.png"><br><img src="/images/QQ截图20181121143851.png"><br><img src="/images/QQ截图20181121144815.png"></p>
-<p>2) 在templates下，创建一个hello.html文件<br><img src="/images/QQ截图20181121144956.png"></p>
-<p>3）在controller包下，创建HelloWorldController：<br><img src="/images/QQ截图20181121145141.png"></p>
-<p>4）启动Springboot应用：<br><img src="/images/QQ截图20181121145251.png"></p>
-<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181121145323.png"></p>
+</code></pre><h2 id="演示Spring-Boot-Devtools"><a href="#演示Spring-Boot-Devtools" class="headerlink" title="演示Spring Boot Devtools"></a>演示Spring Boot Devtools</h2><p>1）创建一个Thymeleaf的Springboot的项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121143729.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121144641.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121143827.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121143851.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121144815.png"></p>
+<p>2) 在templates下，创建一个hello.html文件<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121144956.png"></p>
+<p>3）在controller包下，创建HelloWorldController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145141.png"></p>
+<p>4）启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145251.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145323.png"></p>
 <p>5) 现在修改映射url：</p>
-<p>不要关闭应用！！！<br><img src="/images/QQ截图20181121145426.png"></p>
-<p>访问：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181121145529.png"></p>
+<p>不要关闭应用！！！<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145426.png"></p>
+<p>访问：<code>http://localhost:8080/hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145529.png"></p>
 <p>说明，根本没有热部署功能！</p>
-<p>现在：打开target包下的：HelloWorldController：<br><img src="/images/QQ截图20181121145705.png"></p>
+<p>现在：打开target包下的：HelloWorldController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145705.png"></p>
 <p>说明：我们的编译后的class文件，根本没有改过。</p>
 <p>现在，在我们的src下的HelloWorldController类中：<strong>ctrl+F9</strong></p>
-<p>然后再次打开target下的HelloWorldController类：<br><img src="/images/QQ截图20181121145916.png"></p>
+<p>然后再次打开target下的HelloWorldController类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145916.png"></p>
 <p>发现，我们改变的HelloWorldController类已经改变了。</p>
-<p>再次在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181121145529.png"></p>
-<p>还是不行，这是我们需要导入spring-boot-devtools依赖：<br><img src="/images/QQ截图20181121150337.png"></p>
+<p>再次在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121145529.png"></p>
+<p>还是不行，这是我们需要导入spring-boot-devtools依赖：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121150337.png"></p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
     &lt;optional&gt;true&lt;/optional&gt;
 &lt;/dependency&gt;
 </code></pre><p>此时，我们重启Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181121150510.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121150510.png"></p>
 <p>在把映射的url修改回来：</p>
-<p>不停止应用！！！<br><img src="/images/QQ截图20181121150606.png"></p>
+<p>不停止应用！！！<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121150606.png"></p>
 <p>然后：ctrl+F9</p>
-<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181121153657.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121153657.png"></p>
 <p>热部署成功！</p>
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>引入依赖</p>
 <pre><code>&lt;dependency&gt;
@@ -522,9 +522,9 @@
 &lt;/dependency&gt;
 </code></pre><p>– IDEA 使用 : ctrl+F9<br>– 或做一些小调整<br>Intellij IEDA和Eclipse不同，Eclipse设置了自动编译之后，修改类它会自动编译，而IDEA在非RUN或DEBUG情况下<br>才会自动编译（前提是你已经设置了Auto-Compile）。</p>
 <hr>
-<p>• 设置自动编译（settings-compiler-make project automatically）<br><img src="/images/QQ截图20181121154016.png"></p>
+<p>• 设置自动编译（settings-compiler-make project automatically）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121154016.png"></p>
 <p>• ctrl+shift+alt+/（maintenance）<br>• 勾选compiler.automake.allow.when.app.running</p>
-<p><img src="/images/QQ截图20181121154100.png"><br><img src="/images/QQ截图20181121154123.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121154100.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/hotLoad/QQ截图20181121154123.png"></p>
 
             </div>
             <hr/>
@@ -968,8 +968,7 @@
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                Spring Boot与监控管理
-监控管理通过引入spring-boot-starter-actuator，可以使用Spring Boot为
+                                SpringBoot与监控管理
                       
                     </div>
                     <div class="publish-info">
@@ -1027,7 +1026,6 @@
                     <div class="summary">
                        
                                 分步式、Dubbo/Zookeeper、Spring Boot/Cloud
-分布式应用在分布式系统中，国内常用zookeeper+dubbo
                       
                     </div>
                     <div class="publish-info">
@@ -1217,7 +1215,7 @@
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

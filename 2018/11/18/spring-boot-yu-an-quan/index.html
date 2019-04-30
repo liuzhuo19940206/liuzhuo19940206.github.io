@@ -475,7 +475,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>安全、Spring Security. 比如身份认证，用户权限等，市面上有两大主流安全框架：第一个是Apache的 <strong>Shiro</strong>，第二个就是Spring的<strong>Security</strong>。<br><a id="more"></a></p>
+                <p>安全、Spring Security. 比如身份认证，用户权限等，市面上有两大主流安全框架：第一个是Apache的 <strong>Shiro</strong>，第二个就是Spring的<strong>Security</strong>。</p>
 <h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><p><strong>Spring Security</strong>是针对Spring项目的安全框架，也是Spring Boot底层安全模块默认的技术选型。他可以实现强大的web安全控制。对于安全控制，我们仅需引入spring-boot-starter-security模块，进行少量的配置，即可实现强大的安全管理。</p>
 <p>几个类：</p>
 <ul>
@@ -487,9 +487,9 @@
 <p>• “认证”（Authentication），是建立一个他声明的主体的过程（一个“主体”一般是指用户，设备或一些可以在你的应用程序中执行动作的其他系统）。</p>
 <p>• “授权”（Authorization）指确定一个主体是否允许在你的应用程序执行一个动作的过程。为了抵达需要授权的店，主体的身份已经有认证过程建立。</p>
 <p>• 这个概念是通用的而不只在Spring Security中。</p>
-<p>1) 创建新的Springboot项目，添加Web、Themleaf模块：<br><img src="/images/QQ截图20181118110926.png"></p>
-<p>2) 在resources中书写页面：<br><img src="/images/QQ截图20181118111136.png"></p>
-<p>3）书写一个java类：(KungfuController)<br><img src="/images/QQ截图20181118111658.png"></p>
+<p>1) 创建新的Springboot项目，添加Web、Themleaf模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118110926.png"></p>
+<p>2) 在resources中书写页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118111136.png"></p>
+<p>3）书写一个java类：(KungfuController)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118111658.png"></p>
 <pre><code>@Controller
 public class KungfuController {
     private final String PREFIX = &quot;pages/&quot;;
@@ -550,19 +550,19 @@ public class KungfuController {
 }
 </code></pre><p>这里，大家可以有自己的页面，和controller类，只是简单的访问页面而已，没有什么业务逻辑。</p>
 <p>4）启动Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="/images/QQ截图20181118112006.png"><br><img src="/images/QQ截图20181118112040.png"></p>
-<p>这里是，thymeleaf的版本比较低。<br><img src="/images/QQ截图20181118112604.png"></p>
-<p>我们要切换成3版本以上的。切换thymeleaf的时候，不要忘记thymeleaf-layout的版本。<br><img src="/images/QQ截图20181118113001.png"></p>
-<p>5）重启Springboot应用：<br><img src="/images/QQ截图20181118113131.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118112006.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118112040.png"></p>
+<p>这里是，thymeleaf的版本比较低。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118112604.png"></p>
+<p>我们要切换成3版本以上的。切换thymeleaf的时候，不要忘记thymeleaf-layout的版本。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118113001.png"></p>
+<p>5）重启Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118113131.png"></p>
 <p>页面解析成功。</p>
 <hr>
 <p>上面，是没有使用Spring Security的功能，页面上的所有超链接都能访问。</p>
 <h3 id="整合Spring-Security模块"><a href="#整合Spring-Security模块" class="headerlink" title="整合Spring Security模块"></a>整合Spring Security模块</h3><p>现在，我们加入Spring Security模块。</p>
-<p>1）导入：spring-boot-starter-security<br><img src="/images/QQ截图20181118122302.png"></p>
-<p>2）打开Spring的官网，找到Spring Security模块：<br><img src="/images/QQ截图20181118122433.png"><br><img src="/images/QQ截图20181118122802.png"></p>
+<p>1）导入：spring-boot-starter-security<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118122302.png"></p>
+<p>2）打开Spring的官网，找到Spring Security模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118122433.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118122802.png"></p>
 <p><a href="https://docs.spring.io/spring-security/site/docs/4.2.8.RELEASE/guides/html5/helloworld-boot.html" target="_blank" rel="noopener">官方参考文档</a></p>
 <p>说明，第一步，我们需要写一个Spring Security的配置类，标记@EnableWebSecurity注解，并且继承 WebSecurityConfigurerAdapter</p>
-<p>在我们的项目中，添加config包，并创建MySecurityConfig类：<br><img src="/images/QQ截图20181118140618.png"></p>
+<p>在我们的项目中，添加config包，并创建MySecurityConfig类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118140618.png"></p>
 <pre><code>@EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -577,15 +577,15 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 </code></pre><p>以上的方法的，就是访问”/“: 所有的人都可以访问，而访问”/level1/**”下的请求，必须是”VIP1”用户，其他类似。</p>
-<p>现在重启Springboot应用：<br><img src="/images/QQ截图20181118140836.png"></p>
+<p>现在重启Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118140836.png"></p>
 <p>访问普通武功秘籍下的超链接：罗汉拳、武当长拳、全真剑法其中的任意一个。</p>
 <p><strong>PS：普通武功秘籍是level1，高级武功秘籍是level2，绝世武功秘籍是level3</strong></p>
-<p>比如访问：罗汉拳(/level1/1)<br><img src="/images/QQ截图20181118141225.png"></p>
+<p>比如访问：罗汉拳(/level1/1)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118141225.png"></p>
 <p>现在出现了，403：拒绝访问，即没有访问权限！</p>
 <p>接下来，我们配置授权的用户：</p>
-<p>修改configure方法：<br><img src="/images/QQ截图20181118141803.png"></p>
-<p>此时重启，访问罗汉拳的话，会重定向到/login请求，请求登入：(Spring Security 自动帮我们配合的)<br><img src="/images/QQ截图20181118141855.png"></p>
-<p>此时，还没有配置用户信息，在MySecurityConfig类：添加新的方法：<br><img src="/images/QQ截图20181118142152.png"></p>
+<p>修改configure方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118141803.png"></p>
+<p>此时重启，访问罗汉拳的话，会重定向到/login请求，请求登入：(Spring Security 自动帮我们配合的)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118141855.png"></p>
+<p>此时，还没有配置用户信息，在MySecurityConfig类：添加新的方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118142152.png"></p>
 <pre><code>    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -597,11 +597,11 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     }
 </code></pre><p><strong>注意：</strong>使用inMemoryAuthentication：是在内存中配合用户的信息，这里是简单起见，我们一般需要将配置保存到数据库中。</p>
 <p>这里，配置了用户名：zhangsan，密码：123456，用户的角色是:VIP1,VIP2. 其他类似。</p>
-<p>重启应用，访问罗汉拳：<br><img src="/images/QQ截图20181118142453.png"><br>登入用户和密码：zhangsan，123456<br><img src="/images/QQ截图20181118142545.png"><br><img src="/images/QQ截图20181118142639.png"><br>访问成功，有level1的权限。</p>
+<p>重启应用，访问罗汉拳：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118142453.png"><br>登入用户和密码：zhangsan，123456<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118142545.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118142639.png"><br>访问成功，有level1的权限。</p>
 <p>点击返回，访问<strong>普通武功秘籍</strong> 和 <strong>高级武功秘籍</strong> 下的，<strong>其他秘籍</strong>，此时都不会被拦截了。</p>
 <p>因为张三用户，有level1 和 level2 的访问权限。如果访问 <strong>绝世武功秘籍(level3)</strong>，就会出现403.</p>
 <h3 id="注销登入"><a href="#注销登入" class="headerlink" title="注销登入"></a>注销登入</h3><p>现在，我们只能登入用户，还不能注销，怎么注销用户呢？</p>
-<p>1）修改MySecurityConfig的：configure(HttpSecurity http)<br><img src="/images/QQ截图20181118144712.png"></p>
+<p>1）修改MySecurityConfig的：configure(HttpSecurity http)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118144712.png"></p>
 <pre><code>    //设置访问权限的
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -620,22 +620,22 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         //2.注销成功后，会重定向到：login?logout，会让你重新登入。
         http.logout();
     }
-</code></pre><p>2）在welcome页面中，添加注销的按钮：<br><img src="/images/QQ截图20181118144334.png"></p>
+</code></pre><p>2）在welcome页面中，添加注销的按钮：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118144334.png"></p>
 <p>3）启动程序</p>
-<p>先登入用户成功，访问能访问的权限，都可以！然后点击注销按钮：<br><img src="/images/QQ截图20181118144520.png"><br><img src="/images/QQ截图20181118144648.png"></p>
+<p>先登入用户成功，访问能访问的权限，都可以！然后点击注销按钮：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118144520.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118144648.png"></p>
 <p>注销成功。</p>
-<p>如果，我们不想让注销成功后，返回登入页面呢？那可以修改配置：<br><img src="/images/QQ截图20181118144937.png"></p>
+<p>如果，我们不想让注销成功后，返回登入页面呢？那可以修改配置：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118144937.png"></p>
 <p>此时，注销成功后会跳转到主页了。</p>
 <h3 id="完成我们的security模块"><a href="#完成我们的security模块" class="headerlink" title="完成我们的security模块"></a>完成我们的security模块</h3><p>现在，我们想让登入成功后，显示XX登入成功，给他看见能够访问的页面信息，不能访问的就不显示出来。</p>
-<p>1）这里我们需要thymeleaf提供的安全的标签功能，需要导入相关的模块：<br><img src="/images/QQ截图20181118150104.png"></p>
+<p>1）这里我们需要thymeleaf提供的安全的标签功能，需要导入相关的模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118150104.png"></p>
 <p>2）在我们的welcome页面中。添加安全的命名空间：</p>
 <pre><code>xmlns:sec=&quot;http://www.thymeleaf.org/thymeleaf-extras-springsecurity4&quot;
-</code></pre><p><img src="/images/QQ截图20181118150442.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118150442.png"></p>
 <p>接下来：我们就可以使用 sec 前缀的标签了。</p>
-<p>给 登入 和 注销 添加 div 然后判断是否有权限：<br><img src="/images/QQ截图20181118150837.png"></p>
-<p>给三大武功秘籍，添加用户权限：<br><img src="/images/QQ截图20181118151321.png"></p>
-<p><img src="/images/QQ截图20181118151330.png"></p>
-<p><img src="/images/QQ截图20181118151342.png"></p>
+<p>给 登入 和 注销 添加 div 然后判断是否有权限：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118150837.png"></p>
+<p>给三大武功秘籍，添加用户权限：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118151321.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118151330.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118151342.png"></p>
 <p>重启应用：</p>
 <p>观察我们的应用效果！</p>
 <h3 id="记住我"><a href="#记住我" class="headerlink" title="记住我"></a>记住我</h3><p>只要在：MySecurityConfig 类中的：configure(HttpSecurity http)方法中：</p>
@@ -644,18 +644,18 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 <hr>
 <p>如果，想要修改登入界面，使用我们自己定义的登入页面：</p>
 <pre><code>http.formLogin().loginPage(&quot;/userlogin&quot;);
-</code></pre><p>这样的话，就是发送这个/userlogin请求，跳转到我们自定义的页面，然后：使用 post请求的：/userlogin来登入。<br><img src="/images/QQ截图20181118164447.png"></p>
+</code></pre><p>这样的话，就是发送这个/userlogin请求，跳转到我们自定义的页面，然后：使用 post请求的：/userlogin来登入。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118164447.png"></p>
 <p>这里的 用户名 和 密码的 name属性怎么设置呢？</p>
 <p>使用：usernameParameter 和 passwordParameter 来修改。</p>
 <p>默认是：username 和 password</p>
-<p>即：不配置的话<br><img src="/images/QQ截图20181118164712.png"></p>
-<p>配置的话：<br><img src="/images/QQ截图20181118164847.png"></p>
+<p>即：不配置的话<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118164712.png"></p>
+<p>配置的话：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118164847.png"></p>
 <pre><code>        //自动配置了授权的,当没有权限的时候，会让你登入
         //自动重定向到/login请求，请求登陆。
         http.formLogin().loginPage(&quot;/userlogin&quot;)
                         .usernameParameter(&quot;uName&quot;)
                         .passwordParameter(&quot;pName&quot;);
-</code></pre><p><img src="/images/QQ截图20181118164936.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/security/QQ截图20181118164936.png"></p>
 
             </div>
             <hr/>
@@ -1100,7 +1100,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                     <div class="summary">
                       
                                 分步式、Dubbo/Zookeeper、Spring Boot/Cloud
-分布式应用在分布式系统中，国内常用zookeeper+dubbo
                       
                     </div>
                     <div class="publish-info">
@@ -1158,8 +1157,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                     <div class="summary">
                        
                                 异步任务、定时任务、邮件任务
-异步任务异步任务，是Spring帮我们开启线程池，创建一个新的线程来执行我们的方法，就不会有卡顿的现象。
-在J
                       
                     </div>
                     <div class="publish-info">
@@ -1349,7 +1346,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

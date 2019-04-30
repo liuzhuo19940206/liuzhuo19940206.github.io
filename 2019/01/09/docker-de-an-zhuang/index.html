@@ -479,7 +479,7 @@ Docker支持以下的CentOS版本：CentOS 7 (64-bit)CentOS 6.5 (64-bit) 或更�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本篇讲解docker的安装<br><a id="more"></a></p>
+                <p>本篇讲解docker的安装</p>
 <h2 id="Docker安装前提说明"><a href="#Docker安装前提说明" class="headerlink" title="Docker安装前提说明"></a>Docker安装前提说明</h2><font color="blue">CentOS Docker 安装：</font>
 
 <p>Docker支持以下的CentOS版本：<br>CentOS 7 (64-bit)<br>CentOS 6.5 (64-bit) 或更高的版本</p>
@@ -487,10 +487,10 @@ Docker支持以下的CentOS版本：CentOS 7 (64-bit)CentOS 6.5 (64-bit) 或更�
 <p>目前，CentOS 仅发行版本中的内核支持 Docker。<br>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。<br>Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统<strong>内核版本为 2.6.32-431</strong> 或者更高版本。</p>
 <p><strong>查看自己的内核</strong></p>
 <p>uname命令用于打印当前系统相关信息（<strong>内核版本号</strong>、硬件架构、主机名称和操作系统类型等）。</p>
-<p><img src="/images/QQ截图20190109164948.png"></p>
-<p>查看已安装的CentOS版本信息<br><img src="/images/QQ截图20190109165254.png"></p>
-<h2 id="Docker的基本组成"><a href="#Docker的基本组成" class="headerlink" title="Docker的基本组成"></a>Docker的基本组成</h2><p>Docker的架构图：<br><img src="/images/QQ截图20190109165533.png" style="width:50%"></p>
-<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>Docker 镜像（Image）就是一个只读的模板。<strong>镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。</strong><br><img src="/images/QQ截图20190109165653.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109164948.png"></p>
+<p>查看已安装的CentOS版本信息<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109165254.png"></p>
+<h2 id="Docker的基本组成"><a href="#Docker的基本组成" class="headerlink" title="Docker的基本组成"></a>Docker的基本组成</h2><p>Docker的架构图：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109165533.png" style="width:50%"></p>
+<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>Docker 镜像（Image）就是一个只读的模板。<strong>镜像可以用来创建 Docker 容器，一个镜像可以创建很多容器。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109165653.png"></p>
 <h3 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h3><p>Docker 利用容器（Container）独立运行的一个或一组应用。<strong><code>容器是用镜像创建的运行实例。</code></strong></p>
 <p>它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。</p>
 <p><font color="red"><i><strong>可以把容器看做是一个简易版的 Linux 环境</strong></i></font>（包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。</p>
@@ -511,18 +511,18 @@ Docker支持以下的CentOS版本：CentOS 7 (64-bit)CentOS 6.5 (64-bit) 或更�
 </li>
 </ul>
 <h2 id="Docker的安装步骤"><a href="#Docker的安装步骤" class="headerlink" title="Docker的安装步骤"></a>Docker的安装步骤</h2><h3 id="CentOS6-8安装Docker"><a href="#CentOS6-8安装Docker" class="headerlink" title="CentOS6.8安装Docker"></a>CentOS6.8安装Docker</h3><p>1.<code>yum install -y epel-release</code></p>
-<p>Docker使用EPEL发布，RHEL系的OS首先要确保已经持有EPEL仓库，否则先检查OS的版本，然后安装相应的EPEL包。<br><img src="/images/QQ截图20190109172137.png"></p>
-<p>2.<code>yum install -y docker-io</code><br><img src="/images/QQ截图20190109172251.png"></p>
+<p>Docker使用EPEL发布，RHEL系的OS首先要确保已经持有EPEL仓库，否则先检查OS的版本，然后安装相应的EPEL包。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109172137.png"></p>
+<p>2.<code>yum install -y docker-io</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109172251.png"></p>
 <p>3.<code>检测docker的配置文件</code></p>
-<p><code>/etc/sysconfig/docker</code>:该文件是否存在<br><img src="/images/QQ截图20190109172409.png"></p>
+<p><code>/etc/sysconfig/docker</code>:该文件是否存在<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109172409.png"></p>
 <p>4.<code>启动Docker后台服务</code></p>
 <p><font color="red"><strong>service docker start</strong></font>（开机启动docker服务）</p>
 <p>5.<code>docker version验证</code></p>
-<p><img src="/images/QQ截图20190109172603.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109172603.png"></p>
 <p>以上五个步骤就是：centOS:6.8的安装docker的步骤。</p>
 <hr>
 <h3 id="CentOS7安装Docker"><a href="#CentOS7安装Docker" class="headerlink" title="CentOS7安装Docker"></a>CentOS7安装Docker</h3><p>1.请看官方手册：<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
-<p><img src="/images/QQ截图20190109173019.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109173019.png"></p>
 <p>看上图，我们能知道，docker有社区版和企业版，社区版是免费的，如果你的公司有钱，那你就下载企业版，这里，我下载的是社区版的docker。</p>
 <p><strong>如果大家英文不好的话，这里有中文版的安装手册：</strong></p>
 <p><a href="https://docs.docker-cn.com/engine/installation/linux/docker-ce/centos/#prerequisites" target="_blank" rel="noopener">https://docs.docker-cn.com/engine/installation/linux/docker-ce/centos/#prerequisites</a></p>
@@ -534,7 +534,7 @@ Docker支持以下的CentOS版本：CentOS 7 (64-bit)CentOS 6.5 (64-bit) 或更�
 </li>
 <li><p>yum -y install gcc</p>
 </li>
-<li><p>yum -y install gcc-c++<br><img src="/images/QQ截图20190109173704.png"></p>
+<li><p>yum -y install gcc-c++<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109173704.png"></p>
 </li>
 </ul>
 <p>4.卸载旧版本</p>
@@ -583,7 +583,7 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
 <p><code>systemctl start docker</code> (注意CentOS7 与 CentOS6 系列的启动命令不一样了)</p>
 <p>10.测试</p>
 <p><code>docker version</code></p>
-<p><img src="/images/QQ截图20190109181449.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109181449.png"></p>
 <p>11.配置镜像加速</p>
 <pre><code>1.  mkdir -p /etc/docker
 
@@ -608,7 +608,7 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
 
 4.  systemctl restart docker
 
-</code></pre><p><img src="/images/QQ截图20190109183932.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109183932.png"></p>
 <p>12.卸载</p>
 <pre><code>1.   systemctl stop docker 
 
@@ -618,21 +618,21 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
 </code></pre><hr>
 <h2 id="永远的hello-world"><a href="#永远的hello-world" class="headerlink" title="永远的hello-world"></a>永远的hello-world</h2><p>在我们实际开发中，如果是使用dicker-hub的话，会很慢，因为是国外的网站，所以为了方便开发，一般会使用国内的镜像加速地址。</p>
 <p>国内属于：阿里云 与 网易云 镜像加速比较好，现在来详细说明两者的配置。</p>
-<h3 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h3><p>1.打开阿里云的官网：<a href="https://dev.aliyun.com/search.html" target="_blank" rel="noopener">https://dev.aliyun.com/search.html</a><br><img src="/images/QQ截图20190109194448.png"></p>
+<h3 id="阿里云镜像加速"><a href="#阿里云镜像加速" class="headerlink" title="阿里云镜像加速"></a>阿里云镜像加速</h3><p>1.打开阿里云的官网：<a href="https://dev.aliyun.com/search.html" target="_blank" rel="noopener">https://dev.aliyun.com/search.html</a><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109194448.png"></p>
 <p>2.注册一个属于自己的阿里云账户（可复用淘宝账户）</p>
 <p>3.获取加速器地址连接</p>
-<p>登入阿里云，进入控制台：<br><img src="/images/QQ截图20190109194804.png"></p>
-<p>找到容器镜像服务：<br><img src="/images/QQ截图20190109195001.png"></p>
-<p>点击左侧的容器镜像服务：<br><img src="/images/QQ截图20190109195201.png"></p>
+<p>登入阿里云，进入控制台：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109194804.png"></p>
+<p>找到容器镜像服务：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109195001.png"></p>
+<p>点击左侧的容器镜像服务：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109195201.png"></p>
 <hr>
 <h4 id="CentOS6的系统镜像加速配置"><a href="#CentOS6的系统镜像加速配置" class="headerlink" title="CentOS6的系统镜像加速配置"></a>CentOS6的系统镜像加速配置</h4><p>如果你是<strong>CentOS6的系统</strong>，当你安装好docker之后，docker的配置<strong>文件</strong>是在：<code>/etc/sysconfig/docker</code></p>
 <p><code>vim /etc/sysconfig/docker</code></p>
 <p>将获得的自己账户下的阿里云加速地址配置进</p>
-<p><code>other_args=&quot;--registry-mirror=https://你自己的账号加速信息.mirror.aliyuncs.com&quot;</code><br><img src="/images/QQ截图20190109195423.png"></p>
+<p><code>other_args=&quot;--registry-mirror=https://你自己的账号加速信息.mirror.aliyuncs.com&quot;</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109195423.png"></p>
 <p>配置成功后，重新启动docker的后台服务：<code>service docker restart</code></p>
 <p>检查Linux 系统下配置完加速器需要检查是否生效：</p>
 <p>如果从结果中看到了配置的<code>--registry-mirror</code>参数说明配置成功，如下所示:</p>
-<p><code>ps -ef|grep docker</code><br><img src="/images/QQ截图20190109195724.png"></p>
+<p><code>ps -ef|grep docker</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109195724.png"></p>
 <hr>
 <h4 id="CentOS7的系统镜像加速配置"><a href="#CentOS7的系统镜像加速配置" class="headerlink" title="CentOS7的系统镜像加速配置"></a>CentOS7的系统镜像加速配置</h4><p>如果你是<strong>CentOS7的系统</strong>，当你安装好docker之后，docker的配置文件<strong>目录</strong>是在：<code>/etc/docker</code></p>
 <p>在该目录下，创建一个新的文件：daemon.json文件。</p>
@@ -652,7 +652,7 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
  &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;]
 }
 </code></pre><p><strong>一般推荐：阿里云的镜像加速配置。</strong></p>
-<h3 id="不使用国内镜像加速"><a href="#不使用国内镜像加速" class="headerlink" title="不使用国内镜像加速"></a>不使用国内镜像加速</h3><p>还可以不使用国内镜像加速的方法，在国内有一个镜像加速下载的网站：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a><br><img src="/images/QQ截图20190110134356.png"></p>
+<h3 id="不使用国内镜像加速"><a href="#不使用国内镜像加速" class="headerlink" title="不使用国内镜像加速"></a>不使用国内镜像加速</h3><p>还可以不使用国内镜像加速的方法，在国内有一个镜像加速下载的网站：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190110134356.png"></p>
 <p>按照网站上面的说明，当pull镜像的时候：</p>
 <p><code>$ docker pull registry.docker-cn.com/myname/myrepo:mytag</code></p>
 <p>例如：拉取ubuntu:16.04 （tag为16.04）</p>
@@ -660,13 +660,13 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
 <p>意思就是：当pull的时候，加上前缀：<code>registry.docker-cn.com/library/</code> 即可。</p>
 <h3 id="牛刀小试"><a href="#牛刀小试" class="headerlink" title="牛刀小试"></a>牛刀小试</h3><p>启动Docker后台容器(测试运行 hello-world)</p>
 <p><code>docker run hello-world</code></p>
-<p><img src="/images/QQ截图20190109201836.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109201836.png"></p>
 <p>输出这段提示以后，hello world 就会停止运行，容器自动终止。</p>
-<p>这个run干了什么呢？<br><img src="/images/QQ截图20190109202054.png"></p>
+<p>这个run干了什么呢？<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109202054.png"></p>
 <p>因为我们配置了阿里云镜像，所以当本地找不到镜像的时候，会去阿里云镜像找，而不是去docker hub中找相关的镜像！！！</p>
-<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><h4 id="docker是怎么工作的"><a href="#docker是怎么工作的" class="headerlink" title="docker是怎么工作的"></a>docker是怎么工作的</h4><p>docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器。 <strong>容器，是一个运行时环境，就是我们前面说到的集装箱。</strong><br><img src="/images/QQ截图20190109203549.png"></p>
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><h4 id="docker是怎么工作的"><a href="#docker是怎么工作的" class="headerlink" title="docker是怎么工作的"></a>docker是怎么工作的</h4><p>docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器。 <strong>容器，是一个运行时环境，就是我们前面说到的集装箱。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109203549.png"></p>
 <h4 id="为什么Docker比较比VM快"><a href="#为什么Docker比较比VM快" class="headerlink" title="为什么Docker比较比VM快"></a>为什么Docker比较比VM快</h4><p>(1) docker有着比虚拟机更少的抽象层。由于docker不需要<strong>Hypervisor</strong>实现硬件资源虚拟化,运行在docker容器上的程序直接使用的都是实际物理机的硬件资源。因此在CPU、内存利用率上docker将会在效率上有明显优势。</p>
-<p>(2) docker利用的是宿主机的内核,而不需要Guest OS。因此,当新建一个容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。然而避免了引寻、加载操作系统内核这个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载Guest OS,所以新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统,则省略了这个过程,因此新建一个docker容器只需要几秒钟。<br><img src="/images/QQ截图20190109204013.png" style="width:50%"><br><img src="/images/QQ截图20190109204054.png" style="width:50%"></p>
+<p>(2) docker利用的是宿主机的内核,而不需要Guest OS。因此,当新建一个容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。然而避免了引寻、加载操作系统内核这个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载Guest OS,所以新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统,则省略了这个过程,因此新建一个docker容器只需要几秒钟。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109204013.png" style="width:50%"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day02/QQ截图20190109204054.png" style="width:50%"></p>
 
             </div>
             <hr/>
@@ -1110,9 +1110,7 @@ $ sudo yum install docker-ce-&lt;VERSION&gt;
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                接着上篇，我们来学习docker的常用命令，大家是不是已经开始蠢蠢欲动了呢？come on！！！
-帮助命令docker version
-do
+                                docker的常用命令
                       
                     </div>
                     <div class="publish-info">
@@ -1169,8 +1167,7 @@ do
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天开始学习Docker的基础篇章的学习。
-前提知识：首先，确定大家是已经学习过linux和git的相关知识的，如果大家不了解的话，请看我的
+                                Docker的简单介绍
                       
                     </div>
                     <div class="publish-info">
@@ -1360,7 +1357,7 @@ do
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

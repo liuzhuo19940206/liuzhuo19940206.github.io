@@ -475,7 +475,7 @@ Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Tomcat的启动分析：Catalina<br><a id="more"></a></p>
+                <p>Tomcat的启动分析：Catalina</p>
 <p>Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootstrap的main方法，便可以启动tomcat进行代码调试和分析。Bootstrap是tomcat的入口，它会完成初始化ClassLoader，实例化Catalina以及load、start动作。在这一篇文章中，我们将会对tomcat初始化过程进行分析。</p>
 <hr>
 <h3 id="main方法"><a href="#main方法" class="headerlink" title="main方法"></a>main方法</h3><p>首先实例化Bootstrap，并调用init方法对其初始化</p>
@@ -588,7 +588,7 @@ daemon.start();
     // ......
 
 }
-</code></pre><p><strong>load的时序图如下所示:</strong><br><img src="/images/QQ截图20190117103649.png"></p>
+</code></pre><p><strong>load的时序图如下所示:</strong><br><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190117103649.png"></p>
 <ul>
 <li><p>Digester利用jdk提供的sax解析功能，将server.xml的配置解析成对应的Bean，并完成注入，比如往Server中注入Service</p>
 </li>
@@ -603,7 +603,7 @@ daemon.start();
 </ul>
 <p>Catalina在load结束之前，会调用Server的init()完成各个组件的初始化，下面我们来分析下各个组件在init初始化过程中都做了哪些操作</p>
 <h4 id="Server初始化"><a href="#Server初始化" class="headerlink" title="Server初始化"></a>Server初始化</h4><p>StandardServer是由Catalina进行init初始化的，调用的是LifecycleBase父类的init方法，而StandardServer继承至LifecycleMBeanBase，重写了initInternal方法。关于这块的知识，请参考上一篇Lifecycle的博客</p>
-<p>StandardServer初始化的时序图如下所示，为了表述清楚，我这里把LifecycleBase、LifecycleMBeanBase拆开了，实际上是同一个StandardServer实例对象，存在继承关系<br><img src="/images/QQ截图20190117104152.png"></p>
+<p>StandardServer初始化的时序图如下所示，为了表述清楚，我这里把LifecycleBase、LifecycleMBeanBase拆开了，实际上是同一个StandardServer实例对象，存在继承关系<br><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190117104152.png"></p>
 <p>由上图可以很清晰地看到，StandardServer的初始化过程，先由父类LifecycleBase改变当前的state值并发出事件通知，<strong>那么这个时候StandardServer的子容器StandardService内部的state是否会发生改变呢，是否会发出事件通知呢？</strong> 当然是不会的，因为这个state值不是LifecycleBase的静态成员变量，StandardServer只能改变自己的值，而StandardService只有在被StandardServer调用init初始化的时候才会改变，二者拥有独立的状态。考虑到有其它线程可能会改变StandardServer的state值，比如利用jmx执行init操作，因此要考虑并发问题，所以LifecycleBase#init()使用了synchronized锁，并且state是volatile修饰的。</p>
 <p>LifecycleBase改变state、发出事件通知之后，便会执行StandardServer自身的initInternal，我们来看看这个里面都干嘛了</p>
 <pre><code>protected void initInternal() throws LifecycleException {
@@ -848,7 +848,7 @@ public interface Adapter {
     public String getDomain();
 }
 </code></pre><p>ProtocolHandler的子类如下所示，AbstractProtocol是基本的实现，而NIO默认使用的是Http11NioProtocol</p>
-<p><img src="/images/QQ截图20190117111122.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190117111122.png"></p>
 <p>调用ProtocolHandler的init进行初始化是调用的AbstractProtocol，首先完成jmx的注册，然后对NioEndpoint进行初始化</p>
 <pre><code>public abstract class AbstractProtocol&lt;S&gt; implements ProtocolHandler,
         MBeanRegistration {
@@ -906,7 +906,7 @@ public interface Adapter {
     }
 }
 </code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>至此，整个初始化过程便告一段落。整个初始化过程，由parent组件控制child组件的初始化，一层层往下传递，直到最后全部初始化OK。下图描述了整体的传递流程</p>
-<p><img src="/images/QQ截图20190117111556.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190117111556.png"></p>
 <p>默认情况下，Server只有一个Service组件，Service组件先后对Engine、Connector进行初始化。而Engine组件并不会在初始化阶段对子容器进行初始化，<strong>Host、Context、Wrapper容器的初始化是在start阶段完成的</strong>。tomcat默认会启用HTTP1.1和AJP的Connector连接器，这两种协议默认使用Http11NioProtocol、AJPNioProtocol进行处理。</p>
 
             </div>
@@ -1351,7 +1351,7 @@ public interface Adapter {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包
+                                Tomcat的启动分析Catalina
                       
                     </div>
                     <div class="publish-info">
@@ -1409,7 +1409,6 @@ public interface Adapter {
                     <div class="summary">
                        
                                 Tomcat组件生命周期管理:Lifecycle
-Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由L
                       
                     </div>
                     <div class="publish-info">
@@ -1599,7 +1598,7 @@ Lifecycle在其他框架中也很常见，比如spring，它常用于具有生�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

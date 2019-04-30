@@ -475,7 +475,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>浅谈java中的volatile关键字<br><a id="more"></a></p>
+                <p>浅谈java中的volatile关键字</p>
 <h3 id="内存可见性"><a href="#内存可见性" class="headerlink" title="内存可见性"></a>内存可见性</h3><p>volatile是Java提供的一种轻量级的同步机制，在并发编程中，它也扮演着比较重要的角色。同synchronized相比（synchronized通常称为重量级锁），volatile更轻量级，相比使用synchronized所带来的庞大开销，倘若能恰当的合理的使用volatile，自然是美事一桩。</p>
 <p>为了能比较清晰彻底的理解volatile，我们一步一步来分析。首先来看看如下代码：</p>
 <pre><code>public class TestVolatile {
@@ -507,7 +507,7 @@
 <p>为什么出现这种情况呢，我们需要先了解一下JMM（java内存模型）</p>
 <p>java虚拟机有自己的内存模型（Java Memory Model，JMM），JMM可以屏蔽掉各种硬件和操作系统的内存访问差异，以实现让java程序在各种平台下都能达到一致的内存访问效果。</p>
 <p>JMM决定一个线程对共享变量的写入何时对另一个线程可见，JMM定义了线程和主内存之间的抽象关系：共享变量存储在主内存(Main Memory)中，每个线程都有一个私有的本地内存（Local Memory），本地内存保存了被该线程使用到的主内存的副本拷贝，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存中的变量。这三者之间的交互关系如下:</p>
-<p><img src="/images/QQ截图20190113132739.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/interview/QQ截图20190113132739.png"></p>
 <p>　　需要注意的是，JMM是个抽象的内存模型，所以所谓的本地内存，主内存都是抽象概念，并不一定就真实的对应cpu缓存和物理内存。当然如果是出于理解的目的，这样对应起来也无不可。</p>
 <p>大概了解了JMM的简单定义后，问题就很容易理解了，对于普通的共享变量来讲，比如我们上文中的status，线程A将其修改</p>
 <p>为true这个动作发生在线程A的本地内存中，此时还未同步到主内存中去；而线程B缓存了status的初始值false，此时可能</p>
@@ -1075,7 +1075,6 @@ public class Counter {
                     <div class="summary">
                       
                                 浅谈java中的原子类实现原理
-在谈谈java中的volatile一文中，我们提到过并发包中的原子类可以解决类似num++这样的复合类操作的
                       
                     </div>
                     <div class="publish-info">
@@ -1132,8 +1131,7 @@ public class Counter {
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                给大家普及一下，我在面试中遇到的单例问题。
-当我兴冲冲的带着笔记答案参加面试时，突然发现面前的面试官显得很严肃而且眉头紧锁，不知道是工作太累
+                                面试中的单例问题
                       
                     </div>
                     <div class="publish-info">
@@ -1323,7 +1321,7 @@ public class Counter {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

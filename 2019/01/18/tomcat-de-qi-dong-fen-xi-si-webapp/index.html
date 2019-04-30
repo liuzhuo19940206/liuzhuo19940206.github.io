@@ -474,7 +474,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的启动，这一块是最贴近我们开发的应用程序。在这一篇文章中，我们将要分析 tomcat 是如何解析并初始化应用程序定义的 Servlet、Filter、Listener 等<br><a id="more"></a></p>
+                <p>上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp 应用程序的启动，这一块是最贴近我们开发的应用程序。在这一篇文章中，我们将要分析 tomcat 是如何解析并初始化应用程序定义的 Servlet、Filter、Listener 等</p>
 <p>首先我们思考几个问题： </p>
 <p>1.tomcat 如何支持 servlet3.0 的注解编程，比如对 javax.servlet.annotation.WebListener 注解的支持？</p>
 <pre><code>如果 tomcat 利用 ClassLoader 加载 webapp 下面所有的 class，从而分析 Class 对象的注解，这样子肯定会导致很多问题，
@@ -1244,9 +1244,6 @@ if (ok) {
                     <div class="summary">
                       
                                 Java中的父子类执行顺序
-结论类的加载顺序。
-(1) 父类静态代码块(包括静态初始化块，静态属性，但不包括静态方法)
-(2) 子类静态代码
                       
                     </div>
                     <div class="publish-info">
@@ -1303,7 +1300,7 @@ if (ok) {
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包
+                                Tomcat的启动分析Catalina
                       
                     </div>
                     <div class="publish-info">
@@ -1493,7 +1490,7 @@ if (ok) {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

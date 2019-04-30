@@ -480,7 +480,7 @@
 <hr>
 <p><strong>市面上的日志框架</strong></p>
 <p>JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104094606.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104094606.png"></p>
 <p>左边选一个门面（抽象层）、右边来选一个实现；</p>
 <p>日志门面： SLF4J；</p>
 <p>日志实现：Logback；</p>
@@ -498,24 +498,24 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>图示:<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104095906.png"></p>
+<p>图示:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104095906.png"></p>
 <p>每一个日志的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是要用日志实现框架自己本身的配置文件；</strong></p>
 <p>比如使用slf4j 和 logback，就用logback的配置文件，使用slf4j 和 log4j,就使用log4j的配置文件。而不是使用slf4j的配置文件。</p>
 <h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><p>a系统（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx</p>
-<p>我们自己的a系统想要使用slf4j+logback做日志框架，但是我们的a系统是基于Spring、HIbernate等其他框架的，而这些其他框架底层使用的是其他日志框架，Spring使用的是commons-logging，Hibernate使用的是jboss-logging。</p>
-<p>现在，我们想统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出，能做到吗？</p>
+<p>我们自己的a系统想要使用slf4j+logback做日志框架，但是我们的a系统是基于Spring、Hibernate等其他框架的，而这些其他框架底层使用的是其他日志框架，Spring使用的是commons-logging，Hibernate使用的是jboss-logging。</p>
+<p>现在，我们想统一日志记录，即：使别的框架和我一起统一使用slf4j进行输出，能做到吗？</p>
 <p>slf4j官网给出了答案，<a href="https://www.slf4j.org/legacy.html" target="_blank" rel="noopener">参考答案</a></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104101357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104101357.png"></p>
 <p><strong>如何让系统中所有的日志都统一到slf4j?</strong></p>
 <font color="red">1、将系统中其他日志框架的日志jar包先排除出去；<br><br>2、用中间包来替换原有的日志框架的jar；<br><br>3、导入slf4j其他的实现。</font>
 
-<h1 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h1><p>创建一个新的Springboot的应用，只需要Web模块即可。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104103732.png"></p>
+<h1 id="SpringBoot日志关系"><a href="#SpringBoot日志关系" class="headerlink" title="SpringBoot日志关系"></a>SpringBoot日志关系</h1><p>创建一个新的Springboot的应用，只需要Web模块即可。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104103732.png"></p>
 <p>现在，我们来查看一下Springboot的依赖关系。</p>
 <p>查看依赖关系</p>
-<p>1）使用idea的自带的maven管理器工具<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104103856.png" style="width:50%"></p>
+<p>1）使用idea的自带的maven管理器工具<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104103856.png" style="width:50%"></p>
 <p>这样不够直观。</p>
 <p>2）查看依赖图</p>
-<p>在pom文件中，右键点击Diagrams -&gt; show dependencies<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104104228.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104104542.png"></p>
+<p>在pom文件中，右键点击Diagrams -&gt; show dependencies<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104104228.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104104542.png"></p>
 <p>首先查看spring‐boot‐starter，因为这是Springboot的应用都必须依赖的jar包。</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependency<span class="token operator">></span>
     <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
@@ -528,7 +528,7 @@
             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
             &lt;artifactId&gt;spring-boot-starter-logging&lt;/artifactId&gt;
         &lt;/dependency&gt;
-</code></pre><p>再来看spring-boot-starter-logging底层依赖：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104105357.png"></p>
+</code></pre><p>再来看spring-boot-starter-logging底层依赖：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104105357.png"></p>
 <p>总结：</p>
 <p>1）、SpringBoot底层也是使用 <strong>slf4j + logback</strong> 的方式进行日志记录</p>
 <p>2）、SpringBoot也把其他的日志都替换成了slf4j；</p>
@@ -539,7 +539,7 @@
 <span class="token string">"http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j"</span><span class="token punctuation">;</span>
     <span class="token keyword">static</span> LogFactory logFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SLF4JLogFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104105601.png" style="width:50%"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104105601.png" style="width:50%"></p>
 <p>其实这些jar包，本身还是原来的日志框架的jar包，只是在使用的过程中，偷换成了slf4j的日志框架，就和适配器模式很像。</p>
 <p><strong>这些操作，Springboot已经帮我们做好了，我们只需要在引入其他框架的时候，移除掉他们本身的日志框架就行了。</strong></p>
 <p>4）、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？</p>
@@ -559,7 +559,7 @@
 <p>发现，Springboot也帮我们剔除掉了，Springboot真方便！！！</p>
 <font color="red"><strong>SpringBoot能自动适配所有的日志，而且底层使用slf4j+logback的方式记录日志，引入其他框架的时候，只需要<br>把这个框架依赖的日志框架排除掉即可；</strong></font>
 
-<h1 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h1><h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>直接运行，我们刚刚创建的项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104112034.png"></p>
+<h1 id="日志使用"><a href="#日志使用" class="headerlink" title="日志使用"></a>日志使用</h1><h2 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h2><p>直接运行，我们刚刚创建的项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104112034.png"></p>
 <p>发现，Springboot已经帮我们创建好了默认的配置。默认情况下，Spring Boot会用Logback来记录日志，并用INFO级别输出到控制台。在运行应用程序和其他例子时，你应该已经看到很多INFO级别的日志了。</p>
 <p>从上图可以看到，日志输出内容元素具体如下：</p>
 <ul>
@@ -597,12 +597,12 @@
 
 <span class="token punctuation">}</span>
 </code></pre>
-<p>运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104113131.png"></p>
+<p>运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104113131.png"></p>
 <p>只打印了info级别以及以上的。说明Springboot默认的日志级别是info。</p>
 <p>1) 修改日志的级别。</p>
 <p>在application.properties文件中。</p>
 <pre><code>logging.level.com.liuzhuo=trace
-</code></pre><p>再次运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104113410.png"></p>
+</code></pre><p>再次运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104113410.png"></p>
 <p>格式为：logging.level.* = LEVEL</p>
 <ul>
 <li>logging.level：日志级别控制前缀，*为包名或Logger名</li>
@@ -642,7 +642,7 @@ logging.pattern.file=%d{yyyy‐MM‐dd} === [%thread] === %‐5level === %logger
 
 %d{yyyy‐MM‐dd HH:mm:ss.SSS} [%thread] %‐5level %logger{50} ‐ %msg%n
 </code></pre><h2 id="指定配置"><a href="#指定配置" class="headerlink" title="指定配置"></a>指定配置</h2><p>在使用我们自己定义的日志配置文件之前，我们先来看看，为啥我们不用配置日志文件，Springboot中也能使用日志功能？</p>
-<p>1) 打开org.springframework.boot:spring-boot:1.5.17.RELEASE<br>2) 打开org.springframework.boot<br>3) 打开logging、logback、base.xml<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104150319.png" style="width:50%"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104150519.png" style="width:50%"></p>
+<p>1) 打开org.springframework.boot:spring-boot:1.5.17.RELEASE<br>2) 打开org.springframework.boot<br>3) 打开logging、logback、base.xml<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104150319.png" style="width:50%"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104150519.png" style="width:50%"></p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
 
 <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
@@ -707,11 +707,11 @@ initialization performed by Boot
 <p>现在我们已经了解到了Springboot的默认日志文件的配置了。当我们具体使用日志框架时，需要使用哪个配置文件呢？</p>
 <p>打开Spring的官网，<a href="https://docs.spring.io/spring-boot/docs/1.5.17.RELEASE/reference/htmlsingle/#boot-features-logging" target="_blank" rel="noopener">logging参考文献</a></p>
 <p>找到：<strong>26.5 Custom log configuration</strong></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104194411.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104194411.png"></p>
 <p>从图中，我们可以看出，使用logback日志框架，就使用logback-spring.xml、logback.xml等配置文件。</p>
 <p>其他的日志框架，类似logback。</p>
 <p><strong>给类路径下放上每个日志框架自己的配置文件即可；SpringBoot就不使用他默认配置的了。</strong></p>
-<p>现在，我们在类路径下，即resources下，放入一个logback.xml的日志配置文件。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104195557.png"></p>
+<p>现在，我们在类路径下，即resources下，放入一个logback.xml的日志配置文件。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104195557.png"></p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
 scan：当此属性设置为<span class="token boolean">true</span>时，配置文件如果发生改变，将会被重新加载，默认值为<span class="token boolean">true</span>。
@@ -803,7 +803,7 @@ debug：当此属性设置为<span class="token boolean">true</span>时，将打
     &lt;pattern&gt;%d{yyyy-MM-dd} -----&gt; [ %thread ] -----&gt; [ %-5level ] [ %logger{50} : %line ] -----&gt; %msg%n&lt;/pattern&gt;
 &lt;/layout&gt;
 </code></pre><p><strong>把时间的时分秒去掉，然后把分隔符改为箭头。</strong></p>
-<p>启动Springboot项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104200138.png"></p>
+<p>启动Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104200138.png"></p>
 <p>我们的日志配置文件设置成功了。</p>
 <hr>
 <p>我们注意到了，官网上面写了logback.xml和logback-spring.xml两种配置文件的<strong>书写方式。</strong></p>
@@ -838,33 +838,33 @@ debug：当此属性设置为<span class="token boolean">true</span>时，将打
     &lt;/appender&gt;
 </code></pre><p>在dev环境下：使用上面的输出格式。</p>
 <p>在非dev环境下：使用下面的输出格式。</p>
-<p>现在运行Springboot项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104201524.png"></p>
+<p>现在运行Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104201524.png"></p>
 <p><strong>发现，日志框架出现错误了。因为我们的日志配置文件的名字还没有改。</strong></p>
 <p>现在修改logback.xml —&gt; logback-spring.xml.</p>
-<p>再次启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104201940.png"></p>
+<p>再次启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104201940.png"></p>
 <p>发现，启动的是非dev环境的日志控制台输出格式。</p>
 <p>我们在配置Springboot为dev环境。</p>
 <p>1）application.properties.</p>
 <p>spring.profiles.active=dev</p>
-<p>2) 配置命令行参数：<br><code>--spring.profiles.active=dev</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104202332.png"></p>
+<p>2) 配置命令行参数：<br><code>--spring.profiles.active=dev</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104202332.png"></p>
 <p>使用上面两种方法都可以改变Springboot的环境。</p>
-<p>然后启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104202559.png"></p>
+<p>然后启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104202559.png"></p>
 <h1 id="切换日志框架"><a href="#切换日志框架" class="headerlink" title="切换日志框架"></a>切换日志框架</h1><h2 id="切换成log4j"><a href="#切换成log4j" class="headerlink" title="切换成log4j"></a>切换成log4j</h2><p>现在，我们使用的是slf4j+logback。但是我们想换成slf4j + log4j怎么办？</p>
 <p><strong>这里，说明一下，就是因为log4j有问题，所以才会推出logback日志框架的，这里只是做个例子演示日志框架的切换，实际情况下，直接使用logback日志框架就行。</strong></p>
-<p>切换日志框架，我们直接参考slf4j的官网的那个图，就行。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104204428.png"></p>
-<p>现在打开我们的依赖图层：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104204742.png"></p>
+<p>切换日志框架，我们直接参考slf4j的官网的那个图，就行。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104204428.png"></p>
+<p>现在打开我们的依赖图层：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104204742.png"></p>
 <p>去掉图中画红色框框的logback的依赖。</p>
-<p>快速移除依赖：在想要移除的依赖上面，右键Exclude<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205023.png"></p>
-<p>移除完毕后：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205144.png" style="width:50%"></p>
-<p>打开pom.xml文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205307.png"></p>
+<p>快速移除依赖：在想要移除的依赖上面，右键Exclude<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104205023.png"></p>
+<p>移除完毕后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104205144.png" style="width:50%"></p>
+<p>打开pom.xml文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104205307.png"></p>
 <p>现在需要添加log4j的依赖。</p>
 <p>直接在pom.xml文件中添加：</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
     &lt;artifactId&gt;slf4j-log412&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre><p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205726.png"></p>
-<p>启动Springboot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181104205838.png"><br><strong>发出警告，因为在类路径下，没有log4j.properties的配置文件。</strong></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104205726.png"></p>
+<p>启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day03/QQ%E6%88%AA%E5%9B%BE20181104205838.png"><br><strong>发出警告，因为在类路径下，没有log4j.properties的配置文件。</strong></p>
 <p>在resources下，添加log4j.properties的配置文件</p>
 <pre><code>### set log levels ###
 log4j.rootLogger = debug ,  stdout ,  D ,  E
@@ -1603,7 +1603,7 @@ log4j.appender.stdout.layout.ConversionPattern =  %d{ABSOLUTE} %5p %c{ 1 }:%L - 
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -468,9 +468,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习Mybatis的基本用法，带大家入门。<br><a id="more"></a></p>
+                <p>今天来学习Mybatis的基本用法，带大家入门。</p>
 <h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><p>学习编程是一门实操的科学，只有一边敲代码一边学习才能有更好的效果，所以需要搭建一个学习的环境才行。</p>
-<h4 id="下载Mybatis"><a href="#下载Mybatis" class="headerlink" title="下载Mybatis"></a>下载Mybatis</h4><p>输入官网：<a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases</a> 进入官网，我们就可以下载Mybatis，如下图所示：<br><img src="/images/mybatis/QQ截图20190308214814.png"></p>
+<h4 id="下载Mybatis"><a href="#下载Mybatis" class="headerlink" title="下载Mybatis"></a>下载Mybatis</h4><p>输入官网：<a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases</a> 进入官网，我们就可以下载Mybatis，如下图所示：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308214814.png"></p>
 <p>在这里，我们可以下载到Mybatis所需的jar包和源码包。</p>
 <p>mybatis的jar包下载地址：<a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases</a></p>
 <p>mybatis和Spring整合jar包下载地址：<a href="https://github.com/mybatis/spring/releases" target="_blank" rel="noopener">https://github.com/mybatis/spring/releases</a></p>
@@ -479,7 +479,7 @@
 <p><strong><code>使用Mybatis-Spring项目可以参考</code></strong>：<a href="http://mybatis.org/spring/zh/index.html" target="_blank" rel="noopener">http://mybatis.org/spring/zh/index.html</a></p>
 <h3 id="搭建Mybatis的环境"><a href="#搭建Mybatis的环境" class="headerlink" title="搭建Mybatis的环境"></a>搭建Mybatis的环境</h3><p>无论使用哪种java IDE都可以轻松的搭建开发环境。我这里使用IDEA来搭建开发环境，Eclipse也行，都是类似的。</p>
 <p>使用IDEA时，我们可以创建普通的java项目，然后将<strong>下载的Mybatis的jar和lib包</strong>导入到项目中使用Mybatis，但是，我觉得还是使用maven来搭建环境比较好，毕竟大家最后开发都是使用maven来开发项目的，maven大家应该都比较熟悉了，这里就不解释了。</p>
-<p>（1） 使用IDEA创建maven项目：<br><img src="/images/mybatis/QQ截图20190308220624.png"></p>
+<p>（1） 使用IDEA创建maven项目：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308220624.png"></p>
 <p>（2）添加Mybatis的依赖：</p>
 <pre><code>    &lt;dependencies&gt;
         &lt;dependency&gt;
@@ -488,7 +488,7 @@
             &lt;version&gt;3.4.6&lt;/version&gt;
         &lt;/dependency&gt;
     &lt;/dependencies&gt;
-</code></pre><p><img src="/images/mybatis/QQ截图20190308220907.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190308220907.png"></p>
 <p>至于：Mybatis的版本号，自己到maven的仓库中寻找最新即可，我现在最新的版本是3.4.6</p>
 <p>以上，我们的Mybatis的开发环境就搭建完毕了。</p>
 <hr>
@@ -502,10 +502,10 @@
 <li><p>SQL Mapper：它是Mybatis新设计的组件，它是由一个java接口和XML文件（或注解）构成的，需要给出对应的SQL和映射规则。它负责发送SQL去执行，并返回结果。</p>
 </li>
 </ul>
-<p>可以用如下的图来表示：<br><img src="/images/mybatis/QQ截图20190309094652.png"></p>
+<p>可以用如下的图来表示：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309094652.png"></p>
 <h4 id="构建SqlSessionFactory"><a href="#构建SqlSessionFactory" class="headerlink" title="构建SqlSessionFactory"></a>构建SqlSessionFactory</h4><p>每个Mybatis应用都是以SqlSessionFactory的实例为中心的。SqlSessionFactory的实例可以通过SqlSessionFactoryBuilder获取。但是注意：SqlSessionFactory只是一个接口，它的任务是创建SqlSession。SqlSession类似于一个JDBC的Connection对象。Mybatis提供了两种模式去创建SqlsessionFactory：<strong>一种是使用XML配置的方式</strong>，<strong>另一种是代码的方式</strong>。</p>
 <p>通过SqlSessionFactoryBuilder创建SqlsessionFactory时，需要传入一个XML配置文件，然后构建Configuration对象，类的全限定名是：<code>org.apache.ibatis.session.Configuration</code>，这个对象存在于整个Mybatis应用的生命周期中，以便重复的读取和运用。我们解析一次配置的XML文件保存到Configuration类对象中，方便我们从这个对象中读取配置信息，性能高。</p>
-<p>在Mybatis中提供了两个SqlSessionFactory的实现类，<strong>DefaultSqlSessionFactory</strong> 和 <strong>SqlSessionManager</strong>。 不过目前，SqlSessionManager还没有使用，Mybatis中目前使用的是：DefaulSqlSessionFactory。<br><img src="/images/mybatis/QQ截图20190309100536.png"></p>
+<p>在Mybatis中提供了两个SqlSessionFactory的实现类，<strong>DefaultSqlSessionFactory</strong> 和 <strong>SqlSessionManager</strong>。 不过目前，SqlSessionManager还没有使用，Mybatis中目前使用的是：DefaulSqlSessionFactory。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309100536.png"></p>
 <p>(1)XML构成SqlsessionFactory</p>
 <p>在我们的项目中的resources的根目录中创建：mybatis-config.xml文件：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
@@ -535,7 +535,7 @@
         &lt;mapper resource=&quot;com/liuzhuo/mapper/userMapper.xml&quot;/&gt;
     &lt;/mappers&gt;
 &lt;/configuration&gt;
-</code></pre><p><img src="/images/mybatis/QQ截图20190309104551.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309104551.png"></p>
 <p>这里配置信息，看注释即可，以后会专门来讲解这个配置文件。</p>
 <p><strong>这里注意一下，mysql的url的连接配置：</strong></p>
 <p>我这里的驱动版本是：mysql-connector-java-8.0.13</p>
@@ -616,7 +616,7 @@ try{
         select userId,user_name as userName,user_age as userAge from user where userId = #{id}
     &lt;/select&gt;
 &lt;/mapper&gt;
-</code></pre><p><img src="/images/mybatis/QQ截图20190309115557.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309115557.png"></p>
 <p>使用XML文件配置是Mybatis实现Mapper的首选方式。它是由一个java接口和一个XML文件组成的。</p>
 <p>java接口文件如下：</p>
 <pre><code>public interface UserMapper {
@@ -636,7 +636,7 @@ try{
 }
 </code></pre><p>再看看SQL语句，我们查询了user的信息，并给查询出来的列重新命名了，使用查询出来的列名和POJO对象的属性名一致了，这么Mybatis才会将从数据库中查询出来的信息，自动帮我们赋值到User对象中。如果数据库中的表的列名与POJO对象一致的话，就不需要别名了。</p>
 <hr>
-<h3 id="项目整体结构"><a href="#项目整体结构" class="headerlink" title="项目整体结构"></a>项目整体结构</h3><p>这个项目的整体结构如下：<br><img src="/images/mybatis/QQ截图20190309120612.png"></p>
+<h3 id="项目整体结构"><a href="#项目整体结构" class="headerlink" title="项目整体结构"></a>项目整体结构</h3><p>这个项目的整体结构如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309120612.png"></p>
 <p>在java包下：</p>
 <p>com.liuzhuo.entity:存储POJO类</p>
 <p>com.liuzhuo.dao：存储java接口Mapper类</p>
@@ -679,7 +679,7 @@ try{
         &lt;/dependency&gt;
 
     &lt;/dependencies&gt;
-</code></pre><p>运行测试方法test01：<br><img src="/images/mybatis/QQ截图20190309121425.png"></p>
+</code></pre><p>运行测试方法test01：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309121425.png"></p>
 <hr>
 <p>这里简单演示一下注解的使用</p>
 <p>在UserMapper接口中：<br>添加新的方法</p>
@@ -702,7 +702,7 @@ try{
         User user = userMapper.selectById02(1L);
         System.out.println(user);
     }
-</code></pre><p>这里我们使用：selectById02方法来执行<br><img src="/images/mybatis/QQ截图20190309122041.png"></p>
+</code></pre><p>这里我们使用：selectById02方法来执行<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190309122041.png"></p>
 <p>发现也能执行成功，所以xml和注解的方式都是类似的。注解还有update、insert、delete等，大家可以去官网去看看，这里就不详细讲解了。</p>
 
             </div>
@@ -1148,7 +1148,6 @@ try{
                     <div class="summary">
                       
                                 探讨Mybatis中的各个对象的作用域和生命周期
-今天主要来正确的理解Mybatis中的SqlSessionFactoryBuilder、S
                       
                     </div>
                     <div class="publish-info">
@@ -1197,8 +1196,7 @@ try{
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别
-jdbc的概述  Java程序都是通过JDBC（Java Dat
+                                讲述原始的jdbc，与orm的区别
                       
                     </div>
                     <div class="publish-info">
@@ -1380,7 +1378,7 @@ jdbc的概述  Java程序都是通过JDBC（Java Dat
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

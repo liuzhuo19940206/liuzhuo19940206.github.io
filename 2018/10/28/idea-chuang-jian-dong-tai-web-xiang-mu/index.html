@@ -472,31 +472,31 @@ idea 创建动态Web项目打开idea
                 <p>intellij idea这个开发工具功能强大，但是大部分人都习惯eclipse 开发，所以对这个工具还不是太了解。今天就使用idea来创建动态web项目。</p>
 <h3 id="idea-创建动态Web项目"><a href="#idea-创建动态Web项目" class="headerlink" title="idea 创建动态Web项目"></a>idea 创建动态Web项目</h3><p>打开idea</p>
 <p>我使用的是2017版本的。</p>
-<p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028182054.png"></p>
-<p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028191302.png"></p>
-<p>(3)填好项目名称，和项目路径，Finish。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028191740.png"></p>
+<p>(1)点击左上角的File–&gt; new –&gt; Project<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028182054.png"></p>
+<p>(2)之后会弹出一个选择框，选择Java Enterprise ，网上有的会说选择第一个java 当然也是可行的 ，两者之间有一点点细微的差别啦，当然别忘记<strong>勾选Web Application</strong>,点击Next。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028191302.png"></p>
+<p>(3)填好项目名称，和项目路径，Finish。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028191740.png"></p>
 <p>(4)完成后，需要添加web.xml文件。在<strong>idea201703版本之前</strong>。在第二步的选择Web Application时，可以选择版本号，并创建web.xml文件。但是之后的版本没有。我们可以手工创建，但是麻烦，教大家另外的创建方法。</p>
-<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里<strong>选中次级的 web 或者 在Modules 中选中web</strong>，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028194446.png" style="width:50%"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028194836.png"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028195525.png" style="width:50%"></p>
-<p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028195719.png" style="width:50%"></p>
+<p>打开 Project Structure（Ctrl+Alt+Shift+S），在 facets 里<strong>选中次级的 web 或者 在Modules 中选中web</strong>，在deployment Descriptors面板里，点击 +号选择web.xml以及版本号。然后在弹出的对话框中修改xml默认的目录，加上web就可以了。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028194446.png" style="width:50%"><br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028194836.png"><br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028195525.png" style="width:50%"></p>
+<p>这样就把 WEB-INF web.xml 添加上了 。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028195719.png" style="width:50%"></p>
 <p>.idea文件夹和webapp.iml是IDEA自动创建的，包含了工程和模块的配置数据<br>src文件夹是源码目录<br>web文件夹相当于eclipse创建的web工程WebContent文件夹，包含了WEB-INF/web.xml及index.jsp<br>External Libraries包含了JDK及Tomcat带的jsp-api、servlet-api jar文件</p>
 <p>(4)完善工程目录，点击WEF-INF  ,右键，NEW–&gt;Directory  创建两个文件夹，<code>classes</code> 和 <code>lib</code>  <strong>这两个名字不要改哦！</strong></p>
-<p>4.1 创建classes文件夹<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200211.png"><br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200344.png" style="width:50%"></p>
-<p>4.2 同理，创建lib文件夹<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028200618.png" style="width:50%"></p>
+<p>4.1 创建classes文件夹<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028200211.png"><br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028200344.png" style="width:50%"></p>
+<p>4.2 同理，创建lib文件夹<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028200618.png" style="width:50%"></p>
 <p>(5) 完成后再点击File , 选择Project Structure  </p>
-<p>点击Modules , 选择Paths , 选中 Use module compile output path , 将Outputpath 和 Test output path 都设置为刚刚创建的classes文件夹。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201015.png"></p>
+<p>点击Modules , 选择Paths , 选中 Use module compile output path , 将Outputpath 和 Test output path 都设置为刚刚创建的classes文件夹。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028201015.png"></p>
 <p><strong>点击apply就行，接着第六步。</strong></p>
-<p>(6) 点击path旁边的<code>Dependencies</code>, 点击”+”号，选择: 1 JARs or directories<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201526.png"></p>
-<p>选择刚刚创建的lib。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201634.png"></p>
-<p>选择第三个，jar Directory。一路ok到底！<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028201803.png" style="width:50%"></p>
-<p>(7) 配置servlet容器：Tomcat<br>点击右上角的tomcat的向下的小三角，然后点击Edit Configurations<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028202512.png" style="width:30%"></p>
-<p>看tomcat已经有啦，这是java Enterprise的好处啦，点击Deployment。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203004.png"><br>1，设置On frame deactivation : Update classes and resources<br>2，设置自己的jre位置路径。（jdk对应的jre）</p>
-<p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203156.png"><br>点击ok。</p>
-<p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203422.png"></p>
-<p>(9) 运行程序，就点击右上角的绿色图标<br><img src="http://pp9zln1j5.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181028203713.png"></p>
+<p>(6) 点击path旁边的<code>Dependencies</code>, 点击”+”号，选择: 1 JARs or directories<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028201526.png"></p>
+<p>选择刚刚创建的lib。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028201634.png"></p>
+<p>选择第三个，jar Directory。一路ok到底！<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028201803.png" style="width:50%"></p>
+<p>(7) 配置servlet容器：Tomcat<br>点击右上角的tomcat的向下的小三角，然后点击Edit Configurations<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028202512.png" style="width:30%"></p>
+<p>看tomcat已经有啦，这是java Enterprise的好处啦，点击Deployment。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028203004.png"><br>1，设置On frame deactivation : Update classes and resources<br>2，设置自己的jre位置路径。（jdk对应的jre）</p>
+<p>Application context可以填也可以不填，配置后，访问网站就必须加上这个路径了。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028203156.png"><br>点击ok。</p>
+<p>(8) 点击index.jsp，随便写一段话，比如helloworld。<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028203422.png"></p>
+<p>(9) 运行程序，就点击右上角的绿色图标<br><img src="https://gakkil.gitee.io/gakkil-image/idea/web/QQ%E6%88%AA%E5%9B%BE20181028203713.png"></p>
 <h3 id="WEB-INF目录与META-INF目录的作用"><a href="#WEB-INF目录与META-INF目录的作用" class="headerlink" title="WEB-INF目录与META-INF目录的作用"></a>WEB-INF目录与META-INF目录的作用</h3><p>1) /WEB-INF/web.xml</p>
 <p>Web应用程序配置文件，描述了 servlet 和 其他的应用组件配置及命名规则。</p>
 <p>2) /WEB-INF/classes/</p>
-<p>包含了站点所有用的 class 文件，包括 servlet.class 和 非servlet.class，他们不能包含在 .jar文件中。</p>
+<p>包含了站点所有的 class 文件，包括 servlet.class 和 非servlet.class，他们不能包含在 .jar文件中。</p>
 <p>3) /WEB-INF/lib/</p>
 <p>存放web应用需要的各种JAR文件，放置仅在这个应用中要求使用的jar文件,如数据库驱动jar文件。</p>
 <p>4) /WEB-INF/src/</p>
@@ -511,8 +511,8 @@ idea 创建动态Web项目打开idea
 <p>与 jsp 文件目录相比，该目录下主要存放 Jsp 2.0 以下版本的文件，当然，它也是可以任意命名的，同样为区别 Jsp 1.2以下版本的文件目录，通常才命名为 jsp2。</p>
 <p>9) META-INF</p>
 <p>相当于一个信息包，目录中的文件和目录获得Java 2平台的认可与解释，用来配置应用程序、扩展程序、类加载器和服务manifest.mf文件，在用jar打包时自动生成。</p>
-<h3 id="META-INF有什么用？它跟WEB-INF有什么区别？"><a href="#META-INF有什么用？它跟WEB-INF有什么区别？" class="headerlink" title="META-INF有什么用？它跟WEB-INF有什么区别？"></a>META-INF有什么用？它跟WEB-INF有什么区别？</h3><p>WEB-INF使用web 项目才会有这个文件夹,普通的j2se项目是没有这个文件夹的。</p>
-<p>META-INF存在程序入口相关信息, 每个jar 都会有这个文件夹,里面的 MANIFEST文件 记录下面这些信息。我们把MANIFEST中的配置信息进行分类，可以归纳出下面几个大类：</p>
+<h3 id="META-INF有什么用？它跟WEB-INF有什么区别？"><a href="#META-INF有什么用？它跟WEB-INF有什么区别？" class="headerlink" title="META-INF有什么用？它跟WEB-INF有什么区别？"></a>META-INF有什么用？它跟WEB-INF有什么区别？</h3><p>WEB-INF是在使用web 项目才会有这个文件夹,普通的j2se项目是没有这个文件夹的。</p>
+<p>META-INF 存放程序入口相关信息, 每个jar 都会有这个文件夹,里面的 MANIFEST文件 记录下面这些信息。我们把MANIFEST中的配置信息进行分类，可以归纳出下面几个大类：</p>
 <pre><code>一. 一般属性　　
 1. Manifest-Version　　用来定义manifest文件的版本，例如：Manifest-Version: 1.0　　
 2. Created-By　　    声明该文件的生成者，一般该属性是由jar命令行工具生成的，例如：Created-By: Apache Ant 1.5.1　　
@@ -558,7 +558,7 @@ MD5-Digest: ZnTIQ2aQAtSNIOWXI1pQpw==　　
 <p>我们知道，实现页面的跳转有两种方式，一种是通过redirect的方式，一种是通过forward的方式。redirect方式的跳转，系统会在一个新的页面打开要跳转的网页；而forward方式跳转，系统会在原来的页面上打开一个要跳转的网页。所以放到WEB-INF目录下的文件是不允许采用redirect方式的跳转来访问的.</p>
 <p>WEB-INF文件夹是受保护的文件夹，外部无法访问这个文件夹内的文件，只有服务器内部才能访问。</p>
 <p>重要的服务器初始化核心文件web.xml就这在个文件夹内。</p>
-<p>为了达到服务器端访问的目的，我们可以使用action进行转向，我们先去请求一个action，然后由这个action转发到WEB-INF下的页面，这样客户端就可以访问</p>
+<p>为了达到服务器端访问的目的，我们可以使用action进行转向，我们先去请求一个action，然后由这个action转发到WEB-INF下的页面，这样客户端就可以访问了。</p>
 
             </div>
             <hr/>
@@ -1241,7 +1241,7 @@ MD5-Digest: ZnTIQ2aQAtSNIOWXI1pQpw==　　
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

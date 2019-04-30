@@ -477,11 +477,11 @@ rdb的配置文件打开redi">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习redis中的持久化操作，这是redis缓存一大优势。<br><a id="more"></a></p>
+                <p>今天来学习redis中的持久化操作，这是redis缓存一大优势。</p>
 <h2 id="rdb的工作原理"><a href="#rdb的工作原理" class="headerlink" title="rdb的工作原理"></a>rdb的工作原理</h2><p>每隔 <font color="red"><strong>N分钟 或 N次写</strong></font> 操作后, 从内存dump数据形成rdb文件 , <font color="red"><strong>压缩</strong></font> 放在 <font color="red">备份<strong>目录</strong></font></p>
 <p>注: <font color="red"><strong>红色部分</strong></font>可通过参数来配置。</p>
-<h2 id="rdb的配置文件"><a href="#rdb的配置文件" class="headerlink" title="rdb的配置文件"></a>rdb的配置文件</h2><p>打开redis.conf文件。<br><img src="/images/QQ截图20181231114006.png"><br><img src="/images/QQ截图20181231114858.png"></p>
-<p><img src="/images/QQ截图20181231115310.png"><br><img src="/images/QQ截图20181231115344.png"><br><img src="/images/QQ截图20181231115423.png"></p>
+<h2 id="rdb的配置文件"><a href="#rdb的配置文件" class="headerlink" title="rdb的配置文件"></a>rdb的配置文件</h2><p>打开redis.conf文件。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231114006.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231114858.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231115310.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231115344.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231115423.png"></p>
 <p>接下来详细说明：</p>
 <pre><code>save 900 1    #刷新快照到硬盘中，必须满足两者要求才会触发，即900秒之内至少有1个key发生变化。
 save 300 10   #必须是300秒之内至少有10个key发生变化。
@@ -496,19 +496,19 @@ dir ./                #设置工作目录，rdb文件会写入该目录。
 <hr>
 <h2 id="rdb的缺陷"><a href="#rdb的缺陷" class="headerlink" title="rdb的缺陷"></a>rdb的缺陷</h2><p>在2个保存点之间 , 断电 , 将会丢失（1到N）分钟的数据。</p>
 <p>出于对持久化的更精细要求 , redis增添了aof方式 （append only file）。</p>
-<h3 id="演示案例"><a href="#演示案例" class="headerlink" title="演示案例"></a>演示案例</h3><p>1）设置保存rdb文件的目录<br><img src="/images/QQ截图20181231122100.png"></p>
-<p>修改rdb持久化保存目录。<br><img src="/images/QQ截图20181231124756.png"></p>
-<p>2）删除当前目下的dump.rdb文件（防止干扰）<br><img src="/images/QQ截图20181231122214.png"></p>
-<p>3）开启redis服务器<br><img src="/images/QQ截图20181231122636.png"></p>
-<p>4）使用redis的工具，一秒钟中set一万条数据<br><img src="/images/QQ截图20181231122956.png"></p>
-<p>上面的参数写错了，应该是 <code>./bin/redis-benchmark -n 10000</code>. 注意是 <strong>-n</strong><br><img src="/images/QQ截图20181231123119.png"><br><img src="/images/QQ截图20181231123547.png"></p>
-<p>5）再次插入一个不相干的数据<br><img src="/images/QQ截图20181231123710.png"></p>
-<p>6）模拟断电，不正常的情况<br><img src="/images/QQ截图20181231123844.png"></p>
-<p>7）再次启动redis服务器<br><img src="/images/QQ截图20181231124112.png"></p>
-<p>8）测试数据是否存在<br><img src="/images/QQ截图20181231124242.png"><br><img src="/images/QQ截图20181231124416.png"></p>
+<h3 id="演示案例"><a href="#演示案例" class="headerlink" title="演示案例"></a>演示案例</h3><p>1）设置保存rdb文件的目录<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231122100.png"></p>
+<p>修改rdb持久化保存目录。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231124756.png"></p>
+<p>2）删除当前目下的dump.rdb文件（防止干扰）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231122214.png"></p>
+<p>3）开启redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231122636.png"></p>
+<p>4）使用redis的工具，一秒钟中set一万条数据<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231122956.png"></p>
+<p>上面的参数写错了，应该是 <code>./bin/redis-benchmark -n 10000</code>. 注意是 <strong>-n</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231123119.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231123547.png"></p>
+<p>5）再次插入一个不相干的数据<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231123710.png"></p>
+<p>6）模拟断电，不正常的情况<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231123844.png"></p>
+<p>7）再次启动redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231124112.png"></p>
+<p>8）测试数据是否存在<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231124242.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231124416.png"></p>
 <p>想必，大家应该知道为啥最后的 address没有保存下来了吧，因为是刚刚插入那条数据，就模拟突然断电了，不符合那三个save的要求，所以没有保存。</p>
 <p>这就是redis使用rdb持久化的缺陷，会存在数据丢失的情况。</p>
-<p>查看redis的持久化文件dump.rdb<br><img src="/images/QQ截图20181231125002.png"><br><img src="/images/QQ截图20181231125053.png"></p>
+<p>查看redis的持久化文件dump.rdb<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231125002.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day06/QQ截图20181231125053.png"></p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果不想使用rdb来持久化操作，直接注释掉那三个save配置信息即可。</p>
 <p>想要进行更加精细的持久化，请使用aop日志来持久化。一般，我使用两者来进行持久化。</p>
 
@@ -954,8 +954,7 @@ dir ./                #设置工作目录，rdb文件会写入该目录。
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                接着上篇的内容，来讲述redis中的aof日志持久化操作
-通过上篇，我们知道了redis中的rdb快照持久化操作，但是由于其存在丢失数据的现
+                                redis中的aof日志持久化操作
                       
                     </div>
                     <div class="publish-info">
@@ -1012,9 +1011,7 @@ dir ./                #设置工作目录，rdb文件会写入该目录。
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                这篇介绍redis中的发布与订阅的简单操作。
-命令介绍subscribesubscribe channel [channel ...]
-订阅
+                                redis中的发布与订阅
                       
                     </div>
                     <div class="publish-info">
@@ -1204,7 +1201,7 @@ dir ./                #设置工作目录，rdb文件会写入该目录。
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

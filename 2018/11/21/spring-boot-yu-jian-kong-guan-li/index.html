@@ -475,15 +475,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Spring Boot与监控管理<br><a id="more"></a></p>
+                <p>Spring Boot与监控管理</p>
 <h2 id="监控管理"><a href="#监控管理" class="headerlink" title="监控管理"></a>监控管理</h2><p>通过引入spring-boot-starter-actuator，可以使用Spring Boot为我们提供的准生产环境下的应用监控和管理功能。我们可以通过HTTP，JMX，SSH协议来进行操作，自动得到审计、健康及指标信息等.</p>
 <p>步骤：</p>
 <p>– 引入spring-boot-starter-actuator<br>– 通过http方式访问监控端点<br>– 可进行shutdown（POST 提交，此端点默认关闭）</p>
-<h2 id="监控和管理端点"><a href="#监控和管理端点" class="headerlink" title="监控和管理端点:"></a>监控和管理端点:</h2><p><img src="/images/QQ截图20181121155804.png"></p>
+<h2 id="监控和管理端点"><a href="#监控和管理端点" class="headerlink" title="监控和管理端点:"></a>监控和管理端点:</h2><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121155804.png"></p>
 <p>1) 创建新的Springboot项目：</p>
 <p>添加：DevTools、Web、Actuator模块：</p>
-<p><img src="/images/QQ截图20181121160723.png"><br><img src="/images/QQ截图20181121160747.png"><br><img src="/images/QQ截图20181121160816.png"></p>
-<p>2）直接运行应用：<br><img src="/images/QQ截图20181121160955.png"><br><img src="/images/QQ截图20181121161042.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121160723.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121160747.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121160816.png"></p>
+<p>2）直接运行应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121160955.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121161042.png"></p>
 <p>发现：多了很多映射的url。</p>
 <p>这些url都是因为加入:<code>spring-boot-starter-actuator</code> 依赖</p>
 <pre><code>&lt;dependency&gt;
@@ -491,13 +491,13 @@
     &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
 &lt;/dependency&gt;
 </code></pre><p>3）访问这些url映射：</p>
-<p>随便访问一个：比如：/beans<br><img src="/images/QQ截图20181121161305.png"></p>
+<p>随便访问一个：比如：/beans<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121161305.png"></p>
 <p>发现：没有权限访问！！！</p>
 <p>4）关闭安全监测</p>
-<p>在application配置文件中：<br><img src="/images/QQ截图20181121161735.png"></p>
+<p>在application配置文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121161735.png"></p>
 <pre><code>#关闭安全管理检测
 management.security.enabled=false
-</code></pre><p>ctrl+F9:即可，不需要重启应用。<br><img src="/images/QQ截图20181121161833.png"></p>
+</code></pre><p>ctrl+F9:即可，不需要重启应用。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121161833.png"></p>
 <p>其他的监控信息：请看<strong>监控和管理端点</strong>的图片，执行测试即可。</p>
 <h2 id="定制端点信息"><a href="#定制端点信息" class="headerlink" title="定制端点信息"></a>定制端点信息</h2><p>– 定制端点一般通过endpoints+端点名+属性名来设置。</p>
 <p>– 修改端点id（endpoints.beans.id=mybeans）</p>
@@ -511,40 +511,40 @@ management.security.enabled=false
 <p>1）在application配置文件中：</p>
 <pre><code>#定制端点信息
 endpoints.beans.id=mybeans
-</code></pre><p>现在，beans的访问端点就不行了，必须是mybeans了。（修改了默认的访问名）<br><img src="/images/QQ截图20181121162813.png"><br><img src="/images/QQ截图20181121162844.png"></p>
+</code></pre><p>现在，beans的访问端点就不行了，必须是mybeans了。（修改了默认的访问名）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121162813.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121162844.png"></p>
 <p>2）在application配置文件中：</p>
 <pre><code>#定制端点信息
 endpoints.beans.id=mybeans
 endpoints.beans.path=/b
-</code></pre><p>此时的beans的访问路径，就变成了/b. 默认的 /beans 和 /mybeans 都不好使了。<br><img src="/images/QQ截图20181121163113.png"></p>
+</code></pre><p>此时的beans的访问路径，就变成了/b. 默认的 /beans 和 /mybeans 都不好使了。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163113.png"></p>
 <p>3）在application配置文件中：</p>
 <pre><code>#定制端点信息
 endpoints.beans.id=mybeans
 endpoints.beans.path=/b
 #关闭了beans的端点
 endpoints.beans.enabled=false
-</code></pre><p>此时，就会把beans端点给关闭了。不管访问 /beans 和 /mybeans 和 /b 都不好使了。<br><img src="/images/QQ截图20181121163338.png"></p>
-<p>但是其他端点好使：<br><img src="/images/QQ截图20181121163416.png"></p>
+</code></pre><p>此时，就会把beans端点给关闭了。不管访问 /beans 和 /mybeans 和 /b 都不好使了。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163338.png"></p>
+<p>但是其他端点好使：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163416.png"></p>
 <p>4）如果想关闭所有的，但是只留一些端点开放：</p>
 <pre><code>#关闭所有的端点
 endpoints.enabled=false
 #开启部分端点(beans)
 endpoints.beans.enabled=true
-</code></pre><p>其他端点都不好使了。<br><img src="/images/QQ截图20181121163647.png"><br>只要beans端点好使：<br><img src="/images/QQ截图20181121163733.png"></p>
+</code></pre><p>其他端点都不好使了。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163647.png"><br>只要beans端点好使：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163733.png"></p>
 <p>5）定制端点访问根路径</p>
 <pre><code>#设置访问端点的根路径
 management.context-path=/manager
-</code></pre><p><img src="/images/QQ截图20181121163931.png"><br><img src="/images/QQ截图20181121164012.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121163931.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121164012.png"></p>
 <p>6) 定制端点访问的端口号</p>
 <pre><code>#设置访问端点的根路径
 management.context-path=/manager
 management.port=8081
-</code></pre><p><img src="/images/QQ截图20181121164156.png"><br><img src="/images/QQ截图20181121164226.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121164156.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121164226.png"></p>
 <p>7) 关闭http端点</p>
 <pre><code>#设置访问端点的根路径
 management.context-path=/manager
 management.port=-1
-</code></pre><p><img src="/images/QQ截图20181121164352.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/jiankong/QQ截图20181121164352.png"></p>
 
             </div>
             <hr/>
@@ -989,8 +989,6 @@ management.port=-1
                     <div class="summary">
                       
                                 Linux的基础入门篇，帮助大家入门的教程
-Linux的发行版常见的Linux发行版1）Red Hat Linux
-　　Red Hat Li
                       
                     </div>
                     <div class="publish-info">
@@ -1040,7 +1038,6 @@ Linux的发行版常见的Linux发行版1）Red Hat Linux
                     <div class="summary">
                        
                                 SpringBoot中的热部署
-热部署在开发中我们修改一个Java文件后想看到效果不得不重启应用，这导致大量时间花费，我们希望不重启应用的情
                       
                     </div>
                     <div class="publish-info">
@@ -1230,7 +1227,7 @@ Linux的发行版常见的Linux发行版1）Red Hat Linux
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

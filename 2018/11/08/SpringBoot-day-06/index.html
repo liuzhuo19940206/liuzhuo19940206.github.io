@@ -483,13 +483,13 @@
                 <p>今天，继续Web的开发，错误处理机制、配置嵌入式Servlet容器、使用外置的Servlet容器。</p>
 <h2 id="错误处理机制"><a href="#错误处理机制" class="headerlink" title="错误处理机制"></a>错误处理机制</h2><h3 id="SpringBoot默认的错误处理机制"><a href="#SpringBoot默认的错误处理机制" class="headerlink" title="SpringBoot默认的错误处理机制"></a>SpringBoot默认的错误处理机制</h3><p>默认效果：</p>
 <p>1）浏览器，返回一个默认的错误页面</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108101934.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108101934.png"></p>
 <p>浏览器发送请求的请求头:</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108102024.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108102024.png"></p>
 <p>2) 如果是其他客户端，默认响应一个json数据</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108102057.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108102057.png"></p>
 <p>其他客户端发送请求的请求头:</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108102135.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108102135.png"></p>
 <p><strong>原理：</strong></p>
 <p>可以参照 <strong>ErrorMvcAutoConfiguration</strong> ：错误处理的自动配置.</p>
 <p>给容器中添加了以下组件:</p>
@@ -665,8 +665,8 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>最终的效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108111151.png"></p>
-<h2 id="配置嵌入式Servlet容器"><a href="#配置嵌入式Servlet容器" class="headerlink" title="配置嵌入式Servlet容器"></a>配置嵌入式Servlet容器</h2><p>SpringBoot默认使用Tomcat作为嵌入式的Servlet容器<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108113617.png"></p>
+<p>最终的效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108111151.png"></p>
+<h2 id="配置嵌入式Servlet容器"><a href="#配置嵌入式Servlet容器" class="headerlink" title="配置嵌入式Servlet容器"></a>配置嵌入式Servlet容器</h2><p>SpringBoot默认使用Tomcat作为嵌入式的Servlet容器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108113617.png"></p>
 <p>问题？</p>
 <h3 id="如何定制和修改Servlet容器的相关配置"><a href="#如何定制和修改Servlet容器的相关配置" class="headerlink" title="如何定制和修改Servlet容器的相关配置"></a>如何定制和修改Servlet容器的相关配置</h3><p>1、修改与server有关的配置（ServerProperties【也是EmbeddedServletContainerCustomizer】）</p>
 <pre><code>server.port=8081
@@ -735,7 +735,7 @@ DEFAULT_DISPATCHER_SERVLET_BEAN_NAME<span class="token punctuation">)</span>
    <span class="token keyword">return</span> registration<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="替换为其他嵌入式Servlet容器"><a href="#替换为其他嵌入式Servlet容器" class="headerlink" title="替换为其他嵌入式Servlet容器"></a>替换为其他嵌入式Servlet容器</h3><p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108114843.png" style="width:50%"></p>
+<h3 id="替换为其他嵌入式Servlet容器"><a href="#替换为其他嵌入式Servlet容器" class="headerlink" title="替换为其他嵌入式Servlet容器"></a>替换为其他嵌入式Servlet容器</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108114843.png" style="width:50%"></p>
 <p>默认支持：</p>
 <p>Tomcat（默认使用）</p>
 <pre><code>&lt;dependency&gt;
@@ -844,8 +844,8 @@ DEFAULT_DISPATCHER_SERVLET_BEAN_NAME<span class="token punctuation">)</span>
          ServletContextInitializer<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> initializers<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108130503.png" style="width:50%"></p>
-<p>2）、EmbeddedServletContainer：（嵌入式的Servlet容器）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108130718.png" style="width:50%"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108130503.png" style="width:50%"></p>
+<p>2）、EmbeddedServletContainer：（嵌入式的Servlet容器）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108130718.png" style="width:50%"></p>
 <p>3）、<strong>以TomcatEmbeddedServletContainerFactory为例</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> EmbeddedServletContainer <span class="token function">getEmbeddedServletContainer</span><span class="token punctuation">(</span>
@@ -983,30 +983,30 @@ ServerProperties也是定制器
 <p>优点：简单、便携</p>
 <p>缺点：默认不支持JSP、优化定制比较复杂（使用定制器【ServerProperties、自定义EmbeddedServletContainerCustomizer】<br>自己编写嵌入式Servlet容器的创建工厂【EmbeddedServletContainerFactory】）；</p>
 <p>外置的Servlet容器：外面安装Tomcat—应用war包的方式打包.</p>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1）创建一个War工程：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141118.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141218.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141327.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141425.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141535.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141805.png"></p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1）创建一个War工程：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141118.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141218.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141327.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141425.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141535.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141805.png"></p>
 <p>2）将项目结构构<strong>造成War的目录结构</strong></p>
-<p>打开项目的结构设置：（点击Web）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108141932.png"></p>
-<p><strong>添加webapp目录 和 web.xml文件</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108142443.png"></p>
-<p>完成后：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108142615.png" style="width:50%"></p>
+<p>打开项目的结构设置：（点击Web）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108141932.png"></p>
+<p><strong>添加webapp目录 和 web.xml文件</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108142443.png"></p>
+<p>完成后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108142615.png" style="width:50%"></p>
 <p>打开pom.xml文件</p>
-<p>检查是不是war：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108142726.png"></p>
-<p><strong>检查tomcat的依赖的scope是不是provided</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108142816.png"></p>
-<p>3）添加外部的Tomcat的容器<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143051.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143152.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143441.png"></p>
-<p>发现上面一个警告，因为还没有配置部署的项目：点击Deployment<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143551.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143640.png"></p>
-<p>4）启动外部的Tomcat容器：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143747.png"></p>
-<p>启动完成后：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143904.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108143941.png"></p>
+<p>检查是不是war：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108142726.png"></p>
+<p><strong>检查tomcat的依赖的scope是不是provided</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108142816.png"></p>
+<p>3）添加外部的Tomcat的容器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143051.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143152.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143441.png"></p>
+<p>发现上面一个警告，因为还没有配置部署的项目：点击Deployment<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143551.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143640.png"></p>
+<p>4）启动外部的Tomcat容器：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143747.png"></p>
+<p>启动完成后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143904.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108143941.png"></p>
 <p>5）添加jsp页面，看看是否能成功</p>
 <p>在webapp下面，直接创建index.jsp页面</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108144117.png"></p>
-<p>启动应用，在浏览器中输入：<code>http://localhost:8080/</code> 或者 <code>http://localhost:8080/index.jsp</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108144330.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108144117.png"></p>
+<p>启动应用，在浏览器中输入：<code>http://localhost:8080/</code> 或者 <code>http://localhost:8080/index.jsp</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108144330.png"></p>
 <p>6) 编写控制器层：</p>
 <p>一般我们的jsp.xml页面放置在WEB-INF下面，因为这样可以屏蔽直接在浏览器中输入地址直接访问我们的页面。</p>
-<p>不信的话，我们在WEB-INF下面放置一个success.jsp页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108144634.png"></p>
-<p>重启应用，在浏览器中输入：<code>http://localhost:8080/WEB-INF/success.jsp</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108144754.png"></p>
+<p>不信的话，我们在WEB-INF下面放置一个success.jsp页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108144634.png"></p>
+<p>重启应用，在浏览器中输入：<code>http://localhost:8080/WEB-INF/success.jsp</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108144754.png"></p>
 <p>WEB-INF下面的资源，必须靠容器来帮我们访问，即：用控制层的重定向或者转发来寻找资源。</p>
-<p>修改index.jsp页面：<br>添加一个a标签，发送/success的get请求：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108150427.png"></p>
-<p>创建controller包，并创建HelloController类：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108150437.png"></p>
-<p>重启应用，点击success的超链接<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108150447.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108150604.png"></p>
+<p>修改index.jsp页面：<br>添加一个a标签，发送/success的get请求：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108150427.png"></p>
+<p>创建controller包，并创建HelloController类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108150437.png"></p>
+<p>重启应用，点击success的超链接<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108150447.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108150604.png"></p>
 <p>出现500，/success请求路径解析异常，因为我们没有配置视图解析器，return “success” 又会重新执行</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/success"</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> String <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1014,8 +1014,8 @@ ServerProperties也是定制器
     <span class="token punctuation">}</span>
 </code></pre>
 <p>该方法，就会循环调用，出现异常。</p>
-<p>所以，需要在配置文件中，配置view的前缀路径，和后缀名。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108151153.png"></p>
-<p>重启应用，点击success超链接：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108151253.png"></p>
+<p>所以，需要在配置文件中，配置view的前缀路径，和后缀名。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108151153.png"></p>
+<p>重启应用，点击success超链接：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108151253.png"></p>
 <p>以上就是使用Springboot打包成war包的开发流程：</p>
 <p><strong>注意：此时不能使用Springboot的主类应用启动方式，只能使用Tomcat容器的启动方式！！！</strong></p>
 <hr>
@@ -1030,7 +1030,7 @@ ServerProperties也是定制器
 <p>流程：</p>
 <p>1）、启动Tomcat</p>
 <p>2）、org\springframework\spring-web\4.3.14.RELEASE\spring-web-4.3.14.RELEASE.jar!\META-<br>INF\services\javax.servlet.ServletContainerInitializer：</p>
-<p>Spring的web模块里面有这个文件：org.springframework.web.SpringServletContainerInitializer<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108154339.png"></p>
+<p>Spring的web模块里面有这个文件：org.springframework.web.SpringServletContainerInitializer<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108154339.png"></p>
 <p>3）、SpringServletContainerInitializer将@HandlesTypes(WebApplicationInitializer.class)标注的所有这个类型<br>的类都传入到onStartup方法的Set集合中；为这些WebApplicationInitializer类型的类创建实例；</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@HandlesTypes</span><span class="token punctuation">(</span>WebApplicationInitializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringServletContainerInitializer</span>
@@ -1040,9 +1040,9 @@ ServerProperties也是定制器
             initializer<span class="token punctuation">.</span><span class="token function">onStartup</span><span class="token punctuation">(</span>servletContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 </code></pre>
-<p>WebApplicationInitializer继承树：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108155531.png"></p>
+<p>WebApplicationInitializer继承树：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108155531.png"></p>
 <p>我们发现了SpringBootServletInitializer是WebApplicationInitializer一个实现类。</p>
-<p>5）我们项目中的ServletInitializer继承了SpringBootServletInitializer：(idea自己帮我们创建的一个类，名字无所谓，继承SpringBootServletInitializer即可)<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181108155741.png"></p>
+<p>5）我们项目中的ServletInitializer继承了SpringBootServletInitializer：(idea自己帮我们创建的一个类，名字无所谓，继承SpringBootServletInitializer即可)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day06/QQ%E6%88%AA%E5%9B%BE20181108155741.png"></p>
 <p>所以服务启动的时候，会创建ServletInitializer实例并调用onStartup方法。我们没有重写onStartup方法，所以会调用父类SpringBootServletInitializer的onStartup方法。</p>
 <p>6）SpringBootServletInitializer执行onStartup的时候会调用createRootApplicationContext：创建容器</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">protected</span> WebApplicationContext <span class="token function">createRootApplicationContext</span><span class="token punctuation">(</span>
@@ -1811,7 +1811,7 @@ ServerProperties也是定制器
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -467,7 +467,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上述内容之外的知识点进行详细介绍。<br><a id="more"></a></p>
+                <p>通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上述内容之外的知识点进行详细介绍。</p>
 <p>本篇博客主要包含的内容为MyBatis的高级结果映射，主要处理数据库一对一、一对多的查询，另外就是在 MyBtis 中使用存储过程的方法，处理存储过程的入参和出参方法。</p>
 <hr>
 <h3 id="高级映射"><a href="#高级映射" class="headerlink" title="高级映射"></a>高级映射</h3><p>在关系型数据库中，我们经常要处理 一对一、一对多 的关系 例如， 一辆汽车需要有引擎，这是一对一的关系。 一辆汽车有4个或更多个轮子，这是一对多的关系。</p>
@@ -481,7 +481,7 @@
 </li>
 </ul>
 <hr>
-<p>为了方便讲解，我们来创建一系列的数据库表，它们的模型关系，如下所示：<br><img src="/images/mybatis/QQ截图20190313130557.png"></p>
+<p>为了方便讲解，我们来创建一系列的数据库表，它们的模型关系，如下所示：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313130557.png"></p>
 <p>学生表为核心，学生表与学生证表是一对一的关系；学生表与课程成绩表是一对多的关系，一个学生有多门课；课程表与课程成绩表也是一对多的关系。</p>
 <p>学生有男生与女生，所以健康项目不一样，这里我就列举了一个不同点，简化一下。根据学生的性别不同来决定使用哪个表，而鉴别性别就需要使用鉴别器了。</p>
 <hr>
@@ -489,7 +489,7 @@
 <p>这是因为在实际中，多对多的关系应用不多，因为它比较复杂，会增加理解和关联的复杂性，推荐的方法是，使用一对多的关系把它分解为双向关系，以降低关系的复杂度，简化程序。</p>
 <hr>
 <p>根据上述的数据库表的描述，生成相应的表，然后创建新的maven工程。</p>
-<p>（1）生成Mybatis数据库：<br><img src="/images/mybatis/QQ截图20190313131616.png"></p>
+<p>（1）生成Mybatis数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313131616.png"></p>
 <p>（2）创建相关的表：</p>
 <pre><code>
 use mybatis;
@@ -559,12 +559,12 @@ create table student_male_health(
  primary key(id)
 );
 
-</code></pre><p><img src="/images/mybatis/QQ截图20190313135537.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313135537.png"></p>
 <p>(3) 创建新的maven工程</p>
-<p>项目的整体结构：<br><img src="/images/mybatis/QQ截图20190313145410.png"></p>
-<p>entities：<br><img src="/images/mybatis/QQ截图20190313145502.png"></p>
-<p>mappers：<br><img src="/images/mybatis/QQ截图20190313145550.png"></p>
-<p>typeHanler：<br><img src="/images/mybatis/QQ截图20190313145813.png"></p>
+<p>项目的整体结构：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313145410.png"></p>
+<p>entities：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313145502.png"></p>
+<p>mappers：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313145550.png"></p>
+<p>typeHanler：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313145813.png"></p>
 <p>pom.xml:</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
@@ -796,9 +796,9 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
         }
     }
 }
-</code></pre><p><img src="/images/mybatis/QQ截图20190313150007.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313150007.png"></p>
 <hr>
-<p>运行测试：<br><img src="/images/mybatis/QQ截图20190313150123.png"></p>
+<p>运行测试：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313150123.png"></p>
 <p><strong>数据库中的数据，自己随意添加呀，没有要求的。</strong></p>
 <p>以上就是我们的新的项目工程，现在已经能够运行了，下面，我们开始讲解Mybatis中的高级映射功能。</p>
 <h3 id="一对一映射"><a href="#一对一映射" class="headerlink" title="一对一映射"></a>一对一映射</h3><p>一个学生对应一个学生证，属于一对一映射。</p>
@@ -871,7 +871,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
             sqlSession.close();
         }
     }
-</code></pre><p><img src="/images/mybatis/QQ截图20190313154824.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313154824.png"></p>
 <p>可以看到映射成功，通过 SQL 日志可以看到已经查询出的一条数据， Mybatis 将这条数据映射到了两个类中。</p>
 <p>像这样通过一次查询，将结果映射到不同对象的方式，称之为：<strong><font color="red">关联的嵌套结果映射。</font></strong></p>
 <p>关联 嵌套结果 映射 ，需要关联多张表，将所有需要的值一次性查询出来。这种方式的好处是减少数据库查询次数 ，减轻数据库的压力， 缺点是要写很复杂的 SQL，并且当嵌套结果更复杂时， 不容易一次写正确 ，由于要在应用服务器上将结果映射到不同的类上。 因此 ，会增加应用服务器的压力。当一定要使用 嵌套结果 并且整个复杂的 SQL 执行速度很快时 ，建议使用关联的嵌套结果映射。</p>
@@ -949,7 +949,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
             sqlSession.close();
         }
     }
-</code></pre><p>运行结果：<br><img src="/images/mybatis/QQ截图20190313162728.png"></p>
+</code></pre><p>运行结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313162728.png"></p>
 <p>结果和使用自动映射的效果一模一样，但是，大家肯定会觉得这样岂不是更加麻烦了，还多写了一个resultMap标签来映射，不仅没有方便开发，还增加了工作量。</p>
 <p>下面就使用resultMap的继承功能：</p>
 <h5 id="resultMap的继承功能"><a href="#resultMap的继承功能" class="headerlink" title="resultMap的继承功能"></a>resultMap的继承功能</h5><p>在我们的 xxxMapper.xml中都会有一个基本的xxxtMap的resultMap映射，这个映射可以使用 <strong><code>MyBatis的代码生成器生成</code></strong>，所以可以省略手动工作。</p>
@@ -1061,7 +1061,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
         where s.id = #{id}
     &lt;/select&gt;
 </code></pre><p>注意关联中已经没有了 <code>studentSelfcard</code>了 ，因为我们不再是通过一个SQL语句来获取全部的信息了，学生证表的信息是通过配置的<code>select=&quot;com.liuzhuo.mapper.StudentSelfcardMapper.selectStudentSelfcardBystuNumber&quot;</code> 来查询的，这个方法写在 <code>StudentSelfcardMapper.xml</code>中。</p>
-<p><img src="/images/mybatis/QQ截图20190313173138.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313173138.png"></p>
 <pre><code>&lt;mapper namespace=&quot;com.liuzhuo.mapper.StudentSelfcardMapper&quot;&gt;
 
     &lt;resultMap id=&quot;studentSelfcard&quot; type=&quot;studentSelfcard&quot;&gt;
@@ -1106,7 +1106,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
             sqlSession.close();
         }
     }
-</code></pre><p>运行：<br><img src="/images/mybatis/QQ截图20190313174148.png"></p>
+</code></pre><p>运行：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313174148.png"></p>
 <p>结果和我们想的一致，因为第一条SQL语句的查询结果只有一条，所以根据这一条数据的 <code>stu_id</code> 来关联另一个查询，因此执行了两次SQL。</p>
 <p>这种配置方式符合开始预期的结果，但是由于嵌套查询会执行多条SQL语句，所以还要考虑更多的情况。在这个例子中，是否一定会用到<code>StudentSelfcard</code>呢？</p>
 <p>如果查询出来并没有使用，那不就是白白浪费了一次查询吗？如果查询的不是1条数据，而是N条数据，那就会出现 N+1 的问题，主SQL会查询一次，查询出N条结果，这N条结果，那就需要进行N此查询。如何解决这个问题呢？</p>
@@ -1126,11 +1126,11 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
     System.out.println(&quot;调用studentAndSelfcard.getStudentSelfcard()&quot;);
     //studentSelfcard不为空
     Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());
-</code></pre><p>再运行测试方法：<br><img src="/images/mybatis/QQ截图20190313175722.png"></p>
+</code></pre><p>再运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313175722.png"></p>
 <p>发现，现在是按需加载了。</p>
-<p>现在将 <code>Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());</code> 注释掉，再测试：<br><img src="/images/mybatis/QQ截图20190313175940.png"></p>
+<p>现在将 <code>Assert.assertNotNull(studentAndSelfcard.getStudentSelfcard());</code> 注释掉，再测试：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313175940.png"></p>
 <hr>
-<p>我们在把 <code>fetchType</code> 去掉后，再测试：<br><img src="/images/mybatis/QQ截图20190313180224.png"></p>
+<p>我们在把 <code>fetchType</code> 去掉后，再测试：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190313180224.png"></p>
 <hr>
 <p>现在最新的Mybatis中，只需要把 <code>fetchType=lazy</code> 就可以实现按需执行SQL语句了。</p>
 <p>如果你的不是最新的Mybatis的话，还需要配置一个全局的参数 <code>aggressiveLazyLoading</code>。</p>
@@ -1237,7 +1237,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
         }
     }
 </code></pre><hr>
-<p>运行结果：<br><img src="/images/mybatis/QQ截图20190314160845.png"></p>
+<p>运行结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314160845.png"></p>
 <p>一条SQL语句，查询出所有的结果，然后Mybatis帮我们组合起来。</p>
 <hr>
 <p>然后，我们还能简化，在collection中，还可以使用已存在的resultMap。</p>
@@ -1269,8 +1269,8 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
 <hr>
 <p>现在测试，发现结果也是好使的。</p>
 <hr>
-<p>现在，我们往数据库中，添加一些新的数据：<br><img src="/images/mybatis/QQ截图20190314162837.png"></p>
-<p><img src="/images/mybatis/QQ截图20190314162915.png"></p>
+<p>现在，我们往数据库中，添加一些新的数据：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314162837.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314162915.png"></p>
 <p>能看到，jack有三条课程成绩数据，gakki有两条课程成绩数据，应该会有五条记录。</p>
 <p>在 StudentMapper.xml中添加新的select标签：</p>
 <pre><code>    &lt;select id=&quot;selectStudentBeanAll&quot; resultMap=&quot;studentBeanMap02&quot;&gt;
@@ -1309,7 +1309,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
             sqlSession.close();
         }
     }
-</code></pre><p>执行测试方法，验证一下：<br><img src="/images/mybatis/QQ截图20190314164045.png"></p>
+</code></pre><p>执行测试方法，验证一下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314164045.png"></p>
 <hr>
 <p>通过日志可以清楚地看出，SQL执行的结果数有5条，后面输出的学生数是2，也就说本来查询出来的5条结果经过Mybatis对collection数据的处理后，变成了两条。</p>
 <p>我们都知道，因为第一个学生有三门课程，所以转换为一对多的数据结构后就变成了三条结果。那么Mybatis是怎么知道将5条数据中的哪三条给第一个学生呢？</p>
@@ -1330,7 +1330,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
     &lt;/resultMap&gt;
 </code></pre><p>将stu_sex 设置为id元素，然后将数据库中的两个学生的stu_sex字段设置为相同的值。</p>
 <p>然后执行测试：</p>
-<p><img src="/images/mybatis/QQ截图20190314171115.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314171115.png"></p>
 <hr>
 <p>我们能看到，变成了一个学生！！！学生信息保留的是第一个学生的信息，因此学生姓名为jack。</p>
 <p>大家通过这个简单的例子应该明白id的作用了。需要注意的是，很有可能会出现一种没有配置id的情况。没有配置id时，Mybatis就会把resultMap中配置的所有字段进行比较，如果所有字段的值都相同就合并，只要有一个字段值不同，就不合并。</p>
@@ -1347,7 +1347,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
         &lt;!--&lt;result column=&quot;stu_sex&quot; property=&quot;stuSex&quot; typeHandler=&quot;com.liuzhuo.typehandler.SexEnumTypeHandler&quot;/&gt;--&gt;
     &lt;/resultMap&gt;
 </code></pre><p>此时，已经不存id标签了，执行测试方法：</p>
-<p><img src="/images/mybatis/QQ截图20190314172153.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314172153.png"></p>
 <p>发现此时的结果，与配置id标签时的结果相同。因为学生在studentMap这部分配置的属性都相同，因此合并。</p>
 <p>虽然结果相同，但是由于Mybatis要对所有字段进行比较，因此字段数为M时，如果查询结果又N条，就需要进行M * N 次比较，相比配置id时的N次比较，效率相差更多，所以要尽可能配置id标签！！！</p>
 <p>在studentMap比较完毕后，会接着比较studentLecture，如果不多，就会增加一个studentLecture对象，如果两个studentLecture相同就保留一个。假设studentLecture还有下一级，仍然按照该规则去比较。</p>
@@ -1434,7 +1434,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
         }
     }
 </code></pre><p>运行结果：</p>
-<p><img src="/images/mybatis/QQ截图20190314180033.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314180033.png"></p>
 <hr>
 <p>虽然association和collection标签是分开介绍的，但是这两者可以组合使用或者互相嵌套使用，也可以使用符合自己需要的任何数据结构，不需要局限于数据库表之间的关系联系。</p>
 <hr>
@@ -1508,7 +1508,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
     }
 </code></pre><hr>
 <p>运行测试结果：</p>
-<p><img src="/images/mybatis/QQ截图20190314191100.png"><br><img src="/images/mybatis/QQ截图20190314191130.png"><br><img src="/images/mybatis/QQ截图20190314191147.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314191100.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314191130.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190314191147.png"></p>
 <p>从结果可以看出，是按需发送SQL语句，然后获取数据的。</p>
 <p>首先只是获取了学生的基本信息。</p>
 <p>然后获取学生的课程成绩时，会发送第二条SQL语句，获取课程的id。</p>
@@ -1712,12 +1712,12 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
     }
 </code></pre><p>上面通过：<code>studentBean instanceof MaleStudentBean</code> 来判断Mybatis帮我们返回的具体类型是哪个。</p>
 <hr>
-<p>测试结果：<br><img src="/images/mybatis/QQ截图20190315110511.png"></p>
-<p>当判断具体是哪个类型时，再发生SQL语句，查询具体的信息：<br><img src="/images/mybatis/QQ截图20190315110619.png"></p>
-<p>当要获取学生的课程成绩时，再发生SQL语句：<br><img src="/images/mybatis/QQ截图20190315110738.png"></p>
-<p>当要获取学生的课程名是，再发生SQL语句：<br><img src="/images/mybatis/QQ截图20190315110819.png"></p>
-<p>接下来就是类似的操作了：<br><img src="/images/mybatis/QQ截图20190315110934.png"></p>
-<p><img src="/images/mybatis/QQ截图20190315110953.png"></p>
+<p>测试结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110511.png"></p>
+<p>当判断具体是哪个类型时，再发生SQL语句，查询具体的信息：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110619.png"></p>
+<p>当要获取学生的课程成绩时，再发生SQL语句：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110738.png"></p>
+<p>当要获取学生的课程名是，再发生SQL语句：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110819.png"></p>
+<p>接下来就是类似的操作了：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110934.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315110953.png"></p>
 <hr>
 <font color="red">鉴别器是一种很少使用的方式，在使用之前一定要完全掌握，没有把握的情况下尽可能避免使用。</font>
 
@@ -2165,7 +2165,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBati
+                                Mybatis中的缓存
                       
                     </div>
                     <div class="publish-info">
@@ -2214,8 +2214,7 @@ log4j.appender.stdout.layout.ConversionPattern=[%5p] [%t] - %m %x %n
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。
-resultMap 元素是 MyBatis 中最重要最强大的元素。它
+                                Mybatis中的resultMap
                       
                     </div>
                     <div class="publish-info">
@@ -2397,7 +2396,7 @@ resultMap 元素是 MyBatis 中最重要最强大的元素。它
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -477,10 +477,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JMS、AMQP、RabbitMQ的消息处理机制<br><a id="more"></a></p>
+                <p>JMS、AMQP、RabbitMQ的消息处理机制</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>1）大多应用中，可通过消息服务中间件来提升系统异步通信、扩展解耦能力</p>
 <p>2）消息服务中两个重要概念：<font color="red">消息代理（message broker）</font> 和 <font color="red">目的地（destination）</font></p>
-<p>　 当消息发送者发送消息以后，将由消息代理接管，消息代理保证消息并且传递信息到指定目的地。</p>
+<p>　 当消息发送者发送消息以后，将由消息代理接管，消息代理保存消息并且传递消息到指定目的地。</p>
 <p>3）消息队列主要有两种形式的目的地</p>
 <p>　　1）<font color="red">队列</font>：点对点消息通信（point-to-point）<br>　　2）<font color="red">主题</font>：发布（publish）/订阅（subscribe）消息通信</p>
 <p>4）点对点式</p>
@@ -491,10 +491,10 @@
 <p>　　基于JVM消息代理的规范。<strong>ActiveMQ</strong>、HornetMQ是JMS实现。</p>
 <p>7）AMQP（Advanced Message Queuing Protocol）</p>
 <p>　　高级消息队列协议，也是一个消息代理的规范，兼容JMS。<strong>RabbitMQ</strong>是AMQP的实现。</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p><img src="/images/QQ截图20181115131013.png"></p>
-<h3 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h3><p><img src="/images/QQ截图20181115131131.png"></p>
-<h3 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h3><p><img src="/images/QQ截图20181115131347.png"></p>
-<h2 id="JMS与AMQP的区别"><a href="#JMS与AMQP的区别" class="headerlink" title="JMS与AMQP的区别"></a>JMS与AMQP的区别</h2><p><img src="/images/QQ截图20181115131921.png"></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131013.png"></p>
+<h3 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131131.png"></p>
+<h3 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131347.png"></p>
+<h2 id="JMS与AMQP的区别"><a href="#JMS与AMQP的区别" class="headerlink" title="JMS与AMQP的区别"></a>JMS与AMQP的区别</h2><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131921.png"></p>
 <p>主要区别：JMS是基于javaEE规范的，所以不跨语言，不跨平台，如果你的系统都是基于java开发的，那么使用JMS没有问题。<br>AMQP：跨语言，跨平台。</p>
 <hr>
 <h2 id="Spring支持消息服务"><a href="#Spring支持消息服务" class="headerlink" title="Spring支持消息服务"></a>Spring支持消息服务</h2><p>　　spring-jms提供了对JMS的支持</p>
@@ -518,14 +518,14 @@
 <p><font color="blue">Consumer：</font><br>消息的消费者，表示一个从消息队列中取得消息的客户端应用程序。</p>
 <p><font color="blue">Virtual Host：</font><br>虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 / 。</p>
 <p><font color="blue">Broker：</font><br>表示消息队列服务器实体。</p>
-<p><img src="/images/QQ截图20181115133357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115133357.png"></p>
 <h2 id="RabbitMQ运行机制"><a href="#RabbitMQ运行机制" class="headerlink" title="RabbitMQ运行机制"></a>RabbitMQ运行机制</h2><p>AMQP 中的消息路由：</p>
-<p>　　AMQP 中消息的路由过程和 Java 开发者熟悉的 JMS 存在一些差别，AMQP 中增加了<strong>Exchange</strong> 和 <strong>Binding</strong> 的角色。生产者把消息发布到 Exchange 上，消息最终到达队列并被消费者接收，而 Binding 决定交换器的消息应该发送到那个队列。<br><img src="/images/QQ截图20181115135917.png"></p>
+<p>　　AMQP 中消息的路由过程和 Java 开发者熟悉的 JMS 存在一些差别，AMQP 中增加了<strong>Exchange</strong> 和 <strong>Binding</strong> 的角色。生产者把消息发布到 Exchange 上，消息最终到达队列并被消费者接收，而 Binding 决定交换器的消息应该发送到那个队列。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115135917.png"></p>
 <p>Exchange 类型：</p>
 <p>　　 Exchange分发消息时根据类型的不同分发策略有区别，目前共四种类型：<strong>direct、fanout、topic</strong>、headers 。headers 匹配 AMQP 消息的 header，而不是路由键， headers 交换器和 direct 交换器完全一致，但性能差很多，目前几乎用不到了，所以直接看另外三种类型：</p>
-<h3 id="direct："><a href="#direct：" class="headerlink" title="direct："></a>direct：</h3><p>消息中的路由键（routing key）如果和 Binding 中的 bindingkey 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。<strong>它是完全匹配、单播的模式。</strong><br><img src="/images/QQ截图20181115140202.png"></p>
-<h3 id="fanout："><a href="#fanout：" class="headerlink" title="fanout："></a>fanout：</h3><p>每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去。fanout 交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上。很像子网<strong>广播</strong>，每台子网内的主机都获得了一份复制的消息。<strong>fanout 类型转发消息是最快的。</strong><br><img src="/images/QQ截图20181115140400.png"></p>
-<h3 id="topic："><a href="#topic：" class="headerlink" title="topic："></a>topic：</h3><p>topic 交换器通过<strong>模式匹配</strong>分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。它将路由键和绑定键的字符串切分成单词，这些 单词之间用点隔开。它同样也会识别两个通配符：符号“ <code>#</code> ”和符号“ <code>*</code> ”。 # 匹配 0 个或多个单词， * 匹配一个单词。<br><img src="/images/QQ截图20181115140644.png"></p>
+<h3 id="direct："><a href="#direct：" class="headerlink" title="direct："></a>direct：</h3><p>消息中的路由键（routing key）如果和 Binding 中的 bindingkey 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。<strong>它是完全匹配、单播的模式。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140202.png"></p>
+<h3 id="fanout："><a href="#fanout：" class="headerlink" title="fanout："></a>fanout：</h3><p>每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去。fanout 交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上。很像子网<strong>广播</strong>，每台子网内的主机都获得了一份复制的消息。<strong>fanout 类型转发消息是最快的。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140400.png"></p>
+<h3 id="topic："><a href="#topic：" class="headerlink" title="topic："></a>topic：</h3><p>topic 交换器通过<strong>模式匹配</strong>分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。它将路由键和绑定键的字符串切分成单词，这些 单词之间用点隔开。它同样也会识别两个通配符：符号“ <code>#</code> ”和符号“ <code>*</code> ”。 # 匹配 0 个或多个单词， * 匹配一个单词。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140644.png"></p>
 <h2 id="RabbitMQ整合"><a href="#RabbitMQ整合" class="headerlink" title="RabbitMQ整合"></a>RabbitMQ整合</h2><p>全局整合步骤：</p>
 <ol>
 <li><p><strong>引入 spring-boot-starter-amqp</strong></p>
@@ -542,21 +542,21 @@
 </li>
 </ol>
 <hr>
-<h3 id="安装rabbitmq：docker镜像"><a href="#安装rabbitmq：docker镜像" class="headerlink" title="安装rabbitmq：docker镜像"></a>安装rabbitmq：docker镜像</h3><p>打开虚拟机，连接虚拟机：<br><img src="/images/QQ截图20181115143023.png"></p>
-<p>在docker hub中：搜索rabbitmq：<br><img src="/images/QQ截图20181115143549.png"></p>
+<h3 id="安装rabbitmq：docker镜像"><a href="#安装rabbitmq：docker镜像" class="headerlink" title="安装rabbitmq：docker镜像"></a>安装rabbitmq：docker镜像</h3><p>打开虚拟机，连接虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143023.png"></p>
+<p>在docker hub中：搜索rabbitmq：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143549.png"></p>
 <p>点击tags：选择带有manager的标签，因为这样的rabbitmq会带有管理消息队列的界面。</p>
-<p>我这里就选择：3.6-management<br><img src="/images/QQ截图20181115143811.png"></p>
+<p>我这里就选择：3.6-management<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143811.png"></p>
 <p>在虚拟机客户端：输入 <code>docker pull registry.docker-cn.com/library/rabbitmq:3.6-management</code></p>
 <p>前缀：registry.docker-cn.com/library/   是加速的功能！！！</p>
-<p>下载完成：<br><img src="/images/QQ截图20181115144251.png"></p>
+<p>下载完成：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115144251.png"></p>
 <p>运行rabbitmq镜像：</p>
 <p>输入：<code>docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq registry.docker-cn.com/library/rabbitmq:3.6-management</code></p>
-<p><strong>注意：这里有两个端口号，5672是rabbitmq的默认端口号，15672是rabbitmq的界面管理的端口号</strong><br><img src="/images/QQ截图20181115175455.png"></p>
+<p><strong>注意：这里有两个端口号，5672是rabbitmq的默认端口号，15672是rabbitmq的界面管理的端口号</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115175455.png"></p>
 <p>验证是否启动成功：</p>
-<p>在浏览器中输入：<code>http://10.6.11.17:15672/</code> 这里的ip地址是你的虚拟机的ip地址。<br><img src="/images/QQ截图20181115145020.png"></p>
-<p>用户名和密码都是：guest<br><img src="/images/QQ截图20181115145130.png"></p>
+<p>在浏览器中输入：<code>http://10.6.11.17:15672/</code> 这里的ip地址是你的虚拟机的ip地址。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145020.png"></p>
+<p>用户名和密码都是：guest<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145130.png"></p>
 <p>这里，我们主要关注 Exchanges 和 Queues。</p>
-<p>现在我们来根据下图的 Exchange 和 Queue 来设置、验证。<br><img src="/images/QQ截图20181115145557.png"></p>
+<p>现在我们来根据下图的 Exchange 和 Queue 来设置、验证。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145557.png"></p>
 <p>图中，我们有三个类型的Exchange：</p>
 <p>exchange.direct ：direct类型的Exchange</p>
 <p>exchange.fanout：fanout类型的Exchange</p>
@@ -565,46 +565,46 @@
 <p>liuzhuo、liuzhuo.news、liuzhuo.emps、gakki.news</p>
 <hr>
 <p>现在，我们在rabbitmq管理界面中，添加上诉的 Exchange 和 Queue</p>
-<p>点击：Exchanges，然后点击：Add a new exchange<br><img src="/images/QQ截图20181115150037.png"><br><img src="/images/QQ截图20181115150358.png"><br><img src="/images/QQ截图20181115150454.png"><br><img src="/images/QQ截图20181115150521.png"></p>
-<p>三个类型的Exchange添加成功后：<br><img src="/images/QQ截图20181115150616.png"></p>
+<p>点击：Exchanges，然后点击：Add a new exchange<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150037.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150358.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150454.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150521.png"></p>
+<p>三个类型的Exchange添加成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150616.png"></p>
 <hr>
-<p>点击：Queues，然后点击：Add a new queue<br><img src="/images/QQ截图20181115150740.png"><br><img src="/images/QQ截图20181115150835.png"><br><img src="/images/QQ截图20181115150916.png"><br><img src="/images/QQ截图20181115150941.png"><br><img src="/images/QQ截图20181115151007.png"></p>
-<p>四个queue添加成功后：<br><img src="/images/QQ截图20181115151047.png"></p>
+<p>点击：Queues，然后点击：Add a new queue<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150740.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150835.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150916.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150941.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151007.png"></p>
+<p>四个queue添加成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151047.png"></p>
 <hr>
 <p>现在，将Exchange和queue绑定在一起：</p>
-<p>点击：exchange.direct，再点击Bindings：<br><img src="/images/QQ截图20181115151512.png"><br><img src="/images/QQ截图20181115151546.png"><br><img src="/images/QQ截图20181115151612.png"><br><img src="/images/QQ截图20181115151639.png"></p>
+<p>点击：exchange.direct，再点击Bindings：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151512.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151546.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151612.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151639.png"></p>
 <p>exchange.direct 绑定四个队列成功后：</p>
-<p><img src="/images/QQ截图20181115151828.png"></p>
-<p>现在，在exchange.direct下，发送消息：（点击Publish message）<br><img src="/images/QQ截图20181115152200.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151828.png"></p>
+<p>现在，在exchange.direct下，发送消息：（点击Publish message）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152200.png"></p>
 <p>direct类型的Exchange，是一对一的形式，虽然exchange.direct绑定了四个队列，但是只要liuzhuo路由键的队列才能收到消息：</p>
-<p>点击Queues<br><img src="/images/QQ截图20181115152416.png"><br>点击liuzhuo队列，查看具体的消息<br><img src="/images/QQ截图20181115152548.png"></p>
+<p>点击Queues<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152416.png"><br>点击liuzhuo队列，查看具体的消息<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152548.png"></p>
 <hr>
-<p>给 exchange.fanout 也绑定 四个队列：<br><img src="/images/QQ截图20181115152858.png"><br>类推：四个队列绑定成功后：<br><img src="/images/QQ截图20181115153100.png"></p>
-<p>现在，在exchange.fanout下，发送消息：<br><img src="/images/QQ截图20181115153320.png"></p>
-<p>发送消息之后，四个消息队列都会收到消息：<br><img src="/images/QQ截图20181115153426.png"><br><img src="/images/QQ截图20181115153536.png"></p>
+<p>给 exchange.fanout 也绑定 四个队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152858.png"><br>类推：四个队列绑定成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153100.png"></p>
+<p>现在，在exchange.fanout下，发送消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153320.png"></p>
+<p>发送消息之后，四个消息队列都会收到消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153426.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153536.png"></p>
 <hr>
-<p>给 exchange.topic 绑定模式匹配的消息队列：<br><img src="/images/QQ截图20181115153958.png"><br><img src="/images/QQ截图20181115154107.png"><br><img src="/images/QQ截图20181115154137.png"></p>
-<p>最后：<br><img src="/images/QQ截图20181115154227.png"></p>
-<p>在 exchange.topic 下 ，发送消息：<br><img src="/images/QQ截图20181115154442.png"></p>
-<p>查看消息队列：<br><img src="/images/QQ截图20181115154546.png"><br><img src="/images/QQ截图20181115154656.png"></p>
-<p><strong>大家有可能看不到topic的消息，因为你们没有移除消息，看到都是第一条消息，看不到后面的消息。</strong><br><img src="/images/QQ截图20181115155028.png"></p>
+<p>给 exchange.topic 绑定模式匹配的消息队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153958.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154107.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154137.png"></p>
+<p>最后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154227.png"></p>
+<p>在 exchange.topic 下 ，发送消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154442.png"></p>
+<p>查看消息队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154546.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154656.png"></p>
+<p><strong>大家有可能看不到topic的消息，因为你们没有移除消息，看到都是第一条消息，看不到后面的消息。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115155028.png"></p>
 <p>改为false后，点击Get Message(s)后，会 <strong>获取当前消息</strong> 并 <strong>移除当前消息</strong>。</p>
-<h3 id="整合rabbitmq到Springboot中"><a href="#整合rabbitmq到Springboot中" class="headerlink" title="整合rabbitmq到Springboot中"></a>整合rabbitmq到Springboot中</h3><p>1）创建新的Springboot工程：<br><img src="/images/QQ截图20181115163556.png"><br><img src="/images/QQ截图20181115163639.png"><br><img src="/images/QQ截图20181115170221.png"></p>
+<h3 id="整合rabbitmq到Springboot中"><a href="#整合rabbitmq到Springboot中" class="headerlink" title="整合rabbitmq到Springboot中"></a>整合rabbitmq到Springboot中</h3><p>1）创建新的Springboot工程：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115163556.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115163639.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170221.png"></p>
 <p>只要导入了amqp的starter，Springboot就会自动帮我们配置rabbitmq。</p>
 <p>原理：</p>
-<p>打开：RabbitAutoConfiguration<br><img src="/images/QQ截图20181115170518.png"></p>
+<p>打开：RabbitAutoConfiguration<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170518.png"></p>
 <ol>
 <li>帮我们创建了RabbitConnectionFactoryCreator：rabbitmq的工厂连接器。</li>
-<li><p>使用RabbitProperties类，来配置rabbitmq。<br><img src="/images/QQ截图20181115170755.png"></p>
+<li><p>使用RabbitProperties类，来配置rabbitmq。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170755.png"></p>
 </li>
-<li><p>创建rabbitTemplate来操作rabbitmq<br><img src="/images/QQ截图20181115170904.png"></p>
+<li><p>创建rabbitTemplate来操作rabbitmq<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170904.png"></p>
 </li>
-<li><p>创建了AmqpAdmin：来管理rabbitmq的组件<br><img src="/images/QQ截图20181115171113.png"></p>
+<li><p>创建了AmqpAdmin：来管理rabbitmq的组件<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115171113.png"></p>
 </li>
 </ol>
 <hr>
 <p>现在，我们来使用Springboot帮我们注入的rabbitTemplate来操作rabbitmq：</p>
-<p>在application配置文件中：<br><img src="/images/QQ截图20181115172810.png"></p>
+<p>在application配置文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115172810.png"></p>
 <pre><code>#配置rabbitmq的信息
 spring.rabbitmq.host=10.6.11.17
 spring.rabbitmq.username=guest
@@ -612,7 +612,7 @@ spring.rabbitmq.password=guest
 
 #spring.rabbitmq.port=5672        //默认就是5672，可以不配置
 #spring.rabbitmq.virtual-host=/   //默认就是/的虚拟主机，可以不配置
-</code></pre><p>在test包下，测试我们的rabbitTemplate：<br><img src="/images/QQ截图20181115171844.png"></p>
+</code></pre><p>在test包下，测试我们的rabbitTemplate：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115171844.png"></p>
 <pre><code>@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringBoot02AmqpApplicationTests {
@@ -643,9 +643,9 @@ public class SpringBoot02AmqpApplicationTests {
     }
 
 }
-</code></pre><p>清空，我们消息队列中的消息：<br><img src="/images/QQ截图20181115172310.png"></p>
-<p>执行test01：<br><img src="/images/QQ截图20181115175833.png"></p>
-<p>打开：Queues<br><img src="/images/QQ截图20181115180117.png"><br><img src="/images/QQ截图20181115180249.png"></p>
+</code></pre><p>清空，我们消息队列中的消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115172310.png"></p>
+<p>执行test01：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115175833.png"></p>
+<p>打开：Queues<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180117.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180249.png"></p>
 <p>消息发送成功，只是是以jdk序列化的形式序列化消息的。</p>
 <p>从消息队列中，获取消息：</p>
 <p>再写一个测试方法：</p>
@@ -656,20 +656,20 @@ public void test02(){
     System.out.println(o.getClass());
     System.out.println(o);
 }
-</code></pre><p>执行该测试方法：<br><img src="/images/QQ截图20181115180643.png"></p>
+</code></pre><p>执行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180643.png"></p>
 <hr>
 <p>现在，我们修改一下，序列化的方式：</p>
 <p>默认的序列化的是：</p>
 <pre><code>private volatile MessageConverter messageConverter = new SimpleMessageConverter();
 </code></pre><p>在config下：创建RabbitmqConfig配置类：</p>
-<p>配置：json的序列化器：<br>org.springframework.amqp.support.converter.MessageConverter<br>在MessageConverter上，ctrl+H：<br><img src="/images/QQ截图20181115184655.png" style="width:50%"><br>Springboot已经帮我们，创建好了json的序列化器。</p>
-<p>直接注册到容器即可：<br><img src="/images/QQ截图20181115184554.png"></p>
+<p>配置：json的序列化器：<br>org.springframework.amqp.support.converter.MessageConverter<br>在MessageConverter上，ctrl+H：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115184655.png" style="width:50%"><br>Springboot已经帮我们，创建好了json的序列化器。</p>
+<p>直接注册到容器即可：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115184554.png"></p>
 <p>现在，容器就会使用Jackson2JsonMessageConverter()，不会使用默认的new SimpleMessageConverter()。</p>
 <hr>
-<p>再次运行test01():<br><img src="/images/QQ截图20181115185107.png"></p>
-<p>再次运行test02():<br><img src="/images/QQ截图20181115185214.png"></p>
+<p>再次运行test01():<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185107.png"></p>
+<p>再次运行test02():<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185214.png"></p>
 <hr>
-<p>在bean包下，创建person类：<br><img src="/images/QQ截图20181115185350.png"></p>
+<p>在bean包下，创建person类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185350.png"></p>
 <p><strong>注意：提供get和set方法</strong></p>
 <p>修改test01方法：</p>
 <pre><code>    @Test
@@ -686,16 +686,16 @@ public void test02(){
     System.out.println(person.getClass());
     System.out.println(person);
 }
-</code></pre><p>运行test01：<br><img src="/images/QQ截图20181115190126.png"></p>
-<p>运行test02：<br><img src="/images/QQ截图20181115190228.png"></p>
+</code></pre><p>运行test01：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115190126.png"></p>
+<p>运行test02：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115190228.png"></p>
 <p>json序列化成功！！！</p>
 <hr>
 <p>以上都是我们发送消息，然后手动获取消息。现在我们使用rabbitmq的注解监听器来自动帮我们获取消息队列中的消息。</p>
-<p>在service包下，创建PersonService：<br><img src="/images/QQ截图20181115191858.png"></p>
-<p>在启动类中，开启rabbitmq的注解启动功能：<br>@EnableRabbit<br><img src="/images/QQ截图20181115191955.png"></p>
+<p>在service包下，创建PersonService：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115191858.png"></p>
+<p>在启动类中，开启rabbitmq的注解启动功能：<br>@EnableRabbit<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115191955.png"></p>
 <p>启动Springboot应用：</p>
-<p>然后运行test01：给liuzhuo.news队列中，发送一个消息。<br><img src="/images/QQ截图20181115192156.png"></p>
-<p>打开控制台：<br><img src="/images/QQ截图20181115192236.png"></p>
+<p>然后运行test01：给liuzhuo.news队列中，发送一个消息。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192156.png"></p>
+<p>打开控制台：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192236.png"></p>
 <p>监听liuzhuo.news队列成功。</p>
 <p>如果，我们想要获取消息的更多信息，比如消息头、消息体。</p>
 <p>在PersonService中：(使用Message参数)</p>
@@ -707,12 +707,12 @@ public void test02(){
         //获取消息体的内容
         System.out.println(message.getBody());
     }
-</code></pre><p>打开queues的界面:(查看liuzhuo队列)<br><img src="/images/QQ截图20181115192855.png"></p>
-<p>里面已经有两个数据了，现在我们重启Springboot应用：<br>在启动的过程中：<br><img src="/images/QQ截图20181115193013.png"></p>
+</code></pre><p>打开queues的界面:(查看liuzhuo队列)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192855.png"></p>
+<p>里面已经有两个数据了，现在我们重启Springboot应用：<br>在启动的过程中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115193013.png"></p>
 <hr>
 <p>以上的操作，都是基于：Exchange 和 queue 存在的情况下。这么组件的创建都是基于rabbitmq的界面操作，如果我们想要在代码中创建呢？</p>
 <p>这样，我们可以使用Springboot帮自动注入的AmqpAdmin组件，AmqpAdmin可以创建、删除、绑定：Exchange 和 queue。</p>
-<p>在test包下的测试类中：<br><img src="/images/QQ截图20181115194641.png"></p>
+<p>在test包下的测试类中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194641.png"></p>
 <pre><code>@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringBoot02AmqpApplicationTests {
@@ -735,14 +735,14 @@ public class SpringBoot02AmqpApplicationTests {
     }
     ····
 }
-</code></pre><p>运行测试方法：testRabbitAdmin()<br><img src="/images/QQ截图20181115194827.png"><br><img src="/images/QQ截图20181115194855.png"></p>
+</code></pre><p>运行测试方法：testRabbitAdmin()<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194827.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194855.png"></p>
 <p>test:</p>
 <pre><code>    @Test
     public void bing(){
         //绑定exchange与queue
         rabbitAmqpAdmin.declareBinding(new Binding(&quot;amqp.queue&quot;, Binding.DestinationType.QUEUE,&quot;amqp.exchange&quot;,&quot;amqp.key&quot;,null));
     }
-</code></pre><p>运行该测试方法：<br><img src="/images/QQ截图20181115195315.png"></p>
+</code></pre><p>运行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115195315.png"></p>
 
             </div>
             <hr/>
@@ -1186,8 +1186,7 @@ public class SpringBoot02AmqpApplicationTests {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                ElasticSearch
-检索我们的应用经常需要添加检索功能，开源的 ElasticSearch 是目前全文搜索引擎的首选。他可以快速的存
+                                Springboot与ElasticSearch整合使用
                       
                     </div>
                     <div class="publish-info">
@@ -1245,7 +1244,6 @@ public class SpringBoot02AmqpApplicationTests {
                     <div class="summary">
                        
                                 JSR-107、Spring缓存抽象、整合Redis
-JSR107Java Caching定义了5个核心接口，分别是CachingProvi
                       
                     </div>
                     <div class="publish-info">
@@ -1435,7 +1433,7 @@ JSR107Java Caching定义了5个核心接口，分别是CachingProvi
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

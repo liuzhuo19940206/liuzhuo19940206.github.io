@@ -7,10 +7,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="spring_annotation_day_04, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
-今天，学习条件注解！！！
+今天，学习条件注解！！！这个注解很重要，对以后大家学习Springboot很有帮助。
 @Conditional作用：按照一定的条件进行判断，满足条件的bean给注入到容器中  
-现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。
-在MainConfig2配置类">
+现在我们的需求的是根据操作系统的类型">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -447,7 +446,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        809
+                        828
                     </div>
                     
 
@@ -471,7 +470,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
-<p>今天，学习条件注解！！！<br><a id="more"></a></p>
+<p>今天，学习条件注解！！！这个注解很重要，对以后大家学习Springboot很有帮助。<br><a id="more"></a></p>
 <h3 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h3><p>作用：按照一定的条件进行判断，满足条件的bean给注入到容器中  </p>
 <p>现在我们的需求的是根据操作系统的类型来，注入给定的bean对象。</p>
 <p>在MainConfig2配置类中，再添加两个新方法：</p>
@@ -512,7 +511,7 @@ Process finished with exit code 0
 </code></pre><p>此时：获取了所有的person类的Bean的id的名字。</p>
 <hr>
 <p>现在，我们创建com.liuzhuo.conditaion包，并创建两个实现了condition接口的类。如下：</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181014203017.png" style="width:50%">  </p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day04/20181014203017.png" style="width:50%"> </p>
 <p>WinCondition类：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WinCondition</span> <span class="token keyword">implements</span> <span class="token class-name">Condition</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">/*
@@ -577,8 +576,8 @@ Windows 10
 Process finished with exit code 0
 </code></pre><p>看到结果：现在作者的操作系统是windows系统，所以现在是bier给注入到容器中了。</p>
 <p>现在修改操作系统的类型。</p>
-<p>修改test03的运行环境，在idea的右上角点击”Edit Configrations···”:</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181014204146.png" style="width:50%"></p>
+<p>修改test03的运行环境，在idea的右上角点击 “Edit Configrations···” :</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day04/20181014204146.png" style="width:50%"></p>
 <p>编辑里面的 VM options: <code>-Dos.name=Linux</code></p>
 <p>然后运行test03.</p>
 <pre><code>person
@@ -1274,7 +1273,7 @@ Process finished with exit code 0
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

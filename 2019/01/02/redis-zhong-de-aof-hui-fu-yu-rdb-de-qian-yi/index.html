@@ -6,10 +6,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Redis中的aof恢复与rdb的迁移, 解忧杂货店">
-    <meta name="description" content="今天来学习redis中的aof恢复与rdb服务器之间的迁移
+    <meta name="description" content="今天来学习redis中的aof恢复与rdb服务器之间的迁移。
 基于上篇的知识，当我们在redis的开发中，一不小心，手贱 运行了 flushall，数据都被清空了，该怎么恢复呢？
 今天的话题，就由此展开。
-aof的恢复目前redis下的目录结">
+aof的恢复目前redis下的目录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -477,42 +477,42 @@ aof的恢复目前redis下的目录结">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习redis中的aof恢复与rdb服务器之间的迁移<br><a id="more"></a></p>
+                <p>今天来学习redis中的aof恢复与rdb服务器之间的迁移。</p>
 <p>基于上篇的知识，当我们在redis的开发中，一不小心，手贱 运行了 flushall，数据都被清空了，该怎么恢复呢？</p>
 <p>今天的话题，就由此展开。</p>
-<h2 id="aof的恢复"><a href="#aof的恢复" class="headerlink" title="aof的恢复"></a>aof的恢复</h2><p>目前redis下的目录结构如下：<br><img src="/images/QQ截图20190102112932.png"></p>
+<h2 id="aof的恢复"><a href="#aof的恢复" class="headerlink" title="aof的恢复"></a>aof的恢复</h2><p>目前redis下的目录结构如下：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102112932.png"></p>
 <pre><code>bin :            与redis相关的命令目录
 redis.conf :     6379的redis配置文件（默认的）
 redis6380.conf : 6380的redis配置文件（拷贝的6379）
-</code></pre><p>我们知道，redis持久化的目录在：/var/rdb下。（配置文件中配置的）<br><img src="/images/QQ截图20190102113401.png"><br><img src="/images/QQ截图20190102113617.png"></p>
-<p>启动，redis:6379的服务器<br><img src="/images/QQ截图20190102113805.png"></p>
-<p>先向redis中，随便存点数据。<br><img src="/images/QQ截图20190102113957.png"></p>
+</code></pre><p>我们知道，redis持久化的目录在：/var/rdb下。（配置文件中配置的）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102113401.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102113617.png"></p>
+<p>启动，redis:6379的服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102113805.png"></p>
+<p>先向redis中，随便存点数据。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102113957.png"></p>
 <p>现在一不小心，执行了：flushall 。</p>
-<p>赶紧：执行 shutdown nosave ，抢救一下。 （后面的参数，加上save的话，就是将shutdown指令也保存到aof文件中，nosave就是不保存）<br><img src="/images/QQ截图20190102114233.png"></p>
-<p>查看持久化目录：<br><img src="/images/QQ截图20190102114435.png"></p>
-<p>查看aof文件中的内容：<br><img src="/images/QQ截图20190102114435.png"><br><code>more /var/rdb/appendonly6379.aof</code><br><img src="/images/QQ截图20190102114705.png"></p>
-<p>再次启动，redis服务器：<br><img src="/images/QQ截图20190102114916.png"><br><img src="/images/QQ截图20190102115022.png"></p>
+<p>赶紧：执行 shutdown nosave ，抢救一下。 （后面的参数，加上save的话，就是将shutdown指令也保存到aof文件中，nosave就是不保存）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102114233.png"></p>
+<p>查看持久化目录：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102114435.png"></p>
+<p>查看aof文件中的内容：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102114435.png"><br><code>more /var/rdb/appendonly6379.aof</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102114705.png"></p>
+<p>再次启动，redis服务器：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102114916.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102115022.png"></p>
 <p>删除aof文件中 与flushall相关的指令即可恢复之前的数据。</p>
-<p><code>vim /var/rdb/appendonly6379.aof</code><br><img src="/images/QQ截图20190102115338.png"><br><img src="/images/QQ截图20190102115550.png"><br><img src="/images/QQ截图20190102115654.png"></p>
+<p><code>vim /var/rdb/appendonly6379.aof</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102115338.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102115550.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102115654.png"></p>
 <hr>
-<p>再次启动redis服务器，验证数据是否恢复<br>启动之前，首先检查一下，我们修改后的aof是否有效：（防止格式不对，启动redis服务器失败）<br><img src="/images/QQ截图20190102120357.png"></p>
-<p><img src="/images/QQ截图20190102115806.png"><br><img src="/images/QQ截图20190102120532.png"></p>
+<p>再次启动redis服务器，验证数据是否恢复<br>启动之前，首先检查一下，我们修改后的aof是否有效：（防止格式不对，启动redis服务器失败）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102120357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102115806.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102120532.png"></p>
 <p><strong>注意：当你执行flushall之后，如果恰好aof进行了重写，那么就真的完蛋了，准备写辞职信吧！</strong></p>
 <p>进行aof重写后，aof文件就会清空了，因为里面是有flushall指令了，redis就会在重写的时候，认为数据库该清空，aof文件就会清空了。</p>
 <h2 id="rdb在服务器之间的迁移"><a href="#rdb在服务器之间的迁移" class="headerlink" title="rdb在服务器之间的迁移"></a>rdb在服务器之间的迁移</h2><p>现在，我们想要进行数据的迁移怎么办呢？我们想将一台redis服务器中数据迁移到另一台redis服务器中。</p>
 <p>这里，我们演示将6379：redis服务器中的数据迁移到6380：redis服务器中。</p>
-<p>查看持久化目录，此时6380还没有rdb文件。<br><img src="/images/QQ截图20190102125758.png"></p>
-<p>修改6380配置文件，关闭aof持久化功能，避免干扰，因为如果rdb与aof同时存在的话，是会使用aof来恢复数据的。<br>（注意rdb功能是开启的。）<br><img src="/images/QQ截图20190102130035.png"></p>
-<p>启动6380的redis服务器，验证该服务器中是否有数据：<br><img src="/images/QQ截图20190102130806.png"><br><img src="/images/QQ截图20190102130922.png"></p>
+<p>查看持久化目录，此时6380还没有rdb文件。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102125758.png"></p>
+<p>修改6380配置文件，关闭aof持久化功能，避免干扰，因为如果rdb与aof同时存在的话，是会使用aof来恢复数据的。<br>（注意rdb功能是开启的。）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102130035.png"></p>
+<p>启动6380的redis服务器，验证该服务器中是否有数据：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102130806.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102130922.png"></p>
 <p>关闭6380的redis服务器，并且删除：/var/rdb/下的dump6380.rdb文件（如果有的话）。</p>
-<p><strong>在持久化目录下：拷贝一份dump6379.rdb 文件，名字为dump6380.rdb（与redis6380.conf配置文件配置的一样）</strong><br><img src="/images/QQ截图20190102131149.png"></p>
-<p>分别开启：6379与6380的redis服务器。<br><img src="/images/QQ截图20190102130324.png"><br><img src="/images/QQ截图20190102131317.png"><br><img src="/images/QQ截图20190102131445.png"></p>
+<p><strong>在持久化目录下：拷贝一份dump6379.rdb 文件，名字为dump6380.rdb（与redis6380.conf配置文件配置的一样）</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102131149.png"></p>
+<p>分别开启：6379与6380的redis服务器。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102130324.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102131317.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102131445.png"></p>
 <p><strong>注意：6379的redis服务器是通过aof文件来恢复内存中的数据的，所以如果在拷贝dump文件之前，需要执行save命令，强行执行rdb保存，这样aof持久化的数据就与rdb一致了，否则，有可能现在出现6380服务器中数据与6379不一致问题。</strong></p>
 <hr>
 <p><strong>要点：</strong></p>
 <p>将要迁移的redis服务器的rdb文件，拷贝一份放到需要该数据的redis服务器的<strong>持久化目录下</strong>,而且名字必须与配置文件中<strong>一致</strong>。</p>
 <p>比如：我这里，持久化的目录为：<code>/var/rdb</code>。rdb的名字为：<code>dump6380.rdb</code>。</p>
-<p>因为：6380的redis.conf配置文件中：<br><img src="/images/QQ截图20190102132109.png"></p>
+<p>因为：6380的redis.conf配置文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day10/QQ截图20190102132109.png"></p>
 
             </div>
             <hr/>
@@ -956,9 +956,7 @@ redis6380.conf : 6380的redis配置文件（拷贝的6379）
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                接着上篇，来学习redis中的sentinel运维工具。
-场景问题在使用sentinel运维工具之前，首先来看一个问题：
-当我们搭建好一个主
+                                redis中的sentinel运维工具
                       
                     </div>
                     <div class="publish-info">
@@ -1015,9 +1013,7 @@ redis6380.conf : 6380的redis配置文件（拷贝的6379）
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                这篇文章，将讲述redis中与运维相关的指令。
-上篇，我们讲解了redis中的集群搭建过程。现在来学习redis中的运维相关的知识。
-准备工
+                                redis中与运维相关的指令
                       
                     </div>
                     <div class="publish-info">
@@ -1207,7 +1203,7 @@ redis6380.conf : 6380的redis配置文件（拷贝的6379）
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

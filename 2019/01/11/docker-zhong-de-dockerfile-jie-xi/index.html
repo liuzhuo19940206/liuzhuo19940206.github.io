@@ -480,7 +480,7 @@ docke">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这篇专门来讲解Docker中比较重要的DockerFile文件<br><a id="more"></a></p>
+                <p>这篇专门来讲解Docker中比较重要的DockerFile文件</p>
 <h2 id="DockerFile是什么"><a href="#DockerFile是什么" class="headerlink" title="DockerFile是什么"></a>DockerFile是什么</h2><p>Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本。</p>
 <p>构建三步骤：</p>
 <ul>
@@ -493,7 +493,7 @@ docke">
 </ul>
 <p>Dockerfile文件是什么样呢？</p>
 <p>以我们熟悉的CentOS为例：</p>
-<p><img src="/images/QQ截图20190111192141.png"><br><img src="/images/QQ截图20190111192322.png"><br><img src="/images/QQ截图20190111192232.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111192141.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111192322.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111192232.png"></p>
 <hr>
 <h2 id="DockerFile构建过程解析"><a href="#DockerFile构建过程解析" class="headerlink" title="DockerFile构建过程解析"></a>DockerFile构建过程解析</h2><h3 id="Dockerfile内容基础知识"><a href="#Dockerfile内容基础知识" class="headerlink" title="Dockerfile内容基础知识"></a>Dockerfile内容基础知识</h3><p>1：每条保留字指令都必须为大写字母且后面要跟随至少一个参数</p>
 <p>2：指令按照从上到下，顺序执行</p>
@@ -514,7 +514,7 @@ docke">
 </li>
 </ul>
 <p>Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可，合力充当Docker体系的基石。</p>
-<p><img src="/images/QQ截图20190111192957.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111192957.png"></p>
 <ol>
 <li><p>Dockerfile，需要定义一个Dockerfile，Dockerfile定义了进程需要的一切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;</p>
 </li>
@@ -557,13 +557,13 @@ exec 格式：CMD [&quot;可执行文件&quot;,&quot;参数1&quot;,&quot;参数2
 
 ENTRYPOINT：  指定一个容器启动时要运行的命令，ENTRYPOINT 的目的 和 CMD 一样，都是在指定容器启动程序及参数，但是它是叠加命令，不是覆盖命令。
 ONBUILD：     当构建一个被继承的Dockerfile时运行命令，父镜像在被子继承后父镜像的onbuild被触发
-</code></pre><h3 id="小总结-1"><a href="#小总结-1" class="headerlink" title="小总结"></a>小总结</h3><p><img src="/images/QQ截图20190111194330.png"></p>
+</code></pre><h3 id="小总结-1"><a href="#小总结-1" class="headerlink" title="小总结"></a>小总结</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111194330.png"></p>
 <hr>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Base镜像-scratch"><a href="#Base镜像-scratch" class="headerlink" title="Base镜像(scratch)"></a>Base镜像(scratch)</h3><p>Docker Hub 中 99% 的镜像都是 通过在 base 镜像中安装和配置需要的软件构建出来的。<code>scratch</code> 就是最基础的镜像，和 java中对象默认继承Object对象一样。<br><img src="/images/QQ截图20190111194719.png"></p>
-<h3 id="自定义镜像mycentos"><a href="#自定义镜像mycentos" class="headerlink" title="自定义镜像mycentos"></a>自定义镜像mycentos</h3><h4 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h4><p>1.默认的centos镜像是什么情况呢？<br><img src="/images/QQ截图20190111195155.png"></p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Base镜像-scratch"><a href="#Base镜像-scratch" class="headerlink" title="Base镜像(scratch)"></a>Base镜像(scratch)</h3><p>Docker Hub 中 99% 的镜像都是 通过在 base 镜像中安装和配置需要的软件构建出来的。<code>scratch</code> 就是最基础的镜像，和 java中对象默认继承Object对象一样。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111194719.png"></p>
+<h3 id="自定义镜像mycentos"><a href="#自定义镜像mycentos" class="headerlink" title="自定义镜像mycentos"></a>自定义镜像mycentos</h3><h4 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h4><p>1.默认的centos镜像是什么情况呢？<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111195155.png"></p>
 <p>现在：我们想创建自己的mycentos镜像，修改登入后的工作目录，支持vim编辑器，支持ifconfig网络配置。</p>
 <p>2.编写dockerfile文件</p>
-<p>由于之前，我们在mydocker文件下，写过Dockerfile文件，所以接着在里面写了，你们如果没有，就在根目录下创建即可，随意。<br><img src="/images/QQ截图20190111195627.png"></p>
+<p>由于之前，我们在mydocker文件下，写过Dockerfile文件，所以接着在里面写了，你们如果没有，就在根目录下创建即可，随意。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111195627.png"></p>
 <p>Dockerfile文件中的内容：</p>
 <pre><code>FROM centos                               #继承centos镜像
 MAINTAINER gakki&lt;gakki167@126.com&gt;        #填写作者与邮箱地址
@@ -579,14 +579,14 @@ EXPOSE 80                                 #暴露端口号为80
 CMD echo $mypath                          #为了测试，随便写的，不写也行
 CMD echo &quot;success--------------ok&quot;        #为了测试，随便写的，不写也行
 CMD /bin/bash                             #启动容器，执行/bin/bash命令
-</code></pre><p><img src="/images/QQ截图20190111200217.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111200217.png"></p>
 <h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p><code>docker build -f Dockerfile文件的路径 -t 新镜像名字:TAG .</code>  注意最后有一个点,  . 表示当前目录</p>
 <p>如果当前目录下，存在Dockerfile文件话，而且就是<code>Dockerfile</code>这个名字，那么可以不写 <code>-f Dockerfile的路径</code></p>
 <pre><code>docker build -t mycentos:1.3 .
-</code></pre><p><img src="/images/QQ截图20190111200803.png"></p>
-<p>然后开始一顿哗啦啦的代码，因为要下载 vim 和 net-tools。<br><img src="/images/QQ截图20190111200933.png"><br><img src="/images/QQ截图20190111201130.png"></p>
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><code>docker run -it 新镜像名:TAG</code><br><img src="/images/QQ截图20190111201358.png"><br><img src="/images/QQ截图20190111201459.png"><br><img src="/images/QQ截图20190111201548.png"></p>
-<h4 id="列出镜像的变更历史"><a href="#列出镜像的变更历史" class="headerlink" title="列出镜像的变更历史"></a>列出镜像的变更历史</h4><p><code>docker history 镜像名</code><br><img src="/images/QQ截图20190111201937.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111200803.png"></p>
+<p>然后开始一顿哗啦啦的代码，因为要下载 vim 和 net-tools。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111200933.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111201130.png"></p>
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><p><code>docker run -it 新镜像名:TAG</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111201358.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111201459.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111201548.png"></p>
+<h4 id="列出镜像的变更历史"><a href="#列出镜像的变更历史" class="headerlink" title="列出镜像的变更历史"></a>列出镜像的变更历史</h4><p><code>docker history 镜像名</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111201937.png"></p>
 <h3 id="CMD-ENTRYPOINT-镜像案例"><a href="#CMD-ENTRYPOINT-镜像案例" class="headerlink" title="CMD/ENTRYPOINT 镜像案例"></a>CMD/ENTRYPOINT 镜像案例</h3><p>为了区分 CMD 与 ENTRYPOINT 命令的区别，而做了案例。</p>
 <p>两者都是：指定一个容器启动时要运行的命令。</p>
 <h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><p>采用 CMD 的话，当Dockerfile 中有多个 CMD 指令时，只能最后一个生效。而且 CMD 会被 docker run 之后的参数替换。</p>
@@ -599,32 +599,32 @@ CMD [&quot;ls&quot;,&quot;-l&quot;]
 
 当使用 docker run -it 镜像名 ls -l ： 启动容器也是一样的效果，这里的ls -l 会覆盖掉Dockerfile文件中的：CMD [&quot;/bin/bash&quot;]
 </code></pre><p>这里，我以tomcat为例来演示：</p>
-<p><img src="/images/QQ截图20190111202901.png"></p>
-<p>如果不加 ls -l ，就会执行默认的 CMD [“catalina.sh”, “run”] （上图写错了）<br><img src="/images/QQ截图20190111203033.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111202901.png"></p>
+<p>如果不加 ls -l ，就会执行默认的 CMD [“catalina.sh”, “run”] （上图写错了）<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111203033.png"></p>
 <hr>
 <h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><p>docker run 之后的参数会被当做参数传递给 ENTRYPOINT，之后形成新的命令组合，不会覆盖之前的命令。</p>
 <p>制作CMD版可以查询IP信息的容器：</p>
-<p>在mydocker文件夹下，创建Dockerfile2文件：<br><img src="/images/QQ截图20190111203430.png"></p>
+<p>在mydocker文件夹下，创建Dockerfile2文件：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111203430.png"></p>
 <p>Dockerfile2文件内容：</p>
 <pre><code>FROM centos
 RUN yum install -y curl
 CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]
-</code></pre><p><img src="/images/QQ截图20190111204426.png"></p>
-<p>生成 myip镜像：<br><img src="/images/QQ截图20190111203855.png"></p>
-<p>运行 myip镜像：<br><img src="/images/QQ截图20190111204646.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111204426.png"></p>
+<p>生成 myip镜像：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111203855.png"></p>
+<p>运行 myip镜像：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111204646.png"></p>
 <p>那是因为，我们生成myip的镜像的Dockerfile文件，最后执行了：<code>CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]。</code></p>
-<p>如果，我们想要获取抓包过程中的头部信息，还需要加上 -i 。<br><img src="/images/QQ截图20190111204950.png"></p>
-<p>现在，我在启动myip的过程中 加上 -i：<br><img src="/images/QQ截图20190111205157.png"></p>
+<p>如果，我们想要获取抓包过程中的头部信息，还需要加上 -i 。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111204950.png"></p>
+<p>现在，我在启动myip的过程中 加上 -i：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111205157.png"></p>
 <p>因为，我们使用的是CMD，不是ENTRYPOINT，所以，在docker run 后面的参数，会直接覆盖Dockerfile中的<code>CMD [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]</code>，相当于现在变成了<code>CMD [&quot;-i&quot;]</code> ，这个当然报错呀，都不知道是什么玩意！！！</p>
 <hr>
 <p>现在，在mydocker文件夹下，创建Dockerfile3：</p>
 <pre><code>FROM centos
 RUN yum install -y curl
 ENTRYPOINT [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]
-</code></pre><p>唯一的区别就是：将CMD 换成了 ENTRYPOINT 。<br><img src="/images/QQ截图20190111205600.png"></p>
-<p>生成新的镜像：myip2<br><img src="/images/QQ截图20190111205729.png"></p>
-<p>启动 myip2 容器：<br><img src="/images/QQ截图20190111205905.png"></p>
-<p>到目前为止，都和CMD一样。现在 再次启动 myip2 还面带上 -i 参数：<br><img src="/images/QQ截图20190111210120.png"></p>
+</code></pre><p>唯一的区别就是：将CMD 换成了 ENTRYPOINT 。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111205600.png"></p>
+<p>生成新的镜像：myip2<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111205729.png"></p>
+<p>启动 myip2 容器：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111205905.png"></p>
+<p>到目前为止，都和CMD一样。现在 再次启动 myip2 还面带上 -i 参数：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111210120.png"></p>
 <p>发现，没有报错，返回了 头部信息 和 主体信息。</p>
 <p>以上：就是 CMD 和 ENTRYPOINT 的区别！！！</p>
 <h4 id="CURL"><a href="#CURL" class="headerlink" title="CURL"></a>CURL</h4><p>考虑到大家有可能对 curl 不熟，这里简单介绍一下：</p>
@@ -638,14 +638,14 @@ ENTRYPOINT [&quot;curl&quot;, &quot;-s&quot;, &quot;www.baidu.com&quot;]
 同样，如果这里的URL指向的是一个文件或者一幅图都可以直接下载到本地。
 如果下载的是HTML文档，那么缺省的将只显示文件头部，即HTML文档的header。要全部显示，请加参数 -i
 </code></pre><hr>
-<h3 id="自定义镜像Tomcat9"><a href="#自定义镜像Tomcat9" class="headerlink" title="自定义镜像Tomcat9"></a>自定义镜像Tomcat9</h3><h4 id="创建一个目录来编写Dockerfile文件"><a href="#创建一个目录来编写Dockerfile文件" class="headerlink" title="创建一个目录来编写Dockerfile文件"></a>创建一个目录来编写Dockerfile文件</h4><p><code>mkdir -p /gakki/mydocker/tomcat9</code><br><img src="/images/QQ截图20190111210844.png"></p>
-<h4 id="在上述目录下创建c-txt"><a href="#在上述目录下创建c-txt" class="headerlink" title="在上述目录下创建c.txt"></a>在上述目录下创建c.txt</h4><p><img src="/images/QQ截图20190111211019.png"></p>
+<h3 id="自定义镜像Tomcat9"><a href="#自定义镜像Tomcat9" class="headerlink" title="自定义镜像Tomcat9"></a>自定义镜像Tomcat9</h3><h4 id="创建一个目录来编写Dockerfile文件"><a href="#创建一个目录来编写Dockerfile文件" class="headerlink" title="创建一个目录来编写Dockerfile文件"></a>创建一个目录来编写Dockerfile文件</h4><p><code>mkdir -p /gakki/mydocker/tomcat9</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111210844.png"></p>
+<h4 id="在上述目录下创建c-txt"><a href="#在上述目录下创建c-txt" class="headerlink" title="在上述目录下创建c.txt"></a>在上述目录下创建c.txt</h4><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190111211019.png"></p>
 <p>创建c.txt，主要是为了使用：COPY命令来玩的，没有什么作用意义。</p>
 <h4 id="将jdk和tomcat安装的压缩包拷贝进上一步目录"><a href="#将jdk和tomcat安装的压缩包拷贝进上一步目录" class="headerlink" title="将jdk和tomcat安装的压缩包拷贝进上一步目录"></a>将jdk和tomcat安装的压缩包拷贝进上一步目录</h4><p>在我的centos中，已经下载过 jdk 和 tocmat 的压缩包，如果大家没有，请自行下载，自学，比较简单。</p>
 <p><code>cp /usr/local/src/apache-tomcat-8.5.37.tar.gz ./</code></p>
 <p><code>cp /usr/local/src/jdk-8u191-linux-x64.tar.gz ./</code></p>
-<p><img src="/images/QQ截图20190112105516.png"></p>
-<h4 id="在当前目录下创建Dockerfile文件"><a href="#在当前目录下创建Dockerfile文件" class="headerlink" title="在当前目录下创建Dockerfile文件"></a>在当前目录下创建Dockerfile文件</h4><p><img src="/images/QQ截图20190112105740.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112105516.png"></p>
+<h4 id="在当前目录下创建Dockerfile文件"><a href="#在当前目录下创建Dockerfile文件" class="headerlink" title="在当前目录下创建Dockerfile文件"></a>在当前目录下创建Dockerfile文件</h4><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112105740.png"></p>
 <p>Dockerfile文件内容：</p>
 <pre><code>#基于centos镜像
 FROM centos
@@ -673,17 +673,17 @@ EXPOSE  8080
 # ENTRYPOINT [&quot;/usr/local/apache-tomcat-8.5.37/bin/startup.sh&quot; ]
 # CMD [&quot;/usr/local/apache-tomcat-8.5.37/bin/catalina.sh&quot;,&quot;run&quot;]
 CMD /usr/local/apache-tomcat-8.5.37/bin/startup.sh &amp;&amp; tail -F /usr/local/apache-tomcat-8.5.37/bin/logs/catalina.out
-</code></pre><p><img src="/images/QQ截图20190112110723.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112110723.png"></p>
 <p><strong>注意：</strong>上面的 jdk 和 tomcat 填写成你的机器上面的 jdk 和 tomcat 的版本，不要和我一样，除非你下载的jdk和tomcat的版本和我一样！！！</p>
 <h4 id="构建-1"><a href="#构建-1" class="headerlink" title="构建"></a>构建</h4><p><code>docker build -t gakkitomcat9 .</code></p>
-<p><img src="/images/QQ截图20190112111444.png"><br><img src="/images/QQ截图20190112111531.png"><br><img src="/images/QQ截图20190112111623.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112111444.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112111531.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112111623.png"></p>
 <h4 id="run"><a href="#run" class="headerlink" title="run"></a>run</h4><pre><code>docker run -d -p 9080:8080 --name myt9 -v /gakki/mydocker/tomcat9/app:/usr/local/apache-tomcat-8.5.37/webapps/app -v /gakki/mydocker/tomcat9/tomcat9logs/:/usr/local/apache-tomcat-8.5.37/logs --privileged=true gakkitomcat9
 
 解释：上面创建了两个数据卷，一个用来创建app来与gakkitomcat9共享，放置网站用的，这样的话，我们直接就可以在宿主机上操作网站中的内容了
 
 另一个数据卷是用来存放gakkitomcat9容器启动后的日志信息。
-</code></pre><p><img src="/images/QQ截图20190112112223.png"><br><img src="/images/QQ截图20190112112335.png"><br><img src="/images/QQ截图20190112112437.png"></p>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p><img src="/images/QQ截图20190112112648.png"><br><img src="/images/QQ截图20190112112801.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112112223.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112112335.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112112437.png"></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112112648.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112112801.png"></p>
 <h4 id="发布webapp"><a href="#发布webapp" class="headerlink" title="发布webapp"></a>发布webapp</h4><p>在我们的宿主机的app目录下(数据卷目录)，创建webapp的标准目录结构：</p>
 <pre><code>app
 ---a.jsp
@@ -692,7 +692,7 @@ CMD /usr/local/apache-tomcat-8.5.37/bin/startup.sh &amp;&amp; tail -F /usr/local
 
 app目录下：有a.jsp文件 和 WEB-INF目录
 WEB-INF目录下：有web.xml文件
-</code></pre><p><img src="/images/QQ截图20190112113341.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112113341.png"></p>
 <p>web.xml中的内容：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -703,7 +703,7 @@ WEB-INF目录下：有web.xml文件
   &lt;display-name&gt;myApp&lt;/display-name&gt;
 
 &lt;/web-app&gt;
-</code></pre><p><img src="/images/QQ截图20190112113625.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112113625.png"></p>
 <p>a.jsp中的内容：</p>
 <pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
 &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
@@ -720,9 +720,9 @@ WEB-INF目录下：有web.xml文件
     &lt;% System.out.println(&quot;=============docker tomcat self&quot;);%&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p><img src="/images/QQ截图20190112113715.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112113715.png"></p>
 <p>测试：</p>
-<p>在浏览器中输入：<code>localhost:9080/app/a.jsp</code><br><img src="/images/QQ截图20190112113853.png"><br><img src="/images/QQ截图20190112113939.png"></p>
+<p>在浏览器中输入：<code>localhost:9080/app/a.jsp</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112113853.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112113939.png"></p>
 <hr>
 <p>现在，我们稍微修改一下，a.jsp中的内容：</p>
 <pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
@@ -740,13 +740,13 @@ WEB-INF目录下：有web.xml文件
     &lt;% System.out.println(&quot;=============docker tomcat self&quot;);%&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>就是在：welcome后面加了换行，修改了输出语句加了：update。<br><img src="/images/QQ截图20190112114252.png"></p>
-<p>现在，来查看日志信息：<br><img src="/images/QQ截图20190112115253.png"><br><img src="/images/QQ截图20190112115340.png"></p>
+</code></pre><p>就是在：welcome后面加了换行，修改了输出语句加了：update。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112114252.png"></p>
+<p>现在，来查看日志信息：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112115253.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112115340.png"></p>
 <p>现在稍微明白容器数据卷的作用的吧，以后我们只需要在宿主机中的 app目录下修改、添加内容，docker容器中就会同步数据，方便开发和查看日志信息。</p>
 <hr>
-<p>现在，我们进入gakkitomcat9中，验证：<br><img src="/images/QQ截图20190112115727.png"><br><img src="/images/QQ截图20190112120945.png"><br><img src="/images/QQ截图20190112121214.png"></p>
+<p>现在，我们进入gakkitomcat9中，验证：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112115727.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112120945.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112121214.png"></p>
 <hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/images/QQ截图20190112121346.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day06/QQ截图20190112121346.png"></p>
 
             </div>
             <hr/>
@@ -1190,11 +1190,7 @@ WEB-INF目录下：有web.xml文件
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天，主要来介绍Docker中的常用安装，希望大家学习完毕后，可以举一反三。
-总体步骤
-搜索镜像：docker search 镜像名
-
-拉取
+                                Docker中的常用安装
                       
                     </div>
                     <div class="publish-info">
@@ -1251,7 +1247,7 @@ WEB-INF目录下：有web.xml文件
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久
+                                Docker中的容器数据卷
                       
                     </div>
                     <div class="publish-info">
@@ -1441,7 +1437,7 @@ WEB-INF目录下：有web.xml文件
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -477,7 +477,7 @@ red">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这篇文章来讲述redis中的list：链表的操作，学过数据结构的应该都清楚，链表的结构，这里就不详细描述了，只讲述redis中的链表操作。<br><a id="more"></a></p>
+                <p>这篇文章来讲述redis中的list：链表的操作，学过数据结构的应该都清楚，链表的结构，这里就不详细描述了，只讲述redis中的链表操作。</p>
 <h2 id="lpush-key-value-value-…"><a href="#lpush-key-value-value-…" class="headerlink" title="lpush key value [value …]"></a>lpush key value [value …]</h2><pre><code>作用: 把值插入到链接头部[从左边插入]
 
 redis&gt; LPUSH mylist &quot;world&quot;
@@ -718,8 +718,8 @@ Timeout为等待超时时间，单位秒
 </code></pre><p>使用两个redis客户端来操作。</p>
 <p>在一个redis客户端中弹出mylist里面的数据，但是没有数据，设置过期时间为5秒。</p>
 <p>如果在5秒内，还没有往mylist中插入数据，那么会退出。</p>
-<p><img src="/images/QQ截图20181222202823.png"></p>
-<p>如果在规定的时间内插入了数据，就会弹出该数据。<br><img src="/images/QQ截图20181222203213.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day03/QQ截图20181222202823.png"></p>
+<p>如果在规定的时间内插入了数据，就会弹出该数据。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day03/QQ截图20181222203213.png"></p>
 <p>场景: 长轮询Ajax,在线聊天时,能够用到。</p>
 <h2 id="brpoplpush-source-destination-timeout"><a href="#brpoplpush-source-destination-timeout" class="headerlink" title="brpoplpush source destination timeout"></a>brpoplpush source destination timeout</h2><pre><code>rpoplpush的阻塞版本。
 </code></pre><hr>
@@ -1240,9 +1240,7 @@ redis 127.0.0.1:6379&gt; bitop and  res mon feb wen
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习redis中的集合操作命令。
-集合的性质: 唯一性,无序性,确定性
-注: 在string 和 list的命令中,可以通过 rang
+                                redis中的集合操作命令。
                       
                     </div>
                     <div class="publish-info">
@@ -1299,9 +1297,7 @@ redis 127.0.0.1:6379&gt; bitop and  res mon feb wen
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习Redis中的字符串类型操作
-Redis字符串类型的操作
-set命令set key value [ex 秒数] / [px 毫秒数
+                                Redis中的字符串类型操作
                       
                     </div>
                     <div class="publish-info">
@@ -1491,7 +1487,7 @@ set命令set key value [ex 秒数] / [px 毫秒数
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

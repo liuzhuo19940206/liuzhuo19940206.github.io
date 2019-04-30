@@ -455,14 +455,14 @@ JDBC(默认支持的数据源)1）创建新的Springboot项目，添加web模块
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        3.4k
+                        3.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        16 分
+                        15 分
                     </div>
                     
                 
@@ -479,19 +479,19 @@ JDBC(默认支持的数据源)1）创建新的Springboot项目，添加web模块
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>SpringBoot与数据访问<br><a id="more"></a></p>
-<h2 id="JDBC-默认支持的数据源"><a href="#JDBC-默认支持的数据源" class="headerlink" title="JDBC(默认支持的数据源)"></a>JDBC(默认支持的数据源)</h2><p>1）创建新的Springboot项目，添加web模块、mysql模块、jdbc模块<br><img src="/images/QQ截图20181111110045.png"><br><img src="/images/QQ截图20181111110143.png"><br><img src="/images/QQ截图20181111110336.png"></p>
+<h2 id="JDBC-默认支持的数据源"><a href="#JDBC-默认支持的数据源" class="headerlink" title="JDBC(默认支持的数据源)"></a>JDBC(默认支持的数据源)</h2><p>1）创建新的Springboot项目，添加web模块、mysql模块、jdbc模块<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110045.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110143.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110336.png"></p>
 <p>2) 连接我们的数据库：</p>
-<p>打开我们的虚拟机，然后启动mysql的容器<br><img src="/images/QQ截图20181111110542.png"><br><img src="/images/QQ截图20181111110735.png"><br><img src="/images/QQ截图20181111110811.png"></p>
+<p>打开我们的虚拟机，然后启动mysql的容器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110542.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110735.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110811.png"></p>
 <p>3）在我们的项目中，添加数据源的配置信息。</p>
-<p>这里使用yml文件，properties文件也一样。<br>在resources下：创建application.yml文件。<br><img src="/images/QQ截图20181111111923.png"></p>
+<p>这里使用yml文件，properties文件也一样。<br>在resources下：创建application.yml文件。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111111923.png"></p>
 <pre><code>spring:
   datasource:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://10.6.11.17:3306/jdbc
-</code></pre><p>在mysql的客户端上面，创建jdbc数据库：<br><img src="/images/QQ截图20181111111412.png"></p>
-<p>4）测试数据源是否配置成功<br>在test包下：<br><img src="/images/QQ截图20181111112125.png"></p>
+</code></pre><p>在mysql的客户端上面，创建jdbc数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111111412.png"></p>
+<p>4）测试数据源是否配置成功<br>在test包下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111112125.png"></p>
 <p>效果：</p>
 <p>默认是用org.apache.tomcat.jdbc.pool.DataSource作为数据源</p>
 <p>数据源的相关配置都在DataSourceProperties里面。</p>
@@ -558,15 +558,15 @@ CREATE TABLE `department` (
   `departmentName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-</code></pre><p><img src="/images/QQ截图20181111113520.png"></p>
-<p>现在jdbc中还没有department表：<br><img src="/images/QQ截图20181111113648.png"></p>
-<p>运行我们的Springboot项目：<br><img src="/images/QQ截图20181111113737.png"><br><img src="/images/QQ截图20181111113833.png"></p>
-<p>刷新jdbc数据库：<br><img src="/images/QQ截图20181111113923.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113520.png"></p>
+<p>现在jdbc中还没有department表：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113648.png"></p>
+<p>运行我们的Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113737.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113833.png"></p>
+<p>刷新jdbc数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113923.png"></p>
 <hr>
-<p>使用自定义的命名规则：<br>修改schema-all.sql 的名字为：department.sql<br>在application.yml文件中：<br><img src="/images/QQ截图20181111114934.png"></p>
-<p>删除jdbc中的department表，然后再次启动Springboot项目：<br><img src="/images/QQ截图20181111115013.png"></p>
-<p>5、操作数据库：Springboot自动配置了JdbcTemplate操作数据库<br><img src="/images/QQ截图20181111115134.png" style="width:50%"><br><img src="/images/QQ截图20181111115401.png"></p>
-<p>说明Springboot已经帮我们配置好了JdbcTemplate模板引擎，我们可以直接使用：<br>创建HelloController：<br><img src="/images/QQ截图20181111120407.png"></p>
+<p>使用自定义的命名规则：<br>修改schema-all.sql 的名字为：department.sql<br>在application.yml文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111114934.png"></p>
+<p>删除jdbc中的department表，然后再次启动Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115013.png"></p>
+<p>5、操作数据库：Springboot自动配置了JdbcTemplate操作数据库<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115134.png" style="width:50%"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115401.png"></p>
+<p>说明Springboot已经帮我们配置好了JdbcTemplate模板引擎，我们可以直接使用：<br>创建HelloController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120407.png"></p>
 <pre><code>@Controller
 public class HelloController {
 
@@ -581,9 +581,9 @@ public class HelloController {
         return mapList.get(0);
     }
 }
-</code></pre><p>启动应用：<br><img src="/images/QQ截图20181111120130.png"></p>
-<p>打开mysql的客户端：<br>添加一条数据：<br><img src="/images/QQ截图20181111120217.png"></p>
-<p>打开浏览器：输入：<code>http://localhost:8080/query</code><br><img src="/images/QQ截图20181111120509.png"></p>
+</code></pre><p>启动应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120130.png"></p>
+<p>打开mysql的客户端：<br>添加一条数据：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120217.png"></p>
+<p>打开浏览器：输入：<code>http://localhost:8080/query</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120509.png"></p>
 <hr>
 <h2 id="整合Druid数据源-阿里的数据源连接池"><a href="#整合Druid数据源-阿里的数据源连接池" class="headerlink" title="整合Druid数据源(阿里的数据源连接池)"></a>整合Druid数据源(阿里的数据源连接池)</h2><p>1）导入druid的依赖</p>
 <pre><code>        &lt;!--导入druid的数据源--&gt;
@@ -593,7 +593,7 @@ public class HelloController {
             &lt;artifactId&gt;druid&lt;/artifactId&gt;
             &lt;version&gt;1.1.10&lt;/version&gt;
         &lt;/dependency&gt;
-</code></pre><p>2) 切换数据源：<br>使用type来切换数据源<br><img src="/images/QQ截图20181111123613.png"></p>
+</code></pre><p>2) 切换数据源：<br>使用type来切换数据源<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123613.png"></p>
 <pre><code>spring:
   datasource:
     username: root
@@ -603,7 +603,7 @@ public class HelloController {
     type: com.alibaba.druid.pool.DruidDataSource
 #    schema:
 #      - classpath:department.sql
-</code></pre><p>3) 运行测试类：<br><img src="/images/QQ截图20181111123753.png"><br><img src="/images/QQ截图20181111123907.png"><br>数据源切换成功。</p>
+</code></pre><p>3) 运行测试类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123753.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123907.png"><br>数据源切换成功。</p>
 <p>4）添加druid的独有配置</p>
 <pre><code>spring:
   datasource:
@@ -635,14 +635,14 @@ public class HelloController {
 #    schema:
 #      - classpath:department.sql
 </code></pre><p>dubug一下，看是否是其他属性配置成功：</p>
-<p>给contextLoads中的System.out.println(dataSource);打上断点<br><img src="/images/QQ截图20181111124326.png"></p>
-<p>dubug运行该测试方法：<br><img src="/images/QQ截图20181111124538.png"></p>
+<p>给contextLoads中的System.out.println(dataSource);打上断点<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124326.png"></p>
+<p>dubug运行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124538.png"></p>
 <p>因为我们在application配置文件中配置的：spring-datasource:开头的配置信息，都是DataSourceProperties中的</p>
 <pre><code>@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
 public class DataSourceProperties
-</code></pre><p>而DataSourceProperties类中，根本没有druid那些独有的配置信息：<br><img src="/images/QQ截图20181111124846.png"></p>
+</code></pre><p>而DataSourceProperties类中，根本没有druid那些独有的配置信息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124846.png"></p>
 <p>5）自己配置druid数据源</p>
-<p>在config包下，创建MyDruidConfig类：<br><img src="/images/QQ截图20181111125255.png"></p>
+<p>在config包下，创建MyDruidConfig类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111125255.png"></p>
 <p>这样就能将application配置文件中的druid的独有配置信息调入到我们的druid数据源当中了。</p>
 <p>如果没有添加@ConfigurationProperties(prefix = “spring.datasource”)的话：<br>需要自己手动一个一个的配置</p>
 <pre><code>    @Bean
@@ -653,51 +653,52 @@ public class DataSourceProperties
         ···
         return druidDataSource;
     }
-</code></pre><p>再次dubug测试方法：<br><img src="/images/QQ截图20181111125737.png"></p>
+</code></pre><p>再次dubug测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111125737.png"></p>
 <p>6）配置druid的监控</p>
 <p>在MyDruidConfig类中：</p>
-<pre><code>    //配置Druid的监控
-    //1、配置一个管理后台的Servlet
-    @Bean
-    public ServletRegistrationBean statViewServlet() {
-        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), &quot;/druid/*&quot;);
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//配置Druid的监控</span>
+    <span class="token comment" spellcheck="true">//1、配置一个管理后台的Servlet</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">statViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ServletRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
-        initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);
-        initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);
-        initParams.put(&quot;allow&quot;,&quot;&quot;);//默认就是允许所有访问
-        initParams.put(&quot;deny&quot;,&quot;192.168.15.21&quot;);//不然访问
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginUsername"</span><span class="token punctuation">,</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginPassword"</span><span class="token punctuation">,</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allow"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//默认就是允许所有访问</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"deny"</span><span class="token punctuation">,</span><span class="token string">"192.168.15.21"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//不然访问</span>
 
-        bean.setInitParameters(initParams);
-        return bean;
-    }
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //2、配置一个web监控的filter
-    @Bean
-    public FilterRegistrationBean webStatFilter() {
-        FilterRegistrationBean bean = new FilterRegistrationBean();
-        bean.setFilter(new WebStatFilter());
+    <span class="token comment" spellcheck="true">//2、配置一个web监控的filter</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> FilterRegistrationBean <span class="token function">webStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        FilterRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
-        initParams.put(&quot;exclusions&quot;,&quot;*.js,*.css,/druid/*&quot;);//排除静态资源
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"exclusions"</span><span class="token punctuation">,</span><span class="token string">"*.js,*.css,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//排除静态资源</span>
 
-        bean.setInitParameters(initParams);
-        bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setUrlPatterns</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return bean;
-    }
-</code></pre><p>启动Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/druid</code><br><img src="/images/QQ截图20181111130651.png"></p>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/druid</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111130651.png"></p>
 <p>输入自己配置的用户名与密码：</p>
 <pre><code>        initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);
         initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);
-</code></pre><p><img src="/images/QQ截图20181111130816.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111130816.png"></p>
 <p>在浏览器中输入：<code>http://localhost:8080/query</code></p>
-<p>然后点击SQL监控：<br><img src="/images/QQ截图20181111131006.png"></p>
-<p>点击Web应用：就是我们的配置WebAppStat List过滤器<br><img src="/images/QQ截图20181111131202.png"></p>
+<p>然后点击SQL监控：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111131006.png"></p>
+<p>点击Web应用：就是我们的配置WebAppStat List过滤器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111131202.png"></p>
 <p>监控成功！！！</p>
 <hr>
-<h2 id="整合MyBatis"><a href="#整合MyBatis" class="headerlink" title="整合MyBatis"></a>整合MyBatis</h2><h3 id="前期准备阶段"><a href="#前期准备阶段" class="headerlink" title="前期准备阶段"></a>前期准备阶段</h3><p>1）创建新的项目，添加web、mysql、mybatis模块：<br><img src="/images/QQ截图20181111141702.png"></p>
+<h2 id="整合MyBatis"><a href="#整合MyBatis" class="headerlink" title="整合MyBatis"></a>整合MyBatis</h2><h3 id="前期准备阶段"><a href="#前期准备阶段" class="headerlink" title="前期准备阶段"></a>前期准备阶段</h3><p>1）创建新的项目，添加web、mysql、mybatis模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111141702.png"></p>
 <p>导入druid依赖：</p>
 <pre><code>        &lt;!--导入druid的数据源--&gt;
         &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
@@ -707,38 +708,39 @@ public class DataSourceProperties
             &lt;version&gt;1.1.10&lt;/version&gt;
         &lt;/dependency&gt;
 </code></pre><p>2）创建application.yml文件：</p>
-<pre><code>spring:
-  datasource:
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.6.11.17:3306/mybatis
-    type: com.alibaba.druid.pool.DruidDataSource
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
+  datasource<span class="token operator">:</span>
+    username<span class="token operator">:</span> root
+    password<span class="token operator">:</span> <span class="token number">123456</span>
+    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver
+    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.6</span><span class="token punctuation">.</span><span class="token number">11.17</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>mybatis
+    type<span class="token operator">:</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token punctuation">.</span>DruidDataSource
 
     #数据源其他配置
-    initialSize: 5
-    minIdle: 5
-    maxActive: 20
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
+    initialSize<span class="token operator">:</span> <span class="token number">5</span>
+    minIdle<span class="token operator">:</span> <span class="token number">5</span>
+    maxActive<span class="token operator">:</span> <span class="token number">20</span>
+    maxWait<span class="token operator">:</span> <span class="token number">60000</span>
+    timeBetweenEvictionRunsMillis<span class="token operator">:</span> <span class="token number">60000</span>
+    minEvictableIdleTimeMillis<span class="token operator">:</span> <span class="token number">300000</span>
+    validationQuery<span class="token operator">:</span> SELECT <span class="token number">1</span> FROM DUAL
+    testWhileIdle<span class="token operator">:</span> <span class="token boolean">true</span>
+    testOnBorrow<span class="token operator">:</span> <span class="token boolean">false</span>
+    testOnReturn<span class="token operator">:</span> <span class="token boolean">false</span>
+    poolPreparedStatements<span class="token operator">:</span> <span class="token boolean">true</span>
 
-    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，&#39;wall&#39;用于防火墙
-    filters: stat,wall,log4j
-    maxPoolPreparedStatementPerConnectionSize: 20
-    useGlobalDataSourceStat: true
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，<span class="token string">'wall'</span>用于防火墙
+    filters<span class="token operator">:</span> stat<span class="token punctuation">,</span>wall<span class="token punctuation">,</span>log4j
+    maxPoolPreparedStatementPerConnectionSize<span class="token operator">:</span> <span class="token number">20</span>
+    useGlobalDataSourceStat<span class="token operator">:</span> <span class="token boolean">true</span>
+    connectionProperties<span class="token operator">:</span> druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>mergeSql<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>slowSqlMillis<span class="token operator">=</span><span class="token number">500</span>
 
-    schema:
-      - classpath:sql/department.sql
-      - classpath:sql/employee.sql
-</code></pre><p>3) 创建新的数据库mybatis：<br><img src="/images/QQ截图20181111142149.png"></p>
-<p>4）在resours下：参加过sql文件夹<br>里面放入：department.sql 和 employee.sql文件：<br><img src="/images/QQ截图20181111142335.png" style="width:50%"></p>
+    schema<span class="token operator">:</span>
+      <span class="token operator">-</span> classpath<span class="token operator">:</span>sql<span class="token operator">/</span>department<span class="token punctuation">.</span>sql
+      <span class="token operator">-</span> classpath<span class="token operator">:</span>sql<span class="token operator">/</span>employee<span class="token punctuation">.</span>sql
+</code></pre>
+<p>3) 创建新的数据库mybatis：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142149.png"></p>
+<p>4）在resours下：参加过sql文件夹<br>里面放入：department.sql 和 employee.sql文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142335.png" style="width:50%"></p>
 <p>department.sql:</p>
 <pre><code>/*
 Navicat MySQL Data Transfer
@@ -799,299 +801,319 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-</code></pre><p>5) 创建config：DruidConfig配置类：<br><img src="/images/QQ截图20181111142702.png"></p>
-<pre><code>@Configuration
-public class DruidConfig {
+</code></pre><p>5) 创建config：DruidConfig配置类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142702.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DruidConfig</span> <span class="token punctuation">{</span>
 
-    @ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
-    @Bean
-    DataSource druid() {
-        return new DruidDataSource();
-    }
+    <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span>
+    DataSource <span class="token function">druid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DruidDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //配置Druid的监控
-    //1、配置一个管理后台的Servlet
-    @Bean
-    public ServletRegistrationBean statViewServlet() {
-        ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), &quot;/druid/*&quot;);
+    <span class="token comment" spellcheck="true">//配置Druid的监控</span>
+    <span class="token comment" spellcheck="true">//1、配置一个管理后台的Servlet</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">statViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ServletRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
-        initParams.put(&quot;loginUsername&quot;, &quot;admin&quot;);
-        initParams.put(&quot;loginPassword&quot;, &quot;123456&quot;);
-        initParams.put(&quot;allow&quot;, &quot;&quot;);//默认就是允许所有访问
-        initParams.put(&quot;deny&quot;, &quot;192.168.15.21&quot;);//不然访问
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginUsername"</span><span class="token punctuation">,</span> <span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginPassword"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allow"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//默认就是允许所有访问</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"deny"</span><span class="token punctuation">,</span> <span class="token string">"192.168.15.21"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//不然访问</span>
 
-        bean.setInitParameters(initParams);
-        return bean;
-    }
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //2、配置一个web监控的filter
-    @Bean
-    public FilterRegistrationBean webStatFilter() {
-        FilterRegistrationBean bean = new FilterRegistrationBean();
-        bean.setFilter(new WebStatFilter());
+    <span class="token comment" spellcheck="true">//2、配置一个web监控的filter</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> FilterRegistrationBean <span class="token function">webStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        FilterRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        Map&lt;String, String&gt; initParams = new HashMap&lt;&gt;();
-        initParams.put(&quot;exclusions&quot;, &quot;*.js,*.css,/druid/*&quot;);//排除静态资源
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"exclusions"</span><span class="token punctuation">,</span> <span class="token string">"*.js,*.css,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//排除静态资源</span>
 
-        bean.setInitParameters(initParams);
-        bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setUrlPatterns</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        return bean;
-    }
-}
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><p>6) 启动Springboot应用：</p>
-<p>打开mysql的客户端：生成了两个表：<br><img src="/images/QQ截图20181111142926.png"></p>
+</code></pre>
+<p>6) 启动Springboot应用：</p>
+<p>打开mysql的客户端：生成了两个表：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142926.png"></p>
 <p>注释掉，application配置文件中的schema：(防止再次启动应用，表又归零！)</p>
 <pre><code>#    schema:
 #      - classpath:sql/department.sql
 #      - classpath:sql/employee.sql
 </code></pre><p>7）创建bean对象：</p>
-<p>根据数据库mybatis中的两个表，创建对应的JavaBean对象。<br><img src="/images/QQ截图20181111143428.png"></p>
+<p>根据数据库mybatis中的两个表，创建对应的JavaBean对象。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111143428.png"></p>
 <p>Employee：</p>
-<pre><code>public class Employee {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
 
-    private Integer id;
-    private String lastName;
-    private Integer gender;
-    private String email;
-    private Integer dId;
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String lastName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Integer gender<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Integer dId<span class="token punctuation">;</span>
 
    ··· get和set方法
-}
-</code></pre><p>Department:</p>
-<pre><code>public class Department {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Department:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Department</span> <span class="token punctuation">{</span>
 
-    private Integer id;
-    private String departmentName;
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String departmentName<span class="token punctuation">;</span>
 
     ··· get和set方法
-}
-</code></pre><hr>
-<h3 id="mybatis的使用"><a href="#mybatis的使用" class="headerlink" title="mybatis的使用"></a>mybatis的使用</h3><h4 id="注解版"><a href="#注解版" class="headerlink" title="注解版"></a>注解版</h4><p>1）创建mapper文件夹：DepartmentMapper（接口）<br><img src="/images/QQ截图20181111145746.png"></p>
-<pre><code>@Mapper
-public interface DepartmentMapper {
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h3 id="mybatis的使用"><a href="#mybatis的使用" class="headerlink" title="mybatis的使用"></a>mybatis的使用</h3><h4 id="注解版"><a href="#注解版" class="headerlink" title="注解版"></a>注解版</h4><p>1）创建mapper文件夹：DepartmentMapper（接口）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111145746.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">DepartmentMapper</span> <span class="token punctuation">{</span>
 
-    @Select(&quot;select * from department where id=#{id}&quot;)
-    public Department getDeptById(Integer id);
+    <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from department where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">getDeptById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    @Delete(&quot;delete from department where id=#{id}&quot;)
-    public int deleteDeptById(Integer id);
+    <span class="token annotation punctuation">@Delete</span><span class="token punctuation">(</span><span class="token string">"delete from department where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">deleteDeptById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    //回显主键的id。
-    @Options(useGeneratedKeys = true, keyProperty = &quot;id&quot;)
-    @Insert(&quot;insert into department(departmentName) values(#{departmentName})&quot;)
-    public int insertDept(Department department);
+    <span class="token comment" spellcheck="true">//回显主键的id。</span>
+    <span class="token annotation punctuation">@Options</span><span class="token punctuation">(</span>useGeneratedKeys <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span> keyProperty <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into department(departmentName) values(#{departmentName})"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">insertDept</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    @Update(&quot;update department set departmentName=#{departmentName} where id=#{id}&quot;)
-    public int updateDept(Department department);
+    <span class="token annotation punctuation">@Update</span><span class="token punctuation">(</span><span class="token string">"update department set departmentName=#{departmentName} where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">updateDept</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}
-</code></pre><p>2) 创建一个DepartmentController：<br><img src="/images/QQ截图20181111150310.png"></p>
-<pre><code>@RestController
-public class DepartmentController {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 创建一个DepartmentController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111150310.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DepartmentController</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private DepartmentMapper departmentMapper;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> DepartmentMapper departmentMapper<span class="token punctuation">;</span>
 
-    @GetMapping(&quot;/dept/{id}&quot;)
-    public Department findDepartmentById(@PathVariable(&quot;id&quot;) Integer id) {
-        return departmentMapper.getDeptById(id);
-    }
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/dept/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">findDepartmentById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> departmentMapper<span class="token punctuation">.</span><span class="token function">getDeptById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @GetMapping(&quot;/dept&quot;)
-    public Department addDepartment(Department department) {
-        departmentMapper.insertDept(department);
-        return department;
-    }
-}
-</code></pre><p>3) 启动Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/dept/1</code><br><img src="/images/QQ截图20181111151409.png"></p>
-<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=aa</code><br><img src="/images/QQ截图20181111151555.png"><br><img src="/images/QQ截图20181111151633.png"></p>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/dept"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">addDepartment</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        departmentMapper<span class="token punctuation">.</span><span class="token function">insertDept</span><span class="token punctuation">(</span>department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> department<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151409.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=aa</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151555.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151633.png"></p>
 <p>问题：</p>
-<p>我们将mysql中的departmentName改为：department_name.<br><img src="/images/QQ截图20181111151808.png"></p>
-<p>修改我们的DepartmentMapper中的departmentName为：department_name。<br><img src="/images/QQ截图20181111151946.png"></p>
+<p>我们将mysql中的departmentName改为：department_name.<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151808.png"></p>
+<p>修改我们的DepartmentMapper中的departmentName为：department_name。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151946.png"></p>
 <p>再次启动Springboot应用：</p>
 <p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=bb</code></p>
 <p>如果你的mybat的依赖版本的1.3.2以上，会执行成功，因为默认支持驼峰命名了。如果失败的话，我们需要自定义mybatis的规则：</p>
-<p>创建MybatisConfig配置类:<br><img src="/images/QQ截图20181111152708.png"></p>
-<pre><code>@Configuration
-public class MybatisConfig {
+<p>创建MybatisConfig配置类:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111152708.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisConfig</span> <span class="token punctuation">{</span>
 
-    @Bean
-    public ConfigurationCustomizer customizer() {
-        return new ConfigurationCustomizer() {
-            @Override
-            public void customize(org.apache.ibatis.session.Configuration configuration) {
-                //使用驼峰命名规则
-                configuration.setMapUnderscoreToCamelCase(true);
-            }
-        };
-    }
-}
-</code></pre><p>或者使用在配置文件中，配置驼峰命名规则。</p>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ConfigurationCustomizer <span class="token function">customizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ConfigurationCustomizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">customize</span><span class="token punctuation">(</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session<span class="token punctuation">.</span>Configuration configuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//使用驼峰命名规则</span>
+                configuration<span class="token punctuation">.</span><span class="token function">setMapUnderscoreToCamelCase</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>或者使用在配置文件中，配置驼峰命名规则。</p>
 <hr>
 <p>4）扫描多个mapper类：</p>
 <p>在配合类上面加上：<br>@MapperScan(value = “com.liuzhuo.springboot.mapper”)</p>
-<pre><code>使用MapperScan批量扫描所有的Mapper接口；
-@MapperScan(value = &quot;com.liuzhuo.springboot.mapper&quot;)
-@SpringBootApplication
-public class SpringBoot06DataMybatisApplication {
-public static void main(String[] args) {    
-   SpringApplication.run(SpringBoot06DataMybatisApplication.class, args);        
-}    
-}
-</code></pre><p>这样，我们就必须要在每个mapper类上，加@Mapper注解了</p>
-<h4 id="配置文件版"><a href="#配置文件版" class="headerlink" title="配置文件版"></a>配置文件版</h4><p>1）创建EmployeeMapper接口：<br><img src="/images/QQ截图20181111154909.png"></p>
-<pre><code>//必须使用@Mapper或者@MapperScan。二者其一即可
-public interface EmployeeMapper {
+<pre class=" language-java"><code class="language-java">使用MapperScan批量扫描所有的Mapper接口；
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo.springboot.mapper"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringBoot06DataMybatisApplication</span> <span class="token punctuation">{</span>
 
-    public Employee findEmplById(Integer id);
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
 
-    public void insertEmpl(Employee employee);
-}
-</code></pre><p>2) 创建mybatis的全局配置文件：</p>
-<p>在resours下创建mybatis/mapper文件夹：<br><img src="/images/QQ截图20181111155138.png" style="width:50%"></p>
-<p>在mybatis文件夹下，创建mybatis的全局配置文件：<br>不会写的话，看mybatis的官网文档，mybatis已经被整合到github上面：<br><img src="/images/QQ截图20181111155348.png"><br><img src="/images/QQ截图20181111155424.png"><br><img src="/images/QQ截图20181111155456.png"></p>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>SpringBoot06DataMybatisApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这样，我们就不必须要在每个mapper类上，加@Mapper注解了</p>
+<h4 id="配置文件版"><a href="#配置文件版" class="headerlink" title="配置文件版"></a>配置文件版</h4><p>1）创建EmployeeMapper接口：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111154909.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//必须使用@Mapper或者@MapperScan。二者其一即可</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">EmployeeMapper</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 创建mybatis的全局配置文件：</p>
+<p>在resours下创建mybatis/mapper文件夹：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155138.png" style="width:50%"></p>
+<p>在mybatis文件夹下，创建mybatis的全局配置文件：<br>不会写的话，看mybatis的官网文档，mybatis已经被整合到github上面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155348.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155424.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155456.png"></p>
 <p><a href="http://www.mybatis.org/mybatis-3/" target="_blank" rel="noopener">mybatis-3的官方文档</a></p>
 <p>其中的什么数据源，mapper的文件扫描，我们全部删除，我们已经使用application.yml文件配置了。</p>
 <p>最终mybatis-config.xml：</p>
 <p>就设置了一个使用驼峰命名法</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE configuration
-        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-&lt;settings&gt;
-    &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
-&lt;/settings&gt;
-&lt;/configuration&gt;
-</code></pre><p>3）创建mapper.xml文件：</p>
-<p>在mapper文件夹下，创建employee-mapper.xml<br><img src="/images/QQ截图20181111160017.png" style="width:50%"></p>
-<p>文件不会写，看官方文档：<br><img src="/images/QQ截图20181111160123.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span> <span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE configuration
+        PUBLIC <span class="token string">"-//mybatis.org//DTD Config 3.0//EN"</span>
+        <span class="token string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+<span class="token operator">&lt;</span>settings<span class="token operator">></span>
+    <span class="token operator">&lt;</span>setting name<span class="token operator">=</span><span class="token string">"mapUnderscoreToCamelCase"</span> value<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>settings<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>configuration<span class="token operator">></span>
+</code></pre>
+<p>3）创建mapper.xml文件：</p>
+<p>在mapper文件夹下，创建employee-mapper.xml<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111160017.png" style="width:50%"></p>
+<p>文件不会写，看官方文档：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111160123.png"></p>
 <p>最终employee-mapper.xml：</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE mapper
-        PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;com.liuzhuo.springboot.mapper.EmployeeMapper&quot;&gt;
-    &lt;!--
-        public Employee findEmplById(Integer id);
-        public Employee insertEmpl(Employee employee);
-    --&gt;
-    &lt;select id=&quot;findEmplById&quot; resultType=&quot;com.liuzhuo.springboot.bean.Employee&quot;&gt;
-        select * from employee where id = #{id}
-    &lt;/select&gt;
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span> <span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE mapper
+        PUBLIC <span class="token string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="token string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>mapper namespace<span class="token operator">=</span><span class="token string">"com.liuzhuo.springboot.mapper.EmployeeMapper"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+        <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> Employee <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"findEmplById"</span> resultType<span class="token operator">=</span><span class="token string">"com.liuzhuo.springboot.bean.Employee"</span><span class="token operator">></span>
+        select <span class="token operator">*</span> from employee where id <span class="token operator">=</span> #<span class="token punctuation">{</span>id<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
 
-    &lt;insert id=&quot;insertEmpl&quot; &gt;
-        INSERT INTO employee(lastName,email,gender,d_id) VALUES (#{lastName},#{email},#{gender},#{dId})
-    &lt;/insert&gt;
-&lt;/mapper&gt;
-</code></pre><p>4) 在application.yml文件中，制定全局mybatis.xml和mapper.xml的映射：</p>
-<pre><code>mybatis:
-  config-location: classpath:mybatis/mybatis-config.xml 指定全局配置文件的位置
-  mapper-locations: classpath:mybatis/mapper/*.xml 指定sql映射文件的位置
-</code></pre><p>5) 创建EmployeeController：<br><img src="/images/QQ截图20181111161700.png"></p>
-<pre><code>@RestController
-public class EmployeeController {
+    <span class="token operator">&lt;</span>insert id<span class="token operator">=</span><span class="token string">"insertEmpl"</span> <span class="token operator">></span>
+        INSERT INTO <span class="token function">employee</span><span class="token punctuation">(</span>lastName<span class="token punctuation">,</span>email<span class="token punctuation">,</span>gender<span class="token punctuation">,</span>d_id<span class="token punctuation">)</span> <span class="token function">VALUES</span> <span class="token punctuation">(</span>#<span class="token punctuation">{</span>lastName<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>email<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>gender<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>dId<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>insert<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>mapper<span class="token operator">></span>
+</code></pre>
+<p>4) 在application.yml文件中，制定全局mybatis.xml和mapper.xml的映射：</p>
+<pre class=" language-java"><code class="language-java">mybatis<span class="token operator">:</span>
+  config<span class="token operator">-</span>location<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mybatis<span class="token operator">-</span>config<span class="token punctuation">.</span>xml 指定全局配置文件的位置
+  mapper<span class="token operator">-</span>locations<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mapper<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>xml 指定sql映射文件的位置
+</code></pre>
+<p>5) 创建EmployeeController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111161700.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmployeeController</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private EmployeeMapper employeeMapper;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> EmployeeMapper employeeMapper<span class="token punctuation">;</span>
 
-    @GetMapping(&quot;/empl/{id}&quot;)
-    public Employee findEmplById(@PathVariable(&quot;id&quot;) Integer id) {
-        return employeeMapper.findEmplById(id);
-    }
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> employeeMapper<span class="token punctuation">.</span><span class="token function">findEmplById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @GetMapping(&quot;/empl&quot;)
-    public Employee insertEmpl(Employee employee) {
-        employeeMapper.insertEmpl(employee);
-        return employee;
-    }
-}
-</code></pre><p>6) 启动Springboot应用</p>
-<p>在浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="/images/QQ截图20181111161941.png"></p>
-<p>在浏览器中输入：<code>http://localhost:8080/empl?lastName=jack&amp;&amp;email=4324324@qq.com&amp;&amp;gender=1&amp;&amp;dId=2</code><br><img src="/images/QQ截图20181111163225.png"></p>
-<p>再次浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="/images/QQ截图20181111163307.png"></p>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Employee <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        employeeMapper<span class="token punctuation">.</span><span class="token function">insertEmpl</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> employee<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>6) 启动Springboot应用</p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111161941.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl?lastName=jack&amp;&amp;email=4324324@qq.com&amp;&amp;gender=1&amp;&amp;dId=2</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111163225.png"></p>
+<p>再次浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111163307.png"></p>
 <p>最主要的就是在application配置文件中：</p>
-<pre><code>mybatis:
-  config-location: classpath:mybatis/mybatis-config.xml
-  mapper-locations: classpath:mybatis/mapper/*.xml
-</code></pre><p>更多使用参照:<br><a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/" target="_blank" rel="noopener">mybatis-spring-boot-autoconfigure</a></p>
+<pre class=" language-java"><code class="language-java">mybatis<span class="token operator">:</span>
+  config<span class="token operator">-</span>location<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mybatis<span class="token operator">-</span>config<span class="token punctuation">.</span>xml
+  mapper<span class="token operator">-</span>locations<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mapper<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>xml
+</code></pre>
+<p>更多使用参照:<br><a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/" target="_blank" rel="noopener">mybatis-spring-boot-autoconfigure</a></p>
 <hr>
-<h2 id="整合SpringData-JPA"><a href="#整合SpringData-JPA" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h2><h3 id="SpringData简介"><a href="#SpringData简介" class="headerlink" title="SpringData简介"></a>SpringData简介</h3><p><img src="/images/QQ截图20181111165834.png"></p>
+<h2 id="整合SpringData-JPA"><a href="#整合SpringData-JPA" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h2><h3 id="SpringData简介"><a href="#SpringData简介" class="headerlink" title="SpringData简介"></a>SpringData简介</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111165834.png"></p>
 <h3 id="整合SpringData-JPA-1"><a href="#整合SpringData-JPA-1" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h3><p>JPA:ORM（Object Relational Mapping）</p>
-<p>1）创建新的Springboot项目，添加web、mysql、jpa模块：<br><img src="/images/QQ截图20181111170202.png"></p>
+<p>1）创建新的Springboot项目，添加web、mysql、jpa模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111170202.png"></p>
 <p>2）在application.yml配置文件中：</p>
-<pre><code>spring:
-  datasource:
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.6.11.17:3306/jpa
-  jpa:
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
+  datasource<span class="token operator">:</span>
+    username<span class="token operator">:</span> root
+    password<span class="token operator">:</span> <span class="token number">123456</span>
+    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver
+    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.6</span><span class="token punctuation">.</span><span class="token number">11.17</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>jpa
+  jpa<span class="token operator">:</span>
 #  自动创建数据库的表
-    hibernate:
-      ddl-auto: update
+    hibernate<span class="token operator">:</span>
+      ddl<span class="token operator">-</span>auto<span class="token operator">:</span> update
 #  显示sql语句
-    show-sql: true
-</code></pre><p>3) 在mysql客户端中创建jpa数据库：<br><img src="/images/QQ截图20181111170624.png"></p>
+    show<span class="token operator">-</span>sql<span class="token operator">:</span> <span class="token boolean">true</span>
+</code></pre>
+<p>3) 在mysql客户端中创建jpa数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111170624.png"></p>
 <p>4）<strong>编写一个实体类（bean）和数据表进行映射，并且配置好映射关系</strong></p>
-<p>在bean包下，创建User类:<br><img src="/images/QQ截图20181111171609.png"></p>
-<pre><code>//使用JPA注解配置映射关系
-@Entity  //表名是一个实体与数据库中的某个表对应
-@Table(name = &quot;t_user&quot;) //表示User类与t_user表对象，不写的话，默认就类名小写的表名
-public class User {
+<p>在bean包下，创建User类:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111171609.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//使用JPA注解配置映射关系</span>
+<span class="token annotation punctuation">@Entity</span>  <span class="token comment" spellcheck="true">//表明是一个实体与数据库中的某个表对应的注解</span>
+<span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"t_user"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//表示User类与t_user表对象，不写的话，默认就类名小写的表名</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
 
-    @Id //这是一个主键：javax.persistence.Id;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//自增主键
-    private Integer id;
+    <span class="token annotation punctuation">@Id</span> <span class="token comment" spellcheck="true">//这是一个主键：javax.persistence.Id;</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//自增主键</span>
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
 
-    @Column(name = &quot;last_name&quot;, length = 50)//这是和数据表对应的一个列
-    private String lastName;
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"last_name"</span><span class="token punctuation">,</span> length <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//这是和数据表对应的一个列</span>
+    <span class="token keyword">private</span> String lastName<span class="token punctuation">;</span>
 
-    @Column //省略默认列名就是属性名
-    private String email;
+    <span class="token annotation punctuation">@Column</span> <span class="token comment" spellcheck="true">//省略默认列名就是属性名</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
 
    ····get和set方法
-}
-</code></pre><p>5）编写一个Dao接口来操作实体类对应的数据表（Repository）：</p>
-<p>继承JpaRepository类就行：&lt;T,U&gt;: T : 实体类， U : 主键类型<br><img src="/images/QQ截图20181111171846.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5）编写一个Dao接口来操作实体类对应的数据表（Repository）：</p>
+<p>继承JpaRepository类就行：&lt;T,U&gt;: T : 实体类， U : 主键类型<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111171846.png"></p>
 <p>6）基本的配置（JpaProperties）</p>
-<pre><code>spring: 
- jpa:
-    hibernate:
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span> 
+ jpa<span class="token operator">:</span>
+    hibernate<span class="token operator">:</span>
 #     更新或者创建数据表结构
-      ddl‐auto: update
+      ddl‐auto<span class="token operator">:</span> update
 #    控制台显示SQL
-    show‐sql: true
-</code></pre><p>7) 编写UserController类<br><img src="/images/QQ截图20181111172435.png"></p>
-<pre><code>@RestController
-public class UserController {
+    show‐sql<span class="token operator">:</span> <span class="token boolean">true</span>
+</code></pre>
+<p>7) 编写UserController类<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172435.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private UserRepository userRepository;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span>
 
 
-    @GetMapping(&quot;/user/{id}&quot;)
-    public User findUserById(@PathVariable(&quot;id&quot;) Integer id) {
-        User user = userRepository.findOne(id);
-        return user;
-    }
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> User <span class="token function">findUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        User user <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> user<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @GetMapping(&quot;/user&quot;)
-    public User insertUser(User user) {
-        User save = userRepository.save(user);
-        return save;
-    }
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> User <span class="token function">insertUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        User save <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> save<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>8) 启动Springboot应用：<br>打开mysql的客户端：<br><img src="/images/QQ截图20181111172613.png"><br>自动帮我们创建了t_user表</p>
-<p>在浏览器中输入：<code>http://localhost:8080/user/1</code><br><img src="/images/QQ截图20181111172801.png"></p>
-<p>在浏览器中输入：<code>http://localhost:8080/user?lastName=zhangsan&amp;email=89028394@qq.com</code><br><img src="/images/QQ截图20181111172917.png"></p>
-<p>控制台：（打印出了sql语句）<br><img src="/images/QQ截图20181111173008.png"></p>
-<p>mysql客户端：<br><img src="/images/QQ截图20181111173129.png"></p>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>8) 启动Springboot应用：<br>打开mysql的客户端：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172613.png"><br>自动帮我们创建了t_user表</p>
+<p>在浏览器中输入：<code>http://localhost:8080/user/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172801.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/user?lastName=zhangsan&amp;email=89028394@qq.com</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172917.png"></p>
+<p>控制台：（打印出了sql语句）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111173008.png"></p>
+<p>mysql客户端：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111173129.png"></p>
 <p>其他博客：</p>
 <p><a href="https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3" target="_blank" rel="noopener">https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3</a></p>
 <p><a href="https://blog.csdn.net/suo082407128/article/details/60963161" target="_blank" rel="noopener">https://blog.csdn.net/suo082407128/article/details/60963161</a></p>
@@ -1787,7 +1809,7 @@ public class UserController {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

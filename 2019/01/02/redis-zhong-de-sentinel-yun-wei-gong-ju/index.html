@@ -477,24 +477,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>接着上篇，来学习redis中的sentinel运维工具。<br><a id="more"></a></p>
+                <p>接着上篇，来学习redis中的sentinel运维工具。</p>
 <h2 id="场景问题"><a href="#场景问题" class="headerlink" title="场景问题"></a>场景问题</h2><p>在使用sentinel运维工具之前，首先来看一个问题：</p>
-<p>当我们搭建好一个主从配置后，1个master，2个slave。入下图：<br><img src="/images/QQ截图20190102151649.png" style="width:50%"></p>
+<p>当我们搭建好一个主从配置后，1个master，2个slave。入下图：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102151649.png" style="width:50%"></p>
 <p>如果图中的master宕机了？此时，2个slave就成为了孤儿，该怎么解决呢？</p>
-<p>应该将其中一台slave变成master，另一台slave成为这台新master的slave。如下图：<br><img src="/images/QQ截图20190102152108.png" style="width:50%"></p>
+<p>应该将其中一台slave变成master，另一台slave成为这台新master的slave。如下图：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102152108.png" style="width:50%"></p>
 <p>图中就是使用sentinel自动帮我们监控主从复制的原理图，当sentinel检测到与旧的master之间的通信断开了后，就自动帮我们创建一个新的mater，图中是使用slave1来作为新的master，slave2成为slave1的slave。</p>
 <h2 id="手动解决"><a href="#手动解决" class="headerlink" title="手动解决"></a>手动解决</h2><p>再手动解决该问题之前，要先搭建好：这个master-slave的架构。</p>
-<p>怎么搭建主从集群，之前的文章有，这里就不详细写了，搭建好后，示意图如下：<br><img src="/images/QQ截图20190102153345.png"><br><img src="/images/QQ截图20190102153553.png"><br><img src="/images/QQ截图20190102153815.png"><br><img src="/images/QQ截图20190102154007.png"><br><img src="/images/QQ截图20190102154207.png"></p>
+<p>怎么搭建主从集群，之前的文章有，这里就不详细写了，搭建好后，示意图如下：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102153345.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102153553.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102153815.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102154007.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102154207.png"></p>
 <hr>
-<p>以上主从复制搭建好后的效果。现在断开master，使用：shutdown 指令。<br><img src="/images/QQ截图20190102154412.png"></p>
-<p>在6380中：<br><img src="/images/QQ截图20190102154523.png"></p>
-<p>在6381中：<br><img src="/images/QQ截图20190102154646.png"></p>
+<p>以上主从复制搭建好后的效果。现在断开master，使用：shutdown 指令。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102154412.png"></p>
+<p>在6380中：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102154523.png"></p>
+<p>在6381中：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102154646.png"></p>
 <p>现在开始手动将slave1：即6380变为：master。</p>
-<p>使用：<code>slaveof no one</code> 命令，将其修改为，不成为其他redis服务器的slave。<br><img src="/images/QQ截图20190102155104.png"></p>
-<p>修改成master后，还要修改那个：<code>replica-read-only yes</code> 只读，改为：no。不然这个master不能写入操作。<br><img src="/images/QQ截图20190102155416.png"></p>
+<p>使用：<code>slaveof no one</code> 命令，将其修改为，不成为其他redis服务器的slave。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102155104.png"></p>
+<p>修改成master后，还要修改那个：<code>replica-read-only yes</code> 只读，改为：no。不然这个master不能写入操作。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102155416.png"></p>
 <p>接下来，将slave2：即6381，变为6380的slave。</p>
-<p>使用：<code>slaveof ip port</code> 来变成其他redis服务器的slave。<br><img src="/images/QQ截图20190102155744.png"></p>
-<p>测试：在6380中，插入数据，在6781中，读取该数据。<br><img src="/images/QQ截图20190102155935.png"><br><img src="/images/QQ截图20190102160019.png"></p>
+<p>使用：<code>slaveof ip port</code> 来变成其他redis服务器的slave。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102155744.png"></p>
+<p>测试：在6380中，插入数据，在6781中，读取该数据。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102155935.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102160019.png"></p>
 <p>以上就是手动解决master宕机后的方法。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>运行时更改master-slave<br>修改一台slave(设为A)为new master<br>1) 命令该服务不作为其他redis服务器的slave<br>   <strong>命令: slaveof no one</strong><br>2) 修改其replica-read-only为 no （使用config指令）<br>   <strong>命令：config set replica-read-only no</strong></p>
 <p>其他的slave再指向new master A<br>1) 命令该服务为new master A的slave<br>   <strong>命令： slaveof  ip  port</strong></p>
@@ -502,7 +502,7 @@
 <h2 id="使用sentinel自动解决"><a href="#使用sentinel自动解决" class="headerlink" title="使用sentinel自动解决"></a>使用sentinel自动解决</h2><p>手动解决，确实能行，但是，不能让运维工作人员，24小时待命，一有问题，就去手动解决一下吧，凌晨3点爬起来，手动一下？</p>
 <p>因此，redis官网出了一个sentinel运维工具来自动解决这个问题。</p>
 <p><strong>首先将之前的三个redis服务器断开。删除持久化文件，避免干扰。</strong></p>
-<p>从redis的src源文件中，拷贝一份sentinel.conf配置文件到当前目录下：<br><img src="/images/QQ截图20190102161000.png"></p>
+<p>从redis的src源文件中，拷贝一份sentinel.conf配置文件到当前目录下：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102161000.png"></p>
 <p>sentinel.conf配置文件的说明：</p>
 <pre><code>port 26379   # 端口号
 daemonize no # 是否后台启动
@@ -554,29 +554,29 @@ sentinel failover-timeout mymaster 180000 #sentinel去执行failover的等待时
 <hr>
 <p>说了这么多，我们来验证一下sentinel的功能：</p>
 <p>就使用默认的sentinel.conf，不需要改变。</p>
-<p>依次启动三个redis服务器：<br><img src="/images/QQ截图20190102171724.png"></p>
-<p>查看三个redis服务器的配置是否正确：<br><img src="/images/QQ截图20190102171853.png"><br><img src="/images/QQ截图20190102171933.png"><br><img src="/images/QQ截图20190102172020.png"></p>
+<p>依次启动三个redis服务器：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102171724.png"></p>
+<p>查看三个redis服务器的配置是否正确：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102171853.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102171933.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102172020.png"></p>
 <p>首先：启动sentinel进程</p>
-<p><code>redis-sever sentinel --sentinel</code><br><img src="/images/QQ截图20190102172230.png"><br><img src="/images/QQ截图20190102172319.png"></p>
-<p>现在已经启动sentinel进程了，进程阻塞在那里，一直在帮我们监视着：127.0.0.1：6379 redis服务器。<br><img src="/images/QQ截图20190102172533.png"></p>
-<p>现在：断开6379：master：redis服务器。<br><img src="/images/QQ截图20190102172635.png"></p>
+<p><code>redis-sever sentinel --sentinel</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102172230.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102172319.png"></p>
+<p>现在已经启动sentinel进程了，进程阻塞在那里，一直在帮我们监视着：127.0.0.1：6379 redis服务器。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102172533.png"></p>
+<p>现在：断开6379：master：redis服务器。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102172635.png"></p>
 <p>等待一段时间，喝一杯茶，再看sentinel前台的信息：</p>
-<p>会发现：输出 +sdown master mymaster 127.0.0.1 6379 之后就不输出了，只是提示我们，6379：master 挂了，但是没有帮我们自动指定新的master等一些列操作。<br><img src="/images/QQ截图20190102173312.png"></p>
+<p>会发现：输出 +sdown master mymaster 127.0.0.1 6379 之后就不输出了，只是提示我们，6379：master 挂了，但是没有帮我们自动指定新的master等一些列操作。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102173312.png"></p>
 <p>这是为啥呢？这是因为默认的sentinel.conf配置文件中，<code>sentinel monitor mymaster 127.0.0.1 6379 2</code>,最后面为2，意思是需要两个sentinel确认master已经宕机了才会触发faiover操作。sentinel也是支持集群部署的。</p>
 <p>所以，我们需要将其的数字改为：1.</p>
-<p>退出三个redis服务器，修改sentinel配置文件：<br><img src="/images/QQ截图20190102182328.png"></p>
-<p>重启三个redis服务器和sentinel进程，然后shutdown：master。<br><img src="/images/QQ截图20190102182704.png"><br><img src="/images/QQ截图20190102182758.png"></p>
-<p>这次，真的喝一杯茶，sentinel就会自动帮助我们处理。<br><img src="/images/QQ截图20190102183150.png"></p>
-<p>在6380中，info Replication：<br><img src="/images/QQ截图20190102183405.png"></p>
-<p>在6381中，info Replication：<br><img src="/images/QQ截图20190102183541.png"></p>
-<p>在6380中，随便插入新的数据， 验证在6381中是否能获取到：<br><img src="/images/QQ截图20190102183708.png"><br><img src="/images/QQ截图20190102183803.png"></p>
+<p>退出三个redis服务器，修改sentinel配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102182328.png"></p>
+<p>重启三个redis服务器和sentinel进程，然后shutdown：master。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102182704.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102182758.png"></p>
+<p>这次，真的喝一杯茶，sentinel就会自动帮助我们处理。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102183150.png"></p>
+<p>在6380中，info Replication：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102183405.png"></p>
+<p>在6381中，info Replication：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102183541.png"></p>
+<p>在6380中，随便插入新的数据， 验证在6381中是否能获取到：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102183708.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102183803.png"></p>
 <p>以上就是，sentinel自动帮助我们处理的情况。</p>
 <hr>
 <p>这个，sentinel自动帮我们选择了6380作为新的master，但是有时，我们需要自己设置怎么办？不想让sentinel随机帮我们选择新的master。</p>
 <p>这样的话，我们需要设置slave的优先级，如果我们想要使用6381作为新的master，修改其redis.conf配置文件，将其slave的优先级数字改小，越小优先级越高。</p>
-<p><img src="/images/QQ截图20190102184259.png"><br><img src="/images/QQ截图20190102184432.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102184259.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102184432.png"></p>
 <p><strong>注意：在之前的redis版本中：是slave-priority , 现在是：replica-priority </strong></p>
-<p>接下来重启三个redis服务器和sentinel进程，shutdown：6379。<br>注意：在此之前，因为此时三个redis服务器已经被sentinel改了，所以，需要恢复到初始状态，6379：作为6380和6381的master。<br><img src="/images/QQ截图20190102185825.png"><br><img src="/images/QQ截图20190102190120.png"></p>
+<p>接下来重启三个redis服务器和sentinel进程，shutdown：6379。<br>注意：在此之前，因为此时三个redis服务器已经被sentinel改了，所以，需要恢复到初始状态，6379：作为6380和6381的master。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102185825.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day11/QQ截图20190102190120.png"></p>
 <p>以上就是今天是所有内容，希望大家喜欢。</p>
 <p>参考链接：<br><a href="https://blog.csdn.net/zhanglh046/article/details/78630336" target="_blank" rel="noopener">Redis的主从复制(Sentinel)</a><br><a href="https://www.cnblogs.com/zhoujinyi/p/5569462.html" target="_blank" rel="noopener">Redis中的Sentinel机制与用法</a></p>
 
@@ -1022,7 +1022,7 @@ sentinel failover-timeout mymaster 180000 #sentinel去执行failover的等待时
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中key的
+                                redis中key的设计技巧
                       
                     </div>
                     <div class="publish-info">
@@ -1079,8 +1079,7 @@ sentinel failover-timeout mymaster 180000 #sentinel去执行failover的等待时
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习redis中的aof恢复与rdb服务器之间的迁移
-基于上篇的知识，当我们在redis的开发中，一不小心，手贱 运行了 flusha
+                                redis中的aof恢复与rdb服务器之间的迁移
                       
                     </div>
                     <div class="publish-info">
@@ -1270,7 +1269,7 @@ sentinel failover-timeout mymaster 180000 #sentinel去执行failover的等待时
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

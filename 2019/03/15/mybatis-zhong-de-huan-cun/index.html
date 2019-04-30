@@ -467,32 +467,33 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。<br><a id="more"></a></p>
+                <p>使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis 作为持久化框架提供了非常强大的查询缓存特性，可以非常方便地配置和定制使用。</p>
 <p>一般提到Mybatis的缓存都是指二级缓存。一级缓存（也叫本地缓存）默认会启动，并且不能控制，因此很少会提到。首先，我会简单的介绍一下Mybatis的一级缓存，了解Mybatis的一级缓存可以避免产生一些难以发现的错误。其次，我会全面介绍Mybatis的二级缓存，包括二级缓存的基本配置用法，还有一些常用的缓存框架和缓存数据库的结合。</p>
 <h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><h4 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h4><p>我们来看一个简单的例子：</p>
-<pre><code>    public void testSelectStudent() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
-        Student student = studentMapper.findStudentById(1L);
-        System.out.println(&quot;使用同一个SqlSession再执行一次同样的方法&quot;);
-        Student student2 = studentMapper.findStudentById(1L);
-        sqlSession.commit();
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSelectStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SqlSession sqlSession <span class="token operator">=</span> sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        StudentMapper studentMapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span>StudentMapper<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Student student <span class="token operator">=</span> studentMapper<span class="token punctuation">.</span><span class="token function">findStudentById</span><span class="token punctuation">(</span>1L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"使用同一个SqlSession再执行一次同样的方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Student student2 <span class="token operator">=</span> studentMapper<span class="token punctuation">.</span><span class="token function">findStudentById</span><span class="token punctuation">(</span>1L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqlSession<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //开启一个新的SqlSession
-        SqlSession sqlSession2 = sqlSessionFactory.openSession();
-        StudentMapper studentMapper2 = sqlSession.getMapper(StudentMapper.class);
-        System.out.println(&quot;开启一个新的SqlSession再执行一次：&quot;);
-        Student student3 = studentMapper.findStudentById(1L);
-        sqlSession2.commit();
-        try {
-        } finally {
-            //不要忘记关闭SqlSession
-            sqlSession.close();
-            sqlSession2.close();
-        }
-    }
-</code></pre><p>注意：这里要调用：sqlSession.commit()，才会启动缓存。</p>
-<p>运行结果如下：<br><img src="/images/mybatis/QQ截图20190315154304.png"></p>
+        <span class="token comment" spellcheck="true">//开启一个新的SqlSession</span>
+        SqlSession sqlSession2 <span class="token operator">=</span> sqlSessionFactory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        StudentMapper studentMapper2 <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span>StudentMapper<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"开启一个新的SqlSession再执行一次："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Student student3 <span class="token operator">=</span> studentMapper<span class="token punctuation">.</span><span class="token function">findStudentById</span><span class="token punctuation">(</span>1L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sqlSession2<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//不要忘记关闭SqlSession</span>
+            sqlSession<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sqlSession2<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>注意：这里要调用：sqlSession.commit()，才会启动缓存。</p>
+<p>运行结果如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315154304.png"></p>
 <p>发现，Mybatis的一级缓存存在于：<font color="red">SqlSession的生命周期中</font>，在同一个SqlSession中查询时，Mybatis会把执行的方法和参数通过算法生成缓存的键值，将键值和查询结果存入一个Map对象中。如果同一个SqlSession中执行的方法和参数完全一致，那么通过算法会生成相同的键值，当Map缓存对象中已经存在了该键值时，则会返回缓存中的对象。</p>
 <hr>
 <h4 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h4><p>再看一个例子：</p>
@@ -524,7 +525,7 @@
             sqlSession2.close();
         }
     }
-</code></pre><p>运行结果：<br><img src="/images/mybatis/QQ截图20190315155617.png"></p>
+</code></pre><p>运行结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315155617.png"></p>
 <p>我们可以看到的是，当我获取 <code>id=1</code> 的 student学生后，修改它的姓名，然后再次调用同样的方法，获取 <code>id=1</code> 的学生，它的姓名也跟着发生了改变。说明此时，student2 和 student 是同一个对象，都是从缓存中获取的，所以会发生上面的问题。开启一个新的SqlSession后，获取 <code>id=1</code> 的学生，又会从数据库中重新获取了。</p>
 <hr>
 <p>如果不想让该方法使用一级缓存的话，可以添加：<code>flushCache=true</code> ，表示，每次调用该方法，都会重新发送SQL语句，从数据库中获取最新的数据。</p>
@@ -566,7 +567,7 @@
         }
     }
 </code></pre><p>前提：删除 findStudentById 方法：<code>flushCache=true</code>。</p>
-<p>执行之后的结果如下：<br><img src="/images/mybatis/QQ截图20190315162557.png"></p>
+<p>执行之后的结果如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315162557.png"></p>
 <p>发现，在同一个SqlSession的情况下，只要执行了：insert、update、delete操作，都会清空一级缓存，所以查询 student4 时由于缓存不存在，就会再次发送SQL语句去执行数据库的查询操作。</p>
 <hr>
 <p>以上就是Mybatis中的一级缓存的各种情况了，由于一级缓存是在默默地工作，因此要避免在使用的过程中由于不了解而发生察觉不到的错误。</p>
@@ -651,7 +652,7 @@ public interface StudentMapper {
 </code></pre><hr>
 <p>(2)当同时使用注解方式和XML映射文件时，如果同时配置了上述的二级缓存，就会抛出如下异常：</p>
 <pre><code>Caches collection already contains value for com.liuzhuo.mapper.StudentMapper
-</code></pre><p><img src="/images/mybatis/QQ截图20190315171320.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315171320.png"></p>
 <p>这是因为Mapper接口和对应的XML文件是相同的命名空间，想使用二级缓存，两者必须同时配置（如果接口不存在使用注解方式的方法，可以只在XML中配置），因此按照上面的方式进行配置就会出错，这个时候应该使用参数缓存。在Mapper接口中，参照缓存配置如下：</p>
 <pre><code>@CacheNamespaceRef(StudentMapper.class)
 public interface StudentMapper {
@@ -722,7 +723,7 @@ public interface StudentMapper {
             sqlSession.close();
         }
     }
-</code></pre><p>运行结果：<br><img src="/images/mybatis/QQ截图20190315180036.png"></p>
+</code></pre><p>运行结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315180036.png"></p>
 <p>日志中：出现的以：<code>Cache Hit Ratio</code> 开头的语句，这行语句后面输出的值为当前执行方法的缓存命中率（二级缓存的，不包括一级缓存）。</p>
 <p>在测试第一部分中，第一次查询student时由于没有缓存，所以执行了数据库查询，在第二次查询获取student2时，student和student2是完全相同的实例，这里是使用了一级缓存，所以返回的是同一个实例，此时的命中率还是：0。</p>
 <p>当调用SqlSession.close（）后，SqlSession才会保存查询数据到二级缓存中。在这之后二级缓存才有了缓存数据。所以可以看到在第一部分的两次查询时，命中率都是：0。</p>
@@ -843,7 +844,7 @@ public interface StudentMapper {
             memoryStoreEvictionPolicy=&quot;LRU&quot;/&gt;
 &lt;/ehcache&gt;
 </code></pre><hr>
-<p>执行之前的测试方法，会发现：<code>E:\DEV_ENV\ehcache</code>目录下会多出几个文件：<br><img src="/images/mybatis/QQ截图20190315201938.png"></p>
+<p>执行之前的测试方法，会发现：<code>E:\DEV_ENV\ehcache</code>目录下会多出几个文件：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190315201938.png"></p>
 <hr>
 <h3 id="集成Redis缓存"><a href="#集成Redis缓存" class="headerlink" title="集成Redis缓存"></a>集成Redis缓存</h3><p>Redis是一个高性能的 key-value 数据库，之前的博客中有一系列的Redis讲解，大家可以去看看，回顾一下。</p>
 <p>Mybatis项目开发者提供了Redis的Mybatis二级缓存实现，该项目名为：<code>redis-cache</code>，目前只有beta版，项目地址是：</p>
@@ -1335,7 +1336,7 @@ clientName=
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空
+                                Mybatis中的动态SQL
                       
                     </div>
                     <div class="publish-info">
@@ -1384,7 +1385,7 @@ clientName=
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                通过前面几篇博客的学习，我们已经了解了 MyBatis 中最常用的部分。基本的增、删、改、查操作己经可以满足我们大部分的需求，今天将会对除上
+                                Mybatis中的高级查询
                       
                     </div>
                     <div class="publish-info">
@@ -1566,7 +1567,7 @@ clientName=
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

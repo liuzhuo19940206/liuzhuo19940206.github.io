@@ -472,9 +472,9 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
 <p>今天学习BeanPostProcessor的生命周期流程</p>
 <h3 id="BeanPostProcessor的生命周期流程"><a href="#BeanPostProcessor的生命周期流程" class="headerlink" title="BeanPostProcessor的生命周期流程"></a>BeanPostProcessor的生命周期流程</h3><p>我们知道BeanPostProcessor是后置处理器，是在Bean初始化前后执行一些列操作的，底层到底是怎么执行的呢？现在debug一下。</p>
 <p>1）设置断点，在com.liuzhuo.bean包下的MyBeanPostProcessor类中，给postProcessBeforeInitialization方法设置断点。</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016100600.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day07/20181016100600.png"></p>
 <p>2) debug一下。发现调用栈如下：</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016101036.png" style="width:50%"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day07/20181016101036.png" style="width:50%"></p>
 <p>程序是从test01开始：</p>
 <p>1）创建AnnotationConfigApplicationContext对象  </p>
 <p>2）执行AnnotationConfigApplicationContext的构造方法：</p>
@@ -603,7 +603,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
 <p>大概的流程就走完了~~~</p>
 <hr>
 <h3 id="Spring底层对BeanPostProcessor的使用"><a href="#Spring底层对BeanPostProcessor的使用" class="headerlink" title="Spring底层对BeanPostProcessor的使用"></a>Spring底层对BeanPostProcessor的使用</h3><p>ps：在idea中：类名查找类:Ctrl+Shift+Alt+N; </p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016104349.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day07/20181016104349.png"></p>
 <p>1) 找到BeanPostProcessor接口：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">{</span>
 
@@ -616,7 +616,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
 <span class="token punctuation">}</span>
 </code></pre>
 <p>2) 在BeanPostProcessor上Ctrl+T：找到所有的实现类：</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181016105219.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day07/20181016105219.png"></p>
 <p>我们能看到各种BeanPostProcessor的实现类</p>
 <p>3）ApplicationContextAwareProcessor</p>
 <p>我们使用一下ApplicationContextAwareProcessor这个处理器。这个处理器是给我们的自定义Bean注入上下文容器的。</p>
@@ -1308,7 +1308,7 @@ BeanPostProcessor的生命周期流程我们知道BeanPostProcessor是后置处�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

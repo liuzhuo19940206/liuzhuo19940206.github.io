@@ -474,9 +474,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的ServletContextListener，以及Servlet呢？我们将在这篇文章进行分析。<br><a id="more"></a></p>
+                <p>在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的ServletContextListener，以及Servlet呢？我们将在这篇文章进行分析。</p>
 <p>我们先来看下整体的启动逻辑，tomcat由上往下，挨个启动各个组件： </p>
-<p><img src="/images/QQ截图20190118133508.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190118133508.png"></p>
 <p>针对如此复杂的组件关系，tomcat 又是如何将各个组件串联起来，实现统一的生命周期管控呢？在这篇文章中，我们将分析 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，进一步理解tomcat的架构设计</p>
 <h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>启动过程和初始化一样，由Bootstrap反射调用Catalina的 start 方法</p>
 <pre><code>public void start() throws Exception {
@@ -581,9 +581,9 @@
     }
 }
 </code></pre><h3 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h3><p>在Server调用startInternal启动的时候，首先会调用start启动StandardEngine，而StandardEngine继承至ContainerBase，我们再来回顾下Lifecycle类图，关于Container，我们只需要关注右下角的部分即可。</p>
-<p><img src="/images/QQ截图20190118134119.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190118134119.png"></p>
 <p>StandardEngine、StandardHost、StandardContext、StandardWrapper各个容器存在父子关系，一个父容器包含多个子容器，并且一个子容器对应一个父容器。Engine是顶层父容器，它不存在父容器，关于各个组件的详细介绍，请参考《tomcat框架设计》。各个组件的包含关系如下图所示，默认情况下，StandardEngine只有一个子容器StandardHost，一个StandardContext对应一个webapp应用，而一个StandardWrapper对应一个webapp里面的一个 Servlet。</p>
-<p><img src="/images/QQ截图20190118134247.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/tomcat/QQ截图20190118134247.png"></p>
 <p>由类图可知，StandardEngine、StandardHost、StandardContext、StandardWrapper都是继承至ContainerBase，各个容器的启动，都是由父容器调用子容器的start方法，也就是说由StandardEngine启动StandardHost，再StandardHost启动StandardContext，以此类推。</p>
 <p>由于它们都是继续至ContainerBase，当调用 start 启动Container容器时，首先会执行 ContainerBase 的 start 方法，它会寻找子容器，并且在线程池中启动子容器，StandardEngine也不例外。</p>
 <h4 id="ContainerBase"><a href="#ContainerBase" class="headerlink" title="ContainerBase"></a>ContainerBase</h4><p>ContainerBase的startInternal方法如下所示，主要分为以下3个步骤： </p>
@@ -792,7 +792,7 @@ protected void deployApps() {
 
 而这个 DeployDirectory 任务很简单，只是调用 `HostConfig#deployDirectory(cn, dir)`
 
-```java
+​```java
 private static class DeployDirectory implements Runnable {
     // (省略若干代码)
 
@@ -810,7 +810,7 @@ private static class DeployDirectory implements Runnable {
 2. 实例化 ContextConfig，并且为 Context 容器注册事件监听器，和 StandardHost 的套路一样，借助 XXXConfig 完成容器的启动、停止工作 
 3. 将当前 Context 实例作为子容器添加到 Host 容器中，添加子容器的逻辑在 ContainerBase 中已经实现了，如果当前 Container 的状态是 STARTING_PREP 并且 startChildren 为 true，则还会启动子容器
 
-```java
+​```java
 protected void deployDirectory(ContextName cn, File dir) {
 
     Context context = null;
@@ -1322,7 +1322,7 @@ private void addChildInternal(Container child) {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会
+                                Tomcat的启动分析webapp
                       
                     </div>
                     <div class="publish-info">
@@ -1379,8 +1379,7 @@ private void addChildInternal(Container child) {
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                Tomcat的启动分析：Catalina
-Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootst
+                                Tomcat的启动分析Catalina
                       
                     </div>
                     <div class="publish-info">
@@ -1570,7 +1569,7 @@ Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

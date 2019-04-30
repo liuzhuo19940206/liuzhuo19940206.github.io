@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux基础入门之下载与安装, 解忧杂货店">
+    <meta name="keywords" content="Linux基础入门之软件的下载与安装, 解忧杂货店">
     <meta name="description" content="本篇讲解Linux系统下软件的安装方式：RPM 与 YUM。
 rpm包管理介绍一种用于互联网下载包的打包及安装工具，它包含在某些Linux分发版中。它生成具有.RPM扩展名的文件。RPM是RedHat Package Manager（Red">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Linux基础入门之下载与安装 | 解忧杂货店</title>
+    <title>Linux基础入门之软件的下载与安装 | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -295,13 +295,13 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Linux基础入门之下载与安装
+                        Linux基础入门之软件的下载与安装
                     </div>
                 </div>
             </div>
@@ -467,7 +467,7 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本篇讲解Linux系统下软件的安装方式：RPM 与 YUM。<br><a id="more"></a></p>
+                <p>本篇讲解Linux系统下软件的安装方式：RPM 与 YUM。</p>
 <h2 id="rpm包管理"><a href="#rpm包管理" class="headerlink" title="rpm包管理"></a>rpm包管理</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>一种用于互联网下载包的<strong>打包</strong>及<strong>安装工具</strong>，它包含在某些Linux分发版中。它生成具有<code>.RPM扩展名</code>的文件。RPM是RedHat Package Manager（RedHat软件包管理工具）的缩写，类似于windows的setup.exe，这一文件格式名称虽然打上了RedHat的标志，但理念是通用的。</p>
 <p>Linux的分发版本都有采用（suse,redhat, centos 等等），可以算是公认的行业标准了。</p>
 <p>rpm包管理的缺点：不能处理依赖关系，如你要安装A软件，但是A软件依赖于B、C软件的支持，因此，你必须先安装B和C软件，然后才能安装A软件。</p>
@@ -475,8 +475,8 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
 rpm  -qa                #查询所有的rpm软件包
 rpm  –qa | grep xx      #查询指定的rpm软件包
 rpm  -qa | grep firefox
-</code></pre><p><img src="/images/QQ截图20181130203440.png"></p>
-<p><img src="/images/QQ截图20181130203539.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130203440.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130203539.png"></p>
 <h3 id="rpm包名基本格式"><a href="#rpm包名基本格式" class="headerlink" title="rpm包名基本格式"></a>rpm包名基本格式</h3><pre><code>一个rpm包名：firefox-52.7.0-1.el7.centos.x86_64.rpm
 名称:firefox
 版本号：52.7.0
@@ -500,10 +500,10 @@ rpm -ql firefox
 rpm -qf 文件全路径名 查询文件所属的软件包
 rpm -qf /etc/passwd
 rpm -qf /root/install.log
-</code></pre><p><img src="/images/QQ截图20181130204147.png"><br><img src="/images/QQ截图20181130204408.png"><br><img src="/images/QQ截图20181130204547.png"><br><img src="/images/QQ截图20181130204655.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130204147.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130204408.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130204547.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130204655.png"></p>
 <h3 id="卸载rpm包"><a href="#卸载rpm包" class="headerlink" title="卸载rpm包"></a>卸载rpm包</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>rpm -e RPM包的名称
 </code></pre><h4 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h4><p>删除 firefox  软件包</p>
-<p><code>rpm -e firefox</code><br><img src="/images/QQ截图20181130211112.png"><br><img src="/images/QQ截图20181130211228.png"></p>
+<p><code>rpm -e firefox</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130211112.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130211228.png"></p>
 <p><strong>细节讨论:</strong></p>
 <p>1) 如果其它软件包依赖于您要卸载的软件包，卸载时则会产生错误信息。</p>
 <p>如：  <code>rpm -e  foo</code> </p>
@@ -521,17 +521,17 @@ h = hash    进度条
 <p>步骤：</p>
 <p>1）首先要有Firefox的rpm软件包，才能安装。</p>
 <p>一个小知识点，我们的centOS.iso镜像文件中，就有Firefox的rpm软件包。</p>
-<p>挂载我们的centOS.ios镜像光驱。<br><img src="/images/QQ截图20181130210825.png"><br><img src="/images/QQ截图20181130210930.png"></p>
-<p>光驱一般会在：/media文件夹中：<br><img src="/images/QQ截图20181130211656.png"></p>
-<p>那么就到 /run/media/root/ 中查找：<br><img src="/images/QQ截图20181130211917.png"><br><img src="/images/QQ截图20181130212025.png"><br><img src="/images/QQ截图20181130212226.png"></p>
-<p>将找到的Firefox软件包，拷贝到我们制定的目录下面，比如：/opt中：<br><img src="/images/QQ截图20181130212416.png"></p>
+<p>挂载我们的centOS.ios镜像光驱。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130210825.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130210930.png"></p>
+<p>光驱一般会在：/media文件夹中：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130211656.png"></p>
+<p>那么就到 /run/media/root/ 中查找：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130211917.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212025.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212226.png"></p>
+<p>将找到的Firefox软件包，拷贝到我们制定的目录下面，比如：/opt中：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212416.png"></p>
 <p>在/opt/中安装，不在光驱中安装。</p>
-<p><code>rpm -ivh firefox.xxx.rpm</code><br><img src="/images/QQ截图20181130212634.png"><br><img src="/images/QQ截图20181130212809.png"><br><img src="/images/QQ截图20181130212908.png"></p>
-<p>输入：<code>eject</code>：弹出光驱<br><img src="/images/QQ截图20181130213349.png"></p>
+<p><code>rpm -ivh firefox.xxx.rpm</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212634.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212809.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130212908.png"></p>
+<p>输入：<code>eject</code>：弹出光驱<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130213349.png"></p>
 <h2 id="yum包管理"><a href="#yum包管理" class="headerlink" title="yum包管理"></a>yum包管理</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>Yum 是一个Shell 软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以<strong>自动处理依赖性关系</strong>，并且一次安装所有依赖的软件包。</p>
 <p>通过yum工具配合互联网即可实现软件的安装和自动升级。</p>
 <h3 id="yum的安装"><a href="#yum的安装" class="headerlink" title="yum的安装"></a>yum的安装</h3><p>1）查询yum是否已经安装了。</p>
-<p><code>rpm -qa | grep yum</code><br><img src="/images/QQ截图20181130214443.png"></p>
+<p><code>rpm -qa | grep yum</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130214443.png"></p>
 <p>2) 如果没有找到，可以到CentOS镜像中找到，并安装yum软件。</p>
 <p><code>rpm -ivh yum-*.xxx.noarch.rpm</code></p>
 <h3 id="yum的基本指令"><a href="#yum的基本指令" class="headerlink" title="yum的基本指令"></a>yum的基本指令</h3><pre><code>查询yum服务器是否有需要安装的软件
@@ -541,10 +541,10 @@ yum  list | grep xxx软件  #查询xxx软件
 yum  install  xxx  #下载安装xxx软件
 </code></pre><h3 id="yum应用实例"><a href="#yum应用实例" class="headerlink" title="yum应用实例"></a>yum应用实例</h3><p>案例：请使用yum的方式来安装firefox指令 (前提是：你能联网！！！)</p>
 <p>1) 查询yum服务器上面是否有Firefox</p>
-<p><code>yum list | grep firefox</code><br><img src="/images/QQ截图20181130215425.png"></p>
+<p><code>yum list | grep firefox</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130215425.png"></p>
 <p><code>yum install firefox</code>  //会自动的下载适合你系统的最新版本，并且下载所有的依赖软件。</p>
-<p>原来我们的机器上就有Firefox，所以先卸载：<br><img src="/images/QQ截图20181130215537.png"></p>
-<p>安装Firefox：（速度会慢一些，因为是联网下载）<br><img src="/images/QQ截图20181130215801.png"><br><img src="/images/QQ截图20181130215940.png"><br><img src="/images/QQ截图20181130220008.png"><br><img src="/images/QQ截图20181130220108.png"></p>
+<p>原来我们的机器上就有Firefox，所以先卸载：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130215537.png"></p>
+<p>安装Firefox：（速度会慢一些，因为是联网下载）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130215801.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130215940.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130220008.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day09/QQ截图20181130220108.png"></p>
 
             </div>
             <hr/>
@@ -692,7 +692,7 @@ yum  install  xxx  #下载安装xxx软件
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/11/30/linux-ji-chu-ru-men-zhi-xia-zai-yu-an-zhuang/" class="b-link-green">Linux基础入门之下载与安装</a>
+                    <a href="/2018/11/30/linux-ji-chu-ru-men-zhi-xia-zai-yu-an-zhuang/" class="b-link-green">Linux基础入门之软件的下载与安装</a>
                 </p>
             </div>
         </div>
@@ -989,7 +989,6 @@ yum  install  xxx  #下载安装xxx软件
                     <div class="summary">
                       
                                 本篇文章，将会讲解前端、后端的架构思想。
-前戏前后端分离已成为互联网项目开发的业界标准使用方式，通过 nginx + tomcat 的方式（
                       
                     </div>
                     <div class="publish-info">
@@ -1050,9 +1049,7 @@ yum  install  xxx  #下载安装xxx软件
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                Linux系统的进程管理（重点！！！）
-基本介绍1）在Linux系统中，每个执行的程序（代码）都称为一个进程。每一个进程都分配一个ID号。
-
+                                Linux系统的进程管理
                       
                     </div>
                     <div class="publish-info">
@@ -1234,7 +1231,7 @@ yum  install  xxx  #下载安装xxx软件
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

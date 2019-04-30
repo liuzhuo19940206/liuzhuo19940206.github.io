@@ -474,7 +474,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。<br>因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，数据丢失。<br><a id="more"></a></p>
+                <p>Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。<br>因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，数据丢失。</p>
 <h2 id="数据卷是什么"><a href="#数据卷是什么" class="headerlink" title="数据卷是什么"></a>数据卷是什么</h2><p>先来看看Docker的理念：</p>
 <ul>
 <li><p>将应用与运行的环境打包形成容器运行 ，运行可以伴随着容器，但是我们对数据的要求希望是持久化的</p>
@@ -502,36 +502,36 @@
 <p><strong>在宿主机的根目录下创建：mydataVolume目录。</strong></p>
 <p>然后使用：<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> 将两者挂载在一起，实现数据共享。</p>
 <p>该命令会帮我们以交换式的方式启动centos容器，然后会自动帮我们在centos的根目录下创建：dataVolumeContainer目录。</p>
-<p><img src="/images/QQ截图20190111112831.png"><br><img src="/images/QQ截图20190111113633.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111112831.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111113633.png"></p>
 <p><strong>查看数据卷是否挂载成功：</strong></p>
-<p><code>docker inspect 容器ID</code><br><img src="/images/QQ截图20190111113940.png"><br><img src="/images/QQ截图20190111114243.png"><br><img src="/images/QQ截图20190111114421.png"></p>
+<p><code>docker inspect 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111113940.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114243.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114421.png"></p>
 <p>出现上面的信息，说明挂载数据卷成功。</p>
 <hr>
 <p><strong>宿主机与容器之间数据共享：</strong></p>
 <p>在宿主机中的：mydataVolume目录下：创建一个host.txt文件，随便编写一些数据。</p>
-<p><img src="/images/QQ截图20190111114942.png"><br><img src="/images/QQ截图20190111115028.png"><br><img src="/images/QQ截图20190111115109.png"></p>
-<p>在centos容器中，查看：dataVolumeContainer目录下，是否存在host.txt，并且里面有数据：<br><img src="/images/QQ截图20190111115709.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114942.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115028.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115109.png"></p>
+<p>在centos容器中，查看：dataVolumeContainer目录下，是否存在host.txt，并且里面有数据：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115709.png"></p>
 <p>瞬间懵逼了，后来发现：我是宿主机的root目录下创建的：mydataVolume，然后在该目录下创建的host.txt文件，当然是无法共享的呀。</p>
 <p>因为，<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> <strong>是宿主机的根目录下创建：mydataVolume ！！！！</strong></p>
 <p>现在，在宿主机下，切换到根目录下，发现mydataVolume目录已经存在了，说明执行了：<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> 命令后，会自动帮我们创建这两个共享的目录。</p>
-<p><img src="/images/QQ截图20190111120217.png"><br><img src="/images/QQ截图20190111120316.png"><br><img src="/images/QQ截图20190111120500.png"></p>
-<p>那，在容器下，创建新的文件，修改旧的文件，在宿主机中能更新吗？ 能，数据卷是互相共享的。<br><img src="/images/QQ截图20190111120811.png"><br><img src="/images/QQ截图20190111120941.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120217.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120316.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120500.png"></p>
+<p>那，在容器下，创建新的文件，修改旧的文件，在宿主机中能更新吗？ 能，数据卷是互相共享的。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120811.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120941.png"></p>
 <hr>
-<p><strong>那么，容器退出后，在宿主机中修改数据，等到原来的容器再次启动时，数据是否会同步呢？</strong><br><img src="/images/QQ截图20190111121222.png"><br><img src="/images/QQ截图20190111121327.png"></p>
-<p>接着，在宿主机中，修改host.txt文件中的内容：<br><img src="/images/QQ截图20190111121514.png"></p>
+<p><strong>那么，容器退出后，在宿主机中修改数据，等到原来的容器再次启动时，数据是否会同步呢？</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121222.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121327.png"></p>
+<p>接着，在宿主机中，修改host.txt文件中的内容：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121514.png"></p>
 <p>启动，<strong>原先的</strong>centos容器：</p>
-<p><code>docker start 容器的ID</code><br><img src="/images/QQ截图20190111121959.png"></p>
+<p><code>docker start 容器的ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121959.png"></p>
 <p>进入centos容器内部：</p>
-<p><code>docker attach 容器ID</code><br><img src="/images/QQ截图20190111122237.png"></p>
+<p><code>docker attach 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111122237.png"></p>
 <p>上面就是，宿主机与容器之间的数据卷共享，可读可写。</p>
 <hr>
 <p><strong>那么，可不可以，只能宿主机可读可写，而容器只读呢？ 可以的。</strong></p>
 <p><code>docker run -it -v /宿主机绝对路径目录:/容器内目录:ro 镜像名</code></p>
-<p>请看，上面命令，只是下后面加了一个 <code>:ro</code> , ro : readonly的意思，只读。<br><img src="/images/QQ截图20190111122815.png"><br><img src="/images/QQ截图20190111123127.png"><br><img src="/images/QQ截图20190111123217.png"></p>
-<p>使用 <code>docker inspect 容器ID</code><br><img src="/images/QQ截图20190111123350.png"><br><img src="/images/QQ截图20190111123441.png"><br><img src="/images/QQ截图20190111123526.png"></p>
+<p>请看，上面命令，只是下后面加了一个 <code>:ro</code> , ro : readonly的意思，只读。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111122815.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123127.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123217.png"></p>
+<p>使用 <code>docker inspect 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123350.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123441.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123526.png"></p>
 <hr>
 <h3 id="使用DockerFile添加"><a href="#使用DockerFile添加" class="headerlink" title="使用DockerFile添加"></a>使用DockerFile添加</h3><p>这里，不会讲太多的DockerFile的知识，只是简单带大家了解一下，使用DockerFile来数据共享，下篇文章，我会继续带大家进行DockerFile的探索。</p>
-<p><strong>第一步：在宿主机的根目录下，创建mydocker文件夹并进入：</strong><br><img src="/images/QQ截图20190111135831.png"></p>
+<p><strong>第一步：在宿主机的根目录下，创建mydocker文件夹并进入：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111135831.png"></p>
 <p>可在 Dockerfile中 使用 <strong>VOLUME指令</strong> 来给镜像添加一个或多个数据卷。</p>
 <p><code>VOLUME[&quot;/dataVolumeContainer&quot;,&quot;/dataVolumeContainer2&quot;,&quot;/dataVolumeContainer3&quot;]</code></p>
 <p>说明：</p>
@@ -539,36 +539,36 @@
 <p>由于宿主机目录是依赖于特定宿主机的，并不能够保证在所有的宿主机上都存在这样的特定目录。</p>
 <p>所以，使用DockerFile来进行数据卷的共享时，不需要创建宿主机的共享目录，只需要确定容器内的共享目录即可，这是与使用 -v 命令的区别所在。</p>
 <p>那么，什么是DockerFile文件呢？ 这里还是带大家简单了解一下：</p>
-<p>打开docker hub的官网，随便搜索一个镜像，比如tomcat：<br><img src="/images/QQ截图20190111141044.png"><br><img src="/images/QQ截图20190111141140.png"><br><img src="/images/QQ截图20190111141243.png"></p>
+<p>打开docker hub的官网，随便搜索一个镜像，比如tomcat：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141044.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141140.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141243.png"></p>
 <p>简单来看一下：最上面是基于jdk1.8的镜像来生成tomcat镜像的，所以tomcat镜像文件才几百兆，不想在windows中下在一个tomcat几十兆那么小，因为tomcat镜像中包括了jdk的运行环境等，所以比较大。</p>
 <pre><code>EVN :  配置环境变量的
 EXPOSE 8080   ：配置暴露的端口号
 CMD [&quot;catalina.sh&quot;, &quot;run&quot;]  ：运行镜像最外层的可写的那层
 </code></pre><p>使用Dockerfile来数据卷的共享，就是编写一个Dockerfile文件，然后使用这个Dockerfile来生成新的镜像。这里只是简单了解一下。</p>
-<p><strong>第二步，在mydocker文件夹下，编写dockerfile文件：</strong><br><img src="/images/QQ截图20190111141828.png"></p>
+<p><strong>第二步，在mydocker文件夹下，编写dockerfile文件：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141828.png"></p>
 <p>在dockerfile中：</p>
 <pre><code># volume test
 FROM centos                                               #相当于继承centos镜像
 VOLUME [&quot;/dataVolumeContainer1&quot;,&quot;/dataVolumeContainer2&quot;]  #配置数据卷容器内的目录，可以是多个
 CMD echo &quot;finished,--------success1&quot;                      #CMD执行命令，这里是简单测试语句
 CMD /bin/bash                                             #执行 /bin/bash 命令，进入终端
-</code></pre><p><img src="/images/QQ截图20190111142130.png"><br><img src="/images/QQ截图20190111142226.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142130.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142226.png"></p>
 <p><strong>第三步，build我们的dockerfile文件，生成镜像</strong></p>
 <p><code>docker build -f /mydocker/dockerfile -t liuzhuo/centos .</code></p>
 <pre><code>-f：     dockerfile文件的路径
 -t：     命名空间/镜像名称
 
 注意：最后有一个 空格 + 点
-</code></pre><p><img src="/images/QQ截图20190111142918.png"><br><img src="/images/QQ截图20190111143207.png"></p>
-<p><strong>第四步，查看有没有生成新的镜像</strong><br><img src="/images/QQ截图20190111143325.png"></p>
-<p><strong>第五步，启动新的镜像</strong><br><img src="/images/QQ截图20190111143523.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142918.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143207.png"></p>
+<p><strong>第四步，查看有没有生成新的镜像</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143325.png"></p>
+<p><strong>第五步，启动新的镜像</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143523.png"></p>
 <p><strong>通过上述步骤，容器内的卷目录地址已经知道，对应的主机目录地址哪？？</strong></p>
-<p>使用 <code>docker inspect 容器id</code> 来查看宿主机的目录地址：<br><img src="/images/QQ截图20190111143950.png"><br><img src="/images/QQ截图20190111144227.png"></p>
+<p>使用 <code>docker inspect 容器id</code> 来查看宿主机的目录地址：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143950.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144227.png"></p>
 <p>这里，我就使用 <strong>/dataVolumeContainer1</strong> 对应的宿主机的地址来演示了</p>
 <pre><code>/var/lib/docker/volumes/ef6a4b962d138913b14a43750d12c1a553c2837c34481ff732796e79e62203b3/_data
-</code></pre><p><img src="/images/QQ截图20190111144408.png"></p>
-<p>创建新的文件，container.txt<br><img src="/images/QQ截图20190111144609.png"></p>
-<p>然后在，容器中查看是否有：container.txt<br><img src="/images/QQ截图20190111144609.png"><br><img src="/images/QQ截图20190111144738.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144408.png"></p>
+<p>创建新的文件，container.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144609.png"></p>
+<p>然后在，容器中查看是否有：container.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144609.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144738.png"></p>
 <hr>
 <p><strong>备注:</strong></p>
 <p>Docker挂载主机目录Docker访问出现 cannot open directory . : Permission denied</p>
@@ -579,28 +579,28 @@ CMD /bin/bash                                             #执行 /bin/bash 命�
 <h3 id="总体介绍"><a href="#总体介绍" class="headerlink" title="总体介绍"></a>总体介绍</h3><p>使用上面的：liuzhuo/centos 为模板，运行三个容器：doc01、doc02、doc03。</p>
 <p>它们三个容器本身都具有两个容器卷：<code>/dataVolumeContainer1</code> 和 <code>/dataVolumeContainer2</code></p>
 <h3 id="容器间传递共享"><a href="#容器间传递共享" class="headerlink" title="容器间传递共享"></a>容器间传递共享</h3><p><strong>1.先启动一个父容器doc01</strong></p>
-<p><code>docker run -it --name doc01 liuzhuo/centos</code><br><img src="/images/QQ截图20190111145928.png"></p>
-<p>在 /dataVolumeContainer2 中：添加新的文件：doc01.txt<br><img src="/images/QQ截图20190111150102.png"></p>
+<p><code>docker run -it --name doc01 liuzhuo/centos</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111145928.png"></p>
+<p>在 /dataVolumeContainer2 中：添加新的文件：doc01.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150102.png"></p>
 <p><strong>2.将doc02、doc03容器都继承自doc01</strong></p>
 <p><code>docker run -it --name doc02 --volumes-from doc01 liuzhuo/centos</code></p>
 <pre><code>--volumes-from  :  继承自哪个容器
-</code></pre><p><img src="/images/QQ截图20190111150614.png"></p>
-<p>查看：/dataVolumeContainer2 目录：<br><img src="/images/QQ截图20190111150750.png"></p>
-<p>在doc02中的 /dataVolumeContainer2 目录下：创建新的文件：doc02.txt<br><img src="/images/QQ截图20190111150908.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150614.png"></p>
+<p>查看：/dataVolumeContainer2 目录：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150750.png"></p>
+<p>在doc02中的 /dataVolumeContainer2 目录下：创建新的文件：doc02.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150908.png"></p>
 <p>接着：<code>docker run -it --name doc03 --volumes-from doc01 liuzhuo/centos</code></p>
-<p><img src="/images/QQ截图20190111151244.png"></p>
-<p>查看：/dataVolumeContainer2 目录：<br><img src="/images/QQ截图20190111151340.png"></p>
-<p>在doc03中的 /dataVolumeContainer2 目录下：创建新的文件：doc03.txt<br><img src="/images/QQ截图20190111151826.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151244.png"></p>
+<p>查看：/dataVolumeContainer2 目录：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151340.png"></p>
+<p>在doc03中的 /dataVolumeContainer2 目录下：创建新的文件：doc03.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151826.png"></p>
 <p>大家到此，有没有觉得疑惑呢？ 明明doc03 只是继承 doc01 ，为啥连doc02的文件也共享了呢？这就是docker强大之处，其实就像一个网状结构一样，doc03 继承 doc01，而 doc01 与 doc02 互通，所以 doc02 与 doc03 也就互通了。</p>
 <hr>
-<p><strong>回到doc01，可以看到doc02、doc03创建的文件</strong><br><img src="/images/QQ截图20190111151937.png"></p>
+<p><strong>回到doc01，可以看到doc02、doc03创建的文件</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151937.png"></p>
 <p><strong>删除doc01，doc02修改doc02.txt文件，doc03中能检查到文件发生改变</strong></p>
-<p><img src="/images/QQ截图20190111152312.png"><br><img src="/images/QQ截图20190111152540.png"><br><img src="/images/QQ截图20190111152655.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152312.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152540.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152655.png"></p>
 <p>验证了，虽然 doc03 继承与 doc01 ，现在将 doc01 停止了，但是还能与 doc02 互通。（网状结构）</p>
-<p><strong>删除doc02后，doc03能否访问</strong><br><img src="/images/QQ截图20190111153020.png"><br><img src="/images/QQ截图20190111153116.png"></p>
-<p>现在，在doc03中，再添加一个新的文件：doc03_update.txt<br><img src="/images/QQ截图20190111153248.png"></p>
+<p><strong>删除doc02后，doc03能否访问</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153020.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153116.png"></p>
+<p>现在，在doc03中，再添加一个新的文件：doc03_update.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153248.png"></p>
 <p><strong>新建doc04容器，删除doc03容器</strong></p>
-<p><img src="/images/QQ截图20190111153938.png"><br><img src="/images/QQ截图20190111154035.png"><br><img src="/images/QQ截图20190111154132.png"><br><img src="/images/QQ截图20190111154226.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153938.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154035.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154132.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154226.png"></p>
 <hr>
 <p><strong>结论：</strong></p>
 <p><strong><font color="red">容器之间 配置信息的传递，数据卷的生命周期 一直持续到 没有容器使用它为止。</font></strong></p>
@@ -1047,8 +1047,7 @@ CMD /bin/bash                                             #执行 /bin/bash 命�
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                这篇专门来讲解Docker中比较重要的DockerFile文件
-DockerFile是什么Dockerfile是用来构建Docker镜像的构
+                                DockerFile文件
                       
                     </div>
                     <div class="publish-info">
@@ -1105,8 +1104,7 @@ DockerFile是什么Dockerfile是用来构建Docker镜像的构
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习docker中镜像原理，以及相关的commit命令。
-镜像是什么镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运
+                                docker中镜像原理
                       
                     </div>
                     <div class="publish-info">
@@ -1296,7 +1294,7 @@ DockerFile是什么Dockerfile是用来构建Docker镜像的构
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

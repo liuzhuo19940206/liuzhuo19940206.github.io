@@ -499,13 +499,13 @@ application.yml
    &lt;port&gt;8081&lt;/port&gt;    
 &lt;/server&gt;
 </code></pre><hr>
-<p>1）创建新的Springboot项目，添加web模块即可：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103104435.png"></p>
-<p>2）在resources下，创建application.yml文件<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103104633.png"></p>
-<p>3）启动项目<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103104821.png"></p>
+<p>1）创建新的Springboot项目，添加web模块即可：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103104435.png"></p>
+<p>2）在resources下，创建application.yml文件<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103104633.png"></p>
+<p>3）启动项目<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103104821.png"></p>
 <p>项目的端口号，修改成为8081.</p>
 <h3 id="YAML语法："><a href="#YAML语法：" class="headerlink" title="YAML语法："></a>YAML语法：</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><p><code>k:(空格)v</code>：表示一对键值对（<strong>空格必须有</strong>）；</p>
 <p>以<strong>空格的缩进</strong>来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
-<p>例子：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103105623.png"></p>
+<p>例子：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103105623.png"></p>
 <p>注意：属性和值也是大小写敏感。</p>
 <h4 id="值的写法"><a href="#值的写法" class="headerlink" title="值的写法"></a>值的写法</h4><h5 id="字面量：普通的值（数字，字符串，布尔）"><a href="#字面量：普通的值（数字，字符串，布尔）" class="headerlink" title="字面量：普通的值（数字，字符串，布尔）"></a>字面量：普通的值（数字，字符串，布尔）</h5><p>k: v：字面量直接来写；</p>
 <p>字符串默认不用加上单引号或者双引号；</p>
@@ -599,7 +599,7 @@ application.yml
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"person"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> 
 </code></pre>
-<p>运行测试：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103114614.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103114704.png"></p>
+<p>运行测试：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103114614.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103114704.png"></p>
 <p>在控制台，看到到了Person类的属性注入成功了。</p>
 <p><strong>PS：想要在yml文件中书写时，有提示，我们可以加入配置文件处理器依赖：</strong></p>
 <pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>配置文件处理器，会给出提示<span class="token operator">--</span><span class="token operator">></span>
@@ -609,7 +609,7 @@ application.yml
             <span class="token operator">&lt;</span>optional<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>optional<span class="token operator">></span>
         <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 </code></pre>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103115009.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103115009.png"></p>
 <p>在yml配置文件中，person属性下：Alt+/ 会出Person类中还没有配置的属性。</p>
 <p><strong>使用提示出现的属性，比如lastName，会是last-name的样子，都是一样的。-n 就相当于大写的N。</strong></p>
 <hr>
@@ -627,10 +627,10 @@ person.maps.k2=v2
 person.lists=a,b,c
 person.dog.name=dog
 person.dog.age=2
-</code></pre><p>运行测试：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103120508.png"><br>此时出现了中文乱码的现象。</p>
+</code></pre><p>运行测试：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103120508.png"><br>此时出现了中文乱码的现象。</p>
 <p>这是因为idea默认是使用utf-8的编码，不会转义成ascii。</p>
-<p>打开idea的settings：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103120858.png"></p>
-<p>再次运行测试：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103120952.png"></p>
+<p>打开idea的settings：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103120858.png"></p>
+<p>再次运行测试：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103120952.png"></p>
 <hr>
 <h4 id="使用-Value注解"><a href="#使用-Value注解" class="headerlink" title="使用@Value注解"></a>使用@Value注解</h4><p>除了使用@ConfigurationProperties注解来给属性赋值，我们还知道可以使用Spring的@Value注解。</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
@@ -652,7 +652,7 @@ person.dog.age=2
     <span class="token keyword">private</span> Dog dog<span class="token punctuation">;</span>
 </code></pre>
 <p><strong>@Value获取值 和 @ConfigurationProperties获取值比较</strong></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103122845.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103122845.png"></p>
 <p>这里的松散绑定的意思是，lastName，last-name,last_name都可以在@ConfigurationProperties中使用，但是在@Value中，必须一模一样，比如：</p>
 <p>在Person类中：<br>@Value(“${person.last-name}”)</p>
 <p>在properties配置文件中，必须是：<br>person.last-name=张三</p>
@@ -860,32 +860,32 @@ public class Department {
 ｝
 </code></pre>
 <p>@PropertySource(value = {“classpath:person.properties”})：这里指定了在类路径下的person.properties文件中内容映射到本类的属性中。</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103141521.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103141521.png"></p>
 <p><strong>注意：</strong><br>再将默认的全局配置文件中的person属性注释掉，因为全局的配置文件的优先级高于自定义的配置文件的优先级。</p>
-<p>运行测试类：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103141730.png"></p>
+<p>运行测试类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103141730.png"></p>
 <p>此时，我们加载的就是自定义person.properties文件中的内容了。</p>
 <p>@<strong>ImportResource</strong>：导入Spring的xml配置文件，让配置文件里面的内容生效；</p>
 <p>Spring Boot里面没有Spring的xml配置文件，我们自己编写的配置文件，也不能自动识别；<br>想让Spring的配置文件生效，加载进来；@ImportResource标注在一个配置类上。</p>
 <p>在resources下，创建beans.xml文件。<br>在service下，创建HellService类</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142248.png"></p>
-<p>修改测试类：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142451.png"></p>
-<p>运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142633.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142248.png"></p>
+<p>修改测试类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142451.png"></p>
+<p>运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142633.png"></p>
 <p>在Springboot启动类上，加上@ImportResource注解：</p>
-<p>因为@SpringBootApplication注解本身也是一个配置类<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142813.png"></p>
-<p>再次运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142947.png"></p>
+<p>因为@SpringBootApplication注解本身也是一个配置类<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142813.png"></p>
+<p>再次运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142947.png"></p>
 <p><strong>@Bean</strong></p>
 <p>SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式</p>
 <p>不来编写Spring的xml配置文件。</p>
 <p>1）配置类@Configuration——&gt;Spring配置文件</p>
 <p>2）使用@Bean给容器中添加组件</p>
-<p>在config下，创建一个配置类：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103143527.png"></p>
+<p>在config下，创建一个配置类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103143527.png"></p>
 <p>去掉SpringBootApplication启动类上的@ImportResource注解；</p>
-<p>运行测试方法：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103142947.png"></p>
+<p>运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103142947.png"></p>
 <hr>
 <h4 id="配置文件占位符"><a href="#配置文件占位符" class="headerlink" title="配置文件占位符"></a>配置文件占位符</h4><p>1）随机数</p>
 <pre><code>${random.value}、${random.int}、${random.long}
 ${random.int(10)}、${random.int[1024,65536]}
-</code></pre><p>比如：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103144510.png"></p>
+</code></pre><p>比如：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103144510.png"></p>
 <p>2）占位符获取之前配置的值，如果没有可以是用:指定默认值</p>
 <pre><code>person.last‐name=张三${random.uuid}
 person.age=${random.int}
@@ -899,35 +899,35 @@ person.dog.age=15
 </code></pre><p>这里的person.dog.name使用了${person.hello:hello}_dog，如果${person.hello:hello}之前没有配置，就会使用冒号后面的默认值hello。如果没有写冒号后面的值，即：person.dog.name=${person.hello}_dog。则原样输出。（没有配置${person.hello}的话）。</p>
 <h4 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h4><h5 id="多Profile文件"><a href="#多Profile文件" class="headerlink" title="多Profile文件"></a>多Profile文件</h5><p>我们在主配置文件编写的时候，文件名可以是 application-{profile}.properties/yml</p>
 <p><strong>默认使用application.properties的配置。</strong></p>
-<p>默认的配置文件application.properties：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103150324.png"></p>
-<p>创建dev配置文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103150535.png"></p>
-<p>创建prod配置文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103150641.png"></p>
-<p>启动SpringBoot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103150737.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103150805.png"></p>
+<p>默认的配置文件application.properties：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103150324.png"></p>
+<p>创建dev配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103150535.png"></p>
+<p>创建prod配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103150641.png"></p>
+<p>启动SpringBoot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103150737.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103150805.png"></p>
 <p>可以看出，默认启动，application.properties的配置。端口号：8081</p>
-<h5 id="激活指定profile"><a href="#激活指定profile" class="headerlink" title="激活指定profile"></a>激活指定profile</h5><p>1）在默认配置文件中指定 spring.profiles.active=dev<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103151018.png"></p>
-<p>启动SpringBoot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103151137.png"></p>
+<h5 id="激活指定profile"><a href="#激活指定profile" class="headerlink" title="激活指定profile"></a>激活指定profile</h5><p>1）在默认配置文件中指定 spring.profiles.active=dev<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103151018.png"></p>
+<p>启动SpringBoot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103151137.png"></p>
 <p>端口号：8082.</p>
 <p>2）命令行：</p>
 <p>java -jar spring-boot-02-config-0.0.1-SNAPSHOT.jar  <code>--spring.profiles.active=dev</code></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103151355.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103151622.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103151704.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103151355.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103151622.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103151704.png"></p>
 <p>端口号是：8083</p>
 <p><strong>激活的是prod，说明命令行参数的优先级 高于 配置文件的激活的优先级。</strong></p>
 <p>3) 虚拟机参数；</p>
-<p><code>-Dspring.profiles.active=dev</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103152038.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103152205.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103152225.png"></p>
+<p><code>-Dspring.profiles.active=dev</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103152038.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103152205.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103152225.png"></p>
 <p>端口号：8082</p>
 <p><strong>激活的是dev。说明虚拟机参数的优先级 高于 配置文件的优先级</strong></p>
 <hr>
 <p><strong>当命令行参数与虚拟机参数同时存在时，以命令行参数为准。</strong></p>
 <p>即：命令行的优先级最高。</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103152736.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103152756.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103152736.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103152756.png"></p>
 <p>端口号是：8083</p>
 <p>激活的是prod。</p>
 <h5 id="yml支持多文档块方式"><a href="#yml支持多文档块方式" class="headerlink" title="yml支持多文档块方式"></a>yml支持多文档块方式</h5><p>在yml文件中，支持多文档块方式，即在一个yml文件中，书写多个文件配置。</p>
 <p>使用<code>---</code>隔开。</p>
 <p>首先，注释掉所有的properties文件和启动的命令行与虚拟机参数。</p>
 <p>修改yml文件：</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103153342.png"></p>
-<p>启动SpringBoot应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103153506.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103153342.png"></p>
+<p>启动SpringBoot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103153506.png"></p>
 <p>端口号：8084</p>
 <p>激活的是dev文件。</p>
 <h4 id="配置文件加载位置"><a href="#配置文件加载位置" class="headerlink" title="配置文件加载位置"></a>配置文件加载位置</h4><p>springboot 启动会扫描以下位置的application.properties或者application.yml文件作为Spring boot的默认配置文件。</p>
@@ -936,15 +936,15 @@ person.dog.age=15
 <p>SpringBoot会从这四个位置全部加载主配置文件；<strong>互补配置。</strong></p>
 <p><strong>file：代表的是项目的根路径下。</strong></p>
 <p><strong>classpath：代表的是resources下。</strong></p>
-<p>1）application.properties中：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155025.png"><br>端口号：8081</p>
-<p>启动项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155147.png"><br>端口号启动的也是8081.</p>
-<p>2）在resources下创建config包，并创建application.properties文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155312.png"><br>端口号是：8082</p>
-<p>启动项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155414.png"><br>启动的端口号：8082</p>
+<p>1）application.properties中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155025.png"><br>端口号：8081</p>
+<p>启动项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155147.png"><br>端口号启动的也是8081.</p>
+<p>2）在resources下创建config包，并创建application.properties文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155312.png"><br>端口号是：8082</p>
+<p>启动项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155414.png"><br>启动的端口号：8082</p>
 <p>3）在项目的根路径下创建application.properties文件：</p>
-<p>即：在spring-boot-02-config右键创建文件。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155603.png"><br>端口号：8083</p>
-<p>启动项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155649.png"><br>启动的端口号：8083</p>
-<p>4）在项目的根路径下创建config文件夹，并application.properties文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155800.png"><br>端口号：8084</p>
-<p>启动项目：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103155859.png"><br>启动的端口号：8084</p>
+<p>即：在spring-boot-02-config右键创建文件。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155603.png"><br>端口号：8083</p>
+<p>启动项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155649.png"><br>启动的端口号：8083</p>
+<p>4）在项目的根路径下创建config文件夹，并application.properties文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155800.png"><br>端口号：8084</p>
+<p>启动项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103155859.png"><br>启动的端口号：8084</p>
 <p>印证了SpringBoot加载配置文件的优先级。</p>
 <p>当四个位置都有配置文件时，是<strong>互补配置的</strong>。</p>
 <p>即当高优先级的配置文件中存在低优先级的配置文件中的内容时会覆盖低优先级中的内容，但是当高优先级的配置文件中，没有低优先级文件中的内容时，会直接加载低优先级文件中的内容。</p>
@@ -1123,7 +1123,7 @@ public class HttpEncodingProperties {
 <p>xxxxProperties:封装配置文件中相关属性；</p>
 <h5 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h5><p>1、@Conditional派生注解（Spring注解版原生的@Conditional作用）</p>
 <p>作用：必须是@Conditional指定的条件成立，才给容器中添加组件，配置里面的所有内容才生效；</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181103170857.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day02/QQ%E6%88%AA%E5%9B%BE20181103170857.png"></p>
 <p><strong>自动配置类必须在一定的条件下才能生效；</strong></p>
 <p>我们怎么知道哪些自动配置类生效；</p>
 <font color="#EE2C2C">我们可以通过启用 debug=true属性；来让控制台打印自动配置报告，这样我们就可以很方便的知道哪些自动配置类生效；</font>
@@ -1842,7 +1842,7 @@ Negative matches<span class="token operator">:</span>（没有启动，没有匹
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

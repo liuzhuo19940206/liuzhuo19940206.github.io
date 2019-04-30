@@ -476,7 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>浅谈java中的原子类实现原理<br><a id="more"></a></p>
+                <p>浅谈java中的原子类实现原理</p>
 <p>在谈谈java中的volatile一文中，我们提到过并发包中的原子类可以解决类似num++这样的复合类操作的原子性问题，相比锁机制，使用原子类更精巧轻量，性能开销更小，本章就一起来分析下原子类的实现机理。</p>
 <h3 id="悲观的解决方案（阻塞同步）"><a href="#悲观的解决方案（阻塞同步）" class="headerlink" title="悲观的解决方案（阻塞同步）"></a>悲观的解决方案（阻塞同步）</h3><p>我们知道，num++看似简单的一个操作，实际上是由<strong>1.读取 2.加一 3.写入 </strong>三步组成的，这是个复合类的操作（所以我们之前提到过的volatile是无法解决num++的原子性问题的），在并发环境下，如果不做任何同步处理，就会有线程安全问题。最直接的处理方式就是<strong>加锁</strong>。</p>
 <pre><code>synchronized(this){
@@ -975,8 +975,7 @@
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                帮助大家理解，HashMap的底层原理，方便大家面试
-HashMap的实现原理HashMap的主干是一个Entry数组。Entry是Hash
+                                HashMap的底层原理
                       
                     </div>
                     <div class="publish-info">
@@ -1034,7 +1033,6 @@ HashMap的实现原理HashMap的主干是一个Entry数组。Entry是Hash
                     <div class="summary">
                        
                                 浅谈java中的volatile关键字
-内存可见性volatile是Java提供的一种轻量级的同步机制，在并发编程中，它也扮演着比较重要的角
                       
                     </div>
                     <div class="publish-info">
@@ -1224,7 +1222,7 @@ HashMap的实现原理HashMap的主干是一个Entry数组。Entry是Hash
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

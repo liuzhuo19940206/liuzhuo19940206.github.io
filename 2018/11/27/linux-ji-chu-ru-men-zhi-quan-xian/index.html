@@ -468,15 +468,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>组管理和权限管理<br><a id="more"></a></p>
+                <p>组管理和权限管理</p>
 <h2 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h2><h3 id="linux组的基本介绍"><a href="#linux组的基本介绍" class="headerlink" title="linux组的基本介绍"></a>linux组的基本介绍</h3><p>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件都有：所有者、所在组、其它组 的概念。</p>
 <h3 id="文件-目录-所有者"><a href="#文件-目录-所有者" class="headerlink" title="文件/目录 所有者"></a>文件/目录 所有者</h3><p>一般为文件的创建者 ， 谁创建了该文件，就自然的成为该文件的所有者。</p>
 <p>1）查看文件的所有者</p>
 <p>指令：ls –ahl</p>
-<p>应用实例 :创建一个组police,再创建一个用户tom,将tom放在police组 ,然后使用 tom来创建一个文件 ok.txt，看看情况如何？<br><img src="/images/QQ截图20181127195335.png"></p>
+<p>应用实例 :创建一个组police,再创建一个用户tom,将tom放在police组 ,然后使用 tom来创建一个文件 ok.txt，看看情况如何？<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127195335.png"></p>
 <p>2）修改文件所有者</p>
 <p>指令：chown 用户名 文件名 </p>
-<p>应用案例要求：使用root 创建一个文件apple.txt ，然后将其所有者修改成 tom。<br><img src="/images/QQ截图20181127195757.png"></p>
+<p>应用案例要求：使用root 创建一个文件apple.txt ，然后将其所有者修改成 tom。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127195757.png"></p>
 <h3 id="文件-目录-所在组"><a href="#文件-目录-所在组" class="headerlink" title="文件/目录 所在组"></a>文件/目录 所在组</h3><p>当某个用户创建了一个文件后，默认情况下，这个文件的所在组就是该用户所在的组。</p>
 <p>1）查看文件/目录所在组</p>
 <p>基本指令：ls –ahl </p>
@@ -484,7 +484,7 @@
 <p>基本指令：</p>
 <p><code>chgrp</code> 组名 文件名</p>
 <p>应用实例：</p>
-<p>使用root用户创建文件 orange.txt ,看看当前这个文件属于哪个组【root】，然后将这个文件所在组，修改到 police组。<br><img src="/images/QQ截图20181127200619.png"></p>
+<p>使用root用户创建文件 orange.txt ,看看当前这个文件属于哪个组【root】，然后将这个文件所在组，修改到 police组。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127200619.png"></p>
 <h3 id="其它组"><a href="#其它组" class="headerlink" title="其它组"></a>其它组</h3><p>除文件的所有者和所在组的用户外，系统的其它用户都是文件的其它组。</p>
 <h3 id="改变用户所在组"><a href="#改变用户所在组" class="headerlink" title="改变用户所在组"></a>改变用户所在组</h3><p>在添加用户时，可以指定将该用户添加到哪个组中，同样的，使用root的管理权限可以改变某个用户所在的组。</p>
 <p>1）改变用户所在组</p>
@@ -492,7 +492,7 @@
 2) usermod   –d   目录名  用户名  改变该用户登陆的初始目录。
 </code></pre><p>2) 应用实例</p>
 <p>创建一个土匪组（bandit）将 tom 这个用户从原来所在的police组，修改到 bandit(土匪) 组中。</p>
-<p><code>usermod  -g  bandit  tom</code><br><img src="/images/QQ截图20181127201505.png"></p>
+<p><code>usermod  -g  bandit  tom</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127201505.png"></p>
 <hr>
 <h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><h3 id="权限的基本介绍"><a href="#权限的基本介绍" class="headerlink" title="权限的基本介绍"></a>权限的基本介绍</h3><pre><code>ls  -l 中显示的内容如下：
 -rwxrw-r-- 1 root police 1213 Feb 2 09:39 ok.txt
@@ -520,63 +520,63 @@
 <p>案例演示：</p>
 <p>1) 给abc文件的 <strong>所有者</strong>读写执行的权限 ，给<strong>所在组</strong>读执行权限 ，给<strong>其它组</strong>读执行权限。</p>
 <p>chmod  u=rwx , g=rx , o=rx   abc</p>
-<p><img src="/images/QQ截图20181127205641.png"><br>2) 给abc文件的 <strong>所有者</strong>除去执行的权限，<strong>所在组</strong>增加写的权限</p>
-<p>chmod  u-x, g+w abc<br><img src="/images/QQ截图20181127205833.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127205641.png"><br>2) 给abc文件的 <strong>所有者</strong>除去执行的权限，<strong>所在组</strong>增加写的权限</p>
+<p>chmod  u-x, g+w abc<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127205833.png"></p>
 <p>3) 给abc文件的<strong>所有用户</strong>添加读的权限 </p>
-<p>chmod  a+r  abc<br><img src="/images/QQ截图20181127205959.png"></p>
+<p>chmod  a+r  abc<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127205959.png"></p>
 <h4 id="第二种方式：通过数字变更权限"><a href="#第二种方式：通过数字变更权限" class="headerlink" title="第二种方式：通过数字变更权限"></a>第二种方式：通过数字变更权限</h4><p>r=4 w=2 x=1　　　　　rwx=4+2+1=7</p>
 <p>chmod <code>u=rwx , g=rx , o=x</code> 　文件、目录  《==》   chmod   <code>751</code>  文件、目录</p>
 <p>因为 rwx：111=7 ， rx：101=5 ， x：001=1</p>
 <p>案例演示</p>
 <p>要求：将 /home/abc.txt 文件的权限修改成  <code>rwxr-xr-x</code>, 使用给数字的方式实现：</p>
-<p>chmod　　u=rwx , g=xr ,  o=x　　/home/abc.txt<br>chmod　　751　　/home/abc.txt<br><img src="/images/QQ截图20181127210926.png"></p>
+<p>chmod　　u=rwx , g=xr ,  o=x　　/home/abc.txt<br>chmod　　751　　/home/abc.txt<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127210926.png"></p>
 <h3 id="修改文件所有者-chown"><a href="#修改文件所有者-chown" class="headerlink" title="修改文件所有者-chown"></a>修改文件所有者-chown</h3><p>基本介绍</p>
 <p>chown　newowner　file　　改变文件的所有者</p>
 <p>chown　newowner : newgroup　　file　　改变用户的所有者和所有组</p>
 <p><code>-R</code>  如果是目录 则使其下所有子文件或目录递归生效</p>
 <p>案例演示：</p>
 <p>1) 请将 /home/abc.txt 文件的所有者修改成 tom.</p>
-<p>chown   tom  /home/abc.txt<br><img src="/images/QQ截图20181127212038.png"></p>
+<p>chown   tom  /home/abc.txt<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127212038.png"></p>
 <p>2) 请将 /home/kkk 目录下所有的文件和目录的所有者都修改成tom.</p>
-<p>chown <code>–R</code> tom  /home/kkk<br><img src="/images/QQ截图20181127212509.png"></p>
+<p>chown <code>–R</code> tom  /home/kkk<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127212509.png"></p>
 <p>3) 将/home/aaa下的所有文件和目录的所有者都改成 tom，将所在组改成police.</p>
-<p>chown <code>–R  tom:police</code>   /home/aaa<br><img src="/images/QQ截图20181127212710.png"></p>
+<p>chown <code>–R  tom:police</code>   /home/aaa<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127212710.png"></p>
 <h3 id="修改文件所在组-chgrp"><a href="#修改文件所在组-chgrp" class="headerlink" title="修改文件所在组-chgrp"></a>修改文件所在组-chgrp</h3><p>基本介绍</p>
 <p>chgrp newgroup file  改变文件的所有组</p>
 <p>案例演示：</p>
 <p>1) 请将 /home/abc.txt 文件的所在组修改成 bandit (土匪)</p>
-<p>chgrp  bandit  /home/abc.txt<br><img src="/images/QQ截图20181127213015.png"></p>
+<p>chgrp  bandit  /home/abc.txt<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127213015.png"></p>
 <p>2) 请将 /home/kkk 目录下所有的文件和目录的所在组都修改成 bandit(土匪)</p>
-<p>chgrp  -R  bandit /home/kkk<br><img src="/images/QQ截图20181127213340.png"></p>
+<p>chgrp  -R  bandit /home/kkk<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127213340.png"></p>
 <h3 id="最佳实践-警察和土匪游戏"><a href="#最佳实践-警察和土匪游戏" class="headerlink" title="最佳实践-警察和土匪游戏"></a>最佳实践-警察和土匪游戏</h3><p>police（警察） ， bandit（土匪） </p>
 <p>jack , jerry: 警察<br>xh , xq: 土匪</p>
 <p>1）创建组 </p>
 <pre><code>[root@liuzhuo01 home]# groupadd police
 [root@liuzhuo01 home]# groupadd bandit
-</code></pre><p><img src="/images/QQ截图20181127214046.png"><br>2）创建用户 </p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127214046.png"><br>2）创建用户 </p>
 <pre><code>[root@liuzhuo01 home]# useradd -g police jack
 [root@liuzhuo01 home]# useradd -g police jerry
 [root@liuzhuo01 home]# useradd -g bandit xh
 [root@liuzhuo01 home]# useradd -g bandit xq
 
-</code></pre><p><img src="/images/QQ截图20181127215156.png"></p>
-<p>并给四个用户，添加密码。<br><img src="/images/QQ截图20181127215523.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127215156.png"></p>
+<p>并给四个用户，添加密码。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127215523.png"></p>
 <p>3）jack 创建一个文件，自己可以读写，本组人可以读，其它组没人任何权限</p>
-<p>使用Xshell创建一个新的连接，使用jack登录。然后创建一个jack.txt文件。<br><img src="/images/QQ截图20181127215732.png"></p>
-<p>使用：<code>chmod 640 jack.txt</code><br><img src="/images/QQ截图20181127220010.png"></p>
+<p>使用Xshell创建一个新的连接，使用jack登录。然后创建一个jack.txt文件。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127215732.png"></p>
+<p>使用：<code>chmod 640 jack.txt</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127220010.png"></p>
 <p>4）jack 修改该文件，让本组人可以读写 , 其它组人可以读</p>
-<p>使用：<code>chmod g=rw,o=r jack.txt</code><br><img src="/images/QQ截图20181127220327.png"></p>
+<p>使用：<code>chmod g=rw,o=r jack.txt</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127220327.png"></p>
 <p>5）<strong>xh 投靠 警察，看看是否可以读写jack.txt文件（重点）.</strong></p>
-<p>首先使用xh连接，登入到linux系统中：<br><img src="/images/QQ截图20181127220458.png"></p>
-<p>进入jack.txt所在的目录，才能修改jack.txt文件。<br><img src="/images/QQ截图20181127220643.png"></p>
+<p>首先使用xh连接，登入到linux系统中：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127220458.png"></p>
+<p>进入jack.txt所在的目录，才能修改jack.txt文件。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127220643.png"></p>
 <p>会发现权限不够，根本不能进入jack目录中，因为jack是police组，xh是bandit，组不同，而jack目录对其他组的权限无。</p>
 <p>题目的要求是让我们把xh改为police组，所以，我们必须让jack对所在组police修改为：rx的权限，xh才能进入到jack目录中，修改jack.txt文件。</p>
-<p>在root用户下，修改xh所在组为police组：<br><img src="/images/QQ截图20181127221209.png"></p>
-<p>在jack用户下，修改jack目录的所在组police有rx的权限：<br><img src="/images/QQ截图20181127221427.png"></p>
-<p>在xh用户下，进入jack目录<br><img src="/images/QQ截图20181127221545.png"></p>
-<p>发现还是权限不够，我们的理论错了嘛？ 不是的，是需要我们注销，重新登入xh用户。<br><img src="/images/QQ截图20181127221731.png"></p>
-<p>修改jack.txt文件：<br><img src="/images/QQ截图20181127222032.png"><br><img src="/images/QQ截图20181127221902.png"></p>
-<p>使用jack查看jack.txt文件，看是否修改成功：<br><img src="/images/QQ截图20181127222225.png"></p>
+<p>在root用户下，修改xh所在组为police组：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127221209.png"></p>
+<p>在jack用户下，修改jack目录的所在组police有rx的权限：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127221427.png"></p>
+<p>在xh用户下，进入jack目录<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127221545.png"></p>
+<p>发现还是权限不够，我们的理论错了嘛？ 不是的，是需要我们注销，重新登入xh用户。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127221731.png"></p>
+<p>修改jack.txt文件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127222032.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127221902.png"></p>
+<p>使用jack查看jack.txt文件，看是否修改成功：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day05/QQ截图20181127222225.png"></p>
 
             </div>
             <hr/>
@@ -1021,8 +1021,6 @@
                     <div class="summary">
                       
                                 定时任务调度、磁盘分区
-Linux的crond任务调度crontab 进行 定时任务的设置。
-概述任务调度：是指系统在某个时间执行的特定的命
                       
                     </div>
                     <div class="publish-info">
@@ -1072,7 +1070,6 @@ Linux的crond任务调度crontab 进行 定时任务的设置。
                     <div class="summary">
                        
                                 本篇会介绍Linux系统的常用指令
-Linux实操指令在我们实际工作中，是不会直接到服务器机房去登录linux系统，然后在上操作的，也不会操
                       
                     </div>
                     <div class="publish-info">
@@ -1254,7 +1251,7 @@ Linux实操指令在我们实际工作中，是不会直接到服务器机房去
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

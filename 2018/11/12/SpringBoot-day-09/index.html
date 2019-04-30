@@ -455,7 +455,7 @@ SpringApplica">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.9k
+                        1.8k
                     </div>
                     
 
@@ -489,129 +489,133 @@ SpringApplica">
 <hr>
 <p>启动流程：</p>
 <p>首先创建一个web的Springboot项目：</p>
-<p>然后给主main方法打上断点。<br><img src="/images/QQ截图20181112105657.png"></p>
+<p>然后给主main方法打上断点。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112105657.png"></p>
 <p>开始debug运行。</p>
-<h3 id="创建SpringApplication对象"><a href="#创建SpringApplication对象" class="headerlink" title="创建SpringApplication对象"></a>创建SpringApplication对象</h3><p><img src="/images/QQ截图20181112105900.png"><br><img src="/images/QQ截图20181112110020.png"><br><img src="/images/QQ截图20181112110059.png"></p>
-<pre><code>    private void initialize(Object[] sources) {
-        //保存主配置类
-        if (sources != null &amp;&amp; sources.length &gt; 0) {
-            this.sources.addAll(Arrays.asList(sources));
-        }
-        //判断当前是否一个web应用
-        this.webEnvironment = this.deduceWebEnvironment();
+<h3 id="创建SpringApplication对象"><a href="#创建SpringApplication对象" class="headerlink" title="创建SpringApplication对象"></a>创建SpringApplication对象</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112105900.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112110020.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112110059.png"></p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initialize</span><span class="token punctuation">(</span>Object<span class="token punctuation">[</span><span class="token punctuation">]</span> sources<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//保存主配置类</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sources <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> sources<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>sources<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>sources<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//判断当前是否一个web应用</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>webEnvironment <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">deduceWebEnvironment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //从类路径下找到META‐INF/spring.factories配置的所有ApplicationContextInitializer；然后保存起来
-        this.setInitializers(this.getSpringFactoriesInstances(ApplicationContextInitializer.class));
+        <span class="token comment" spellcheck="true">//从类路径下找到META‐INF/spring.factories配置的所有ApplicationContextInitializer；然后保存起来</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setInitializers</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSpringFactoriesInstances</span><span class="token punctuation">(</span>ApplicationContextInitializer<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //从类路径下找到ETA‐INF/spring.factories配置的所有ApplicationListener
-        this.setListeners(this.getSpringFactoriesInstances(ApplicationListener.class));
+        <span class="token comment" spellcheck="true">//从类路径下找到ETA‐INF/spring.factories配置的所有ApplicationListener</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setListeners</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getSpringFactoriesInstances</span><span class="token punctuation">(</span>ApplicationListener<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //从多个配置类中找到有main方法的主配置类
-        this.mainApplicationClass = this.deduceMainApplicationClass();
-    }
-</code></pre><p>6个ApplicationContextInitializer：<br><img src="/images/QQ截图20181112111101.png" style="width:50%"></p>
-<p>10个ApplicationListener：<br><img src="/images/QQ截图20181112111247.png" style="width:50%"></p>
-<h3 id="运行run方法"><a href="#运行run方法" class="headerlink" title="运行run方法"></a>运行run方法</h3><p><img src="/images/QQ截图20181112111412.png"><br><img src="/images/QQ截图20181112113232.png"></p>
-<pre><code>    public ConfigurableApplicationContext run(String... args) {
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
-        ConfigurableApplicationContext context = null;
-        FailureAnalyzers analyzers = null;
-        configureHeadlessProperty();
+        <span class="token comment" spellcheck="true">//从多个配置类中找到有main方法的主配置类</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>mainApplicationClass <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">deduceMainApplicationClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>6个ApplicationContextInitializer：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112111101.png" style="width:50%"></p>
+<p>10个ApplicationListener：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112111247.png" style="width:50%"></p>
+<h3 id="运行run方法"><a href="#运行run方法" class="headerlink" title="运行run方法"></a>运行run方法</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112111412.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112113232.png"></p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> ConfigurableApplicationContext <span class="token function">run</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        StopWatch stopWatch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StopWatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        stopWatch<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ConfigurableApplicationContext context <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        FailureAnalyzers analyzers <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token function">configureHeadlessProperty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-         //获取SpringApplicationRunListeners；从类路径下META‐INF/spring.factories
-        SpringApplicationRunListeners listeners = getRunListeners(args);
+         <span class="token comment" spellcheck="true">//获取SpringApplicationRunListeners；从类路径下META‐INF/spring.factories</span>
+        SpringApplicationRunListeners listeners <span class="token operator">=</span> <span class="token function">getRunListeners</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //回调所有的获取SpringApplicationRunListener.starting()方法
-        listeners.starting();
-        try {
+        <span class="token comment" spellcheck="true">//回调所有的获取SpringApplicationRunListener.starting()方法</span>
+        listeners<span class="token punctuation">.</span><span class="token function">starting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
 
-           //封装命令行参数
-           ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+           <span class="token comment" spellcheck="true">//封装命令行参数</span>
+           ApplicationArguments applicationArguments <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultApplicationArguments</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //准备环境：创建环境完成后回调SpringApplicationRunListener.environmentPrepared()；表示环境准备完成
-           ConfigurableEnvironment environment = prepareEnvironment(listeners,applicationArguments);
+           <span class="token comment" spellcheck="true">//准备环境：创建环境完成后回调SpringApplicationRunListener.environmentPrepared()；表示环境准备完成</span>
+           ConfigurableEnvironment environment <span class="token operator">=</span> <span class="token function">prepareEnvironment</span><span class="token punctuation">(</span>listeners<span class="token punctuation">,</span>applicationArguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //打印Spring的banner
-           Banner printedBanner = printBanner(environment);
+           <span class="token comment" spellcheck="true">//打印Spring的banner</span>
+           Banner printedBanner <span class="token operator">=</span> <span class="token function">printBanner</span><span class="token punctuation">(</span>environment<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //创建ApplicationContext；决定创建web的ioc还是普通的ioc
-           context = createApplicationContext();
+           <span class="token comment" spellcheck="true">//创建ApplicationContext；决定创建web的ioc还是普通的ioc</span>
+           context <span class="token operator">=</span> <span class="token function">createApplicationContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
-           analyzers = new FailureAnalyzers(context);
+           analyzers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FailureAnalyzers</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //准备上下文环境;将environment保存到ioc中；而且applyInitializers()；
-           //applyInitializers()：回调之前保存的所有的ApplicationContextInitializer的initialize方法
-           //回调所有的SpringApplicationRunListener的contextPrepared()；
-           prepareContext(context, environment, listeners, applicationArguments,printedBanner);
-           //prepareContext运行完成以后回调所有的SpringApplicationRunListener的contextLoaded()
+           <span class="token comment" spellcheck="true">//准备上下文环境;将environment保存到ioc中；而且applyInitializers()；</span>
+           <span class="token comment" spellcheck="true">//applyInitializers()：回调之前保存的所有的ApplicationContextInitializer的initialize方法</span>
+           <span class="token comment" spellcheck="true">//回调所有的SpringApplicationRunListener的contextPrepared()；</span>
+           <span class="token function">prepareContext</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> environment<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> applicationArguments<span class="token punctuation">,</span>printedBanner<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token comment" spellcheck="true">//prepareContext运行完成以后回调所有的SpringApplicationRunListener的contextLoaded()</span>
 
-           //刷新容器；ioc容器初始化（如果是web应用还会创建嵌入式的Tomcat）；Spring注解博客中有完整的流程
-           //扫描，创建，加载所有组件的地方；（配置类，组件，自动配置）
-           refreshContext(context);
+           <span class="token comment" spellcheck="true">//刷新容器；ioc容器初始化（如果是web应用还会创建嵌入式的Tomcat）；Spring注解博客中有完整的流程</span>
+           <span class="token comment" spellcheck="true">//扫描，创建，加载所有组件的地方；（配置类，组件，自动配置）</span>
+           <span class="token function">refreshContext</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //从ioc容器中获取所有的ApplicationRunner和CommandLineRunner进行回调
-           //ApplicationRunner先回调，CommandLineRunner再回调
-           afterRefresh(context, applicationArguments);
+           <span class="token comment" spellcheck="true">//从ioc容器中获取所有的ApplicationRunner和CommandLineRunner进行回调</span>
+           <span class="token comment" spellcheck="true">//ApplicationRunner先回调，CommandLineRunner再回调</span>
+           <span class="token function">afterRefresh</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> applicationArguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-           //所有的SpringApplicationRunListener回调finished方法
-           listeners.finished(context, null);
-           stopWatch.stop();
-           if (this.logStartupInfo) {
-               new StartupInfoLogger(this.mainApplicationClass)
-                       .logStarted(getApplicationLog(), stopWatch);
-           }
+           <span class="token comment" spellcheck="true">//所有的SpringApplicationRunListener回调finished方法</span>
+           listeners<span class="token punctuation">.</span><span class="token function">finished</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           stopWatch<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>logStartupInfo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               <span class="token keyword">new</span> <span class="token class-name">StartupInfoLogger</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>mainApplicationClass<span class="token punctuation">)</span>
+                       <span class="token punctuation">.</span><span class="token function">logStarted</span><span class="token punctuation">(</span><span class="token function">getApplicationLog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> stopWatch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span>
 
-           //整个SpringBoot应用启动完成以后返回启动的ioc容器
-           return context;
-        }
-        catch (Throwable ex) {
-            handleRunFailure(context, listeners, analyzers, ex);
-            throw new IllegalStateException(ex);
-        }
-    }
-</code></pre><h3 id="事件监听机制"><a href="#事件监听机制" class="headerlink" title="事件监听机制"></a>事件监听机制</h3><p>上面我们已经了解了SpringBoot的启动原理，重点是里面的几个监听器：</p>
+           <span class="token comment" spellcheck="true">//整个SpringBoot应用启动完成以后返回启动的ioc容器</span>
+           <span class="token keyword">return</span> context<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">handleRunFailure</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> analyzers<span class="token punctuation">,</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="事件监听机制"><a href="#事件监听机制" class="headerlink" title="事件监听机制"></a>事件监听机制</h3><p>上面我们已经了解了SpringBoot的启动原理，重点是里面的几个监听器：</p>
 <p>ApplicationContextInitializer、SpringApplicationRunListener、ApplicationRunner、CommandLineRunner</p>
 <p>现在，我们来自定义这几个监听器：</p>
-<p>在根目录包下，创建listener包，并创建这几个接口的实现类：<br><img src="/images/QQ截图20181112130130.png"></p>
+<p>在根目录包下，创建listener包，并创建这几个接口的实现类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112130130.png"></p>
 <p>ApplicationContextInitializer：</p>
-<pre><code>public class MyApplicationContextInitializer implements ApplicationContextInitializer&lt;ConfigurableApplicationContext&gt; {
-    @Override
-    public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-        System.out.println(&quot;MyApplicationContextInitializer---initialize&quot; + configurableApplicationContext);
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyApplicationContextInitializer</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextInitializer</span><span class="token operator">&lt;</span>ConfigurableApplicationContext<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">initialize</span><span class="token punctuation">(</span>ConfigurableApplicationContext configurableApplicationContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"MyApplicationContextInitializer---initialize"</span> <span class="token operator">+</span> configurableApplicationContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    }
-}
-</code></pre><p>SpringApplicationRunListener:</p>
-<pre><code>public class MySpringApplicationRunListener implements SpringApplicationRunListener {
-    @Override
-    public void starting() {
-        System.out.println(&quot;SpringApplicationRunListener...starting...&quot;);
-    }
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>SpringApplicationRunListener:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySpringApplicationRunListener</span> <span class="token keyword">implements</span> <span class="token class-name">SpringApplicationRunListener</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">starting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"SpringApplicationRunListener...starting..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void environmentPrepared(ConfigurableEnvironment environment) {
-        Object o = environment.getSystemProperties().get(&quot;os.name&quot;);
-        System.out.println(&quot;SpringApplicationRunListener...environmentPrepared..&quot; + o);
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">environmentPrepared</span><span class="token punctuation">(</span>ConfigurableEnvironment environment<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Object o <span class="token operator">=</span> environment<span class="token punctuation">.</span><span class="token function">getSystemProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"os.name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"SpringApplicationRunListener...environmentPrepared.."</span> <span class="token operator">+</span> o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void contextPrepared(ConfigurableApplicationContext context) {
-        System.out.println(&quot;SpringApplicationRunListener...contextPrepared...&quot;);
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextPrepared</span><span class="token punctuation">(</span>ConfigurableApplicationContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"SpringApplicationRunListener...contextPrepared..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void contextLoaded(ConfigurableApplicationContext context) {
-        System.out.println(&quot;SpringApplicationRunListener...contextLoaded...&quot;);
-    }
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">contextLoaded</span><span class="token punctuation">(</span>ConfigurableApplicationContext context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"SpringApplicationRunListener...contextLoaded..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    @Override
-    public void finished(ConfigurableApplicationContext context, Throwable exception) {
-        System.out.println(&quot;SpringApplicationRunListener...finished...&quot;);
-    }
-}
-</code></pre><p>ApplicationRunner:</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">finished</span><span class="token punctuation">(</span>ConfigurableApplicationContext context<span class="token punctuation">,</span> Throwable exception<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"SpringApplicationRunListener...finished..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>ApplicationRunner:</p>
 <pre><code>public class MyApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -619,205 +623,218 @@ SpringApplica">
     }
 }
 </code></pre><p>CommandLineRunner:</p>
-<pre><code>public class MyCommandLineRunner implements CommandLineRunner {
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println(&quot;CommandLineRunner...run...&quot; + Arrays.asList(args));
-    }
-}
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyCommandLineRunner</span> <span class="token keyword">implements</span> <span class="token class-name">CommandLineRunner</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"CommandLineRunner...run..."</span> <span class="token operator">+</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-</code></pre><hr>
+</code></pre>
+<hr>
 <p><strong>要想使以上的监听器起作用：</strong></p>
 <p>ApplicationContextInitializer 和 SpringApplicationRunListener需要<strong>配置在META-INF/spring.factories</strong></p>
-<p>在resources下：创建META-INF包，并创建spring.factories文件：<br><img src="/images/QQ截图20181112131010.png"></p>
+<p>在resources下：创建META-INF包，并创建spring.factories文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112131010.png"></p>
 <p>spring.factories文件：</p>
-<pre><code># Initializers
-org.springframework.context.ApplicationContextInitializer=\
-com.liuzhuo.springboot.listener.MyApplicationContextInitializer
+<pre class=" language-java"><code class="language-java"># Initializers
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>ApplicationContextInitializer<span class="token operator">=</span>\
+com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>springboot<span class="token punctuation">.</span>listener<span class="token punctuation">.</span>MyApplicationContextInitializer
 
 # SpringApplicationRunListene Listeners
-org.springframework.boot.SpringApplicationRunListener=\
-com.liuzhuo.springboot.listener.MySpringApplicationRunListener
-</code></pre><p>如果不会写，随便打开一个SpringBoot的jar包，打开一个META-INF/spring.factories，照着写就行了。</p>
-<p>ApplicationRunner 和 CommandLineRunner 只需要放到IOC容器中就行，即加上@Component即可。<br><img src="/images/QQ截图20181112131311.png"></p>
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplicationRunListener<span class="token operator">=</span>\
+com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>springboot<span class="token punctuation">.</span>listener<span class="token punctuation">.</span>MySpringApplicationRunListener
+</code></pre>
+<p>如果不会写，随便打开一个SpringBoot的jar包，打开一个META-INF/spring.factories，照着写就行了。</p>
+<p>ApplicationRunner 和 CommandLineRunner 只需要放到IOC容器中就行，即加上@Component即可。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112131311.png"></p>
 <hr>
-<p>启动SpringBoot应用：<br><img src="/images/QQ截图20181112131418.png"></p>
+<p>启动SpringBoot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112131418.png"></p>
 <p>出现异常：</p>
-<pre><code>MySpringApplicationRunListener.&lt;init&gt;(org.springframework.boot.SpringApplication, [Ljava.lang.String;)
-</code></pre><p>说明SpringApplicationRunListener，需要有一个有参的构造函数，第一个参数是SpringApplication，第二个是String类型。</p>
+<pre class=" language-java"><code class="language-java">MySpringApplicationRunListener<span class="token punctuation">.</span>&lt;init<span class="token operator">></span><span class="token punctuation">(</span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplication<span class="token punctuation">,</span> <span class="token punctuation">[</span>Ljava<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>说明SpringApplicationRunListener，需要有一个有参的构造函数，第一个参数是SpringApplication，第二个是String类型。</p>
 <p>不会写的话，随便打开一个SpringApplicationRunListener的实现类：</p>
-<p>双击：SpringApplicationRunListener，然后Ctrl + H ：<br><img src="/images/QQ截图20181112131719.png" style="width:50%"><br>点击：EventPublishingRunListener<br><img src="/images/QQ截图20181112131822.png"></p>
-<p>现在给我们的MySpringApplicationRunListener，添加有参的构造函数：<br><img src="/images/QQ截图20181112132043.png"></p>
-<p>再次启动SpringBoot应用：<br><img src="/images/QQ截图20181112132142.png"></p>
-<p><img src="/images/QQ截图20181112132207.png"></p>
-<p><img src="/images/QQ截图20181112132228.png"></p>
+<p>双击：SpringApplicationRunListener，然后Ctrl + H ：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112131719.png" style="width:50%"><br>点击：EventPublishingRunListener<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112131822.png"></p>
+<p>现在给我们的MySpringApplicationRunListener，添加有参的构造函数：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112132043.png"></p>
+<p>再次启动SpringBoot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112132142.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112132207.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112132228.png"></p>
 <h3 id="自定义starter"><a href="#自定义starter" class="headerlink" title="自定义starter"></a>自定义starter</h3><p>starter：</p>
 <p>1、这个场景需要使用到的依赖是什么？</p>
 <p>2、如何编写自动配置</p>
-<pre><code>@Configuration  //指定这个类是一个配置类
-@ConditionalOnXXX  //在指定条件成立的情况下自动配置类生效
-@AutoConfigureAfter  //指定自动配置类的顺序
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>  <span class="token comment" spellcheck="true">//指定这个类是一个配置类</span>
+<span class="token annotation punctuation">@ConditionalOnXXX</span>  <span class="token comment" spellcheck="true">//在指定条件成立的情况下自动配置类生效</span>
+<span class="token annotation punctuation">@AutoConfigureAfter</span>  <span class="token comment" spellcheck="true">//指定自动配置类的顺序</span>
 
-@Bean  //给容器中添加组件
-@ConfigurationPropertie结合相关xxxProperties类来绑定相关的配置
-@EnableConfigurationProperties //让xxxProperties生效加入到容器中
+<span class="token annotation punctuation">@Bean</span>  <span class="token comment" spellcheck="true">//给容器中添加组件</span>
+<span class="token annotation punctuation">@ConfigurationPropertie</span>结合相关xxxProperties类来绑定相关的配置
+<span class="token annotation punctuation">@EnableConfigurationProperties</span> <span class="token comment" spellcheck="true">//让xxxProperties生效加入到容器中</span>
 
 
 自动配置类要能加载
-将需要启动就加载的自动配置类，配置在META‐INF/spring.factories
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\
-org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\
-</code></pre><p>3、模式：</p>
+将需要启动就加载的自动配置类，配置在META‐INF<span class="token operator">/</span>spring<span class="token punctuation">.</span>factories
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>EnableAutoConfiguration<span class="token operator">=</span>\
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>admin<span class="token punctuation">.</span>SpringApplicationAdminJmxAutoConfiguration<span class="token punctuation">,</span>\
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>aop<span class="token punctuation">.</span>AopAutoConfiguration<span class="token punctuation">,</span>\
+</code></pre>
+<p>3、模式：</p>
 <p>启动器只用来做依赖导入；</p>
 <p>专门来写一个自动配置模块；</p>
 <p>启动器依赖自动配置；别人只需要引入启动器（starter）</p>
 <p>mybatis-spring-boot-starter；自定义启动器名-spring-boot-starter</p>
 <p>步骤：</p>
 <p>前提准备：</p>
-<p>创建一个空项目：<br><img src="/images/QQ截图20181112140556.png"><br><img src="/images/QQ截图20181112140721.png"></p>
-<p>添加我们的模块：<br><img src="/images/QQ截图20181112140815.png"></p>
+<p>创建一个空项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112140556.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112140721.png"></p>
+<p>添加我们的模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112140815.png"></p>
 <p>1) 创建启动器模块：</p>
-<p>选择Maven项目：<br><img src="/images/QQ截图20181112140952.png"><br><img src="/images/QQ截图20181112141139.png"><br><img src="/images/QQ截图20181112141310.png"><br><img src="/images/QQ截图20181112141356.png"></p>
-<p>2）创建自动配置模块<br><img src="/images/QQ截图20181112141500.png"></p>
-<p>选择Spring Initializr：（只是为了方便快速创建模块）<br><img src="/images/QQ截图20181112141625.png"><br><img src="/images/QQ截图20181112143117.png"><br>选择web模块：<br><img src="/images/QQ截图20181112143217.png"><br><img src="/images/QQ截图20181112143246.png"><br><img src="/images/QQ截图20181112143326.png"></p>
-<p>3）在启动器pom文件中，引入自动配置的依赖：<br><img src="/images/QQ截图20181112143647.png"></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+<p>选择Maven项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112140952.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112141139.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112141310.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112141356.png"></p>
+<p>2）创建自动配置模块<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112141500.png"></p>
+<p>选择Spring Initializr：（只是为了方便快速创建模块）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112141625.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143117.png"><br>选择web模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143217.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143246.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143326.png"></p>
+<p>3）在启动器pom文件中，引入自动配置的依赖：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143647.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>project xmlns<span class="token operator">=</span><span class="token string">"http://maven.apache.org/POM/4.0.0"</span>
+         xmlns<span class="token operator">:</span>xsi<span class="token operator">=</span><span class="token string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         xsi<span class="token operator">:</span>schemaLocation<span class="token operator">=</span><span class="token string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>modelVersion<span class="token operator">></span><span class="token number">4.0</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token operator">&lt;</span><span class="token operator">/</span>modelVersion<span class="token operator">></span>
 
-    &lt;groupId&gt;com.liuzhuo.spring&lt;/groupId&gt;
-    &lt;artifactId&gt;liuzhuo.spring.boot.starter&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>spring<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>liuzhuo<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+    <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.0</span><span class="token operator">-</span>SNAPSHOT<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
 
-    &lt;!--启动器--&gt;
-    &lt;dependencies&gt;
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>启动器<span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
 
-        &lt;!--引入自动配置模块--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.liuzhuo.starter&lt;/groupId&gt;
-            &lt;artifactId&gt;liuzhuo-spring-boot-starter-autoconfigure&lt;/artifactId&gt;
-            &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-        &lt;/dependency&gt;
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>引入自动配置模块<span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>liuzhuo<span class="token operator">-</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>autoconfigure<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">0.0</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token operator">-</span>SNAPSHOT<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 
-    &lt;/dependencies&gt;
+    <span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
 
 
-&lt;/project&gt;
-</code></pre><p>4) 编写自动配置模块：</p>
-<p>删除不需要的文件：<br><img src="/images/QQ截图20181112143924.png" style="width:50%"><br>pom文件：删除test的依赖 和 插件的依赖:</p>
-<pre><code>        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
+<span class="token operator">&lt;</span><span class="token operator">/</span>project<span class="token operator">></span>
+</code></pre>
+<p>4) 编写自动配置模块：</p>
+<p>删除不需要的文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112143924.png" style="width:50%"><br>pom文件：删除test的依赖 和 插件的依赖:</p>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>test<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>scope<span class="token operator">></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>scope<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-            &lt;/plugin&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;
-</code></pre><p>启动类也删除：<br>最终：<br><img src="/images/QQ截图20181112144248.png" style="width:50%"></p>
-<p>在starter包下：创建HelloService<br><img src="/images/QQ截图20181112144726.png"></p>
-<pre><code>public class HelloService {
+    <span class="token operator">&lt;</span>build<span class="token operator">></span>
+        <span class="token operator">&lt;</span>plugins<span class="token operator">></span>
+            <span class="token operator">&lt;</span>plugin<span class="token operator">></span>
+                <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+                <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>maven<span class="token operator">-</span>plugin<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>plugin<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>plugins<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>build<span class="token operator">></span>
+</code></pre>
+<p>启动类也删除：<br>最终：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112144248.png" style="width:50%"></p>
+<p>在starter包下：创建HelloService<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112144726.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloService</span> <span class="token punctuation">{</span>
 
-    HelloProperties helloProperties;
+    HelloProperties helloProperties<span class="token punctuation">;</span>
 
-    public HelloProperties getHelloProperties() {
-        return helloProperties;
-    }
+    <span class="token keyword">public</span> HelloProperties <span class="token function">getHelloProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> helloProperties<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void setHelloProperties(HelloProperties helloProperties) {
-        this.helloProperties = helloProperties;
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setHelloProperties</span><span class="token punctuation">(</span>HelloProperties helloProperties<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>helloProperties <span class="token operator">=</span> helloProperties<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public String sayHelloLiuzhuo(String name) {
-        return helloProperties.getPrefix() + &quot;-&quot; + name + &quot;-&quot; + helloProperties.getSuffix();
-    }
+    <span class="token keyword">public</span> String <span class="token function">sayHelloLiuzhuo</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> helloProperties<span class="token punctuation">.</span><span class="token function">getPrefix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"-"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"-"</span> <span class="token operator">+</span> helloProperties<span class="token punctuation">.</span><span class="token function">getSuffix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}
-</code></pre><p>在starter包下：创建HelloProperties:<br><img src="/images/QQ截图20181112144829.png"></p>
-<pre><code>@ConfigurationProperties(prefix = &quot;liuzhuo.hello&quot;)
-public class HelloProperties {
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在starter包下：创建HelloProperties:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112144829.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"liuzhuo.hello"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloProperties</span> <span class="token punctuation">{</span>
 
-    private String prefix;
-    private String suffix;
+    <span class="token keyword">private</span> String prefix<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String suffix<span class="token punctuation">;</span>
 
-    public String getPrefix() {
-        return prefix;
-    }
+    <span class="token keyword">public</span> String <span class="token function">getPrefix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> prefix<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-    }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setPrefix</span><span class="token punctuation">(</span>String prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>prefix <span class="token operator">=</span> prefix<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public String getSuffix() {
-        return suffix;
-    }
+    <span class="token keyword">public</span> String <span class="token function">getSuffix</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> suffix<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
-    }
-}
-</code></pre><p>在starter包下：创建HelloServiceAutoConfiguration:<br><img src="/images/QQ截图20181112145420.png"></p>
-<pre><code>@Configuration
-@ConditionalOnWebApplication    //web应用才生效
-@EnableConfigurationProperties(HelloProperties.class)
-public class HelloServiceAutoConfiguration {
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setSuffix</span><span class="token punctuation">(</span>String suffix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>suffix <span class="token operator">=</span> suffix<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在starter包下：创建HelloServiceAutoConfiguration:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112145420.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ConditionalOnWebApplication</span>    <span class="token comment" spellcheck="true">//web应用才生效</span>
+<span class="token annotation punctuation">@EnableConfigurationProperties</span><span class="token punctuation">(</span>HelloProperties<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServiceAutoConfiguration</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    private HelloProperties helloProperties;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> HelloProperties helloProperties<span class="token punctuation">;</span>
 
-    @Bean
-    public HelloService helloService() {
-        HelloService helloService = new HelloService();
-        helloService.setHelloProperties(helloProperties);
-        return helloService;
-    }
-}
-</code></pre><p>在resources下：创建META-INF/spring.factories文件<br><img src="/images/QQ截图20181112145629.png" style="width:50%"></p>
-<p>spring.factories：<br><img src="/images/QQ截图20181112145807.png"></p>
-<pre><code># Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.liuzhuo.starter.HelloServiceAutoConfiguration
-</code></pre><hr>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> HelloService <span class="token function">helloService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HelloService helloService <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HelloService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        helloService<span class="token punctuation">.</span><span class="token function">setHelloProperties</span><span class="token punctuation">(</span>helloProperties<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> helloService<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在resources下：创建META-INF/spring.factories文件<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112145629.png" style="width:50%"></p>
+<p>spring.factories：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112145807.png"></p>
+<pre class=" language-java"><code class="language-java"># Auto Configure
+org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>EnableAutoConfiguration<span class="token operator">=</span>\
+com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>starter<span class="token punctuation">.</span>HelloServiceAutoConfiguration
+</code></pre>
+<hr>
 <p>5) 将这两个模块，导入到本地maven仓库中：</p>
 <p>首先导入liuzhuo-spring-boot-starter-autoconfigure的依赖</p>
 <p>因为liuzhuo-spring-boot-starter依赖于liuzhuo-spring-boot-starter-autoconfigure。</p>
-<p>打开maven的工具窗口，点击liuzhuo-spring-boot-starter-autoconfigure模块，找到生命周期中的install。双击<br><img src="/images/QQ截图20181112150929.png"></p>
+<p>打开maven的工具窗口，点击liuzhuo-spring-boot-starter-autoconfigure模块，找到生命周期中的install。双击<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112150929.png"></p>
 <p>liuzhuo-spring-boot-starter的导入本地仓库，类似。</p>
-<p>6）创建新的SpringBoot的web项目，导入我们的liuzhuo-spring-boot-starter依赖，测试。<br><img src="/images/QQ截图20181112152031.png"></p>
-<p>导入：liuzhuo-spring-boot-starter依赖<br><img src="/images/QQ截图20181112152435.png"></p>
-<pre><code>        &lt;!--导入我们的启动依赖--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.liuzhuo.starter&lt;/groupId&gt;
-            &lt;artifactId&gt;liuzhuo.spring.boot.starter&lt;/artifactId&gt;
-            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre><p><img src="/images/QQ截图20181112152557.png" style="width:50%"></p>
-<p>创建：HelloController<br><img src="/images/QQ截图20181112152719.png"></p>
-<pre><code>@RestController
-public class HelloController {
+<p>6）创建新的SpringBoot的web项目，导入我们的liuzhuo-spring-boot-starter依赖，测试。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112152031.png"></p>
+<p>导入：liuzhuo-spring-boot-starter依赖<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112152435.png"></p>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>导入我们的启动依赖<span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>liuzhuo<span class="token punctuation">.</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>liuzhuo<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
+            <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.0</span><span class="token operator">-</span>SNAPSHOT<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
+</code></pre>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112152557.png" style="width:50%"></p>
+<p>创建：HelloController<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112152719.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
 
-    @Autowired
-    HelloService helloService;
+    <span class="token annotation punctuation">@Autowired</span>
+    HelloService helloService<span class="token punctuation">;</span>
 
-    @GetMapping(&quot;/hello&quot;)
-    public String hello(){
-        return helloService.sayHelloLiuzhuo(&quot;jackLoveDj&quot;);
-    }
-}
-</code></pre><p>在配置文件中：<br><img src="/images/QQ截图20181112153251.png"></p>
-<pre><code>liuzhuo.hello.prefix=欢迎
-liuzhuo.hello.suffix=到来
-</code></pre><p>启动我们的应用：<br><img src="/images/QQ截图20181112153346.png"></p>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/hello"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> helloService<span class="token punctuation">.</span><span class="token function">sayHelloLiuzhuo</span><span class="token punctuation">(</span><span class="token string">"jackLoveDj"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>在配置文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112153251.png"></p>
+<pre class=" language-java"><code class="language-java">liuzhuo<span class="token punctuation">.</span>hello<span class="token punctuation">.</span>prefix<span class="token operator">=</span>欢迎
+liuzhuo<span class="token punctuation">.</span>hello<span class="token punctuation">.</span>suffix<span class="token operator">=</span>到来
+</code></pre>
+<p>启动我们的应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112153346.png"></p>
 <p>没有报错，说明我们的自动配置成功了。</p>
-<p>在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="/images/QQ截图20181112153439.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day09/QQ截图20181112153439.png"></p>
 <hr>
 <h3 id="更多SpringBoot整合示例"><a href="#更多SpringBoot整合示例" class="headerlink" title="更多SpringBoot整合示例"></a>更多SpringBoot整合示例</h3><p><a href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples" target="_blank" rel="noopener">官方给出的样例代码</a></p>
 
@@ -1264,7 +1281,6 @@ liuzhuo.hello.suffix=到来
                     <div class="summary">
                       
                                 JSR-107、Spring缓存抽象、整合Redis
-JSR107Java Caching定义了5个核心接口，分别是CachingProvi
                       
                     </div>
                     <div class="publish-info">
@@ -1512,7 +1528,7 @@ JDBC(默认支持的数据源)1）创建新的Springboot项目，添加web模块
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

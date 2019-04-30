@@ -479,9 +479,9 @@ redis与mysql事务的对比
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习redis中的简单事务。<br><a id="more"></a></p>
+                <p>今天来学习redis中的简单事务。</p>
 <p>在Redis中只支持简单的事务。</p>
-<h2 id="redis与mysql事务的对比"><a href="#redis与mysql事务的对比" class="headerlink" title="redis与mysql事务的对比"></a>redis与mysql事务的对比</h2><p><img src="/images/QQ截图20181230170926.png"></p>
+<h2 id="redis与mysql事务的对比"><a href="#redis与mysql事务的对比" class="headerlink" title="redis与mysql事务的对比"></a>redis与mysql事务的对比</h2><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230170926.png"></p>
 <p>注: rollback与discard 的区别.</p>
 <p>如果已经成功执行了2条语句, 第3条语句出错.</p>
 <p>在mysql中，rollback后 , 前2条的语句影响消失.<br>在redis中，<font color="red"><strong>discard只是结束本次事务 , 前2条语句造成的影响仍然还在</strong></font></p>
@@ -586,13 +586,13 @@ OK
 <hr>
 <h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><p>我正在买票：ticket -1 , money -100 。<br>而票只有1张, 如果在我multi之后 , 和exec之前, 票被别人买了<code>---即ticket变成0了.</code><br>我该如何观察这种情景,并不再提交呢？</p>
 <p>1）首先开启两个redis客户端。</p>
-<p><img src="/images/QQ截图20181230202305.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230202305.png"></p>
 <p>2）在一个客户端中，设置ticket票数为1，lisi：300元，wangwu：300元，票价为200。</p>
-<p><img src="/images/QQ截图20181230202426.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230202426.png"></p>
 <p>3）在一个客户端中，执行multi，将票数减一，lisi减200元，但是不执行exec；在另一个客户端中，执行<br>multi，将票数减一，wangwu减200元，执行exec；在执行exec完成后，在第一个客户端中执行exec。</p>
-<p><strong>第一个客户端中：</strong><br><img src="/images/QQ截图20181230203003.png"></p>
-<p><strong>第二个客户端中：</strong><br><img src="/images/QQ截图20181230203230.png"></p>
-<p><strong>第一个客户端中：</strong><br><img src="/images/QQ截图20181230203517.png"></p>
+<p><strong>第一个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230203003.png"></p>
+<p><strong>第二个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230203230.png"></p>
+<p><strong>第一个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230203517.png"></p>
 <p>解决这种问题，通常有两种解决办法：</p>
 <p>悲观的想法：</p>
 <p>世界是充满危险的，肯定有人同时和我抢票，给ticket上锁，只有我能操作。[悲观锁]</p>
@@ -601,9 +601,9 @@ OK
 <font color="blue"><strong>Redis的事务中,启用的是乐观锁,只负责监测key没有被改动.</strong></font>
 
 <p>具体是使用watch命令。</p>
-<p><strong>第一个客户端中：</strong><br><img src="/images/QQ截图20181230204011.png"></p>
-<p><strong>第二个客户端中：</strong><br><img src="/images/QQ截图20181230204339.png"></p>
-<p><strong>第一个客户端中：</strong><br><img src="/images/QQ截图20181230204536.png"></p>
+<p><strong>第一个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230204011.png"></p>
+<p><strong>第二个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230204339.png"></p>
+<p><strong>第一个客户端中：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day04/QQ截图20181230204536.png"></p>
 <hr>
 <p>watch命令</p>
 <pre><code>WATCH key [key ...]
@@ -1054,9 +1054,7 @@ OK
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                这篇介绍redis中的发布与订阅的简单操作。
-命令介绍subscribesubscribe channel [channel ...]
-订阅
+                                redis中的发布与订阅
                       
                     </div>
                     <div class="publish-info">
@@ -1113,8 +1111,7 @@ OK
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来学习redis中的最后一个数据结构hash结构。
-redis中的hash的key-value，我一般称为field-value：域和值
+                                redis中的hash操作
                       
                     </div>
                     <div class="publish-info">
@@ -1304,7 +1301,7 @@ redis中的hash的key-value，我一般称为field-value：域和值
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -475,7 +475,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>考虑到绝大部分写业务的程序员，在实际开发中使用 Redis 的时候，只会 Set Value 和 Get Value 两个操作，对 Redis 整体缺乏一个认知。所以对 Redis 常见问题做一个总结，希望能够弥补大家的知识盲点。<br><a id="more"></a></p>
+                <p>考虑到绝大部分写业务的程序员，在实际开发中使用 Redis 的时候，只会 Set Value 和 Get Value 两个操作，对 Redis 整体缺乏一个认知。所以对 Redis 常见问题做一个总结，希望能够弥补大家的知识盲点。</p>
 <p>本文围绕以下几点进行阐述：</p>
 <ol>
 <li><p>为什么使用 Redis</p>
@@ -498,7 +498,7 @@
 <h2 id="为什么使用-Redis"><a href="#为什么使用-Redis" class="headerlink" title="为什么使用 Redis"></a>为什么使用 Redis</h2><p>我觉得在项目中使用 Redis，主要是从两个角度去考虑：性能和并发。</p>
 <p>当然，Redis 还具备可以做分布式锁等其他功能，但是如果只是为了分布式锁这些其他功能，完全还有其他中间件，如 ZooKpeer 等代替，并不是非要使用 Redis。因此，这个问题主要从性能和并发两个角度去答。</p>
 <h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>如下图所示，我们在碰到需要执行耗时特别久，且结果不频繁变动的 SQL，就特别适合将运行结果放入缓存。这样，后面的请求就去缓存中读取，使得请求能够迅速响应。</p>
-<p><img src="/images/QQ截图20190108225346.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day15/QQ截图20190108225346.png"></p>
 <p><strong>题外话：</strong>忽然想聊一下这个迅速响应的标准。根据交互效果的不同，这个响应时间没有固定标准。</p>
 <p><strong>不过曾经有人这么告诉我：</strong>“在理想状态下，我们的页面跳转需要在瞬间解决，对于页内操作则需要在刹那间解决。</p>
 <p>另外，超过一弹指的耗时操作要有进度提示，并且可以随时中止或取消，这样才能给用户最好的体验。”</p>
@@ -509,7 +509,7 @@
 </code></pre><p>那么，经过周密的计算，一瞬间为 0.36 秒、一刹那有 0.018 秒、一弹指长达 7.2 秒。</p>
 <h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>如下图所示，在大并发的情况下，所有的请求直接访问数据库，数据库会出现连接异常。</p>
 <p>这个时候，就需要使用 Redis 做一个缓冲操作，让请求先访问到 Redis，而不是直接访问数据库。</p>
-<p><img src="/images/QQ截图20190108225619.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day15/QQ截图20190108225619.png"></p>
 <h2 id="使用-Redis-有什么缺点"><a href="#使用-Redis-有什么缺点" class="headerlink" title="使用 Redis 有什么缺点"></a>使用 Redis 有什么缺点</h2><p>大家用 Redis 这么久，这个问题是必须要了解的，基本上使用 Redis 都会碰到一些问题，常见的也就几个。</p>
 <p><strong><code>回答主要是四个问题：</code></strong></p>
 <p>1.缓存和数据库双写一致性问题</p>
@@ -522,7 +522,7 @@
 <p>1.纯内存操作</p>
 <p>2.单线程操作，避免了频繁的上下文切换</p>
 <p>3.采用了非阻塞 I/O 多路复用机制</p>
-<p>下面类比到真实的 Redis 线程模型，如图所示：<br><img src="/images/QQ截图20190108230004.png"></p>
+<p>下面类比到真实的 Redis 线程模型，如图所示：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day15/QQ截图20190108230004.png"></p>
 <p>简单来说，就是我们的 redis-client 在操作的时候，会产生具有不同事件类型的 Socket。</p>
 <p>在服务端，有一段 I/O 多路复用程序，将其置入队列之中。然后，文件事件分派器，依次去队列中取，转发到不同的事件处理器中。</p>
 <p>需要说明的是，这个 I/O 多路复用机制，Redis 还提供了 select、epoll、evport、kqueue 等多路复用函数库，大家可以自行去了解。</p>
@@ -1038,8 +1038,7 @@ volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期�
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天开始学习Docker的基础篇章的学习。
-前提知识：首先，确定大家是已经学习过linux和git的相关知识的，如果大家不了解的话，请看我的
+                                Docker的简单介绍
                       
                     </div>
                     <div class="publish-info">
@@ -1096,7 +1095,7 @@ volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期�
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                我在之前总结幂等性的时候，写过一种分布式锁的实现，可惜当时没有真正应用过，着实的心虚啊。正好这段时间对这部分实践了一下，也算是对之前填坑了。
+                                利用Redis实现分布式锁
                       
                     </div>
                     <div class="publish-info">
@@ -1286,7 +1285,7 @@ volatile-ttl：当内存不足以容纳新写入数据时，在设置了过期�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

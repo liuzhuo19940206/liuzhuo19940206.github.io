@@ -8,8 +8,8 @@
     <meta name="keywords" content="spring_annotation_day_02, 解忧杂货店">
     <meta name="description" content="Spring注解开发  
 今天，学习包扫描的功能。
-接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。
-接下来，我们看看包扫描怎么配置">
+接着day01天的内容，我们知道怎么使用java类来配置并初始化容器了，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。
+接下来，我们看看包扫描怎">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -471,8 +471,8 @@
             <div id="articleContent">
                 <p><strong>Spring注解开发</strong>  </p>
 <p>今天，学习包扫描的功能。<br><a id="more"></a></p>
-<p>接着day01天的内容，我们知道怎么使用java配置来初始化容器，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。</p>
-<p>接下来，我们看看包扫描怎么配置，因为我们不可能给每个类都配置，那样太花时间和精力，所以我们需要包扫描的配置，来自动帮我们把需要的bean对象注入到容器中。</p>
+<p>接着day01天的内容，我们知道怎么使用java类来配置并初始化容器了，使用@Configuration注解来标记一个java类就等同于了bean.xml文件了。</p>
+<p>接下来，我们看看包扫描怎么配置，因为我们不可能给每个类都使用@Bean来配置，那样太花时间和精力，所以我们需要包扫描的配置，来自动帮我们把需要的bean对象注入到容器中。</p>
 <h3 id="一：xml版的包扫描"><a href="#一：xml版的包扫描" class="headerlink" title="一：xml版的包扫描"></a>一：xml版的包扫描</h3><hr>
 <p>注意：这里在Bean.xml文件中需要配置命名空间,加上context的命名空间.</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>beans xmlns<span class="token operator">=</span><span class="token string">"http://www.springframework.org/schema/beans"</span>
@@ -484,13 +484,13 @@
          http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context
          http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>org<span class="token operator">/</span>schema<span class="token operator">/</span>context<span class="token operator">/</span>spring<span class="token operator">-</span>context<span class="token punctuation">.</span>xsd"<span class="token operator">></span>
 </code></pre>
-<p>主要加入了xmlns:context=····和xsi:中的两个context(看结尾).</p>
+<p>主要加入了xmlns:context=···· 和 xsi: 中的两个context (看结尾) .</p>
 <p>bean.xml配置文件加入了：</p>
 <pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>包扫描、只要标注了<span class="token annotation punctuation">@Controller</span>、<span class="token annotation punctuation">@Service</span>、<span class="token annotation punctuation">@Repository</span>、<span class="token annotation punctuation">@Component</span>都会自动注入到容器中<span class="token operator">--</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> base<span class="token operator">-</span><span class="token keyword">package</span>包名，在该包下的子包也会被扫描<span class="token operator">--</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>context<span class="token operator">:</span>component<span class="token operator">-</span>scan base<span class="token operator">-</span><span class="token keyword">package</span><span class="token operator">=</span><span class="token string">"com.liuzhuo"</span><span class="token operator">/</span><span class="token operator">></span>
 </code></pre>
-<p>现在将bean.xml中的person配置注解掉。</p>
+<p>现在将bean.xml中的person配置添加注释，让其失效。</p>
 <pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>以前的开发模式，使用配置文件<span class="token operator">--</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span><span class="token operator">&lt;</span>bean id<span class="token operator">=</span><span class="token string">"person"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"com.liuzhuo.bean.Person"</span><span class="token operator">></span>
         <span class="token operator">&lt;</span>property name<span class="token operator">=</span><span class="token string">"name"</span> value<span class="token operator">=</span><span class="token string">"zhangsan"</span><span class="token operator">/</span><span class="token operator">></span>
@@ -521,7 +521,7 @@
     <span class="token punctuation">}</span>
 </code></pre>
 <p>创建<code>com.liuzhuo.controller</code>、<code>com.liuzhuo.service</code>、<code>com.liuzhuo.dao包</code><br>并创建相应的java类，BookController，BookService，BookDao。如下：</p>
-<p><img src="http://pp4rmtx78.bkt.clouddn.com/20181013170247.png" style="width:50%;">  </p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day02/20181013170247.png" style="width:50%;">  </p>
 <p>并在相应的类上面标注相应的注解。</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BookController</span> <span class="token punctuation">{</span>
@@ -581,7 +581,7 @@ person01
 </code></pre>
 <p>value这个字段，说明是一个字符串类型的数组。说明value值，我们可以填写多个值，数组的话，用大花括号来表示: <code>{ }</code> 。每个值用逗号:   <code>，</code> 来隔开。</p>
 <p>ps:提一个小技巧，在idea中，Alt+7可以查看这个类中所有的字段和方法。</p>
-<p>我们可以看到其中有一个includeFilters()的字段。<br><img src="http://pp4rmtx78.bkt.clouddn.com/20181013173018.png" style="width:50%"></p>
+<p>我们可以看到其中有一个includeFilters()的字段。<br><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day02/20181013173018.png" style="width:50%"></p>
 <p>ComponentScan.Filter[]  includeFilters()  default {};</p>
 <p>看到includeFilters也是一个数组，类型是ComponentScan的内部类Filter。<br>点击Filter，发现也是一个注解.</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
@@ -1447,7 +1447,7 @@ person01
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

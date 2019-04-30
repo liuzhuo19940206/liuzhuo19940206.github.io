@@ -561,7 +561,7 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
             &lt;/mvc:interceptor&gt;
     &lt;/mvc:interceptors&gt;
 </code></pre><p>那么现在呢？</p>
-<font color="#FF3E96">编写一个配置类（@Configuration），是WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc;</font>
+<font color="#FF3E96">编写一个配置类（@Configuration），继承WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc;</font>
 
 <p>既保留了所有的Springboot自动配置，也能用我们扩展的配置；</p>
 <p>在我们的昨天的项目中，在com.liuzhuo.springboot包下，创建config包，并且创建Myconfig类：</p>
@@ -577,9 +577,9 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>然后在resources下的templates中：创建sucess.html文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106141537.png"></p>
+<p>然后在resources下的templates中：创建sucess.html文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106141537.png"></p>
 <p>启动Springboot应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/liuzhuo</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106141651.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/liuzhuo</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106141651.png"></p>
 <p>说明：我们自己配置的映射url成功。</p>
 <p>此时，我们不仅可以使用Springboot的默认Web的配置，还能使用自己额外添加的控制器映射。</p>
 <hr>
@@ -637,7 +637,7 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106143304.png"></p>
+<p>直接启动我们的应用：<br>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106143304.png"></p>
 <p>默认的静态主页失效了。去掉@EnableWebMvc，静态主页映射就会成功。</p>
 <p>静态主页映射：META-INF/resources、resourcs、static、public下的 index.html 都会映射：/**</p>
 <hr>
@@ -696,15 +696,15 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <p>2）、在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置</p>
 <p>3）、在SpringBoot中会有很多的xxxCustomizer帮助我们进行定制配置</p>
 <h2 id="CRUD-restful实战"><a href="#CRUD-restful实战" class="headerlink" title="CRUD-restful实战"></a>CRUD-restful实战</h2><p><a href="https://pan.baidu.com/s/1_H3h5Vsw47R30mjldS68bA" target="_blank" rel="noopener">下载资料</a></p>
-<p>下载完毕后。找到文档中的restful-crud-实验<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150457.png"></p>
-<h3 id="默认访问首页"><a href="#默认访问首页" class="headerlink" title="默认访问首页"></a>默认访问首页</h3><p>1）首先将目录下的静态页面，xxx.html导入到我们的项目中的template目录下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150713.png" style="width:50%"></p>
-<p>2）asserts目录放到static目录下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106150756.png" style="width:50%"></p>
-<p>3) 将dao、entities放到com.liuzhuo.springboot包下：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151100.png" style="width:50%"></p>
+<p>下载完毕后。找到文档中的restful-crud-实验<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106150457.png"></p>
+<h3 id="默认访问首页"><a href="#默认访问首页" class="headerlink" title="默认访问首页"></a>默认访问首页</h3><p>1）首先将目录下的静态页面，xxx.html导入到我们的项目中的template目录下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106150713.png" style="width:50%"></p>
+<p>2）asserts目录放到static目录下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106150756.png" style="width:50%"></p>
+<p>3) 将dao、entities放到com.liuzhuo.springboot包下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106151100.png" style="width:50%"></p>
 <p>然后点击DepartmentDao、EmployeeDao，重写导入我们的Department、Employee的包名。</p>
 <hr>
 <p>4）启动应用：</p>
-<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151352.png"></p>
-<p>发现出现的页面是：static下的index.html页面，而不是template下的index.html页面。<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106151609.png" style="width:50%"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106151352.png"></p>
+<p>发现出现的页面是：static下的index.html页面，而不是template下的index.html页面。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106151609.png" style="width:50%"></p>
 <p>因为静态主页会加载：META-INF/resources、resourcs、static、public下的 index.html</p>
 <p>此时，我们不必要重新映射我们的主页，在我们的config下的Myconfig配置中：</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
@@ -725,11 +725,11 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <p>然后，将templates下的index.html 改为 login.html</p>
 <p>重新启动应用：</p>
 <p>在浏览器中输入：<br><code>http://localhost:8080/</code><br><code>http://localhost:8080/login.html</code><br><code>http://localhost:8080/index.html</code></p>
-<p>都是以下的页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106152941.png"></p>
+<p>都是以下的页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106152941.png"></p>
 <p>5）因为我们使用 <strong>thymeleaf</strong>，所以需要在每个页面头部添加命名空间：</p>
 <p>   <code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code></p>
 <pre><code>&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot; &gt;
-</code></pre><p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106153622.png"></p>
+</code></pre><p>6) 在我们的静态页面中使用了bootstrap，所以需要bootstrap的webjar：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106153622.png"></p>
 <pre><code>        &lt;!--bootstrap的jar包--&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;org.webjars&lt;/groupId&gt;
@@ -744,9 +744,9 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <p>使用thymeleaf的th:href=”@{}”的好处：当我们给项目添加根目录时，也能自动帮我们添加上跟目录。</p>
 <p>在application.properties中：</p>
 <pre><code>server.context-path=/curd
-</code></pre><p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154552.png"></p>
-<p>输入：<code>http://localhost:8080/curd</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154631.png"></p>
-<p>右键审查元素：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106154730.png"></p>
+</code></pre><p>启动应用：<br>浏览器中输入：<code>http://localhost:8080/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106154552.png"></p>
+<p>输入：<code>http://localhost:8080/curd</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106154631.png"></p>
+<p>右键审查元素：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106154730.png"></p>
 <p><strong>能看到：link 中 href：自动帮我们添加上了curd的根目录</strong></p>
 <p>7）修改我们的css配置路径：</p>
 <p>在login.html中：<br>th:href=”@{/asserts/css/signin.css}”</p>
@@ -762,18 +762,18 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <p>1） 编写国际化配置文件，抽取页面需要显示的国际化消息</p>
 <p>在resources下创建i18n文件来放置我们的国际化的配置文件。（国际化文件只能是properties）</p>
 <p>然后创建login.properties（默认的国际化配置）、login_en_US.properties。</p>
-<p>idea会帮我们自动生成 Resource Bundle ‘login’ 文件夹：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106161921.png" style="width:50%"></p>
-<p>然后，我们在 Resource Bundle ‘login’ 上面右键：new<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162042.png"></p>
-<p>点击加号：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162131.png" style="width:50%"></p>
-<p>填写: 语言_国家（en_US）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162648.png" style="width:50%"></p>
-<p>最后生成的效果：有三个国家化的配置文件：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106162810.png" style="width:50%"></p>
+<p>idea会帮我们自动生成 Resource Bundle ‘login’ 文件夹：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106161921.png" style="width:50%"></p>
+<p>然后，我们在 Resource Bundle ‘login’ 上面右键：new<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106162042.png"></p>
+<p>点击加号：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106162131.png" style="width:50%"></p>
+<p>填写: 语言_国家（en_US）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106162648.png" style="width:50%"></p>
+<p>最后生成的效果：有三个国家化的配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106162810.png" style="width:50%"></p>
 <p>填写我们需要国际化的部分：</p>
 <p>观察login页面，发现，我们需要五次国家化的部分。</p>
 <p>login.tip (登入的标题)<br>login.username （用户名）<br>login.password （密码）<br>login.remembear （记住密码）<br>login.bt （登入按钮）</p>
-<p>然后，随便点击一个国家化文件。在下角处切换视图：<strong>Resource Bund</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163314.png"></p>
-<p>点击在该视图模式下的，左上角的加号：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163455.png"></p>
-<p>填写key：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106163605.png"></p>
-<p>填写value：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106165518.png"></p>
+<p>然后，随便点击一个国家化文件。在下角处切换视图：<strong>Resource Bund</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106163314.png"></p>
+<p>点击在该视图模式下的，左上角的加号：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106163455.png"></p>
+<p>填写key：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106163605.png"></p>
+<p>填写value：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106165518.png"></p>
 <p>依次类推：把<br>login.username （用户名）<br>login.password （密码）<br>login.remembear （记住密码）<br>login.bt （登入按钮）</p>
 <p>添加上。</p>
 <hr>
@@ -813,10 +813,10 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 </code></pre>
 <p>i18n文件夹，login是文件的名字。</p>
 <p>3）修改login.html中的需要国际化的部分</p>
-<p>我们从thymeleaf的官方文档中，看到了如果使用国际化的话，使用 <strong>#{}</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106171830.png"></p>
-<p>4）启动应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172121.png"></p>
-<p>切换我们的地域语言：打开浏览器的设置（我使用的谷歌浏览器）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172353.png"></p>
-<p>刷新浏览器：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106172433.png"></p>
+<p>我们从thymeleaf的官方文档中，看到了如果使用国际化的话，使用 <strong>#{}</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106171830.png"></p>
+<p>4）启动应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106172121.png"></p>
+<p>切换我们的地域语言：打开浏览器的设置（我使用的谷歌浏览器）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106172353.png"></p>
+<p>刷新浏览器：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106172433.png"></p>
 <p>以上为止，我们的国际化就搞定成功了。</p>
 <p>效果：根据浏览器语言设置的信息切换了国际化。</p>
 <hr>
@@ -838,10 +838,10 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 </code></pre>
 <p>通过此类：我们能发现，Springboot给我们配置的默认的国家化Locale的是一个AcceptHeaderLocaleResolver。</p>
 <p>AcceptHeaderLocaleResolver：是通过每次请求时，在请求头在获取请求的语言来进行国际化识别的。</p>
-<p>启动我们的应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174300.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174349.png" style="width:50%"></p>
+<p>启动我们的应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106174300.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106174349.png" style="width:50%"></p>
 <p>我们发现了Accept-Language：<strong>zh-CN.</strong></p>
-<p>修改我们的浏览器的语言：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174539.png"></p>
-<p>再次访问我们的登入页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106174658.png" style="width:50%"><br>我们发现了Accept-Language：en-US.</p>
+<p>修改我们的浏览器的语言：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106174539.png"></p>
+<p>再次访问我们的登入页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106174658.png" style="width:50%"><br>我们发现了Accept-Language：en-US.</p>
 <p>这就是Springboot的默认的国际化原理。</p>
 <hr>
 <p>我们想要自己自定义国际化配置，该怎么办呢？</p>
@@ -850,7 +850,7 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <p>所以，我们只需要向容器中，添加我们的localeResolver即可，默认的localeResolver就会失效。</p>
 <hr>
 <p>1）在component包下：创建MyLocaleResolver类(实现LocaleResolver)：</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106175524.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106175524.png"></p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyLocaleResolver</span> <span class="token keyword">implements</span> <span class="token class-name">LocaleResolver</span> <span class="token punctuation">{</span>
 
 
@@ -884,10 +884,10 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MyLocaleResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>3）修改login.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180204.png"></p>
+<p>3）修改login.html页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106180204.png"></p>
 <p>4）启动应用：</p>
-<p>点击底下的：中文<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180248.png"></p>
-<p>点击底下的：English<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106180353.png"></p>
+<p>点击底下的：中文<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106180248.png"></p>
+<p>点击底下的：English<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106180353.png"></p>
 <p>我们自定义的国际化解析器成功！</p>
 <hr>
 <p><strong>发现：在此时，不管我们将浏览器中的语言设置什么，我们的默认登入都是中文的</strong></p>
@@ -922,10 +922,10 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <span class="token punctuation">}</span>
 </code></pre>
 <p>3) 启动项目：</p>
-<p>输入用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213523.png"></p>
-<p>报错了：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213554.png"></p>
-<p>原来是我们的login.html页面，没有给username和password添加name属性！<br>现在添加上：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213732.png"></p>
-<p>重启项目，并添加正确的用户名和密码（admin，123456）<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106213924.png"></p>
+<p>输入用户名和密码<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106213523.png"></p>
+<p>报错了：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106213554.png"></p>
+<p>原来是我们的login.html页面，没有给username和password添加name属性！<br>现在添加上：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106213732.png"></p>
+<p>重启项目，并添加正确的用户名和密码（admin，123456）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106213924.png"></p>
 <p><strong>注意：</strong></p>
 <p>1）此时有可能还是刚刚的错误，因为thymeleaf默认是开启缓存功能的，所以我们开发的时候，要记住关闭缓存的功能<br>在配置文件中：</p>
 <pre class=" language-java"><code class="language-java">spring<span class="token punctuation">.</span>thymeleaf<span class="token punctuation">.</span>cache<span class="token operator">=</span><span class="token boolean">false</span>
@@ -935,21 +935,21 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
 <hr>
 <p>现在，我们输入错误的用户名和密码：不会出现错误的信息。</p>
 <p>怎么添加错误的信息在页面上呢？</p>
-<p>给login.html页面添加一个</p><p>标签<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106214738.png"></p>
+<p>给login.html页面添加一个</p><p>标签<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106214738.png"></p>
 <p>当msg不为空时，才会出现错误的<code>&lt;p&gt;标签。</code></p>
-<p>重启项目：输入错误的用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106214945.png"></p>
-<p>现在错误提示也完成了，再次输入正确的用户名和密码，<strong>现在一不小心按了F5，刷新了页面</strong><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215200.png"></p>
+<p>重启项目：输入错误的用户名和密码<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106214945.png"></p>
+<p>现在错误提示也完成了，再次输入正确的用户名和密码，<strong>现在一不小心按了F5，刷新了页面</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106215200.png"></p>
 <p>发现出现了是否重新提交表单的情况，因为我们的后端是<strong>转发</strong>到登入成功页面的，地址栏还是之前的登入页面的地址，所以刷新会出现这种情况。</p>
 <p>现在修改后端的代码，将其改为<strong>重定向。</strong></p>
-<p>在LoginController中：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215826.png"><br>在Myconfig中：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181106215831.png"></p>
-<p>重启我们的应用：输入正确的用户名和密码<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107095619.png"></p>
+<p>在LoginController中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106215826.png"><br>在Myconfig中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181106215831.png"></p>
+<p>重启我们的应用：输入正确的用户名和密码<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107095619.png"></p>
 <p>什么？404？main.html没有找到？why？</p>
 <p>当我们看到地址栏时，发现我们重定向时：是在/user下重定向的，所以找不到main.html。</p>
 <p><strong>所以，在控制器Controller中：<code>return &quot;redirect:main.html&quot;;</code> main的前面不加<code>/</code>的话<br>会在@PostMapping(value = “/user/login”)中去掉最后一个路径下重定向，即在/user下重定向。<br>如果是@PostMapping(value = “/user/liuzhuo/login”)的话，就在/user/liuzhuo下重定向。</strong></p>
 <p>怎样在我们的根路径下重定向呢？即在我们的<code>/crud</code>根路径下重定向。只需在main的前面加<code>/</code>即可：<br><code>return &quot;redirect:/main.html&quot;;</code></p>
-<p>修改完毕后，重启我们的应用：输入正确的用户名和密码：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107100653.png"></p>
+<p>修改完毕后，重启我们的应用：输入正确的用户名和密码：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107100653.png"></p>
 <p>发现样式也正确了。因为是重定向而来的。<strong>此时刷新页面，也不会重发请求了。</strong></p>
-<h3 id="拦截器进行登陆检查"><a href="#拦截器进行登陆检查" class="headerlink" title="拦截器进行登陆检查"></a>拦截器进行登陆检查</h3><p>此时，我们在另一个浏览器中：直接输入<code>http://localhost:8080/curd/main.html</code>.<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107101109.png"></p>
+<h3 id="拦截器进行登陆检查"><a href="#拦截器进行登陆检查" class="headerlink" title="拦截器进行登陆检查"></a>拦截器进行登陆检查</h3><p>此时，我们在另一个浏览器中：直接输入<code>http://localhost:8080/curd/main.html</code>.<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107101109.png"></p>
 <p>发现，没有登入就直接进来了，这是因为<strong>没有加拦截器</strong>的缘故。</p>
 <p>1）在component包下：创建 <strong>LoginHandleInterceptor </strong>：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginHandleInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">{</span>
@@ -1006,15 +1006,15 @@ If you want to take complete control of Spring MVC, you can add your own  @Confi
             <span class="token keyword">return</span> <span class="token string">"redirect:/main.html"</span><span class="token punctuation">;</span>
 </code></pre>
 <p>4) 重启我们的应用。</p>
-<p>在谷歌浏览器中，成功登入成功后，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107103005.png"></p>
+<p>在谷歌浏览器中，成功登入成功后，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107103005.png"></p>
 <p>发现，可以直接直接访问，因为已经成功登入过了，在session中已经保存了我们的用户信息。</p>
-<p>在另外的浏览器中，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107103240.png"></p>
+<p>在另外的浏览器中，直接输入：<code>http://localhost:8080/curd/main.html</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107103240.png"></p>
 <p>会转发到我们的登入页面，因为是转发，所以地址栏不变。</p>
 <hr>
 <h3 id="CRUD-员工列表"><a href="#CRUD-员工列表" class="headerlink" title="CRUD-员工列表"></a>CRUD-员工列表</h3><p>实验要求：</p>
 <p>1) RestfulCRUD：CRUD满足Rest风格</p>
-<p>URI： /资源名称/资源标识 　HTTP请求方式区分对资源CRUD操作<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107114154.png"></p>
-<p>2) 实验的请求架构<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107114230.png"></p>
+<p>URI： /资源名称/资源标识 　HTTP请求方式区分对资源CRUD操作<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107114154.png"></p>
+<p>2) 实验的请求架构<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107114230.png"></p>
 <p>3) 员工列表：</p>
 <p><strong>thymeleaf公共页面元素抽取</strong></p>
 <pre><code>1、抽取公共片段
@@ -1067,7 +1067,7 @@ insert的公共片段在div标签中
 &lt;/div&gt;
 
 </code></pre><p>1) 将登入成功后的dashboard.html页面中的顶部和左边的侧单栏抽取出来：</p>
-<p>在templates下：创建page文件夹，并创建两个html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107154114.png" style="width:50%"></p>
+<p>在templates下：创建page文件夹，并创建两个html页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107154114.png" style="width:50%"></p>
 <p>top.html页面：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
@@ -1091,17 +1091,17 @@ insert的公共片段在div标签中
 &lt;/html&gt;
 </code></pre><p>主要是其中的<code>&lt;nav&gt;&lt;/nav&gt;</code>片段，这个片段是dashboard.html中的顶部的片段复制过来的。</p>
 <p>其中主要是在<code>&lt;nav&gt;</code>中加入了<strong>th:fragment=”top”</strong>属性</p>
-<p>slide.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107154633.png"></p>
+<p>slide.html页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107154633.png"></p>
 <p>其中的<code>&lt;nav&gt;</code>片段：是dashboard.html中的左边的侧单栏的部分复制过来的。</p>
 <p>其中，主要加入了：<strong>id：slide</strong> 的属性。</p>
-<p>2）修改dashboard.html页面的顶部与左边部分：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155129.png"></p>
+<p>2）修改dashboard.html页面的顶部与左边部分：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107155129.png"></p>
 <p>3）启动应用，运行发现顶部与左部运行完好。</p>
 <hr>
 <p>现在，我们开始完成员工信息的部分；即：左单栏的Customer部分。</p>
-<p>1）将templates下的list.html页面放到empl目录下，这样分文件夹管理更加合理<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155615.png" style="width:50%"></p>
+<p>1）将templates下的list.html页面放到empl目录下，这样分文件夹管理更加合理<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107155615.png" style="width:50%"></p>
 <p>2）修改dashboard.html中的Customer部分的action属性：<br>因为左部已经抽取到slide.html页面，所以到slide.html页面中修改：</p>
-<p>修改之前：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107155857.png"></p>
-<p>修改之后：将Customer改为员工信息，修改a标签的href<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160209.png"></p>
+<p>修改之前：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107155857.png"></p>
+<p>修改之后：将Customer改为员工信息，修改a标签的href<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107160209.png"></p>
 <p>3）controller包下，创建EmployeeController：</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmployeeController</span> <span class="token punctuation">{</span>
@@ -1117,28 +1117,28 @@ insert的公共片段在div标签中
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>4) 启动应用<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160734.png"></p>
+<p>4) 启动应用<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107160734.png"></p>
 <p>点击：员工信息</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107160813.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107160813.png"></p>
 <p>此时员工信息里面还是Customer，因为没有抽取出公共部分。</p>
 <p>修改list.html的顶部与左部，与dashboard.html类似。自己完成。</p>
-<p>完成后的效果：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107161524.png"></p>
+<p>完成后的效果：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107161524.png"></p>
 <p>但是，我们发现此时<strong>左部的高亮部分还是Dashboard</strong></p>
 <p>5）怎么修改高亮为员工信息呢？</p>
 <p>thymeleaf模板引擎中，查看官方文档，发现可以有参数化的片段布局：8.2 Parameterizable fragment signatures<br><a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#parameterizable-fragment-signatures" target="_blank" rel="noopener">官方参考</a></p>
 <p>引入片段的时候传入参数：</p>
 <p><code>&lt;div th:replace=&quot;commons/bar::#sidebar(activeUri=&#39;emps&#39;)&quot;&gt;&lt;/div&gt;</code></p>
 <p>即：就是在我们引入的同时，在后面加一个括号，里面填写：key=value。</p>
-<p>修改dashboard.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164137.png"></p>
-<p>修改list.html页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164221.png"></p>
+<p>修改dashboard.html页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164137.png"></p>
+<p>修改list.html页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164221.png"></p>
 <p>修改slide.html页面：</p>
-<p>在Dashboard处：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164336.png"></p>
-<p>在员工信息处：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164425.png"></p>
+<p>在Dashboard处：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164336.png"></p>
+<p>在员工信息处：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164425.png"></p>
 <p>重启我们的应用：</p>
 <p>点击Dashboard，Dashboard高亮。</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164640.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164640.png"></p>
 <p>点击员工信息，员工信息高亮。</p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107164704.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107164704.png"></p>
 <hr>
 <p>6）将员工信息换成我们的后端传递过来的数据：</p>
 <p>在list页面中：</p>
@@ -1175,9 +1175,9 @@ insert的公共片段在div标签中
             <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
         <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">></span>
 </code></pre>
-<p>ctrl+F9:<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107170503.png"></p>
+<p>ctrl+F9:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107170503.png"></p>
 <h3 id="员工列表的添加"><a href="#员工列表的添加" class="headerlink" title="员工列表的添加"></a>员工列表的添加</h3><p>首先将员工信息的url换成 <strong>/empls </strong>:代表获取所有的员工信息，而 <strong>/empl </strong>：代表添加员工的信息。</p>
-<p>1.将员工添加的按钮换成a标签：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107172030.png"></p>
+<p>1.将员工添加的按钮换成a标签：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107172030.png"></p>
 <p>2.在EmployeeController中：</p>
 <pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@Autowired</span>
     <span class="token keyword">private</span> DepartmentDao departmentDao<span class="token punctuation">;</span>
@@ -1240,7 +1240,7 @@ insert的公共片段在div标签中
 
         &lt;/main&gt;
 
-</code></pre><p>4.重启应用：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107174348.png"></p>
+</code></pre><p>4.重启应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107174348.png"></p>
 <p>5.此时的department部分还是死数据：</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"form‐group"</span><span class="token operator">></span>
      <span class="token operator">&lt;</span>label<span class="token operator">></span>department<span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">></span>
@@ -1249,7 +1249,7 @@ insert的公共片段在div标签中
      <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 </code></pre>
-<p>刷新页面：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107174754.png"></p>
+<p>刷新页面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107174754.png"></p>
 <p>6.给form表单添加action和method属性：</p>
 <pre><code> &lt;form th:action=&quot;@{/empl}&quot; method=&quot;post&quot;&gt;
 </code></pre><p>7.书写添加员工的控制器</p>
@@ -1264,7 +1264,7 @@ insert的公共片段在div标签中
         <span class="token keyword">return</span> <span class="token string">"redirect:/empls"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>8.重启应用，点击添加：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107183750.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107183847.png"></p>
+<p>8.重启应用，点击添加：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107183750.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107183847.png"></p>
 <p>添加失败？因为我们的表单里面木有给属性添加name。<br>现在全部加上。</p>
 <pre><code>   &lt;input type=&quot;text&quot; th:name=&quot;lastName&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
 
@@ -1273,7 +1273,7 @@ insert的公共片段在div标签中
    &lt;select class=&quot;form-control&quot; th:name=&quot;department.id&quot;&gt;
 
     &lt;input type=&quot;text&quot; th:name=&quot;birth&quot; class=&quot;form-control&quot; placeholder=&quot;zhangsan&quot;&gt;
-</code></pre><p>然后再次尝试添加：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107184848.png"></p>
+</code></pre><p>然后再次尝试添加：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107184848.png"></p>
 <p>添加成功！！！</p>
 <p><strong>注意：这里填写生日的格式必须是 xxxx/xx/xx 的形式。其他形式就会出错，因为Springboot默认格式化的日期格式就是xxxx/xx/xx 的形式</strong></p>
 <p>如果，我们想改日期的格式呢？</p>
@@ -1357,11 +1357,11 @@ spring.mvc.date-format=yyyy-MM-dd
                 &lt;br&gt;
                 &lt;button type=&quot;submit&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;添加&lt;/button&gt;
             &lt;/form&gt;
-</code></pre><p>4) 重启应用，点击编辑<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193709.png"></p>
-<p><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193721.png"></p>
+</code></pre><p>4) 重启应用，点击编辑<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107193709.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107193721.png"></p>
 <p>回显成功。</p>
-<p>此时，再次点击添加时：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193842.png"></p>
-<p>控制台：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107193935.png"></p>
+<p>此时，再次点击添加时：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107193842.png"></p>
+<p>控制台：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107193935.png"></p>
 <p>这是因为，我们点击添加的时候，model对象中根本没有employee对象，所以employee.html中的：<br><strong>th:value=”${employee.lastName}”等都会出现空指针异常。</strong></p>
 <p>5）再次修改employee.html页面：添加判断语句</p>
 <p>${employee!=null}?</p>
@@ -1398,11 +1398,11 @@ spring.mvc.date-format=yyyy-MM-dd
         <span class="token keyword">return</span> <span class="token string">"redirect:/empls"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>9) 随便点击一个员工进行修改：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195757.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195859.png"><br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107195923.png"></p>
+<p>9) 随便点击一个员工进行修改：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107195757.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107195859.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107195923.png"></p>
 <p>修改成功！！！</p>
 <h3 id="员工列表的删除"><a href="#员工列表的删除" class="headerlink" title="员工列表的删除"></a>员工列表的删除</h3><p>1）修改删除的按钮以delete的方式提交</p>
 <p>不能简单的将button按钮标签改为a标签，因为a标签默认是get方式提交。</p>
-<p>我们使用js的方式来提交表单：<br><img src="http://ppbapbutf.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20181107202935.png"></p>
+<p>我们使用js的方式来提交表单：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day05/QQ%E6%88%AA%E5%9B%BE20181107202935.png"></p>
 <p>2）添加js代码：</p>
 <pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">></span>
     $<span class="token punctuation">(</span><span class="token string">".deleteBtn"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token function">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -2113,7 +2113,7 @@ spring.mvc.date-format=yyyy-MM-dd
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -467,7 +467,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>MyBatis Generator：代码生成器，帮助我们自动生成基本的增、删、改、查的代码，方便我们开发，减少不必要的体力活动。<br><a id="more"></a></p>
+                <p>MyBatis Generator：代码生成器，帮助我们自动生成基本的增、删、改、查的代码，方便我们开发，减少不必要的体力活动。</p>
 <p>当数据库表的字段比较少的时候，写起来还能接受，一旦字段过多或者需要在很多表中写这些基本方法时，就会很麻烦，不仅需要很大的代码量，而且字段过多时很容易出现错误。</p>
 <p>作为一个优秀的程序员，”懒”是很重要的优点。我们不仅要会写代码，还要会利用工具生成代码。Mybatis的开发团队提供了一个很强大的代码生成器——MyBatis Generator，后文中使用缩写MBG来代替。</p>
 <p>MBG通过丰富的配置可以生成不同类型的代码，代码包含了数据库表对应的实体类、Mapper接口类、MapperXML文件和Example对象等，这些代码文件中几乎包含了全部的单表操作方法，使用MBG可以极大程度上方便我们使用MyBatis，还可以减少很多重复操作。</p>
@@ -965,7 +965,7 @@ XMLMAPPER：      所有方法都在XML中，接口调用依赖XML文件。
 &lt;/context&gt;
 
 &lt;/generatorConfiguration&gt; 
-</code></pre><p>除此之外，在当前目录中添加src文件夹，在src中再添加 main文件夹，main文件夹中添加 java 和 resources文件夹。<br><img src="/images/mybatis/QQ截图20190317175506.png" style="width:50%"></p>
+</code></pre><p>除此之外，在当前目录中添加src文件夹，在src中再添加 main文件夹，main文件夹中添加 java 和 resources文件夹。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317175506.png" style="width:50%"></p>
 <p>下面介绍一下MBG命令行可以接受的几个参数：</p>
 <ul>
 <li><p>-configfile fileName ：指定配置文件的名称。</p>
@@ -1024,7 +1024,7 @@ java -Dfile.encoding=UTF-8 -jar mybatis-generator-core-1.3.3.jar -configfile gen
 <hr>
 <h5 id="Eclipse插件方式"><a href="#Eclipse插件方式" class="headerlink" title="Eclipse插件方式"></a>Eclipse插件方式</h5><p>（1）安装Eclipse插件：</p>
 <p>从MBG的发布页面 <a href="https://github.com/mybatis/generator/releases" target="_blank" rel="noopener">https://github.com/mybatis/generator/releases</a> 中下载插件：</p>
-<p><code>org.mybatis.generator.eclipse.site-1.3.7.201807042148.zip</code><br><img src="/images/mybatis/QQ截图20190317182045.png"></p>
+<p><code>org.mybatis.generator.eclipse.site-1.3.7.201807042148.zip</code><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317182045.png"></p>
 <p>下载好插件后，在Eclipse中选中菜单 Help 中的 Install New Software：</p>
 <p>点击Add按钮，在弹出的窗口中选择 Archive，选择下载完成的 MBG 插件，输入 Name MBG后，点击OK。</p>
 <p>从下拉列表中选择全部的 MyBatis Generator，点击Next，一步步完成安装，安装完成后重启Eclipse。</p>
@@ -1050,7 +1050,7 @@ java -Dfile.encoding=UTF-8 -jar mybatis-generator-core-1.3.3.jar -configfile gen
 <h5 id="使用IDEA的方式"><a href="#使用IDEA的方式" class="headerlink" title="使用IDEA的方式"></a>使用IDEA的方式</h5><p>我自己使用的是IDEA的方式。</p>
 <p>随便创建一个 Springboot的web项目：</p>
 <p>我填写的是：<br>groupId：com.generator<br>artifactId：mybatis</p>
-<p>项目结构：<br><img src="/images/mybatis/QQ截图20190317183413.png"></p>
+<p>项目结构：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317183413.png"></p>
 <p>pom.xml文件：</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -1288,21 +1288,21 @@ jdbc.database=mybatis
         &lt;/table&gt;
     &lt;/context&gt;
 &lt;/generatorConfiguration&gt;
-</code></pre><p>resources目录结构：<br><img src="/images/mybatis/QQ截图20190317190500.png"></p>
+</code></pre><p>resources目录结构：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317190500.png"></p>
 <hr>
-<p>使用 Maven 插件运行：<br><img src="/images/mybatis/QQ截图20190317190650.png" style="width:50%"></p>
-<p>运行后的结果：<br><img src="/images/mybatis/QQ截图20190317190809.png"></p>
+<p>使用 Maven 插件运行：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317190650.png" style="width:50%"></p>
+<p>运行后的结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317190809.png"></p>
 <hr>
 <h3 id="图像化方式"><a href="#图像化方式" class="headerlink" title="图像化方式"></a>图像化方式</h3><p>mybatis-generator-gui是基于mybatis generator开发一款界面工具, 本工具可以使你非常容易及快速生成Mybatis的Java POJO文件及数据库Mapping文件。</p>
 <p>地址是：<a href="https://github.com/zouzg/mybatis-generator-gui" target="_blank" rel="noopener">https://github.com/zouzg/mybatis-generator-gui</a></p>
 <p>要求：本工具由于使用了Java 8的众多特性，所以要求JDK 1.8.0.60以上版本，另外JDK 1.9暂时还不支持。</p>
 <hr>
 <h4 id="方式一下载软件"><a href="#方式一下载软件" class="headerlink" title="方式一下载软件"></a>方式一下载软件</h4><p>直接下载软件： <a href="http://tools.mingzhi.ink" target="_blank" rel="noopener">http://tools.mingzhi.ink</a></p>
-<p>（1）下载完成后，直接运行该软件（前提，你的本机的java环境变量要配置为：JDK 1.8.0.60以上版本）。<br><img src="/images/mybatis/QQ截图20190317215847.png"></p>
-<p>（2）点击保存后：<br><img src="/images/mybatis/QQ截图20190317220231.png"></p>
-<p>（3）点击代码生成：<br><img src="/images/mybatis/QQ截图20190317220414.png"></p>
+<p>（1）下载完成后，直接运行该软件（前提，你的本机的java环境变量要配置为：JDK 1.8.0.60以上版本）。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317215847.png"></p>
+<p>（2）点击保存后：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317220231.png"></p>
+<p>（3）点击代码生成：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190317220414.png"></p>
 <h4 id="方式二下载源码启动"><a href="#方式二下载源码启动" class="headerlink" title="方式二下载源码启动"></a>方式二下载源码启动</h4><h5 id="两种方式下载源码"><a href="#两种方式下载源码" class="headerlink" title="两种方式下载源码"></a>两种方式下载源码</h5><ul>
-<li><p>直接下载源码：<br><img src="/images/mybatis/QQ截图20190318092300.png"></p>
+<li><p>直接下载源码：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318092300.png"></p>
 </li>
 <li><p>使用git工具：<code>git clone https://github.com/zouzg/mybatis-generator-gui</code></p>
 </li>
@@ -1312,21 +1312,21 @@ jdbc.database=mybatis
 </ul>
 <p>直接下载的目录为：<code>mybatis-generator-gui-master</code> ，git后的目录为：<code>mybatis-generator-gui</code></p>
 <p>(1)在根目录下，启动 <code>cmd</code></p>
-<p>然后输入：<code>mvn jfx:jar</code><br><img src="/images/mybatis/QQ截图20190318092931.png"></p>
+<p>然后输入：<code>mvn jfx:jar</code><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318092931.png"></p>
 <p>注意：你的本机要先安装好 maven，并配置好相关的环境变量。</p>
-<p>输入命令后，会开始下载相关的jar包：<br><img src="/images/mybatis/QQ截图20190318093145.png"></p>
+<p>输入命令后，会开始下载相关的jar包：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318093145.png"></p>
 <p>(2) 进入target/jfx/app/目录下</p>
 <p>输入：<code>cd target/jfx/app/</code></p>
-<p>然后输入：<code>java -jar mybatis-generator-gui.jar</code><br><img src="/images/mybatis/QQ截图20190318093422.png"></p>
-<p>回车后，就会弹出界面系统：<br><img src="/images/mybatis/QQ截图20190318093506.png"></p>
+<p>然后输入：<code>java -jar mybatis-generator-gui.jar</code><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318093422.png"></p>
+<p>回车后，就会弹出界面系统：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318093506.png"></p>
 <hr>
 <ul>
 <li>使用Eclipse或IDEA启动下载好的源代码</li>
 </ul>
 <p>要求，你的IDE配置的JDK必须大于：1.8.0.40。</p>
 <p>在 com.zzg.mybatis.generator下，找到：<code>MainUI</code> 主类：</p>
-<p><img src="/images/mybatis/QQ截图20190318093945.png"></p>
-<p>运行主类即可：<br><img src="/images/mybatis/QQ截图20190318094150.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318093945.png"></p>
+<p>运行主类即可：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190318094150.png"></p>
 <hr>
 <font color="red"><br><strong>注意事项</strong><br><br>(1) 本自动生成代码工具只适合生成单表的增删改查，对于需要做数据库联合查询的，请自行写新的XML与Mapper；<br><br>(2) 部分系统在中文输入方法时输入框中无法输入文字，请切换成英文输入法；<br><br>(3) 如果不明白对应字段或选项是什么意思的时候，把光标放在对应字段或Label上停留一会然后如果有解释会出现解释；<br><br></font>
 
@@ -1776,8 +1776,7 @@ jdbc.database=mybatis
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。
-什么是注解对于
+                                注解Annotation的浅析
                       
                     </div>
                     <div class="publish-info">
@@ -1834,7 +1833,7 @@ jdbc.database=mybatis
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空
+                                Mybatis中的动态SQL
                       
                     </div>
                     <div class="publish-info">
@@ -2016,7 +2015,7 @@ jdbc.database=mybatis
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

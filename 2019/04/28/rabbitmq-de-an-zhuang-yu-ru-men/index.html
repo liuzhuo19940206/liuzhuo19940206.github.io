@@ -489,27 +489,27 @@ Rabbitmq">
 <p>4）修改配置文件</p>
 <hr>
 <p>学习一门技术之前，我们首先需要到官网上面，来查看官方的信息：<a href="http://www.rabbitmq.com" target="_blank" rel="noopener">www.rabbitmq.com</a></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428150300.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/20190428150300.png"></p>
 <p>我们能看到，目前Rabbitmq的最新版本为：3.7.14</p>
 <p>也能发现Rabbitmq版本的更新很快，但是，我们一般不用最新的Rabbitmq版本，使用<strong>Rabbitmq 3.6.x</strong>即可。</p>
 <p>Rabbitmq 3.6.x 是目前最稳定的版本，互联网大厂一般也是用这个版本，所以，大家目前就使用这个版本就行。</p>
 <hr>
 <p>这里，我使用的是3.6.5的版本：</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428151551.png"></p>
-<p>点击：<strong>download page</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428151752.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428151551.png"></p>
+<p>点击：<strong>downloads page</strong></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428151752.png"></p>
 <p>能看到Rabbitmq支持多个操作系统，我这里主要使用Linux系统来演示。</p>
 <p>Rabbitmq的安装包，分为：rpm和zip的两种方式，rpm的安装方式会自动帮我们安装好一切，也会帮我们默认配置一些信息，而zip压缩包的安装方式，需要我们手动来设置配置文件，对于新手来说使用rpm方式比较好，当你们熟练掌握Rabbitmq后，zip的方式也就水到渠成了。</p>
 <hr>
 <p>选择好安装方式后，我们还需要注意到，Rabbitmq由于是Erlang语言开发的，所以安装Rabbitmq的前提是需要先安装Erlang的依赖，而对于不同版本的Rabbitmq需要哪个版本的Erlang呢？</p>
 <p>这里，我们点击右边的<strong> Erlang Version</strong>：</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428152532.png"></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428152836.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428152532.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428152836.png"></p>
 <p>这里，我们就需要Erlang语言版本的：R16Bo3 版本。</p>
 <hr>
 <p>现在，我们的前提知识点都疏通了，打开我们的虚拟机，我的虚拟机使用的是：CentOS7版本。</p>
 <p>当前目录为：usr/local/soft</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428153200.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428153200.png"></p>
 <p>如果你的CentOS7是精简版的话，还需要提前安装必要的Linux依赖包：</p>
 <pre><code>yum install 
 build-essential openssl openssl-devel unixODBC unixODBC-devel 
@@ -519,30 +519,30 @@ make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz
 wget http://repo.iotti.biz/CentOS/7/x86_64/socat-1.7.3.2-5.el7.lux.x86_64.rpm
 wget www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabbitmq-server-3.6.5-1.noarch.rpm
 </code></pre><p>下载完毕后：</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428153609.png"></p>
-<h3 id="Rabbitmq的安装"><a href="#Rabbitmq的安装" class="headerlink" title="Rabbitmq的安装"></a>Rabbitmq的安装</h3><p>上述步骤中，我们已经下载好了，所有的安装包。现在，开始我们的安装流程。</p>
-<p>首先，要告诉大家的是三个rpm安装包的安装顺序，Erlang必须是在Rabbitmq安装之前的安装。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428153609.png"></p>
+<h3 id="Rabbitmq的安装"><a href="#Rabbitmq的安装" class="headerlink" title="Rabbitmq的安装"></a>Rabbitmq的安装</h3><p>上述步骤中，我们已经下载好了所有的安装包。现在，开始我们的安装流程。</p>
+<p>首先，要告诉大家的是：三个rpm安装包的安装顺序，Erlang必须是在Rabbitmq安装之前的安装。</p>
 <p>1）首先安装 Erlang</p>
 <p><strong>rpm -ivh erlang-18.3-1.el7.centos.x86_64.rpm</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428154158.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428154158.png"></p>
 <p>Erlang安装成功。</p>
 <p>现在是先安装socat还是Rabbitmq呢？我们尝试一下就好了。</p>
 <p>先尝试安装Rabbitmq：</p>
 <p><strong>rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428154503.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428154503.png"></p>
 <p>所以，需要先安装：socat依赖</p>
 <p>2）安装socat依赖</p>
 <p><strong>rpm -ivh socat-1.7.3.2-5.el7.lux.x86_64.rpm</strong></p>
 <p>3）安装Rabbitmq</p>
 <p><strong>rpm -ivh rabbitmq-server-3.6.5-1.noarch.rpm</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428154835.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428154835.png"></p>
 <h3 id="Rabbitmq的配置"><a href="#Rabbitmq的配置" class="headerlink" title="Rabbitmq的配置"></a>Rabbitmq的配置</h3><p><strong>vim /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app</strong></p>
 <p>这个rabbit.app是核心配置文件，这里就简单的说明一下，以后会重点介绍的，比如修改密码、配置等等。</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428160302.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428160302.png"></p>
 <p>这里，我们主要修改一下，我们需要访问的用户：</p>
-<p><strong>loopback_users 中的 &lt;&lt;”guest”&gt;&gt; , 只保留guest</strong></p>
+<p><strong>loopback_users 中的 &lt;&lt;”guest”&gt;&gt; , 只保留guest。即：{loopback_users，[guest]}</strong></p>
 <p>不做这样的修改的话，我们是不能直接访问Rabbitmq的。</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428160535.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428160535.png"></p>
 <h3 id="Rabbitmq服务的启动"><a href="#Rabbitmq服务的启动" class="headerlink" title="Rabbitmq服务的启动"></a>Rabbitmq服务的启动</h3><p>1）服务的启动：</p>
 <p><strong>rabbitmq-server start &amp;</strong></p>
 <p>后台启动rabbitmq服务</p>
@@ -554,49 +554,49 @@ wget www.rabbitmq.com/releases/rabbitmq-server/v3.6.5/rabbitmq-server-3.6.5-1.no
 <p><strong><a href="http://ip地址:15672" target="_blank" rel="noopener">http://ip地址:15672</a></strong></p>
 <hr>
 <p>在我们的终端中输入：rabbitmq然后敲Tab键</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428161208.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428161208.png"></p>
 <p>Linux系统帮我们补全了：rabbitmq的命令，主要使用三个脚本命令。</p>
 <p>1）rabbitmqctl：一系列rabbitmq的操作命令，我们大多时候会使用这个命令，这个脚本命令比较全</p>
 <p>2）rabbitmq-plugins：rabbitmq的插件命令，比如rabbitmq的界面管理插件等</p>
 <p>3）rabbitmq-server：主要用于rabbitmq服务的启动，停止。</p>
 <hr>
 <p>使用 <strong>rabbtitmq-server start &amp;</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428161928.png"></p>
-<p>这个，有个细节，就是日志文件是以：rabbit开头，@作为分界符，加你的主机名来命名的，我们是主机名要使用英文，不要使用中文的命名。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428161928.png"></p>
+<p>这个，有个细节，就是日志文件是以：rabbit开头，@作为分界符，加你的主机名来命名的，我们的主机名要使用英文，不要使用中文的命名。</p>
 <p>怎么印证我们的rabbitmq已经启动成功了呢？首先：ctrl+C退出当前的运行。</p>
 <p>输入：<strong>lsof -i:5672</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428162434.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428162434.png"></p>
 <hr>
 <p>使用：<strong>rabbitmqctl stop_app</strong> 停止rabbitmq服务：</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428162826.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428162826.png"></p>
 <hr>
 <p>使用rabbitmq的插件，来提供一个rabbitmq的界面管理工具，方便我们的管理。</p>
 <p><strong>rabbitmq-plugins list</strong> 列出所有的插件</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428163414.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428163414.png"></p>
 <hr>
 <p><strong>rabbitmq-plugins enable rabbitmq_management</strong> 启动rabbitmq管控台插件</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428163716.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428163716.png"></p>
 <p>再次，启动我们的rabbitmq应用：<strong>rabbitmqctl start_app</strong></p>
 <p>此时我们的rabbitmq服务是启动的，只是停止了rabbitmq的应用，启动应用使用：rabbitmqctl start_app，而不是：rabbitmq-server start &amp;</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428164323.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428164323.png"></p>
 <p>再次启动：rabbitmq的插件：<strong>rabbitmq-plugins enable rabbitmq_management</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428164830.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428164830.png"></p>
 <p>现在来印证我们的rabbitmq-management是否启动成功：</p>
 <p>在我们的虚拟机中的浏览器中输入：<strong>localhost:15672</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428170712.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428170712.png"></p>
 <p>我们能看到，rabbitmq的管控台了，成功了一半。</p>
 <p>在我们的宿主机中输入：<strong><a href="http://192.168.69.200:15672/" target="_blank" rel="noopener">http://192.168.69.200:15672/</a></strong></p>
 <p>其中的ip地址是我的虚拟机的ip地址。</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428170910.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428170910.png"></p>
 <p>为啥，我们的宿主机访问失败呢？那是因为在我们的虚拟机中linux系统设置了防火墙，需要修改防火墙的设置。</p>
 <pre><code>firewall-cmd --zone=public --add-port=15672/tcp --permanent
 
 firewall-cmd --reload 
-</code></pre><p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428171424.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428171424.png"></p>
 <p>刷新我们的宿主机的浏览器：</p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428171518.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428171518.png"></p>
 <p>输入默认的账号和密码：<strong>guest</strong></p>
-<p><img src="http://pqns9qdw6.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20190428171630.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ%E6%88%AA%E5%9B%BE20190428171630.png"></p>
 <p>登入成功，这里我们能看到图形化的信息，连接数，信道数，交换机，队列，用户管理等。</p>
 
             </div>
@@ -1042,9 +1042,7 @@ firewall-cmd --reload
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天，我们来学习Rabbitmq的安装与入门。
-
-一般情况下，Rabbitmq都是安装在linux系统中，所以，这里我也是以linux系统为
+                                Rabbitmq的安装与入门
                       
                     </div>
                     <div class="publish-info">
@@ -1102,8 +1100,7 @@ firewall-cmd --reload
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。
-什么是注解对于
+                                注解Annotation的浅析
                       
                     </div>
                     <div class="publish-info">
@@ -1293,7 +1290,7 @@ firewall-cmd --reload
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

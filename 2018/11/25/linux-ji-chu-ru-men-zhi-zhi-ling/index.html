@@ -469,7 +469,7 @@ Linux实操指令在我们实际工作中，是不会直接到服务器机房去
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本篇会介绍Linux系统的常用指令<br><a id="more"></a></p>
+                <p>本篇会介绍Linux系统的常用指令</p>
 <h2 id="Linux实操指令"><a href="#Linux实操指令" class="headerlink" title="Linux实操指令"></a>Linux实操指令</h2><p>在我们实际工作中，是不会直接到服务器机房去登录linux系统，然后在上操作的，也不会操作图形化界面。</p>
 <p>所以，我们必须掌握一些实用的指令，通过命令来操作linux系统。</p>
 <h3 id="运行级别"><a href="#运行级别" class="headerlink" title="运行级别"></a>运行级别</h3><p>1）基本介绍</p>
@@ -479,13 +479,13 @@ Linux实操指令在我们实际工作中，是不会直接到服务器机房去
 <p><strong>/etc/inittab</strong> 文件中： <strong>id:5:initdefault: </strong>   //这一行中的数字就是默认的运行级别</p>
 <p>命令：init  [012356]  ：切换运行级别</p>
 <hr>
-<p><img src="/images/QQ截图20181125212656.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125212656.png"></p>
 <p>以上是CentOS 7.x版本之前的系统中使用的。而CentOS 7.x版本中，由于采用了systemd管理体系，因此以前运行级别（runlevel）的概念被新的运行目标（target）所取代，target的命名类似于 “ multi-user.target “ 这种形式.</p>
 <p>比如原来的运行级别：3（runlevel3）对应于新的多用户目标 “ multi-user.target “,运行级别5就对应于” graphical.target “。因为systemd机制中不再使用runlevel的概念，所以/etc/inittab也不再被系统使用。</p>
 <p>在新的systemd管理体系中，默认的target通过软连接来实现的。</p>
 <p>2) 要查看系统的默认target，可以执行如下：</p>
 <pre><code>ll /etc/systemd/system/default.target
-</code></pre><p><img src="/images/QQ截图20181125220550.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125220550.png"></p>
 <p>由此可知，现在系统的默认target为 “ graphical.target “ , 相当于 runlevel5.</p>
 <p>3) 修改默认的运行级别为3</p>
 <p>如果要修改默认的target为 “multi-user.target”,可以先删除存在的软链接，然后重新建立软链接指向到 “ multi-user.target “ 即可。</p>
@@ -495,13 +495,13 @@ Linux实操指令在我们实际工作中，是不会直接到服务器机房去
 ln -sf /lib/systemd/system/multi-user.target  /etc/systemd/system/default.target
 
 ll /etc/systemd/system/default.target
-</code></pre><p><img src="/images/QQ截图20181125221432.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125221432.png"></p>
 <p>重启linux系统，reboot</p>
-<p>你会发现我们的linux系统启动后，直接进入了字符界面，没有图形化界面。<br><img src="/images/QQ截图20181125221515.png"></p>
+<p>你会发现我们的linux系统启动后，直接进入了字符界面，没有图形化界面。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125221515.png"></p>
 <hr>
 <p>4）查看运行级别与target的对应关系，可以执行</p>
 <pre><code>ll /lib/systemd/system/runlevel*.target
-</code></pre><p><img src="/images/QQ截图20181125222306.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125222306.png"></p>
 <p>即：</p>
 <p>poweroff.target 对应 runlevel0：关机模式。</p>
 <p>rescue.target 对应 runlevel1：单用户或救援模式。</p>
@@ -512,42 +512,43 @@ ll /etc/systemd/system/default.target
 <p>以前修改默认的运行级别是，通过修改 /etc/inittab文件来实现的，</p>
 <p>在以前的/etc/inittab文件的最后一行是：</p>
 <p>id:5:initdefault:  //表示默认的运行级别是5，图形界面多用户模式。只需要修改这个数字就可以修改默认的运行级别了。</p>
-<p>而CentOS7.x版本的 /etc/inittab文件为：<br><img src="/images/QQ截图20181125223455.png"></p>
+<p>而CentOS7.x版本的 /etc/inittab文件为：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125223455.png"></p>
 <p>只能通过上述修改软链接的方式来修改默认的target。</p>
 <p>现在我们把 “ multi-user.target “ 修改为：” graphical.target “</p>
 <font color="red"><strong>简便的方式：</strong></font>
 
-<h3 id="查看默认的-target-运行级别-："><a href="#查看默认的-target-运行级别-：" class="headerlink" title="查看默认的 target(运行级别)："></a>查看默认的 target(运行级别)：</h3><pre><code>systemctl get-default
-</code></pre><p><img src="/images/QQ截图2018112522423.png"></p>
+<h3 id="查看默认的-target-运行级别-："><a href="#查看默认的-target-运行级别-：" class="headerlink" title="查看默认的 target(运行级别)："></a>查看默认的 target(运行级别)：</h3><pre class=" language-java"><code class="language-java">systemctl get<span class="token operator">-</span><span class="token keyword">default</span>
+</code></pre>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图2018112522423.png"></p>
 <h3 id="修改默认的-target-运行级别-："><a href="#修改默认的-target-运行级别-：" class="headerlink" title="修改默认的 target(运行级别)："></a>修改默认的 target(运行级别)：</h3><pre><code>systemctl set-default graphical.target
-</code></pre><p><img src="/images/QQ截图20181125224511.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181125224511.png"></p>
 <hr>
 <p>以前的版本，使用： init [0213456] 来切换运行级别，现在的版本使用：systemctl isolate xxx.target （以前的init也适用）</p>
 <h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><p>在忘记了root的密码的情况下，怎么登入系统，并修改root的密码？</p>
 <p>重启我们的linux系统，首先我们进入开机界面.</p>
-<h4 id="错误操作"><a href="#错误操作" class="headerlink" title="错误操作"></a>错误操作</h4><p>1) 按e进行选择，选择编辑选项启动<br><img src="/images/QQ截图20181126105206.png"></p>
+<h4 id="错误操作"><a href="#错误操作" class="headerlink" title="错误操作"></a>错误操作</h4><p>1) 按e进行选择，选择编辑选项启动<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126105206.png"></p>
 <p>看上图的底部，有：Press e 进入编辑界面。</p>
-<p><img src="/images/QQ截图20181126102855.png"></p>
-<p>2) 使用键盘上面的向下的按钮，找到：linux16 开头的那行。<br><img src="/images/QQ截图20181126105357.png"></p>
-<p><img src="/images/QQ截图20181126110106.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126102855.png"></p>
+<p>2) 使用键盘上面的向下的按钮，找到：linux16 开头的那行。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126105357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126110106.png"></p>
 <p>3) 看到上图的底部，使用 Ctrl + x 去开始启动系统。</p>
-<p><img src="/images/QQ截图20181126110315.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126110315.png"></p>
 <p>现在已经进入了系统了，而且是单用户的模式，所以不需要输入密码，就进入root用户了。</p>
-<p>4) 然后使用：passwd root 修改root的密码。<br><img src="/images/QQ截图20181126110507.png"></p>
-<p>5) 修改root密码成功后，退出我们的单用户模式，输入：<code>exec /sbin/init</code> 回车<br><img src="/images/QQ截图20181126110721.png"></p>
-<p>6）输入我们的修改后的root密码<br><img src="/images/QQ截图20181126111121.png"><br><img src="/images/QQ截图20181126111301.png"></p>
+<p>4) 然后使用：passwd root 修改root的密码。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126110507.png"></p>
+<p>5) 修改root密码成功后，退出我们的单用户模式，输入：<code>exec /sbin/init</code> 回车<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126110721.png"></p>
+<p>6）输入我们的修改后的root密码<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126111121.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126111301.png"></p>
 <p>此时，你会发现，你刚刚修改的root密码居然不好使了，其他用户的密码也不好使了，因为上述的操作是在救援模式下的操作，实际上还是改变不了我们实际的linux系统的。</p>
-<h4 id="正确操作"><a href="#正确操作" class="headerlink" title="正确操作"></a>正确操作</h4><p>1）按e进行选择，选择编辑选项启动<br><img src="/images/QQ截图20181126105206.png"></p>
-<p>2）找到linux16开头的那行：修改 ro 为： rw init=/sysroot/bin/sh<br><img src="/images/QQ截图20181126112147.png"></p>
-<p>3) Ctrl + x 执行<br><img src="/images/QQ截图20181126113403.png"></p>
+<h4 id="正确操作"><a href="#正确操作" class="headerlink" title="正确操作"></a>正确操作</h4><p>1）按e进行选择，选择编辑选项启动<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126105206.png"></p>
+<p>2）找到linux16开头的那行：修改 ro 为： rw init=/sysroot/bin/sh<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126112147.png"></p>
+<p>3) Ctrl + x 执行<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126113403.png"></p>
 <p>进入系统后，其实只是进入了一个安全模式下的内存系统，并不是真正的咱们正常使用的linux系统。</p>
-<p><code>ls /sysroot/</code> 下才是我们正常的linux系统里面的文件。<br><img src="/images/QQ截图20181126113642.png"></p>
-<p><strong>4）使用命令 chroot /sysroot 切换到正常系统中</strong><br><img src="/images/QQ截图20181126113933.png"></p>
-<p>5）使用 passwd root 修改root的密码<br><img src="/images/QQ截图20181126114105.png"></p>
+<p><code>ls /sysroot/</code> 下才是我们正常的linux系统里面的文件。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126113642.png"></p>
+<p><strong>4）使用命令 chroot /sysroot 切换到正常系统中</strong><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126113933.png"></p>
+<p>5）使用 passwd root 修改root的密码<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126114105.png"></p>
 <p><strong>6）修改密码成功后，一定要使用 touch /.autorelabel 指令</strong></p>
-<p>如果不使用的话，会导致系统无法正常登陆！！！<br><img src="/images/QQ截图20181126114406.png"></p>
+<p>如果不使用的话，会导致系统无法正常登陆！！！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126114406.png"></p>
 <p>7）退出救援模式，ctrl + d</p>
-<p>输入ctrl + d 后，屏幕上会出现：logout<br><img src="/images/QQ截图20181126114848.png"></p>
+<p>输入ctrl + d 后，屏幕上会出现：logout<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126114848.png"></p>
 <p>8）重启系统，在屏幕上输入：reboot</p>
 <p>输入新修改的root密码，就能进入linux系统了。</p>
 <p><strong>简单说明一下：</strong></p>
@@ -556,24 +557,24 @@ ll /etc/systemd/system/default.target
 <h4 id="这样进入linux的单用户模式修改密码安全吗？"><a href="#这样进入linux的单用户模式修改密码安全吗？" class="headerlink" title="这样进入linux的单用户模式修改密码安全吗？"></a>这样进入linux的单用户模式修改密码安全吗？</h4><p>大家都说，linux系统的安全意识最强，但是这样就轻易的修改root的密码，安全意识强吗？这样的前提是你能够进入你们公司的服务器机房，然后打开linux系统，在linux系统机器上面直接操作才行，不然你的远程登录linux是进入不了刚刚的画面的，你都能进入服务器机房了，你的权限已经很大了，所有linux开发者认为你有权这样修改root密码。</p>
 <hr>
 <h2 id="帮助指令"><a href="#帮助指令" class="headerlink" title="帮助指令"></a>帮助指令</h2><h3 id="man获得帮助信息"><a href="#man获得帮助信息" class="headerlink" title="man获得帮助信息"></a>man获得帮助信息</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>man [命令或配置文件]（功能描述：获得帮助信息）
-</code></pre><h4 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例：查看ls命令的帮助信息<br><img src="/images/QQ截图20181126175357.png"></p>
-<p><img src="/images/QQ截图20181126175501.png"></p>
+</code></pre><h4 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例：查看ls命令的帮助信息<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126175357.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126175501.png"></p>
 <p>使用回车：Enter，看到更多的内容。</p>
-<p><img src="/images/QQ截图20181126175700.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126175700.png"></p>
 <p>输入q退出查看。</p>
 <h3 id="help指令"><a href="#help指令" class="headerlink" title="help指令"></a>help指令</h3><h4 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>help  命令 （功能描述：获得shell内置命令的帮助信息）
 </code></pre><h4 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例：查看cd命令的帮助信息</p>
-<p><img src="/images/QQ截图20181126180007.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126180007.png"></p>
 <h2 id="文件目录类"><a href="#文件目录类" class="headerlink" title="文件目录类"></a>文件目录类</h2><h3 id="pwd-指令"><a href="#pwd-指令" class="headerlink" title="pwd 指令"></a>pwd 指令</h3><h4 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>pwd (功能描述：显示当前工作目录的绝对路径)
 </code></pre><h4 id="应用实例-2"><a href="#应用实例-2" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例：显示当前工作目录的绝对路径</p>
-<p><img src="/images/QQ截图20181126183105.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126183105.png"></p>
 <h3 id="ls指令"><a href="#ls指令" class="headerlink" title="ls指令"></a>ls指令</h3><h4 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code> ls  [选项]  [目录或是文件]
 
 常用选项
 -a  ：显示当前目录所有的文件和目录，包括隐藏的 (文件名以.开头就是隐藏)。
 -l  ：以列表的方式显示信息
 -h  : 显示文件大小时，以 k , m,  G单位显示
-</code></pre><h4 id="应用实例-3"><a href="#应用实例-3" class="headerlink" title="应用实例"></a>应用实例</h4><p><img src="/images/QQ截图20181126183222.png"></p>
+</code></pre><h4 id="应用实例-3"><a href="#应用实例-3" class="headerlink" title="应用实例"></a>应用实例</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126183222.png"></p>
 <h3 id="cd-指令"><a href="#cd-指令" class="headerlink" title="cd 指令"></a>cd 指令</h3><h4 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>cd  [参数] (功能描述：切换到指定目录)
 
 常用参数
@@ -582,7 +583,7 @@ cd ~   或者 cd     回到自己的家目录
 cd ..  或者 cd ../ 回到当前目录的上一级目录
 
 </code></pre><h4 id="应用实例-4"><a href="#应用实例-4" class="headerlink" title="应用实例"></a>应用实例</h4><p>理解绝对路径和相对路径</p>
-<p><img src="/images/QQ截图20181126184038.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126184038.png"></p>
 <p>案例1：使用绝对路径切换到root目录　　[cd /root]<br>案例2：使用相对路径到/root 目录　　　　[cd ../root]<br>案例3：表示回到当前目录的上一级目录 　[ cd ..]<br>案例4：回到家目录  　[ cd ~ ]</p>
 <h3 id="mkdir指令"><a href="#mkdir指令" class="headerlink" title="mkdir指令"></a>mkdir指令</h3><p><strong>说明</strong></p>
 <p>mkdir指令用于创建目录</p>
@@ -591,20 +592,20 @@ cd ..  或者 cd ../ 回到当前目录的上一级目录
 常用选项
 -p ：创建多级目录
 </code></pre><h4 id="应用实例-5"><a href="#应用实例-5" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 创建一个目录 /home/dog</p>
-<p><code>mkdir  /home/dog</code><br><img src="/images/QQ截图20181126185934.png"></p>
+<p><code>mkdir  /home/dog</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126185934.png"></p>
 <p>案例2: 创建多级目录 /home/animal/tiger</p>
 <p><code>mkdir  -p  /home/animal/tiger</code></p>
-<p>注意这里的animal目录是不存在的！！！<br><img src="/images/QQ截图20181126190302.png"></p>
+<p>注意这里的animal目录是不存在的！！！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126190302.png"></p>
 <h3 id="rmdir指令"><a href="#rmdir指令" class="headerlink" title="rmdir指令"></a>rmdir指令</h3><p>说明</p>
 <p>rmdir指令删除<strong>空目录</strong></p>
 <h4 id="基本语法-6"><a href="#基本语法-6" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>rmdir  [选项]  要删除的空目录
 
 </code></pre><h4 id="应用实例-6"><a href="#应用实例-6" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 删除一个空目录 /home/dog</p>
-<p><code>rmdir  /home/dog</code> [要求 /home/dog 是空目录]<br><img src="/images/QQ截图20181126191051.png"></p>
+<p><code>rmdir  /home/dog</code> [要求 /home/dog 是空目录]<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126191051.png"></p>
 <p>案例2: 删除一个不是空的目录 /home/animal</p>
 <p>animal里面还有一个tiger目录。</p>
 <p>rmdir：只能删除空目录，不能删除非空目录；只能使用rm指令来删除非空目录。</p>
-<p><code>rm -rf /home/animal</code><br><img src="/images/QQ截图20181126191512.png"></p>
+<p><code>rm -rf /home/animal</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126191512.png"></p>
 <h3 id="touch指令"><a href="#touch指令" class="headerlink" title="touch指令"></a>touch指令</h3><p>说明</p>
 <p>touch指令创建空文件， 还可以更新文件的访问和修改时间。</p>
 <h4 id="基本语法-7"><a href="#基本语法-7" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>touch [选项] 文件名称
@@ -616,8 +617,8 @@ cd ..  或者 cd ../ 回到当前目录的上一级目录
 -d或者-t 使用指定的日期或时间
 无 创建一个不存在的文件
 </code></pre><h4 id="应用实例-7"><a href="#应用实例-7" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 创建一个空文件 hello.txt</p>
-<p><img src="/images/QQ截图20181126192008.png"></p>
-<p>案例2: 修改一个已存在的文件的时间修改时间<br><img src="/images/QQ截图20181126193143.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126192008.png"></p>
+<p>案例2: 修改一个已存在的文件的时间修改时间<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126193143.png"></p>
 <h3 id="cp指令-重要"><a href="#cp指令-重要" class="headerlink" title="cp指令[重要]"></a>cp指令[重要]</h3><p>说明</p>
 <p>cp 指令：拷贝文件到指定目录</p>
 <h4 id="基本语法-8"><a href="#基本语法-8" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>cp [选项] source【源文件】 dest【目的文件】
@@ -627,10 +628,10 @@ cd ..  或者 cd ../ 回到当前目录的上一级目录
 -a ：在复制目录时使用，它保留所有的信息。包括文件链接、文件属性、并递归地复制目录
 -d ：复制时保留链接，这样不会失去链接文件
 -i ：如果已经存在相同文件名的目标文件，则提示用户是否覆盖
-</code></pre><h4 id="应用实例-8"><a href="#应用实例-8" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home/aaa.txt 拷贝到  /home/bbb 目录下：<br><img src="/images/QQ截图20181126195012.png"></p>
+</code></pre><h4 id="应用实例-8"><a href="#应用实例-8" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home/aaa.txt 拷贝到  /home/bbb 目录下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126195012.png"></p>
 <p>案例2：将 /home/text文件，拷贝到 /home/zsf中：</p>
-<p>text文件：里面还有三个文件，a.txt , b.txt , c.txt.<br><img src="/images/QQ截图20181126200111.png"></p>
-<p><strong>注意细节：当你复制到的目的文件夹中有复制过来的文件时，会提示你是否覆盖，很烦，使用\cp强制复制。</strong><br><img src="/images/QQ截图20181126200206.png"></p>
+<p>text文件：里面还有三个文件，a.txt , b.txt , c.txt.<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126200111.png"></p>
+<p><strong>注意细节：当你复制到的目的文件夹中有复制过来的文件时，会提示你是否覆盖，很烦，使用\cp强制复制。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126200206.png"></p>
 <h3 id="rm指令"><a href="#rm指令" class="headerlink" title="rm指令"></a>rm指令</h3><p>说明</p>
 <p>rm 指令：移除文件或目录</p>
 <h4 id="基本语法-9"><a href="#基本语法-9" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>rm  [选项]  要删除的文件或目录
@@ -641,9 +642,9 @@ cd ..  或者 cd ../ 回到当前目录的上一级目录
 -i : 交互式删除，即在删除之前进行确认
 </code></pre><h4 id="应用实例-9"><a href="#应用实例-9" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home/aaa.txt 删除</p>
 <p><code>rm  /home/aaa.txt</code></p>
-<p><img src="/images/QQ截图20181126201427.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126201427.png"></p>
 <p>案例2: 递归删除整个文件夹 /home/bbb</p>
-<p><code>rm –r  /home/bbb</code><br><img src="/images/QQ截图20181126201742.png"></p>
+<p><code>rm –r  /home/bbb</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126201742.png"></p>
 <p><strong>使用细节</strong></p>
 <p>强制删除不提示的方法：带上 -f 参数即可 <code>rm –rf  /home/bbb</code></p>
 <h3 id="mv指令"><a href="#mv指令" class="headerlink" title="mv指令"></a>mv指令</h3><p>说明</p>
@@ -654,10 +655,10 @@ mv /temp/movefile /targetFolder (功能描述：移动文件或目录)
 常用选项
 -i：交互式操作，在对已经存在的文件或目录覆盖时，系统会发出询问。
 -f：禁止交互，强制覆盖。
-</code></pre><h4 id="应用实例-10"><a href="#应用实例-10" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home/aaa.txt 文件 重新命名为 bbb.txt<br><img src="/images/QQ截图20181126203428.png"></p>
-<p>案例2: 将 /home/text目录 重新命名为 big目录<br><img src="/images/QQ截图20181126203513.png"></p>
-<p>案例3: 将 /home/bbb.txt文件 移动到 big目录中：<br><img src="/images/QQ截图20181126203846.png"></p>
-<p>思考，能不能将一个目录移动到另一个目录中呢？（可以）<br><img src="/images/QQ截图20181126204015.png"></p>
+</code></pre><h4 id="应用实例-10"><a href="#应用实例-10" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home/aaa.txt 文件 重新命名为 bbb.txt<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126203428.png"></p>
+<p>案例2: 将 /home/text目录 重新命名为 big目录<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126203513.png"></p>
+<p>案例3: 将 /home/bbb.txt文件 移动到 big目录中：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126203846.png"></p>
+<p>思考，能不能将一个目录移动到另一个目录中呢？（可以）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126204015.png"></p>
 <h3 id="cat指令"><a href="#cat指令" class="headerlink" title="cat指令"></a>cat指令</h3><p>说明</p>
 <p>cat 查看文件内容（只读），同时也可以合并文件。</p>
 <h4 id="基本语法-11"><a href="#基本语法-11" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>cat  [选项] 要查看的文件     //查看文件的内容
@@ -668,29 +669,29 @@ cat  文件1  文件2  &gt; 文件3   //将文件1和文件2的内容合并后�
 -n ：显示行号
 </code></pre><h4 id="应用实例-11"><a href="#应用实例-11" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1:  查看 /ect/profile  文件内容，并显示行号。</p>
 <p><code>cat /etc/profile</code></p>
-<p>直接查看完毕，跳转到文件的底部。<br><img src="/images/QQ截图20181126205206.png"></p>
+<p>直接查看完毕，跳转到文件的底部。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126205206.png"></p>
 <p><code>cat -n /etc/profile</code> ：显示行号。</p>
 <p>所以，一般配合more指令来分页显示。</p>
-<p><code>cat -n /etc/profile | more</code><br><img src="/images/QQ截图20181126205442.png"></p>
+<p><code>cat -n /etc/profile | more</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126205442.png"></p>
 <p>敲击：空格键来翻页。</p>
 <p>案例2:  将a.txt文件和b.txt文件合并，放到f.txt文件中（a和b文件存在，f不存在）</p>
 <p>a.txt文件中的内容：aaaaa<br>b.txt文件中的内容：bbb</p>
-<p><code>cat a.txt b.txt &gt; f.txt</code> ：自动帮我们创建f.txt文件，并把a和b内容合并到f文件中<br><img src="/images/QQ截图20181126209028.png"></p>
+<p><code>cat a.txt b.txt &gt; f.txt</code> ：自动帮我们创建f.txt文件，并把a和b内容合并到f文件中<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126209028.png"></p>
 <p>案例3:  将a.txt文件和b.txt文件合并，放到c.txt文件中</p>
 <p>a、b、c文件都存在，而且里面都有数据。<br>a.txt文件中的内容：aaaaa<br>b.txt文件中的内容：bbb<br>c.txt文件中的内容：ccc</p>
-<p><code>cat a.txt b.txt &gt; c.txt</code> ：c文件中的内容会被覆盖<br><img src="/images/QQ截图20181126210504.png"></p>
-<p><code>cat a.txt b.txt &gt;&gt; c.txt</code> : c文件中的内容不会被覆盖<br><img src="/images/QQ截图20181126210728.png"></p>
+<p><code>cat a.txt b.txt &gt; c.txt</code> ：c文件中的内容会被覆盖<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126210504.png"></p>
+<p><code>cat a.txt b.txt &gt;&gt; c.txt</code> : c文件中的内容不会被覆盖<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126210728.png"></p>
 <h3 id="more指令"><a href="#more指令" class="headerlink" title="more指令"></a>more指令</h3><p>说明</p>
 <p>more指令是一个基于VI编辑器的文本过滤器，它以全屏幕的方式按页显示文本文件的内容。</p>
 <h4 id="基本语法-12"><a href="#基本语法-12" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>more 要查看的文件
 </code></pre><h4 id="应用实例-12"><a href="#应用实例-12" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例: 采用more查看文件 /etc/profile</p>
 <p><code>more /etc/profile</code></p>
-<h4 id="快捷键说明"><a href="#快捷键说明" class="headerlink" title="快捷键说明"></a>快捷键说明</h4><p><img src="/images/QQ截图20181126211914.png"></p>
+<h4 id="快捷键说明"><a href="#快捷键说明" class="headerlink" title="快捷键说明"></a>快捷键说明</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126211914.png"></p>
 <h3 id="less指令"><a href="#less指令" class="headerlink" title="less指令"></a>less指令</h3><p>说明</p>
 <p>less指令用来分屏查看文件内容，它的功能与more指令类似，但是比more指令更加强大，支持各种显示终端。less指令在显示文件内容时，并不是一次将整个文件加载之后才显示，而是根据显示需要加载内容，<strong>对于显示大型文件具有较高的效率</strong>。</p>
 <h4 id="基本语法-13"><a href="#基本语法-13" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>less 要查看的文件
 </code></pre><h4 id="应用实例-13"><a href="#应用实例-13" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例: 采用less查看一个大文件文件(体验一下速度)</p>
-<h4 id="快捷键说明-1"><a href="#快捷键说明-1" class="headerlink" title="快捷键说明"></a>快捷键说明</h4><p><img src="/images/QQ截图20181126212212.png"></p>
+<h4 id="快捷键说明-1"><a href="#快捷键说明-1" class="headerlink" title="快捷键说明"></a>快捷键说明</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126212212.png"></p>
 <h3 id="gt-指令-和-gt-gt-指令"><a href="#gt-指令-和-gt-gt-指令" class="headerlink" title="&gt; 指令 和 &gt;&gt; 指令"></a>&gt; 指令 和 &gt;&gt; 指令</h3><p>说明</p>
 <p><code>&gt; 输出重定向 和 &gt;&gt; 追加</code></p>
 <pre><code>&gt;  输出重定向：就是覆盖的意思
@@ -700,9 +701,9 @@ cat  文件1  文件2  &gt; 文件3   //将文件1和文件2的内容合并后�
 3) cat 文件1 &gt; 文件2 （功能描述：将文件1的内容覆盖到文件2）
 4) echo &quot;内容&quot;&gt;&gt; 文件
 </code></pre><h4 id="应用实例-14"><a href="#应用实例-14" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 将 /home 目录下的文件列表 写入到 /home/info.txt 中</p>
-<p><code>ls –l  /home/   &gt;  /home/info.txt  [如果info.txt文件不存在，则会自动创建]</code><br><img src="/images/QQ截图20181126213707.png"></p>
+<p><code>ls –l  /home/   &gt;  /home/info.txt  [如果info.txt文件不存在，则会自动创建]</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126213707.png"></p>
 <p>案例2: 将当前日历信息 追加到  /home/mycal 文件中 </p>
-<p><code>date  &gt;&gt; /home/mycal</code><br><img src="/images/QQ截图20181126213830.png"></p>
+<p><code>date  &gt;&gt; /home/mycal</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126213830.png"></p>
 <h3 id="echo指令"><a href="#echo指令" class="headerlink" title="echo指令"></a>echo指令</h3><p>说明</p>
 <p>echo输出内容到控制台。</p>
 <p>是一种最常用的与广泛使用的内置于Linux的bash和C shell的命令，通常用在脚本语言和批处理文件中来在标准输出或者文件中显示一行文本或者字符串。</p>
@@ -762,22 +763,22 @@ Tecmint     is  a   community   of  Linux   Nerds
 
 Tecmint is a community of Linux Nerds[root@liuzhuo01 home]# 
 
-</code></pre><p><img src="/images/QQ截图20181127120437.png"></p>
-<h4 id="echo-选项列表"><a href="#echo-选项列表" class="headerlink" title="echo 选项列表"></a>echo 选项列表</h4><p><img src="/images/QQ截图20181126221404.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127120437.png"></p>
+<h4 id="echo-选项列表"><a href="#echo-选项列表" class="headerlink" title="echo 选项列表"></a>echo 选项列表</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181126221404.png"></p>
 <h4 id="应用实例-15"><a href="#应用实例-15" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例: 使用 echo 指令输出环境变量</p>
-<p><code>echo $PATH</code><br><img src="/images/QQ截图20181127122013.png"></p>
+<p><code>echo $PATH</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127122013.png"></p>
 <h3 id="head指令"><a href="#head指令" class="headerlink" title="head指令"></a>head指令</h3><p>说明</p>
 <p>head用于显示文件的开头部分内容，默认情况下head指令显示文件的前10行内容。</p>
 <h4 id="基本语法-16"><a href="#基本语法-16" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>head  文件          (功能描述：查看文件头10行内容)
 head -n 5 文件      (功能描述：查看文件头5行内容，5可以是任意行数)
-</code></pre><h4 id="应用实例-16"><a href="#应用实例-16" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例: 查看 /etc/profile 的前面5行代码<br><img src="/images/QQ截图20181127123821.png"></p>
+</code></pre><h4 id="应用实例-16"><a href="#应用实例-16" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例: 查看 /etc/profile 的前面5行代码<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127123821.png"></p>
 <h3 id="tail指令"><a href="#tail指令" class="headerlink" title="tail指令"></a>tail指令</h3><p>说明</p>
 <p>tail用于输出文件中尾部的内容，默认情况下tail指令显示文件的后10行内容。</p>
 <h4 id="基本语法-17"><a href="#基本语法-17" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>1) tail  文件         (功能描述：查看文件尾10行内容）
 2) tail  -n 5 文件   （功能描述：查看文件尾5行内容，5可以是任意行数）
 3) tail  -f  文件    （功能描述：实时追踪该文档的所有更新） 重要！！！
-</code></pre><h4 id="应用实例-17"><a href="#应用实例-17" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 查看 /etc/profile 最后5行的代码<br><img src="/images/QQ截图20181127124007.png"></p>
-<p>案例2: 实时监控date.log , 看看文件有变化时，能否看到变化的内容(实时的追加日期)。<br><img src="/images/QQ截图20181127125020.png"></p>
+</code></pre><h4 id="应用实例-17"><a href="#应用实例-17" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 查看 /etc/profile 最后5行的代码<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127124007.png"></p>
+<p>案例2: 实时监控date.log , 看看文件有变化时，能否看到变化的内容(实时的追加日期)。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127125020.png"></p>
 <h3 id="ln-指令-link"><a href="#ln-指令-link" class="headerlink" title="ln 指令 (link)"></a>ln 指令 (link)</h3><p>说明</p>
 <p>Linux下的链接有两种，一种是硬链接（Hard Link），另一种是软链接（Sysmbolie Link），默认情况下 ln 命令产生的是硬链接。</p>
 <p>硬链接：是指通过文件的inode来进行链接。在Linux的文件系统中，保存在磁盘的所有类型的文件都会分配一个编号，这个编号称为inode号。硬链接的作用是允许一个文件拥有多个有效的路径名，这样用户就可以对一些重要文件建立多个硬链接，以防止误删除操作。只有最后一个硬链接删除，文件才会真正的删除。</p>
@@ -789,17 +790,17 @@ head -n 5 文件      (功能描述：查看文件头5行内容，5可以是任�
 -f：如果在目标位置存在与链接名相同的文件，会删除这个同名的文件
 -s: 进行软链接
 不带：硬链接
-</code></pre><h4 id="应用实例-18"><a href="#应用实例-18" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 在/home 目录下创建一个软链接 linkToRoot，连接到 /root 目录<br><img src="/images/QQ截图20181127130927.png"></p>
-<p>案例2: 删除软连接 linkToRoot<br><img src="/images/QQ截图20181127131232.png"></p>
-<p>案例3: 给date.log创建硬链接info.txt , 但是info.txt文件已经存在了。<br><img src="/images/QQ截图20181127131547.png"><br><img src="/images/QQ截图20181127131622.png"></p>
+</code></pre><h4 id="应用实例-18"><a href="#应用实例-18" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 在/home 目录下创建一个软链接 linkToRoot，连接到 /root 目录<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127130927.png"></p>
+<p>案例2: 删除软连接 linkToRoot<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127131232.png"></p>
+<p>案例3: 给date.log创建硬链接info.txt , 但是info.txt文件已经存在了。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127131547.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127131622.png"></p>
 <p><strong>细节说明：</strong></p>
 <p>当我们使用pwd指令查看目录时，仍然看到的是软链接所在目录。</p>
 <h3 id="history指令"><a href="#history指令" class="headerlink" title="history指令"></a>history指令</h3><p>说明</p>
 <p>查看已经执行过历史命令,也可以执行历史指令。</p>
 <h4 id="基本语法-19"><a href="#基本语法-19" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>history    （功能描述：查看已经执行过历史命令)
-</code></pre><h4 id="应用实例-19"><a href="#应用实例-19" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示所有的历史命令<br><img src="/images/QQ截图20181127132716.png"></p>
-<p>案例2: 显示最近使用过的10个指令。<br><img src="/images/QQ截图20181127132820.png"></p>
-<p>案例3: <strong>执行</strong>历史编号为474的指令  (!474)<br><img src="/images/QQ截图20181127133041.png"></p>
+</code></pre><h4 id="应用实例-19"><a href="#应用实例-19" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示所有的历史命令<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127132716.png"></p>
+<p>案例2: 显示最近使用过的10个指令。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127132820.png"></p>
+<p>案例3: <strong>执行</strong>历史编号为474的指令  (!474)<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127133041.png"></p>
 <h2 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h2><h3 id="date指令"><a href="#date指令" class="headerlink" title="date指令"></a>date指令</h3><p>说明</p>
 <p>显示当前的日期</p>
 <h4 id="基本语法-20"><a href="#基本语法-20" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>1) date       (功能描述：显示当前时间）
@@ -810,29 +811,29 @@ head -n 5 文件      (功能描述：查看文件头5行内容，5可以是任�
 6) date -s &quot;2018-11-27 11:11:11&quot;  (功能描述：设置年月日时分秒）
 
 注意：这里的+是不能掉的，而且：Y m d H M S 年月日时分秒也是固定的写法，除了中间的分隔符可以随意写。
-</code></pre><h4 id="应用实例-20"><a href="#应用实例-20" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示当前时间信息<br><img src="/images/QQ截图20181127134447.png"><br>案例2: 显示当前时间年月日<br><img src="/images/QQ截图20181127134736.png"><br>案例3: 显示当前时间年月日时分秒<br><img src="/images/QQ截图20181127134806.png"></p>
-<p>案例4: 设置系统当前时间 ，比如设置成 2020-11-11 11:22:22<br><img src="/images/QQ截图20181127135115.png"></p>
+</code></pre><h4 id="应用实例-20"><a href="#应用实例-20" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示当前时间信息<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127134447.png"><br>案例2: 显示当前时间年月日<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127134736.png"><br>案例3: 显示当前时间年月日时分秒<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127134806.png"></p>
+<p>案例4: 设置系统当前时间 ，比如设置成 2020-11-11 11:22:22<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127135115.png"></p>
 <h3 id="cal指令"><a href="#cal指令" class="headerlink" title="cal指令"></a>cal指令</h3><p>说明</p>
 <p>查看日历指令</p>
 <h4 id="基本语法-21"><a href="#基本语法-21" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>cal  [选项]   (功能描述：不加选项，显示本月日历）
-</code></pre><h4 id="应用实例-21"><a href="#应用实例-21" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示当前日历<br><img src="/images/QQ截图20181127135545.png"></p>
-<p>案例2: 显示2020年日历<br><img src="/images/QQ截图20181127135844.png"></p>
+</code></pre><h4 id="应用实例-21"><a href="#应用实例-21" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 显示当前日历<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127135545.png"></p>
+<p>案例2: 显示2020年日历<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127135844.png"></p>
 <h2 id="搜索查找类"><a href="#搜索查找类" class="headerlink" title="搜索查找类(!!)"></a>搜索查找类(!!)</h2><h3 id="find指令"><a href="#find指令" class="headerlink" title="find指令"></a>find指令</h3><p>说明</p>
 <p>find指令将从指定目录向下递归地遍历其各个子目录，将满足条件的文件或者目录显示在终端。</p>
 <h4 id="基本语法-22"><a href="#基本语法-22" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>find  [搜索范围]  [选项]  
-</code></pre><h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><p><img src="/images/QQ截图20181127140046.png"></p>
+</code></pre><h4 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127140046.png"></p>
 <h4 id="应用实例-22"><a href="#应用实例-22" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 按文件名：根据名称查找 /home 目录下的 hello.txt文件</p>
-<p><code>find  /home  -name  hello.txt</code><br><img src="/images/QQ截图20181127141106.png"></p>
+<p><code>find  /home  -name  hello.txt</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127141106.png"></p>
 <p>案例2：按拥有者：查找/opt目录下，用户名称为 liuzhuo的文件</p>
-<p><code>find  /opt  -user  liuzhuo</code><br><img src="/images/QQ截图20181127141250.png"></p>
+<p><code>find  /opt  -user  liuzhuo</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127141250.png"></p>
 <p>案例3：查找整个linux系统下大于20M的文件（+n 大于  -n小于   n等于）</p>
-<p><code>find  /  -size  +20M</code> : 兆：M ，kb：k<br><img src="/images/QQ截图20181127141538.png"></p>
+<p><code>find  /  -size  +20M</code> : 兆：M ，kb：k<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127141538.png"></p>
 <h3 id="locate指令"><a href="#locate指令" class="headerlink" title="locate指令"></a>locate指令</h3><p>说明</p>
 <p>locate指令可以快速定位文件路径。locate指令利用事先建立的系统中所有文件名称及路径的<strong>locate数据库</strong>实现快速定位给定的文件。Locate指令无需遍历整个文件系统，<strong>查询速度较快</strong>。为了保证查询结果的准确度，管理员必须<strong>定期更新locate时刻</strong>。</p>
 <h4 id="基本语法-23"><a href="#基本语法-23" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>locate  搜索文件
 </code></pre><h4 id="特别说明"><a href="#特别说明" class="headerlink" title="特别说明"></a>特别说明</h4><p>由于locate指令基于数据库进行查询，所以第一次运行前，必须使用<strong>updatedb指令创建locate数据库</strong>。</p>
 <h4 id="应用实例-23"><a href="#应用实例-23" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 请使用locate 指令快速定位 hello.txt 文件所在目录</p>
-<p>updatedb // 创建locate的数据库<br>locate  hello.txt<br><img src="/images/QQ截图20181127141603.png"></p>
+<p>updatedb // 创建locate的数据库<br>locate  hello.txt<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127141603.png"></p>
 <h3 id="grep指令和-管道符号"><a href="#grep指令和-管道符号" class="headerlink" title="grep指令和 管道符号 |"></a>grep指令和 管道符号 |</h3><p>说明</p>
 <p>grep 过滤查找 ； 管道符，“|”，表示将前一个命令的处理结果输出传递给后面的命令处理。</p>
 <h4 id="基本语法-24"><a href="#基本语法-24" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code>grep  [选项]  查找内容  源文件
@@ -841,8 +842,8 @@ head -n 5 文件      (功能描述：查看文件头5行内容，5可以是任�
 -n：显示匹配行以及行号
 -i：忽略字母大小写
 </code></pre><h4 id="应用实例-24"><a href="#应用实例-24" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: 请在 /etc/profile 文件中，查找  “if”  所在行，并且显示行号</p>
-<p>grep –n   if  /etc/profile  [在/etc/profile 中查找 if ,并显示行，区别大小写]<br>grep –ni   if  /etc/profile  [在/etc/profile 中查找 if ,并显示行，不区别大小写]<br><img src="/images/QQ截图20181127143642.png"></p>
-<p>案例2: 请在 /home/hello.txt 文件中，查找  “yes”  所在行，并且显示行号<br><img src="/images/QQ截图20181127143926.png"></p>
+<p>grep –n   if  /etc/profile  [在/etc/profile 中查找 if ,并显示行，区别大小写]<br>grep –ni   if  /etc/profile  [在/etc/profile 中查找 if ,并显示行，不区别大小写]<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127143642.png"></p>
+<p>案例2: 请在 /home/hello.txt 文件中，查找  “yes”  所在行，并且显示行号<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127143926.png"></p>
 <h2 id="压缩与解压缩"><a href="#压缩与解压缩" class="headerlink" title="压缩与解压缩"></a>压缩与解压缩</h2><h3 id="gzip与gunzip"><a href="#gzip与gunzip" class="headerlink" title="gzip与gunzip"></a>gzip与gunzip</h3><p>说明</p>
 <p>gzip 用于压缩文件， gunzip 用于解压的。</p>
 <p><strong>gzip：只能对文件进行压缩，不能压缩目录，即使指定压缩的目录，也只能压缩目录内的所有文件。</strong></p>
@@ -853,10 +854,10 @@ head -n 5 文件      (功能描述：查看文件头5行内容，5可以是任�
 -d：将压缩文件进行解压   等价于：gunzip 压缩的文件名
 
 gunzip 压缩的文件名 （功能描述：解压缩文件命令）
-</code></pre><h4 id="应用实例-25"><a href="#应用实例-25" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: gzip压缩， 将 /home下的 hello.txt文件进行压缩。<br><img src="/images/QQ截图20181127145146.png"></p>
-<p>案例2: gunzip解压缩， 将 /home下的 hello.txt.gz 文件进行解压缩。<br><img src="/images/QQ截图20181127145225.png"></p>
-<p>案例3: gzip压缩， 将 /home下的 big 目录进行压缩。（原则上不能进行压缩目录）<br><img src="/images/QQ截图20181127145707.png"></p>
-<p>案例4: gunzip解压缩， 将 /home下的 big 目录进行解压缩。（原则上不能进行解压缩目录）<br><img src="/images/QQ截图20181127150135.png"></p>
+</code></pre><h4 id="应用实例-25"><a href="#应用实例-25" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1: gzip压缩， 将 /home下的 hello.txt文件进行压缩。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127145146.png"></p>
+<p>案例2: gunzip解压缩， 将 /home下的 hello.txt.gz 文件进行解压缩。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127145225.png"></p>
+<p>案例3: gzip压缩， 将 /home下的 big 目录进行压缩。（原则上不能进行压缩目录）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127145707.png"></p>
+<p>案例4: gunzip解压缩， 将 /home下的 big 目录进行解压缩。（原则上不能进行解压缩目录）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127150135.png"></p>
 <h3 id="zip-unzip-指令"><a href="#zip-unzip-指令" class="headerlink" title="zip/unzip 指令"></a>zip/unzip 指令</h3><p>说明</p>
 <p>zip 用于压缩文件， unzip 用于解压的，<strong>这个在项目打包发布中很有用的。</strong></p>
 <p>将一般的文件或目录进行压缩或者解压，默认生成以 “.zip”为后缀的压缩包。</p>
@@ -868,9 +869,9 @@ unzip   [选项]   XXX.zip      (功能描述：解压缩文件）
 -n：解压时不覆盖已经存在的文件
 -o：解压时覆盖已经存在的文件，并且不要求用户确认
 </code></pre><h4 id="应用实例-26"><a href="#应用实例-26" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1:  将 /home/big下的 所有文件进行压缩成 mybig.zip</p>
-<p><code>zip  -r  mybig.zip  /home/big</code><br><img src="/images/QQ截图20181127151643.png"><br><img src="/images/QQ截图20181127151916.png"></p>
+<p><code>zip  -r  mybig.zip  /home/big</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127151643.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127151916.png"></p>
 <p>案例2:  将 mybig.zip 解压到 /opt/tmp 目录下 [如果/opt/tmp 不存在，会自动创建]</p>
-<p><img src="/images/QQ截图20181127152316.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127152316.png"></p>
 <h3 id="tar指令"><a href="#tar指令" class="headerlink" title="tar指令"></a>tar指令</h3><p>说明</p>
 <p>tar是linux系统下经常使用的归档工具，对文件或目录进行打包归档，归档成一个文件，但是并不是进行压缩。</p>
 <p>最后打包后的文件是 .tar.gz 的文件。 [可以压缩，和解压]</p>
@@ -886,8 +887,8 @@ unzip   [选项]   XXX.zip      (功能描述：解压缩文件）
 常用的组合
 -zcvf：打包压缩
 -zxvf：解压缩
-</code></pre><h4 id="应用实例-27"><a href="#应用实例-27" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1:  压缩多个文件，将 /home/a1.txt 和 /home/a2.txt 压缩成  a.tar.gz。    【-zcvf】：打包压缩  【-zxvf】：解压<br><img src="/images/QQ截图20181127153502.png"></p>
-<p>案例2:  将/home 的文件夹 压缩成 myhome.tar.gz<br><img src="/images/QQ截图20181127154733.png"><br><img src="/images/QQ截图20181127154801.png"><br>案例3:   将 a.tar.gz  解压到当前目录<br><img src="/images/QQ截图20181127154950.png"><br>案例4: 将myhome.tar.gz  解压到 /opt/tmp目录下 【-C】<br><img src="/images/QQ截图20181127155204.png"><br><img src="/images/QQ截图20181127155235.png"></p>
+</code></pre><h4 id="应用实例-27"><a href="#应用实例-27" class="headerlink" title="应用实例"></a>应用实例</h4><p>案例1:  压缩多个文件，将 /home/a1.txt 和 /home/a2.txt 压缩成  a.tar.gz。    【-zcvf】：打包压缩  【-zxvf】：解压<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127153502.png"></p>
+<p>案例2:  将/home 的文件夹 压缩成 myhome.tar.gz<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127154733.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127154801.png"><br>案例3:   将 a.tar.gz  解压到当前目录<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127154950.png"><br>案例4: 将myhome.tar.gz  解压到 /opt/tmp目录下 【-C】<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127155204.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day04/QQ截图20181127155235.png"></p>
 
             </div>
             <hr/>
@@ -1332,7 +1333,6 @@ unzip   [选项]   XXX.zip      (功能描述：解压缩文件）
                     <div class="summary">
                       
                                 组管理和权限管理
-组管理linux组的基本介绍在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件都有：所有者、所
                       
                     </div>
                     <div class="publish-info">
@@ -1381,8 +1381,7 @@ unzip   [选项]   XXX.zip      (功能描述：解压缩文件）
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                本篇文章，将会讲解Linux的用户管理、实用指令等。
-用户管理基本介绍Linux系统是一个多用户多任务的操作系统，任何一个要使用系统资源的用
+                                讲解Linux的用户管理、实用指令等。
                       
                     </div>
                     <div class="publish-info">
@@ -1564,7 +1563,7 @@ unzip   [选项]   XXX.zip      (功能描述：解压缩文件）
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

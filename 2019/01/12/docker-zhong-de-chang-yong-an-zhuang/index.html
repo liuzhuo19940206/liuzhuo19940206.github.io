@@ -482,7 +482,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天，主要来介绍Docker中的常用安装，希望大家学习完毕后，可以举一反三。<br><a id="more"></a></p>
+                <p>今天，主要来介绍Docker中的常用安装，希望大家学习完毕后，可以举一反三。</p>
 <h2 id="总体步骤"><a href="#总体步骤" class="headerlink" title="总体步骤"></a>总体步骤</h2><ul>
 <li><p>搜索镜像：docker search 镜像名</p>
 </li>
@@ -498,19 +498,19 @@
 </li>
 </ul>
 <hr>
-<h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><p>1.docker hub 上面查找tomcat镜像 或者 docker search tomcat<br><img src="/images/QQ截图20190112143621.png"><br><img src="/images/QQ截图20190112143711.png"></p>
+<h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><p>1.docker hub 上面查找tomcat镜像 或者 docker search tomcat<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112143621.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112143711.png"></p>
 <p>2.从docker hub上面拉取tomcat镜像到本地</p>
 <p><code>docker pull tomcat</code></p>
-<p>官网命令：<br><img src="/images/QQ截图20190112143916.png"></p>
-<p>拉取完成：<br><img src="/images/QQ截图20190112144007.png"></p>
-<p>3.docker images 查看是否有拉取到的tomcat<br><img src="/images/QQ截图20190112144124.png"></p>
+<p>官网命令：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112143916.png"></p>
+<p>拉取完成：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144007.png"></p>
+<p>3.docker images 查看是否有拉取到的tomcat<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144124.png"></p>
 <p>4.使用tomcat镜像启动容器</p>
-<p><code>docker run -it -p 8080:8080 tomcat</code><br><img src="/images/QQ截图20190112144307.png"><br><img src="/images/QQ截图20190112144405.png"></p>
+<p><code>docker run -it -p 8080:8080 tomcat</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144307.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144405.png"></p>
 <hr>
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>1.从docker hub上面搜索mysql镜像<br><img src="/images/QQ截图20190112144556.png"><br><img src="/images/QQ截图20190112144632.png"></p>
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>1.从docker hub上面搜索mysql镜像<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144556.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112144632.png"></p>
 <p>2.从docker hub上拉取mysql镜像到本地，标签为：5.6</p>
-<p><img src="/images/QQ截图20190112145414.png"></p>
-<p><img src="/images/QQ截图20190112145518.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112145414.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112145518.png"></p>
 <p>3.启动mysql镜像</p>
 <pre><code>docker run -p 3306:3306 --name mysql -v /gakki/mysql/conf:/etc/mysql/conf.d -v /gakki/mysql/logs:/logs -v /gakki/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
 
@@ -532,21 +532,21 @@ docker run -p 3306:3306 --name mysql
 -d mysql:5.6 : 后台程序运行mysql5.6
 
 docker run -p 3306:3306 --name mysql -v /gakki/mysql/conf:/etc/mysql/conf.d -v /gakki/mysql/logs:/logs -v /gakki/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.6
-</code></pre><p><img src="/images/QQ截图20190112150227.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112150227.png"></p>
 <p>4.进入启动后的mysql容器内：</p>
-<p><code>docker exec -it MySQL运行成功后的容器ID /bin/bash</code><br><img src="/images/QQ截图20190112150441.png"></p>
+<p><code>docker exec -it MySQL运行成功后的容器ID /bin/bash</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112150441.png"></p>
 <p>进入容器中的mysql服务内：</p>
 <p><code>mysql -uroot -p</code></p>
 <p><code>Enter password: 输入你的mysql密码</code></p>
-<p><img src="/images/QQ截图20190112150631.png"><br><img src="/images/QQ截图20190112150933.png"><br><img src="/images/QQ截图20190112151207.png"><br><img src="/images/QQ截图20190112151353.png"></p>
-<p>5.使用我们的windows机来验证这个mysql是否成功：<br><img src="/images/QQ截图20190112151634.png"><br><img src="/images/QQ截图20190112151745.png"></p>
-<p>现在，在windows上面插入数据，在docker容器检查：<br><img src="/images/QQ截图20190112151908.png"><br><img src="/images/QQ截图20190112152012.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112150631.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112150933.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112151207.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112151353.png"></p>
+<p>5.使用我们的windows机来验证这个mysql是否成功：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112151634.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112151745.png"></p>
+<p>现在，在windows上面插入数据，在docker容器检查：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112151908.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112152012.png"></p>
 <hr>
 <p>5.备份数据</p>
-<p><code>docker exec myql服务容器ID sh -c &#39;exec mysqldump --all-databases -uroot -p&quot;123456&quot;&#39; &gt; /gakki/all-databases.sql</code><br><img src="/images/QQ截图20190112152311.png"></p>
+<p><code>docker exec myql服务容器ID sh -c &#39;exec mysqldump --all-databases -uroot -p&quot;123456&quot;&#39; &gt; /gakki/all-databases.sql</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112152311.png"></p>
 <p>然后，我们就可以使用这个备份文件来恢复数据，或者在其他机器上执行。</p>
-<h2 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h2><p>1.从docker hub上搜索redis镜像<br><img src="/images/QQ截图20190112152715.png"><br><img src="/images/QQ截图20190112152740.png"></p>
-<p>2.拉取redis镜像，标签为：3.2<br><img src="/images/QQ截图20190112153022.png"><br><img src="/images/QQ截图20190112153127.png"></p>
+<h2 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h2><p>1.从docker hub上搜索redis镜像<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112152715.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112152740.png"></p>
+<p>2.拉取redis镜像，标签为：3.2<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112153022.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112153127.png"></p>
 <p>3.使用redis:3.2生成容器</p>
 <pre><code>docker run -p 6379:6379 --name myredis -v /gakki/myredis/data:/data -v /gakki/myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf -d redis:3.2 redis-server /usr/local/etc/redis/redis.conf --appendonly yes
 
@@ -556,7 +556,7 @@ docker run -p 6379:6379 --name myredis
 -v /gakki/myredis/conf/redis.conf:/usr/local/etc/redis/redis.conf
 -d redis:3.2 redis-server /usr/local/etc/redis/redis.conf
 --appendonly yes
-</code></pre><p><img src="/images/QQ截图20190112153817.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112153817.png"></p>
 <p>4.在宿主机的：/gakki/myredis/conf/redis.conf目录下：新建redis.conf文件</p>
 <p><code>vim /gakki/myredis/conf/redis.conf/redis.conf</code></p>
 <p>redis.conf内容：</p>
@@ -566,10 +566,10 @@ docker run -p 6379:6379 --name myredis
 
 # bind 127.0.0.1
 
-</code></pre><p><img src="/images/QQ截图20190112154401.png"><br><img src="/images/QQ截图20190112154536.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112154401.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112154536.png"></p>
 <p>5.使用redis-cli来测试：</p>
-<p><code>docker exec -it 运行着Redis服务的容器ID redis-cli</code><br><img src="/images/QQ截图20190112154823.png"></p>
-<p>6.测试持久化文件<br><img src="/images/QQ截图20190112155035.png"></p>
+<p><code>docker exec -it 运行着Redis服务的容器ID redis-cli</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112154823.png"></p>
+<p>6.测试持久化文件<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day07/QQ截图20190112155035.png"></p>
 <hr>
 <p>我相信大家对这三个常用的软件安装熟悉后，对于其他的软件安装应该也就没有问题了。</p>
 
@@ -1015,9 +1015,7 @@ docker run -p 6379:6379 --name myredis
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                这篇主要来学习怎么将Docker中的本地镜像发布到阿里云上面。
-本地镜像发布到阿里云流程
-镜像的生成方法使用Dockerfile文件生成do
+                                将Docker中的本地镜像发布到阿里云上面
                       
                     </div>
                     <div class="publish-info">
@@ -1074,8 +1072,7 @@ docker run -p 6379:6379 --name myredis
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                这篇专门来讲解Docker中比较重要的DockerFile文件
-DockerFile是什么Dockerfile是用来构建Docker镜像的构
+                                DockerFile文件
                       
                     </div>
                     <div class="publish-info">
@@ -1265,7 +1262,7 @@ DockerFile是什么Dockerfile是用来构建Docker镜像的构
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

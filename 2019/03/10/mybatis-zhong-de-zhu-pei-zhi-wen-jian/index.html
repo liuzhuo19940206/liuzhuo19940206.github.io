@@ -468,7 +468,7 @@ Mybatis配置文件层次结构先来看一下MyBatis配置XML文件的层次结
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。<br><a id="more"></a></p>
+                <p>今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。</p>
 <h3 id="Mybatis配置文件层次结构"><a href="#Mybatis配置文件层次结构" class="headerlink" title="Mybatis配置文件层次结构"></a>Mybatis配置文件层次结构</h3><p>先来看一下MyBatis配置XML文件的层次结构。</p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;!DOCTYPE configuration
@@ -606,7 +606,7 @@ password=123456
 &lt;/dataSource&gt;
 </code></pre><hr>
 <h3 id="settings设置"><a href="#settings设置" class="headerlink" title="settings设置"></a>settings设置</h3><p>设置（settings）在Mybatis中是最复杂的配置，同时也是最为重要的配置内容之一，它会改变Mybatis运行时的行为。即使不配置settings，Mybatis也可以正常的工作，不过了解settings的配置内容，以及它们的作用仍然十分必要。</p>
-<p>Settings的配置内容如下：<br><img src="/images/mybatis/QQ截图20190310114235.png"><br><img src="/images/mybatis/QQ截图20190310114509.png"><br><img src="/images/mybatis/QQ截图20190310114547.png"></p>
+<p>Settings的配置内容如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310114235.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310114509.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310114547.png"></p>
 <p>一个配置完整的 settings 元素的示例如下：</p>
 <pre><code>&lt;settings&gt;
   &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
@@ -630,7 +630,7 @@ password=123456
 <h3 id="typeAliases-别名"><a href="#typeAliases-别名" class="headerlink" title="typeAliases(别名)"></a>typeAliases(别名)</h3><p>别名(typeAliases)是一个指代的名称，因为我们遇到的类的全限定名过长，所以我们希望用一个简短的名称来指代它，而这个名称可以在Mybatis上下文中使用。别名在Mybatis里面分为<strong>系统定义的别名</strong>和<strong>自定义的别名</strong>。注意，在Mybatis中别名是不分大小写的。</p>
 <p>一个typeAliases的实例是在解析配置文件时生成的，然后长期保存在Configuration对象中，当我们使用它时，再把它拿出来，这样就没有必要运行的时候再次生成它的实例了。</p>
 <h4 id="系统别名"><a href="#系统别名" class="headerlink" title="系统别名"></a>系统别名</h4><p>Mybatis系统定义了一些经常使用的类型的别名，比如：数值、字符串、日期和集合等，我们可以在Mybatis中直接使用它们，在使用时不要重复定义把它们给覆盖了。</p>
-<p>如下是系统给我们定义的常用的别名：<br><img src="/images/mybatis/QQ截图20190310115942.png"><br><img src="/images/mybatis/QQ截图20190310120030.png"><br><img src="/images/mybatis/QQ截图20190310120122.png"></p>
+<p>如下是系统给我们定义的常用的别名：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310115942.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310120030.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310120122.png"></p>
 <p>我们可以通过Mybatis的源码 org.apache.ibatis.type.TypeAliasRegistry 可以看出其自定义注册的信息，如下所示：</p>
 <pre><code>  public TypeAliasRegistry() {
     registerAlias(&quot;string&quot;, String.class);
@@ -691,7 +691,7 @@ public class Author {
 
     ····
 }
-</code></pre><p>下表描述了一些默认的类型处理器。<br><img src="/images/mybatis/QQ截图20190310123016.png"><br><img src="/images/mybatis/QQ截图20190310123134.png"><br><img src="/images/mybatis/QQ截图20190310123216.png"></p>
+</code></pre><p>下表描述了一些默认的类型处理器。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310123016.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310123134.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310123216.png"></p>
 <hr>
 <p>我们需要注意下面几点。</p>
 <ul>
@@ -848,7 +848,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
 </li>
 </ul>
 <hr>
-<p>配置好后，运行我们的项目的MybatisMain主函数，接着上篇博客来写的：<br><img src="/images/mybatis/QQ截图20190310151142.png"></p>
+<p>配置好后，运行我们的项目的MybatisMain主函数，接着上篇博客来写的：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310151142.png"></p>
 <p>从结果看，程序运行了我们自定义的typeHandler，输出了打印语句。</p>
 <hr>
 <h4 id="处理枚举类型"><a href="#处理枚举类型" class="headerlink" title="处理枚举类型"></a>处理枚举类型</h4><p>在Mybatis中枚举类型的typeHandler有自己特殊的规则，Mybatis内部提供了两个枚举typeHandler：</p>
@@ -954,7 +954,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
     private Sex userSex;  
 
     ···省略get、set、toSting方法
-</code></pre><p>在mysql中，添加新的列，为user_sex<br><img src="/images/mybatis/QQ截图20190310155623.png"></p>
+</code></pre><p>在mysql中，添加新的列，为user_sex<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310155623.png"></p>
 <p>修改我们的MybatisMain类的main方法：</p>
 <pre><code>        SqlSession sqlSession = null;
         try {
@@ -978,7 +978,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
             }
         }
     }
-</code></pre><p>执行结果：<br><img src="/images/mybatis/QQ截图20190310155821.png"><br>打开sql数据库：<br><img src="/images/mybatis/QQ截图20190310155921.png"></p>
+</code></pre><p>执行结果：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310155821.png"><br>打开sql数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310155921.png"></p>
 <p>发现它插入的是枚举类型的下标。</p>
 <hr>
 <p>然后，再次修改MybatisMain类的main方法：</p>
@@ -1000,7 +1000,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
                 sqlSession.close();
             }
         }
-</code></pre><p>执行：<br><img src="/images/mybatis/QQ截图20190310161623.png"></p>
+</code></pre><p>执行：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310161623.png"></p>
 <p>运行成功，取数据时，根据枚举的下标进行转化，变成了FEMALE。</p>
 <font color="red">注意，执行select后，打印出来的user的有可能有的字段没有值，这是因为当我们的使用resultMap后，select中就不要使用as了，这样会映射不对的！！！</font>
 
@@ -1010,9 +1010,9 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
     &lt;/select&gt;
 </code></pre><hr>
 <h5 id="EnumTypeHandler"><a href="#EnumTypeHandler" class="headerlink" title="EnumTypeHandler"></a>EnumTypeHandler</h5><p>EnumTypeHandler是使用枚举名称去处理Java枚举类型。EnumTypeHandler对应的是一个字符串，让我们来看看它的用法。</p>
-<p>首先将mysql中的user_sex改为<code>VARCHAR</code>类型，然后修改映射的xml文件。<br><img src="/images/mybatis/QQ截图20190310162436.png"></p>
+<p>首先将mysql中的user_sex改为<code>VARCHAR</code>类型，然后修改映射的xml文件。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310162436.png"></p>
 <p>将typeHandler换成：org.apache.ibatis.type.EnumTypeHandler 即可。</p>
-<p>再次插入数据后：<br><img src="/images/mybatis/QQ截图20190310162944.png"><br><img src="/images/mybatis/QQ截图20190310163028.png"></p>
+<p>再次插入数据后：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310162944.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310163028.png"></p>
 <hr>
 <h5 id="自定义枚举类的typeHandler"><a href="#自定义枚举类的typeHandler" class="headerlink" title="自定义枚举类的typeHandler"></a>自定义枚举类的typeHandler</h5><p>我们也看到了Mybatis系统内部的枚举类的typeHandler不太好，所以，一般情况下，我们都需要自己定义枚举类的typeHandler。</p>
 <p>创建SexEnumTypeHandler：</p>
@@ -1087,7 +1087,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
             user.setUserSex(Sex.FEMALE);
             userMapper.insertUser(user);
             sqlSession.commit();
-</code></pre><p><img src="/images/mybatis/QQ截图20190310164451.png"><br><img src="/images/mybatis/QQ截图20190310164520.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310164451.png"><br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310164520.png"></p>
 <hr>
 <p>修改主函数：</p>
 <pre><code>            sqlSession = SqlSessionFactoryUtil.openSqlSession();
@@ -1095,7 +1095,7 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
             User user = userMapper.selectById(&quot;635a61a2-1d0e-450a-bda1-20aa340567db&quot;);
             System.out.println(user);
             sqlSession.commit();
-</code></pre><p><img src="/images/mybatis/QQ截图20190310164703.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310164703.png"></p>
 <hr>
 <h3 id="ObjectFactory"><a href="#ObjectFactory" class="headerlink" title="ObjectFactory"></a>ObjectFactory</h3><p>当Mybatis在构建一个结果返回的时候，都会使用ObjectFactory（对象工厂）去构建POJO，在Mybatis中可以定制自己的对象工厂。一般来说我们使用默认的ObjectFactory即可，Mybatis中默认的ObjectFactory是由 org.apache.ibatis.reflection.DefaultObjectFactory来提供服务的。在大部分的场景下我们都不用修改，如果要定制特定的工厂则需要进行配置，如下所示：</p>
 <pre><code>&lt;objectFactory type=&quot;com.liuzhuo.objectFactory.MyObjectFactory&quot;&gt;
@@ -1132,8 +1132,8 @@ public class MyStringTypehandler extends BaseTypeHandler&lt;String&gt; {
         return super.isCollection(type);
     }
 }
-</code></pre><p><img src="/images/mybatis/QQ截图20190310175851.png"></p>
-<p>运行我们的main方法：<br><img src="/images/mybatis/QQ截图20190310180429.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310175851.png"></p>
+<p>运行我们的main方法：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310180429.png"></p>
 <p>从运行的结果可以看出，首先，setProperties方法可以获取到<code>&lt;property name=&quot;name&quot; value=&quot;MyObjectFactory&quot;/&gt;</code>定义的属性值。</p>
 <p>create方法分别是处理单个对象和列表对象。</p>
 <p>注意，大部分情况下，我们不需要使用自己配置的ObjectFactory，使用默认的即可。</p>
@@ -1616,8 +1616,7 @@ public class ExamplePlugin implements Interceptor {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件
-environments(配置环境)配置环境可以注册多个
+                                讲解Mybatis-config.xml配置文件
                       
                     </div>
                     <div class="publish-info">
@@ -1667,7 +1666,6 @@ environments(配置环境)配置环境可以注册多个
                     <div class="summary">
                        
                                 探讨Mybatis中的各个对象的作用域和生命周期
-今天主要来正确的理解Mybatis中的SqlSessionFactoryBuilder、S
                       
                     </div>
                     <div class="publish-info">
@@ -1849,7 +1847,7 @@ environments(配置环境)配置环境可以注册多个
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -469,7 +469,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Linux系统的进程管理（重点！！！）<br><a id="more"></a></p>
+                <p>Linux系统的进程管理（重点！！！）</p>
 <h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>1）在Linux系统中，每个执行的程序（代码）都称为一个进程。每一个进程都分配一个ID号。</p>
 <p>2）一个进程，都会对应一个父进程，而这个父进程可以复制多个子进程。例如www服务器。</p>
 <p>3）每个进程都可能以两种方式存在的: <font color="red">前台 与 后台</font>，所谓<strong>前台进程</strong>就是用户目前的屏幕上可以进行操作的 ; <strong>后台进程</strong>则是实际在操作，但由于屏幕上无法看到的进程，通常使用后台方式执行 [sshd , crond]。</p>
@@ -481,11 +481,11 @@ ps -x：显示后台进程运行的参数
 
 一般使用：
 ps -aux
-</code></pre><p><img src="/images/QQ截图20181130132958.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130132958.png"></p>
 <p>如果太多，看不过来的话，使用：| more。</p>
-<p><img src="/images/QQ截图20181130133124.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130133124.png"></p>
 <h3 id="ps详解"><a href="#ps详解" class="headerlink" title="ps详解"></a>ps详解</h3><p>1）指令：ps –aux | grep xxx ，比如我要看有没有sshd服务。</p>
-<p><img src="/images/QQ截图20181130133333.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130133333.png"></p>
 <p>2）指令说明</p>
 <pre><code>System V展示风格
 
@@ -509,8 +509,8 @@ COMMAND：启动进程所用的命令和参数，如果过长会被截断显示
 
 -e：显示所有进程
 -f：全格式
-</code></pre><p><img src="/images/QQ截图20181130133917.png"></p>
-<p>1）查找特定指令的父进程id：<code>ps -ef | grep xxx</code><br><img src="/images/QQ截图20181130134150.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130133917.png"></p>
+<p>1）查找特定指令的父进程id：<code>ps -ef | grep xxx</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130134150.png"></p>
 <p>2) 详细介绍</p>
 <pre><code>是BSD风格
 
@@ -534,41 +534,41 @@ killall 进程名称    （功能描述：通过进程名称杀死进程，也�
 -2： 表示结束进程，但不是强制性的。常用的Ctrl+c就是：kill -2 的意思。
 -15：表示正常结束进程，是kill的默认选项。
 </code></pre><h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p>案例1：踢掉某个非法登录用户</p>
-<p>现在使用另一个用户登入我们的linux系统，假装是非法用户，我这里使用的是liuzhuo用户：<br><img src="/images/QQ截图20181130142114.png"></p>
+<p>现在使用另一个用户登入我们的linux系统，假装是非法用户，我这里使用的是liuzhuo用户：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130142114.png"></p>
 <p>现在查看liuzhuo用户的进程id，首先我们要知道进程的服务名字，因为是使用Xshell登入的，所以是sshd服务。</p>
-<p><code>ps -aux | grep sshd</code><br><img src="/images/QQ截图20181130142341.png"></p>
-<p><code>kill 3519</code> (liuzhuo用户的pid)<br><img src="/images/QQ截图20181130142618.png"></p>
+<p><code>ps -aux | grep sshd</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130142341.png"></p>
+<p><code>kill 3519</code> (liuzhuo用户的pid)<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130142618.png"></p>
 <p>案例2: 终止远程登录服务sshd, 在适当时候再次重启sshd服务。</p>
 <p>有些时候，我们的linux系统的管理员需要自己执行一些操作，不让远程用户登入，所以有这样的情况，杀死sshd服务。不再让远程登入用户！</p>
-<p>首先找到sshd服务的pid：<br><code>ps -aux | grep sshd</code><br><img src="/images/QQ截图20181130142943.png"></p>
-<p><code>kill 1110</code> （sshd的pid）<br><img src="/images/QQ截图20181130143119.png"></p>
+<p>首先找到sshd服务的pid：<br><code>ps -aux | grep sshd</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130142943.png"></p>
+<p><code>kill 1110</code> （sshd的pid）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130143119.png"></p>
 <p>现在就只存在root用户了，其他用户想要远程登入linux系统是不能通过的：</p>
-<p>我使用liuzhuo用户登入linux系统：失败<br><img src="/images/QQ截图20181130143309.png"></p>
+<p>我使用liuzhuo用户登入linux系统：失败<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130143309.png"></p>
 <p>案例3: 终止多个gedit 编辑器。</p>
 <p>kill pid：每次只能杀死一个进程，不能杀死多个进程，有些时候，我们需要一次性杀死多个进程，这个时候就需要使用：<br>killall指令了。</p>
-<p><code>killall 进程名</code>（注意是进程名，不是进程id）<br><img src="/images/QQ截图20181130143851.png"></p>
-<p>现在，我们一次性杀死多个gedit进程。执行：<code>killall gedit</code><br><img src="/images/QQ截图20181130144200.png"></p>
+<p><code>killall 进程名</code>（注意是进程名，不是进程id）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130143851.png"></p>
+<p>现在，我们一次性杀死多个gedit进程。执行：<code>killall gedit</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130144200.png"></p>
 <p>案例4：强制杀掉一个终端  (对于:bash)</p>
 <p>对于某些重要的进程，直接使用 kill 指令是杀不死的，需要带上参数： -9 ，强制杀死进程。</p>
 <p>终端就是一个重要的进程。</p>
 <p>打开两个终端，隔一段时间，否则无法区分开来的。</p>
-<p>在第二个终端中输入：<code>ps -aux | grep bash</code><br><img src="/images/QQ截图20181130144752.png"></p>
-<p>杀死第一个终端：<br><img src="/images/QQ截图20181130144934.png"><br><img src="/images/QQ截图20181130145124.png"></p>
+<p>在第二个终端中输入：<code>ps -aux | grep bash</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130144752.png"></p>
+<p>杀死第一个终端：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130144934.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130145124.png"></p>
 <h2 id="查看进程树pstree"><a href="#查看进程树pstree" class="headerlink" title="查看进程树pstree"></a>查看进程树pstree</h2><h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code>pstree [选项] (可以更加直观的来看进程信息)
 
 常用选项：
 -p :显示进程的PID
 -u :显示进程的所属用户
 </code></pre><h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>案例1：请用树状的形式显示进程的pid</p>
-<p><code>pstree -p</code><br><img src="/images/QQ截图20181130145605.png"></p>
+<p><code>pstree -p</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130145605.png"></p>
 <p>案例2：请用树状的形式显示进程的用户id</p>
-<p><code>pstree –u</code>:只显示进程名，并且 合并进程名一样的进程<br><img src="/images/QQ截图20181130145944.png"></p>
-<p><code>pstree -pu</code><br><img src="/images/QQ截图20181130150036.png"></p>
+<p><code>pstree –u</code>:只显示进程名，并且 合并进程名一样的进程<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130145944.png"></p>
+<p><code>pstree -pu</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130150036.png"></p>
 <h2 id="服务-service-管理"><a href="#服务-service-管理" class="headerlink" title="服务(service)管理"></a>服务(service)管理</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>服务(service) 本质就是进程，但是是运行在<font color="red"><strong>后台</strong></font>的，通常都会监听某个端口，等待其它程序的请求，比如(mysql , sshd , 防火墙等)，因此我们又称为<strong>守护进程</strong>，是Linux中非常重要的知识点。</p>
 <h3 id="service管理指令"><a href="#service管理指令" class="headerlink" title="service管理指令"></a>service管理指令</h3><p>service  服务名 [start | stop | restart | reload | status]</p>
 <p>在CentOS7.0后 不再使用 service , 而是 systemctl.</p>
 <p>systemctl [start | stop | restart | reload | status] 服务名</p>
-<p>centOS/RHEL6 系统中 System V init命令 与 centOS/RHEL7 系统中 Systemctl命令的对比:<br><img src="/images/QQ截图20181130155106.png"><br><img src="/images/QQ截图20181130155127.png"></p>
+<p>centOS/RHEL6 系统中 System V init命令 与 centOS/RHEL7 系统中 Systemctl命令的对比:<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130155106.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130155127.png"></p>
 <h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p>1) 查看当前防火墙的状况，关闭防火墙和重启防火墙。</p>
 <pre><code>centOS6/RHEL6:
 service iptables start           # 启动
@@ -588,11 +588,11 @@ systemctl disable firewalld        # 取消开机启动
 
 firewall-cmd --list-all            #查看防火墙规则
 --------------------- 
-</code></pre><p><code>service iptables status</code><br><img src="/images/QQ截图20181130153438.png"></p>
+</code></pre><p><code>service iptables status</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130153438.png"></p>
 <p>在CentOS7 或 RHEL7 或 Fedora 中 防火墙由<strong> firewalld </strong>来管理.</p>
-<p><code>systemctl status firewalld</code>：查看防火墙状态<br><img src="/images/QQ截图20181130160617.png"></p>
-<p><code>systemctl stop firewalld</code> : 关闭防火墙<br><img src="/images/QQ截图20181130161040.png"></p>
-<p><code>systemctl restart firewalld</code>：重启防火墙<br><img src="/images/QQ截图20181130161200.png"></p>
+<p><code>systemctl status firewalld</code>：查看防火墙状态<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130160617.png"></p>
+<p><code>systemctl stop firewalld</code> : 关闭防火墙<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130161040.png"></p>
+<p><code>systemctl restart firewalld</code>：重启防火墙<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130161200.png"></p>
 <hr>
 <h3 id="CentOS切换为iptables防火墙"><a href="#CentOS切换为iptables防火墙" class="headerlink" title="CentOS切换为iptables防火墙"></a>CentOS切换为iptables防火墙</h3><p>切换到iptables首先应该关掉默认的firewalld，然后安装iptables服务。</p>
 <p>1）关闭firewall</p>
@@ -637,10 +637,10 @@ COMMIT
 <pre><code>service iptables start    #开启防火墙
 systemctl enable iptables #设置防火墙开机启动
 </code></pre><p><strong>细节：可以在windows宿主机中，使用 telnet 测试某个端口是否开启。</strong></p>
-<h3 id="查看系统中的服务"><a href="#查看系统中的服务" class="headerlink" title="查看系统中的服务"></a>查看系统中的服务</h3><p>方式一：使用setup -&gt; 系统服务 就可以看到。<br><img src="/images/QQ截图20181130163538.png"><br><img src="/images/QQ截图20181130163606.png"><br><img src="/images/QQ截图20181130163652.png"></p>
+<h3 id="查看系统中的服务"><a href="#查看系统中的服务" class="headerlink" title="查看系统中的服务"></a>查看系统中的服务</h3><p>方式一：使用setup -&gt; 系统服务 就可以看到。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130163538.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130163606.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130163652.png"></p>
 <p>服务名前面带有*的，就是开机自启动的：使用空格键来切换是否开启启动，Tab键来切换到确定和取消按钮。</p>
 <p>方式二:   systemctl list-unit-files –type=service</p>
-<p><code>systemctl list-unit-files --type=service</code> : 列出系统有哪些服务<br><img src="/images/QQ截图20181130164926.png"></p>
+<p><code>systemctl list-unit-files --type=service</code> : 列出系统有哪些服务<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130164926.png"></p>
 <h3 id="服务的运行级别-runlevel"><a href="#服务的运行级别-runlevel" class="headerlink" title="服务的运行级别(runlevel)"></a>服务的运行级别(runlevel)</h3><p><strong>查看或者修改默认级别：  vi /etc/inittab </strong></p>
 <pre><code>Linux系统有7种运行级别(runlevel)：常用的是级别3和5
 
@@ -731,9 +731,9 @@ systemctl set-default graphical.target
 5)  chkconfig  --level  5   服务名   on/off   #指定某个级别，开启或关闭，指定的服务、
     sshd 服务在 1 运行级别 关闭 ： chkconfig --level 1 sshd off
 </code></pre><h4 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h4><p>1) 案例1： 请显示当前系统所有服务的各个运行级别的运行状态</p>
-<p><code>chkconfig --list</code><br><img src="/images/QQ截图20181130171923.png"></p>
+<p><code>chkconfig --list</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130171923.png"></p>
 <p>2) 案例2 ：请查看sshd服务的运行状态</p>
-<p><code>chkconfig sshd --list</code> 或者 <code>chkconfig --list | grep sshd</code><br><img src="/images/QQ截图20181130172752.png"></p>
+<p><code>chkconfig sshd --list</code> 或者 <code>chkconfig --list | grep sshd</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130172752.png"></p>
 <p>3) 案例3： 将sshd 服务在运行级别5下设置为不自动启动，看看有什么效果？</p>
 <p><code>chkconfig –level 5 sshd off</code></p>
 <p>4) 案例4： 当运行级别为5时，关闭防火墙。</p>
@@ -750,10 +750,10 @@ systemctl set-default graphical.target
 -d 秒数            ：指定top命令每隔几秒更新。默认是3秒在top命令的交互模式当中可以执行的命令。
 -i         ：使用top不显示任何闲置 或者 僵死的进程。
 -p        ：通过指定监控进程的id来仅仅监控某个进程的状态。
-</code></pre><h3 id="交互操作说明"><a href="#交互操作说明" class="headerlink" title="交互操作说明"></a>交互操作说明</h3><p><img src="/images/QQ截图20181130173701.png"></p>
+</code></pre><h3 id="交互操作说明"><a href="#交互操作说明" class="headerlink" title="交互操作说明"></a>交互操作说明</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130173701.png"></p>
 <h3 id="应用实例-2"><a href="#应用实例-2" class="headerlink" title="应用实例"></a>应用实例</h3><p>案例1.如何监视特定用户</p>
 <p>top：输入此命令，按回车键，查看执行的进程。（默认3秒刷新一次）</p>
-<p><img src="/images/QQ截图20181130174826.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130174826.png"></p>
 <pre><code>1）统计信息
 top -
 17:48:19 :表示当前的系统时间
@@ -798,10 +798,10 @@ S：进程的状态，D-表示不可中断的睡眠状态，R-表示正在运行
 %MEM：进程占用物理内存的百分比
 TIME+：进程总计使用的CPU时间，单位为1/100秒
 COMMAND：正在运行进程的命令名或者命令路径
-</code></pre><p>u：然后输入“u”回车，再输入用户名，即可。<br><img src="/images/QQ截图20181130181001.png"></p>
+</code></pre><p>u：然后输入“u”回车，再输入用户名，即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130181001.png"></p>
 <p>案例2：如何终止指定的进程。</p>
-<p>top：输入此命令，按回车键，查看执行的进程。<br>k：然后输入“k”回车，再输入要结束的进程ID号<br><img src="/images/QQ截图20181130181123.png"></p>
-<p>案例3:指定系统状态更新的时间(每隔10秒自动更新)：<br><img src="/images/QQ截图20181130181215.png"><br><img src="/images/QQ截图20181130181233.png"></p>
+<p>top：输入此命令，按回车键，查看执行的进程。<br>k：然后输入“k”回车，再输入要结束的进程ID号<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130181123.png"></p>
+<p>案例3:指定系统状态更新的时间(每隔10秒自动更新)：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130181215.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130181233.png"></p>
 <h2 id="监控网络状态"><a href="#监控网络状态" class="headerlink" title="监控网络状态"></a>监控网络状态</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>查看系统网络情况netstat</p>
 <h3 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code>netstat [选项]
 
@@ -810,12 +810,12 @@ COMMAND：正在运行进程的命令名或者命令路径
 -p ：显示哪个进程在调用
 -r ：显示路由表的信息
 </code></pre><h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><p>1）查看所有服务的监听端口</p>
-<p><code>netstat -anp | more</code><br><img src="/images/QQ截图20181130190225.png"></p>
+<p><code>netstat -anp | more</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130190225.png"></p>
 <p>2) 查看服务名为 sshd 的服务的信息。</p>
-<p><code>netstat -anp | grep sshd</code><br><img src="/images/QQ截图20181130190558.png"></p>
+<p><code>netstat -anp | grep sshd</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130190558.png"></p>
 <p>3) 查看路由表的信息</p>
-<p><code>netstat -r</code><br><img src="/images/QQ截图20181130190707.png"><br><code>netstat -rn</code><br><img src="/images/QQ截图20181130190838.png"></p>
-<p><code>route -n</code><br><img src="/images/QQ截图20181130190948.png"></p>
+<p><code>netstat -r</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130190707.png"><br><code>netstat -rn</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130190838.png"></p>
+<p><code>route -n</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day08/QQ截图20181130190948.png"></p>
 
             </div>
             <hr/>
@@ -1251,16 +1251,15 @@ COMMAND：正在运行进程的命令名或者命令路径
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Linux基础入门之下载与安装">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux基础入门之软件的下载与安装">
                         
-                        <span class="card-title">Linux基础入门之下载与安装</span>
+                        <span class="card-title">Linux基础入门之软件的下载与安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                本篇讲解Linux系统下软件的安装方式：RPM 与 YUM。
-rpm包管理介绍一种用于互联网下载包的打包及安装工具，它包含在某些Linux分
+                                Linux系统下软件的安装方式
                       
                     </div>
                     <div class="publish-info">
@@ -1310,7 +1309,6 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
                     <div class="summary">
                        
                                 Linux系统的网络设置
-桥接的方式之前，我们都是使用桥接的模式来连接虚拟机与宿主机的，桥接模式的缺点，之前我们也讲过了，会占用ip地址，引
                       
                     </div>
                     <div class="publish-info">
@@ -1492,7 +1490,7 @@ rpm包管理介绍一种用于互联网下载包的打包及安装工具，它�
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

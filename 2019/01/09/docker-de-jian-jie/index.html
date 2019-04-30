@@ -477,28 +477,28 @@ Docker是什么问题：为什么会有docker的出现？
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天开始学习Docker的基础篇章的学习。<br><a id="more"></a></p>
+                <p>今天开始学习Docker的基础篇章的学习。</p>
 <p>前提知识：首先，确定大家是已经学习过linux和git的相关知识的，如果大家不了解的话，请看我的前面的相关博客。</p>
 <h2 id="Docker是什么"><a href="#Docker是什么" class="headerlink" title="Docker是什么"></a>Docker是什么</h2><p>问题：为什么会有docker的出现？</p>
 <p>一款产品从开发到上线，从操作系统，到运行环境，再到应用配置。作为开发+运维之间的协作我们需要关心很多东西，这也是很多互联网公司都不得不面对的问题，特别是各种版本的迭代之后，不同版本环境的兼容，对运维人员都是考验。</p>
 <p>Docker之所以发展如此迅速，也是因为它对此给出了一个标准化的解决方案。</p>
 <p>环境配置如此麻烦，换一台机器，就要重来一次，费力费时。很多人想到，能不能从根本上解决问题，软件可以带环境安装？也就是说，安装的时候，把原始环境一模一样地复制过来。开发人员利用 Docker 可以消除协作编码时“在我的机器上可正常工作”的问题。</p>
-<p><img src="/images/QQ截图20190109154747.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day01/QQ截图20190109154747.png"></p>
 <p>之前在服务器配置一个应用的运行环境，要安装各种软件，就拿电商项目的环境来说吧，Java/Tomcat/MySQL/JDBC驱动包等。安装和配置这些东西有多麻烦就不说了，它还不能跨平台。假如我们是在 Windows 上安装的这些环境，到了 Linux 又得重新装。况且就算不跨操作系统，换另一台同样操作系统的服务器，要移植应用也是非常麻烦的。</p>
 <p>传统上认为，软件编码开发/测试结束后，所产出的成果即是程序或是能够编译执行的二进制字节码等(java为例)。而为了让这些程序可以顺利执行，开发团队也得准备完整的部署文件，让维运团队得以部署应用程式，<font color="blue">开发需要清楚的告诉运维部署团队，用的全部配置文件+所有软件环境。不过，即便如此，仍然常常发生部署失败的状况。</font><font color="red">Docker镜像的设计，使得Docker得以打破过去「程序即应用」的观念。<strong>透过镜像(images)将作业系统核心除外，运作应用程式所需要的系统环境，由下而上打包，达到应用程式跨平台间的无缝接轨运作。</strong></font></p>
 <p>docker的理念：</p>
 <p>Docker是基于Go语言实现的云开源项目。</p>
-<p>Docker的主要目标是“Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到<font color="red"><strong> “一次封装，到处运行”。</strong></font><br><img src="/images/QQ截图20190109155823.png"></p>
+<p>Docker的主要目标是“Build，Ship and Run Any App,Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到<font color="red"><strong> “一次封装，到处运行”。</strong></font><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day01/QQ截图20190109155823.png"></p>
 <p>Linux 容器技术的出现就解决了这样一个问题，而 Docker 就是在它的基础上发展过来的。将应用运行在 Docker 容器上面，而 Docker 容器在任何操作系统上都是一致的，这就实现了跨平台、跨服务器。只需要一次配置好环境，换到别的机子上就可以一键部署好，大大简化了操作。</p>
 <p>一句话：<strong>解决了运行环境和配置问题软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术。</strong></p>
 <h2 id="Docker能干嘛"><a href="#Docker能干嘛" class="headerlink" title="Docker能干嘛"></a>Docker能干嘛</h2><h3 id="之前的虚拟技术"><a href="#之前的虚拟技术" class="headerlink" title="之前的虚拟技术"></a>之前的虚拟技术</h3><p>虚拟机（virtual machine）就是带环境安装的一种解决方案。</p>
-<p>它可以在一种操作系统里面运行另一种操作系统，比如在Windows 系统里面运行Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。这类虚拟机完美的运行了另一套系统，能够使应用程序，操作系统和硬件三者之间的逻辑不变。<br><img src="/images/QQ截图20190109160213.png"></p>
+<p>它可以在一种操作系统里面运行另一种操作系统，比如在Windows 系统里面运行Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。这类虚拟机完美的运行了另一套系统，能够使应用程序，操作系统和硬件三者之间的逻辑不变。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day01/QQ截图20190109160213.png"></p>
 <p> 虚拟机的缺点：</p>
 <ol>
 <li>资源占用多　　　　2. 冗余步骤多　　　　　3. 启动慢</li>
 </ol>
 <h3 id="容器虚拟化技术"><a href="#容器虚拟化技术" class="headerlink" title="容器虚拟化技术"></a>容器虚拟化技术</h3><p>由于前面虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）。</p>
-<p><font color="red">Linux 容器不是模拟一个完整的操作系统</font>，而是对进程进行隔离。有了容器，就可以将软件运行所需的所有资源打包到一个隔离的容器中。容器与虚拟机不同，不需要捆绑一整套操作系统，只需要软件工作所需的库资源和设置。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一地运行。<br><img src="/images/QQ截图20190109160730.png"></p>
+<p><font color="red">Linux 容器不是模拟一个完整的操作系统</font>，而是对进程进行隔离。有了容器，就可以将软件运行所需的所有资源打包到一个隔离的容器中。容器与虚拟机不同，不需要捆绑一整套操作系统，只需要软件工作所需的库资源和设置。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一地运行。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day01/QQ截图20190109160730.png"></p>
 <p>比较了 Docker 和 传统虚拟化方式的不同之处：</p>
 <ul>
 <li><p>传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；</p>
@@ -971,10 +971,7 @@ Docker是什么问题：为什么会有docker的出现？
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                本篇讲解docker的安装
-Docker安装前提说明CentOS Docker 安装：
-
-Docker支持以下的CentOS版本：CentO
+                                docker的安装
                       
                     </div>
                     <div class="publish-info">
@@ -1031,7 +1028,7 @@ Docker支持以下的CentOS版本：CentO
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                考虑到绝大部分写业务的程序员，在实际开发中使用 Redis 的时候，只会 Set Value 和 Get Value 两个操作，对 Redi
+                                面试redis的问题总结
                       
                     </div>
                     <div class="publish-info">
@@ -1221,7 +1218,7 @@ Docker支持以下的CentOS版本：CentO
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

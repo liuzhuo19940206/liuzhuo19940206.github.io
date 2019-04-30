@@ -467,7 +467,7 @@ environments(配置环境)配置环境可以注册多个数据源（dataSource�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件<br><a id="more"></a></p>
+                <p>此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件</p>
 <h3 id="environments-配置环境"><a href="#environments-配置环境" class="headerlink" title="environments(配置环境)"></a>environments(配置环境)</h3><p>配置环境可以注册多个数据源（dataSource），每个一个数据源又可以分为两大部分：一个是数据库源的配置，另外一个是数据库事务（transactionManager）的配置。</p>
 <p>MyBatis 可以配置成适应多种环境，这种机制有助于将 SQL 映射应用于多种数据库之中， 现实情况下有多种理由需要这么做。例如，开发、测试和生产环境需要有不同的配置；或者共享相同 Schema 的多个生产数据库， 想使用相同的 SQL 映射。许多类似的用例。</p>
 <p><strong>不过要记住：尽管可以配置多个环境，每个 SqlSessionFactory 实例只能选择其一。</strong></p>
@@ -683,7 +683,7 @@ public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {
 <p>（1）和（2）我就不演示了，大家都清楚。</p>
 <p>看看（3）和（4）。</p>
 <p>首先，我们的UserMapper在：com.liuzhuo.dao包下</p>
-<p>然而，我们的userMapper.xml在：com.liuzhuo.mapper包下。<br><img src="/images/mybatis/QQ截图20190310220314.png"></p>
+<p>然而，我们的userMapper.xml在：com.liuzhuo.mapper包下。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310220314.png"></p>
 <p>但是，在mybatis-config.xml中必须配置为mapper接口的包路径：</p>
 <pre><code>    &lt;mappers&gt;
         &lt;package name=&quot;com.liuzhuo.dao&quot;/&gt;
@@ -700,13 +700,13 @@ public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {
     int insertUser(User user);
 }
 
-</code></pre><p>在主函数中调用xml的方法（selectById）<br><img src="/images/mybatis/QQ截图20190310220747.png"></p>
+</code></pre><p>在主函数中调用xml的方法（selectById）<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310220747.png"></p>
 <p>发现调用失败！！！！</p>
-<p>在主函数中调用注解的方法（selectById02）<br><img src="/images/mybatis/QQ截图20190310220942.png"></p>
+<p>在主函数中调用注解的方法（selectById02）<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190310220942.png"></p>
 <hr>
 <p><strong>如果想使用非注解的xml配置文件的话，必须将Mapper接口类和xml文件放在同一级目录中，且两种同名！！！</strong></p>
-<p>结构如下：<br><img src="/images/mybatis/QQ截图20190311092826.png" style="width:50%"></p>
-<p>再次运行，如果你的还是出错<br><img src="/images/mybatis/QQ截图20190311100400.png"></p>
+<p>结构如下：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311092826.png" style="width:50%"></p>
+<p>再次运行，如果你的还是出错<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311100400.png"></p>
 <p>是因为使用IDEA创建的Maven项目中，不在resources创建的xml配置文件是不会读取到的，需要修改一下pom.xml文件。</p>
 <pre><code>    &lt;build&gt;
         &lt;plugins&gt;
@@ -729,8 +729,8 @@ public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {
         &lt;/resources&gt;
     &lt;/build&gt;
 </code></pre><p>加入上面的<code>&lt;resources&gt;</code>即可。</p>
-<p>此时再次运行项目，就会成功了：<br><img src="/images/mybatis/QQ截图20190311100710.png"></p>
-<p>此时，在target目录下，能看到：com.liuzhuo.dao下的UserMapper.xml文件。<br><img src="/images/mybatis/QQ截图20190311100846.png" style="width:50%"></p>
+<p>此时再次运行项目，就会成功了：<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311100710.png"></p>
+<p>此时，在target目录下，能看到：com.liuzhuo.dao下的UserMapper.xml文件。<br><img src="https://gakkil.gitee.io/gakkil-image/mybatis/QQ截图20190311100846.png" style="width:50%"></p>
 <p>没有修改pom.xml文件之前，即使你在src源码目录的:com.liuzhuo.dao中加入UserMapper.xml文件，在target相同的目录下是不会有UserMapper.xml文件。</p>
 <p>这就是出错的原因。</p>
 <p>如果你创建的是web的maven工程，不会出错的，我的这个工程是简单的maven工程才会这样，大家如果出现了同样的问题，可以看看是不是这个原因！！！</p>
@@ -1177,8 +1177,7 @@ public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。
-MyBatis 的真正强大在于它的
+                                Mybatis中的Mapper映射器
                       
                     </div>
                     <div class="publish-info">
@@ -1227,8 +1226,7 @@ MyBatis 的真正强大在于它的
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。
-Mybatis配置文件层次结构先来
+                                讲解Mybatis中的主配置文件
                       
                     </div>
                     <div class="publish-info">
@@ -1410,7 +1408,7 @@ Mybatis配置文件层次结构先来
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

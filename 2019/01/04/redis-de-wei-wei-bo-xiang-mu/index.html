@@ -476,7 +476,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>之前的篇章，介绍了redis中的大多数用法，今天使用redis来设计与实现一个伪微博项目。<br><a id="more"></a></p>
+                <p>之前的篇章，介绍了redis中的大多数用法，今天使用redis来设计与实现一个伪微博项目。</p>
 <p>具体使用什么客户端语言（java、python等），这里就不详细写了，主要是讲解该项目怎么使用redis这个key-value数据库来设计。</p>
 <p>我一直觉得，一个程序猿，思想很重要，语言只是一种工具！！！</p>
 <h2 id="微博项目的key设计"><a href="#微博项目的key设计" class="headerlink" title="微博项目的key设计"></a>微博项目的key设计</h2><h3 id="全局key的设计"><a href="#全局key的设计" class="headerlink" title="全局key的设计"></a>全局key的设计</h3><pre><code>-----------------------------------------------------------
@@ -570,7 +570,7 @@ post:postid:4       post:postid:4:userid       post:postid:4:username     post:p
 <p>即：mypost:userid:* —–&gt; postid  和 global:storge —–&gt; postid</p>
 <p>当mypost:userid中的postid的数量，大于1000后，就将mypost链表最后的一条postid，插入到global:storge的最左端。</p>
 <p>当global:storge中的postid的数量大于1000后，一致性将global:storge中的最右端的1000条数据，批量插入到mysql中。</p>
-<p>示意图如下：<br><img src="/images/QQ截图20190105112749.png"></p>
+<p>示意图如下：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day13/QQ截图20190105112749.png"></p>
 
             </div>
             <hr/>
@@ -1015,11 +1015,6 @@ post:postid:4       post:postid:4:userid       post:postid:4:username     post:p
                     <div class="summary">
                       
                                 列举redis中的常用配置选项
-==配置文件全解===
-
-===基本配置=======
-
-bind 127.0.0.1    #绑定的主机地
                       
                     </div>
                     <div class="publish-info">
@@ -1076,7 +1071,7 @@ bind 127.0.0.1    #绑定的主机地
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                传统，我们都使用关系型数据库，比如mysql数据库，一般大家都熟悉了关系型数据库的表设计技巧了，这篇来讲解key-value数据库中key的
+                                redis中key的设计技巧
                       
                     </div>
                     <div class="publish-info">
@@ -1266,7 +1261,7 @@ bind 127.0.0.1    #绑定的主机地
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

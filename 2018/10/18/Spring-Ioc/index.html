@@ -473,7 +473,7 @@ IoC 和 DI">
 <h3 id="广义的Ioc"><a href="#广义的Ioc" class="headerlink" title="广义的Ioc"></a>广义的Ioc</h3><p>1）IoC(Inversion of Control) 控制反转，即“不用打电话过来，我们会打给你”。</p>
 <p>两种实现： 依赖查找（DL）和 依赖注入（DI）。</p>
 <p>IoC 和 DI 、DL 的关系（这个 DL，Avalon 和 EJB 就是使用的这种方式实现的 IoC）：</p>
-<p><img src="http://pp5wzwdq6.bkt.clouddn.com/20181018125125.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/Spring_ioc/20181018125125.png"></p>
 <p>2) DL 已经被抛弃，因为他需要用户自己去是使用 API 进行查找资源和组装对象。即有侵入性。  </p>
 <p>3) DI 是 Spring 使用的方式，容器负责组件的装配。</p>
 <p><strong>注意：</strong><br>Java 使用 DI 方式实现 IoC 的不止 Spring，包括 Google 的 Guice，还有一个冷门的 PicoContainer（极度轻量，但只提供 IoC）。</p>
@@ -499,7 +499,7 @@ IoC 和 DI">
 <p>该接口定义了一个 refresh 方法，此方法是所有阅读 Spring 源码的人的最熟悉的方法，用于刷新整个容器，即重新加载/刷新所有的 bean。</p>
 <p>当然，除了这两个大接口，还有其他的辅助接口，但我今天不会花太多篇幅介绍他们。</p>
 <p>为了更直观的展示 “低级容器” 和 “高级容器” 的关系，我这里通过常用的 ClassPathXmlApplicationContext 类，来展示整个容器的层级 UML 关系。</p>
-<p><img src="http://pp5wzwdq6.bkt.clouddn.com/20181018130402.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/Spring_ioc/20181018130402.png"></p>
 <p>有点复杂？ 先不要慌，我来解释一下。</p>
 <p>最上面的 BeanFactory 知道吧？我就不讲了。</p>
 <p>下面的 3 个绿色的，都是功能扩展接口，这里就不展开讲。</p>
@@ -508,7 +508,7 @@ IoC 和 DI">
 <p>左边灰色区域的是 “低级容器”， 只负载加载 Bean，获取 Bean。容器其他的高级功能是没有的。例如上图画的 refresh 刷新 Bean 工厂所有配置。生命周期事件回调等。</p>
 <font color="#00ffff" size="4">好，解释了低级容器和高级容器，我们可以看看一个 IoC 启动过程是什么样子的。说白了，就是 ClassPathXmlApplicationContext 这个类，在启动时，都做了啥。</font>
 
-<p>下图是 ClassPathXmlApplicationContext 的构造过程，实际就是 Spring IoC 的初始化过程。<br><img src="http://pp5wzwdq6.bkt.clouddn.com/20181018131026.png"></p>
+<p>下图是 ClassPathXmlApplicationContext 的构造过程，实际就是 Spring IoC 的初始化过程。<br><img src="https://gakkil.gitee.io/gakkil-image/Spring_ioc/20181018131026.png"></p>
 <p>注意，这里为了理解方便，有所简化。</p>
 <p>这里再用文字来描述这个过程：</p>
 <ol>
@@ -522,7 +522,7 @@ IoC 和 DI">
 <li>加载成功后，高级容器启动高级功能，例如接口回调，监听器，自动实例化单例，发布事件等等功能。</li>
 </ol>
 <p><strong>所以，一定要把 “低级容器” 和“高级容器” 的区别弄清楚。不能一叶障目不见泰山。</strong></p>
-<p>好，当我们创建好容器，就会使用 getBean 方法，获取 Bean，而 getBean 的流程如下：<br><img src="http://pp5wzwdq6.bkt.clouddn.com/20181018131432.png" heigth="50%"></p>
+<p>好，当我们创建好容器，就会使用 getBean 方法，获取 Bean，而 getBean 的流程如下：<br><img src="https://gakkil.gitee.io/gakkil-image/Spring_ioc/20181018131432.png" heigth="50%"></p>
 <p>从图可以看出，getBean 的操作都是在低级容器里操作的。其中有个递归操作，这个是什么意思呢？</p>
 <font color="#00ffff" size="4"><br>假设：当 Bean_A 依赖着 Bean_B，而这个 Bean_A 在加载的时候，其配置的 ref = “Bean_B” 在解析的时候只是一个占位符，被放入了 Bean_A 的属性集合中，当调用 getBean 时，需要真正 Bean_B 注入到 Bean_A 内部时，就需要从容器中获取这个 Bean_B，因此产生了递归。<br></font>
 
@@ -1224,7 +1224,7 @@ IoC 和 DI">
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -476,22 +476,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这篇主要来学习怎么将Docker中的本地镜像发布到阿里云上面。<br><a id="more"></a></p>
-<h2 id="本地镜像发布到阿里云流程"><a href="#本地镜像发布到阿里云流程" class="headerlink" title="本地镜像发布到阿里云流程"></a>本地镜像发布到阿里云流程</h2><p><img src="/images/QQ截图20190112165829.png"></p>
+                <p>这篇主要来学习怎么将Docker中的本地镜像发布到阿里云上面。</p>
+<h2 id="本地镜像发布到阿里云流程"><a href="#本地镜像发布到阿里云流程" class="headerlink" title="本地镜像发布到阿里云流程"></a>本地镜像发布到阿里云流程</h2><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112165829.png"></p>
 <h2 id="镜像的生成方法"><a href="#镜像的生成方法" class="headerlink" title="镜像的生成方法"></a>镜像的生成方法</h2><h3 id="使用Dockerfile文件生成"><a href="#使用Dockerfile文件生成" class="headerlink" title="使用Dockerfile文件生成"></a>使用Dockerfile文件生成</h3><p><code>docker build -f Dockerfile路径 -t 镜像名:TAG</code> 指令来生成，参考Dockerfile文件解析那篇文章。</p>
 <h3 id="从已有的容器中创建一个新的镜像"><a href="#从已有的容器中创建一个新的镜像" class="headerlink" title="从已有的容器中创建一个新的镜像"></a>从已有的容器中创建一个新的镜像</h3><p><code>docker commit [OPTIONS] 容器ID [REPOSITORY[:TAG]]</code></p>
 <pre><code>OPTIONS说明：
 -a :提交的镜像作者；
 -m :提交时的说明文字；
-</code></pre><p>这里，我使用mycentos:1.3为例，来生成 mycentos:1.4镜像：<br><img src="/images/QQ截图20190112170636.png"></p>
-<p>首先启动 mycentos:1.3 容器：<br><img src="/images/QQ截图20190112170847.png"></p>
+</code></pre><p>这里，我使用mycentos:1.3为例，来生成 mycentos:1.4镜像：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112170636.png"></p>
+<p>首先启动 mycentos:1.3 容器：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112170847.png"></p>
 <p>接下来，生成 mycentos:1.4 镜像：</p>
-<p><code>docker commit -a gakki -m &#39;gakki commit mycentos:1.4&#39; mycentos:1.3的容器ID mycentos:1.4</code><br><img src="/images/QQ截图20190112171218.png"></p>
+<p><code>docker commit -a gakki -m &#39;gakki commit mycentos:1.4&#39; mycentos:1.3的容器ID mycentos:1.4</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112171218.png"></p>
 <hr>
-<h2 id="将本地镜像推送到阿里云"><a href="#将本地镜像推送到阿里云" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h2><h3 id="本地要推送的镜像素材"><a href="#本地要推送的镜像素材" class="headerlink" title="本地要推送的镜像素材"></a>本地要推送的镜像素材</h3><p><img src="/images/QQ截图20190112171359.png"></p>
-<h3 id="进入阿里云开发者平台"><a href="#进入阿里云开发者平台" class="headerlink" title="进入阿里云开发者平台"></a>进入阿里云开发者平台</h3><p><code>https://dev.aliyun.com/search.html</code><br><img src="/images/QQ截图20190112171634.png"><br><img src="/images/QQ截图20190112171805.png"></p>
-<h3 id="创建仓库镜像"><a href="#创建仓库镜像" class="headerlink" title="创建仓库镜像"></a>创建仓库镜像</h3><p><img src="/images/QQ截图20190112172159.png"><br><img src="/images/QQ截图20190112172330.png"><br><img src="/images/QQ截图20190112172701.png"></p>
-<h3 id="将本地镜像推送到阿里云-1"><a href="#将本地镜像推送到阿里云-1" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h3><p><img src="/images/QQ截图20190112172831.png"><br><img src="/images/QQ截图20190112172921.png"></p>
+<h2 id="将本地镜像推送到阿里云"><a href="#将本地镜像推送到阿里云" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h2><h3 id="本地要推送的镜像素材"><a href="#本地要推送的镜像素材" class="headerlink" title="本地要推送的镜像素材"></a>本地要推送的镜像素材</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112171359.png"></p>
+<h3 id="进入阿里云开发者平台"><a href="#进入阿里云开发者平台" class="headerlink" title="进入阿里云开发者平台"></a>进入阿里云开发者平台</h3><p><code>https://dev.aliyun.com/search.html</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112171634.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112171805.png"></p>
+<h3 id="创建仓库镜像"><a href="#创建仓库镜像" class="headerlink" title="创建仓库镜像"></a>创建仓库镜像</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112172159.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112172330.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112172701.png"></p>
+<h3 id="将本地镜像推送到阿里云-1"><a href="#将本地镜像推送到阿里云-1" class="headerlink" title="将本地镜像推送到阿里云"></a>将本地镜像推送到阿里云</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112172831.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112172921.png"></p>
 <pre><code>$ sudo docker login --username=liuzhuo19940206 registry.cn-hangzhou.aliyuncs.com
 $ sudo docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:[镜像版本号]
 $ sudo docker push registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:[镜像版本号]
@@ -499,15 +499,15 @@ $ sudo docker push registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:[镜像版�
 如果你是 root，就不需要加上sudo。
 
 上面是我的账号，如果是你的话，请改成你的账号，即：拷贝阿里云上面的关键步骤
-</code></pre><p>第一步：登入<br><img src="/images/QQ截图20190112173427.png"><br><img src="/images/QQ截图20190112173632.png"></p>
-<p>第二步：设置镜像的版本号<br><img src="/images/QQ截图20190112173913.png"></p>
-<p>第三步：推送<br><img src="/images/QQ截图20190112174050.png"><br><img src="/images/QQ截图20190112174317.png"></p>
-<h3 id="在阿里云的公有云可以查到"><a href="#在阿里云的公有云可以查到" class="headerlink" title="在阿里云的公有云可以查到"></a>在阿里云的公有云可以查到</h3><p><img src="/images/QQ截图20190112174617.png"><br><img src="/images/QQ截图20190112174741.png"><br><img src="/images/QQ截图20190112174811.png"></p>
-<h3 id="将阿里云上的镜像下载到本地"><a href="#将阿里云上的镜像下载到本地" class="headerlink" title="将阿里云上的镜像下载到本地"></a>将阿里云上的镜像下载到本地</h3><p><img src="/images/QQ截图20190112175134.png"></p>
+</code></pre><p>第一步：登入<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112173427.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112173632.png"></p>
+<p>第二步：设置镜像的版本号<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112173913.png"></p>
+<p>第三步：推送<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112174050.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112174317.png"></p>
+<h3 id="在阿里云的公有云可以查到"><a href="#在阿里云的公有云可以查到" class="headerlink" title="在阿里云的公有云可以查到"></a>在阿里云的公有云可以查到</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112174617.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112174741.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112174811.png"></p>
+<h3 id="将阿里云上的镜像下载到本地"><a href="#将阿里云上的镜像下载到本地" class="headerlink" title="将阿里云上的镜像下载到本地"></a>将阿里云上的镜像下载到本地</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112175134.png"></p>
 <pre><code>拼接起来如下：
 
 docker pull registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:1.4.1
-</code></pre><p>首先删除本地的mycentos:1.4.1的镜像：<br><img src="/images/QQ截图20190112175450.png"><br><img src="/images/QQ截图20190112175634.png"><br><img src="/images/QQ截图20190112175722.png"><br><img src="/images/QQ截图20190112175847.png"></p>
+</code></pre><p>首先删除本地的mycentos:1.4.1的镜像：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112175450.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112175634.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112175722.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day08/QQ截图20190112175847.png"></p>
 <hr>
 <p>以上，就是今天所有的内容了，相信大家已经学会了，从本地上传镜像到阿里云，也会从阿里云上拉取镜像了。爱生活，爱技术，我是gakkij酱。</p>
 
@@ -953,8 +953,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:1.4.1
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                给大家普及一下，我在面试中遇到的单例问题。
-当我兴冲冲的带着笔记答案参加面试时，突然发现面前的面试官显得很严肃而且眉头紧锁，不知道是工作太累
+                                面试中的单例问题
                       
                     </div>
                     <div class="publish-info">
@@ -1011,11 +1010,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:1.4.1
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                今天，主要来介绍Docker中的常用安装，希望大家学习完毕后，可以举一反三。
-总体步骤
-搜索镜像：docker search 镜像名
-
-拉取
+                                Docker中的常用安装
                       
                     </div>
                     <div class="publish-info">
@@ -1205,7 +1200,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/gakkij/mycentos:1.4.1
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

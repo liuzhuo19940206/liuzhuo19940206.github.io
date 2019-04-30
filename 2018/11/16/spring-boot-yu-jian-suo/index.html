@@ -475,32 +475,32 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>ElasticSearch<br><a id="more"></a></p>
+                <p>ElasticSearch</p>
 <h2 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h2><p>我们的应用经常需要添加检索功能，开源的 ElasticSearch 是目前全文搜索引擎的首选。他可以快速的存储、搜索和分析海量数据。Spring Boot通过整合SpringData ElasticSearch为我们提供了非常便捷的检索功能支持；</p>
 <p>Elasticsearch是一个分布式搜索服务，提供Restful API，底层基于Lucene，采用多shard（分片）的方式保证数据安全，并且提供自动resharding的功能，github等大型的站点也是采用了ElasticSearch作为其搜索服务。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>以 <font color="red"><strong>员工文档</strong></font> 的形式存储为例：一个<font color="red"><strong>文档</strong></font>代表一个员工数据。存储数据到ElasticSearch 的行为叫做 <font color="red"><strong>索引</strong></font> ，但在索引一个文档之前，需要确定将文档存储在哪里。</p>
 <p>一个 ElasticSearch 集群可以 包含多个 <font color="red"><strong>索引</strong></font> ，相应的每个索引可以包含多个 <font color="red"><strong>类型</strong></font> 。 这些不同的类型存储着多个 <font color="red"><strong>文档</strong> </font>，每个文档又有 多个 <font color="red"><strong>属性</strong> </font></p>
 <p>类似关系：<br>– 索引-数据库<br>– 类型-表<br>– 文档-表中的记录<br>– 属性-列</p>
-<p><img src="/images/QQ截图20181116154034.png"></p>
-<p>打开官网 <a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">ElasticSearch</a><br><img src="/images/QQ截图20181116155202.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116154034.png"></p>
+<p>打开官网 <a href="https://www.elastic.co/cn/products/elasticsearch" target="_blank" rel="noopener">ElasticSearch</a><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116155202.png"></p>
 <p><a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener">《Elasticsearch: 权威指南》中文版</a></p>
 <h2 id="安装ElasticSearch"><a href="#安装ElasticSearch" class="headerlink" title="安装ElasticSearch"></a>安装ElasticSearch</h2><p>打开我们的虚拟机，下载ElasticSearch镜像</p>
 <pre><code>docker pull registry.docker-cn.com/library/elasticsearch
-</code></pre><p><img src="/images/QQ截图20181116161527.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116161527.png"></p>
 <p>elasticsearch:默认是使用2g的堆内存，直接启动的话，我们的虚拟机有可能不够，所以，我们需要设置elasticsearch的堆内存的大小：</p>
 <p>使用 -e ES_JAVA_OPTS=”-Xms256m -Xmx256m” 来设置堆的最大、最小都是256兆。</p>
 <p>完整的启动命令：<br>elasticsearch的默认端口号是9200，和分布式的节点之间通信的端口号：9300</p>
 <pre><code>docker run -e ES_JAVA_OPTS=&quot;-Xms256m -Xmx256m&quot; -d -p 9200:9200 -p 9300:9300 --name ESO1 elasticsearch的镜像id
-</code></pre><p><img src="/images/QQ截图20181116161744.png"></p>
-<p>打开浏览器，输入：<code>http://10.6.11.17:9200/</code><br><img src="/images/QQ截图20181116162123.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116161744.png"></p>
+<p>打开浏览器，输入：<code>http://10.6.11.17:9200/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116162123.png"></p>
 <p>以上，说明ElasticSearch启动成功！</p>
 <hr>
 <h2 id="ElasticSearch简单操作"><a href="#ElasticSearch简单操作" class="headerlink" title="ElasticSearch简单操作"></a>ElasticSearch简单操作</h2><p>ElasticSearch：使用 RESTful API 通过端口 9200 进行通信，使用 JavaScript Object Notation 或者 JSON 作为文档的序列化格式。</p>
-<p>考虑一下这个 JSON 文档，它代表了一个 user 对象：<br><img src="/images/QQ截图20181116162822.png"></p>
+<p>考虑一下这个 JSON 文档，它代表了一个 user 对象：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116162822.png"></p>
 <hr>
-<p>打开我们的postman工具<br><img src="/images/QQ截图20181116162539.png"></p>
+<p>打开我们的postman工具<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116162539.png"></p>
 <p>在Elasticsearch: 权威指南的基础入门中：适应新环境</p>
-<p>例子为：创建一个雇员目录<br><img src="/images/QQ截图20181116163020.png"></p>
+<p>例子为：创建一个雇员目录<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116163020.png"></p>
 <p>对于雇员目录，我们将做如下操作：</p>
 <ul>
 <li><p>每个雇员索引一个文档，包含该雇员的所有信息。</p>
@@ -536,7 +536,7 @@
     },
     &quot;created&quot;: true
 }
-</code></pre><p><img src="/images/QQ截图20181116163804.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116163804.png"></p>
 <p>以上：我们就插入数据成功了。</p>
 <p>注意，路径 /megacorp/employee/1 包含了三部分的信息：</p>
 <p>megacorp：索引名称</p>
@@ -544,11 +544,11 @@
 <p>1：特定雇员的ID</p>
 <p>请求体 —— JSON 文档 —— 包含了这位员工的所有详细信息，他的名字叫 John Smith ，今年 25 岁，喜欢攀岩。</p>
 <p>很简单！无需进行执行管理任务，如创建一个索引或指定每个属性的数据类型之类的，可以直接只索引一个文档。Elasticsearch 默认地完成其他一切，因此所有必需的管理任务都在后台使用默认设置完成。</p>
-<p>进行下一步前，让我们增加更多的员工信息到目录中：<br><img src="/images/QQ截图20181116164222.png"><br><img src="/images/QQ截图20181116164537.png"></p>
+<p>进行下一步前，让我们增加更多的员工信息到目录中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116164222.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116164537.png"></p>
 <hr>
 <h3 id="简单检索"><a href="#简单检索" class="headerlink" title="简单检索"></a>简单检索</h3><p>目前我们已经在 Elasticsearch 中存储了一些数据， 接下来就能专注于实现应用的业务需求了。第一个需求是可以检索到单个雇员的数据。</p>
 <p>这在 Elasticsearch 中很简单。简单地执行 一个 HTTP GET 请求并指定文档的地址——索引库、类型和ID。 使用这三个信息可以返回原始的 JSON 文档：</p>
-<p>GET /megacorp/employee/1<br><img src="/images/QQ截图20181116164722.png"></p>
+<p>GET /megacorp/employee/1<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116164722.png"></p>
 <p>返回结果包含了文档的一些元数据，以及 _source 属性，内容是 John Smith 雇员的原始 JSON 文档：</p>
 <pre><code>{
   &quot;_index&quot; :   &quot;megacorp&quot;,
@@ -568,12 +568,12 @@
 <h3 id="轻量检索"><a href="#轻量检索" class="headerlink" title="轻量检索"></a>轻量检索</h3><p>一个 GET 是相当简单的，可以直接得到指定的文档。 现在尝试点儿稍微高级的功能，比如一个简单的搜索！</p>
 <p>第一个尝试的几乎是最简单的搜索了。我们使用下列请求来搜索所有雇员：</p>
 <p>GET /megacorp/employee/_search</p>
-<p><img src="/images/QQ截图20181116165326.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116165326.png"></p>
 <p>可以看到，我们仍然使用索引库 megacorp 以及类型 employee，但与指定一个文档 ID 不同，这次使用 _search 。返回结果包括了所有三个文档，放在数组 hits 中。一个搜索默认返回十条结果。</p>
 <p>注意：返回结果不仅告知匹配了哪些文档，还包含了整个文档本身：显示搜索结果给最终用户所需的全部信息。</p>
 <p>接下来，尝试下搜索姓氏为 <code>Smith</code> 的雇员。为此，我们将使用一个 高亮 搜索，很容易通过命令行完成。这个方法一般涉及到一个 查询字符串 （<em>query-string</em>） 搜索，因为我们通过一个URL参数来传递查询信息给搜索接口：</p>
 <p>GET /megacorp/employee/_search?q=last_name:Smith</p>
-<p>我们仍然在请求路径中使用 _search 端点，并将查询本身赋值给参数 q= 。返回结果给出了所有的 Smith：<br><img src="/images/QQ截图20181116165612.png"></p>
+<p>我们仍然在请求路径中使用 _search 端点，并将查询本身赋值给参数 q= 。返回结果给出了所有的 Smith：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116165612.png"></p>
 <hr>
 <h3 id="使用查询表达式搜索"><a href="#使用查询表达式搜索" class="headerlink" title="使用查询表达式搜索"></a>使用查询表达式搜索</h3><p>Query-string 搜索通过命令非常方便地进行临时性的即席搜索 ，但它有自身的局限性（参见 轻量 搜索 ）。Elasticsearch 提供一个丰富灵活的查询语言叫做 查询表达式 ， 它支持构建更加复杂和健壮的查询。</p>
 <p>领域特定语言 （DSL）， 指定了使用一个 JSON 请求。我们可以像这样重写之前的查询所有 Smith 的搜索 </p>
@@ -585,11 +585,11 @@
         }
     }
 }
-</code></pre><p>因为 GET请求，无法带这样格式的json请求参数，所以我们使用POST请求即可：<br><img src="/images/QQ截图20181116170032.png"></p>
+</code></pre><p>因为 GET请求，无法带这样格式的json请求参数，所以我们使用POST请求即可：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116170032.png"></p>
 <p>返回结果与之前的查询一样，但还是可以看到有一些变化。其中之一是，不再使用 query-string 参数，而是一个请求体替代。这个请求使用 JSON 构造，并使用了一个 match 查询（属于查询类型之一，后续将会了解）。</p>
 <p><strong>更多的查询操作，请看ElasticSearch的官方文档即可</strong>：<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html</a></p>
-<h2 id="整合Springboot与ElasticSearch"><a href="#整合Springboot与ElasticSearch" class="headerlink" title="整合Springboot与ElasticSearch"></a>整合Springboot与ElasticSearch</h2><p>1）创建Springboot的项目，添加web、ElasticSearch模块：<br><img src="/images/QQ截图20181116170704.png"><br><img src="/images/QQ截图20181116170735.png"><br><img src="/images/QQ截图20181116172604.png"></p>
-<p>2）在autoconfig包下：<br><img src="/images/QQ截图20181116172848.png" style="width:50%"></p>
+<h2 id="整合Springboot与ElasticSearch"><a href="#整合Springboot与ElasticSearch" class="headerlink" title="整合Springboot与ElasticSearch"></a>整合Springboot与ElasticSearch</h2><p>1）创建Springboot的项目，添加web、ElasticSearch模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116170704.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116170735.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116172604.png"></p>
+<p>2）在autoconfig包下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116172848.png" style="width:50%"></p>
 <p>发现有两处ElasticSearch：</p>
 <ol>
 <li><p>data包下，有一个ElasticSearch</p>
@@ -605,8 +605,8 @@
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre><p>添加jest的依赖包：<br>在mave中央仓库：搜索：jest<br><img src="/images/QQ截图20181116173628.png"></p>
-<p>因为我的ElasticSearch的版本是：5.6.12<br><img src="/images/QQ截图20181116173725.png"></p>
+</code></pre><p>添加jest的依赖包：<br>在mave中央仓库：搜索：jest<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116173628.png"></p>
+<p>因为我的ElasticSearch的版本是：5.6.12<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116173725.png"></p>
 <p>所以，jest的版本选择5.x.x的即可：</p>
 <pre><code>&lt;!-- https://mvnrepository.com/artifact/io.searchbox/jest --&gt;
 &lt;dependency&gt;
@@ -614,8 +614,8 @@
     &lt;artifactId&gt;jest&lt;/artifactId&gt;
     &lt;version&gt;5.3.3&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p><img src="/images/QQ截图20181116173907.png"></p>
-<p>2) 打开：JestAutoConfiguration类<br><img src="/images/QQ截图20181116174005.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116173907.png"></p>
+<p>2) 打开：JestAutoConfiguration类<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116174005.png"></p>
 <p>导入了一个：jestClient类</p>
 <pre><code>    @Bean(destroyMethod = &quot;shutdownClient&quot;)
     @ConditionalOnMissingBean
@@ -625,14 +625,14 @@
         return factory.getObject();
     }
 </code></pre><p>3）给application配置文件中，添加ElasticSearch的相关配置：</p>
-<p>查看JestProperties类，了解需要配置哪些信息：<br><img src="/images/QQ截图20181116174251.png"></p>
+<p>查看JestProperties类，了解需要配置哪些信息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116174251.png"></p>
 <p>application：</p>
 <pre><code>#ElasticSearch的相关配置
 spring.elasticsearch.jest.uris=http://10.6.11.17:9200  #虚拟机的ip地址
-</code></pre><p>4) 启动Springboot应用：<br><img src="/images/QQ截图20181116174615.png"></p>
-<p>5）在测试类中测试：<br><img src="/images/QQ截图20181116174851.png"></p>
+</code></pre><p>4) 启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116174615.png"></p>
+<p>5）在测试类中测试：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116174851.png"></p>
 <p>6）编写一个POJO类：</p>
-<p>在bean包，创建一个Article类：<br><img src="/images/QQ截图20181116175201.png"></p>
+<p>在bean包，创建一个Article类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116175201.png"></p>
 <pre><code>public class Article {
 
     //标记id为ElasticSearch中的id
@@ -644,7 +644,7 @@ spring.elasticsearch.jest.uris=http://10.6.11.17:9200  #虚拟机的ip地址
 
     set 和 get 方法
 }
-</code></pre><p>7）创建一个测试方法：<br><img src="/images/QQ截图20181116175854.png"></p>
+</code></pre><p>7）创建一个测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116175854.png"></p>
 <pre><code>    @Test
     public void testInsert(){
 
@@ -664,8 +664,8 @@ spring.elasticsearch.jest.uris=http://10.6.11.17:9200  #虚拟机的ip地址
             e.printStackTrace();
         }
     }
-</code></pre><p>执行testInsert()方法后：<br><img src="/images/QQ截图20181116184113.png"></p>
-<p>在浏览器中，输入：<code>http://10.6.11.17:9200/liuzhuo/news/1</code><br><img src="/images/QQ截图20181116184216.png"></p>
+</code></pre><p>执行testInsert()方法后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116184113.png"></p>
+<p>在浏览器中，输入：<code>http://10.6.11.17:9200/liuzhuo/news/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116184216.png"></p>
 <p>插入数据成功！</p>
 <hr>
 <p>现在，测试搜索功能：</p>
@@ -677,7 +677,7 @@ spring.elasticsearch.jest.uris=http://10.6.11.17:9200  #虚拟机的ip地址
         }
     }
 }
-</code></pre><p><img src="/images/QQ截图20181116185001.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116185001.png"></p>
 <pre><code>    @Test
     public void search(){
         String json =&quot;{\n&quot; +
@@ -696,49 +696,49 @@ spring.elasticsearch.jest.uris=http://10.6.11.17:9200  #虚拟机的ip地址
             e.printStackTrace();
         }
     }
-</code></pre><p>运行测试：search()方法：<br><img src="/images/QQ截图20181116185155.png"></p>
+</code></pre><p>运行测试：search()方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116185155.png"></p>
 <p>更多：jest的操作，可以看jest的文档。</p>
-<p>打开github的官网，搜索 jest<br><img src="/images/QQ截图20181116185510.png"><br><img src="/images/QQ截图20181116185604.png"><br><img src="/images/QQ截图20181116185712.png"></p>
+<p>打开github的官网，搜索 jest<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116185510.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116185604.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116185712.png"></p>
 <h3 id="使用SpringData"><a href="#使用SpringData" class="headerlink" title="使用SpringData"></a>使用SpringData</h3><p>1）在pom文件中：放开spring-boot-starter-data-elasticsearch的注释</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
     &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt;
 &lt;/dependency&gt;
-</code></pre><p>打开：ElasticsearchAutoConfiguration类：<br><img src="/images/QQ截图20181116190656.png"></p>
-<p>再看：ElasticsearchDataAutoConfiguration类：<br><img src="/images/QQ截图20181116190900.png"></p>
+</code></pre><p>打开：ElasticsearchAutoConfiguration类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116190656.png"></p>
+<p>再看：ElasticsearchDataAutoConfiguration类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116190900.png"></p>
 <p>导入了一个：ElasticsearchTemplate 来操作ElasticSearch的模板类</p>
 <p>使用：ElasticsearchProperties 来配置相关信息：</p>
 <p>Client：节点的信息 clusterName：名字，clusterNodes：操作的节点ip地址</p>
 <p>编写了一个ElasticSearchRepository的子接口来操作ES。</p>
-<p>2）在application配置文件中：添加SpringData的ES信息<br><img src="/images/QQ截图20181116195934.png"></p>
+<p>2）在application配置文件中：添加SpringData的ES信息<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116195934.png"></p>
 <pre><code>#使用SprigData的ES配置信息
 spring.data.elasticsearch.cluster-name=elasticsearch #默认也elasticsearch
 #使用9300端口通信，与jest不同！！！
 spring.data.elasticsearch.cluster-nodes=10.6.11.17:9300
 </code></pre><p>spring.data.elasticsearch.cluster-name:怎么确定的呢？</p>
-<p>在浏览器中输入：<code>http://10.6.11.17:9200/</code><br><img src="/images/QQ截图20181116191639.png"></p>
-<p>3) 启动Springboot应用：<br><img src="/images/QQ截图20181116200034.png"></p>
+<p>在浏览器中输入：<code>http://10.6.11.17:9200/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116191639.png"></p>
+<p>3) 启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116200034.png"></p>
 <p>出现了异常！！！异常错误，连接超时！！！</p>
-<p>why？ 这是因为我们的ElasticSearch是5.6.12，而导入的SpringData的ElasticSearch依赖是2.4.6<br><img src="/images/QQ截图20181116192036.png"><br><img src="/images/QQ截图20181116192001.png" style="width:50%"></p>
+<p>why？ 这是因为我们的ElasticSearch是5.6.12，而导入的SpringData的ElasticSearch依赖是2.4.6<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116192036.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116192001.png" style="width:50%"></p>
 <p>版本不一致产生的异常。</p>
 <p>怎样确定 SpringData-ElasticSearch 与 ElasticSearch 的版本对应关系呢？</p>
-<p>打开Spring的官网，找到Spring data模块<br><img src="/images/QQ截图20181116193409.png"><br><img src="/images/QQ截图20181116193435.png"><br><img src="/images/QQ截图20181116193714.png"><br><img src="/images/QQ截图20181116193935.png"><br><img src="/images/QQ截图20181116194020.png"></p>
+<p>打开Spring的官网，找到Spring data模块<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116193409.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116193435.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116193714.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116193935.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116194020.png"></p>
 <p>所以，现在有两种方案：</p>
 <p>1）升级Springboot的版本，将Springboot升级到3.0.x以后。</p>
 <p>2）下载2.x.x的ElasticSearc</p>
 <p>我这里选择下载第二种方案：</p>
-<p>打开docker的hub仓库，搜索ElasticSearch<br><img src="/images/QQ截图20181116194312.png"><br><img src="/images/QQ截图20181116194414.png"></p>
+<p>打开docker的hub仓库，搜索ElasticSearch<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116194312.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116194414.png"></p>
 <p>打开虚拟机的客户端：</p>
 <p>输入：</p>
 <pre><code>docker pull registry.docker-cn.com/library/elasticsearch:2.4.6
-</code></pre><p><img src="/images/QQ截图20181116194702.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116194702.png"></p>
 <p>启动 2.4.6 版本的ElasticSearch。</p>
 <p>因为 9200 和 9300 的docker端口号已经被 5版本的ElasticSearch占领了，所以选择 9201 和 9301端口号</p>
 <pre><code>docker run -e ES_JAVA_OPTS=&quot;-Xms256m -Xmx256m&quot; -d -p 9201:9200 -p 9301:9300 --name ESO2 elasticsearch的镜像id
-</code></pre><p><img src="/images/QQ截图20181116195123.png"></p>
-<p>在浏览器中输入：<code>http://10.6.11.17:9201/</code><br><img src="/images/QQ截图20181116195248.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116195123.png"></p>
+<p>在浏览器中输入：<code>http://10.6.11.17:9201/</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116195248.png"></p>
 <p>以上，2.4.6 的ElasticSearch启动成功。</p>
-<p>4）修改application配置文件：<br><img src="/images/QQ截图20181116200335.png"></p>
+<p>4）修改application配置文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116200335.png"></p>
 <pre><code>#ElasticSearch的相关配置
 spring.elasticsearch.jest.uris=http://10.6.11.17:9200
 
@@ -746,21 +746,21 @@ spring.elasticsearch.jest.uris=http://10.6.11.17:9200
 spring.data.elasticsearch.cluster-name=elasticsearch
 #使用9300端口通信，与jest不同！！！
 spring.data.elasticsearch.cluster-nodes=10.6.11.17:9301
-</code></pre><p>5）启动Springboot应用：<br><img src="/images/QQ截图20181116200556.png"></p>
+</code></pre><p>5）启动Springboot应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116200556.png"></p>
 <p>两种使用ElasticSearch的配置，都启动成功了。现在我们只使用SpringData操作ElasticSearch的方式。</p>
 <p>SpringData：提供了两种方式来操作ElasticSearc：</p>
 <p>1）使用 ElasticsearchRepository</p>
 <p>2）使用 ElasticsearchTemplate</p>
 <hr>
 <p>6）使用 ElasticsearchRepository</p>
-<p>在bean包下，创建Book类：<br><img src="/images/QQ截图20181116200928.png"></p>
-<p>在repository包下，创建bookRepository接口，继承ElasticsearchRepository：<br><img src="/images/QQ截图20181116201218.png"></p>
-<p>在test类下，注入bookRepository<br><img src="/images/QQ截图20181116201453.png"></p>
+<p>在bean包下，创建Book类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116200928.png"></p>
+<p>在repository包下，创建bookRepository接口，继承ElasticsearchRepository：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116201218.png"></p>
+<p>在test类下，注入bookRepository<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116201453.png"></p>
 <p>但是，发现index方法，没法设置 索引，类型，id。其实我们需要在Book类上，添加@Document注解，来设置索引和类型</p>
 <pre><code>@Document(indexName = &quot;liuzhuo&quot;,type = &quot;book&quot;)
 public class Book {
-</code></pre><p>启动测试方法：<br><img src="/images/QQ截图20181116201909.png"></p>
-<p>在浏览器中输入：<code>http://10.6.11.17:9201/liuzhuo/book/_search</code> 查询索引是liuzhuo，类型是book的所有数据：<br><img src="/images/QQ截图20181116202042.png"></p>
+</code></pre><p>启动测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116201909.png"></p>
+<p>在浏览器中输入：<code>http://10.6.11.17:9201/liuzhuo/book/_search</code> 查询索引是liuzhuo，类型是book的所有数据：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116202042.png"></p>
 <p>修改测试方法：</p>
 <pre><code>    @Test
     public void test() {
@@ -770,8 +770,8 @@ public class Book {
         book.setAuthor(&quot;罗贯中&quot;);
         bookRepository.index(book);
     }
-</code></pre><p>运行测试方法：<br><img src="/images/QQ截图20181116202244.png"></p>
-<p>我们还有可以直接在BookRepository接口中，编写接口，就和JPA一样：<br><img src="/images/QQ截图20181116202524.png"></p>
+</code></pre><p>运行测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116202244.png"></p>
+<p>我们还有可以直接在BookRepository接口中，编写接口，就和JPA一样：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116202524.png"></p>
 <pre><code>//泛型上面的参数：查找的类型 和 id的类型
 public interface BookRepository extends ElasticsearchRepository&lt;Book,Integer&gt; {
 
@@ -786,8 +786,8 @@ public interface BookRepository extends ElasticsearchRepository&lt;Book,Integer&
             System.out.println(book);
         }
     }
-</code></pre><p><img src="/images/QQ截图20181116202952.png"></p>
-<p>更多用法：请看官方文档：<a href="https://docs.spring.io/spring-data/elasticsearch/docs/2.1.16.RELEASE/reference/html/" target="_blank" rel="noopener">https://docs.spring.io/spring-data/elasticsearch/docs/2.1.16.RELEASE/reference/html/</a><br><img src="/images/QQ截图20181116203116.png"><br><img src="/images/QQ截图20181116203245.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116202952.png"></p>
+<p>更多用法：请看官方文档：<a href="https://docs.spring.io/spring-data/elasticsearch/docs/2.1.16.RELEASE/reference/html/" target="_blank" rel="noopener">https://docs.spring.io/spring-data/elasticsearch/docs/2.1.16.RELEASE/reference/html/</a><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116203116.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/search/QQ截图20181116203245.png"></p>
 
             </div>
             <hr/>
@@ -1232,8 +1232,6 @@ public interface BookRepository extends ElasticsearchRepository&lt;Book,Integer&
                     <div class="summary">
                       
                                 异步任务、定时任务、邮件任务
-异步任务异步任务，是Spring帮我们开启线程池，创建一个新的线程来执行我们的方法，就不会有卡顿的现象。
-在J
                       
                     </div>
                     <div class="publish-info">
@@ -1291,8 +1289,6 @@ public interface BookRepository extends ElasticsearchRepository&lt;Book,Integer&
                     <div class="summary">
                        
                                 JMS、AMQP、RabbitMQ的消息处理机制
-概述1）大多应用中，可通过消息服务中间件来提升系统异步通信、扩展解耦能力
-2）消息服务中两
                       
                     </div>
                     <div class="publish-info">
@@ -1482,7 +1478,7 @@ public interface BookRepository extends ElasticsearchRepository&lt;Book,Integer&
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

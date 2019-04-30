@@ -468,123 +468,123 @@ Linux的目录结构Linux的基本介绍linux的文件系统是采用级层式�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Linux基础入门的目录结构、远程登入等<br><a id="more"></a></p>
+                <p>Linux基础入门的目录结构、远程登入等</p>
 <h2 id="Linux的目录结构"><a href="#Linux的目录结构" class="headerlink" title="Linux的目录结构"></a>Linux的目录结构</h2><h3 id="Linux的基本介绍"><a href="#Linux的基本介绍" class="headerlink" title="Linux的基本介绍"></a>Linux的基本介绍</h3><p>linux的文件系统是采用级层式的<strong>树状目录结构</strong>，在此结构中的最上层是根目录“/”，然后在此目录下再创建其他的目录。</p>
 <p>深刻理解linux树状文件目录是非常重要的，这里我给大家说明一下。</p>
 <p>记住一句经典的话：<font color="red"><strong>在Linux世界里，一切皆文件（即使是一个硬件设备，也是使用文件来标志）</strong></font></p>
-<h3 id="linux的目录结构图"><a href="#linux的目录结构图" class="headerlink" title="linux的目录结构图"></a>linux的目录结构图</h3><p><img src="/images/QQ截图20181123210048.png"></p>
-<p>打开我们的centOS虚拟机，点击计算机，也会出现：根目录下的目录结构：<br><img src="/images/QQ截图20181123210800.png"></p>
+<h3 id="linux的目录结构图"><a href="#linux的目录结构图" class="headerlink" title="linux的目录结构图"></a>linux的目录结构图</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123210048.png"></p>
+<p>打开我们的centOS虚拟机，点击计算机，也会出现：根目录下的目录结构：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123210800.png"></p>
 <p><strong>PS：如果你想使用VirtualBox的全屏功能，需要安装增强功能。</strong></p>
-<p>点击设备：<br><img src="/images/QQ截图20181123211621.png"></p>
-<p>然后点击：安装增强功能：<br><img src="/images/QQ截图20181123211805.png"></p>
+<p>点击设备：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123211621.png"></p>
+<p>然后点击：安装增强功能：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123211805.png"></p>
 <p>然后：输入root的密码。</p>
 <p>安装完后，<strong>按下回车键</strong>，就安装成功了。</p>
 <p>如果你的安装失败，是因为你的系统需要安装：gcc, kernel, kernel-devel。</p>
 <p>于是使用yum安装：<code>yum install -y gcc kernel kernel-devel</code></p>
 <p>桌面上面，就会出现一个VBox_GAs_xxx的光盘图标。</p>
-<p><img src="/images/QQ截图20181123212208.png"></p>
-<p>双击那个光盘：<br><img src="/images/QQ截图20181123213629.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123212208.png"></p>
+<p>双击那个光盘：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123213629.png"></p>
 <p>切换成root用户，在终端下面进入那个光盘下面，然后：<code>sh VBoxLinuxAdditions.run</code></p>
-<p><img src="/images/QQ截图20181123220916.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123220916.png"></p>
 <p>安装成功后，重启虚拟机就好了：就可以使用全屏的功能了。</p>
 <hr>
 <p>回到我们的Linux目录结构：</p>
-<p>基本介绍：<br><img src="/images/QQ截图20181123214545.png"></p>
-<h3 id="具体的目录说明"><a href="#具体的目录说明" class="headerlink" title="具体的目录说明"></a>具体的目录说明</h3><p><img src="/images/QQ截图20181123214859.png"><br><img src="/images/QQ截图20181123215006.png"><br><img src="/images/QQ截图20181123215252.png"><br><img src="/images/QQ截图20181123215959.png"><br><img src="/images/QQ截图20181123220105.png"></p>
+<p>基本介绍：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123214545.png"></p>
+<h3 id="具体的目录说明"><a href="#具体的目录说明" class="headerlink" title="具体的目录说明"></a>具体的目录说明</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123214859.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215006.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215252.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215959.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123220105.png"></p>
 <h3 id="对linux目录结构的小结"><a href="#对linux目录结构的小结" class="headerlink" title="对linux目录结构的小结"></a>对linux目录结构的小结</h3><p>1)在linux中，目录结构 有一个  根目录 / , 其他的目录都是在 / 目录分支。</p>
 <p>2)在linux中，有很多目录，是安装后，自动生成的目录，每个目录都会存放相应的内容，不要去修改.</p>
 <p>3)在linux中，所有的设备都可以通过文件来体现(字符设备文件[比如键盘，鼠标]，块设备文件[硬盘])</p>
 <p>4)<strong>在学习linux时，要尽快的在脑海中，形成一个 目录树</strong></p>
-<h2 id="Linux系统之远程登录与上传下载"><a href="#Linux系统之远程登录与上传下载" class="headerlink" title="Linux系统之远程登录与上传下载"></a>Linux系统之远程登录与上传下载</h2><p>为啥要远程登录呢？我们不能直接在我们的虚拟机上面操作吗？登录账户和密码后，就可以直接操作呀？<br><img src="/images/QQ截图20181124100504.png"></p>
-<p>那是因为，在我们实际上班的时候，我们不是使用Windows电脑安装虚拟机来操作Linux系统的，linux服务器是在机房里面，我们每个开发人员，不可能每次要操作linux服务器就去机房，那样太麻烦，而且效率极低。所以，我们需要在自己的windows电脑上面远程登录到机房中的linux服务器。<br><img src="/images/QQ截图20181124100938.png"></p>
+<h2 id="Linux系统之远程登录与上传下载"><a href="#Linux系统之远程登录与上传下载" class="headerlink" title="Linux系统之远程登录与上传下载"></a>Linux系统之远程登录与上传下载</h2><p>为啥要远程登录呢？我们不能直接在我们的虚拟机上面操作吗？登录账户和密码后，就可以直接操作呀？<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124100504.png"></p>
+<p>那是因为，在我们实际上班的时候，我们不是使用Windows电脑安装虚拟机来操作Linux系统的，linux服务器是在机房里面，我们每个开发人员，不可能每次要操作linux服务器就去机房，那样太麻烦，而且效率极低。所以，我们需要在自己的windows电脑上面远程登录到机房中的linux服务器。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124100938.png"></p>
 <p>常见的远程登录软件有：Xshell、SecureCRT、SmartTTY等等</p>
 <h3 id="远程登录之Xshell"><a href="#远程登录之Xshell" class="headerlink" title="远程登录之Xshell"></a>远程登录之Xshell</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Xshell 是目前最好的远程登录到Linux操作的软件，流畅的速度并且完美解决了<strong>中文乱码</strong>的问题， 是目前程序员首选的软件。</p>
 <p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及 Microsoft Windows 平台的 TELNET 协议</p>
 <p>Xshell 可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
 <h4 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h4><p>1）到Xshell官网上面去下载</p>
-<p><code>http://www.netsarang.com/</code><br><img src="/images/QQ截图20181124111119.png"><br><img src="/images/QQ截图20181124111225.png"><br><img src="/images/QQ截图20181124111343.png"></p>
+<p><code>http://www.netsarang.com/</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111119.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111225.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111343.png"></p>
 <p>2) 安装Xshell软件</p>
 <p>傻瓜式安装即可。</p>
-<p>安装完毕后，双击Xshell软件：<br><img src="/images/QQ截图20181124112122.png"></p>
-<p>点击新建会话：<br><img src="/images/QQ截图20181124112212.png"></p>
-<p>填写相关信息：<br><img src="/images/QQ截图20181124112620.png"></p>
-<p>连接：<br><img src="/images/QQ截图20181124112738.png"></p>
-<p><img src="/images/QQ截图20181124124930.png"></p>
+<p>安装完毕后，双击Xshell软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112122.png"></p>
+<p>点击新建会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112212.png"></p>
+<p>填写相关信息：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112620.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112738.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124930.png"></p>
 <p>如果出现连接失败的话，看看你的linux的sshd服务是否开启：</p>
-<p>在虚拟机中的终端中输入：setup<br>如果不是root用户，会让你先输入root的密码。<br><img src="/images/QQ截图20181124123720.png"></p>
-<p>选择系统服务后，回车。<br><img src="/images/QQ截图20181124123855.png"></p>
-<p>在其中找到sshd.service,看它的前面是否有 * 号，有的话，说明已经开启了，没有的话，使用<strong>空格</strong>开启。<br><img src="/images/QQ截图20181124124037.png"></p>
-<p>然后使用：tab键进入到确定，然后回车确定即可。<br><img src="/images/QQ截图20181124124357.png"></p>
+<p>在虚拟机中的终端中输入：setup<br>如果不是root用户，会让你先输入root的密码。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124123720.png"></p>
+<p>选择系统服务后，回车。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124123855.png"></p>
+<p>在其中找到sshd.service,看它的前面是否有 * 号，有的话，说明已经开启了，没有的话，使用<strong>空格</strong>开启。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124037.png"></p>
+<p>然后使用：tab键进入到确定，然后回车确定即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124357.png"></p>
 <p>然后使用tab键到退出。此时sshd服务就开启了。</p>
 <p>验证sshd服务是否开启：<code>service sshd status</code></p>
-<p>出现：active的绿色字体，说明开启成功！<br><img src="/images/QQ截图20181124124648.png"></p>
-<p>再次使用Xshell连接我们的虚拟机：<br><img src="/images/QQ截图20181124124930.png"></p>
-<p>发现还是连接失败，这是因为我们的宿主机的ip地址是：10.6.11.123，而我们的linux的ip地址是：10.0.2.15<br><img src="/images/QQ截图20181124125343.png"></p>
-<p>在宿主机下，ping我们的虚拟机的linux的ip，发现超时，即：宿主机与虚拟机的linux不连通<br><img src="/images/QQ截图20181124125524.png"></p>
+<p>出现：active的绿色字体，说明开启成功！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124648.png"></p>
+<p>再次使用Xshell连接我们的虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124930.png"></p>
+<p>发现还是连接失败，这是因为我们的宿主机的ip地址是：10.6.11.123，而我们的linux的ip地址是：10.0.2.15<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125343.png"></p>
+<p>在宿主机下，ping我们的虚拟机的linux的ip，发现超时，即：宿主机与虚拟机的linux不连通<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125524.png"></p>
 <p>所以，只要我们的宿主机与虚拟机的linux服务器能够连通的话，Xshell才能连接成功。</p>
-<p>现在修改我们的linux的网络配置，添加网桥模式：<br><img src="/images/QQ截图20181124125734.png"></p>
+<p>现在修改我们的linux的网络配置，添加网桥模式：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125734.png"></p>
 <p>重启我们的centOS虚拟机：</p>
-<p>发现，现在我们已经有了两个网卡：<br><img src="/images/QQ截图20181124125911.png"><br><img src="/images/QQ截图20181124130023.png"><br><img src="/images/QQ截图20181124130141.png"></p>
-<p>现在使用我们的宿主机 ping 网桥模式下分配的ip地址，我这里就是：10.6.11.104<br><img src="/images/QQ截图20181124130405.png"></p>
-<p>最后，修改我们的Xshell下的主机的ip地址（网桥模式下的ip地址）<br><img src="/images/QQ截图20181124130556.png"></p>
-<p>点击确定，连接：<br><img src="/images/QQ截图20181124130641.png"></p>
-<p>然后，会让你输入连接的用户名和密码：<br><img src="/images/QQ截图20181124130728.png"><br><img src="/images/QQ截图20181124130819.png"></p>
+<p>发现，现在我们已经有了两个网卡：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125911.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130023.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130141.png"></p>
+<p>现在使用我们的宿主机 ping 网桥模式下分配的ip地址，我这里就是：10.6.11.104<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130405.png"></p>
+<p>最后，修改我们的Xshell下的主机的ip地址（网桥模式下的ip地址）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130556.png"></p>
+<p>点击确定，连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130641.png"></p>
+<p>然后，会让你输入连接的用户名和密码：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130728.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130819.png"></p>
 <p><strong>PS：如果以上还是不能成功，请你关闭防火墙</strong></p>
 <p>systemctl disable 服务名 service    永久关闭防火墙<br>systemctl status firewalld.service    查看防火墙<br>systemctl stop firewalld.service    关闭防火墙<br>systemctl start firewalld service    打开防火墙</p>
 <hr>
-<p>验证我们的远程登录是否有效，在Xshell界面中，进入Desktop，然后创建一个hello文件：<br><img src="/images/QQ截图20181124140900.png"></p>
-<p>然后在我们的root用户的桌面下，就会出现一个hello的文件：<br><img src="/images/QQ截图20181124140951.png"></p>
+<p>验证我们的远程登录是否有效，在Xshell界面中，进入Desktop，然后创建一个hello文件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124140900.png"></p>
+<p>然后在我们的root用户的桌面下，就会出现一个hello的文件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124140951.png"></p>
 <h3 id="远程上传下载之Xftp"><a href="#远程上传下载之Xftp" class="headerlink" title="远程上传下载之Xftp"></a>远程上传下载之Xftp</h3><h4 id="Xftp的简单介绍"><a href="#Xftp的简单介绍" class="headerlink" title="Xftp的简单介绍"></a>Xftp的简单介绍</h4><p>是一个基于 windows 平台的功能强大的 SFTP、FTP 文件传输软件。使用了 Xftp 以后，windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。</p>
-<h4 id="Xftp的安装配置"><a href="#Xftp的安装配置" class="headerlink" title="Xftp的安装配置"></a>Xftp的安装配置</h4><p>到官网上面下载：<code>https://www.netsarang.com/products/xfp_overview.html</code><br><img src="/images/QQ截图20181124151724.png"></p>
+<h4 id="Xftp的安装配置"><a href="#Xftp的安装配置" class="headerlink" title="Xftp的安装配置"></a>Xftp的安装配置</h4><p>到官网上面下载：<code>https://www.netsarang.com/products/xfp_overview.html</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124151724.png"></p>
 <p>和Xshell的安装类似，我就不演示了。</p>
-<p>下载完成后：打开Xftp软件：<br><img src="/images/QQ截图20181124153248.png"></p>
-<p>新建我们的会话：<br><img src="/images/QQ截图20181124153555.png"></p>
-<p>连接：<br><img src="/images/QQ截图20181124153720.png"></p>
-<p>输入root的密码：<br><img src="/images/QQ截图20181124153803.png"></p>
-<p>成功后的效果图：（左边windows的桌面，右边linux系统的用户根目录）<br><img src="/images/QQ截图20181124153946.png"></p>
-<p>如果你的右边的linux系统出现中文乱码的话：点击绿色的小齿轮<br><img src="/images/QQ截图20181124154117.png"></p>
-<p>然后，点击选项，编码选择utf-8即可：<br><img src="/images/QQ截图20181124154214.png"></p>
+<p>下载完成后：打开Xftp软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153248.png"></p>
+<p>新建我们的会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153555.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153720.png"></p>
+<p>输入root的密码：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153803.png"></p>
+<p>成功后的效果图：（左边windows的桌面，右边linux系统的用户根目录）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153946.png"></p>
+<p>如果你的右边的linux系统出现中文乱码的话：点击绿色的小齿轮<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154117.png"></p>
+<p>然后，点击选项，编码选择utf-8即可：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154214.png"></p>
 <p>在右边的linux系统中右键刷新后，就不会中文乱码了。</p>
 <h4 id="Xftp的简单使用"><a href="#Xftp的简单使用" class="headerlink" title="Xftp的简单使用"></a>Xftp的简单使用</h4><p>1）从windows系统中，上传图片到linux系统中</p>
-<p>在左边的windows界面下，随便找到一个图片，右键选择<strong>传输</strong>即可。<br><img src="/images/QQ截图20181124154555.png"></p>
-<p>完成后，在右边的linux系统中，就会多出一张图片<br><img src="/images/QQ截图20181124154724.png"></p>
-<p>打开我们的虚拟机，也能看到那张图片：<br><img src="/images/QQ截图20181124154838.png"></p>
+<p>在左边的windows界面下，随便找到一个图片，右键选择<strong>传输</strong>即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154555.png"></p>
+<p>完成后，在右边的linux系统中，就会多出一张图片<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154724.png"></p>
+<p>打开我们的虚拟机，也能看到那张图片：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154838.png"></p>
 <p>2）从linux系统下载文件到我们的windows系统中</p>
-<p>一样的操作，在右边的linux系统中，随便上传一个文件即可。<br><img src="/images/QQ截图20181124155039.png"></p>
-<p><img src="/images/QQ截图20181124155236.png"></p>
-<p>打开我们的windows桌面：<br><img src="/images/QQ截图20181124155351.png"></p>
+<p>一样的操作，在右边的linux系统中，随便上传一个文件即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155039.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155236.png"></p>
+<p>打开我们的windows桌面：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155351.png"></p>
 <p><strong>注意：在上传文件的时候，文件上传的目的地就是你现在的打开的目的地的目录，比如你的目的地linux打开在home目下，那么从windows系统下上传的文件就会传输到linux的home目录下</strong></p>
 <p><strong>PS：</strong>当我们在实际工作中，如果需要部署一个项目，则应当先压缩后，再上传，上传后，使用linux的相关的解压缩命令，来解压。</p>
 <h3 id="SecureCRT的安装和使用"><a href="#SecureCRT的安装和使用" class="headerlink" title="SecureCRT的安装和使用"></a>SecureCRT的安装和使用</h3><h4 id="基本的介绍"><a href="#基本的介绍" class="headerlink" title="基本的介绍"></a>基本的介绍</h4><p>是用于远程登录Linux的软件。SecureCRT 也是一款常用的远程登录Linux的软件，在<strong>大数据开发</strong>中使用较多。</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载绿色安装板即可，直接拷贝整个目录就可以用了。</p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>打开SecureCRT的运行文件<br><img src="/images/QQ截图20181124161136.png"></p>
-<p>新建连接：<br><img src="/images/QQ截图20181124161258.png"></p>
-<p>新建会话：<br><img src="/images/QQ截图20181124161419.png"><br><img src="/images/QQ截图20181124161604.png"><br><img src="/images/QQ截图20181124161645.png"></p>
-<p>连接：<br><img src="/images/QQ截图20181124161719.png"><br><img src="/images/QQ截图20181124161741.png"></p>
-<p>输入root密码即可：<br><img src="/images/QQ截图20181124162002.png"></p>
-<p>出现中文乱码问题：<br><img src="/images/QQ截图20181124162055.png"></p>
-<p>解决中文乱码问题：<br><img src="/images/QQ截图20181124162224.png"></p>
-<p>再次连接：<br><img src="/images/QQ截图20181124162521.png"></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>打开SecureCRT的运行文件<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161136.png"></p>
+<p>新建连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161258.png"></p>
+<p>新建会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161419.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161604.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161645.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161719.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161741.png"></p>
+<p>输入root密码即可：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162002.png"></p>
+<p>出现中文乱码问题：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162055.png"></p>
+<p>解决中文乱码问题：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162224.png"></p>
+<p>再次连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162521.png"></p>
 <p>测试：</p>
-<p>直接输入：<code>touch hello</code><br><img src="/images/QQ截图20181124162827.png"></p>
-<p>打开我们的虚拟机：<br><img src="/images/QQ截图20181124162918.png"></p>
+<p>直接输入：<code>touch hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162827.png"></p>
+<p>打开我们的虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162918.png"></p>
 <h2 id="Vi和Vim编辑器"><a href="#Vi和Vim编辑器" class="headerlink" title="Vi和Vim编辑器"></a>Vi和Vim编辑器</h2><h3 id="vi和vim的简单介绍"><a href="#vi和vim的简单介绍" class="headerlink" title="vi和vim的简单介绍"></a>vi和vim的简单介绍</h3><p>所有的 Linux 系统都会内建 vi 文本编辑器。</p>
 <p>Vim 具有程序编辑的能力，可以看做是Vi的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。我们只需要掌握它的基本使用即可。</p>
 <h3 id="vi和vim的三种模式"><a href="#vi和vim的三种模式" class="headerlink" title="vi和vim的三种模式"></a>vi和vim的三种模式</h3><h4 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h4><p>以 vim 打开一个文件就直接进入正常模式了(这是默认的模式)。在这个模式中， 你可以使用『上下左右』按键来移动光标，你可以使用『删除字符』或『删除整行』来处理档案内容， 也可以使用『复制、贴上』来处理你的文件数据。在正常模式下可以使用快捷键。</p>
 <h4 id="插入模式-编辑模式"><a href="#插入模式-编辑模式" class="headerlink" title="插入模式(编辑模式)"></a>插入模式(编辑模式)</h4><p>按下<strong>i（insert）</strong>, I, o, O, a, A, r, R等任何一个字母之后才会进入编辑模式, 一般来说按<strong>i</strong>即可.</p>
 <h4 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h4><p>在这个模式当中， 可以提供你相关指令，完成读取、存盘、替换、离开 vim 、显示行号等的动作则是在此模式中达成的！<br>（ Esc + ：进入该模式 ）</p>
 <h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><p>在linux系统下，编写一个java程序</p>
-<p>打开Xshell软件：<br><img src="/images/QQ截图20181124164946.png"></p>
+<p>打开Xshell软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124164946.png"></p>
 <p>此时，桌面上面还没有hello.java文件。</p>
-<p>输入：<code>vim hello.java</code><br><img src="/images/QQ截图20181124165113.png"></p>
+<p>输入：<code>vim hello.java</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165113.png"></p>
 <p>此时，就进入了正常模式，你会发现，此时，不管你在键盘上面怎么输入，都不会输入进去。我们需要切换到编辑模式下：输入i</p>
-<p>就会进入插入模式：<br><img src="/images/QQ截图20181124165446.png"></p>
+<p>就会进入插入模式：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165446.png"></p>
 <p>现在怎么保存退出呢？需要切换到命令行模式下：（ Esc + ：）</p>
-<p>然后输入：wq（保存并退出）<br><img src="/images/QQ截图20181124165701.png"></p>
-<p>回车后，就回到我们的终端下面，再次输入：ll<br><img src="/images/QQ截图20181124165845.png"></p>
-<p>查看我们刚刚编写的hello.java文件：（cat hello.java）<br><img src="/images/QQ截图20181124165954.png"></p>
+<p>然后输入：wq（保存并退出）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165701.png"></p>
+<p>回车后，就回到我们的终端下面，再次输入：ll<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165845.png"></p>
+<p>查看我们刚刚编写的hello.java文件：（cat hello.java）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165954.png"></p>
 <p>说明刚刚的hello.java文件，保存成功！</p>
-<h3 id="vi和vim模式的互相切换"><a href="#vi和vim模式的互相切换" class="headerlink" title="vi和vim模式的互相切换"></a>vi和vim模式的互相切换</h3><p><img src="/images/QQ截图20181124170148.png"></p>
+<h3 id="vi和vim模式的互相切换"><a href="#vi和vim模式的互相切换" class="headerlink" title="vi和vim模式的互相切换"></a>vi和vim模式的互相切换</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124170148.png"></p>
 <p>：wq 修改保存并退出</p>
 <p>：q  你打开一个文件，然后觉得没有修改的，直接输入q退出即可</p>
 <p>：q！你打开一个文件，然后修改了，但是觉得不想保存修改的内容，那就q！强制退出并不保存之前修改的内容</p>
@@ -600,9 +600,9 @@ Linux的目录结构Linux的基本介绍linux的文件系统是采用级层式�
 <p>先在命令行模式下：set nu，看到行号，然后在正常模式下，输入：20 + shift + g ，就会跳转到第20行号的位置。</p>
 <hr>
 <p>更多快捷键的使用：</p>
-<p>正常模式下：<br><img src="/images/QQ截图20181124173155.png"></p>
-<p>编辑模式下：<br><img src="/images/QQ截图20181124173454.png"></p>
-<p>命令行模式下：<br><img src="/images/QQ截图20181124173621.png"></p>
+<p>正常模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173155.png"></p>
+<p>编辑模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173454.png"></p>
+<p>命令行模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173621.png"></p>
 <h2 id="开机、重启和用户登录注销"><a href="#开机、重启和用户登录注销" class="headerlink" title="开机、重启和用户登录注销"></a>开机、重启和用户登录注销</h2><h3 id="关机-amp-重启命令"><a href="#关机-amp-重启命令" class="headerlink" title="关机&amp;重启命令"></a>关机&amp;重启命令</h3><p>基本介绍:</p>
 <p>shutdown:</p>
 <pre><code>shutdown    –h    now         立该进行关机  【halt】
@@ -616,9 +616,9 @@ shutdown    –r     now        现在重新启动计算机  [reboot]
 <h3 id="用户登录和注销"><a href="#用户登录和注销" class="headerlink" title="用户登录和注销"></a>用户登录和注销</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><p>1）登录时尽量少用root帐号登录，因为它是系统管理员，最大的权限，避免操作失误。可以利用普通用户登录，登录后<br>再用 “su - 用户名” 命令来切换成系统管理员身份.</p>
 <p>2）在提示符下输入 logout 即可注销用户【不同的shell 可能不同(logout  exit)】</p>
 <h4 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h4><p>1) logout 注销指令在图形运行级别(简单提一下：0-6个级别)无效，在运行级别 3下有效.</p>
-<p>即：在我们的图形化界面下的终端，输入：logout 无效。<br><img src="/images/QQ截图20181124175449.png"></p>
+<p>即：在我们的图形化界面下的终端，输入：logout 无效。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124175449.png"></p>
 <p>运行级别3：代表的就是远程登录。</p>
-<p>在Xshell下，输入：logout 就退出了<br><img src="/images/QQ截图20181124175622.png"></p>
+<p>在Xshell下，输入：logout 就退出了<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124175622.png"></p>
 <p>2) 运行级别这个概念，后面给大家介绍</p>
 
             </div>
@@ -1063,8 +1063,7 @@ shutdown    –r     now        现在重新启动计算机  [reboot]
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                本篇文章，将会讲解Linux的用户管理、实用指令等。
-用户管理基本介绍Linux系统是一个多用户多任务的操作系统，任何一个要使用系统资源的用
+                                讲解Linux的用户管理、实用指令等。
                       
                     </div>
                     <div class="publish-info">
@@ -1114,8 +1113,6 @@ shutdown    –r     now        现在重新启动计算机  [reboot]
                     <div class="summary">
                        
                                 Linux的基础入门篇，帮助大家入门的教程
-Linux的发行版常见的Linux发行版1）Red Hat Linux
-　　Red Hat Li
                       
                     </div>
                     <div class="publish-info">
@@ -1297,7 +1294,7 @@ Linux的发行版常见的Linux发行版1）Red Hat Linux
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             

@@ -479,11 +479,11 @@ docker --help重要，帮助指令，就像linux中的man指令一样。
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>接着上篇，我们来学习docker的常用命令，大家是不是已经开始蠢蠢欲动了呢？come on！！！<br><a id="more"></a></p>
-<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><h3 id="docker-version"><a href="#docker-version" class="headerlink" title="docker version"></a>docker version</h3><p><img src="/images/QQ截图20190109212142.png"></p>
-<h3 id="docker-info"><a href="#docker-info" class="headerlink" title="docker info"></a>docker info</h3><p><img src="/images/QQ截图20190109212258.png"></p>
+                <p>接着上篇，我们来学习docker的常用命令，大家是不是已经开始蠢蠢欲动了呢？come on！！！</p>
+<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><h3 id="docker-version"><a href="#docker-version" class="headerlink" title="docker version"></a>docker version</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109212142.png"></p>
+<h3 id="docker-info"><a href="#docker-info" class="headerlink" title="docker info"></a>docker info</h3><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109212258.png"></p>
 <h3 id="docker-help"><a href="#docker-help" class="headerlink" title="docker --help"></a><code>docker --help</code></h3><p>重要，帮助指令，就像linux中的man指令一样。</p>
-<p><img src="/images/QQ截图20190109212428.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109212428.png"></p>
 <h2 id="镜像命令"><a href="#镜像命令" class="headerlink" title="镜像命令"></a>镜像命令</h2><h3 id="docker-images"><a href="#docker-images" class="headerlink" title="docker images"></a>docker images</h3><p>列出本地主机上的镜像</p>
 <pre><code>docker images [OPTIONS]
 
@@ -494,7 +494,7 @@ TAG：        镜像的标签
 IMAGE ID：   镜像ID
 CREATED：    镜像创建时间
 SIZE：       镜像大小
-</code></pre><p><img src="/images/QQ截图20190109213548.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109213548.png"></p>
 <p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
 <p>如果你不指定一个镜像的版本标签，例如你只使用 ubuntu，docker 将默认使用 ubuntu:latest 镜像。</p>
 <pre><code>OPTIONS说明
@@ -503,7 +503,7 @@ SIZE：       镜像大小
 -q：        只列出镜像的id
 --digests:  显示出镜像的摘要信息
 --no-trunc: 显示出完整的镜像信息
-</code></pre><p><img src="/images/QQ截图20190109214237.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109214237.png"></p>
 <h3 id="docker-search"><a href="#docker-search" class="headerlink" title="docker search"></a>docker search</h3><p>在docker hub上面查找某个镜像</p>
 <pre><code>docker search 镜像名 [OPTION]
 
@@ -513,7 +513,7 @@ STARS:           相当于点赞数，星数，越多说明人用的越多
 OFFICIAL:        是否官方
 AUTOMATED:       是否自动构建、组装
 </code></pre><p>使用该命令 与 在docker hub上面直接查找镜像是一样。docker hub地址：<a href="https://hub.docker.com" target="_blank" rel="noopener">https://hub.docker.com</a></p>
-<p>比如说：查找 tomcat镜像<br><img src="/images/QQ截图20190109215126.png"><br><img src="/images/QQ截图20190109215251.png"></p>
+<p>比如说：查找 tomcat镜像<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109215126.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109215251.png"></p>
 <pre><code>OPTIONS说明：
 
 --no-trunc:    显示完整的镜像描述
@@ -523,16 +523,16 @@ AUTOMATED:       是否自动构建、组装
 
 --automated:   只列出automated build类型的镜像
 这里说明一下，  命令已经过时了，现在使用：--filter=is-automated=true 来代替了 
-</code></pre><p><img src="/images/QQ截图20190109220322.png"><br><img src="/images/QQ截图20190109220719.png"><br><img src="/images/QQ截图20190109221006.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109220322.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109220719.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109221006.png"></p>
 <h3 id="docker-pull"><a href="#docker-pull" class="headerlink" title="docker pull"></a>docker pull</h3><p>下载某个镜像，如果没有配置阿里云镜像，就是从docker huh上面拉取镜像，配置了的话，就是从阿里云镜像上面拉取镜像。<br>没有配置的话，下载速度老慢了，会吓死个人的。</p>
 <pre><code>docker pull 镜像名字[:TAG]
 
 如果镜像名后面不加 :TAG , 那么就是下载最新的镜像。即  :latest。
 
 docker pull tomcat   &lt;======&gt; docker pull tomcat:latest
-</code></pre><p>现在，比如下载tomcat镜像。<br><img src="/images/QQ截图20190109223129.png"><br><img src="/images/QQ截图20190109223225.png"></p>
+</code></pre><p>现在，比如下载tomcat镜像。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109223129.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109223225.png"></p>
 <p>如果，不想下载最新的镜像，要么就需要加上tag标签，那tag在哪里可以看呢？查官网。</p>
-<p>比如，要下载tomcat镜像，点击进去后，会发现很多tag。<br><img src="/images/QQ截图20190109223409.png"></p>
+<p>比如，要下载tomcat镜像，点击进去后，会发现很多tag。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109223409.png"></p>
 <h3 id="docker-rmi"><a href="#docker-rmi" class="headerlink" title="docker rmi"></a>docker rmi</h3><p>删除某个镜像</p>
 <pre><code>docker rmi 某个XXX镜像名字（或镜像ID）
 注意，如果你不加tag，那么就是删除latest的镜像。
@@ -548,12 +548,12 @@ docker rmi -f 镜像名1:TAG 镜像名2:TAG
 docker rmi -f $(docker images -qa)
 使用了$(),很像mysql中的 in的作用，delete from table where id in（id1，id2，id3）。
 docker images -qa：查找本地所有镜像的id
-</code></pre><p>使用镜像名删除：<br><img src="/images/QQ截图20190109224931.png"></p>
-<p>使用镜像id删除：<br><img src="/images/QQ截图20190109224736.png"></p>
+</code></pre><p>使用镜像名删除：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109224931.png"></p>
+<p>使用镜像id删除：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190109224736.png"></p>
 <hr>
 <h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><font color="red"><strong>有镜像才能创建容器，这是根本的前提(下载一个CentOS镜像演示)</strong></font>
 
-<p><code>docker pull centos</code><br><img src="/images/QQ截图20190110111910.png"></p>
+<p><code>docker pull centos</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110111910.png"></p>
 <h3 id="docker-run-image"><a href="#docker-run-image" class="headerlink" title="docker run image"></a>docker run image</h3><p>新建并启动一个容器：</p>
 <pre><code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
@@ -570,7 +570,7 @@ OPTIONS说明（常用）：有些是一个减号，有些是两个减号
     hostPort:containerPort
     containerPort
 </code></pre><p>启动交互式容器：</p>
-<p><code>docker run -it centos</code>  (-i -t 可以缩写成：-it)<br><img src="/images/QQ截图20190110113630.png"></p>
+<p><code>docker run -it centos</code>  (-i -t 可以缩写成：-it)<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110113630.png"></p>
 <h3 id="docker-ps"><a href="#docker-ps" class="headerlink" title="docker ps"></a>docker ps</h3><p>列出当前所有<strong>运行</strong>的容器</p>
 <pre><code>docker ps [OPTIONS]
 
@@ -581,24 +581,24 @@ OPTIONS说明（常用）：
 -n：显示最近 n个创建的容器(不管是否运行)。
 -q :静默模式，只显示容器编号。
 --no-trunc :不截断输出。
-</code></pre><p><img src="/images/QQ截图20190110114219.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110114219.png"></p>
 <p>退出使用交互式运行的容器：</p>
 <pre><code>两种方式：
 
 exit：    容器停止并退出交互式。
 
 ctrl+P+Q：容器不停止但退出交互式。
-</code></pre><p>使用 exit 退出刚刚我们启动的centos容器：<br><img src="/images/QQ截图20190110114603.png"></p>
-<p>检测是否停止了容器：<br><img src="/images/QQ截图20190110114823.png"></p>
+</code></pre><p>使用 exit 退出刚刚我们启动的centos容器：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110114603.png"></p>
+<p>检测是否停止了容器：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110114823.png"></p>
 <h3 id="docker-start"><a href="#docker-start" class="headerlink" title="docker start"></a>docker start</h3><p>启动容器</p>
 <pre><code>docker start 容器ID或者容器名
-</code></pre><p>再次启动，centos容器<br><img src="/images/QQ截图20190110115559.png"></p>
+</code></pre><p>再次启动，centos容器<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110115559.png"></p>
 <h3 id="docker-restart"><a href="#docker-restart" class="headerlink" title="docker restart"></a>docker restart</h3><p>重启容器</p>
 <pre><code>docker restart 容器ID或者容器名
-</code></pre><p>重启centos容器<br><img src="/images/QQ截图20190110120004.png"></p>
+</code></pre><p>重启centos容器<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110120004.png"></p>
 <h3 id="docker-stop"><a href="#docker-stop" class="headerlink" title="docker stop"></a>docker stop</h3><p>停止容器</p>
 <pre><code>docker stop 容器ID或者容器名
-</code></pre><p>停止centos容器运行：<br><img src="/images/QQ截图20190110120253.png"></p>
+</code></pre><p>停止centos容器运行：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110120253.png"></p>
 <h3 id="docker-kill"><a href="#docker-kill" class="headerlink" title="docker kill"></a>docker kill</h3><p>强制停止</p>
 <pre><code>docker kill 容器ID或者容器名
 
@@ -615,11 +615,11 @@ ctrl+P+Q：容器不停止但退出交互式。
 方式一：docker rm -f $(docker ps -a -q)
 
 方式二：docker ps -a -q | xargs docker rm
-</code></pre><p><img src="/images/QQ截图20190110121246.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110121246.png"></p>
 <hr>
 <h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p><strong>1.启动守护式容器</strong></p>
 <pre><code>docker run -d 镜像ID或镜像名 
-</code></pre><p>之前，我们使用的是交互式启动容器，现在我们来以后台的方式来启动容器：<br><img src="/images/QQ截图20190110125011.png"></p>
+</code></pre><p>之前，我们使用的是交互式启动容器，现在我们来以后台的方式来启动容器：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110125011.png"></p>
 <p>问题：然后docker ps -a 进行查看, 会发现容器已经退出了。</p>
 <p>很重要的要说明的一点: <font color="red">Docker容器后台运行 , 就必须有一个前台进程. 否则会自动退出。</font><br>容器运行的命令如果不是那些一直挂起的命令（比如运行top，tail），就是会自动退出的。</p>
 <p><strong>这个是docker的机制问题</strong>,比如你的web容器,我们以nginx为例，正常情况下,我们配置启动服务只需要启动响应的service即可。例如：service nginx start<br>但是,这样做,nginx为后台进程模式运行，就导致docker前台没有运行的应用，这样的容器后台启动后，会立即自杀，因为他觉得他没事可做了。<font color="blue">所以，最佳的解决方案是，将你要运行的程序以前台进程的形式运行。</font></p>
@@ -630,13 +630,13 @@ ctrl+P+Q：容器不停止但退出交互式。
 -f：           只打印最新的日志，会不退出，一直打印。
 --tail 数字：  显示最后的多少条日志。（数字是几，就打印几条日志）       
 </code></pre><p>使用：<code>docker run -d centos /bin/sh -c &quot;while true;do echo hello zzyy;sleep 2;done&quot;</code></p>
-<p>因为后台运行会自动退出，所以当以后台运行容器时，我们加入了shell脚本，使其一直打印 hello zzyy，所以容器就不会退出。<br><img src="/images/QQ截图20190110130157.png"><br><img src="/images/QQ截图20190110130315.png"><br><img src="/images/QQ截图20190110130442.png"><br><img src="/images/QQ截图20190110130705.png"><br><img src="/images/QQ截图20190110130617.png"></p>
+<p>因为后台运行会自动退出，所以当以后台运行容器时，我们加入了shell脚本，使其一直打印 hello zzyy，所以容器就不会退出。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110130157.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110130315.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110130442.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110130705.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110130617.png"></p>
 <p><strong>3.查看容器内运行的进程</strong></p>
 <pre><code>docker top 容器的ID
-</code></pre><p><img src="/images/QQ截图20190110131211.png"><br><img src="/images/QQ截图20190110131324.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110131211.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110131324.png"></p>
 <p><strong>4.查看容器内部的细节</strong></p>
 <pre><code>docker inspect 容器的ID
-</code></pre><p><img src="/images/QQ截图20190110131530.png"></p>
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110131530.png"></p>
 <p><strong>5.进入正在运行的容器并以命令行交互</strong></p>
 <pre><code>有两种方式：
 
@@ -645,18 +645,18 @@ ctrl+P+Q：容器不停止但退出交互式。
 方式二：docker exec -it 容器ID /bin/bash
 
 方式二的功能更强大些，其实docker exec 是运行当前容器的命令，运行完命令后，就返回到宿主机，由于运行的是/bin/bash，所以才没有返回到宿主机
-</code></pre><p>方式一：<br><img src="/images/QQ截图20190110132223.png"></p>
-<p>方式二：<br><img src="/images/QQ截图20190110132352.png"></p>
-<p>更强大的功能：<br><img src="/images/QQ截图20190110132800.png"></p>
+</code></pre><p>方式一：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110132223.png"></p>
+<p>方式二：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110132352.png"></p>
+<p>更强大的功能：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110132800.png"></p>
 <font color="blue">两者的区别：</font>
 
 <p>attach：直接进入容器启动命令的终端，不会启动新的进程。</p>
 <p>exec：是在容器中打开新的终端，并且可以启动新的进程。</p>
 <p><strong>6.从容器内拷贝文件到宿主机上</strong></p>
 <pre><code>docker cp  容器ID:容器内路径 目的主机路径
-</code></pre><p>将centos中的/tmp下的yum.log 拷贝到root根目录下。<br><img src="/images/QQ截图20190110133245.png"><br><img src="/images/QQ截图20190110133436.png"></p>
+</code></pre><p>将centos中的/tmp下的yum.log 拷贝到root根目录下。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110133245.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110133436.png"></p>
 <hr>
-<h2 id="常用命令总结"><a href="#常用命令总结" class="headerlink" title="常用命令总结"></a>常用命令总结</h2><p><img src="/images/QQ截图20190110133708.png"></p>
+<h2 id="常用命令总结"><a href="#常用命令总结" class="headerlink" title="常用命令总结"></a>常用命令总结</h2><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day03/QQ截图20190110133708.png"></p>
 <pre><code>attach    Attach to a running container                 # 当前 shell 下 attach 连接指定运行镜像
 build     Build an image from a Dockerfile              # 通过 Dockerfile 定制镜像
 commit    Create a new image from a container changes   # 提交当前容器为新的镜像
@@ -1137,8 +1137,7 @@ wait      Block until a container stops, then print its exit code   # 截取容�
                 <div class="card-content article-content">
                     <div class="summary">
                       
-                                今天来学习docker中镜像原理，以及相关的commit命令。
-镜像是什么镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运
+                                docker中镜像原理
                       
                     </div>
                     <div class="publish-info">
@@ -1195,10 +1194,7 @@ wait      Block until a container stops, then print its exit code   # 截取容�
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                本篇讲解docker的安装
-Docker安装前提说明CentOS Docker 安装：
-
-Docker支持以下的CentOS版本：CentO
+                                docker的安装
                       
                     </div>
                     <div class="publish-info">
@@ -1388,7 +1384,7 @@ Docker支持以下的CentOS版本：CentO
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">289.4k</span>
+                <span class="white-color">289.3k</span>
             
 
             
