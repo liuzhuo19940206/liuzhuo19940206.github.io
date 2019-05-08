@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-05-07T09:59:23.112Z</updated>
+  <updated>2019-05-08T08:35:49.033Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>消息中间件的介绍</title>
+    <title>RabbitMQ的概念介绍</title>
     <link href="http://gakkil.gitee.io/2019/05/07/rabbitmq-de-jian-dan-ru-men/"/>
     <id>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-jian-dan-ru-men/</id>
+    <published>2019-05-07T12:15:43.000Z</published>
+    <updated>2019-05-08T08:35:49.033Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上一篇文章，主要讲述了消息中间件的基本概念，消息中间件的作用、功能，以及各种消息中间件的对比，接下来会主要讲述RabbitMQ消息队列。&lt;/p&gt;
+&lt;h3 id=&quot;相关概念&quot;&gt;&lt;a href=&quot;#相关概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消息中间件的介绍</title>
+    <link href="http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/"/>
+    <id>http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/</id>
     <published>2019-05-07T08:11:25.000Z</published>
-    <updated>2019-05-07T09:59:23.112Z</updated>
+    <updated>2019-05-07T12:17:32.690Z</updated>
     
     <summary type="html">
     
@@ -35,10 +66,10 @@
     
     </summary>
     
-      <category term="中间件" scheme="http://gakkil.gitee.io/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
     
-      <category term="中间件" scheme="http://gakkil.gitee.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
   </entry>
   
@@ -47,7 +78,7 @@
     <link href="http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/"/>
     <id>http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/</id>
     <published>2019-04-28T06:53:01.000Z</published>
-    <updated>2019-04-30T15:05:51.508Z</updated>
+    <updated>2019-05-07T12:17:44.862Z</updated>
     
     <summary type="html">
     
@@ -67,10 +98,10 @@
     
       <category term="Rabbitmq" scheme="http://gakkil.gitee.io/categories/Rabbitmq/"/>
     
-      <category term="中间件" scheme="http://gakkil.gitee.io/categories/Rabbitmq/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/Rabbitmq/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
     
-      <category term="中间件" scheme="http://gakkil.gitee.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
       <category term="Rabbitmq" scheme="http://gakkil.gitee.io/tags/Rabbitmq/"/>
     
@@ -540,38 +571,6 @@
         
           &lt;p&gt;Tomcat组件生命周期管理:Lifecycle&lt;/p&gt;
 &lt;p&gt;Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由Lifecycle控制组件的初始化、启动、销毁等动作，方便应用程序获取、释放某些资源，或者是触发某些特定的事件。Tomca
-        
-      
-    
-    </summary>
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
-    
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat的总体框架设计</title>
-    <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/"/>
-    <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-zong-ti-kuang-jia-she-ji/</id>
-    <published>2019-01-16T08:35:23.000Z</published>
-    <updated>2019-04-30T14:39:04.872Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;今天来学习tomcat的总体框架设计，帮助大家理解web的执行流程，fighting~~~&lt;/p&gt;
-&lt;p&gt;tomcat的总体架构如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img
         
       
     
