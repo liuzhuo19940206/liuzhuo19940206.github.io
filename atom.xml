@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-05-08T08:35:49.033Z</updated>
+  <updated>2019-05-09T08:13:11.671Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,9 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>RabbitMQ的简单入门</title>
+    <link href="http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/"/>
+    <id>http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/</id>
+    <published>2019-05-08T12:57:26.000Z</published>
+    <updated>2019-05-09T08:13:11.671Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在上篇博客中，我们知道了RabbitMQ的相关概念，再进行RabbitMQ的实操之前，我们还需要了解一下AMQP协议，毕竟RabbitMQ是基于AMQP协议用Erlang语言开发的。&lt;/p&gt;
+&lt;h3 id=&quot;AMQP协议模型&quot;&gt;&lt;a href=&quot;#AMQP协议模型&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>RabbitMQ的概念介绍</title>
-    <link href="http://gakkil.gitee.io/2019/05/07/rabbitmq-de-jian-dan-ru-men/"/>
-    <id>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-jian-dan-ru-men/</id>
+    <link href="http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/"/>
+    <id>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</id>
     <published>2019-05-07T12:15:43.000Z</published>
     <updated>2019-05-08T08:35:49.033Z</updated>
     
@@ -540,37 +571,6 @@
         
           &lt;p&gt;Tomcat的启动分析：Catalina&lt;/p&gt;
 &lt;p&gt;Tomcat的运行是通过Bootstrap的main方法，在开发工具中，我们只需要运行Bootstrap的main方法，便可以启动tomcat进行代码调试和分析。Bootstrap是tomcat的入口，它会完成初始化C
-        
-      
-    
-    </summary>
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
-    
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat的启动分析(一) Lifecycle</title>
-    <link href="http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/"/>
-    <id>http://gakkil.gitee.io/2019/01/16/tomcat-de-qi-dong-fen-xi-yi-lifecycle/</id>
-    <published>2019-01-16T09:36:02.000Z</published>
-    <updated>2019-04-30T14:40:08.027Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Tomcat组件生命周期管理:Lifecycle&lt;/p&gt;
-&lt;p&gt;Lifecycle在其他框架中也很常见，比如spring，它常用于具有生命周期的组件，由Lifecycle控制组件的初始化、启动、销毁等动作，方便应用程序获取、释放某些资源，或者是触发某些特定的事件。Tomca
         
       
     
