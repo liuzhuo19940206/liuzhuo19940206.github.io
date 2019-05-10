@@ -693,7 +693,7 @@ rabbitmqctl  set_policy  hello<span class="token operator">-</span>ha  <span cla
         Channel channel <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createChannel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token comment" spellcheck="true">//声明队列</span>
-        channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span><span class="token string">"simple_queue"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span><span class="token string">"simple_queue"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//1.队列的名字，2.是否自动应答，3.消费者</span>
@@ -717,7 +717,7 @@ rabbitmqctl  set_policy  hello<span class="token operator">-</span>ha  <span cla
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>在没有运行：生产者和消费者之前，观看管控台的信息：</p>
+<p>在没有运行生产者和消费者程序之前，观看管控台的信息：</p>
 <p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ截图20190509152944.png" alt=""></p>
 <p>首先运行消费者：因为队列是在消费者中声明的，先运行生产者的话，因为没有队列所以会将消息丢失！</p>
 <p><img src="https://gakkil.gitee.io/gakkil-image/rabbitmq/QQ截图20190509153237.png" alt=""></p>
@@ -1179,30 +1179,28 @@ firewall<span class="token operator">-</span>cmd <span class="token operator">--
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/05/08/rabbitmq-de-jian-dan-ru-men/">
+                <a href="/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/">
                     <div class="card-image">
                         
+                        <img src="http://ww1.sinaimg.cn/large/c5582837gy1g2w7trzjbkj20sg0g0jvy.jpg" class="responsive-img" alt="RabbitMQ的基础实战">
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="RabbitMQ的简单入门">
-                        
-                        <span class="card-title">RabbitMQ的简单入门</span>
+                        <span class="card-title">RabbitMQ的基础实战</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                       
-                                AMQP协议的介绍、RabbitMQ的简单入门
+                      
+                                RabbitMQ的基础实战，让大家明白基础的操作
                       
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1219,7 +1217,6 @@ firewall<span class="token operator">-</span>cmd <span class="token operator">--
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1444,7 +1441,7 @@ firewall<span class="token operator">-</span>cmd <span class="token operator">--
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">299.2k</span>
+                <span class="white-color">304.5k</span>
             
 
             

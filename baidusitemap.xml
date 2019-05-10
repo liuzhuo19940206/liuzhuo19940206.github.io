@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/</loc>
+    <lastmod>2019-05-10T11:24:14.177Z</lastmod>
+  </url>  <url>
     <loc>http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/</loc>
-    <lastmod>2019-05-09T08:13:11.671Z</lastmod>
+    <lastmod>2019-05-10T06:28:57.613Z</lastmod>
   </url>  <url>
     <loc>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</loc>
     <lastmod>2019-05-08T08:35:49.033Z</lastmod>
