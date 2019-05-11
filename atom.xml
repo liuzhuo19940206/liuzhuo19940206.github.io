@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-05-10T11:24:14.177Z</updated>
+  <updated>2019-05-11T11:51:00.785Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RabbitMQ的基础实战&lt;二&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/05/11/rabbitmq-de-ji-chu-shi-zhan-er/"/>
+    <id>http://gakkil.gitee.io/2019/05/11/rabbitmq-de-ji-chu-shi-zhan-er/</id>
+    <published>2019-05-11T06:35:58.000Z</published>
+    <updated>2019-05-11T11:51:00.785Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在上一篇文章中，我们已经了解到了RabbitMQ中的基本操作了，现在让我们开始实战演习吧！&lt;/p&gt;
+&lt;h3 id=&quot;最简单的模型&quot;&gt;&lt;a href=&quot;#最简单的模型&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>RabbitMQ的基础实战</title>
@@ -541,36 +572,6 @@
         
         
           &lt;p&gt;上一篇文章中我们分析了 Service、Engine、Host、Pipeline、Valve 组件的启动逻辑，在 HostConfig 中会实例化 StandardContext，并启动 Context 容器，完成 webapp
-        
-      
-    
-    </summary>
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/categories/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/categories/tomcat/%E6%BA%90%E7%A0%81/"/>
-    
-    
-      <category term="tomcat" scheme="http://gakkil.gitee.io/tags/tomcat/"/>
-    
-      <category term="源码" scheme="http://gakkil.gitee.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Tomcat的启动分析(三)Catalina启动</title>
-    <link href="http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/"/>
-    <id>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-san-catalina-qi-dong/</id>
-    <published>2019-01-18T05:31:55.000Z</published>
-    <updated>2019-04-30T14:42:10.528Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在上一篇文章中，我们分析了tomcat的初始化过程，是由Bootstrap反射调用Catalina的load方法完成tomcat的初始化，包括server.xml的解析、实例化各大组件、初始化组件等逻辑。那么tomcat又是如何启动webapp应用，又是如何加载应用程序的S
         
       
     
