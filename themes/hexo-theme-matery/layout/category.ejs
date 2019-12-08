@@ -1,0 +1,146 @@
+<%- partial('_partial/bg-cover') %>
+
+<style>
+.lifes .life{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 52px;
+}
+</style>
+
+<main class="content">
+
+    <% if (page.category.indexOf('git') < 0) { %>
+     <%- partial('_widget/category-cloud') %>
+    <% } %>
+   
+
+    <%
+    var hashCode = function (str) {
+        if (!str && str.length === 0) {
+            return 0;
+        }
+
+        var hash = 0;
+        for (var i = 0, len = str.length; i < len; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+        }
+        return hash;
+    };
+    %>
+
+    <% if (page.category.indexOf('git') > -1) { %>
+    <div class="container lifes">
+        <div class="card life">
+            <link rel="stylesheet" href="<%- theme.libs.css.dplayer %>">
+            <div class="video-player">
+                <div class="title center-align">
+                    <i class="fa fa-video-camera"></i>&nbsp;&nbsp;<%- theme.messageVideo.title %>
+                </div>
+                <div class="row">
+                    <div class="col l8 offset-l2 m10 offset-m1 s12">
+                        <div id="dplayer" class="dplayer-video"
+                                <% if (theme.messageVideo.height) { %> style="height: <%- theme.messageVideo.height %>px;"<% } %>></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="<%- theme.libs.js.dplayer %>"></script>
+    <script>
+        $(function () {
+            new DPlayer({
+                container: document.getElementById('dplayer'),
+                autoplay: false,
+                theme: '<%- theme.messageVideo.theme %>',
+                loop: '<%- theme.messageVideo.loop %>' === 'true',
+                lang: '<%- config.language %>' === 'zh-CN' ? 'zh-cn' : 'en',
+                preload: '<%- theme.messageVideo.preload %>',
+                volume: Number('<%- theme.messageVideo.volume %>'),
+                video: {
+                    url: '<%- theme.messageVideo.url %>',
+                    pic: '<%- theme.messageVideo.pic %>',
+                    thumbnails: '<%- theme.messageVideo.thumbnails %>'
+                },
+                danmaku: {
+                    id: '<%- theme.messageVideo.id %>',
+                    api: '<%- theme.messageVideo.danmakuUrl %>',
+                    addition: ['<%- theme.messageVideo.bilibiliUrl %>']
+                }
+            });
+        });
+    </script>
+    <% } %>
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            <% page.posts.sort('date').reverse().forEach(post => { %>
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="<%- url_for(post.path) %>">
+                        <div class="card-image tag-image">
+                            <% if (post.img) { %>
+                            <img src="<%= post.img %>" class="responsive-img" alt="<%- post.title %>">
+                            <% } else { %>
+                            <%
+                                var len = theme.featureImages.length;
+                                var num = Math.abs(hashCode(post.title) % len);
+                                var featureimg = theme.featureImages[num];
+                            %>
+                            <img src="<%= featureimg %>" class="responsive-img" alt="<%- post.title %>">
+                            <% } %>
+                        
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            <% if (post.summary && post.summary.length > 0) { %>
+                                <%- post.summary %>
+                            <% } else { %>
+                                <%- strip_html(post.content).substring(0, 70) %>
+                            <% } %>
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i><%= date(post.date, config.date_format) %>
+                            </span>
+                            <span class="publish-author">
+                                <% if (post.categories && post.categories.length > 0) { %>
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <% post.categories.forEach(category => { %>
+                                <a href="<%- url_for(category.path) %>" class="post-category" target="_blank">
+                                    <%- category.name %>
+                                </a>
+                                <% }); %>
+                                <% } else if (post.author && post.author.length > 0) { %>
+                                <i class="fa fa-user fa-fw"></i>
+                                <%- post.author %>
+                                <% } else { %>
+                                <i class="fa fa-user fa-fw"></i>
+                                <%- config.author %>
+                                <% } %>
+                            </span>
+                        </div>
+                    </div>
+
+                    <% if (post.tags && post.tags.length) { %>
+                    <div class="card-action article-tags">
+                        <% post.tags.forEach(tag => { %>
+                        <a href="<%- url_for(tag.path) %>" target="_blank">
+                            <span class="chip bg-color"><%= tag.name %></span>
+                        </a>
+                        <% }); %>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </article>
+
+</main>
+
+<% if (page.total > 1) { %>
+<%- partial('_partial/paging') %>
+<% } %>

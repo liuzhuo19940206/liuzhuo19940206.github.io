@@ -1,0 +1,27 @@
+<%
+var audiosJson = JSON.stringify(site.data.musics);
+%>
+
+<link rel="stylesheet" href="<%- theme.libs.css.aplayer %>">
+<div class="music-player">
+  <div id="footerAplayer" class="music"></div>
+</div>
+
+<script src="<%- theme.libs.js.aplayer %>"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('footerAplayer'),
+        fixed: true,
+        autoplay: '<%- theme.footerMusic.autoplay %>' === 'true',
+        theme: '<%- theme.footerMusic.theme %>',
+        loop: '<%- theme.footerMusic.loop %>',
+        order: '<%- theme.footerMusic.order %>',
+        preload: '<%- theme.footerMusic.preload %>',
+        volume: Number('<%- theme.footerMusic.volume %>'),
+        listFolded: '<%- theme.footerMusic.listFolded %>' === 'true',
+        listMaxHeight: '<%- theme.footerMusic.listMaxHeight %>',
+        audio: JSON.parse('<%- audiosJson %>')
+    });
+});
+</script>

@@ -1,0 +1,55 @@
+<%- partial('_partial/bg-cover') %>
+<style>
+.container .card{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 52px;
+}
+</style>
+
+<main class="content">
+	<div class="container">
+		<div class="card">
+			<link rel="stylesheet" href="<%- theme.libs.css.dplayer %>">
+			<div class="video-player">
+				<div class="title center-align">
+				    <i class="fa fa-video-camera"></i>&nbsp;&nbsp;<%- theme.messageVideo.title %>
+				</div>
+				<div class="row">
+				    <div class="col l8 offset-l2 m10 offset-m1 s12">
+				        <div id="dplayer" class="dplayer-video"
+				                <% if (theme.messageVideo.height) { %> style="height: <%- theme.messageVideo.height %>px;"<% } %>></div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<% if (theme.valine && theme.valine.enable) { %>
+    			<%- partial('_partial/valine') %>
+		<% } %>
+	</div>
+<script src="<%- theme.libs.js.dplayer %>"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: '<%- theme.messageVideo.autoplay %>' === 'true',
+            theme: '<%- theme.messageVideo.theme %>',
+            loop: '<%- theme.messageVideo.loop %>' === 'true',
+            lang: '<%- config.language %>' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: '<%- theme.messageVideo.preload %>',
+            volume: Number('<%- theme.messageVideo.volume %>'),
+            video: {
+                url: '<%- theme.messageVideo.url %>',
+                pic: '<%- theme.messageVideo.pic %>',
+                thumbnails: '<%- theme.messageVideo.thumbnails %>'
+            },
+            danmaku: {
+                id: '<%- theme.messageVideo.id %>',
+                api: '<%- theme.messageVideo.danmakuUrl %>',
+                addition: ['<%- theme.messageVideo.bilibiliUrl %>']
+            }
+        });
+    });
+</script>
+
+</main>

@@ -1,0 +1,19 @@
+[{
+    "avatar": "images/head/favicon.bmp",
+    "name": "gakki酱",
+    "introduction": "这是我的前端主题，也是心情记录博客",
+    "url": "http://liuzhuo19940206.coding.me/liuzhuo19940206",
+    "title": "前去学习"
+}, {
+    "avatar": "images/head/123.jpg",
+    "name": "纯洁的微笑",
+    "introduction": "编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬",
+    "url": "http://www.ityouknow.com/spring-boot",
+    "title": "前去学习"
+}, {
+    "avatar": "images/head/234.jpg",
+    "name": "Java技术驿站",
+    "introduction": "java技术栈，死磕java系列，强烈推荐的优质博客",
+    "url": "http://cmsblogs.com/",
+    "title": "前去学习"
+}]
