@@ -1,0 +1,1675 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring4配置文件详解, 解忧杂货店">
+    <meta name="description" content="总结Spring4中的各种配置文件的信息。
+欢迎大家补充，完善各种配置信息。
+好的习惯，将会伴随你的一生。
+开始今天的主题！！！
+配置数据源
+基本的加载properties配置文件
+&amp;lt;context:property-placehol">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Spring4配置文件详解 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Spring4配置文件详解
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/" target="_blank">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Spring/" class="post-category" target="_blank">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.4k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        20 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>总结Spring4中的各种配置文件的信息。</p>
+<p>欢迎大家补充，完善各种配置信息。</p>
+<p>好的习惯，将会伴随你的一生。</p>
+<p>开始今天的主题！！！</p>
+<h3 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h3><hr>
+<p>基本的加载properties配置文件</p>
+<pre><code>&lt;context:property-placeholder location=&quot;classpath*:/appConfig.properties&quot; /&gt;
+</code></pre><h4 id="JNDI方式"><a href="#JNDI方式" class="headerlink" title="JNDI方式"></a>JNDI方式</h4><pre><code>&lt;jee:jndi-lookup id=&quot;dataSource&quot; jndi-name=&quot;/jdbc/mysqlDS&quot; resource-ref=&quot;true&quot;/&gt;
+</code></pre><p>jndi-name：指定JNDI中资源名称</p>
+<p>resource-ref：如果应用程序运行在java应用程序服务器中，值设为true，这样jndi-name会自动加上java:comp/env/前缀</p>
+<h4 id="数据连接池方式"><a href="#数据连接池方式" class="headerlink" title="数据连接池方式"></a>数据连接池方式</h4><h5 id="DBCP连接池："><a href="#DBCP连接池：" class="headerlink" title="DBCP连接池："></a>DBCP连接池：</h5><p>使用：org.apache.commons.dbcp.BasicDataSource进行配置</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot; destroy-method=&quot;close&quot;&gt;
+
+  &lt;!-- 【必须】  数据库驱动--&gt;
+  &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driver}&quot; /&gt;
+
+  &lt;!-- 【必须】 数据库连接地址 --&gt;
+  &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot; /&gt;
+
+  &lt;!-- 【必须】 数据库用户名 --&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot; /&gt;
+
+  &lt;!-- 【必须】 数据库密码 --&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
+
+  &lt;!-- 可选 启动时创建的连接数 --&gt;
+  &lt;property name=&quot;initialSize&quot; value=&quot;5&quot;/&gt;
+
+  &lt;!-- 可选 同时可从池中分配的最多连接数，0无限制 --&gt;
+  &lt;property name=&quot;maxActive&quot; value=&quot;10&quot;/&gt;
+
+  &lt;!-- 可选 池中不会被释放的最多空闲连接数 0无限制 --&gt;
+  &lt;property name=&quot;maxIdle&quot; value=&quot;&quot;/&gt;
+
+  &lt;!-- 可选 同时能从语句池中分配的预处理语句最大值，0无限制 --&gt;
+  &lt;property name=&quot;maxOpenPreparedStatement&quot; value=&quot;100&quot;/&gt;
+
+  &lt;!-- 可选 抛异常前池等待连接回收最大时间（当无可用连接），-1无限等待 --&gt;
+  &lt;property name=&quot;maxWait&quot; value=&quot;1000&quot;/&gt;
+
+  &lt;!-- 可选 连接在池中保持空闲而不被回收的最大时间 --&gt;
+  &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;2000&quot;/&gt;
+
+  &lt;!-- 可选 不创建新连接情况下池中保持空闲的最小连接数 --&gt;
+  &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+
+  &lt;!-- 可选 布尔值，是否对预处理语句进行池管理 --&gt;
+  &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot;/&gt;
+
+&lt;/bean&gt;
+</code></pre><h5 id="C3P0连接池："><a href="#C3P0连接池：" class="headerlink" title="C3P0连接池："></a>C3P0连接池：</h5><p>使用：com.mchange.v2.c3p0.ComboPooledDataSource进行配置</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot; destroy-method=&quot;close&quot;&gt;
+
+  &lt;property name=&quot;driverClass&quot; value=&quot;${jdbc.driver}&quot; /&gt;
+  &lt;property name=&quot;jdbcUrl&quot; value=&quot;${jdbc.url}&quot; /&gt;
+  &lt;property name=&quot;user&quot; value=&quot;${jdbc.username}&quot; /&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
+
+&lt;/bean&gt;
+</code></pre><h5 id="alibaba-DRUID连接池："><a href="#alibaba-DRUID连接池：" class="headerlink" title="alibaba DRUID连接池："></a>alibaba DRUID连接池：</h5><p>使用：com.alibaba.druid.pool.DruidDataSource进行配置</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;com.alibaba.druid.pool.DruidDataSource&quot; init-method=&quot;init&quot; destroy-method=&quot;close&quot;&gt;  
+
+   &lt;!-- 基本属性 url、user、password --&gt; 
+   &lt;property name=&quot;url&quot; value=&quot;${jdbc_url}&quot; /&gt; 
+   &lt;property name=&quot;username&quot; value=&quot;${jdbc_user}&quot; /&gt; 
+   &lt;property name=&quot;password&quot; value=&quot;${jdbc_password}&quot; /&gt; 
+   &lt;!-- 配置初始化大小、最小、最大 --&gt; 
+   &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt; 
+   &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;  
+   &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt; 
+   &lt;!-- 配置获取连接等待超时的时间 --&gt; 
+   &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt; 
+   &lt;!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 --&gt; 
+   &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt; 
+   &lt;!-- 配置一个连接在池中最小生存的时间，单位是毫秒 --&gt; 
+   &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt; 
+   &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT &#39;x&#39;&quot; /&gt; 
+   &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt; 
+   &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt; 
+   &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt; 
+   &lt;!-- 打开PSCache，并且指定每个连接上PSCache的大小 --&gt; 
+   &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt; 
+   &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot; value=&quot;20&quot; /&gt; 
+   &lt;!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 --&gt; 
+   &lt;property name=&quot;filters&quot; value=&quot;stat&quot; /&gt;  
+
+&lt;/bean&gt;
+</code></pre><h4 id="JDBC驱动的数据源"><a href="#JDBC驱动的数据源" class="headerlink" title="JDBC驱动的数据源"></a>JDBC驱动的数据源</h4><p>使用：</p>
+<p>org.springframework.jdbc.datasource.SingleConnectionDataSource【每个链接请求会返回同一个连接，不推荐】</p>
+<p>org.springframework.jdbc.datasource.DriverManagerDataSource进行配置</p>
+<pre><code>&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+
+  &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driver}&quot; /&gt;
+  &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot; /&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot; /&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot; /&gt;
+
+&lt;/bean&gt;
+</code></pre><h3 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h3><hr>
+<h4 id="spring-JDBC模板"><a href="#spring-JDBC模板" class="headerlink" title="spring JDBC模板"></a>spring JDBC模板</h4><p>模板类选择：</p>
+<p>JdbcTemplate：提供最简单的数据访问等功能。</p>
+<p>NamedParameterJdbcTemplate：通过该模板，可以把参数作为查询的条件传入方法中。</p>
+<p>SimpleJdbcTemplate（推荐）：结合了一些自动装箱等功能，2.5以后，整合了NamedParameterJdbcTemplate。</p>
+<p>配置方式：</p>
+<pre><code>&lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.simple.SimpleJdbcTemplate&quot;&gt;
+  &lt;constructor-arg ref=&quot;dataSource&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h4 id="与ORM框架集成"><a href="#与ORM框架集成" class="headerlink" title="与ORM框架集成"></a>与ORM框架集成</h4><p>主要是配置spring的Session工厂（sessionFactory），可以使用到诸如延迟加载、预先抓取、级联复杂特性。</p>
+<p>spring对ORM框架的支持提供提供了一些附加服务：</p>
+<p>spring声明式事务集成支持</p>
+<p>透明的异常处理</p>
+<p>线程安全、轻量级的模板类</p>
+<p>DAO支持</p>
+<p>资源管理</p>
+<h5 id="集成Hibernate方式：-hibernate4为例"><a href="#集成Hibernate方式：-hibernate4为例" class="headerlink" title="集成Hibernate方式：[hibernate4为例]"></a>集成Hibernate方式：[hibernate4为例]</h5><p>hibernate的HBM文件配置方式（Xxx.hbm.xml)：</p>
+<pre><code>&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+
+  &lt;!-- 数据源 --&gt;
+  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+  &lt;!-- 映射文件形式--&gt;
+  &lt;property name=&quot;mappingResources&quot;&gt;
+     &lt;list&gt;
+        &lt;value&gt;User.hbm.xml&lt;/value&gt;
+     &lt;/list&gt;
+  &lt;/property&gt;
+  &lt;!-- Hibernate属性配置 --&gt;
+  &lt;property name=&quot;hibernateProperties&quot;&gt;
+     &lt;props&gt;
+         &lt;prop key=&quot;dialect&quot;&gt;
+            org.hibernate.dialect.MySQLDialect &lt;!-- 数据库方言 --&gt;
+         &lt;/prop&gt;
+        &lt;!-- ……其他 --&gt;
+     &lt;/props&gt;
+  &lt;/property&gt;
+
+&lt;/bean&gt;
+</code></pre><p>代码中使用注解的方式：</p>
+<pre><code>&lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+
+  &lt;!-- 数据源 --&gt;
+  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;  
+  &lt;!-- 自动扫描实体对象 tdxy.bean的包结构中存放实体类  --&gt;
+  &lt;property name=&quot;packagesToScan&quot; value=&quot;com.test.entity&quot;/&gt;
+  &lt;!-- hibernate的相关属性配置 --&gt;
+  &lt;property name=&quot;hibernateProperties&quot;&gt;
+     &lt;value&gt;
+        &lt;!-- 设置数据库方言 --&gt;
+        hibernate.dialect=org.hibernate.dialect.MySQLDialect
+        &lt;!-- 设置自动创建|更新|验证数据库表结构 --&gt;
+        hibernate.hbm2ddl.auto=update                 
+        &lt;!-- 是否在控制台显示sql --&gt;
+        hibernate.show_sql=true                 
+        &lt;!-- 是否格式化sql，优化显示 --&gt;
+        hibernate.format_sql=true                
+        &lt;!-- 是否开启二级缓存 --&gt;
+        hibernate.cache.use_second_level_cache=false                
+        &lt;!-- 是否开启查询缓存 --&gt;
+        hibernate.cache.use_query_cache=false                
+        &lt;!-- 数据库批量查询最大数 --&gt;
+        hibernate.jdbc.fetch_size=50
+        &lt;!-- 数据库批量更新、添加、删除操作最大数  --&gt;
+        hibernate.jdbc.batch_size=50                
+        &lt;!-- 是否自动提交事务  --&gt;
+        hibernate.connection.autocommit=true
+        &lt;!-- 指定hibernate在何时释放JDBC连接  --&gt;
+        hibernate.connection.release_mode=auto
+        &lt;!-- 创建session方式 hibernate4.x 的方式  --&gt;
+        hibernate.current_session_context_class=org.springframework.orm.hibernate4.SpringSessionContext
+        &lt;!-- javax.persistence.validation.mode默认情况下是auto的，就是说如果不设置的话它是会自动去你的classpath下面找一个bean-validation**包，所以把它设置为none即可  --&gt;
+        javax.persistence.validation.mode=none            
+     &lt;/value&gt;
+  &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>针对少量实体类，还可以通过annotatedClasses属性来将应用程序中所有的持久化类以全局定名的方式明确列出：</p>
+<pre><code>&lt;property name=&quot;annotatedClasses&quot;&gt;
+  &lt;list&gt;
+     &lt;value&gt;com.demo.entity.User&lt;/value&gt;
+     &lt;value&gt;com.demo.entity.Blog&lt;/value&gt;
+  &lt;/list&gt;
+&lt;/property&gt;
+</code></pre><p><strong>推荐使用packagesToScan属性扫描包方式。</strong></p>
+<p>【构建不依赖于spring的Hibernate代码】</p>
+<pre><code>package com.demo.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import com.demo.entity.User;
+
+@Repository
+public class UserDaoImpl implements IUserDao  {
+
+  private SessionFactory sessionFactory;
+
+  // 构造注入
+  @Autowired
+  public UserDaoImpl(SessionFactory sessionFactory) {
+     this.sessionFactory = sessionFactory;
+  }
+
+  private Session currentSession(){
+     return sessionFactory.getCurrentSession();
+  }
+
+  @Override
+  public void addUser(User param) {
+     Session session = currentSession();
+     session.save(param);
+     System.out.println(&quot;Add User&quot;);
+  }
+
+  @Override
+  public User get(Integer id) {
+     return (User) currentSession().get(User.class, id);
+  }
+
+  @Override
+  public void save(User user) {
+     currentSession().update(user);
+  }
+
+}
+</code></pre><p>还需配置：</p>
+<pre><code>&lt;context:component-scan base-package=&quot;com.demo.dao&quot;/&gt;
+</code></pre><p>就会像扫描其他注解一样扫描带@Repository注解的类到容器中。</p>
+<h5 id="集成MyBatis方式"><a href="#集成MyBatis方式" class="headerlink" title="集成MyBatis方式"></a>集成MyBatis方式</h5><pre><code>&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;
+  p:dataSource-ref=&quot;dataSource&quot; p:configLocation=&quot;classpath:mybatis-config.xml&quot;
+  p:mapperLocations=&quot;classpath:com/demo/dao/*.xml&quot; /&gt;
+
+&lt;!-- spring与mybatis整合配置，扫描所有dao --&gt;
+&lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;
+  p:basePackage=&quot;com.demo.dao&quot; p:sqlSessionFactoryBeanName=&quot;sqlSessionFactory&quot; /&gt;
+</code></pre><h4 id="与其他JPA集成方式"><a href="#与其他JPA集成方式" class="headerlink" title="与其他JPA集成方式"></a>与其他JPA集成方式</h4><p>配置实体管理工厂</p>
+<p>应用程序管理类型的JPA（LocalEntityManagerFactoryBean）：它的EntityManager是由EntityManagerFactory创建的；</p>
+<p>容器管理类型的JPA（LocalContainerEntityManagerFactoryBean）：通过PersistenceProvider的createEntityManagerFactory()方法得到，即它的EntityManagerFactory是通过PersistenceProvider的createContainerEntityManagerFactory()方法得到。</p>
+<p>使用应用程序管理类型的JPA</p>
+<p>绝大部分配置文件来源于名为persistence.xml的配置文件，这个文件位置必须位于类路径下的WETA-INF目录下</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;2.0&quot;
+     xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot;
+     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;&gt;
+
+  &lt;persistence-unit name=&quot;persistenceUnit&quot; transaction-type=&quot;RESOURCE_LOCAL&quot;&gt;
+
+     &lt;provider&gt;org.hibernate.jpa.HibernatePersistenceProvider&lt;/provider&gt;
+
+     &lt;properties&gt;
+        &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.MySQL5Dialect&quot; /&gt;
+        &lt;property name=&quot;hibernate.max_fetch_depth&quot; value=&quot;3&quot;/&gt;
+        &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;update&quot;/&gt;
+        &lt;property name=&quot;hibernate.jdbc.fetch_size&quot; value=&quot;18&quot;/&gt;
+        &lt;property name=&quot;hibernate.jdbc.batch_size&quot; value=&quot;10&quot;/&gt;
+        &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;false&quot;/&gt;
+        &lt;property name=&quot;hibernate.format_sql&quot; value=&quot;false&quot;/&gt;
+     &lt;/properties&gt;
+
+     &lt;class&gt;com.demo.entity.User&lt;/class&gt;
+     &lt;class&gt;com.demo.entity.Blog&lt;/class&gt;
+     &lt;!-- …… ……--&gt;
+   &lt;/persistence-unit&gt;
+
+&lt;/persistence&gt;
+</code></pre><p>这样在spring的配置文件中配置的信息就很少了：</p>
+<pre><code>&lt;bean id=&quot;demo&quot; class=&quot;org.springframework.orm.jpa.LocalEntityManagerFactoryBean&quot;&gt;
+  &lt;property name=&quot;persistenceUnit&quot; &gt;
+&lt;/bean&gt;
+</code></pre><p>【TIPS】上面persistence.xml文件中的配置会出现问题：</p>
+<p>如果每次请求EntityManagerFactory时都要定义持久化单元，代码回迅速膨胀</p>
+<p>借助spring对JPA的支持，不再需要直接处理PersistenceProvider了，就是下面的容器管理的JPA！</p>
+<p>使用容器管理类型的JPA</p>
+<p>将数据源信息配置在spring的应用上下文中，而不是在persistence.xml文件中。</p>
+<pre><code>&lt;bean id=&quot;emf&quot; class=&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot;&gt;
+  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+   &lt;!-- 指定使用的是哪一个厂商的JPA实现 如Hibernate --&gt;
+  &lt;property name=&quot;jpaVendorAdapter&quot; ref=&quot;hibernateJpaVendorAdapter&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>配置JPA实现：</p>
+<p>可选的有：EclipseLinkJpaVendorAdapter、HibernateJpaVendorAdapter、OpenJpaVendorAdapter、TopLinkJpaVendorAdapter</p>
+<pre><code>&lt;bean id=&quot;hibernateJpaVendorAdapter&quot; class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
+  &lt;property name=&quot;database&quot; value=&quot;MYSQL&quot;/&gt;
+  &lt;property name=&quot;showSql&quot; value=&quot;true&quot;/&gt;
+  &lt;property name=&quot;generateDdl&quot; value=&quot;true&quot;/&gt;
+  &lt;property name=&quot;databasePlatform&quot; value=&quot;org.hibernate.dialect.MySQL5Dialect&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>【TIPS】database属性：属性值表示支持哪种数据库，下面Hibernate的JPA是一些支持的数据库：<br><img src="http://pp66ww0jt.bkt.clouddn.com/20181019214107.png"></p>
+<p><strong>【注】JNDI获取实体管理工厂：</strong></p>
+<p>如果spring应用部署在应用服务器中，Spring可能已经创建好EntityManagerFactory并将其置于JNDI中等饭查询使用，这种情况可使用JNDI来获取对EntityManagerFactory的引用：</p>
+<pre><code>&lt;jee:jndi-lookup id=&quot;emf&quot; jndi-name=&quot;persistence/testDS&quot;/&gt;
+</code></pre><p>编写基于JPA的DAO</p>
+<pre><code>package com.demo.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import com.demo.entity.User;
+
+@Repository
+@Transactional
+public class JpaDao implements IUserDao {
+
+  // 注入EntityManager
+  @PersistenceContext
+  private EntityManager em;
+
+  // 使用EntityManager
+  @Override
+  public void addUser(User param) {
+     em.persist(param);
+  }
+
+  @Override
+  public User get(Integer id) {
+     return em.find(User.class, id);
+  }
+
+  @Override
+  public void save(User user) {
+     em.merge(user);
+  }
+
+}
+</code></pre><p>上面使用到了@PersistenceContext注解将EntityManager注入。</p>
+<p>这样用需要在spring的上下文配置文件中配置一个PersistenceAnnotationBeanPostProcessor：</p>
+<pre><code>&lt;!-- 使用EntityManager --&gt;
+&lt;bean class=&quot;org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor&quot;/&gt;
+</code></pre><p>以上，是如何使用JDBC、Hibernate或JPA为spring应用程序构建持久层，至于选择哪种方案完全取决于偏好.</p>
+<h3 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h3><p>通过毁掉机制将实际事务实现从事务性代码中抽象出来。</p>
+<h4 id="选择事务管理器"><a href="#选择事务管理器" class="headerlink" title="选择事务管理器"></a>选择事务管理器</h4><p>事务管理器结构</p>
+<p>事务处理流程：</p>
+<p>开始事务-&gt;绑定资源-&gt;使用资源-&gt;完成事务-&gt;释放资源</p>
+<h5 id="JDBC事务"><a href="#JDBC事务" class="headerlink" title="JDBC事务"></a>JDBC事务</h5><pre><code>&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+     &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>DataSourceTransactionManager通过调用java.sql.Connection来管理事务，由java.sql.Connection对象来提交、回滚事务。</p>
+<h5 id="Hibernate事务"><a href="#Hibernate事务" class="headerlink" title="Hibernate事务"></a>Hibernate事务</h5><pre><code>&lt;bean id=&quot;transactionManager&quot;
+class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;
+  &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot; /&gt;
+&lt;/bean&gt;
+</code></pre><p>HibernateTransactionManager通过将事务管理的职责委托给org.hibernate.Transaction对象，org.hibernate.Transaction对象从Hibernate Session中获取，然后由Transaction对象来提交、回滚事务。</p>
+<h5 id="JPA事务"><a href="#JPA事务" class="headerlink" title="JPA事务"></a>JPA事务</h5><pre><code>&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
+  &lt;property name=&quot;entityManagerFactory&quot; ref=&quot;entityManagerFactory&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>JpaTransactionManager只需要装配一个JPA实体管理工厂（EntityManagerFactory的任意实现），然后与由工厂产生的JPA EntityManager合作构建事务。</p>
+<p>如果你还希望将事务应用于简单JDBC操作（JDBC操作使用的datasource和EntityManagerFactory使用的dataSource必须相同），那么JpaTransactionManager必须装配一个JpaDialect的实现：</p>
+<pre><code>&lt;bean id=&quot;jpaDialect&quot; class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;/&gt;
+
+
+&lt;!--然后将jpaDialect装配到transactionManager中 --&gt;
+&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.orm.jpa.JpaTransactionManager&quot;&gt;
+  &lt;property name=&quot;entityManagerFactory&quot; ref=&quot;entityManagerFactory&quot;/&gt;
+  &lt;property name=&quot;jpaDialect&quot; ref=&quot;jpaDialect&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><h5 id="JTA事务"><a href="#JTA事务" class="headerlink" title="JTA事务"></a>JTA事务</h5><p>如果前面的事务管理器不能满足需求或事物需要跨多个事务资源（两个及以上数据库），需要使用JtaTrasactionManager了：</p>
+<pre><code>&lt;bean id=&quot;transactionManager&quot;
+  class=&quot;org.springframework.transaction.jta.JtaTransactionManager&quot;&gt;
+  &lt;property name=&quot;transactionManagerName&quot; value=&quot;java:/TrasactionManager&quot;/&gt;
+&lt;/bean&gt;
+</code></pre><p>JtaTransactionManager将事务委托给一个JTA的实现（java.transaction.UserTransaction和javax.transaction.TransactionManager），通过UserTransaction来操作事务。JTA规定了应用程序晕一个或多个数据源之间协调事务的标准API，transactionManagerName属性指定了要在JNDI上查找JTA事务管理器。</p>
+<h4 id="Spring事务实现方式"><a href="#Spring事务实现方式" class="headerlink" title="Spring事务实现方式"></a>Spring事务实现方式</h4><p>1）编码事务</p>
+<p>通过TransactionTemplate的回调机制，例如：（UserSeriveImpl.java）</p>
+<pre><code>public void addUser(final User u) {
+
+  TransactionTemplate temp = new TransactionTemplate();
+
+  temp.execute(new TransactionCallback&lt;Void&gt;() {
+
+     @Override
+     public Void doInTransaction(TransactionStatus txtStatus) {
+          // 要执行的事务代码
+        try {
+           userDao.save(u);
+        } catch (RuntimeException e) {
+           e.printStackTrace();
+           txtStatus.setRollbackOnly();
+        }
+        return null;
+     }
+  });
+}
+</code></pre><p>此时UserService需要如下装配：</p>
+<pre><code>&lt;bean id=&quot;userSerive&quot; class=&quot;com.demo.service.UserServiceImpl&quot;&gt;
+  &lt;property name=&quot;transactionTemplate&quot;&gt;
+     &lt;bean class=&quot;org.springframework.transaction.support.TransactionTemplate&quot;&gt;
+        &lt;property name=&quot;transactionManager&quot; ref=&quot;transactionManager&quot;/&gt;
+     &lt;/bean&gt;
+  &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre><p>优点：可以完全控制事务边界，精确控制事务。</p>
+<p>缺点：侵入性的，事务控制在代码中实现，耦合度高</p>
+<p>2）声明式事务</p>
+<p>传播行为</p>
+<p>传播行为回答了新的事务是该被启动还是被挂起，或者方法是否要在事务环境中运行。</p>
+<p>事务的传播行为都在org.springframework.transaction.TransactionDefinition接口中以常量的方式定义出来。</p>
+<p>隔离级别</p>
+<p>隔离级别定义了一个事务可能受其他并发事务影响的程度。</p>
+<p>隔离级别都在org.springframework.transaction.TransactionDefinition接口中以常量的方式定义出来。</p>
+<p>只读</p>
+<p>事务启动的时候由数据库实施的，只有针对具备启动一个新事务传播行为（PROPAGATION_REQUIRED、PROPAGATION_REQUIRES_NEW和PROPAGATION_NESTED）的方法来说才有意义。【tips】如果使用Hibernate，将事务声明为只读会导致flush模式被设置为FLUSH_NEVER，这会告诉hibernate避免和数据库进行不必要的对象同步，并将所有的更新延迟到事务结束。</p>
+<p>事务超时</p>
+<p>长时间事务会导致一些不必要的数据库资源占用。</p>
+<p>超时时钟会在事务开始时启动，只有针对具备启动一个新事务传播行为（PROPAGATION_REQUIRED、PROPAGATION_REQUIRES_NEW和PROPAGATION_NESTED）的方法来说才有意义。</p>
+<p>回滚规则</p>
+<p>这些规则定义了哪些异常会导致事务回滚哪些不会，默认情况下，运行时异常会回滚，检查异常不回滚，但是可以声明事务遇到检查异常回滚，运行时异常不回滚。</p>
+<p>3）Spring在XML中定义事务</p>
+<p>需要包括beans、aop、tx命名空间。</p>
+<pre><code>&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
+  &lt;tx:attributes&gt;
+     &lt;!-- 事务执行方式 REQUIRED：指定当前方法必需在事务环境中运行，
+     如果当前有事务环境就加入当前正在执行的事务环境，
+     如果当前没有事务，就新建一个事务。 这是默认值。 --&gt;
+     &lt;tx:method name=&quot;create*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;save*&quot;   propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;add*&quot;    propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;update*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;remove*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;del*&quot;    propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;tx:method name=&quot;import*&quot; propagation=&quot;REQUIRED&quot; /&gt;
+     &lt;!-- 指定当前方法以非事务方式执行操作，如果当前存在事务，就把当前事务挂起，等我以非事务的状态运行完，再继续原来的事务。 查询定义即可
+        read-only=&quot;true&quot; 表示只读 --&gt;
+     &lt;tx:method name=&quot;*&quot;       propagation=&quot;NOT_SUPPORTED&quot; read-only=&quot;true&quot; /&gt;
+  &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+</code></pre><p>其中&lt;tx:method /&gt;有很多属性用来帮助定义方法的事务策略：<br><img src="http://pp66ww0jt.bkt.clouddn.com/20181019215056.png"></p>
+<p>4）定义注解驱动的事务</p>
+<p>在XML配置文件中添加：</p>
+<pre><code>&lt;tx:annotation-driven/&gt;
+</code></pre><p>可通过transaction-manager属性（默认值”transactionManager”）来指定事务管理器，如：</p>
+<pre><code>&lt;tx:annotation-driven transaction-manager=&quot;txManager&quot;/&gt;
+</code></pre><p><code>&lt;tx:annotation-driven/&gt;</code>告诉Spring检查上下文中所有bean并检查使用到@Transactional注解的bean。</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/10/19/spring4-pei-zhi-wen-jian-xiang-jie/" class="b-link-green">Spring4配置文件详解</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/10/20/spring-annotation-day-14/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="spring_annotation_day_14">
+                        
+                        <span class="card-title">spring_annotation_day_14</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                今天来学习Spring的声明式事务
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring-annotation/" class="post-category" target="_blank">
+                                    spring_annotation
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/spring-annotation/" target="_blank">
+                        <span class="chip bg-color">spring_annotation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/19/spring-zhong-wu-chu-bu-zai-de-properties/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Spring中无处不在的Properties">
+                        
+                        <span class="card-title">Spring中无处不在的Properties</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                Spring里面的Properties
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

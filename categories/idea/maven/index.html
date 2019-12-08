@@ -1,0 +1,1055 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="分类: maven, 解忧杂货店">
+    <meta name="description" content="分类: maven | 解忧杂货店">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>分类: maven | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                <div class="brand">
+                    <div class="title center-align">
+                    
+                        爱生活爱解忧
+                    
+                    </div>
+
+                    <div class="description center-align">
+                    
+                        未来は私が欲しい未来ではありません!
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+// Dynamically switch banner pictures every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+
+<style>
+.lifes .life{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 52px;
+}
+</style>
+
+<main class="content">
+
+    
+     
+
+<div id="category-cloud" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
+            </div>
+            <div class="tag-chips">
+                
+                
+                
+                <a href="/categories/ConcurrentHashMap/" title="ConcurrentHashMap: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">ConcurrentHashMap
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Spring/" title="Spring: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">Spring
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/docker/" title="docker: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">docker
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/ConcurrentHashMap/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/gakki/" title="gakki: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">gakki
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/docker/容器/" title="容器: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">容器
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/生活/" title="生活: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #82E0AA;">生活
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/git/" title="git: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D7BDE2;">git
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/HashMap/" title="HashMap: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">HashMap
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/父子类/" title="父子类: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">父子类
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Linux/" title="Linux: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">Linux
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/mybatis/" title="mybatis: 11">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">mybatis
+                        <span class="tag-length">11</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/RabbitMQ/" title="RabbitMQ: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">RabbitMQ
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/HashMap/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/" title="redis: 20">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #82E0AA;">redis
+                        <span class="tag-length">20</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/父子类/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Rabbitmq/" title="Rabbitmq: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #82E0AA;">Rabbitmq
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/servlet3-0/" title="servlet3.0: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FFF;">servlet3.0
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/" title="SpringBoot: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">SpringBoot
+                        <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/RabbitMQ/消息中间件/" title="消息中间件: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">消息中间件
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/缓存/" title="缓存: 18">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">缓存
+                        <span class="tag-length">18</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Rabbitmq/消息中间件/" title="消息中间件: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">消息中间件
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/servlet3-0/web/" title="web: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">web
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/任务/" title="任务: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">任务
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/servlet3-0/SpringMVC/" title="SpringMVC: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">SpringMVC
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/分布式/" title="分布式: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">分布式
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/消息/" title="消息: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">消息
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/热部署/" title="热部署: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">热部署
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/检索/" title="检索: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">检索
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/安全/" title="安全: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">安全
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/监控管理/" title="监控管理: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">监控管理
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/缓存/" title="缓存: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">缓存
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringBoot/Spring/" title="Spring: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">Spring
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/SpringMVC/" title="SpringMVC: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">SpringMVC
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/tomcat/" title="tomcat: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">tomcat
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/web/" title="web: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">web
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/" title="idea: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">idea
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/原子类/" title="原子类: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">原子类
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/技术/" title="技术: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">技术
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/spring-annotation/" title="spring_annotation: 16">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">spring_annotation
+                        <span class="tag-length">16</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/blog/" title="blog: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">blog
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/tomcat/源码/" title="源码: 5">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">源码
+                        <span class="tag-length">5</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/redis/分布式锁/" title="分布式锁: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">分布式锁
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/前端/" title="前端: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">前端
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/乱码/" title="乱码: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">乱码
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/注解/" title="注解: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">注解
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/原子类/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/单例/" title="单例: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8F9F9;">单例
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/maven/" title="maven: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            style="background-color: #FEF9E7;">maven
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/消息中间件/" title="消息中间件: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9E79F;">消息中间件
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/CAS/" title="CAS: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">CAS
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/volatile/" title="volatile: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">volatile
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/前端/后端/" title="后端: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">后端
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/注解/annotation/" title="annotation: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">annotation
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/单例/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/idea/maven/web/" title="web: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">web
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/CAS/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/volatile/面试/" title="面试: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">面试
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+   
+
+    
+
+    
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="idea创建maven-web工程">
+                            
+                        
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                            
+                                idea创建maven-web工程
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-29
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/idea/" class="post-category" target="_blank">
+                                    idea
+                                </a>
+                                
+                                <a href="/categories/idea/maven/" class="post-category" target="_blank">
+                                    maven
+                                </a>
+                                
+                                <a href="/categories/idea/maven/web/" class="post-category" target="_blank">
+                                    web
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/web/" target="_blank">
+                            <span class="chip bg-color">web</span>
+                        </a>
+                        
+                        <a href="/tags/idea/" target="_blank">
+                            <span class="chip bg-color">idea</span>
+                        </a>
+                        
+                        <a href="/tags/maven/" target="_blank">
+                            <span class="chip bg-color">maven</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

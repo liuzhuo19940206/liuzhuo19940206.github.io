@@ -1,0 +1,1906 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="SpringBoot_day_08, 解忧杂货店">
+    <meta name="description" content="SpringBoot与数据访问
+JDBC(默认支持的数据源)1）创建新的Springboot项目，添加web模块、mysql模块、jdbc模块
+2) 连接我们的数据库：
+打开我们的虚拟机，然后启动mysql的容器
+3）在我们的项目中，添加数">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SpringBoot_day_08 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SpringBoot_day_08
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/" target="_blank">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                            <a href="/tags/SpringBoot/" target="_blank">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                SpringBoot
+                            </a>
+                        
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-11
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        15 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>SpringBoot与数据访问<br><a id="more"></a></p>
+<h2 id="JDBC-默认支持的数据源"><a href="#JDBC-默认支持的数据源" class="headerlink" title="JDBC(默认支持的数据源)"></a>JDBC(默认支持的数据源)</h2><p>1）创建新的Springboot项目，添加web模块、mysql模块、jdbc模块<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110045.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110143.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110336.png"></p>
+<p>2) 连接我们的数据库：</p>
+<p>打开我们的虚拟机，然后启动mysql的容器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110542.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110735.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111110811.png"></p>
+<p>3）在我们的项目中，添加数据源的配置信息。</p>
+<p>这里使用yml文件，properties文件也一样。<br>在resources下：创建application.yml文件。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111111923.png"></p>
+<pre><code>spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.6.11.17:3306/jdbc
+</code></pre><p>在mysql的客户端上面，创建jdbc数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111111412.png"></p>
+<p>4）测试数据源是否配置成功<br>在test包下：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111112125.png"></p>
+<p>效果：</p>
+<p>默认是用org.apache.tomcat.jdbc.pool.DataSource作为数据源</p>
+<p>数据源的相关配置都在DataSourceProperties里面。</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+public class DataSourceProperties
+        implements BeanClassLoaderAware, EnvironmentAware, InitializingBean {
+</code></pre><p>5) 自动配置的原理</p>
+<p>org.springframework.boot.autoconfigure.jdbc：</p>
+<p>1、参考DataSourceConfiguration，根据配置创建数据源，默认使用Tomcat连接池；可以使用<br>spring.datasource.type指定自定义的数据源类型；</p>
+<p>2、SpringBoot默认支持的数据源：</p>
+<pre><code>org.apache.tomcat.jdbc.pool.DataSource、HikariDataSource、BasicDataSource
+</code></pre><p>3、自定义数据源类型</p>
+<pre><code>    /**
+     * Generic DataSource configuration.
+     */
+    @ConditionalOnMissingBean(DataSource.class)
+    @ConditionalOnProperty(name = &quot;spring.datasource.type&quot;)
+    static class Generic {
+
+        @Bean
+        public DataSource dataSource(DataSourceProperties properties) {
+            return properties.initializeDataSourceBuilder().build();
+        }
+
+    }
+</code></pre><p>4、自动运行sql语句的原理</p>
+<p>DataSourceAutoConfiguration:中有一个<strong>DataSourceInitializer</strong>对象。</p>
+<pre><code>@Configuration
+@ConditionalOnClass({ DataSource.class, EmbeddedDatabaseType.class })
+@EnableConfigurationProperties(DataSourceProperties.class)
+@Import({ Registrar.class, DataSourcePoolMetadataProvidersConfiguration.class })
+public class DataSourceAutoConfiguration {
+
+    @Bean
+    @ConditionalOnMissingBean
+    public DataSourceInitializer dataSourceInitializer(DataSourceProperties properties,
+            ApplicationContext applicationContext) {
+        return new DataSourceInitializer(properties, applicationContext);
+    }
+  ···
+}
+</code></pre><p><strong>DataSourceInitializer：ApplicationListener</strong></p>
+<pre><code>class DataSourceInitializer implements ApplicationListener
+</code></pre><p>作用：<br>1）、runSchemaScripts();运行建表语句；</p>
+<p>2）、runDataScripts();运行插入数据的sql语句；</p>
+<p>默认只需要将文件命名为：</p>
+<pre><code>schema‐*.sql、data‐*.sql
+默认规则：schema.sql，schema‐all.sql；
+
+自定义名字：
+在配置文件中：
+   schema:
+      ‐ classpath:department.sql
+      指定位置
+</code></pre><p>验证：<br>在resources下：创建默认命名规则的：schema-all.sql文件：</p>
+<pre><code>SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for department
+-- ----------------------------
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `departmentName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113520.png"></p>
+<p>现在jdbc中还没有department表：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113648.png"></p>
+<p>运行我们的Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113737.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113833.png"></p>
+<p>刷新jdbc数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111113923.png"></p>
+<hr>
+<p>使用自定义的命名规则：<br>修改schema-all.sql 的名字为：department.sql<br>在application.yml文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111114934.png"></p>
+<p>删除jdbc中的department表，然后再次启动Springboot项目：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115013.png"></p>
+<p>5、操作数据库：Springboot自动配置了JdbcTemplate操作数据库<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115134.png" style="width:50%"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111115401.png"></p>
+<p>说明Springboot已经帮我们配置好了JdbcTemplate模板引擎，我们可以直接使用：<br>创建HelloController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120407.png"></p>
+<pre><code>@Controller
+public class HelloController {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    @ResponseBody
+    @RequestMapping(&quot;/query&quot;)
+    public Map&lt;String, Object&gt; queryDepartment() {
+        List&lt;Map&lt;String, Object&gt;&gt; mapList = jdbcTemplate.queryForList(&quot;select * from department&quot;);
+        //返回第一条数据
+        return mapList.get(0);
+    }
+}
+</code></pre><p>启动应用：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120130.png"></p>
+<p>打开mysql的客户端：<br>添加一条数据：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120217.png"></p>
+<p>打开浏览器：输入：<code>http://localhost:8080/query</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111120509.png"></p>
+<hr>
+<h2 id="整合Druid数据源-阿里的数据源连接池"><a href="#整合Druid数据源-阿里的数据源连接池" class="headerlink" title="整合Druid数据源(阿里的数据源连接池)"></a>整合Druid数据源(阿里的数据源连接池)</h2><p>1）导入druid的依赖</p>
+<pre><code>        &lt;!--导入druid的数据源--&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.10&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><p>2) 切换数据源：<br>使用type来切换数据源<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123613.png"></p>
+<pre><code>spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.6.11.17:3306/jdbc
+    type: com.alibaba.druid.pool.DruidDataSource
+#    schema:
+#      - classpath:department.sql
+</code></pre><p>3) 运行测试类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123753.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111123907.png"><br>数据源切换成功。</p>
+<p>4）添加druid的独有配置</p>
+<pre><code>spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.6.11.17:3306/jdbc
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，&#39;wall&#39;用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#    schema:
+#      - classpath:department.sql
+</code></pre><p>dubug一下，看是否是其他属性配置成功：</p>
+<p>给contextLoads中的System.out.println(dataSource);打上断点<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124326.png"></p>
+<p>dubug运行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124538.png"></p>
+<p>因为我们在application配置文件中配置的：spring-datasource:开头的配置信息，都是DataSourceProperties中的</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;spring.datasource&quot;)
+public class DataSourceProperties
+</code></pre><p>而DataSourceProperties类中，根本没有druid那些独有的配置信息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111124846.png"></p>
+<p>5）自己配置druid数据源</p>
+<p>在config包下，创建MyDruidConfig类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111125255.png"></p>
+<p>这样就能将application配置文件中的druid的独有配置信息调入到我们的druid数据源当中了。</p>
+<p>如果没有添加@ConfigurationProperties(prefix = “spring.datasource”)的话：<br>需要自己手动一个一个的配置</p>
+<pre><code>    @Bean
+    DataSource druid() {
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setInitialSize(5);
+        druidDataSource.setMaxActive(10);
+        ···
+        return druidDataSource;
+    }
+</code></pre><p>再次dubug测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111125737.png"></p>
+<p>6）配置druid的监控</p>
+<p>在MyDruidConfig类中：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//配置Druid的监控</span>
+    <span class="token comment" spellcheck="true">//1、配置一个管理后台的Servlet</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">statViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ServletRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginUsername"</span><span class="token punctuation">,</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginPassword"</span><span class="token punctuation">,</span><span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allow"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//默认就是允许所有访问</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"deny"</span><span class="token punctuation">,</span><span class="token string">"192.168.15.21"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//不然访问</span>
+
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//2、配置一个web监控的filter</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> FilterRegistrationBean <span class="token function">webStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        FilterRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"exclusions"</span><span class="token punctuation">,</span><span class="token string">"*.js,*.css,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//排除静态资源</span>
+
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setUrlPatterns</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/druid</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111130651.png"></p>
+<p>输入自己配置的用户名与密码：</p>
+<pre><code>        initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);
+        initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111130816.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/query</code></p>
+<p>然后点击SQL监控：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111131006.png"></p>
+<p>点击Web应用：就是我们的配置WebAppStat List过滤器<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111131202.png"></p>
+<p>监控成功！！！</p>
+<hr>
+<h2 id="整合MyBatis"><a href="#整合MyBatis" class="headerlink" title="整合MyBatis"></a>整合MyBatis</h2><h3 id="前期准备阶段"><a href="#前期准备阶段" class="headerlink" title="前期准备阶段"></a>前期准备阶段</h3><p>1）创建新的项目，添加web、mysql、mybatis模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111141702.png"></p>
+<p>导入druid依赖：</p>
+<pre><code>        &lt;!--导入druid的数据源--&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.1.10&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><p>2）创建application.yml文件：</p>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
+  datasource<span class="token operator">:</span>
+    username<span class="token operator">:</span> root
+    password<span class="token operator">:</span> <span class="token number">123456</span>
+    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver
+    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.6</span><span class="token punctuation">.</span><span class="token number">11.17</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>mybatis
+    type<span class="token operator">:</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token punctuation">.</span>DruidDataSource
+
+    #数据源其他配置
+    initialSize<span class="token operator">:</span> <span class="token number">5</span>
+    minIdle<span class="token operator">:</span> <span class="token number">5</span>
+    maxActive<span class="token operator">:</span> <span class="token number">20</span>
+    maxWait<span class="token operator">:</span> <span class="token number">60000</span>
+    timeBetweenEvictionRunsMillis<span class="token operator">:</span> <span class="token number">60000</span>
+    minEvictableIdleTimeMillis<span class="token operator">:</span> <span class="token number">300000</span>
+    validationQuery<span class="token operator">:</span> SELECT <span class="token number">1</span> FROM DUAL
+    testWhileIdle<span class="token operator">:</span> <span class="token boolean">true</span>
+    testOnBorrow<span class="token operator">:</span> <span class="token boolean">false</span>
+    testOnReturn<span class="token operator">:</span> <span class="token boolean">false</span>
+    poolPreparedStatements<span class="token operator">:</span> <span class="token boolean">true</span>
+
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，<span class="token string">'wall'</span>用于防火墙
+    filters<span class="token operator">:</span> stat<span class="token punctuation">,</span>wall<span class="token punctuation">,</span>log4j
+    maxPoolPreparedStatementPerConnectionSize<span class="token operator">:</span> <span class="token number">20</span>
+    useGlobalDataSourceStat<span class="token operator">:</span> <span class="token boolean">true</span>
+    connectionProperties<span class="token operator">:</span> druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>mergeSql<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>druid<span class="token punctuation">.</span>stat<span class="token punctuation">.</span>slowSqlMillis<span class="token operator">=</span><span class="token number">500</span>
+
+    schema<span class="token operator">:</span>
+      <span class="token operator">-</span> classpath<span class="token operator">:</span>sql<span class="token operator">/</span>department<span class="token punctuation">.</span>sql
+      <span class="token operator">-</span> classpath<span class="token operator">:</span>sql<span class="token operator">/</span>employee<span class="token punctuation">.</span>sql
+</code></pre>
+<p>3) 创建新的数据库mybatis：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142149.png"></p>
+<p>4）在resours下：参加过sql文件夹<br>里面放入：department.sql 和 employee.sql文件：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142335.png" style="width:50%"></p>
+<p>department.sql:</p>
+<pre><code>/*
+Navicat MySQL Data Transfer
+
+Source Server         : 本地
+Source Server Version : 50528
+Source Host           : 127.0.0.1:3306
+Source Database       : restful_crud
+
+Target Server Type    : MYSQL
+Target Server Version : 50528
+File Encoding         : 65001
+
+Date: 2018-03-05 10:41:40
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for department
+-- ----------------------------
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `departmentName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+</code></pre><p>employee.sql文件:</p>
+<pre><code>/*
+Navicat MySQL Data Transfer
+
+Source Server         : 本地
+Source Server Version : 50528
+Source Host           : 127.0.0.1:3306
+Source Database       : restful_crud
+
+Target Server Type    : MYSQL
+Target Server Version : 50528
+File Encoding         : 65001
+
+Date: 2018-03-05 10:41:58
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for employee
+-- ----------------------------
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `lastName` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `gender` int(2) DEFAULT NULL,
+  `d_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+</code></pre><p>5) 创建config：DruidConfig配置类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142702.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DruidConfig</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Bean</span>
+    DataSource <span class="token function">druid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DruidDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//配置Druid的监控</span>
+    <span class="token comment" spellcheck="true">//1、配置一个管理后台的Servlet</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">statViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ServletRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">StatViewServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginUsername"</span><span class="token punctuation">,</span> <span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"loginPassword"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"allow"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//默认就是允许所有访问</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"deny"</span><span class="token punctuation">,</span> <span class="token string">"192.168.15.21"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//不然访问</span>
+
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//2、配置一个web监控的filter</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> FilterRegistrationBean <span class="token function">webStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        FilterRegistrationBean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FilterRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">WebStatFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> initParams <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initParams<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"exclusions"</span><span class="token punctuation">,</span> <span class="token string">"*.js,*.css,/druid/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//排除静态资源</span>
+
+        bean<span class="token punctuation">.</span><span class="token function">setInitParameters</span><span class="token punctuation">(</span>initParams<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bean<span class="token punctuation">.</span><span class="token function">setUrlPatterns</span><span class="token punctuation">(</span>Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>6) 启动Springboot应用：</p>
+<p>打开mysql的客户端：生成了两个表：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111142926.png"></p>
+<p>注释掉，application配置文件中的schema：(防止再次启动应用，表又归零！)</p>
+<pre><code>#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+</code></pre><p>7）创建bean对象：</p>
+<p>根据数据库mybatis中的两个表，创建对应的JavaBean对象。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111143428.png"></p>
+<p>Employee：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String lastName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Integer gender<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Integer dId<span class="token punctuation">;</span>
+
+   ··· get和set方法
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Department:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Department</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String departmentName<span class="token punctuation">;</span>
+
+    ··· get和set方法
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h3 id="mybatis的使用"><a href="#mybatis的使用" class="headerlink" title="mybatis的使用"></a>mybatis的使用</h3><h4 id="注解版"><a href="#注解版" class="headerlink" title="注解版"></a>注解版</h4><p>1）创建mapper文件夹：DepartmentMapper（接口）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111145746.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">DepartmentMapper</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from department where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">getDeptById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Delete</span><span class="token punctuation">(</span><span class="token string">"delete from department where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">deleteDeptById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//回显主键的id。</span>
+    <span class="token annotation punctuation">@Options</span><span class="token punctuation">(</span>useGeneratedKeys <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span> keyProperty <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into department(departmentName) values(#{departmentName})"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">insertDept</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Update</span><span class="token punctuation">(</span><span class="token string">"update department set departmentName=#{departmentName} where id=#{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">updateDept</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 创建一个DepartmentController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111150310.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DepartmentController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> DepartmentMapper departmentMapper<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/dept/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">findDepartmentById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> departmentMapper<span class="token punctuation">.</span><span class="token function">getDeptById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/dept"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Department <span class="token function">addDepartment</span><span class="token punctuation">(</span>Department department<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        departmentMapper<span class="token punctuation">.</span><span class="token function">insertDept</span><span class="token punctuation">(</span>department<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> department<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>3) 启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151409.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=aa</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151555.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151633.png"></p>
+<p>问题：</p>
+<p>我们将mysql中的departmentName改为：department_name.<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151808.png"></p>
+<p>修改我们的DepartmentMapper中的departmentName为：department_name。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111151946.png"></p>
+<p>再次启动Springboot应用：</p>
+<p>在浏览器中输入：<code>http://localhost:8080/dept?departmentName=bb</code></p>
+<p>如果你的mybat的依赖版本的1.3.2以上，会执行成功，因为默认支持驼峰命名了。如果失败的话，我们需要自定义mybatis的规则：</p>
+<p>创建MybatisConfig配置类:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111152708.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisConfig</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ConfigurationCustomizer <span class="token function">customizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ConfigurationCustomizer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">customize</span><span class="token punctuation">(</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session<span class="token punctuation">.</span>Configuration configuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//使用驼峰命名规则</span>
+                configuration<span class="token punctuation">.</span><span class="token function">setMapUnderscoreToCamelCase</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>或者使用在配置文件中，配置驼峰命名规则。</p>
+<hr>
+<p>4）扫描多个mapper类：</p>
+<p>在配合类上面加上：<br>@MapperScan(value = “com.liuzhuo.springboot.mapper”)</p>
+<pre class=" language-java"><code class="language-java">使用MapperScan批量扫描所有的Mapper接口；
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"com.liuzhuo.springboot.mapper"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringBoot06DataMybatisApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>SpringBoot06DataMybatisApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+    <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这样，我们就不必须要在每个mapper类上，加@Mapper注解了</p>
+<h4 id="配置文件版"><a href="#配置文件版" class="headerlink" title="配置文件版"></a>配置文件版</h4><p>1）创建EmployeeMapper接口：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111154909.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//必须使用@Mapper或者@MapperScan。二者其一即可</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">EmployeeMapper</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2) 创建mybatis的全局配置文件：</p>
+<p>在resours下创建mybatis/mapper文件夹：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155138.png" style="width:50%"></p>
+<p>在mybatis文件夹下，创建mybatis的全局配置文件：<br>不会写的话，看mybatis的官网文档，mybatis已经被整合到github上面：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155348.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155424.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111155456.png"></p>
+<p><a href="http://www.mybatis.org/mybatis-3/" target="_blank" rel="noopener">mybatis-3的官方文档</a></p>
+<p>其中的什么数据源，mapper的文件扫描，我们全部删除，我们已经使用application.yml文件配置了。</p>
+<p>最终mybatis-config.xml：</p>
+<p>就设置了一个使用驼峰命名法</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span> <span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE configuration
+        PUBLIC <span class="token string">"-//mybatis.org//DTD Config 3.0//EN"</span>
+        <span class="token string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>configuration<span class="token operator">></span>
+<span class="token operator">&lt;</span>settings<span class="token operator">></span>
+    <span class="token operator">&lt;</span>setting name<span class="token operator">=</span><span class="token string">"mapUnderscoreToCamelCase"</span> value<span class="token operator">=</span><span class="token string">"true"</span><span class="token operator">/</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>settings<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>configuration<span class="token operator">></span>
+</code></pre>
+<p>3）创建mapper.xml文件：</p>
+<p>在mapper文件夹下，创建employee-mapper.xml<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111160017.png" style="width:50%"></p>
+<p>文件不会写，看官方文档：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111160123.png"></p>
+<p>最终employee-mapper.xml：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">?</span>xml version<span class="token operator">=</span><span class="token string">"1.0"</span> encoding<span class="token operator">=</span><span class="token string">"UTF-8"</span> <span class="token operator">?</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE mapper
+        PUBLIC <span class="token string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="token string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>mapper namespace<span class="token operator">=</span><span class="token string">"com.liuzhuo.springboot.mapper.EmployeeMapper"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
+        <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">public</span> Employee <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">--</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>select id<span class="token operator">=</span><span class="token string">"findEmplById"</span> resultType<span class="token operator">=</span><span class="token string">"com.liuzhuo.springboot.bean.Employee"</span><span class="token operator">></span>
+        select <span class="token operator">*</span> from employee where id <span class="token operator">=</span> #<span class="token punctuation">{</span>id<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>select<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>insert id<span class="token operator">=</span><span class="token string">"insertEmpl"</span> <span class="token operator">></span>
+        INSERT INTO <span class="token function">employee</span><span class="token punctuation">(</span>lastName<span class="token punctuation">,</span>email<span class="token punctuation">,</span>gender<span class="token punctuation">,</span>d_id<span class="token punctuation">)</span> <span class="token function">VALUES</span> <span class="token punctuation">(</span>#<span class="token punctuation">{</span>lastName<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>email<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>gender<span class="token punctuation">}</span><span class="token punctuation">,</span>#<span class="token punctuation">{</span>dId<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>insert<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>mapper<span class="token operator">></span>
+</code></pre>
+<p>4) 在application.yml文件中，制定全局mybatis.xml和mapper.xml的映射：</p>
+<pre class=" language-java"><code class="language-java">mybatis<span class="token operator">:</span>
+  config<span class="token operator">-</span>location<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mybatis<span class="token operator">-</span>config<span class="token punctuation">.</span>xml 指定全局配置文件的位置
+  mapper<span class="token operator">-</span>locations<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mapper<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>xml 指定sql映射文件的位置
+</code></pre>
+<p>5) 创建EmployeeController：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111161700.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmployeeController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> EmployeeMapper employeeMapper<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Employee <span class="token function">findEmplById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> employeeMapper<span class="token punctuation">.</span><span class="token function">findEmplById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/empl"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> Employee <span class="token function">insertEmpl</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        employeeMapper<span class="token punctuation">.</span><span class="token function">insertEmpl</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> employee<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>6) 启动Springboot应用</p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111161941.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/empl?lastName=jack&amp;&amp;email=4324324@qq.com&amp;&amp;gender=1&amp;&amp;dId=2</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111163225.png"></p>
+<p>再次浏览器中输入：<code>http://localhost:8080/empl/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111163307.png"></p>
+<p>最主要的就是在application配置文件中：</p>
+<pre class=" language-java"><code class="language-java">mybatis<span class="token operator">:</span>
+  config<span class="token operator">-</span>location<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mybatis<span class="token operator">-</span>config<span class="token punctuation">.</span>xml
+  mapper<span class="token operator">-</span>locations<span class="token operator">:</span> classpath<span class="token operator">:</span>mybatis<span class="token operator">/</span>mapper<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>xml
+</code></pre>
+<p>更多使用参照:<br><a href="http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/" target="_blank" rel="noopener">mybatis-spring-boot-autoconfigure</a></p>
+<hr>
+<h2 id="整合SpringData-JPA"><a href="#整合SpringData-JPA" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h2><h3 id="SpringData简介"><a href="#SpringData简介" class="headerlink" title="SpringData简介"></a>SpringData简介</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111165834.png"></p>
+<h3 id="整合SpringData-JPA-1"><a href="#整合SpringData-JPA-1" class="headerlink" title="整合SpringData JPA"></a>整合SpringData JPA</h3><p>JPA:ORM（Object Relational Mapping）</p>
+<p>1）创建新的Springboot项目，添加web、mysql、jpa模块：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111170202.png"></p>
+<p>2）在application.yml配置文件中：</p>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
+  datasource<span class="token operator">:</span>
+    username<span class="token operator">:</span> root
+    password<span class="token operator">:</span> <span class="token number">123456</span>
+    driver<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">:</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>Driver
+    url<span class="token operator">:</span> jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.6</span><span class="token punctuation">.</span><span class="token number">11.17</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>jpa
+  jpa<span class="token operator">:</span>
+#  自动创建数据库的表
+    hibernate<span class="token operator">:</span>
+      ddl<span class="token operator">-</span>auto<span class="token operator">:</span> update
+#  显示sql语句
+    show<span class="token operator">-</span>sql<span class="token operator">:</span> <span class="token boolean">true</span>
+</code></pre>
+<p>3) 在mysql客户端中创建jpa数据库：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111170624.png"></p>
+<p>4）<strong>编写一个实体类（bean）和数据表进行映射，并且配置好映射关系</strong></p>
+<p>在bean包下，创建User类:<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111171609.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//使用JPA注解配置映射关系</span>
+<span class="token annotation punctuation">@Entity</span>  <span class="token comment" spellcheck="true">//表明是一个实体与数据库中的某个表对应的注解</span>
+<span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"t_user"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//表示User类与t_user表对象，不写的话，默认就类名小写的表名</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Id</span> <span class="token comment" spellcheck="true">//这是一个主键：javax.persistence.Id;</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//自增主键</span>
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"last_name"</span><span class="token punctuation">,</span> length <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//这是和数据表对应的一个列</span>
+    <span class="token keyword">private</span> String lastName<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Column</span> <span class="token comment" spellcheck="true">//省略默认列名就是属性名</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+
+   ····get和set方法
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5）编写一个Dao接口来操作实体类对应的数据表（Repository）：</p>
+<p>继承JpaRepository类就行：&lt;T,U&gt;: T : 实体类， U : 主键类型<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111171846.png"></p>
+<p>6）基本的配置（JpaProperties）</p>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span> 
+ jpa<span class="token operator">:</span>
+    hibernate<span class="token operator">:</span>
+#     更新或者创建数据表结构
+      ddl‐auto<span class="token operator">:</span> update
+#    控制台显示SQL
+    show‐sql<span class="token operator">:</span> <span class="token boolean">true</span>
+</code></pre>
+<p>7) 编写UserController类<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172435.png"></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> UserRepository userRepository<span class="token punctuation">;</span>
+
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user/{id}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> User <span class="token function">findUserById</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        User user <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> user<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> User <span class="token function">insertUser</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        User save <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> save<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>8) 启动Springboot应用：<br>打开mysql的客户端：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172613.png"><br>自动帮我们创建了t_user表</p>
+<p>在浏览器中输入：<code>http://localhost:8080/user/1</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172801.png"></p>
+<p>在浏览器中输入：<code>http://localhost:8080/user?lastName=zhangsan&amp;email=89028394@qq.com</code><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111172917.png"></p>
+<p>控制台：（打印出了sql语句）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111173008.png"></p>
+<p>mysql客户端：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/day08/QQ截图20181111173129.png"></p>
+<p>其他博客：</p>
+<p><a href="https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3" target="_blank" rel="noopener">https://blog.csdn.net/oChangWen/article/details/52788274?locationNum=3</a></p>
+<p><a href="https://blog.csdn.net/suo082407128/article/details/60963161" target="_blank" rel="noopener">https://blog.csdn.net/suo082407128/article/details/60963161</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/11/springboot-day-08/" class="b-link-green">SpringBoot_day_08</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/12/springboot-day-09/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SpringBoot_day_09">
+                        
+                        <span class="card-title">SpringBoot_day_09</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                Spring Boot启动配置原理：启动原理、运行流程、自动配置原理。
+几个重要的事件回调机制
+配置在META-INF/spring.fac
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/09/springboot-day-07/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="SpringBoot_day_07">
+                        
+                        <span class="card-title">SpringBoot_day_07</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                简单学习Docker的相关知识，后面会系统讲解
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

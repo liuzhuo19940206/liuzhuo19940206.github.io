@@ -1,0 +1,1414 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="spring_annotation_day_13, 解忧杂货店">
+    <meta name="description" content="Spring注解开发 
+今天来学习AOP原理。
+我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。
+
+@EnableAspectJAutoProxy1）点击@E">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>spring_annotation_day_13 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        spring_annotation_day_13
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/spring-annotation/" target="_blank">
+                                <span class="chip bg-color">spring_annotation</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/spring-annotation/" class="post-category" target="_blank">
+                                spring_annotation
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-19
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.8k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        13 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>Spring注解开发</strong> </p>
+<p>今天来学习AOP原理。</p>
+<p>我们上篇文章已经描述了AOP的使用情况，现在来研究一下AOP的原理。首先从@EnableAspectJAutoProxy注解开始。</p>
+<hr>
+<h3 id="EnableAspectJAutoProxy"><a href="#EnableAspectJAutoProxy" class="headerlink" title="@EnableAspectJAutoProxy"></a>@EnableAspectJAutoProxy</h3><p>1）点击@EnableAspectJAutoProxy注解：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span>AspectJAutoProxyRegistrar<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EnableAspectJAutoProxy</span> 
+</code></pre>
+<p>发现，使用了@Import注解来注入组件。组件是AspectJAutoProxyRegistrar类。</p>
+<p>2）点击AspectJAutoProxyRegistrar类：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">AspectJAutoProxyRegistrar</span> <span class="token keyword">implements</span> <span class="token class-name">ImportBeanDefinitionRegistrar</span><span class="token punctuation">{</span>
+  ···
+<span class="token punctuation">}</span>
+</code></pre>
+<p>该类，实现了ImportBeanDefinitionRegistrar接口，说明是用来自定义注入组件的。其中有一个registerBeanDefinitions（）方法。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span>AnnotationMetadata importingClassMetadata<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        AopConfigUtils<span class="token punctuation">.</span><span class="token function">registerAspectJAnnotationAutoProxyCreatorIfNecessary</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        AnnotationAttributes enableAspectJAutoProxy <span class="token operator">=</span>
+                AnnotationConfigUtils<span class="token punctuation">.</span><span class="token function">attributesFor</span><span class="token punctuation">(</span>importingClassMetadata<span class="token punctuation">,</span> EnableAspectJAutoProxy<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>enableAspectJAutoProxy<span class="token punctuation">.</span><span class="token function">getBoolean</span><span class="token punctuation">(</span><span class="token string">"proxyTargetClass"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AopConfigUtils<span class="token punctuation">.</span><span class="token function">forceAutoProxyCreatorToUseClassProxying</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>enableAspectJAutoProxy<span class="token punctuation">.</span><span class="token function">getBoolean</span><span class="token punctuation">(</span><span class="token string">"exposeProxy"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            AopConfigUtils<span class="token punctuation">.</span><span class="token function">forceAutoProxyCreatorToExposeProxy</span><span class="token punctuation">(</span>registry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>查看其中的AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);</p>
+<p>最终会调用registerOrEscalateApcAsRequired方法：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> BeanDefinition <span class="token function">registerOrEscalateApcAsRequired</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> cls<span class="token punctuation">,</span> BeanDefinitionRegistry registry<span class="token punctuation">,</span> Object source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Assert<span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>registry<span class="token punctuation">,</span> <span class="token string">"BeanDefinitionRegistry must not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>registry<span class="token punctuation">.</span><span class="token function">containsBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            BeanDefinition apcDefinition <span class="token operator">=</span> registry<span class="token punctuation">.</span><span class="token function">getBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cls<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>apcDefinition<span class="token punctuation">.</span><span class="token function">getBeanClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> currentPriority <span class="token operator">=</span> <span class="token function">findPriorityForClass</span><span class="token punctuation">(</span>apcDefinition<span class="token punctuation">.</span><span class="token function">getBeanClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> requiredPriority <span class="token operator">=</span> <span class="token function">findPriorityForClass</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>currentPriority <span class="token operator">&lt;</span> requiredPriority<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    apcDefinition<span class="token punctuation">.</span><span class="token function">setBeanClassName</span><span class="token punctuation">(</span>cls<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        RootBeanDefinition beanDefinition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootBeanDefinition</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">setSource</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">getPropertyValues</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"order"</span><span class="token punctuation">,</span> Ordered<span class="token punctuation">.</span>HIGHEST_PRECEDENCE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">setRole</span><span class="token punctuation">(</span>BeanDefinition<span class="token punctuation">.</span>ROLE_INFRASTRUCTURE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">registerBeanDefinition</span><span class="token punctuation">(</span>AUTO_PROXY_CREATOR_BEAN_NAME<span class="token punctuation">,</span> beanDefinition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> beanDefinition<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>最后是给容器注入了一个Bean：<br>id：internalAutoProxyCreator ==》 Class：AnnotationAwareAspectJAutoProxyCreator</p>
+<hr>
+<h3 id="AnnotationAwareAspectJAutoProxyCreator"><a href="#AnnotationAwareAspectJAutoProxyCreator" class="headerlink" title="AnnotationAwareAspectJAutoProxyCreator"></a>AnnotationAwareAspectJAutoProxyCreator</h3><p>@EnableAspectJAutoProxy注解帮我们注入了AnnotationAwareAspectJAutoProxyCreator组件，这个组件有什么作用呢？</p>
+<p>我们观察一下AnnotationAwareAspectJAutoProxyCreator的继承关系：</p>
+<p>AnnotationAwareAspectJAutoProxyCreator</p>
+<p>&nbsp;&nbsp;&nbsp;AspectJAwareAdvisorAutoProxyCreator  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractAdvisorAutoProxyCreator  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractAutoProxyCreator</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware</strong></p>
+<p><strong>关键:实现了两个接口，一个后置处理器(在Bean初始化完成前后做事情)、一个自动装配BeanFactory</strong></p>
+<hr>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>打上断点：(与后置处理器，自动装配有关的)</p>
+<p>1）AbstractAutoProxyCreator.setBeanFactory<br>2）AbstractAutoProxyCreator.postProcessBeforeInstantiation<br>3) AbstractAutoProxyCreator.postProcessAfterInitialization</p>
+<p>4) AbstractAdvisorAutoProxyCreator.setBeanFactory(父类重写的方法也打上断点)<br>5）AbstractAdvisorAutoProxyCreator.initBeanFactory</p>
+<p>6) AspectJAwareAdvisorAutoProxyCreator类没有相关的就不打上断点</p>
+<p>7）AnnotationAwareAspectJAutoProxyCreator.initBeanFactory(父类重写的方法也打上断点)</p>
+<p>8) MainConfigOfAOP配置类的中的两个Bean对象打上断点：<br>&nbsp;&nbsp;&nbsp;mathCalculator和logAspects</p>
+<h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><p>流程：<br>1）传入配置类，创建IoC容器</p>
+<pre class=" language-java"><code class="language-java">AnnotationConfigApplicationContext applicationContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>MainConfigOfAOP<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>2) 注册配置类，调用refresh（）, 刷新容器</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">AnnotationConfigApplicationContext</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> annotatedClasses<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">register</span><span class="token punctuation">(</span>annotatedClasses<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//注入配置类</span>
+        <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//刷新容器</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3）registerBeanPostProcessors(beanFactory);注册bean的后置处理器，来拦截bean的初始化操作。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;1.先获取IoC容器已经定义了的需要创建对象的所有BeanPostProcessor  </p>
+<pre class=" language-java"><code class="language-java">String<span class="token punctuation">[</span><span class="token punctuation">]</span> postProcessorNames <span class="token operator">=</span> beanFactory<span class="token punctuation">.</span><span class="token function">getBeanNamesForType</span><span class="token punctuation">(</span>BeanPostProcessor<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2.给容器中加别的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;3.优先注册实现了PriorityOrdered接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;4.再注册实现了Ordered接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;5.注册没有实现优先级接口的BeanPostProcessor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;6.注册BeanPostProcessor，实际上就是创建BeanPostProcessor对象，保存到容器中</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建    internalAutoProxyCreator的BeanPostProcessor【AnnotationAwareAspectJAutoProxyCreator】 </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.创建Bean对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.populateBean：给bean的属性赋值</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.initializeBean：初始化bean</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.invokeAwareMethods：处理Aware接口的回调：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">invokeAwareMethods</span><span class="token punctuation">(</span><span class="token keyword">final</span> String beanName<span class="token punctuation">,</span> <span class="token keyword">final</span> Object bean<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">Aware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanNameAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanNameAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanName</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanClassLoaderAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanClassLoaderAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanClassLoader</span><span class="token punctuation">(</span><span class="token function">getBeanClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token keyword">instanceof</span> <span class="token class-name">BeanFactoryAware</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>BeanFactoryAware<span class="token punctuation">)</span> bean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setBeanFactory</span><span class="token punctuation">(</span>AbstractAutowireCapableBeanFactory<span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.applyBeanPostProcessorsBeforeInitialization:执行后置处理器的postProcessor：postProcessBeforeInitialization方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.invokeInitMethods：自定义的初始化方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.applyBeanPostProcessorsAfterInitialization：执行postProcessor：postProcessAfterInitialization方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.BeanPostProcessor(AnnotationAwareAspectJAutoProxyCreator)创建成功；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7.把BeanPostProcessor注册到BeanFactory中：beanFactory.addBeanPostProcessor（）</p>
+<hr>
+<p>以上是创建AnnotationAwareAspectJAutoProxyCreator的过程。</p>
+<p>AnnotationAwareAspectJAutoProxyCreator =》InstantiationAwareBeanPostProcessor，而不是 BeanPostProcessor 后置处理器</p>
+<p>InstantiationAwareBeanPostProcessor是 postProcessBeforeInstantiation（实例化）</p>
+<p>BeanPostProcessor是postProcessBeforeInitialization（初始化）</p>
+<p><strong>说明InstantiationAwareBeanPostProcessor后置处理器是 在Bean实例化前后执行</strong></p>
+<p><strong>BeanPostProcessor后置处理器是 在Bean对象初始化前后执行</strong></p>
+<p>4）finishBeanFactoryInitialization(beanFactory);完成BeanFactory初始化工作，创建剩下的没有创建的Bean组件</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;1.遍历获取容器中所有的Bean，依次创建对象；getBean(beanName)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getBean()-&gt;doGetBean()-&gt;getSingleton()-&gt;createBean()</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2.创建Bean：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.先从缓存中获取当前的Bean，如果能获取到，说明bean是之前被创建过，直接使用，否则再创建.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只要创建了bean就会被缓存起来。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.createBean():创建Bean</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.resolveBeforeInstantiation():解析BeanPostProcessors<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>想让后置处理器在次能返回一个代理对象</strong>，如果能返回代理对象就使用，如果不能就继续。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.后置处理器先尝试返回代理对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bean=applyBeanPostProcessorsBeforeInstantiation();拿到所有的后置处理器，如果是 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InstantiationAwareBeanPostProcessor；就执行postProcessBeforeInstantiation方法</p>
+<pre class=" language-java"><code class="language-java">  <span class="token keyword">if</span> <span class="token punctuation">(</span>bean <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      bean <span class="token operator">=</span> <span class="token function">applyBeanPostProcessorsAfterInitialization</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.doCreateBean()：真正去创建一个bean实例；和3.6流程一样</p>
+<hr>
+<p>AnnotationAwareAspectJAutoProxyCreator[InstantiationAwareBeanPostProcessor]</p>
+<p>1) 每一个bean创建之前，调用postProcessBeforeInstantiation()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关心<strong>mathCalculator</strong>和<strong>logAspects</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）判断当前bean是否是在advicedBean中（保存了所有需要增强bean）</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）判断当前bean是否是基础类型的Advice、PointCut、Advisor、AopInfrastructureBean或者是否是切面(@Aspect)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）是否需要跳过</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取候选的增强器(切面里面的通知方法)【List<advisor> candidateAdvisors】<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个封装的通知方法的增强器是InstantiationModelAwarePointcutAdvisor<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;判断每一个增强器是否是AspectJPointcutAdvisor类型的；返回true</advisor></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）永远返回false</p>
+<p>2）创建对象<br>postProcessAfterInitialization：<br>return wrapIfNecessary(bean, beanName, cacheKey);//需要包装的情况下  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取当前bean的所有增强器(通知方法) Object[] specificInterceptors</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）找到候选的所有增强器(找哪些通知方法是需要切入当前bean方法的)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）获取到能在bean使用的增强器</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）给增强器排序</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）保存当前bean在advisedBeans中；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）如果当前bean需要增强，创建当前bean的代理对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）获取所有的增强器(通知方法)</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）保存到proxyFactory</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）创建代理对象：Spring自动决定<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jdk代理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cglib代理</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）给容器中返回当前组件使用cglib代理的对象</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5）以后容器中获取的就是这个组件的代理对象，执行目标方法的时候，代理对象就会执行通知方法的流程</p>
+<p>3）目标方法的执行流程</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容器中保存了组件的代理对象(cglib增强后的对象)，这个对象里面保存了详细信息(比如增强器、目标对象，xxx)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）CglibAopProxy.intercept();拦截目标方法的执行</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）根据ProxyFactory对象获取将要执行的目标方法拦截器</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);</object></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）List<object> interceptorList保存所有拦截器：5<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一个默认的ExposeInvocationInterceptor和4个增强器</object></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）遍历所有的增强器，将其转为Interceptor</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）将增强器转为List<methodinterceptor>,如果是MethodInterceptor，直接加入集合中，如果不是，使用AdvisorAdapter将增强器转为   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MethodInterceptor，转换完后返回MethodInterceptor数组</methodinterceptor></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）如果没有拦截器链，直接执行目标方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4）如果有拦截器链，把需要执行的目标对象，目标方法，拦截器链等信息传入，创建一个CglibMethodInvocation对象，并调用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object retVal = mi.proceed();</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5) 拦截器链的触发过程</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）如果没有拦截器执行，就直接执行目标方法，或者拦截器的索引和拦截器数组的个数-1一样大，执行目标方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拦截器链的机制，保证通知方法与目标方法的执行顺序.<br><img src="https://gakkil.gitee.io/gakkil-image/spring_annotation/day13/20181019201432.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1）@EnableAspectJAutoProxy注解 开启AOP功能</p>
+<p>2）@EnableAspectJAutoProxy 会给容器中注册一个组件 AnnotationAwareAspectJAutoProxyCreator</p>
+<p>3）AnnotationAwareAspectJAutoProxyCreator是一个后置处理器</p>
+<p>4）容器的创建流程：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）registerBeanPostProcessors()注册后置处理器，创建AnnotationAwareAspectJAutoProxyCreator对象<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）finishBeanFactoryInitialization()：初始化剩下的单实例bean<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）创建业务逻辑组件和切面组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）组件创建完之后，判断组件是否需要增强。是：切面的通知方法，包装成增强器(Advisor);给业务逻辑组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4)  创建一个代理对象 </p>
+<p>5）执行目标方法：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）代理对象执行目标方法<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）CglibAopProxy.Intercept:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）得到目标方法的拦截器链(增强器包装成拦截器MethodIntercept)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）利用拦截器的链式机制，依次进入每一个拦截器进行执行；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）效果：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 正常执行：前置通知 -》目标方法 -》后置通知 -》返回通知<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 出现异常：前置通知 -》目标方法 -》后置通知 -》异常通知  </p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/10/19/spring-annotation-day-13/" class="b-link-green">spring_annotation_day_13</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/10/19/spring-zhong-wu-chu-bu-zai-de-properties/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Spring中无处不在的Properties">
+                        
+                        <span class="card-title">Spring中无处不在的Properties</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                Spring里面的Properties
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/19/spring-he-springmvc-fu-zi-rong-qi-guan-xi-chu-kui/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring和SpringMVC父子容器关系初窥">
+                        
+                        <span class="card-title">Spring和SpringMVC父子容器关系初窥</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                Spring和SpringMVC父子容器关系
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category" target="_blank">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

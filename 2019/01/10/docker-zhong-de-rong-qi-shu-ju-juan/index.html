@@ -1,0 +1,1391 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Docker中的容器数据卷, 解忧杂货店">
+    <meta name="description" content="Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Docker中的容器数据卷 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Docker中的容器数据卷
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/docker/" target="_blank">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                            <a href="/tags/容器/" target="_blank">
+                                <span class="chip bg-color">容器</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/docker/" class="post-category" target="_blank">
+                                docker
+                            </a>
+                        
+                            <a href="/categories/docker/容器/" class="post-category" target="_blank">
+                                容器
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-01-10
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        8 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Docker中的容器数据卷，我们知道redis是一个内存数据库，为啥，退出后，下次重启后，数据库中还有之前的数据呢？因为有rdb和aof持久化。<br>因此，Docker中的容器数据卷，也是为了将容器中的数据，保存到宿主机中的技术，防止容器停止后，数据丢失。</p>
+<h2 id="数据卷是什么"><a href="#数据卷是什么" class="headerlink" title="数据卷是什么"></a>数据卷是什么</h2><p>先来看看Docker的理念：</p>
+<ul>
+<li><p>将应用与运行的环境打包形成容器运行 ，运行可以伴随着容器，但是我们对数据的要求希望是持久化的</p>
+</li>
+<li><p>容器之间希望有可能共享数据</p>
+</li>
+</ul>
+<p>Docker容器产生的数据，如果不通过docker commit生成新的镜像，使得数据做为镜像的一部分保存下来，那么当容器删除后，数据自然也就没有了。</p>
+<p>为了能保存在docker中的数据，我们使用卷。</p>
+<h2 id="数据卷能干嘛"><a href="#数据卷能干嘛" class="headerlink" title="数据卷能干嘛"></a>数据卷能干嘛</h2><p>卷就是目录或文件，存在于一个或多个容器中，由docker挂载到容器，但不属于联合文件系统，因此能够绕过Union File System提供一些用于持续存储或共享数据的特性。</p>
+<p>卷的设计目的就是数据的持久化，完全独立于容器的生存周期，因此Docker不会在容器删除时删除其挂载的数据卷。</p>
+<p>特点：</p>
+<p>1：数据卷可在容器之间共享或重用数据<br>2：卷中的更改可以直接生效<br>3：数据卷中的更改不会包含在镜像的更新中<br>4：数据卷的生命周期一直持续到没有容器使用它为止</p>
+<h2 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h2><p>容器内添加，有两种方式：</p>
+<ul>
+<li><p>直接命令添加</p>
+</li>
+<li><p>DockerFile添加</p>
+</li>
+</ul>
+<h3 id="直接命令添加"><a href="#直接命令添加" class="headerlink" title="直接命令添加"></a>直接命令添加</h3><p><strong><code>docker run -it -v /宿主机绝对路径目录:/容器内目录   镜像名</code></strong></p>
+<pre><code>这里主要就是添加了一个 -v 的选项参数。
+
+</code></pre><p>现在，我们来正式演示一遍：</p>
+<p><strong>在宿主机的根目录下创建：mydataVolume目录。</strong></p>
+<p>然后使用：<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> 将两者挂载在一起，实现数据共享。</p>
+<p>该命令会帮我们以交换式的方式启动centos容器，然后会自动帮我们在centos的根目录下创建：dataVolumeContainer目录。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111112831.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111113633.png"></p>
+<p><strong>查看数据卷是否挂载成功：</strong></p>
+<p><code>docker inspect 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111113940.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114243.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114421.png"></p>
+<p>出现上面的信息，说明挂载数据卷成功。</p>
+<hr>
+<p><strong>宿主机与容器之间数据共享：</strong></p>
+<p>在宿主机中的：mydataVolume目录下：创建一个host.txt文件，随便编写一些数据。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111114942.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115028.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115109.png"></p>
+<p>在centos容器中，查看：dataVolumeContainer目录下，是否存在host.txt，并且里面有数据：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111115709.png"></p>
+<p>瞬间懵逼了，后来发现：我是宿主机的root目录下创建的：mydataVolume，然后在该目录下创建的host.txt文件，当然是无法共享的呀。</p>
+<p>因为，<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> <strong>是宿主机的根目录下创建：mydataVolume ！！！！</strong></p>
+<p>现在，在宿主机下，切换到根目录下，发现mydataVolume目录已经存在了，说明执行了：<code>docker run -it -v /mydataVolume:/dataVolumeContainer centos /bin/bash</code> 命令后，会自动帮我们创建这两个共享的目录。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120217.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120316.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120500.png"></p>
+<p>那，在容器下，创建新的文件，修改旧的文件，在宿主机中能更新吗？ 能，数据卷是互相共享的。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120811.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111120941.png"></p>
+<hr>
+<p><strong>那么，容器退出后，在宿主机中修改数据，等到原来的容器再次启动时，数据是否会同步呢？</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121222.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121327.png"></p>
+<p>接着，在宿主机中，修改host.txt文件中的内容：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121514.png"></p>
+<p>启动，<strong>原先的</strong>centos容器：</p>
+<p><code>docker start 容器的ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111121959.png"></p>
+<p>进入centos容器内部：</p>
+<p><code>docker attach 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111122237.png"></p>
+<p>上面就是，宿主机与容器之间的数据卷共享，可读可写。</p>
+<hr>
+<p><strong>那么，可不可以，只能宿主机可读可写，而容器只读呢？ 可以的。</strong></p>
+<p><code>docker run -it -v /宿主机绝对路径目录:/容器内目录:ro 镜像名</code></p>
+<p>请看，上面命令，只是下后面加了一个 <code>:ro</code> , ro : readonly的意思，只读。<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111122815.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123127.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123217.png"></p>
+<p>使用 <code>docker inspect 容器ID</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123350.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123441.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111123526.png"></p>
+<hr>
+<h3 id="使用DockerFile添加"><a href="#使用DockerFile添加" class="headerlink" title="使用DockerFile添加"></a>使用DockerFile添加</h3><p>这里，不会讲太多的DockerFile的知识，只是简单带大家了解一下，使用DockerFile来数据共享，下篇文章，我会继续带大家进行DockerFile的探索。</p>
+<p><strong>第一步：在宿主机的根目录下，创建mydocker文件夹并进入：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111135831.png"></p>
+<p>可在 Dockerfile中 使用 <strong>VOLUME指令</strong> 来给镜像添加一个或多个数据卷。</p>
+<p><code>VOLUME[&quot;/dataVolumeContainer&quot;,&quot;/dataVolumeContainer2&quot;,&quot;/dataVolumeContainer3&quot;]</code></p>
+<p>说明：</p>
+<p>出于 <strong>可移植</strong> 和 <strong>分享</strong> 的考虑，用 -v <strong>主机目录:容器目录</strong> 这种方法不能够直接在Dockerfile中实现。</p>
+<p>由于宿主机目录是依赖于特定宿主机的，并不能够保证在所有的宿主机上都存在这样的特定目录。</p>
+<p>所以，使用DockerFile来进行数据卷的共享时，不需要创建宿主机的共享目录，只需要确定容器内的共享目录即可，这是与使用 -v 命令的区别所在。</p>
+<p>那么，什么是DockerFile文件呢？ 这里还是带大家简单了解一下：</p>
+<p>打开docker hub的官网，随便搜索一个镜像，比如tomcat：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141044.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141140.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141243.png"></p>
+<p>简单来看一下：最上面是基于jdk1.8的镜像来生成tomcat镜像的，所以tomcat镜像文件才几百兆，不想在windows中下在一个tomcat几十兆那么小，因为tomcat镜像中包括了jdk的运行环境等，所以比较大。</p>
+<pre><code>EVN :  配置环境变量的
+EXPOSE 8080   ：配置暴露的端口号
+CMD [&quot;catalina.sh&quot;, &quot;run&quot;]  ：运行镜像最外层的可写的那层
+</code></pre><p>使用Dockerfile来数据卷的共享，就是编写一个Dockerfile文件，然后使用这个Dockerfile来生成新的镜像。这里只是简单了解一下。</p>
+<p><strong>第二步，在mydocker文件夹下，编写dockerfile文件：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111141828.png"></p>
+<p>在dockerfile中：</p>
+<pre><code># volume test
+FROM centos                                               #相当于继承centos镜像
+VOLUME [&quot;/dataVolumeContainer1&quot;,&quot;/dataVolumeContainer2&quot;]  #配置数据卷容器内的目录，可以是多个
+CMD echo &quot;finished,--------success1&quot;                      #CMD执行命令，这里是简单测试语句
+CMD /bin/bash                                             #执行 /bin/bash 命令，进入终端
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142130.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142226.png"></p>
+<p><strong>第三步，build我们的dockerfile文件，生成镜像</strong></p>
+<p><code>docker build -f /mydocker/dockerfile -t liuzhuo/centos .</code></p>
+<pre><code>-f：     dockerfile文件的路径
+-t：     命名空间/镜像名称
+
+注意：最后有一个 空格 + 点
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111142918.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143207.png"></p>
+<p><strong>第四步，查看有没有生成新的镜像</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143325.png"></p>
+<p><strong>第五步，启动新的镜像</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143523.png"></p>
+<p><strong>通过上述步骤，容器内的卷目录地址已经知道，对应的主机目录地址哪？？</strong></p>
+<p>使用 <code>docker inspect 容器id</code> 来查看宿主机的目录地址：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111143950.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144227.png"></p>
+<p>这里，我就使用 <strong>/dataVolumeContainer1</strong> 对应的宿主机的地址来演示了</p>
+<pre><code>/var/lib/docker/volumes/ef6a4b962d138913b14a43750d12c1a553c2837c34481ff732796e79e62203b3/_data
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144408.png"></p>
+<p>创建新的文件，container.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144609.png"></p>
+<p>然后在，容器中查看是否有：container.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144609.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111144738.png"></p>
+<hr>
+<p><strong>备注:</strong></p>
+<p>Docker挂载主机目录Docker访问出现 cannot open directory . : Permission denied</p>
+<p><strong>解决办法：在挂载目录后多加一个 –privileged=true 参数即可。</strong></p>
+<p>即：<code>docker run -it -v /mydataVolume:/dataVolumeContainer --privileged=true centos /bin/bash</code></p>
+<p>一般情况下，是不会出现这样的问题的。</p>
+<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><h3 id="数据卷容器是什么"><a href="#数据卷容器是什么" class="headerlink" title="数据卷容器是什么"></a>数据卷容器是什么</h3><p>命名的容器 挂载 数据卷后，<strong>其它容器</strong> 通过 挂载这个(父容器)实现数据共享，挂载数据卷的容器，称之为数据卷容器。</p>
+<h3 id="总体介绍"><a href="#总体介绍" class="headerlink" title="总体介绍"></a>总体介绍</h3><p>使用上面的：liuzhuo/centos 为模板，运行三个容器：doc01、doc02、doc03。</p>
+<p>它们三个容器本身都具有两个容器卷：<code>/dataVolumeContainer1</code> 和 <code>/dataVolumeContainer2</code></p>
+<h3 id="容器间传递共享"><a href="#容器间传递共享" class="headerlink" title="容器间传递共享"></a>容器间传递共享</h3><p><strong>1.先启动一个父容器doc01</strong></p>
+<p><code>docker run -it --name doc01 liuzhuo/centos</code><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111145928.png"></p>
+<p>在 /dataVolumeContainer2 中：添加新的文件：doc01.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150102.png"></p>
+<p><strong>2.将doc02、doc03容器都继承自doc01</strong></p>
+<p><code>docker run -it --name doc02 --volumes-from doc01 liuzhuo/centos</code></p>
+<pre><code>--volumes-from  :  继承自哪个容器
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150614.png"></p>
+<p>查看：/dataVolumeContainer2 目录：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150750.png"></p>
+<p>在doc02中的 /dataVolumeContainer2 目录下：创建新的文件：doc02.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111150908.png"></p>
+<p>接着：<code>docker run -it --name doc03 --volumes-from doc01 liuzhuo/centos</code></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151244.png"></p>
+<p>查看：/dataVolumeContainer2 目录：<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151340.png"></p>
+<p>在doc03中的 /dataVolumeContainer2 目录下：创建新的文件：doc03.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151826.png"></p>
+<p>大家到此，有没有觉得疑惑呢？ 明明doc03 只是继承 doc01 ，为啥连doc02的文件也共享了呢？这就是docker强大之处，其实就像一个网状结构一样，doc03 继承 doc01，而 doc01 与 doc02 互通，所以 doc02 与 doc03 也就互通了。</p>
+<hr>
+<p><strong>回到doc01，可以看到doc02、doc03创建的文件</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111151937.png"></p>
+<p><strong>删除doc01，doc02修改doc02.txt文件，doc03中能检查到文件发生改变</strong></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152312.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152540.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111152655.png"></p>
+<p>验证了，虽然 doc03 继承与 doc01 ，现在将 doc01 停止了，但是还能与 doc02 互通。（网状结构）</p>
+<p><strong>删除doc02后，doc03能否访问</strong><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153020.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153116.png"></p>
+<p>现在，在doc03中，再添加一个新的文件：doc03_update.txt<br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153248.png"></p>
+<p><strong>新建doc04容器，删除doc03容器</strong></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111153938.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154035.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154132.png"><br><img src="https://gakkil.gitee.io/gakkil-image/docker/day05/QQ截图20190111154226.png"></p>
+<hr>
+<p><strong>结论：</strong></p>
+<p><strong><font color="red">容器之间 配置信息的传递，数据卷的生命周期 一直持续到 没有容器使用它为止。</font></strong></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/01/10/docker-zhong-de-rong-qi-shu-ju-juan/" class="b-link-green">Docker中的容器数据卷</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/01/11/docker-zhong-de-dockerfile-jie-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Docker中的Dockerfile解析">
+                        
+                        <span class="card-title">Docker中的Dockerfile解析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                DockerFile文件
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/docker/" class="post-category" target="_blank">
+                                    docker
+                                </a>
+                            
+                            <a href="/categories/docker/容器/" class="post-category" target="_blank">
+                                    容器
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/容器/" target="_blank">
+                        <span class="chip bg-color">容器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/01/10/docker-de-jing-xiang-yuan-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Docker的镜像原理">
+                        
+                        <span class="card-title">Docker的镜像原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                docker中镜像原理
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/docker/" class="post-category" target="_blank">
+                                    docker
+                                </a>
+                            
+                            <a href="/categories/docker/容器/" class="post-category" target="_blank">
+                                    容器
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/容器/" target="_blank">
+                        <span class="chip bg-color">容器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

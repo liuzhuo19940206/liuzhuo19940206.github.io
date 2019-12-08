@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>解忧杂货店</title>
+  
+  <subtitle>爱生活爱解忧</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://gakkil.gitee.io/"/>
+  <updated>2019-12-08T13:03:17.835Z</updated>
+  <id>http://gakkil.gitee.io/</id>
+  
+  <author>
+    <name>刘小宅</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gakki水手服</title>
+    <link href="http://gakkil.gitee.io/2019/12/08/gakki-shui-shou-fu/"/>
+    <id>http://gakkil.gitee.io/2019/12/08/gakki-shui-shou-fu/</id>
+    <published>2019-12-08T12:55:14.000Z</published>
+    <updated>2019-12-08T13:03:17.835Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;第一遍可爱，第二遍可爱，第三遍还是可爱。&lt;/p&gt;
+&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+        
+      
+    
+    </summary>
+    
+      <category term="gakki" scheme="http://gakkil.gitee.io/categories/gakki/"/>
+    
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gakki的表白day</title>
+    <link href="http://gakkil.gitee.io/2019/12/08/gakki-de-biao-bai-day/"/>
+    <id>http://gakkil.gitee.io/2019/12/08/gakki-de-biao-bai-day/</id>
+    <published>2019-12-08T12:37:47.000Z</published>
+    <updated>2019-12-08T12:54:04.681Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。&lt;/p&gt;
+&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="gakki" scheme="http://gakkil.gitee.io/tags/gakki/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RabbitMQ的基础实战&lt;二&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/05/11/rabbitmq-de-ji-chu-shi-zhan-er/"/>
+    <id>http://gakkil.gitee.io/2019/05/11/rabbitmq-de-ji-chu-shi-zhan-er/</id>
+    <published>2019-05-11T06:35:58.000Z</published>
+    <updated>2019-12-08T09:37:56.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在上一篇文章中，我们已经了解到了RabbitMQ中的基本操作了，现在让我们开始实战演习吧！&lt;/p&gt;
+&lt;h3 id=&quot;最简单的模型&quot;&gt;&lt;a href=&quot;#最简单的模型&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RabbitMQ的基础实战</title>
+    <link href="http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/"/>
+    <id>http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/</id>
+    <published>2019-05-10T06:35:25.000Z</published>
+    <updated>2019-12-08T09:37:56.047Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;通过前面几篇博客的介绍，大家应该对RabbitMQ有了基础的认识了，现在开始带着大家进入RabbitMQ的基础实战，让大家体验一把RabbitMQ消息中间件的基础操作。&lt;/p&gt;
+&lt;h3 id=&quot;连接RabbitMQ&quot;&gt;&lt;a href=&quot;#连接RabbitMQ&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RabbitMQ的简单入门</title>
+    <link href="http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/"/>
+    <id>http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/</id>
+    <published>2019-05-08T12:57:26.000Z</published>
+    <updated>2019-12-08T09:37:56.047Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在上篇博客中，我们知道了RabbitMQ的相关概念，再进行RabbitMQ的实操之前，我们还需要了解一下AMQP协议，毕竟RabbitMQ是基于AMQP协议用Erlang语言开发的。&lt;/p&gt;
+&lt;h3 id=&quot;AMQP协议模型&quot;&gt;&lt;a href=&quot;#AMQP协议模型&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RabbitMQ的概念介绍</title>
+    <link href="http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/"/>
+    <id>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</id>
+    <published>2019-05-07T12:15:43.000Z</published>
+    <updated>2019-12-08T09:37:56.047Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上一篇文章，主要讲述了消息中间件的基本概念，消息中间件的作用、功能，以及各种消息中间件的对比，接下来会主要讲述RabbitMQ消息队列。&lt;/p&gt;
+&lt;h3 id=&quot;相关概念&quot;&gt;&lt;a href=&quot;#相关概念&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消息中间件的介绍</title>
+    <link href="http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/"/>
+    <id>http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/</id>
+    <published>2019-05-07T08:11:25.000Z</published>
+    <updated>2019-12-08T09:37:56.062Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;什么是消息中间件&quot;&gt;&lt;a href=&quot;#什么是消息中间件&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rabbitmq的安装与入门</title>
+    <link href="http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/"/>
+    <id>http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/</id>
+    <published>2019-04-28T06:53:01.000Z</published>
+    <updated>2019-12-08T09:37:56.047Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天，我们来学习Rabbitmq的安装与入门。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;一般情况下，Rabbitmq都是安装在linux系统中，所以，这里我也是以linux系统为主来讲解。&lt;/p&gt;
+&lt;p&gt;如果，大家想安装在windows上面，可以查看Rabbitmq的官网。&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="Rabbitmq" scheme="http://gakkil.gitee.io/categories/Rabbitmq/"/>
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/Rabbitmq/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+      <category term="Rabbitmq" scheme="http://gakkil.gitee.io/tags/Rabbitmq/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>注解Annotation的浅析</title>
+    <link href="http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
+    <id>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
+    <published>2019-03-22T07:21:50.000Z</published>
+    <updated>2019-12-08T09:37:56.062Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。&lt;/p&gt;
+&lt;h3 id=&quot;什么是注解&quot;&gt;&lt;a href=&quot;#什么是注解&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="注解" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="annotation" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/annotation/"/>
+    
+    
+      <category term="注解" scheme="http://gakkil.gitee.io/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="annotation" scheme="http://gakkil.gitee.io/tags/annotation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis代码生成器</title>
+    <link href="http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
+    <id>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
+    <published>2019-03-17T01:46:35.000Z</published>
+    <updated>2019-12-08T09:37:56.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;MyBatis
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的动态SQL</title>
+    <link href="http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
+    <id>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
+    <published>2019-03-16T05:48:27.000Z</published>
+    <updated>2019-12-08T09:37:56.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;/p&gt;
+&lt;p&gt;在Myba
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的缓存</title>
+    <link href="http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
+    <id>http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
+    <published>2019-03-15T07:21:39.000Z</published>
+    <updated>2019-12-08T09:37:56.045Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的高级查询</title>
+    <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
+    <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
+    <published>2019-03-13T02:53:31.000Z</published>
+    <updated>2019-12-08T09:37:56.045Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;通过前面几篇博客的学习，我们已经了解了 MyBatis
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的resultMap</title>
+    <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/"/>
+    <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/</id>
+    <published>2019-03-13T01:29:18.000Z</published>
+    <updated>2019-12-08T09:37:56.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。&lt;/p&gt;
+&lt;p&gt;resultMap 元素是 MyBatis 中最重要最强大的元素。它可以让你从 90% 的 JDBC ResultSets 数据提取代码中解放出来, 并在一些情形下允许你做一些 JDBC
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的Mapper映射器</title>
+    <link href="http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
+    <id>http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
+    <published>2019-03-11T05:45:30.000Z</published>
+    <updated>2019-12-08T09:37:56.043Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。&lt;/p&gt;
+&lt;p&gt;MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的主配置文件02</title>
+    <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/"/>
+    <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</id>
+    <published>2019-03-10T12:41:46.000Z</published>
+    <updated>2019-12-08T09:37:56.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;此篇博客，接着上篇博客的内容，继续讲解Mybatis-config.xml配置文件&lt;/p&gt;
+&lt;h3 id=&quot;environments-配置环境&quot;&gt;&lt;a href=&quot;#environments-配置环境&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis中的主配置文件</title>
+    <link href="http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/"/>
+    <id>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian/</id>
+    <published>2019-03-10T02:03:48.000Z</published>
+    <updated>2019-12-08T09:37:56.044Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天来讲解Mybatis中的主配置文件，Mybatis的配置文件对整个Mybatis体系产生深远的影响。&lt;/p&gt;
+&lt;h3 id=&quot;Mybatis配置文件层次结构&quot;&gt;&lt;a href=&quot;#Mybatis配置文件层次结构&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis的第三天作用域</title>
+    <link href="http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/"/>
+    <id>http://gakkil.gitee.io/2019/03/09/mybatis-de-di-san-tian-zuo-yong-yu/</id>
+    <published>2019-03-09T11:36:51.000Z</published>
+    <updated>2019-12-08T09:37:56.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;探讨Mybatis中的各个对象的作用域和生命周期&lt;/p&gt;
+&lt;p&gt;今天主要来正确的理解Mybatis中的SqlSessionFactoryBuilder、SqlSessionFactory、SqlSession和Mapper的生命周期。&lt;/p&gt;
+&lt;h3
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis的第二天简单入门</title>
+    <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/"/>
+    <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-di-er-tian-jian-dan-ru-men/</id>
+    <published>2019-03-08T13:40:26.000Z</published>
+    <updated>2019-12-08T09:37:56.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天来学习Mybatis的基本用法，带大家入门。&lt;/p&gt;
+&lt;h3 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis的开发的第一天</title>
+    <link href="http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/"/>
+    <id>http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</id>
+    <published>2019-03-08T05:33:50.000Z</published>
+    <updated>2019-12-08T09:37:56.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt; 这是Mybatis的开发的第一天，我将讲述原始的jdbc，与orm的区别。&lt;/p&gt;
+&lt;h3 id=&quot;jdbc的概述&quot;&gt;&lt;a href=&quot;#jdbc的概述&quot; class=&quot;headerlink&quot; title=&quot;jdbc的概述&quot;&gt;&lt;/a&gt;jdbc的概述&lt;/h3&gt;&lt;p&gt; 
+        
+      
+    
+    </summary>
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
+    
+    
+      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
+    
+  </entry>
+  
+</feed>

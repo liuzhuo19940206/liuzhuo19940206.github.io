@@ -1,0 +1,1530 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring Boot与消息, 解忧杂货店">
+    <meta name="description" content="JMS、AMQP、RabbitMQ的消息处理机制
+概述1）大多应用中，可通过消息服务中间件来提升系统异步通信、扩展解耦能力
+2）消息服务中两个重要概念：消息代理（message broker） 和 目的地（destination）
+　 当消">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Spring Boot与消息 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Spring Boot与消息
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SpringBoot/" target="_blank">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                            <a href="/tags/消息/" target="_blank">
+                                <span class="chip bg-color">消息</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                SpringBoot
+                            </a>
+                        
+                            <a href="/categories/SpringBoot/消息/" class="post-category" target="_blank">
+                                消息
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-15
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        12 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>JMS、AMQP、RabbitMQ的消息处理机制</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>1）大多应用中，可通过消息服务中间件来提升系统异步通信、扩展解耦能力</p>
+<p>2）消息服务中两个重要概念：<font color="red">消息代理（message broker）</font> 和 <font color="red">目的地（destination）</font></p>
+<p>　 当消息发送者发送消息以后，将由消息代理接管，消息代理保存消息并且传递消息到指定目的地。</p>
+<p>3）消息队列主要有两种形式的目的地</p>
+<p>　　1）<font color="red">队列</font>：点对点消息通信（point-to-point）<br>　　2）<font color="red">主题</font>：发布（publish）/订阅（subscribe）消息通信</p>
+<p>4）点对点式</p>
+<p>　　消息发送者发送消息，消息代理将其放入一个队列中，消息接收者从队列中获取消息内容，消息读取后被移出队列<br>　　<strong>消息只有唯一的发送者和接受者，但并不是说只能有一个接收者。</strong></p>
+<p>5）发布订阅式</p>
+<p>　　发送者（发布者）发送消息到主题，多个接收者（订阅者）监听（订阅）这个主题，那么就会在消息到达时同时收到消息。</p>
+<p>6）JMS（Java Message Service）JAVA消息服务</p>
+<p>　　基于JVM消息代理的规范。<strong>ActiveMQ</strong>、HornetMQ是JMS实现。</p>
+<p>7）AMQP（Advanced Message Queuing Protocol）</p>
+<p>　　高级消息队列协议，也是一个消息代理的规范，兼容JMS。<strong>RabbitMQ</strong>是AMQP的实现。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131013.png"></p>
+<h3 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131131.png"></p>
+<h3 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h3><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131347.png"></p>
+<h2 id="JMS与AMQP的区别"><a href="#JMS与AMQP的区别" class="headerlink" title="JMS与AMQP的区别"></a>JMS与AMQP的区别</h2><p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115131921.png"></p>
+<p>主要区别：JMS是基于javaEE规范的，所以不跨语言，不跨平台，如果你的系统都是基于java开发的，那么使用JMS没有问题。<br>AMQP：跨语言，跨平台。</p>
+<hr>
+<h2 id="Spring支持消息服务"><a href="#Spring支持消息服务" class="headerlink" title="Spring支持消息服务"></a>Spring支持消息服务</h2><p>　　spring-jms提供了对JMS的支持</p>
+<p>　　spring-rabbit提供了对AMQP的支持</p>
+<p>　　需要ConnectionFactory的实现来连接消息代理</p>
+<p>　　<strong>提供JmsTemplate、RabbitTemplate来发送消息</strong></p>
+<p>　　<strong>@JmsListener（JMS）、@RabbitListener（AMQP）注解在方法上监听消息代理发布的消息</strong></p>
+<p>　　<strong>@EnableJms、@EnableRabbit开启支持</strong></p>
+<h2 id="Springboot自动配置消息服务"><a href="#Springboot自动配置消息服务" class="headerlink" title="Springboot自动配置消息服务"></a>Springboot自动配置消息服务</h2><p>　　<strong>JmsAutoConfiguration</strong></p>
+<p>　　<strong>RabbitAutoConfiguration</strong></p>
+<h2 id="RabbitMQ简介"><a href="#RabbitMQ简介" class="headerlink" title="RabbitMQ简介"></a>RabbitMQ简介</h2><p><strong>RabbitMQ简介：</strong></p>
+<p>RabbitMQ是一个由erlang开发的AMQP(Advanved Message Queue Protocol)的开源实现。</p>
+<p><strong>核心概念</strong></p>
+<p><font color="blue">Message：</font><br>消息，消息是不具名的，它由消息头和消息体组成。消息体是不透明的，而消息头则由一系列的可选属性组成，这些属性包括routing-key（路由键）、priority（相对于其他消息的优先权）、delivery-mode（指出该消息可能需要持久性存储）等。</p>
+<p><font color="blue">Publisher:</font><br>消息的生产者，也是一个向交换器发布消息的客户端应用程序。</p>
+<p><font color="blue">Exchange:</font><br>交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。Exchange有4种类型：direct(默认)，fanout, topic, 和headers，不同类型的Exchange转发消息的策略有所区别.</p>
+<p><font color="blue">Queue：</font><br>消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可投入一个或多个队列。消息一直在队列里面，等待消费者连接到这个队列将其取走。</p>
+<p><font color="blue">Binding：</font><br>绑定，用于消息队列和交换器之间的关联。一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个由绑定构成的路由。Exchange 和Queue的绑定可以是多对多的关系。</p>
+<p><font color="blue">Connection：</font><br>网络连接，比如一个TCP连接。</p>
+<p><font color="blue">Channel：</font><br>信道，多路复用连接中的一条独立的双向数据流通道。信道是建立在真实的TCP连接内的虚拟连接，AMQP 命令都是通过信道发出去的，不管是发布消息、订阅队列还是接收消息，这些动作都是通过信道完成。因为对于操作系统来说建立和销毁 TCP 都是非常昂贵的开销，所以引入了信道的概念，以复用一条 TCP 连接。</p>
+<p><font color="blue">Consumer：</font><br>消息的消费者，表示一个从消息队列中取得消息的客户端应用程序。</p>
+<p><font color="blue">Virtual Host：</font><br>虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 / 。</p>
+<p><font color="blue">Broker：</font><br>表示消息队列服务器实体。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115133357.png"></p>
+<h2 id="RabbitMQ运行机制"><a href="#RabbitMQ运行机制" class="headerlink" title="RabbitMQ运行机制"></a>RabbitMQ运行机制</h2><p>AMQP 中的消息路由：</p>
+<p>　　AMQP 中消息的路由过程和 Java 开发者熟悉的 JMS 存在一些差别，AMQP 中增加了<strong>Exchange</strong> 和 <strong>Binding</strong> 的角色。生产者把消息发布到 Exchange 上，消息最终到达队列并被消费者接收，而 Binding 决定交换器的消息应该发送到那个队列。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115135917.png"></p>
+<p>Exchange 类型：</p>
+<p>　　 Exchange分发消息时根据类型的不同分发策略有区别，目前共四种类型：<strong>direct、fanout、topic</strong>、headers 。headers 匹配 AMQP 消息的 header，而不是路由键， headers 交换器和 direct 交换器完全一致，但性能差很多，目前几乎用不到了，所以直接看另外三种类型：</p>
+<h3 id="direct："><a href="#direct：" class="headerlink" title="direct："></a>direct：</h3><p>消息中的路由键（routing key）如果和 Binding 中的 bindingkey 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。<strong>它是完全匹配、单播的模式。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140202.png"></p>
+<h3 id="fanout："><a href="#fanout：" class="headerlink" title="fanout："></a>fanout：</h3><p>每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去。fanout 交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上。很像子网<strong>广播</strong>，每台子网内的主机都获得了一份复制的消息。<strong>fanout 类型转发消息是最快的。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140400.png"></p>
+<h3 id="topic："><a href="#topic：" class="headerlink" title="topic："></a>topic：</h3><p>topic 交换器通过<strong>模式匹配</strong>分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。它将路由键和绑定键的字符串切分成单词，这些 单词之间用点隔开。它同样也会识别两个通配符：符号“ <code>#</code> ”和符号“ <code>*</code> ”。 # 匹配 0 个或多个单词， * 匹配一个单词。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115140644.png"></p>
+<h2 id="RabbitMQ整合"><a href="#RabbitMQ整合" class="headerlink" title="RabbitMQ整合"></a>RabbitMQ整合</h2><p>全局整合步骤：</p>
+<ol>
+<li><p><strong>引入 spring-boot-starter-amqp</strong></p>
+</li>
+<li><p><strong>application.yml配置</strong></p>
+</li>
+<li><p><strong>测试RabbitMQ</strong></p>
+<ol>
+<li><p>AmqpAdmin：管理组件</p>
+</li>
+<li><p>RabbitTemplate：消息发送处理组件</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="安装rabbitmq：docker镜像"><a href="#安装rabbitmq：docker镜像" class="headerlink" title="安装rabbitmq：docker镜像"></a>安装rabbitmq：docker镜像</h3><p>打开虚拟机，连接虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143023.png"></p>
+<p>在docker hub中：搜索rabbitmq：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143549.png"></p>
+<p>点击tags：选择带有manager的标签，因为这样的rabbitmq会带有管理消息队列的界面。</p>
+<p>我这里就选择：3.6-management<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115143811.png"></p>
+<p>在虚拟机客户端：输入 <code>docker pull registry.docker-cn.com/library/rabbitmq:3.6-management</code></p>
+<p>前缀：registry.docker-cn.com/library/   是加速的功能！！！</p>
+<p>下载完成：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115144251.png"></p>
+<p>运行rabbitmq镜像：</p>
+<p>输入：<code>docker run -d -p 5672:5672 -p 15672:15672 --name myrabbitmq registry.docker-cn.com/library/rabbitmq:3.6-management</code></p>
+<p><strong>注意：这里有两个端口号，5672是rabbitmq的默认端口号，15672是rabbitmq的界面管理的端口号</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115175455.png"></p>
+<p>验证是否启动成功：</p>
+<p>在浏览器中输入：<code>http://10.6.11.17:15672/</code> 这里的ip地址是你的虚拟机的ip地址。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145020.png"></p>
+<p>用户名和密码都是：guest<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145130.png"></p>
+<p>这里，我们主要关注 Exchanges 和 Queues。</p>
+<p>现在我们来根据下图的 Exchange 和 Queue 来设置、验证。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115145557.png"></p>
+<p>图中，我们有三个类型的Exchange：</p>
+<p>exchange.direct ：direct类型的Exchange</p>
+<p>exchange.fanout：fanout类型的Exchange</p>
+<p>exchange.topic：topic类型的Exchange</p>
+<p>四个Queue：</p>
+<p>liuzhuo、liuzhuo.news、liuzhuo.emps、gakki.news</p>
+<hr>
+<p>现在，我们在rabbitmq管理界面中，添加上诉的 Exchange 和 Queue</p>
+<p>点击：Exchanges，然后点击：Add a new exchange<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150037.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150358.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150454.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150521.png"></p>
+<p>三个类型的Exchange添加成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150616.png"></p>
+<hr>
+<p>点击：Queues，然后点击：Add a new queue<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150740.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150835.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150916.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115150941.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151007.png"></p>
+<p>四个queue添加成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151047.png"></p>
+<hr>
+<p>现在，将Exchange和queue绑定在一起：</p>
+<p>点击：exchange.direct，再点击Bindings：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151512.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151546.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151612.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151639.png"></p>
+<p>exchange.direct 绑定四个队列成功后：</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115151828.png"></p>
+<p>现在，在exchange.direct下，发送消息：（点击Publish message）<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152200.png"></p>
+<p>direct类型的Exchange，是一对一的形式，虽然exchange.direct绑定了四个队列，但是只要liuzhuo路由键的队列才能收到消息：</p>
+<p>点击Queues<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152416.png"><br>点击liuzhuo队列，查看具体的消息<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152548.png"></p>
+<hr>
+<p>给 exchange.fanout 也绑定 四个队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115152858.png"><br>类推：四个队列绑定成功后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153100.png"></p>
+<p>现在，在exchange.fanout下，发送消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153320.png"></p>
+<p>发送消息之后，四个消息队列都会收到消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153426.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153536.png"></p>
+<hr>
+<p>给 exchange.topic 绑定模式匹配的消息队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115153958.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154107.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154137.png"></p>
+<p>最后：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154227.png"></p>
+<p>在 exchange.topic 下 ，发送消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154442.png"></p>
+<p>查看消息队列：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154546.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115154656.png"></p>
+<p><strong>大家有可能看不到topic的消息，因为你们没有移除消息，看到都是第一条消息，看不到后面的消息。</strong><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115155028.png"></p>
+<p>改为false后，点击Get Message(s)后，会 <strong>获取当前消息</strong> 并 <strong>移除当前消息</strong>。</p>
+<h3 id="整合rabbitmq到Springboot中"><a href="#整合rabbitmq到Springboot中" class="headerlink" title="整合rabbitmq到Springboot中"></a>整合rabbitmq到Springboot中</h3><p>1）创建新的Springboot工程：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115163556.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115163639.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170221.png"></p>
+<p>只要导入了amqp的starter，Springboot就会自动帮我们配置rabbitmq。</p>
+<p>原理：</p>
+<p>打开：RabbitAutoConfiguration<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170518.png"></p>
+<ol>
+<li>帮我们创建了RabbitConnectionFactoryCreator：rabbitmq的工厂连接器。</li>
+<li><p>使用RabbitProperties类，来配置rabbitmq。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170755.png"></p>
+</li>
+<li><p>创建rabbitTemplate来操作rabbitmq<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115170904.png"></p>
+</li>
+<li><p>创建了AmqpAdmin：来管理rabbitmq的组件<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115171113.png"></p>
+</li>
+</ol>
+<hr>
+<p>现在，我们来使用Springboot帮我们注入的rabbitTemplate来操作rabbitmq：</p>
+<p>在application配置文件中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115172810.png"></p>
+<pre><code>#配置rabbitmq的信息
+spring.rabbitmq.host=10.6.11.17
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+
+#spring.rabbitmq.port=5672        //默认就是5672，可以不配置
+#spring.rabbitmq.virtual-host=/   //默认就是/的虚拟主机，可以不配置
+</code></pre><p>在test包下，测试我们的rabbitTemplate：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115171844.png"></p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringBoot02AmqpApplicationTests {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Test
+    public void test01(){
+                //exchange:Exchange交换机
+        //routingKey:路由键
+        //message:消息体，需要自己实现。
+        //rabbitTemplate.send(exchange,routingKey,message);
+
+        //object:消息的内容，我们不需要自己写消息头，消息体了，自动帮我们
+        //解析。所以一般我们使用：convertAndSend
+        //rabbitTemplate.convertAndSend(exchange,routingKey,object);
+
+        Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;id&quot;,&quot;1&quot;);
+        map.put(&quot;name&quot;,&quot;zhangsan&quot;);
+        rabbitTemplate.convertAndSend(&quot;exchange.direct&quot;,&quot;liuzhuo.news&quot;,map);
+    }
+
+
+    @Test
+    public void contextLoads() {
+    }
+
+}
+</code></pre><p>清空，我们消息队列中的消息：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115172310.png"></p>
+<p>执行test01：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115175833.png"></p>
+<p>打开：Queues<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180117.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180249.png"></p>
+<p>消息发送成功，只是是以jdk序列化的形式序列化消息的。</p>
+<p>从消息队列中，获取消息：</p>
+<p>再写一个测试方法：</p>
+<pre><code>@Test
+public void test02(){
+    //参数：队列的名字
+    Object o = rabbitTemplate.receiveAndConvert(&quot;liuzhuo.news&quot;);
+    System.out.println(o.getClass());
+    System.out.println(o);
+}
+</code></pre><p>执行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115180643.png"></p>
+<hr>
+<p>现在，我们修改一下，序列化的方式：</p>
+<p>默认的序列化的是：</p>
+<pre><code>private volatile MessageConverter messageConverter = new SimpleMessageConverter();
+</code></pre><p>在config下：创建RabbitmqConfig配置类：</p>
+<p>配置：json的序列化器：<br>org.springframework.amqp.support.converter.MessageConverter<br>在MessageConverter上，ctrl+H：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115184655.png" style="width:50%"><br>Springboot已经帮我们，创建好了json的序列化器。</p>
+<p>直接注册到容器即可：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115184554.png"></p>
+<p>现在，容器就会使用Jackson2JsonMessageConverter()，不会使用默认的new SimpleMessageConverter()。</p>
+<hr>
+<p>再次运行test01():<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185107.png"></p>
+<p>再次运行test02():<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185214.png"></p>
+<hr>
+<p>在bean包下，创建person类：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115185350.png"></p>
+<p><strong>注意：提供get和set方法</strong></p>
+<p>修改test01方法：</p>
+<pre><code>    @Test
+    public void test01(){
+        Person person = new Person(&quot;dengjie&quot;,18);
+        rabbitTemplate.convertAndSend(&quot;exchange.direct&quot;,&quot;liuzhuo.news&quot;,person);
+
+    }
+</code></pre><p>修改test02方法：</p>
+<pre><code>@Test
+public void test02(){
+    //参数：队列的名字
+    Person person = (Person) rabbitTemplate.receiveAndConvert(&quot;liuzhuo.news&quot;);
+    System.out.println(person.getClass());
+    System.out.println(person);
+}
+</code></pre><p>运行test01：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115190126.png"></p>
+<p>运行test02：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115190228.png"></p>
+<p>json序列化成功！！！</p>
+<hr>
+<p>以上都是我们发送消息，然后手动获取消息。现在我们使用rabbitmq的注解监听器来自动帮我们获取消息队列中的消息。</p>
+<p>在service包下，创建PersonService：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115191858.png"></p>
+<p>在启动类中，开启rabbitmq的注解启动功能：<br>@EnableRabbit<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115191955.png"></p>
+<p>启动Springboot应用：</p>
+<p>然后运行test01：给liuzhuo.news队列中，发送一个消息。<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192156.png"></p>
+<p>打开控制台：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192236.png"></p>
+<p>监听liuzhuo.news队列成功。</p>
+<p>如果，我们想要获取消息的更多信息，比如消息头、消息体。</p>
+<p>在PersonService中：(使用Message参数)</p>
+<pre><code>    //监听liuzhuo队列中的消息
+    @RabbitListener(queues = &quot;liuzhuo&quot;)
+    public void messager(Message message){
+        //获取消息头的信息
+        System.out.println(message.getMessageProperties());
+        //获取消息体的内容
+        System.out.println(message.getBody());
+    }
+</code></pre><p>打开queues的界面:(查看liuzhuo队列)<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115192855.png"></p>
+<p>里面已经有两个数据了，现在我们重启Springboot应用：<br>在启动的过程中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115193013.png"></p>
+<hr>
+<p>以上的操作，都是基于：Exchange 和 queue 存在的情况下。这么组件的创建都是基于rabbitmq的界面操作，如果我们想要在代码中创建呢？</p>
+<p>这样，我们可以使用Springboot帮自动注入的AmqpAdmin组件，AmqpAdmin可以创建、删除、绑定：Exchange 和 queue。</p>
+<p>在test包下的测试类中：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194641.png"></p>
+<pre><code>@RunWith(SpringRunner.class)
+@SpringBootTest
+public class SpringBoot02AmqpApplicationTests {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    private AmqpAdmin rabbitAmqpAdmin;
+
+
+    @Test
+    public void testRabbitAdmin(){
+        //创建exchange
+        rabbitAmqpAdmin.declareExchange(new DirectExchange(&quot;amqp.exchange&quot;));
+
+        //创建queue
+        rabbitAmqpAdmin.declareQueue(new Queue(&quot;amqp.queue&quot;));
+
+    }
+    ····
+}
+</code></pre><p>运行测试方法：testRabbitAdmin()<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194827.png"><br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115194855.png"></p>
+<p>test:</p>
+<pre><code>    @Test
+    public void bing(){
+        //绑定exchange与queue
+        rabbitAmqpAdmin.declareBinding(new Binding(&quot;amqp.queue&quot;, Binding.DestinationType.QUEUE,&quot;amqp.exchange&quot;,&quot;amqp.key&quot;,null));
+    }
+</code></pre><p>运行该测试方法：<br><img src="https://gakkil.gitee.io/gakkil-image/SpringBoot/mq/QQ截图20181115195315.png"></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/15/spring-boot-yu-xiao-xi/" class="b-link-green">Spring Boot与消息</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/16/spring-boot-yu-jian-suo/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Spring Boot与检索">
+                        
+                        <span class="card-title">Spring Boot与检索</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                Springboot与ElasticSearch整合使用
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/检索/" class="post-category" target="_blank">
+                                    检索
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                    <a href="/tags/检索/" target="_blank">
+                        <span class="chip bg-color">检索</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/13/spring-boot-yu-huan-cun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Spring Boot与缓存">
+                        
+                        <span class="card-title">Spring Boot与缓存</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                JSR-107、Spring缓存抽象、整合Redis
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            <a href="/categories/SpringBoot/缓存/" class="post-category" target="_blank">
+                                    缓存
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/缓存/" target="_blank">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

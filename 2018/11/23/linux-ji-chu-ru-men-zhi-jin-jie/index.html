@@ -1,0 +1,1391 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux基础入门之进阶, 解忧杂货店">
+    <meta name="description" content="Linux基础入门的目录结构、远程登入等
+Linux的目录结构Linux的基本介绍linux的文件系统是采用级层式的树状目录结构，在此结构中的最上层是根目录“/”，然后在此目录下再创建其他的目录。
+深刻理解linux树状文件目录是非常重要的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Linux基础入门之进阶 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Linux基础入门之进阶
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-23
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        11 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>Linux基础入门的目录结构、远程登入等</p>
+<h2 id="Linux的目录结构"><a href="#Linux的目录结构" class="headerlink" title="Linux的目录结构"></a>Linux的目录结构</h2><h3 id="Linux的基本介绍"><a href="#Linux的基本介绍" class="headerlink" title="Linux的基本介绍"></a>Linux的基本介绍</h3><p>linux的文件系统是采用级层式的<strong>树状目录结构</strong>，在此结构中的最上层是根目录“/”，然后在此目录下再创建其他的目录。</p>
+<p>深刻理解linux树状文件目录是非常重要的，这里我给大家说明一下。</p>
+<p>记住一句经典的话：<font color="red"><strong>在Linux世界里，一切皆文件（即使是一个硬件设备，也是使用文件来标志）</strong></font></p>
+<h3 id="linux的目录结构图"><a href="#linux的目录结构图" class="headerlink" title="linux的目录结构图"></a>linux的目录结构图</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123210048.png"></p>
+<p>打开我们的centOS虚拟机，点击计算机，也会出现：根目录下的目录结构：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123210800.png"></p>
+<p><strong>PS：如果你想使用VirtualBox的全屏功能，需要安装增强功能。</strong></p>
+<p>点击设备：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123211621.png"></p>
+<p>然后点击：安装增强功能：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123211805.png"></p>
+<p>然后：输入root的密码。</p>
+<p>安装完后，<strong>按下回车键</strong>，就安装成功了。</p>
+<p>如果你的安装失败，是因为你的系统需要安装：gcc, kernel, kernel-devel。</p>
+<p>于是使用yum安装：<code>yum install -y gcc kernel kernel-devel</code></p>
+<p>桌面上面，就会出现一个VBox_GAs_xxx的光盘图标。</p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123212208.png"></p>
+<p>双击那个光盘：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123213629.png"></p>
+<p>切换成root用户，在终端下面进入那个光盘下面，然后：<code>sh VBoxLinuxAdditions.run</code></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123220916.png"></p>
+<p>安装成功后，重启虚拟机就好了：就可以使用全屏的功能了。</p>
+<hr>
+<p>回到我们的Linux目录结构：</p>
+<p>基本介绍：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123214545.png"></p>
+<h3 id="具体的目录说明"><a href="#具体的目录说明" class="headerlink" title="具体的目录说明"></a>具体的目录说明</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123214859.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215006.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215252.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123215959.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181123220105.png"></p>
+<h3 id="对linux目录结构的小结"><a href="#对linux目录结构的小结" class="headerlink" title="对linux目录结构的小结"></a>对linux目录结构的小结</h3><p>1)在linux中，目录结构 有一个  根目录 / , 其他的目录都是在 / 目录分支。</p>
+<p>2)在linux中，有很多目录，是安装后，自动生成的目录，每个目录都会存放相应的内容，不要去修改.</p>
+<p>3)在linux中，所有的设备都可以通过文件来体现(字符设备文件[比如键盘，鼠标]，块设备文件[硬盘])</p>
+<p>4)<strong>在学习linux时，要尽快的在脑海中，形成一个 目录树</strong></p>
+<h2 id="Linux系统之远程登录与上传下载"><a href="#Linux系统之远程登录与上传下载" class="headerlink" title="Linux系统之远程登录与上传下载"></a>Linux系统之远程登录与上传下载</h2><p>为啥要远程登录呢？我们不能直接在我们的虚拟机上面操作吗？登录账户和密码后，就可以直接操作呀？<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124100504.png"></p>
+<p>那是因为，在我们实际上班的时候，我们不是使用Windows电脑安装虚拟机来操作Linux系统的，linux服务器是在机房里面，我们每个开发人员，不可能每次要操作linux服务器就去机房，那样太麻烦，而且效率极低。所以，我们需要在自己的windows电脑上面远程登录到机房中的linux服务器。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124100938.png"></p>
+<p>常见的远程登录软件有：Xshell、SecureCRT、SmartTTY等等</p>
+<h3 id="远程登录之Xshell"><a href="#远程登录之Xshell" class="headerlink" title="远程登录之Xshell"></a>远程登录之Xshell</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Xshell 是目前最好的远程登录到Linux操作的软件，流畅的速度并且完美解决了<strong>中文乱码</strong>的问题， 是目前程序员首选的软件。</p>
+<p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及 Microsoft Windows 平台的 TELNET 协议</p>
+<p>Xshell 可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。</p>
+<h4 id="安装与配置"><a href="#安装与配置" class="headerlink" title="安装与配置"></a>安装与配置</h4><p>1）到Xshell官网上面去下载</p>
+<p><code>http://www.netsarang.com/</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111119.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111225.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124111343.png"></p>
+<p>2) 安装Xshell软件</p>
+<p>傻瓜式安装即可。</p>
+<p>安装完毕后，双击Xshell软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112122.png"></p>
+<p>点击新建会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112212.png"></p>
+<p>填写相关信息：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112620.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124112738.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124930.png"></p>
+<p>如果出现连接失败的话，看看你的linux的sshd服务是否开启：</p>
+<p>在虚拟机中的终端中输入：setup<br>如果不是root用户，会让你先输入root的密码。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124123720.png"></p>
+<p>选择系统服务后，回车。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124123855.png"></p>
+<p>在其中找到sshd.service,看它的前面是否有 * 号，有的话，说明已经开启了，没有的话，使用<strong>空格</strong>开启。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124037.png"></p>
+<p>然后使用：tab键进入到确定，然后回车确定即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124357.png"></p>
+<p>然后使用tab键到退出。此时sshd服务就开启了。</p>
+<p>验证sshd服务是否开启：<code>service sshd status</code></p>
+<p>出现：active的绿色字体，说明开启成功！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124648.png"></p>
+<p>再次使用Xshell连接我们的虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124124930.png"></p>
+<p>发现还是连接失败，这是因为我们的宿主机的ip地址是：10.6.11.123，而我们的linux的ip地址是：10.0.2.15<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125343.png"></p>
+<p>在宿主机下，ping我们的虚拟机的linux的ip，发现超时，即：宿主机与虚拟机的linux不连通<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125524.png"></p>
+<p>所以，只要我们的宿主机与虚拟机的linux服务器能够连通的话，Xshell才能连接成功。</p>
+<p>现在修改我们的linux的网络配置，添加网桥模式：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125734.png"></p>
+<p>重启我们的centOS虚拟机：</p>
+<p>发现，现在我们已经有了两个网卡：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124125911.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130023.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130141.png"></p>
+<p>现在使用我们的宿主机 ping 网桥模式下分配的ip地址，我这里就是：10.6.11.104<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130405.png"></p>
+<p>最后，修改我们的Xshell下的主机的ip地址（网桥模式下的ip地址）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130556.png"></p>
+<p>点击确定，连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130641.png"></p>
+<p>然后，会让你输入连接的用户名和密码：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130728.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124130819.png"></p>
+<p><strong>PS：如果以上还是不能成功，请你关闭防火墙</strong></p>
+<p>systemctl disable 服务名 service    永久关闭防火墙<br>systemctl status firewalld.service    查看防火墙<br>systemctl stop firewalld.service    关闭防火墙<br>systemctl start firewalld service    打开防火墙</p>
+<hr>
+<p>验证我们的远程登录是否有效，在Xshell界面中，进入Desktop，然后创建一个hello文件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124140900.png"></p>
+<p>然后在我们的root用户的桌面下，就会出现一个hello的文件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124140951.png"></p>
+<h3 id="远程上传下载之Xftp"><a href="#远程上传下载之Xftp" class="headerlink" title="远程上传下载之Xftp"></a>远程上传下载之Xftp</h3><h4 id="Xftp的简单介绍"><a href="#Xftp的简单介绍" class="headerlink" title="Xftp的简单介绍"></a>Xftp的简单介绍</h4><p>是一个基于 windows 平台的功能强大的 SFTP、FTP 文件传输软件。使用了 Xftp 以后，windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。</p>
+<h4 id="Xftp的安装配置"><a href="#Xftp的安装配置" class="headerlink" title="Xftp的安装配置"></a>Xftp的安装配置</h4><p>到官网上面下载：<code>https://www.netsarang.com/products/xfp_overview.html</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124151724.png"></p>
+<p>和Xshell的安装类似，我就不演示了。</p>
+<p>下载完成后：打开Xftp软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153248.png"></p>
+<p>新建我们的会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153555.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153720.png"></p>
+<p>输入root的密码：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153803.png"></p>
+<p>成功后的效果图：（左边windows的桌面，右边linux系统的用户根目录）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124153946.png"></p>
+<p>如果你的右边的linux系统出现中文乱码的话：点击绿色的小齿轮<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154117.png"></p>
+<p>然后，点击选项，编码选择utf-8即可：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154214.png"></p>
+<p>在右边的linux系统中右键刷新后，就不会中文乱码了。</p>
+<h4 id="Xftp的简单使用"><a href="#Xftp的简单使用" class="headerlink" title="Xftp的简单使用"></a>Xftp的简单使用</h4><p>1）从windows系统中，上传图片到linux系统中</p>
+<p>在左边的windows界面下，随便找到一个图片，右键选择<strong>传输</strong>即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154555.png"></p>
+<p>完成后，在右边的linux系统中，就会多出一张图片<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154724.png"></p>
+<p>打开我们的虚拟机，也能看到那张图片：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124154838.png"></p>
+<p>2）从linux系统下载文件到我们的windows系统中</p>
+<p>一样的操作，在右边的linux系统中，随便上传一个文件即可。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155039.png"></p>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155236.png"></p>
+<p>打开我们的windows桌面：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124155351.png"></p>
+<p><strong>注意：在上传文件的时候，文件上传的目的地就是你现在的打开的目的地的目录，比如你的目的地linux打开在home目下，那么从windows系统下上传的文件就会传输到linux的home目录下</strong></p>
+<p><strong>PS：</strong>当我们在实际工作中，如果需要部署一个项目，则应当先压缩后，再上传，上传后，使用linux的相关的解压缩命令，来解压。</p>
+<h3 id="SecureCRT的安装和使用"><a href="#SecureCRT的安装和使用" class="headerlink" title="SecureCRT的安装和使用"></a>SecureCRT的安装和使用</h3><h4 id="基本的介绍"><a href="#基本的介绍" class="headerlink" title="基本的介绍"></a>基本的介绍</h4><p>是用于远程登录Linux的软件。SecureCRT 也是一款常用的远程登录Linux的软件，在<strong>大数据开发</strong>中使用较多。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载绿色安装板即可，直接拷贝整个目录就可以用了。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>打开SecureCRT的运行文件<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161136.png"></p>
+<p>新建连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161258.png"></p>
+<p>新建会话：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161419.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161604.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161645.png"></p>
+<p>连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161719.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124161741.png"></p>
+<p>输入root密码即可：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162002.png"></p>
+<p>出现中文乱码问题：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162055.png"></p>
+<p>解决中文乱码问题：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162224.png"></p>
+<p>再次连接：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162521.png"></p>
+<p>测试：</p>
+<p>直接输入：<code>touch hello</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162827.png"></p>
+<p>打开我们的虚拟机：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124162918.png"></p>
+<h2 id="Vi和Vim编辑器"><a href="#Vi和Vim编辑器" class="headerlink" title="Vi和Vim编辑器"></a>Vi和Vim编辑器</h2><h3 id="vi和vim的简单介绍"><a href="#vi和vim的简单介绍" class="headerlink" title="vi和vim的简单介绍"></a>vi和vim的简单介绍</h3><p>所有的 Linux 系统都会内建 vi 文本编辑器。</p>
+<p>Vim 具有程序编辑的能力，可以看做是Vi的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。我们只需要掌握它的基本使用即可。</p>
+<h3 id="vi和vim的三种模式"><a href="#vi和vim的三种模式" class="headerlink" title="vi和vim的三种模式"></a>vi和vim的三种模式</h3><h4 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h4><p>以 vim 打开一个文件就直接进入正常模式了(这是默认的模式)。在这个模式中， 你可以使用『上下左右』按键来移动光标，你可以使用『删除字符』或『删除整行』来处理档案内容， 也可以使用『复制、贴上』来处理你的文件数据。在正常模式下可以使用快捷键。</p>
+<h4 id="插入模式-编辑模式"><a href="#插入模式-编辑模式" class="headerlink" title="插入模式(编辑模式)"></a>插入模式(编辑模式)</h4><p>按下<strong>i（insert）</strong>, I, o, O, a, A, r, R等任何一个字母之后才会进入编辑模式, 一般来说按<strong>i</strong>即可.</p>
+<h4 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h4><p>在这个模式当中， 可以提供你相关指令，完成读取、存盘、替换、离开 vim 、显示行号等的动作则是在此模式中达成的！<br>（ Esc + ：进入该模式 ）</p>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><p>在linux系统下，编写一个java程序</p>
+<p>打开Xshell软件：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124164946.png"></p>
+<p>此时，桌面上面还没有hello.java文件。</p>
+<p>输入：<code>vim hello.java</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165113.png"></p>
+<p>此时，就进入了正常模式，你会发现，此时，不管你在键盘上面怎么输入，都不会输入进去。我们需要切换到编辑模式下：输入i</p>
+<p>就会进入插入模式：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165446.png"></p>
+<p>现在怎么保存退出呢？需要切换到命令行模式下：（ Esc + ：）</p>
+<p>然后输入：wq（保存并退出）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165701.png"></p>
+<p>回车后，就回到我们的终端下面，再次输入：ll<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165845.png"></p>
+<p>查看我们刚刚编写的hello.java文件：（cat hello.java）<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124165954.png"></p>
+<p>说明刚刚的hello.java文件，保存成功！</p>
+<h3 id="vi和vim模式的互相切换"><a href="#vi和vim模式的互相切换" class="headerlink" title="vi和vim模式的互相切换"></a>vi和vim模式的互相切换</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124170148.png"></p>
+<p>：wq 修改保存并退出</p>
+<p>：q  你打开一个文件，然后觉得没有修改的，直接输入q退出即可</p>
+<p>：q！你打开一个文件，然后修改了，但是觉得不想保存修改的内容，那就q！强制退出并不保存之前修改的内容</p>
+<h3 id="vim和vi的快捷键的使用"><a href="#vim和vi的快捷键的使用" class="headerlink" title="vim和vi的快捷键的使用"></a>vim和vi的快捷键的使用</h3><p>常用的快捷键的使用：</p>
+<p>1) 拷贝当前行（yy） , 拷贝当前行向下的5行  （5yy），并粘贴（ p ）。【快捷键在正常模式下使用】</p>
+<p>2) 删除当前行（dd）  , 删除当前行向下的5行 （5dd）。【快捷键在正常模式下使用】</p>
+<p>3) 在文件中查找某个单词 [命令模式下输入 <strong>/关键字</strong> ， 回车 查找 ,  正常模式下输入 n 就是查找下一个 ]</p>
+<p>4) 设置文件的行号，取消文件的行号. [命令行下  : set nu  和  :set nonu]</p>
+<p>5) 编辑 /etc/profile 文件，使用快捷键到底文档的 <strong>最末行[G]</strong>和 <strong>最首行[gg]</strong> 【正常模式下】</p>
+<p>6) 在一个文件中输入 “hello” , 然后又撤销这个动作 u  【正常模式下】</p>
+<p>先是在插入模式下，修改了文件的内容，然后觉得不想修改，那么切换到正常模式下，输入u。</p>
+<p>7) 编辑  /etc/profile 文件，并将光标移动到  20行 shift + g</p>
+<p>先在命令行模式下：set nu，看到行号，然后在正常模式下，输入：20 + shift + g ，就会跳转到第20行号的位置。</p>
+<hr>
+<p>更多快捷键的使用：</p>
+<p>正常模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173155.png"></p>
+<p>编辑模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173454.png"></p>
+<p>命令行模式下：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124173621.png"></p>
+<h2 id="开机、重启和用户登录注销"><a href="#开机、重启和用户登录注销" class="headerlink" title="开机、重启和用户登录注销"></a>开机、重启和用户登录注销</h2><h3 id="关机-amp-重启命令"><a href="#关机-amp-重启命令" class="headerlink" title="关机&amp;重启命令"></a>关机&amp;重启命令</h3><p>基本介绍:</p>
+<p>shutdown:</p>
+<pre><code>shutdown    –h    now         立该进行关机  【halt】
+shudown     -h     1              1分钟后会关机了
+shutdown    –r     now        现在重新启动计算机  [reboot]
+</code></pre><p>halt：立即关机</p>
+<p>reboot：现在重新启动计算机</p>
+<p>sync：把内存的数据同步到磁盘.</p>
+<p><strong>注意细节：</strong></p>
+<p>不管是重启系统还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中，防止数据丢失！</p>
+<h3 id="用户登录和注销"><a href="#用户登录和注销" class="headerlink" title="用户登录和注销"></a>用户登录和注销</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><p>1）登录时尽量少用root帐号登录，因为它是系统管理员，最大的权限，避免操作失误。可以利用普通用户登录，登录后<br>再用 “su - 用户名” 命令来切换成系统管理员身份.</p>
+<p>2）在提示符下输入 logout 即可注销用户【不同的shell 可能不同(logout  exit)】</p>
+<h4 id="使用细节"><a href="#使用细节" class="headerlink" title="使用细节"></a>使用细节</h4><p>1) logout 注销指令在图形运行级别(简单提一下：0-6个级别)无效，在运行级别 3下有效.</p>
+<p>即：在我们的图形化界面下的终端，输入：logout 无效。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124175449.png"></p>
+<p>运行级别3：代表的就是远程登录。</p>
+<p>在Xshell下，输入：logout 就退出了<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day02/QQ截图20181124175622.png"></p>
+<p>2) 运行级别这个概念，后面给大家介绍</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/23/linux-ji-chu-ru-men-zhi-jin-jie/" class="b-link-green">Linux基础入门之进阶</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/25/linux-ji-chu-ru-men-zhi-shi-cao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux基础入门之用户">
+                        
+                        <span class="card-title">Linux基础入门之用户</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                讲解Linux的用户管理、实用指令等。
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/22/linux-ji-chu-ru-men/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Linux基础入门之安装">
+                        
+                        <span class="card-title">Linux基础入门之安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                Linux的基础入门篇，帮助大家入门的教程
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

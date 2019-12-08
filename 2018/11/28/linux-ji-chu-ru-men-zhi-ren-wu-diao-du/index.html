@@ -1,0 +1,1391 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux基础入门之任务调度与磁盘分区, 解忧杂货店">
+    <meta name="description" content="定时任务调度、磁盘分区
+Linux的crond任务调度crontab 进行 定时任务的设置。
+概述任务调度：是指系统在某个时间执行的特定的命令或程序。 
+任务调度分类：
+1.系统工作：有些重要的工作必须周而复始地执行，比如病毒扫描等。2.个">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Linux基础入门之任务调度与磁盘分区 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Linux基础入门之任务调度与磁盘分区
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                Linux
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-28
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        8 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>定时任务调度、磁盘分区</p>
+<h2 id="Linux的crond任务调度"><a href="#Linux的crond任务调度" class="headerlink" title="Linux的crond任务调度"></a>Linux的crond任务调度</h2><p>crontab 进行 定时任务的设置。</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>任务调度：是指系统在某个时间执行的特定的命令或程序。 </p>
+<p>任务调度分类：</p>
+<p>1.系统工作：有些重要的工作必须周而复始地执行，比如病毒扫描等。<br>2.个别用户工作：个别用户可能希望执行某些程序，比如对mysql数据库的备份。</p>
+<h3 id="简单说明"><a href="#简单说明" class="headerlink" title="简单说明"></a>简单说明</h3><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128131351.png"></p>
+<p>如果，我们需要备份mysql数据，而且是在晚上凌晨两点的时候执行效率才会高，我们不可能每天凌晨两点去执行备份mysql数据的命令，所以可以使用crontab任务调用机制，帮助我们每天凌晨两点自动执行备份mysql数据的命令。</p>
+<p>使用步骤：</p>
+<p>1）编写我们特殊的脚本（shell编程）</p>
+<p>2）使用crontab任务调用我们的脚本执行。</p>
+<p><strong>注意：简单的脚本，可以不用写，直接使用crontab就可以帮助我们执行了。</strong></p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><pre><code>crontab [选项]
+
+常用选项
+-e：编辑crontab定时任务
+-l：查询crontab任务
+-r：删除当前用户所有的crontab任务
+</code></pre><h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><p>设置任务调度文件：/etc/crontab<br>设置个人任务调度: 执行 crontab –e 命令。<br>接着输入任务到调度文件：</p>
+<pre><code>如：*/1 * * * * ls –l  /home/ &gt;&gt; /home/tmp/to.txt
+</code></pre><p>意思是说：当前时间每隔一分钟就执行 ls –l /home/ &gt;&gt; /home/tmp/to.txt命令.</p>
+<p>步骤如下：</p>
+<p>1）crontab -e</p>
+<p>2）输入：<code>*/1 * * * * ls –l  /home/ &gt;&gt; /home/tmp/to.txt</code></p>
+<p>3) 当保存退出后就执行定时任务。</p>
+<p>4）在每一分钟都会自动的调用：ls –l  /home/ &gt;&gt; /home/tmp/to.txt</p>
+<hr>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128133356.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128133518.png"></p>
+<p>保存退出：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128133600.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128133720.png"></p>
+<p>之后每隔一分钟都会往 /home/tmp/to.txt 文件中，追加：ls -l /home/ 的信息。</p>
+<h3 id="参数细节说明"><a href="#参数细节说明" class="headerlink" title="参数细节说明"></a>参数细节说明</h3><p>1）5个占位符的说明<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128134026.png"></p>
+<p>2）特殊符号的说明<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128134119.png"></p>
+<p>3）特定时间执行任务案例<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128134542.png"></p>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>案例1：每隔1分钟，就将当前的日期信息，追加到 /home/tmp/mydate.log 文件中</p>
+<p>1) 在/home下：编写一个文件（shell）mytask1.sh</p>
+<p><code>date &gt;&gt; /home/tmp/mydate.log</code></p>
+<p>2) 给mytask1.sh分配一个可执行的权限</p>
+<p><code>chmod 744 /home/mytask1.sh</code></p>
+<p>3）crontab -e</p>
+<p><code>*/1 * * * *  /home/mytask1.sh</code></p>
+<p>4）保存退出即可。</p>
+<hr>
+<p><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128138836.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128140946.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128141112.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128141317.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128141248.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128141507.png"></p>
+<p>案例2：每隔1分钟， 将当前日期和日历都追加到 /home/mycal.log 文件中</p>
+<p><code>*/1 * * * *  date &gt;&gt; /home/mycal.log</code><br><code>*/1 * * * *  cal &gt;&gt; /home/mycal.log</code></p>
+<p>案例3: 每天凌晨2:00 将mysql数据库 testdb ，备份到文件中。</p>
+<pre><code>步骤：1， 首先编写一个 脚本 backupdb.sh
+
+#!/bin/bash   
+#备份路径
+BACKUP=/data/backup/sql/dy
+#当前时间
+DATETIME=$(date +%Y-%m-%d_%H%M%S)
+echo &quot;===备份开始===&quot;
+echo &quot;备份文件存放于${BACKUP}/$DATETIME.tar.gz&quot;
+#数据库地址
+HOST=localhost
+#数据库用户名
+DB_USER=root
+#数据库密码
+DB_PW=Ces123456
+#创建备份目录
+[ ! -d &quot;${BACKUP}/$DATETIME&quot; ] &amp;&amp; mkdir -p &quot;${BACKUP}/$DATETIME&quot;
+
+#后台系统数据库
+DATABASE=dy_backgroundms
+mysqldump -u${DB_USER} -p${DB_PW} --host=$HOST -q -R --databases $DATABASE | gzip &gt; ${BACKUP}/$DATETIME/$DATABASE.sql.gz
+
+#投入品监管数据库
+DATABASE=dy_firip
+mysqldump -u${DB_USER} -p${DB_PW} --host=$HOST -q -R --databases $DATABASE | gzip &gt; ${BACKUP}/$DATETIME/$DATABASE.sql.gz
+
+#压缩成tar.gz包
+cd $BACKUP
+tar -zcvf $DATETIME.tar.gz $DATETIME
+#删除备份目录
+rm -rf ${BACKUP}/$DATETIME
+
+#删除30天前备份的数据
+find $BACKUP -mtime +30 -name &quot;*.tar.gz&quot; -exec rm -rf {} \;
+echo &quot;===备份成功===&quot;
+
+
+</code></pre><h3 id="crond-相关指令"><a href="#crond-相关指令" class="headerlink" title="crond 相关指令:"></a>crond 相关指令:</h3><pre><code>1) crontab -e：创建任务调度。
+2) crontab –l：列出当前有那些任务调度。
+3) conrtab –r：终止任务调度。
+4) service crond restart ： [重启任务调度]   &lt;=====&gt; systemctl restart crond
+</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128135000.png"></p>
+<h2 id="Linux的磁盘分区、挂载"><a href="#Linux的磁盘分区、挂载" class="headerlink" title="Linux的磁盘分区、挂载"></a>Linux的磁盘分区、挂载</h2><h3 id="分区基础知识"><a href="#分区基础知识" class="headerlink" title="分区基础知识"></a>分区基础知识</h3><h4 id="分区的方式-知道即可"><a href="#分区的方式-知道即可" class="headerlink" title="分区的方式(知道即可)"></a>分区的方式(知道即可)</h4><p>1) mbr分区:</p>
+<p>1.最多支持四个主分区<br>2.系统只能安装在主分区<br>3.扩展分区要占一个主分区<br>4.MBR最大只支持2TB，但拥有最好的兼容性</p>
+<p>2) gtp分区:</p>
+<p>1.支持无限多个主分区（但操作系统可能会限制，比如 windows下最多128个分区）<br>2.最大支持18EB的大容量（1EB=1024 PB，1PB=1024 TB ）<br>3.windows7 64位以后支持gtp</p>
+<h4 id="windows下的磁盘分区"><a href="#windows下的磁盘分区" class="headerlink" title="windows下的磁盘分区"></a>windows下的磁盘分区</h4><p><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128144519.png"></p>
+<h4 id="Linux分区"><a href="#Linux分区" class="headerlink" title="Linux分区"></a>Linux分区</h4><p>原理介绍：</p>
+<p>1）对Linux来说无论有几个分区，分给哪一个目录使用，它归根结底就只有一个根目录，一个独立且唯一的文件结构 , Linux中每个分区都是用来组成整个文件系统的一部分。</p>
+<p>2）Linux采用了一种叫“载入”的处理方法，它的整个文件系统中包含了一整套的文件和目录，且将一个分区和一个目录联系起来。这时要载入的一个分区将使它的存储空间在一个目录下获得。</p>
+<p>3）示意图【分区和文件目录】<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128145010.png"></p>
+<h4 id="Linux硬盘说明"><a href="#Linux硬盘说明" class="headerlink" title="Linux硬盘说明"></a>Linux硬盘说明</h4><p>1）Linux硬盘分IDE硬盘和SCSI硬盘，目前基本上是<strong>SCSI硬盘</strong>。</p>
+<p>2）对于IDE硬盘，驱动器标识符为“hdx~”,其中“hd”表明分区所在设备的类型，这里是指IDE硬盘了。“x”为盘号（a为基本盘，b为基本从属盘，c为辅助主盘，d为辅助从属盘）,“~”代表分区，前四个分区用数字1到4表示，它们是主分区或扩展分区，从5开始就是逻辑分区。</p>
+<p>例如，hda3表示为第一个IDE硬盘上的第三个主分区或扩展分区 , hdb2表示为第二个IDE硬盘上的第二个主分区或扩展分区。 </p>
+<p>3）对于SCSI硬盘则标识为“sdx~”，SCSI硬盘是用“sd”来表示分区所在设备的类型的，其余则和IDE硬盘的表示方法一样。<br>sdb1 [表示第2块scsi 硬盘的第1个分区]</p>
+<h4 id="查看所有设备挂载情况"><a href="#查看所有设备挂载情况" class="headerlink" title="查看所有设备挂载情况"></a>查看所有设备挂载情况</h4><p>命令：<code>lsblk</code> 或者 <code>lsblk -f</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128150000.png"></p>
+<h3 id="挂载的经典案例"><a href="#挂载的经典案例" class="headerlink" title="挂载的经典案例"></a>挂载的经典案例</h3><p>说明：</p>
+<p>下面我们以增加一块硬盘 2G 为例来熟悉下磁盘的相关指令和深入理解：磁盘分区、挂载、卸载的概念。</p>
+<p>如何增加一块硬盘：</p>
+<pre><code>步骤：
+
+1）虚拟机添加硬盘
+2）分区
+3）格式化
+4）挂载
+5）设置可以自动挂载 。
+
+</code></pre><h4 id="增加硬盘"><a href="#增加硬盘" class="headerlink" title="增加硬盘"></a>增加硬盘</h4><p>1）虚拟机增加硬盘</p>
+<p>在虚拟机关闭的情况的下，点击设置，找到存储，点击控制器：SATA右边的第二个加号！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128165053.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128165215.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128165251.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128165510.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128165619.png"></p>
+<h4 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h4><p>2）使用fdisk命令分区</p>
+<p>重启我们的linux系统：<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128170120.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128170250.png"></p>
+<p>使用：<code>fdisk /dev/sdb</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128170533.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128170702.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128170851.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128171009.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128171209.png"></p>
+<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><p>3) 使用 <code>mkfs -t xfs /dev/sdb1</code> [把sdb1格式化为：xfs格式的文件系统]<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128171435.png"></p>
+<p>4）创建挂载点：/home/newdisk<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128171637.png"></p>
+<h4 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h4><p>5) 使用 <code>mount /dev/sdb1 /home/newdisk</code> [将sdb1分区，挂载到/home/newdisk中]<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128172131.png"></p>
+<p>此时，就已经完成了，磁盘的分区、格式化、挂载了，就可以使用/home/newdisk来操作硬盘了。但是这种挂载是临时的，当我们重启之后，挂载点就会消失。<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128172245.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128172634.png"></p>
+<h4 id="自动挂载"><a href="#自动挂载" class="headerlink" title="自动挂载"></a>自动挂载</h4><p>6）永久性的挂载成功</p>
+<p>通过修改/etc/fstab实现永久性挂载。添加完后，需要执行：<code>mount -a</code>即刻生效！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128172906.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128173000.png"></p>
+<p><strong>技巧：在正常模式下，yy+p会复制粘贴当前行！！！</strong></p>
+<p>保存修改后，执行：<code>mount -a</code>,即刻生效！<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128173503.png"></p>
+<p>现在，你重启后，也会自动挂载成功！！！</p>
+<h3 id="磁盘情况查询"><a href="#磁盘情况查询" class="headerlink" title="磁盘情况查询"></a>磁盘情况查询</h3><h4 id="查询系统整体磁盘使用情况"><a href="#查询系统整体磁盘使用情况" class="headerlink" title="查询系统整体磁盘使用情况"></a>查询系统整体磁盘使用情况</h4><p>基本语法：</p>
+<pre><code>df -h
+</code></pre><p>应用实例：</p>
+<p>查询系统整体磁盘使用情况<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128175623.png"></p>
+<h4 id="查询指定目录的磁盘占用情况"><a href="#查询指定目录的磁盘占用情况" class="headerlink" title="查询指定目录的磁盘占用情况"></a>查询指定目录的磁盘占用情况</h4><p>基本语法</p>
+<pre><code>du -h  /目录
+
+查询指定目录的磁盘占用情况，默认为当前目录
+-s 指定目录占用大小汇总
+-h 带计量单位
+-a 含文件
+--max-depth=1  子目录深度
+-c 列出明细的同时，增加汇总值
+</code></pre><p>应用实例：</p>
+<p>查询 /usr目录的磁盘占用情况，深度为1。</p>
+<p><code>du  -ach  --max-depth=1  /usr</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128180112.png"></p>
+<h4 id="磁盘情况-工作实用指令"><a href="#磁盘情况-工作实用指令" class="headerlink" title="磁盘情况-工作实用指令"></a>磁盘情况-工作实用指令</h4><p>1) 统计 /home 文件夹下<strong>文件</strong>的个数</p>
+<p><code>ls –l /home/ | grep &quot;^-&quot; | wc -l</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128193317.png"></p>
+<p>2) 统计 /home 文件夹下<strong>目录</strong>的个数。</p>
+<p><code>ls –l /home/ | grep &quot;^d&quot; | wc -l</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128193601.png"></p>
+<p>3) 统计 /home文件夹下文件的个数，包括<strong>子文件夹</strong>里的。</p>
+<p><code>ls –lR /home/ | grep &quot;^-&quot; | wc -l</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128193831.png"><br>4) 统计 /home文件夹下目录的个数，包括子文件夹里的。</p>
+<p><code>ls –lR /home/ | grep &quot;^d&quot; | wc -l</code><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128193922.png"></p>
+<p>5) 以树状显示：home目录结构。[没有tree指令咋办, 使用yum 来安装]<br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128194037.png"><br><img src="https://gakkil.gitee.io/gakkil-image/linux/day06/QQ截图20181128194147.png"></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/28/linux-ji-chu-ru-men-zhi-ren-wu-diao-du/" class="b-link-green">Linux基础入门之任务调度与磁盘分区</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/28/linux-ji-chu-ru-men-zhi-wang-luo-she-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Linux基础入门之网络设置">
+                        
+                        <span class="card-title">Linux基础入门之网络设置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                      
+                                Linux系统的网络设置
+                      
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/27/linux-ji-chu-ru-men-zhi-quan-xian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux基础入门之权限">
+                        
+                        <span class="card-title">Linux基础入门之权限</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                组管理和权限管理
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/" target="_blank">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">310.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>
