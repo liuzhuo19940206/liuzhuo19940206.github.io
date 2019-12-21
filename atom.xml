@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-21T02:00:51.615Z</updated>
+  <updated>2019-12-21T03:06:06.264Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GSON的进阶&lt;四&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/21/gson-de-jin-jie-si/"/>
+    <id>http://gakkil.gitee.io/2019/12/21/gson-de-jin-jie-si/</id>
+    <published>2019-12-21T02:07:34.000Z</published>
+    <updated>2019-12-21T03:06:06.264Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;TypeAdapter&quot;&gt;&lt;a href=&quot;#TypeAdapter&quot; class=&quot;headerlink&quot; title=&quot;TypeAdapter&quot;&gt;&lt;/a&gt;TypeAdapter&lt;/h3&gt;&lt;p&gt;&lt;code&gt;TypeAdapter&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="GSON" scheme="http://gakkil.gitee.io/categories/GSON/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>GSON的进阶&lt;三&gt;</title>
@@ -160,7 +186,7 @@
         
         
           &lt;p&gt;第一遍可爱，第二遍可爱，第三遍还是可爱。&lt;/p&gt;
-&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -187,7 +213,7 @@
         
         
           &lt;p&gt;B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。&lt;/p&gt;
-&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -535,33 +561,6 @@
         
           &lt;p&gt;resultMap是Mybatis里面最为复杂的元素，所以单独来讲解。&lt;/p&gt;
 &lt;p&gt;resultMap 元素是 MyBatis 中最重要最强大的元素。它可以让你从 90% 的 JDBC ResultSets 数据提取代码中解放出来, 并在一些情形下允许你做一些 JDBC
-        
-      
-    
-    </summary>
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis中的Mapper映射器</title>
-    <link href="http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/"/>
-    <id>http://gakkil.gitee.io/2019/03/11/mybatis-zhong-de-mapper-ying-she-qi/</id>
-    <published>2019-03-11T05:45:30.000Z</published>
-    <updated>2019-12-08T09:37:56.043Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;映射器是Mybatis最强大的工具，也是我们使用Mybatis时用得最多的工具，因此熟练掌握它十分必要。&lt;/p&gt;
-&lt;p&gt;MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC
         
       
     
