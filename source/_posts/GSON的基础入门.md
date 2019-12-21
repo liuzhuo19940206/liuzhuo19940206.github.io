@@ -2,7 +2,7 @@
 title: GSON的基础入门
 author: gakkij
 categories:
-  - Gson
+  - GSON
 tags:
   - json
 img: https://pic1.superbed.cn/item/5df4ec6ca4fbc8614a5b7088.jpg
