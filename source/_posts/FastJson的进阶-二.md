@@ -11,7 +11,7 @@ cover: false
 coverImg: 
 toc: true
 date: 2019-12-22 17:44:09
-summary: FastJson的进阶二教程
+summary: FastJson的进阶二教程,@JSONField注解的使用
 password:
 ---
 
@@ -584,3 +584,7 @@ Person{id=24, name='gakki', address='null', birthday=Sun Dec 22 00:00:00 CST 201
 ```
 
 多个匹配时，以最后一个匹配为准，这里就是匹配了：My_id，最后输出为：24。
+
+---
+
+@JSONType 和 @JSONField类似，只是@JSONType作用与类上面而已。
