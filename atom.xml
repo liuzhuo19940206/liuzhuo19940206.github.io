@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-22T11:37:14.629Z</updated>
+  <updated>2019-12-22T14:17:30.949Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>FastJson的进阶&lt;四&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-si/"/>
+    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-si/</id>
+    <published>2019-12-22T14:02:58.000Z</published>
+    <updated>2019-12-22T14:17:30.949Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ParseProcess是编程扩展定制反序列化的接口。fastjson支持如下ParseProcess：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ExtraProcessor 用于处理多余的字段；&lt;/li&gt;
+&lt;li&gt;ExtraTypeProvider
+        
+      
+    
+    </summary>
+    
+      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FastJson的进阶&lt;三&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-san/"/>
+    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-san/</id>
+    <published>2019-12-22T13:01:34.000Z</published>
+    <updated>2019-12-22T13:55:38.012Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;通过SerializeFilter可以使用扩展编程的方式实现定制序列化。fastjson提供了多种SerializeFilter：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PropertyFilter
+        
+      
+    
+    </summary>
+    
+      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
     <title>FastJson的进阶&lt;二&gt;</title>
     <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-er/"/>
     <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-er/</id>
     <published>2019-12-22T09:44:09.000Z</published>
-    <updated>2019-12-22T11:37:14.629Z</updated>
+    <updated>2019-12-22T13:05:35.023Z</updated>
     
     <summary type="html">
     
@@ -519,59 +575,6 @@
       <category term="注解" scheme="http://gakkil.gitee.io/tags/%E6%B3%A8%E8%A7%A3/"/>
     
       <category term="annotation" scheme="http://gakkil.gitee.io/tags/annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis代码生成器</title>
-    <link href="http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/"/>
-    <id>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</id>
-    <published>2019-03-17T01:46:35.000Z</published>
-    <updated>2019-12-08T09:37:56.046Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;MyBatis
-        
-      
-    
-    </summary>
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis中的动态SQL</title>
-    <link href="http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/"/>
-    <id>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</id>
-    <published>2019-03-16T05:48:27.000Z</published>
-    <updated>2019-12-08T09:37:56.044Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;/p&gt;
-&lt;p&gt;在Myba
-        
-      
-    
-    </summary>
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
     
   </entry>
   
