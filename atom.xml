@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-22T04:06:57.983Z</updated>
+  <updated>2019-12-22T11:37:14.629Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FastJson的进阶&lt;二&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-er/"/>
+    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-er/</id>
+    <published>2019-12-22T09:44:09.000Z</published>
+    <updated>2019-12-22T11:37:14.629Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;根据前面的FastJson的学习，我们已经掌握了FastJson的基础用法了，可以完成我们的日常开发了，今天我们来学习FastJson中的几个注解的用法&lt;/p&gt;
+&lt;h3 id=&quot;JSONField-介绍&quot;&gt;&lt;a href=&quot;#JSONField-介绍&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FastJson的进阶&lt;一&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-yi/"/>
+    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-yi/</id>
+    <published>2019-12-22T04:19:47.000Z</published>
+    <updated>2019-12-22T06:05:06.328Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;该篇，会总结FastJson中的一些常用API&lt;/p&gt;
+&lt;h3 id=&quot;FastJson主要的API&quot;&gt;&lt;a href=&quot;#FastJson主要的API&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>FastJson的入门</title>
@@ -509,58 +563,6 @@
         
           &lt;p&gt;Mybatis的强大特性之一便是它的动态SQL。使用过JDBC或其他类似的框架的人都会知道，根据不同条件拼接SQL语句时不仅不能忘记必要的空格，还有注意省略掉列名列表最后的逗号，处理方式麻烦且凌乱。Mybatis的动态SQL则能帮我们摆脱这种痛苦。&lt;/p&gt;
 &lt;p&gt;在Myba
-        
-      
-    
-    </summary>
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis中的缓存</title>
-    <link href="http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/"/>
-    <id>http://gakkil.gitee.io/2019/03/15/mybatis-zhong-de-huan-cun/</id>
-    <published>2019-03-15T07:21:39.000Z</published>
-    <updated>2019-12-08T09:37:56.045Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;使用缓存可以使应用更快地获取数据，避免频繁的与数据库交互 ，尤其是在查询越多 、缓存命中率越高的情况下，使用缓存的作用就越明显。MyBatis
-        
-      
-    
-    </summary>
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/categories/mybatis/"/>
-    
-    
-      <category term="mybatis" scheme="http://gakkil.gitee.io/tags/mybatis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mybatis中的高级查询</title>
-    <link href="http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/"/>
-    <id>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-gao-ji-cha-xun/</id>
-    <published>2019-03-13T02:53:31.000Z</published>
-    <updated>2019-12-08T09:37:56.045Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;通过前面几篇博客的学习，我们已经了解了 MyBatis
         
       
     
