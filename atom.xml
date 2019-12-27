@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-22T14:17:30.949Z</updated>
+  <updated>2019-12-27T16:54:31.538Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FastJson的进阶&lt;五&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/28/fastjson-de-jin-jie-wu/"/>
+    <id>http://gakkil.gitee.io/2019/12/28/fastjson-de-jin-jie-wu/</id>
+    <published>2019-12-27T16:40:16.000Z</published>
+    <updated>2019-12-27T16:54:31.538Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;当需要处理超大JSON文本时，需要Stream API，在fastjson-1.1.32版本中开始提供Stream API。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;实例对象：&lt;/p&gt;
+&lt;pre class=&quot; language-java&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>FastJson的进阶&lt;四&gt;</title>
@@ -544,37 +573,6 @@
       <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
       <category term="Rabbitmq" scheme="http://gakkil.gitee.io/tags/Rabbitmq/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>注解Annotation的浅析</title>
-    <link href="http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/"/>
-    <id>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</id>
-    <published>2019-03-22T07:21:50.000Z</published>
-    <updated>2019-12-08T09:37:56.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在我们使用Spring的时候，会使用很多注解，但是对于注解是什么，却还是一知半解，今天就带大家来学习一下java中的元注解。&lt;/p&gt;
-&lt;h3 id=&quot;什么是注解&quot;&gt;&lt;a href=&quot;#什么是注解&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="注解" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/"/>
-    
-      <category term="annotation" scheme="http://gakkil.gitee.io/categories/%E6%B3%A8%E8%A7%A3/annotation/"/>
-    
-    
-      <category term="注解" scheme="http://gakkil.gitee.io/tags/%E6%B3%A8%E8%A7%A3/"/>
-    
-      <category term="annotation" scheme="http://gakkil.gitee.io/tags/annotation/"/>
     
   </entry>
   

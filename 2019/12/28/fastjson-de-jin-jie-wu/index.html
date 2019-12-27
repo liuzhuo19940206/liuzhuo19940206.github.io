@@ -5,14 +5,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="FastJson的进阶&lt;四&gt;, 解忧杂货店">
-    <meta name="description" content="ParseProcess是编程扩展定制反序列化的接口。fastjson支持如下ParseProcess：
+    <meta name="keywords" content="FastJson的进阶&lt;五&gt;, 解忧杂货店">
+    <meta name="description" content="当需要处理超大JSON文本时，需要Stream API，在fastjson-1.1.32版本中开始提供Stream API。
 
-ExtraProcessor 用于处理多余的字段；
-ExtraTypeProvider 用于处理多余字段时提供类型信息。
-
-
-使用 ">
+实例对象：
+public class VO {
+    private int id;
+    private ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@ ExtraTypeProvider 用于处理多余字段时提供类型信息。
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>FastJson的进阶&lt;四&gt; | 解忧杂货店</title>
+    <title>FastJson的进阶&lt;五&gt; | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -298,13 +297,13 @@ ExtraTypeProvider 用于处理多余字段时提供类型信息。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic1.superbed.cn/item/5dff793176085c32895cd975.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5e06355876085c3289d862ed.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        FastJson的进阶&lt;四&gt;
+                        FastJson的进阶&lt;五&gt;
                     </div>
                 </div>
             </div>
@@ -440,21 +439,21 @@ ExtraTypeProvider 用于处理多余字段时提供类型信息。
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-22
+                    2019-12-28
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        520
+                        556
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -470,15 +469,17 @@ ExtraTypeProvider 用于处理多余字段时提供类型信息。
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>ParseProcess是编程扩展定制反序列化的接口。fastjson支持如下ParseProcess：</p>
-<ul>
-<li>ExtraProcessor 用于处理多余的字段；</li>
-<li>ExtraTypeProvider 用于处理多余字段时提供类型信息。</li>
-</ul>
+                <p>当需要处理超大JSON文本时，需要Stream API，在fastjson-1.1.32版本中开始提供Stream API。</p>
 <hr>
-<h3 id="使用-ExtraProcessor-处理多余字段"><a href="#使用-ExtraProcessor-处理多余字段" class="headerlink" title="使用 ExtraProcessor 处理多余字段"></a><strong>使用 ExtraProcessor 处理多余字段</strong></h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VO</span> <span class="token punctuation">{</span>
+<p>实例对象：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VO</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">int</span> id<span class="token punctuation">;</span>
     <span class="token keyword">private</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> attributes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">VO</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> id<span class="token punctuation">;</span>
@@ -498,75 +499,98 @@ ExtraTypeProvider 用于处理多余字段时提供类型信息。
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>这里，使用Map来存储反序列化多余的字段，什么叫做多余的字段呢？</p>
-<p>就是当我们使用FastJson反序列时，那些不能被匹配的字段。</p>
-<pre class=" language-java"><code class="language-java">ExtraProcessor processor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExtraProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processExtra</span><span class="token punctuation">(</span>Object object<span class="token punctuation">,</span> String key<span class="token punctuation">,</span> Object value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><h4 id="超大JSON对象的序列化"><a href="#超大JSON对象的序列化" class="headerlink" title="超大JSON对象的序列化"></a>超大JSON对象的序列化</h4><p>如果你的JSON格式是一个巨大的JSONObject，有很多Key/Value对，则先调用startObject，然后挨个写入Key和Value，然后调用endObject。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestHugeObjectSerialize</span> <span class="token punctuation">{</span>
 
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"---------------object = "</span> <span class="token operator">+</span> object<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"---------------key = "</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"---------------value = "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
 
-                VO vo <span class="token operator">=</span> <span class="token punctuation">(</span>VO<span class="token punctuation">)</span> object<span class="token punctuation">;</span>
-                vo<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token number">789</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 修改一下id值</span>
-                vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// 这里name和phone是多余的，在VO里没有</span>
-        VO vo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token string">"{\"id\":123,\"name\":\"abc\",\"phone\":\"18603396954\"}"</span><span class="token punctuation">,</span> VO<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> processor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getId() = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getAttributes().get(\"name\") = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getAttributes().get(\"phone\") = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"phone"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<pre class=" language-java"><code class="language-java"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>object <span class="token operator">=</span> VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>key <span class="token operator">=</span> name
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>value <span class="token operator">=</span> abc
-
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>object <span class="token operator">=</span> VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">789</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span>name<span class="token operator">=</span>abc<span class="token punctuation">}</span><span class="token punctuation">]</span>
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>key <span class="token operator">=</span> phone
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>value <span class="token operator">=</span> <span class="token number">18603396954</span>
-
-vo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">789</span>
-vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> <span class="token operator">=</span> abc
-vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"phone"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">18603396954</span>
-</code></pre>
-<p>我们可以看到，调用processExtra方法时，是FastJson已经帮我们序列化之后再进行，通过打印出来的object可以看出，id是能够匹配成功的，没有走processExtra方法。只有 name 和 phone 这些没有匹配的字段才会走：processExtra方法。</p>
-<hr>
-<h3 id="使用ExtraTypeProvider-为多余的字段提供类型"><a href="#使用ExtraTypeProvider-为多余的字段提供类型" class="headerlink" title="使用ExtraTypeProvider 为多余的字段提供类型"></a><strong>使用ExtraTypeProvider 为多余的字段提供类型</strong></h3><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyExtraProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">ExtraProcessor</span><span class="token punctuation">,</span> ExtraTypeProvider <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processExtra</span><span class="token punctuation">(</span>Object object<span class="token punctuation">,</span> String key<span class="token punctuation">,</span> Object value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        VO vo <span class="token operator">=</span> <span class="token punctuation">(</span>VO<span class="token punctuation">)</span> object<span class="token punctuation">;</span>
-        vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        JSONWriter writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token string">"hugeObject.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">startObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            writer<span class="token punctuation">.</span><span class="token function">writeKey</span><span class="token punctuation">(</span><span class="token string">"x"</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            writer<span class="token punctuation">.</span><span class="token function">writeValue</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">VO</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        writer<span class="token punctuation">.</span><span class="token function">endObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> Type <span class="token function">getExtraType</span><span class="token punctuation">(</span>Object object<span class="token punctuation">,</span> String key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>文件内容：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span><span class="token string">"x0"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x1"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x2"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x3"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x4"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x5"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x6"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x7"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">7</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x8"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">8</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"x9"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<h4 id="超大JSON数组序列化"><a href="#超大JSON数组序列化" class="headerlink" title="超大JSON数组序列化"></a><strong>超大JSON数组序列化</strong></h4><p>如果你的JSON格式是一个巨大的JSON数组，有很多元素，则先调用startArray，然后挨个写入对象，然后调用endArray。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestHugeArraySerialize</span> <span class="token punctuation">{</span>
 
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"---------------object = "</span> <span class="token operator">+</span> object<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"---------------key = "</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">int</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        JSONWriter writer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token string">"hugeArray.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">startArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            writer<span class="token punctuation">.</span><span class="token function">writeValue</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">VO</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">endArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        writer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class=" language-java"><code class="language-java">ExtraProcessor processor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyExtraProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        VO vo <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parseObject</span><span class="token punctuation">(</span><span class="token string">"{\"id\":123,\"value\":\"123456\"}"</span><span class="token punctuation">,</span> VO<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> processor<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getId() = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getAttributes().get(\"value\") = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"vo.getAttributes().get(\"value\").getClass() = "</span> <span class="token operator">+</span> vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// value本应该是字符串类型的，通过getExtraType的处理变成Integer类型了。</span>
+<p>文件内容：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">7</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">8</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">"attributes"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"id"</span><span class="token operator">:</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 </code></pre>
-<pre class=" language-java"><code class="language-java"><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>object <span class="token operator">=</span> VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>key <span class="token operator">=</span> value
+<hr>
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a><strong>反序列化</strong></h3><h4 id="超大JSON对象反序列化"><a href="#超大JSON对象反序列化" class="headerlink" title="超大JSON对象反序列化"></a><strong>超大JSON对象反序列化</strong></h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestHugeObjectDeserialize</span> <span class="token punctuation">{</span>
 
-vo<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">123</span>
-vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">123456</span>
-vo<span class="token punctuation">.</span><span class="token function">getAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">class</span> <span class="token class-name">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Integer</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 读入上面输出的文件</span>
+        JSONReader reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token string">"hugeObject.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reader<span class="token punctuation">.</span><span class="token function">startObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>reader<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String key <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">readString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            VO vo <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span>VO<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>key <span class="token operator">+</span> <span class="token string">"："</span> <span class="token operator">+</span> vo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        reader<span class="token punctuation">.</span><span class="token function">endObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reader<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果：</p>
+<pre class=" language-java"><code class="language-java">x0：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x1：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x2：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x3：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x4：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x5：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x6：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x7：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x8：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+x9：VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+</code></pre>
+<h4 id="超大JSON数组反序列化"><a href="#超大JSON数组反序列化" class="headerlink" title="超大JSON数组反序列化"></a><strong>超大JSON数组反序列化</strong></h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestHugeArrayDeserialize</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 读入上面输出的文件</span>
+        JSONReader reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token string">"hugeArray.json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reader<span class="token punctuation">.</span><span class="token function">startArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>reader<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            VO vo <span class="token operator">=</span> reader<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span>VO<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>vo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        reader<span class="token punctuation">.</span><span class="token function">endArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reader<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果：</p>
+<pre class=" language-java"><code class="language-java">VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+VO <span class="token punctuation">[</span>id<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">,</span> attributes<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 </code></pre>
 
             </div>
@@ -715,7 +739,7 @@ vo<span class="token punctuation">.</span><span class="token function">getAttrib
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/12/22/fastjson-de-jin-jie-si/" class="b-link-green">FastJson的进阶&lt;四&gt;</a>
+                    <a href="/2019/12/28/fastjson-de-jin-jie-wu/" class="b-link-green">FastJson的进阶&lt;五&gt;</a>
                 </p>
             </div>
         </div>
@@ -995,9 +1019,10 @@ vo<span class="token punctuation">.</span><span class="token function">getAttrib
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/28/fastjson-de-jin-jie-wu/">
                     <div class="card-image">
@@ -1009,14 +1034,14 @@ vo<span class="token punctuation">.</span><span class="token function">getAttrib
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                      
+                       
                                 FastJson解析/反解析大文件
                       
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1029,6 +1054,7 @@ vo<span class="token punctuation">.</span><span class="token function">getAttrib
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1047,18 +1073,18 @@ vo<span class="token punctuation">.</span><span class="token function">getAttrib
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/22/fastjson-de-jin-jie-san/">
+                <a href="/2019/12/22/fastjson-de-jin-jie-si/">
                     <div class="card-image">
                         
-                        <img src="https://pic2.superbed.cn/item/5dff6b2d76085c328957c771.jpg" class="responsive-img" alt="FastJson的进阶<三>">
+                        <img src="https://pic1.superbed.cn/item/5dff793176085c32895cd975.jpg" class="responsive-img" alt="FastJson的进阶<四>">
                         
-                        <span class="card-title">FastJson的进阶<三></span>
+                        <span class="card-title">FastJson的进阶<四></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                通过SerializeFilter定制序列化
+                                通过ParseProcess定制反序列化,出来多余字段
                       
                     </div>
                     <div class="publish-info">
