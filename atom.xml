@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-27T16:54:31.538Z</updated>
+  <updated>2019-12-29T02:42:53.559Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jackson的使用</title>
+    <link href="http://gakkil.gitee.io/2019/12/28/jackson-de-shi-yong/"/>
+    <id>http://gakkil.gitee.io/2019/12/28/jackson-de-shi-yong/</id>
+    <published>2019-12-28T14:28:04.000Z</published>
+    <updated>2019-12-29T02:42:53.559Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Json已经成为当前服务器与 WEB 应用之间数据传输的公认标准。Java 中常见的 Json 类库有 &lt;strong&gt;JSON-lib 、Gson、FastJson和 Jackson &lt;/strong&gt;等。相比于其他的解析工具，Jackson
+        
+      
+    
+    </summary>
+    
+      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>FastJson的进阶&lt;五&gt;</title>
@@ -539,40 +565,6 @@
     
     
       <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Rabbitmq的安装与入门</title>
-    <link href="http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/"/>
-    <id>http://gakkil.gitee.io/2019/04/28/rabbitmq-de-an-zhuang-yu-ru-men/</id>
-    <published>2019-04-28T06:53:01.000Z</published>
-    <updated>2019-12-08T09:37:56.047Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;今天，我们来学习Rabbitmq的安装与入门。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;一般情况下，Rabbitmq都是安装在linux系统中，所以，这里我也是以linux系统为主来讲解。&lt;/p&gt;
-&lt;p&gt;如果，大家想安装在windows上面，可以查看Rabbitmq的官网。&lt;/p&gt;
-&lt;h3
-        
-      
-    
-    </summary>
-    
-      <category term="Rabbitmq" scheme="http://gakkil.gitee.io/categories/Rabbitmq/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/Rabbitmq/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-      <category term="Rabbitmq" scheme="http://gakkil.gitee.io/tags/Rabbitmq/"/>
     
   </entry>
   
