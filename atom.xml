@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-29T04:36:37.062Z</updated>
+  <updated>2019-12-29T10:46:24.116Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jackson的进阶&lt;二&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/"/>
+    <id>http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/</id>
+    <published>2019-12-29T06:39:45.000Z</published>
+    <updated>2019-12-29T10:46:24.116Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;readValue&quot;&gt;&lt;a href=&quot;#readValue&quot; class=&quot;headerlink&quot; title=&quot;readValue&quot;&gt;&lt;/a&gt;readValue&lt;/h3&gt;&lt;h4 id=&quot;POJO对象&quot;&gt;&lt;a href=&quot;#POJO对象&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>Jackson的进阶&lt;一&gt;</title>
@@ -521,37 +547,6 @@
         
           &lt;p&gt;在上篇博客中，我们知道了RabbitMQ的相关概念，再进行RabbitMQ的实操之前，我们还需要了解一下AMQP协议，毕竟RabbitMQ是基于AMQP协议用Erlang语言开发的。&lt;/p&gt;
 &lt;h3 id=&quot;AMQP协议模型&quot;&gt;&lt;a href=&quot;#AMQP协议模型&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RabbitMQ的概念介绍</title>
-    <link href="http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/"/>
-    <id>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</id>
-    <published>2019-05-07T12:15:43.000Z</published>
-    <updated>2019-12-08T09:37:56.047Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;上一篇文章，主要讲述了消息中间件的基本概念，消息中间件的作用、功能，以及各种消息中间件的对比，接下来会主要讲述RabbitMQ消息队列。&lt;/p&gt;
-&lt;h3 id=&quot;相关概念&quot;&gt;&lt;a href=&quot;#相关概念&quot; class=&quot;headerlink&quot;
         
       
     
