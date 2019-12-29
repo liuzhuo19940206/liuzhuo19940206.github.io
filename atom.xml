@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-29T02:42:53.559Z</updated>
+  <updated>2019-12-29T04:36:37.062Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jackson的进阶&lt;一&gt;</title>
+    <link href="http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-yi/"/>
+    <id>http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-yi/</id>
+    <published>2019-12-29T03:36:18.000Z</published>
+    <updated>2019-12-29T04:36:37.062Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;处理Json&quot;&gt;&lt;a href=&quot;#处理Json&quot; class=&quot;headerlink&quot; title=&quot;处理Json&quot;&gt;&lt;/a&gt;处理Json&lt;/h3&gt;&lt;p&gt;Jackson提供了三种可选的Json处理方法：流式API(Streaming API)
+        
+      
+    
+    </summary>
+    
+      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
   
   <entry>
     <title>Jackson的使用</title>
@@ -378,7 +404,7 @@
         
         
           &lt;p&gt;第一遍可爱，第二遍可爱，第三遍还是可爱。&lt;/p&gt;
-&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -405,7 +431,7 @@
         
         
           &lt;p&gt;B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。&lt;/p&gt;
-&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -537,32 +563,6 @@
     
     
       <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>消息中间件的介绍</title>
-    <link href="http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/"/>
-    <id>http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/</id>
-    <published>2019-05-07T08:11:25.000Z</published>
-    <updated>2019-12-08T09:37:56.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;什么是消息中间件&quot;&gt;&lt;a href=&quot;#什么是消息中间件&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
     
       <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     
