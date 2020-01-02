@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2019-12-29T10:46:24.116Z</updated>
+  <updated>2020-01-02T14:06:31.912Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jackson的进阶&lt;三&gt;</title>
+    <link href="http://gakkil.gitee.io/2020/01/02/jackson-de-jin-jie-san/"/>
+    <id>http://gakkil.gitee.io/2020/01/02/jackson-de-jin-jie-san/</id>
+    <published>2020-01-02T11:08:28.000Z</published>
+    <updated>2020-01-02T14:06:31.912Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;使用jackson annotations简化和增强的json解析与生成。&lt;/p&gt;
+&lt;p&gt;Jackson-2.x通用annotations列表：&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
+    
+    
+      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Jackson的进阶&lt;二&gt;</title>
     <link href="http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/"/>
     <id>http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/</id>
     <published>2019-12-29T06:39:45.000Z</published>
-    <updated>2019-12-29T10:46:24.116Z</updated>
+    <updated>2020-01-02T11:09:16.846Z</updated>
     
     <summary type="html">
     
@@ -430,7 +457,7 @@
         
         
           &lt;p&gt;第一遍可爱，第二遍可爱，第三遍还是可爱。&lt;/p&gt;
-&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -457,7 +484,7 @@
         
         
           &lt;p&gt;B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。&lt;/p&gt;
-&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -516,37 +543,6 @@
         
           &lt;p&gt;通过前面几篇博客的介绍，大家应该对RabbitMQ有了基础的认识了，现在开始带着大家进入RabbitMQ的基础实战，让大家体验一把RabbitMQ消息中间件的基础操作。&lt;/p&gt;
 &lt;h3 id=&quot;连接RabbitMQ&quot;&gt;&lt;a href=&quot;#连接RabbitMQ&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RabbitMQ的简单入门</title>
-    <link href="http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/"/>
-    <id>http://gakkil.gitee.io/2019/05/08/rabbitmq-de-jian-dan-ru-men/</id>
-    <published>2019-05-08T12:57:26.000Z</published>
-    <updated>2019-12-08T09:37:56.047Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在上篇博客中，我们知道了RabbitMQ的相关概念，再进行RabbitMQ的实操之前，我们还需要了解一下AMQP协议，毕竟RabbitMQ是基于AMQP协议用Erlang语言开发的。&lt;/p&gt;
-&lt;h3 id=&quot;AMQP协议模型&quot;&gt;&lt;a href=&quot;#AMQP协议模型&quot;
         
       
     
