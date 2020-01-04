@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-01-02T14:06:31.912Z</updated>
+  <updated>2020-01-04T04:59:28.831Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019,see you</title>
+    <link href="http://gakkil.gitee.io/2020/01/04/2019-see-you/"/>
+    <id>http://gakkil.gitee.io/2020/01/04/2019-see-you/</id>
+    <published>2020-01-04T02:35:59.000Z</published>
+    <updated>2020-01-04T04:59:28.831Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;2019年，是我最丧的一年，不能怪外力，只怪自己不够努力。&lt;/p&gt;
+&lt;h3 id=&quot;工作&quot;&gt;&lt;a href=&quot;#工作&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="情感" scheme="http://gakkil.gitee.io/tags/%E6%83%85%E6%84%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>Jackson的进阶&lt;三&gt;</title>
@@ -48,7 +77,7 @@
     <link href="http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/"/>
     <id>http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-er/</id>
     <published>2019-12-29T06:39:45.000Z</published>
-    <updated>2020-01-02T11:09:16.846Z</updated>
+    <updated>2020-01-02T14:07:22.480Z</updated>
     
     <summary type="html">
     
@@ -457,7 +486,7 @@
         
         
           &lt;p&gt;第一遍可爱，第二遍可爱，第三遍还是可爱。&lt;/p&gt;
-&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer2&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -484,7 +513,7 @@
         
         
           &lt;p&gt;B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。&lt;/p&gt;
-&lt;div id=&quot;dplayer1&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
+&lt;div id=&quot;dplayer0&quot; class=&quot;dplayer hexo-tag-dplayer-mark&quot; style=&quot;margin-bottom:
         
       
     
@@ -512,37 +541,6 @@
         
           &lt;p&gt;在上一篇文章中，我们已经了解到了RabbitMQ中的基本操作了，现在让我们开始实战演习吧！&lt;/p&gt;
 &lt;h3 id=&quot;最简单的模型&quot;&gt;&lt;a href=&quot;#最简单的模型&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/categories/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/categories/RabbitMQ/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    
-      <category term="RabbitMQ" scheme="http://gakkil.gitee.io/tags/RabbitMQ/"/>
-    
-      <category term="消息中间件" scheme="http://gakkil.gitee.io/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RabbitMQ的基础实战</title>
-    <link href="http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/"/>
-    <id>http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/</id>
-    <published>2019-05-10T06:35:25.000Z</published>
-    <updated>2019-12-08T09:37:56.047Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;通过前面几篇博客的介绍，大家应该对RabbitMQ有了基础的认识了，现在开始带着大家进入RabbitMQ的基础实战，让大家体验一把RabbitMQ消息中间件的基础操作。&lt;/p&gt;
-&lt;h3 id=&quot;连接RabbitMQ&quot;&gt;&lt;a href=&quot;#连接RabbitMQ&quot;
         
       
     
