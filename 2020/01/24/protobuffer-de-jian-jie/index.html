@@ -1,0 +1,1539 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="ProtoBuffer的简介, 解忧杂货店">
+    <meta name="description" content="什么是protocol buffers protocol buffers是一个灵活的、高效的、自动化的用于对结构化数据进行序列化的协议，与json、xml相比，protocol buffers序列化后的码流更小、速度更快、操作更简单。你只需">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>ProtoBuffer的简介 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5e2ab7032fb38b8c3c5fc9af.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        ProtoBuffer的简介
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/protobuffer/" target="_blank">
+                                <span class="chip bg-color">protobuffer</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/protobuffer/" class="post-category" target="_blank">
+                                protobuffer
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-24
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="什么是protocol-buffers"><a href="#什么是protocol-buffers" class="headerlink" title="什么是protocol buffers"></a>什么是protocol buffers</h3><p> protocol buffers是一个灵活的、高效的、自动化的用于对结构化数据进行序列化的协议，与json、xml相比，protocol buffers序列化后的码流更小、速度更快、操作更简单。你只需要将要被序列化的数据结构定义一次(使用.proto文件定义)，便可以使用特别生成的源代码(使用protobuf提供的生成工具protoc)轻松的使用不同的数据流完成对这些结构数据的读写操作，即使你使用不同的语言（protobuf的跨语言支持特性）。你甚至可以更新你的数据结构的定义（就是更新.proto文件内容）而不会破坏依“老”格式编译出来的程序。</p>
+<h3 id="protobuffer的安装"><a href="#protobuffer的安装" class="headerlink" title="protobuffer的安装"></a>protobuffer的安装</h3><h4 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h4><p>下面是在mac的电脑上安装protobuf步骤,如下</p>
+<pre class=" language-java"><code class="language-java">git clone https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>google<span class="token operator">/</span>protobuf
+
+git checkout 版本号
+</code></pre>
+<p><a href="https://github.com/protocolbuffers/protobuf/releases" target="_blank" rel="noopener"><em>下载地址</em></a></p>
+<p><img src="https://pic.downk.cc/item/5e2ab7fb2fb38b8c3c5fdad7.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5e2ab8692fb38b8c3c5fe2a3.jpg" alt></p>
+<hr>
+<h4 id="安装automake和libtool"><a href="#安装automake和libtool" class="headerlink" title="安装automake和libtool"></a>安装automake和libtool</h4><pre class=" language-java"><code class="language-java">brew install automake
+
+brew install libtool
+</code></pre>
+<p>前提：你的Mac需要先安装了brew！！！</p>
+<p>如果没有安装的话，请自行百度解决，安装如果很慢，需要切换成清华的源。</p>
+<p><a href="https://blog.csdn.net/sinat_38184748/article/details/99450330" target="_blank" rel="noopener">macOS安装Homebrew太慢，换用清华镜像</a></p>
+<h4 id="运行自动生成脚本"><a href="#运行自动生成脚本" class="headerlink" title="运行自动生成脚本"></a>运行自动生成脚本</h4><pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/autogen<span class="token punctuation">.</span>sh
+</code></pre>
+<h4 id="安装protobuf"><a href="#安装protobuf" class="headerlink" title="安装protobuf"></a>安装protobuf</h4><pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/configure
+make check
+make
+sudo make install 
+</code></pre>
+<h4 id="查看安装版本"><a href="#查看安装版本" class="headerlink" title="查看安装版本"></a>查看安装版本</h4><pre class=" language-java"><code class="language-java">protoc <span class="token operator">--</span>version
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5e2aba9f2fb38b8c3c600887.jpg" alt></p>
+<hr>
+<h3 id="定义Message"><a href="#定义Message" class="headerlink" title="定义Message"></a>定义Message</h3><p>首先看一个简单的例子，比如说你定义一个搜索请求的message，每一个搜索请求会包含一个搜索的字符串，返回第几页的结果，以及结果集的大小。在<code>.proto</code>文件中定义如下：</p>
+<h4 id="proto3的格式"><a href="#proto3的格式" class="headerlink" title="proto3的格式"></a>proto3的格式</h4><pre class=" language-java"><code class="language-java">syntax <span class="token operator">=</span> <span class="token string">"proto3"</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//必须是文件中非空非注释行的第一行</span>
+
+message SearchRequest <span class="token punctuation">{</span>
+  string query <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  int32 page_number <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  int32 result_per_page <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><code>.proto</code>文件的第一行指定了使用<code>proto3</code>语法。如果省略protocol buffer编译器默认使用<code>proto2</code>语法。<font color="red"><strong>它必须是文件中非空非注释行的第一行</strong>。</font></li>
+<li><code>SearchRequest</code>定义中指定了三个字段(name/value键值对)，每个字段都会有名称和类型。</li>
+</ul>
+<hr>
+<h4 id="proto2的格式"><a href="#proto2的格式" class="headerlink" title="proto2的格式"></a>proto2的格式</h4><pre class=" language-java"><code class="language-java">message Person <span class="token punctuation">{</span>
+  required string name <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//required：表示必须字段</span>
+  required int32 id <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  optional string email <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//optional：表示可选字段</span>
+
+  <span class="token keyword">enum</span> PhoneType <span class="token punctuation">{</span>           <span class="token comment" spellcheck="true">//枚举类型</span>
+    MOBILE <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    HOME <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    WORK <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  message PhoneNumber <span class="token punctuation">{</span>      <span class="token comment" spellcheck="true">// 嵌套message</span>
+    required string number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    optional PhoneType type <span class="token operator">=</span> <span class="token number">2</span> <span class="token punctuation">[</span><span class="token keyword">default</span> <span class="token operator">=</span> HOME<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  repeated PhoneNumber phone <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>第一行不写，或者写：<code>syntax = &quot;proto2&quot;</code>才是proto2.0协议。</p>
+<h4 id="proto3和proto2的区别"><a href="#proto3和proto2的区别" class="headerlink" title="proto3和proto2的区别"></a>proto3和proto2的区别</h4><ul>
+<li><p>在第一行非空白非注释行，必须写：<code>syntax = &quot;proto3&quot;</code>;</p>
+</li>
+<li><p>字段规则移除了 <code>“required”</code>，并把<code>“optional”</code> 改名为 <code>“singular”</code> ；</p>
+<p>在 proto2 中 required 也是不推荐使用的。proto3 直接从语法层面上移除了 required 规则。其实可以做的更彻底，把所有字段规则描述都撤销，原来的 repeated 改为在类型或字段名后加一对中括号。这样是不是更简洁？</p>
+</li>
+<li><p><code>“repeated”</code>字段默认采用 <code>packed</code> 编码 [ proto3.0]</p>
+</li>
+</ul>
+<p>​       在 proto2 中，需要明确使用 <code>[packed=true]</code> 来为字段指定比较紧凑的 <code>packed</code> 编码方式。</p>
+<ul>
+<li><p>语言增加 Go、Ruby、JavaNano 支持</p>
+</li>
+<li><p>移除了 default 选项</p>
+<p>在 proto2 中，可以使用 default 选项为某一字段指定默认值。在 proto3 中，字段的默认值只能根据字段类型由系统决定。也就是说，<strong>默认值全部是约定好的，而不再提供指定默认值的语法</strong>。</p>
+<p>在字段被设置为默认值的时候，该字段不会被序列化，这样可以节省空间，提高效率。</p>
+<p>但这样就无法区分某字段是根本没赋值，还是赋值了默认值。这在 proto3 中问题不大，但在 proto2 中会有问题。</p>
+<p>比如，在更新协议的时候使用 default 选项为某个字段指定了一个与原来不同的默认值，旧代码获取到的该字段的值会与新代码不一样。</p>
+</li>
+<li><p>枚举类型的第一个字段必须为 0。</p>
+<p>这也是一个约定。</p>
+</li>
+<li><p>移除了对分组的支持</p>
+<p>分组的功能完全可以用消息嵌套的方式来实现，并且更清晰。在 proto2 中已经把分组语法标注为『过期』了。这次也算清理垃圾了。</p>
+</li>
+<li><p>旧代码在解析新增字段时，会把不认识的字段丢弃，再序列化后新增的字段就没了；</p>
+<p>在 proto2 中，旧代码虽然会忽视不认识的新增字段，但并不会将其丢弃，再序列化的时候那些字段会被原样保留。</p>
+<p>我觉得还是 proto2 的处理方式更好一些。能尽量保持兼容性和扩展能力，或许实现起来也更简单。proto3 现在的处理方式，没有带来明显的好处，但丢掉了部分兼容性和灵活性。</p>
+<p><strong>[2017-06-15 更新]</strong>：经过漫长的<a href="https://github.com/google/protobuf/issues/272" target="_blank" rel="noopener">讨论</a>，官方终于同意在 proto3 中恢复 proto2 的处理方式了。 可以通过<a href="https://docs.google.com/document/d/1KMRX-G91Aa-Y2FkEaHeeviLRRNblgIahbsk4wA14gRk/view" target="_blank" rel="noopener">这个文档</a>了解前因后果及时间线。</p>
+</li>
+<li><p>移除了对扩展的支持，新增了 Any 类型。</p>
+<p>Any 类型是用来替代 proto2 中的扩展的。目前还在开发中。</p>
+<p>proto2 中的扩展特性很像 Swift 语言中的扩展。理解起来有点困难，使用起来更是会带来不少混乱。</p>
+<p>相比之下，proto3 中新增的 Any 类型有点像 C/C++ 中的 void* ，好理解，使用起来逻辑也更清晰。</p>
+</li>
+<li><p>增加了 JSON 映射特性</p>
+<p>语言的活力来自于与时俱进。当前，JSON 的流行有其充分的理由。很多『现代化』的语言都内置了对 JSON 的支持，比如 Go、PHP 等。而 C++ 这种看似保罗万象的学院派语言，因循守旧、故步自封，以致于现出了式微的苗头。</p>
+</li>
+</ul>
+<hr>
+<h4 id="message数据格式中需要知道的"><a href="#message数据格式中需要知道的" class="headerlink" title="message数据格式中需要知道的"></a>message数据格式中需要知道的</h4><pre class=" language-java"><code class="language-java">proto2<span class="token number">.0</span>
+
+required<span class="token operator">:</span> 必须赋值，不能为空，否则该条message会被认为是“uninitialized”。build一个“uninitialized” message会抛出一个RuntimeException异常，解析一条“uninitialized” message会抛出一条IOException异常。除此之外，“required”字段跟“optional”字段并无差别。
+
+optional<span class="token operator">:</span> 字段可以赋值，也可以不赋值。假如没有赋值的话，会被赋上默认值。
+
+repeated<span class="token operator">:</span> 该字段可以重复任意次数，包括<span class="token number">0</span>次。重复数据的顺序将会保存在protocol buffer中，将这个字段想象成一个可以自动设置size的数组就可以了。
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+proto3<span class="token number">.0</span>
+
+去掉了 required。
+
+singular：一个遵循singular规则的字段，在一个结构良好的message消息体<span class="token punctuation">(</span>编码后的message<span class="token punctuation">)</span>可以有<span class="token number">0</span>或<span class="token number">1</span>个该字段（但是不可以有多个）。这是proto3语法的默认字段规则。（这个理解起来有些晦涩，举例来说上面例子中三个字段都是singular类型的字段，在编码后的消息体中可以有<span class="token number">0</span>或者<span class="token number">1</span>个query字段，但不会有多个。）
+
+repeated：遵循repeated规则的字段在消息体重可以有任意多个该字段值，这些值的顺序在消息体重可以保持（就是数组类型的字段）
+
+</code></pre>
+<h4 id="指定字段类型"><a href="#指定字段类型" class="headerlink" title="指定字段类型"></a>指定字段类型</h4><p>protobuffer支持的数据类型如下： </p>
+<p><img src="https://pic.downk.cc/item/5e2acc362fb38b8c3c613db0.jpg" alt></p>
+<h4 id="指定字段编号"><a href="#指定字段编号" class="headerlink" title="指定字段编号"></a>指定字段编号</h4><p>在message定义中每个字段都有一个<strong>唯一的编号</strong>，这些编号被用来在二进制消息体中识别你定义的这些字段，一旦你的message类型被用到后就不应该在修改这些编号了。注意在将message编码成二进制消息体时字段编号1-15将会占用1个字节，16-2047将占用两个字节。所以在一些频繁使用用的message中，你应该总是先使用前面1-15字段编号。</p>
+<p>你可以指定的最小编号是1，最大是2E29 - 1（536,870,911）。<font color="red"><strong>其中19000到19999是给protocol buffers实现保留的字段标号，定义message时不能使用</strong></font>。<strong>同样的你也不能重复使用任何当前message定义里已经使用过和预留的字段编号。</strong></p>
+<h4 id="添加注释"><a href="#添加注释" class="headerlink" title="添加注释"></a>添加注释</h4><p><code>.proto</code>文件中的注释和C，C++的注释风格相同，使用// 和 /<em> … </em>/</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/* SearchRequest represents a search query, with pagination options to
+ * indicate which results to include in the response. */</span>
+
+message SearchRequest <span class="token punctuation">{</span>
+  string query <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  int32 page_number <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Which page number do we want?</span>
+  int32 result_per_page <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Number of results to return per page.</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h4 id="保留字段"><a href="#保留字段" class="headerlink" title="保留字段"></a>保留字段</h4><p>当你删掉或者注释掉message中的一个字段时，未来其他开发者在更新message定义时就可以重用之前的字段编号。如果他们意外载入了老版本的<code>.proto</code>文件将会导致严重的问题，比如数据损坏、隐私泄露等。一种避免问题发生的方式是<strong>指定保留的字段编号和字段名称</strong>。如果未来有人用了这些字段标识那么在编译时protocol buffer的编译器会报错。</p>
+<pre class=" language-java"><code class="language-java">message Foo <span class="token punctuation">{</span>
+  reserved <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">9</span> to <span class="token number">11</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 定义字段编号为保留字段。2、15 和 9 到 11 都是保留字段，不许使用</span>
+  reserved <span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 定义字段名称为保留字段</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h4><p>当时一个被编码的message体中不存在某个message定义中的singular字段时，在message体解析成的对象中，相应字段会被设置为message定义中该字段的默认值。默认值依类型而定：</p>
+<ul>
+<li>对于字符串，默认值为空字符串。</li>
+<li>对于字节，默认值为空字节。</li>
+<li>对于bools，默认值为false。</li>
+<li>对于数字类型，默认值为零。</li>
+<li>对于枚举，默认值是第一个定义的枚举值，该值必须为0。</li>
+<li>对于消息字段，未设置该字段。它的确切值取决于语言。有关详细信息。</li>
+</ul>
+<hr>
+<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><p>在定义消息类型时，您可能希望其中一个字段只有一个预定义的值列表中的值。例如，假设您要为每个<code>SearchRequest</code>添加<code>corpus</code>字段，其中<code>corpus</code>可以是UNIVERSAL，WEB，IMAGES，LOCAL，NEWS，PRODUCTS或VIDEO。您可以非常简单地通过向消息定义添加枚举，并为每个可能的枚举值值添加常量来实现。</p>
+<p>在下面的例子中，我们添加了一个名为<code>Corpus</code>的枚举类型，和一个<code>Corpus</code>类型的字段：</p>
+<pre class=" language-java"><code class="language-java">message SearchRequest <span class="token punctuation">{</span>
+  string query <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  int32 page_number <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  int32 result_per_page <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token keyword">enum</span> Corpus <span class="token punctuation">{</span>
+    UNIVERSAL <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    WEB <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    IMAGES <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    LOCAL <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    NEWS <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    PRODUCTS <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    VIDEO <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  Corpus corpus <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如你所见，<code>Corpus</code>枚举的第一个常量映射到了0：所有枚举定义都需要包含一个常量映射到0并且作为定义的首行，这是因为：</p>
+<ul>
+<li>必须有0值，这样我们就可以将0作为枚举的默认值。</li>
+<li>proto2语法中首行的枚举值总是默认值，为了兼容0值必须作为定义的首行。</li>
+</ul>
+<hr>
+<h4 id="使用其他Message类型"><a href="#使用其他Message类型" class="headerlink" title="使用其他Message类型"></a>使用其他Message类型</h4><p>可以使用其他message类型作为字段的类型，假设你想在每个<code>SearchResponse</code>消息中携带类型为<code>Result</code>的消息，</p>
+<p>你可以在同一个<code>.proto</code>文件中定义一个<code>Result</code>消息类型，然后在<code>SearchResponse</code>中指定一个<code>Result</code>类型的字段。</p>
+<pre class=" language-java"><code class="language-java">message SearchResponse <span class="token punctuation">{</span>
+  repeated Result results <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+message Result <span class="token punctuation">{</span>
+  string url <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  string title <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  repeated string snippets <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="导入消息定义"><a href="#导入消息定义" class="headerlink" title="导入消息定义"></a>导入消息定义</h4><p>在上面的示例中，<code>Result</code>消息类型在与<code>SearchResponse</code>相同的文件中定义 - 如果要用作字段类型的消息类型已在另一个<code>.proto</code>文件中定义，该怎么办？</p>
+<p>您可以通过导入来使用其他.proto文件中的定义。要导入另一个.proto的定义，请在文件顶部添加一个import语句：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> <span class="token string">"myproject/other_protos.proto"</span><span class="token punctuation">;</span>
+</code></pre>
+<p>默认情况下，您只能使用直接导入的<code>.proto</code>文件中的定义。但是，有时你可能需要将<code>.proto</code>文件移动到新位置。现在，你可以在旧位置放置一个虚拟<code>.proto</code>文件，在文件中使用<code>import public</code>语法将所有导入转发到新位置，而不是直接移动<code>.proto</code>文件并在一次更改中更新所有调用点。任何导入包含<code>import public</code>语句的<code>proto</code>文件的人都可以<strong>传递依赖</strong>导入公共依赖项。例如:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// new.proto</span>
+<span class="token comment" spellcheck="true">// All definitions are moved here</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// old.proto</span>
+<span class="token comment" spellcheck="true">// This is the proto that all clients are importing.</span>
+<span class="token keyword">import</span> <span class="token keyword">public</span> <span class="token string">"new.proto"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">"other.proto"</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// client.proto</span>
+<span class="token keyword">import</span> <span class="token string">"old.proto"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// You use definitions from old.proto and new.proto, but not other.proto</span>
+</code></pre>
+<p>编译器会在通过命令行参数<code>-I</code>或者<code>--proto-path</code>中指定的文件夹中搜索<code>.proto</code>文件，如果没有提供编译器会在唤其编译器的目录中进行搜索。通常来说你应该将<code>--proto-path</code>的值设置为你项目的根目录，并对所有导入使用完全限定名称。</p>
+<h4 id="嵌套消息类型"><a href="#嵌套消息类型" class="headerlink" title="嵌套消息类型"></a>嵌套消息类型</h4><p>消息类型可以被定义和使用在其他消息类型中，下面的例子里<code>Result</code>消息被定义在<code>SearchResponse</code>消息中:</p>
+<pre class=" language-java"><code class="language-java">message SearchResponse <span class="token punctuation">{</span>
+  message Result <span class="token punctuation">{</span>
+    string url <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    string title <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    repeated string snippets <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  repeated Result results <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果你想在外部使用定义在父消息中的子消息，使用<code>Parent.Type</code>引用他们</p>
+<pre class=" language-java"><code class="language-java">message SomeOtherMessage <span class="token punctuation">{</span>
+  SearchResponse<span class="token punctuation">.</span>Result result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>你可以嵌套任意多层消息:</p>
+<pre class=" language-java"><code class="language-java">message Outer <span class="token punctuation">{</span>       <span class="token comment" spellcheck="true">// Level 0</span>
+  message MiddleAA <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Level 1</span>
+    message Inner <span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">// Level 2</span>
+      int64 ival <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      bool  booly <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  message MiddleBB <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Level 1</span>
+    message Inner <span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">// Level 2</span>
+      int32 ival <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      bool  booly <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="更新Message"><a href="#更新Message" class="headerlink" title="更新Message"></a>更新Message</h4><p>如果一个现存的消息类型不再满足你当前的需求–比如说你希望在消息中增加一个额外的字段–但是仍想使用由旧版的消息格式生成的代码，不用担心！只要记住下面的规则，在更新消息定义的同时又不破坏现有的代码就非常简单。</p>
+<ul>
+<li>不要更改任何已存字段的字段编号。</li>
+<li>如果添加了新字段，任何由旧版消息格式生成的代码所序列化的消息，仍能被依据新消息格式生成的代码所解析。你应该记住这些元素的默认值这些新生成的代码就能够正确地与由旧代码序列化创建的消息交互了。类似的，新代码创建的消息也能由旧版代码解析：旧版消息（二进制）在解析时简单地忽略了新增的字段.</li>
+<li>只要在更新后的消息类型中不再重用字段编号，就可以删除该字段。你也可以重命名字段，比如说添加<code>OBSOLETE_</code>前缀或者将字段编号设置为<code>reserved</code>，这些未来其他用户就不会意外地重用该字段编号了。</li>
+</ul>
+<hr>
+<h4 id="未知字段"><a href="#未知字段" class="headerlink" title="未知字段"></a>未知字段</h4><p>未知字段是格式良好的协议缓冲区序列化数据，表示解析器无法识别的字段。例如，当旧二进制文件解析具有新字段的新二进制文件发送的数据时，这些新字段将成为旧二进制文件中的未知字段。</p>
+<p>最初，proto3消息在解析期间总是丢弃未知字段，但在3.5版本中，我们重新引入了未知字段的保留以匹配proto2行为。在版本3.5及更高版本中，未知字段在解析期间保留，并包含在序列化输出中。</p>
+<h4 id="映射类型"><a href="#映射类型" class="headerlink" title="映射类型"></a>映射类型</h4><p>如果你想创建一个映射作为message定义的一部分，protocol buffers提供了一个简易便利的语法。</p>
+<pre class=" language-java"><code class="language-java">map<span class="token operator">&lt;</span>key_type<span class="token punctuation">,</span> value_type<span class="token operator">></span> map_field <span class="token operator">=</span> N<span class="token punctuation">;</span>
+</code></pre>
+<p><code>key_type</code>可以是任意整数或者字符串（除了浮点数和bytes以外的所有标量类型）。注意<code>enum</code>不是一个有效的<code>key_type</code>。<code>value_type</code>可以是除了映射以外的任意类型（意思是protocol buffers的消息体中不允许有嵌套map）。</p>
+<p>举例来说，假如你想创建一个名为projects的映射，每一个<code>Project</code>消息关联一个字符串键，你可以像如下来定义：</p>
+<pre class=" language-java"><code class="language-java">map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> Project<span class="token operator">></span> projects <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li><p>映射里的字段不能是follow repeated规则的（意思是映射里字段的值不能是数组）。</p>
+</li>
+<li><p>映射里的值是无序的，所以不能依赖映射里元素的顺序。</p>
+</li>
+<li><p>生成.proto的文本格式时，映射按键排序。数字键按数字排序。</p>
+</li>
+<li><p>从线路解析或合并时，如果有重复的映射键，则使用最后看到的键。从文本格式解析映射时，如果存在重复键，则解析可能会失败。</p>
+</li>
+<li><p>如果未给映射的字段指定值，字段被序列化时的行为依语言而定。在C++， Java和Python中字段类型的默认值会被序列化作为字段值，而其他语言则不会。</p>
+</li>
+</ul>
+<h4 id="给Message加包名"><a href="#给Message加包名" class="headerlink" title="给Message加包名"></a>给Message加包名</h4><p>你可以在<code>.proto</code>文件中添加一个可选的<code>package</code>符来防止消息类型之前的名称冲突。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> foo<span class="token punctuation">.</span>bar<span class="token punctuation">;</span>
+message Open <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>在定义message的字段时像如下这样使用package名称</p>
+<pre class=" language-java"><code class="language-java">message Foo <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  foo<span class="token punctuation">.</span>bar<span class="token punctuation">.</span>Open open <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>package：对生成代码的影响视编程语言而定。</p>
+<h3 id="生成代码"><a href="#生成代码" class="headerlink" title="生成代码"></a>生成代码</h3><p>要生成：Java，Python，C ++，Go，Ruby，Objective-C 或 C＃代码，你需要使用<code>.proto</code>文件中定义的消息类型，你需要在<code>.proto</code>上运行protocol buffer编译器<code>protoc</code>。如果尚未安装编译器，请下载<a href="https://developers.google.com/protocol-buffers/docs/downloads.html" target="_blank" rel="noopener">该软件包</a>并按照README文件中的说明进行操作。对于Go，还需要为编译器安装一个特殊的代码生成器插件：你可以在GitHub上的<a href="https://github.com/golang/protobuf/" target="_blank" rel="noopener">golang/protobuf</a>项目中找到这个插件和安装说明。</p>
+<p>编译器像下面这样唤起：</p>
+<pre class=" language-java"><code class="language-java">protoc <span class="token operator">--</span>proto_path<span class="token operator">=</span>IMPORT_PATH <span class="token operator">--</span>cpp_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>java_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>python_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>go_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>ruby_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>objc_out<span class="token operator">=</span>DST_DIR <span class="token operator">--</span>csharp_out<span class="token operator">=</span>DST_DIR path<span class="token operator">/</span>to<span class="token operator">/</span>file<span class="token punctuation">.</span>proto
+</code></pre>
+<p><code>IMPORT_PATH</code>指定了在解析<code>import</code>命令时去哪里搜索<code>.proto</code>文件，如果忽略将在当前工作目录进行查找，可以通过传递多次<code>--proto_path</code>参数来指定多个import目录，他们将会按顺序被编译器搜索。<code>-I=IMPORT_PATH</code>是<code>--proto_path</code>的简短形式。</p>
+<hr>
+<p>你可以提供一个或多个输出命令：</p>
+<pre class=" language-java"><code class="language-java"><span class="token operator">--</span>cpp_out generates C<span class="token operator">++</span> code in DST_DIR<span class="token punctuation">.</span> See the C<span class="token operator">++</span> generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>java_out generates Java code in DST_DIR<span class="token punctuation">.</span> See the Java generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>python_out generates Python code in DST_DIR<span class="token punctuation">.</span> See the Python generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>go_out generates Go code in DST_DIR<span class="token punctuation">.</span> See the Go generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>ruby_out generates Ruby code in DST_DIR<span class="token punctuation">.</span> Ruby generated code reference is coming soon<span class="token operator">!</span>
+
+<span class="token operator">--</span>objc_out generates Objective<span class="token operator">-</span>C code in DST_DIR<span class="token punctuation">.</span> See the Objective<span class="token operator">-</span>C generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>csharp_out generates C# code in DST_DIR<span class="token punctuation">.</span> See the C# generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+<span class="token operator">--</span>php_out generates PHP code in DST_DIR<span class="token punctuation">.</span> See the PHP generated code reference <span class="token keyword">for</span> more<span class="token punctuation">.</span>
+
+</code></pre>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/01/24/protobuffer-de-jian-jie/" class="b-link-green">ProtoBuffer的简介</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/01/24/protobuffer-de-jian-jie/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5e2ab7032fb38b8c3c5fc9af.png" class="responsive-img" alt="ProtoBuffer的简介">
+                        
+                        <span class="card-title">ProtoBuffer的简介</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                protobuffer的简单使用
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/protobuffer/" class="post-category" target="_blank">
+                                    protobuffer
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/protobuffer/" target="_blank">
+                        <span class="chip bg-color">protobuffer</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/01/04/2019-see-you/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5e0ffb9776085c3289a5daf5.jpg" class="responsive-img" alt="2019,see you">
+                        
+                        <span class="card-title">2019,see you</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                2019，再见，2020，你好
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/生活/" class="post-category" target="_blank">
+                                    生活
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/生活/" target="_blank">
+                        <span class="chip bg-color">生活</span>
+                    </a>
+                    
+                    <a href="/tags/情感/" target="_blank">
+                        <span class="chip bg-color">情感</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">346.3k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>

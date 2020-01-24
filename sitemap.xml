@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gakkil.gitee.io/2020/01/24/protobuffer-de-jian-jie/</loc>
+    
+    <lastmod>2020-01-24T14:12:55.451Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gakkil.gitee.io/2020/01/04/2019-see-you/</loc>
     
     <lastmod>2020-01-04T04:59:28.831Z</lastmod>
@@ -135,14 +142,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/messageBoards/index.html</loc>
+    <loc>http://gakkil.gitee.io/life/index.html</loc>
     
     <lastmod>2019-12-08T09:37:56.074Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/life/index.html</loc>
+    <loc>http://gakkil.gitee.io/messageBoards/index.html</loc>
     
     <lastmod>2019-12-08T09:37:56.074Z</lastmod>
     
@@ -184,7 +191,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/</loc>
+    <loc>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</loc>
     
     <lastmod>2019-12-08T09:37:56.062Z</lastmod>
     
@@ -198,7 +205,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/03/22/zhu-jie-annotation-de-qian-xi/</loc>
+    <loc>http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.062Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2019/01/15/shen-ru-li-jie-cas/</loc>
     
     <lastmod>2019-12-08T09:37:56.062Z</lastmod>
     
@@ -212,13 +226,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/05/07/xiao-xi-zhong-jian-jian-de-jie-shao/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.062Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2019/01/13/mian-shi-zhong-de-dan-li-wen-ti/</loc>
     
     <lastmod>2019-12-08T09:37:56.062Z</lastmod>
@@ -226,14 +233,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/22/spring-annotation-day-15/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/23/spring-annotation-day-16/</loc>
     
     <lastmod>2019-12-08T09:37:56.061Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/23/spring-annotation-day-16/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/22/spring-annotation-day-15/</loc>
     
     <lastmod>2019-12-08T09:37:56.061Z</lastmod>
     
@@ -247,13 +254,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/08/li-yong-redis-shi-xian-fen-bu-shi-suo/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.061Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/12/06/qian-duan-hou-duan-wo-yao-yu-ni-fen-shou/</loc>
     
     <lastmod>2019-12-08T09:37:56.061Z</lastmod>
@@ -261,14 +261,21 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/16/spring-annotation-day-09/</loc>
+    <loc>http://gakkil.gitee.io/2019/01/08/li-yong-redis-shi-xian-fen-bu-shi-suo/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.061Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2018/10/17/spring-annotation-day-10/</loc>
     
     <lastmod>2019-12-08T09:37:56.060Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/17/spring-annotation-day-10/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/16/spring-annotation-day-09/</loc>
     
     <lastmod>2019-12-08T09:37:56.060Z</lastmod>
     
@@ -282,7 +289,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/20/spring-annotation-day-14/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/19/spring-annotation-day-13/</loc>
     
     <lastmod>2019-12-08T09:37:56.060Z</lastmod>
     
@@ -296,7 +303,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/19/spring-annotation-day-13/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/20/spring-annotation-day-14/</loc>
     
     <lastmod>2019-12-08T09:37:56.060Z</lastmod>
     
@@ -359,13 +366,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/13/java-yuan-zi-lei-shi-xian-yuan-li-fen-xi/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.058Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/10/29/idea-chuang-jian-maven-web-gong-cheng/</loc>
     
     <lastmod>2019-12-08T09:37:56.058Z</lastmod>
@@ -373,7 +373,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/11/my-new-post/</loc>
+    <loc>http://gakkil.gitee.io/2019/01/13/java-yuan-zi-lei-shi-xian-yuan-li-fen-xi/</loc>
     
     <lastmod>2019-12-08T09:37:56.058Z</lastmod>
     
@@ -387,6 +387,13 @@
   </url>
   
   <url>
+    <loc>http://gakkil.gitee.io/2018/10/11/my-new-post/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.058Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gakkil.gitee.io/2018/10/12/spring-annotation-01/</loc>
     
     <lastmod>2019-12-08T09:37:56.058Z</lastmod>
@@ -394,7 +401,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/24/values-fan-hui-zhi/</loc>
+    <loc>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</loc>
     
     <lastmod>2019-12-08T09:37:56.057Z</lastmod>
     
@@ -415,7 +422,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/18/tomcat-de-qi-dong-fen-xi-si-webapp/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/24/values-fan-hui-zhi/</loc>
     
     <lastmod>2019-12-08T09:37:56.057Z</lastmod>
     
@@ -429,14 +436,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/19/spring-zhong-wu-chu-bu-zai-de-properties/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/19/spring-he-springmvc-fu-zi-rong-qi-guan-xi-chu-kui/</loc>
     
     <lastmod>2019-12-08T09:37:56.056Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/10/19/spring-he-springmvc-fu-zi-rong-qi-guan-xi-chu-kui/</loc>
+    <loc>http://gakkil.gitee.io/2018/10/19/spring-zhong-wu-chu-bu-zai-de-properties/</loc>
     
     <lastmod>2019-12-08T09:37:56.056Z</lastmod>
     
@@ -464,13 +471,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/12/springboot-day-09/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.055Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/10/24/springmvc-can-shu-bang-ding/</loc>
     
     <lastmod>2019-12-08T09:37:56.055Z</lastmod>
@@ -486,6 +486,13 @@
   
   <url>
     <loc>http://gakkil.gitee.io/2018/11/11/springboot-day-08/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.055Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2018/11/12/springboot-day-09/</loc>
     
     <lastmod>2019-12-08T09:37:56.055Z</lastmod>
     
@@ -534,14 +541,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/03/springboot-day-02/</loc>
+    <loc>http://gakkil.gitee.io/2018/11/04/springboot-day-03/</loc>
     
     <lastmod>2019-12-08T09:37:56.053Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/04/springboot-day-03/</loc>
+    <loc>http://gakkil.gitee.io/2018/11/03/springboot-day-02/</loc>
     
     <lastmod>2019-12-08T09:37:56.053Z</lastmod>
     
@@ -604,13 +611,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/21/spring-boot-yu-kai-fa-re-bu-shu/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.051Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/11/18/spring-boot-yu-an-quan/</loc>
     
     <lastmod>2019-12-08T09:37:56.051Z</lastmod>
@@ -618,9 +618,9 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/12/21/redis-de-xia-zai-yu-an-zhuang/</loc>
+    <loc>http://gakkil.gitee.io/2018/11/21/spring-boot-yu-kai-fa-re-bu-shu/</loc>
     
-    <lastmod>2019-12-08T09:37:56.050Z</lastmod>
+    <lastmod>2019-12-08T09:37:56.051Z</lastmod>
     
   </url>
   
@@ -632,7 +632,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/04/redis-de-wei-wei-bo-xiang-mu/</loc>
+    <loc>http://gakkil.gitee.io/2018/12/21/redis-de-xia-zai-yu-an-zhuang/</loc>
     
     <lastmod>2019-12-08T09:37:56.050Z</lastmod>
     
@@ -640,6 +640,13 @@
   
   <url>
     <loc>http://gakkil.gitee.io/2018/12/30/redis-de-fa-bu-yu-ding-yue/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.050Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2019/01/04/redis-de-wei-wei-bo-xiang-mu/</loc>
     
     <lastmod>2019-12-08T09:37:56.050Z</lastmod>
     
@@ -660,14 +667,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/01/redis-zhong-yun-wei-xiang-guan-de-zhi-ling/</loc>
+    <loc>http://gakkil.gitee.io/2018/12/31/redis-zhong-de-ji-qun-bu-shu/</loc>
     
     <lastmod>2019-12-08T09:37:56.049Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/12/31/redis-zhong-de-ji-qun-bu-shu/</loc>
+    <loc>http://gakkil.gitee.io/2019/01/01/redis-zhong-yun-wei-xiang-guan-de-zhi-ling/</loc>
     
     <lastmod>2019-12-08T09:37:56.049Z</lastmod>
     
@@ -709,21 +716,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/02/redis-zhong-key-de-she-ji-ji-qiao/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.048Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/12/31/redis-zhong-de-aof-ri-zhi-chi-jiu-hua/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.048Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gakkil.gitee.io/2018/12/31/redis-zhong-de-rdb-kuai-zhao-chi-jiu-hua/</loc>
     
     <lastmod>2019-12-08T09:37:56.048Z</lastmod>
     
@@ -737,7 +730,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/12/30/redis-zhong-de-jian-dan-shi-wu/</loc>
+    <loc>http://gakkil.gitee.io/2019/01/02/redis-zhong-key-de-she-ji-ji-qiao/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.048Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2018/12/31/redis-zhong-de-rdb-kuai-zhao-chi-jiu-hua/</loc>
     
     <lastmod>2019-12-08T09:37:56.048Z</lastmod>
     
@@ -751,14 +751,21 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</loc>
+    <loc>http://gakkil.gitee.io/2018/12/30/redis-zhong-de-jian-dan-shi-wu/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.048Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/</loc>
     
     <lastmod>2019-12-08T09:37:56.047Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/05/10/rabbitmq-de-ji-chu-shi-zhan/</loc>
+    <loc>http://gakkil.gitee.io/2019/05/07/rabbitmq-de-gai-nian-jie-shao/</loc>
     
     <lastmod>2019-12-08T09:37:56.047Z</lastmod>
     
@@ -779,14 +786,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</loc>
+    <loc>http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</loc>
     
     <lastmod>2019-12-08T09:37:56.046Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/03/08/mybatis-de-kai-fa-de-di-yi-tian/</loc>
+    <loc>http://gakkil.gitee.io/2019/03/17/mybatis-dai-ma-sheng-cheng-qi/</loc>
     
     <lastmod>2019-12-08T09:37:56.046Z</lastmod>
     
@@ -828,7 +835,14 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</loc>
+    <loc>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</loc>
     
     <lastmod>2019-12-08T09:37:56.044Z</lastmod>
     
@@ -842,14 +856,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/03/13/mybatis-zhong-de-resultmap/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.044Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gakkil.gitee.io/2019/03/10/mybatis-zhong-de-zhu-pei-zhi-wen-jian-02/</loc>
+    <loc>http://gakkil.gitee.io/2019/03/16/mybatis-zhong-de-dong-tai-sql/</loc>
     
     <lastmod>2019-12-08T09:37:56.044Z</lastmod>
     
@@ -891,13 +898,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/28/linux-ji-chu-ru-men-zhi-ren-wu-diao-du/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.042Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/11/25/linux-ji-chu-ru-men-zhi-shi-cao/</loc>
     
     <lastmod>2019-12-08T09:37:56.042Z</lastmod>
@@ -905,7 +905,7 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2018/11/25/linux-ji-chu-ru-men-zhi-zhi-ling/</loc>
+    <loc>http://gakkil.gitee.io/2018/11/28/linux-ji-chu-ru-men-zhi-ren-wu-diao-du/</loc>
     
     <lastmod>2019-12-08T09:37:56.042Z</lastmod>
     
@@ -913,6 +913,13 @@
   
   <url>
     <loc>http://gakkil.gitee.io/2018/11/27/linux-ji-chu-ru-men-zhi-quan-xian/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.042Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2018/11/25/linux-ji-chu-ru-men-zhi-zhi-ling/</loc>
     
     <lastmod>2019-12-08T09:37:56.042Z</lastmod>
     
@@ -982,13 +989,6 @@
   </url>
   
   <url>
-    <loc>http://gakkil.gitee.io/2019/01/11/docker-zhong-de-dockerfile-jie-xi/</loc>
-    
-    <lastmod>2019-12-08T09:37:56.039Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://gakkil.gitee.io/2018/10/18/bean-de-sheng-ming-zhou-qi/</loc>
     
     <lastmod>2019-12-08T09:37:56.039Z</lastmod>
@@ -997,6 +997,13 @@
   
   <url>
     <loc>http://gakkil.gitee.io/2019/01/14/concurrenthashmap-de-shi-xian-yuan-li/</loc>
+    
+    <lastmod>2019-12-08T09:37:56.039Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gakkil.gitee.io/2019/01/11/docker-zhong-de-dockerfile-jie-xi/</loc>
     
     <lastmod>2019-12-08T09:37:56.039Z</lastmod>
     
