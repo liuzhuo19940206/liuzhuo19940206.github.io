@@ -89,7 +89,7 @@ deploy:
   type: git
   repo: 
           github: git@github.com:liuzhuo19940206/liuzhuo19940206.github.io.git
-          coding: git@git.dev.tencent.com:liuzhuo19940206/liuzhuoj.git
+          # coding: git@git.dev.tencent.com:liuzhuo19940206/liuzhuoj.git
   branch: master
   
 
