@@ -5,9 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Redis中的集群部署, 解忧杂货店">
-    <meta name="description" content="今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。
-集群的作用1:  主从备份 防止主机宕机2:  读写分离,分担master的任务（master写，slave读）3:  任务分离,如从服务器分担备份工作与计算">
+    <meta name="keywords" content="es中Kibana的安装, 解忧杂货店">
+    <meta name="description" content="根据上篇博客，我们已经了解了es的基本概念和es的安装环境和启动命令，以及简单的crud指令操作。
+现在，让我们开始学习kibana的安装与使用。
+Kibana是专门用来为ElasticSearch设计开发的，可以提供数据查询，数据可视化等">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Redis中的集群部署 | 解忧杂货店</title>
+    <title>es中Kibana的安装 | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -293,13 +294,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5ead8951c2a9a83be5e4a176.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Redis中的集群部署
+                        es中Kibana的安装
                     </div>
                 </div>
             </div>
@@ -411,12 +412,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/redis/" target="_blank">
-                                <span class="chip bg-color">redis</span>
-                            </a>
-                        
-                            <a href="/tags/缓存/" target="_blank">
-                                <span class="chip bg-color">缓存</span>
+                            <a href="/tags/elasticsearch/" target="_blank">
+                                <span class="chip bg-color">elasticsearch</span>
                             </a>
                         
                     </div>
@@ -427,12 +424,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                redis
-                            </a>
-                        
-                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
-                                缓存
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                elasticsearch
                             </a>
                         
                     </div>
@@ -443,21 +436,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-12-31
+                    2020-05-02
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.4k
+                        485
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        1 分
                     </div>
                     
                 
@@ -473,223 +466,76 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来学习redis中的集群部署，防止一台master宕机后，就全盘皆输的局面。</p>
-<h2 id="集群的作用"><a href="#集群的作用" class="headerlink" title="集群的作用"></a>集群的作用</h2><p>1:  主从备份 防止主机宕机<br>2:  读写分离,分担master的任务（master写，slave读）<br>3:  任务分离,如从服务器分担备份工作与计算工作</p>
-<h2 id="redis中的集群"><a href="#redis中的集群" class="headerlink" title="redis中的集群"></a>redis中的集群</h2><p>通常有两种集群的搭建方式：</p>
-<p>1）星型<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231175911.png" style="width:50%"></p>
-<p>2) 链式<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231180020.png" style="width:50%"></p>
-<p>第2种方式的好处:</p>
-<p>master宕机后 , 可以直接切换到 slave1 。</p>
-<h2 id="redis中主从的通信过程"><a href="#redis中主从的通信过程" class="headerlink" title="redis中主从的通信过程"></a>redis中主从的通信过程</h2><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231180204.png" style="width:50%"></p>
-<p>首先，slave向master发出同步的命令，master会将dump文件发给slave，在dump的过程中向master发出的命令再使用aof文件来同步到slave中。之后就使用replicationFeedSlaves来同步。</p>
-<h2 id="redis集群的配置"><a href="#redis集群的配置" class="headerlink" title="redis集群的配置"></a>redis集群的配置</h2><p>Master配置:<br>1:关闭rdb快照(备份工作交给slave)<br>2:可以开启aof</p>
-<p>slave配置:<br>1: <strong>声明slave-of</strong><br>2: 配置密码[如果master有密码]<br>3: [某1个] slave 打开 rdb快照功能<br>4: <strong>配置是否只读[slave-read-only]</strong></p>
+                <p>根据上篇博客，我们已经了解了es的基本概念和es的安装环境和启动命令，以及简单的crud指令操作。</p>
+<p>现在，让我们开始学习kibana的安装与使用。</p>
+<p>Kibana是专门用来为ElasticSearch设计开发的，可以提供数据查询，数据可视化等功能。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://www.elastic.co/cn/downloads/past-releases#kibana" target="_blank" rel="noopener">kibana的各种下载版本</a></p>
+<p>博主这里下载的是6.2.1的，各位可以选择与自己安装es的版本一致就行。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装步骤比较简单。</p>
+<ol>
+<li>下载完后解压到任意目录。</li>
+<li>启动es</li>
+<li>配置config目录下的kibana.yml的elasticsearch.url指向es地址</li>
+<li>运行bin目录下的kibana</li>
+<li>如果没有修改配置文件的端口，那么在浏览器中输入<a href="http://localhost:5601" target="_blank" rel="noopener">http://localhost:5601</a></li>
+<li>启动Kibana后，Kibana会自动在配置的es中创建一个名为.kibana的索引，用来存储数据，注意不要删除了。</li>
+</ol>
 <hr>
-<p>下面开始，真正的操作过程。</p>
-<h3 id="redis中简单的主从复制配置"><a href="#redis中简单的主从复制配置" class="headerlink" title="redis中简单的主从复制配置"></a>redis中简单的主从复制配置</h3><p>准备搭 ：1个master + 2个slave的redis集群。</p>
-<p>这里是模拟集群，可以使用多个配置文件来模拟多个redis服务器。启动一个配置文件，就是一个redis服务器。</p>
-<p>master的配置文件：关闭rdb，开启aof。</p>
-<p>第一个slave服务器：开启rdb，关闭aof，开启slave只读。</p>
-<p>第二个slave服务器：rdb、aof都不关闭，开启slave只读。</p>
-<hr>
-<p>将当前目录下的redis.conf文件，复制两份，改个名字。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231202510.png"></p>
-<p><strong>修改master的redis.conf配置文件：</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231202701.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231203232.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231203341.png"></p>
-<p><strong>修改第一个slave的redis6780.conf的配置文件</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231203939.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231204258.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231204410.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231204626.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205035.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205144.png"></p>
-<p><strong>修改第二个slave的redis6781.conf的配置文件</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205323.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205428.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205538.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205726.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205849.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231205940.png"></p>
-<hr>
-<p>分别启动这个三个redis服务器：</p>
-<p>启动之前先删除之前的rdb与aof文件，避免形成干扰。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231211210.png"></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231210422.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231210638.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231214510.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20181231214713.png"></p>
-<p>发现，我们往master中插入name数据后，在两个slave服务器中，根本就没有name数据。</p>
-<font color="red"><strong>这是为啥呢？这是因为redis版本更新后，在slave中配置master的ip时候，不能使用localhost ！！！必须是ip地址，即要写成127.0.0.1</strong></font>
+<p>修改kibana的配置文件：</p>
+<p><img src="https://pic.downk.cc/item/5ead8cc6c2a9a83be5e7bc86.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5ead8e39c2a9a83be5e95cdd.jpg" alt></p>
+<p><code>./bin/kibana</code>启动kibana</p>
+<p><img src="https://pic.downk.cc/item/5ead91a4c2a9a83be5edee22.jpg" alt></p>
+<p>ps：后台启动：<code>nohup ./bin/kibana &amp;</code></p>
+<p>验证kibana是否启动成功：</p>
+<p>在浏览器中输入：<code>http://localhost:5601/</code></p>
+<p><img src="https://pic.downk.cc/item/5ead95c8c2a9a83be5f2e59c.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5ead9632c2a9a83be5f34bce.jpg" alt></p>
+<p>那，我们来创建一个索引pattern吧：</p>
+<p><img src="https://pic.downk.cc/item/5ead9798c2a9a83be5f4ca07.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5ead97fdc2a9a83be5f52f43.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5ead99e2c2a9a83be5f6c54f.jpg" alt></p>
+<p>创建成功后：</p>
+<p><img src="https://pic.downk.cc/item/5ead9a1fc2a9a83be5f6efe1.jpg" alt></p>
+<p>再次点击Discover：</p>
+<p><img src="https://pic.downk.cc/item/5ead9a4dc2a9a83be5f70de9.jpg" alt></p>
+<p>能直观的看到hello索引中的数据。</p>
+<h2 id="Kibana中执行restAPI"><a href="#Kibana中执行restAPI" class="headerlink" title="Kibana中执行restAPI"></a>Kibana中执行restAPI</h2><p>点击：Dev Tools</p>
+<h3 id="查看es索引的mapping结构"><a href="#查看es索引的mapping结构" class="headerlink" title="查看es索引的mapping结构"></a>查看es索引的mapping结构</h3><p>GET index/_mapping</p>
+<p><img src="https://pic.downk.cc/item/5ead9b0cc2a9a83be5f7c6fb.jpg" alt></p>
+<h3 id="es中插入数据"><a href="#es中插入数据" class="headerlink" title="es中插入数据"></a>es中插入数据</h3><pre class=" language-java"><code class="language-java">POST hello<span class="token operator">/</span>people
+<span class="token punctuation">{</span>
+  <span class="token string">"id"</span><span class="token operator">:</span><span class="token string">"34567"</span><span class="token punctuation">,</span>
+  <span class="token string">"name"</span><span class="token operator">:</span><span class="token string">"li's"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ead9b75c2a9a83be5f83145.jpg" alt></p>
+<h3 id="es中查询数据"><a href="#es中查询数据" class="headerlink" title="es中查询数据"></a>es中查询数据</h3><p>1) 查询指定的 _id</p>
+<pre class=" language-java"><code class="language-java">GET hello<span class="token operator">/</span>people<span class="token operator">/</span>MGcn1nEB9ShQhk7DF0Ql
 
-<p>将两个slave中的：<code>replicaof 127.0.0.1 6379</code> 这样写就可以了。</p>
-<p>下面是三个redis配置文件中的详细信息：</p>
-<p>master：redis.conf</p>
-<pre><code>bind 127.0.0.1   # 实际生产中，添加自己的ip地址。
-port 6379
-daemonize yes
-pidfile /var/run/redis_6379.pid
-#save 900 1                     # master:关闭rdb，留给slave来完成
-#save 300 10
-#save 60 10000
-dbfilename dump6379.rdb
-dir /var/rdb
-appendonly yes                  # master：开启aof。
-appendfilename &quot;appendonly6379.aof&quot;
-</code></pre><p>slave：redis6780.conf</p>
-<pre><code>bind 127.0.0.1   # 实际生产中，添加自己的ip地址。
-port 6780
-daemonize yes
-pidfile /var/run/redis_6780.pid
-save 900 1                     # 6780的slave开启：rdb
-save 300 10
-save 60 10000
-dbfilename dump6780.rdb
-dir /var/rdb
-appendonly no                  # 关闭aof功能，因为master已经开启了
-appendfilename &quot;appendonly6780.aof&quot;
-
-#配置主从复制
-replicaof 127.0.0.1 6379  # 配置master的ip地址和端口号。注意这里不能写localhost！！！
-replica-read-only yes     # slave只读。
-</code></pre><p>slave：redis6781.conf</p>
-<pre><code>bind 127.0.0.1   # 实际生产中，添加自己的ip地址。
-port 6781
-daemonize yes
-pidfile /var/run/redis_6781.pid
-#save 900 1                     # 关闭rdb功能
-#save 300 10
-#save 60 10000
-dbfilename dump6781.rdb
-dir /var/rdb
-appendonly no                  # 关闭aof功能
-appendfilename &quot;appendonly6781.aof&quot;
-
-#配置主从复制
-replicaof 127.0.0.1 6379  # 配置master的ip地址和端口号。注意这里不能写localhost！！！
-replica-read-only yes     # slave只读。
-</code></pre><p>这样：分别启动三个redis客户端来验证，数据就一致了。</p>
-<p><strong>注意：高版本的redis主从复制中配置文件中，是：replicaof 、replica-read-only；低版本中是：slaveof、slave-read-only。</strong></p>
+这里的 MGcn1nEB9ShQhk7DF0Ql 是 文档的_id，该字段是唯一的标识符
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ead9bfcc2a9a83be5f8c2b0.jpg" alt></p>
+<p>2) 查询所有的数据</p>
+<pre class=" language-java"><code class="language-java">GET hello<span class="token operator">/</span>people<span class="token operator">/</span>_search
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ead9c8dc2a9a83be5f970a6.jpg" alt></p>
+<p>3) es中的match查询（匹配）</p>
+<pre class=" language-java"><code class="language-java">GET hello<span class="token operator">/</span>people<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"张"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ead9ce7c2a9a83be5f9dec9.jpg" alt></p>
+<p>可以看到，只查询到了name中包含张的数据，match后续会解释，现在只需要懂得match是匹配一个字符串中是否包含指定的parse即可。</p>
 <hr>
-<p>下面，来演示redis-2版本之上的版本集群搭建方式：</p>
-<h3 id="redis中的集群搭建"><a href="#redis中的集群搭建" class="headerlink" title="redis中的集群搭建"></a>redis中的集群搭建</h3><p>上面，我们演示了redis中的，简单主从复制的搭建，比较简单。其实slave就是将master中的数据拷贝了一份。<br>而redis中的集群的话，就不是那么简单了，当我们访问其中一个redis服务器时，首先会使用hash算法，定位到具体要使用哪个redis服务器，详细理论知识请看官网。</p>
-<p>下面开始redis的搭建过程。</p>
-<p>Redis的集群部署需要在每台集群部署的机器上安装Redis，然后修改配置以集群的方式启动。</p>
-<p>这里演示的话，就是使用多个redis.conf配置文件来模拟redis集群。</p>
-<h4 id="搭建redis集群"><a href="#搭建redis集群" class="headerlink" title="搭建redis集群"></a>搭建redis集群</h4><p>1）现在搭建redis集群，<strong>最小集群模式需要三个master实例</strong>，一般建议起六个实例，即三主三从。因此我们创建6个以端口号命名的目录存放实例的配置文件和其他信息。</p>
-<pre><code>mkdir redis-cluster
-cd redis-cluster
-mkdir 7000 7001 7002 7003 7004 7005
-</code></pre><p>在对应端口号的目录中复制一份redis.conf的文件。每个配置文件中的端口号port参数改为对应目录的端口号。</p>
-<p>目录结构可参考：</p>
-<pre><code>redis-cluster/
-├── 7000
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7000.conf
-│   └── redis.conf
-├── 7001
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7001.conf
-│   └── redis.conf
-├── 7002
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7002.conf
-│   └── redis.conf
-├── 7003
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7003.conf
-│   └── redis.conf
-├── 7004
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7004.conf
-│   └── redis.conf
-├── 7005
-│   ├── appendonly.aof
-│   ├── dump.rdb
-│   ├── nodes-7005.conf
-│   └── redis.conf
-
-</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101112544.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101113222.png"></p>
-<p>每个redis.conf配置文件的大致需要配置的内容：</p>
-<pre><code>#可选操作，该项设置后台方式运行，
-daemonize yes                       # 开启后台运行
-
-bind 127.0.0.1                      # 如果是实际中，填写每个机器的ip地址
-port 7000                           # 对应每个文件夹的名字，设置不同的端口号
-pidfile /var/run/redis_7000.pid     # 设置pid文件，对应每个端口号
-cluster-enabled yes                 # 开启redis的集群
-cluster-config-file nodes-7000.conf # redis集群节点信息文件
-cluster-node-timeout 5000           # redis集群节点连接超时的设置
-appendonly yes                      # 开启aof持久化
-</code></pre><p>以7000为例：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114057.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114230.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114311.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114349.png"></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114436.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114551.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101123950.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101115015.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101115120.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101120216.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101115259.png"></p>
-<p>7003：<br>只是开启rdb持久化。7000-7002：master，关闭rdb；7003-7005：slaver，开启rdb。<br>其他的配置类似于7000。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101114700.png"></p>
-<h4 id="启动redis服务器"><a href="#启动redis服务器" class="headerlink" title="启动redis服务器"></a>启动redis服务器</h4><p>2）启动六个redis服务器<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101121530.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101124528.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101124720.png"></p>
-<p>如果是使用前台的方式启动redis服务器的话，会出现：</p>
-<pre><code>[82462] 26 Nov 11:56:55.329 * No cluster configuration found, I&#39;m 97a3a64667477371c4479320d683e4c8db5858b1
-</code></pre><p>每个实例都会生成一个Node ID，类似97a3a64667477371c4479320d683e4c8db5858b1，用来作为Redis实例在集群中的唯一标识，而不是通过IP和Port，IP和Port可能会改变，该Node ID不会改变。</p>
-<h4 id="使用redis-trib创建集群"><a href="#使用redis-trib创建集群" class="headerlink" title="使用redis-trib创建集群"></a>使用redis-trib创建集群</h4><p>3）使用redis-trib创建集群</p>
-<p>redis的实例全部运行之后，还需要redis-trib.rb工具来完成集群的创建，redis-trib.rb二进制文件在Redis包主目录下的src目录中，运行该工具依赖 <strong>ruby环境 和 gem</strong>，因此需要提前安装。</p>
-<h5 id="安装：ruby"><a href="#安装：ruby" class="headerlink" title="安装：ruby"></a>安装：ruby</h5><p>安装：ruby</p>
-<p><code>yum -y install ruby rubygems</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101125702.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101125829.png"></p>
-<p>查看ruby的版本：<br><code>ruby --version</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101130020.png"></p>
-<p><strong>由于centos系统默认支持Ruby版本为2.0.0，因此执行 gem install redis 命令时会报以下错误。</strong></p>
-<p><code>gem install redis</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101130250.png"></p>
-<p><strong>解决方法是先安装 rvm，再升级ruby版本。</strong></p>
-<h5 id="安装：rvm"><a href="#安装：rvm" class="headerlink" title="安装：rvm"></a>安装：rvm</h5><p>安装rvm</p>
-<p><code>curl -L get.rvm.io | bash -s stable</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101130536.png"></p>
-<p>如果出现以下错误：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101130655.png"></p>
-<p>则执行报错中的：<code>gpg2 --keyserver ·····</code> 命令。</p>
-<pre><code>gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101131331.png"></p>
-<p>再次执行命令curl -L get.rvm.io | bash -s stable。例如：</p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101131715.png"></p>
-<p>以上表示执行成功，然后执行以下命令。</p>
-<p><code>source /usr/local/rvm/scripts/rvm</code></p>
-<p>查看rvm库中已知的ruby版本</p>
-<p><code>rvm list known</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101131922.png"></p>
-<h5 id="升级：ruby"><a href="#升级：ruby" class="headerlink" title="升级：ruby"></a>升级：ruby</h5><p>升级Ruby:</p>
-<pre><code>#安装ruby
-rvm install 2.5.0
-#使用新版本
-rvm use  2.5.0
-#移除旧版本
-rvm remove 2.0.0
-#查看当前版本
-ruby --version
-</code></pre><p>例如：<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101134937.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101135058.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101135223.png"></p>
-<h5 id="安装：gem"><a href="#安装：gem" class="headerlink" title="安装：gem"></a>安装：gem</h5><p>安装：gem</p>
-<p><code>gem install redis</code><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101135356.png"></p>
-<hr>
-<h5 id="redis-trib-rb"><a href="#redis-trib-rb" class="headerlink" title="redis-trib.rb"></a>redis-trib.rb</h5><p>以上前提工具终于安装好了，可以开始执行：redis-trib.rb 命令</p>
-<p>在redis的src源码下，存在：redis-trib.rb 命令。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101135937.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101140009.png"></p>
-<p>在src目录下：执行<br><code>./redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005</code></p>
-<pre><code>参数create表示创建一个新的集群，--replicas 1 :表示为每个master创建一个slave。
-</code></pre><p>如果创建成功会显示以下信息</p>
-<pre><code>[OK] All 16384 slots covered
-</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101140758.png"></p>
-<p><code>./redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1</code></p>
-<p>执行成功后会停止在：</p>
-<p>Can I set the above configuration? (type ‘yes’ to accept):</p>
-<p>输入：yes 即可。</p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101141229.png"></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101141342.png"></p>
-<hr>
-<h4 id="部署结果验证"><a href="#部署结果验证" class="headerlink" title="部署结果验证"></a>部署结果验证</h4><p>4) 部署结果验证</p>
-<p>1、客户端验证</p>
-<p>使用客户端redis-cli二进制访问某个实例，执行set和get的测试。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101142210.png"></p>
-<p><strong>注意：</strong> -h：填写实际中的ip地址，-p：端口号，<strong>-c：代表连接的是redis集群</strong>（一定要带上-c）<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101142637.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101142956.png"></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101143006.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101143225.png"></p>
-<p>2、集群状态</p>
-<p>使用 cluster info 命令查看集群状态。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101143436.png"></p>
-<p>3、节点状态</p>
-<p>使用cluster nodes命令查看节点状态。<br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101143720.png"></p>
-<h2 id="配置master密码"><a href="#配置master密码" class="headerlink" title="配置master密码"></a>配置master密码</h2><p>一般，我们搭建redis集群是在内网中，所以，不需要设置master密码，也不许要配置防火墙，这样会加快redis的访问速度。</p>
-<p>如果，你一定要为了安全性，要配置master的密码的话。</p>
-<p>首先退出redis集群，杀死六个redis服务器进程。</p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101145033.png"></p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p><strong>修改所有redis集群中的redis.conf文件 </strong></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101145328.png"></p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101145614.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101150746.png"></p>
-<p><strong>注意所有节点的密码都必须一致，masterauth也要加的。</strong></p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p><strong>通过指令找到安装的redis在ruby环境中的配置client.rb</strong></p>
-<pre><code>find / -name &quot;client.rb&quot;
-</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101151416.png"></p>
-<p>编辑该文件:</p>
-<pre><code>vim /usr/local/rvm/gems/ruby-2.5.0/gems/redis-4.1.0/lib/redis/client.rb
-</code></pre><p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101151542.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101151614.png"></p>
-<p>修改其中的密码配置：pass</p>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101151753.png"></p>
-<p>之后重启Redis，即可。</p>
-<hr>
-<p><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101152529.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101152635.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101152738.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101152836.png"></p>
-<p><strong>现在，必须使用带密码的参数来连接redis服务器才有权限</strong><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101153331.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101153455.png"><br><img src="https://gakkil.gitee.io/gakkil-image/redis/day08/QQ截图20190101153612.png"></p>
+<p>ps：使用Kibana的工具中的Dev Tools时，输入restAPI时会有提示！</p>
+<p>最终打开es-head，你会发现多了一个索引：.kibana</p>
+<p><img src="/Users/liuzhuo/Library/Application Support/typora-user-images/image-20200503001957825.png" alt></p>
 
             </div>
             <hr/>
@@ -837,7 +683,7 @@ ruby --version
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/31/redis-zhong-de-ji-qun-bu-shu/" class="b-link-green">Redis中的集群部署</a>
+                    <a href="/2020/05/02/es-zhong-kibana-de-an-zhuang/" class="b-link-green">es中Kibana的安装</a>
                 </p>
             </div>
         </div>
@@ -1117,54 +963,47 @@ ruby --version
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/01/01/redis-zhong-yun-wei-xiang-guan-de-zhi-ling/">
+                <a href="/2020/05/02/es-zhong-kibana-de-an-zhuang/">
                     <div class="card-image">
                         
+                        <img src="https://pic.downk.cc/item/5ead8951c2a9a83be5e4a176.jpg" class="responsive-img" alt="es中Kibana的安装">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis中运维相关的指令">
-                        
-                        <span class="card-title">Redis中运维相关的指令</span>
+                        <span class="card-title">es中Kibana的安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                      
-                                redis中与运维相关的指令
+                       
+                                es中kibana的安装与使用
                       
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                    redis
-                                </a>
-                            
-                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
-                                    缓存
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/" target="_blank">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/缓存/" target="_blank">
-                        <span class="chip bg-color">缓存</span>
+                    <a href="/tags/elasticsearch/" target="_blank">
+                        <span class="chip bg-color">elasticsearch</span>
                     </a>
                     
                 </div>
@@ -1178,35 +1017,30 @@ ruby --version
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/12/31/redis-zhong-de-aof-ri-zhi-chi-jiu-hua/">
+                <a href="/2020/05/01/elasticsearch-de-ru-men/">
                     <div class="card-image">
                         
+                        <img src="https://pic.downk.cc/item/5eac303ac2a9a83be59f8da9.png" class="responsive-img" alt="ElasticSearch的入门">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Redis中的aof日志持久化">
-                        
-                        <span class="card-title">Redis中的aof日志持久化</span>
+                        <span class="card-title">ElasticSearch的入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                redis中的aof日志持久化操作
+                                elasticsearch的简单入门
                       
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-31
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category" target="_blank">
-                                    redis
-                                </a>
-                            
-                            <a href="/categories/redis/缓存/" class="post-category" target="_blank">
-                                    缓存
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
                                 </a>
                             
                             
@@ -1216,12 +1050,8 @@ ruby --version
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/" target="_blank">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/缓存/" target="_blank">
-                        <span class="chip bg-color">缓存</span>
+                    <a href="/tags/elasticsearch/" target="_blank">
+                        <span class="chip bg-color">elasticsearch</span>
                     </a>
                     
                 </div>
