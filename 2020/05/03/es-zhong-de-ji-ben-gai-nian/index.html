@@ -5,8 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ElasticSearch的入门, 解忧杂货店">
-    <meta name="description" content="简介Elasticsearch是一个高度可扩展的开源的分布式Restful全文搜索和分析引擎。它允许用户快速的（近实时的）存储、搜索和分析海量数据。它通常用作底层引擎技术，为具有复杂搜索功能和要求的应用程序提供支持。以下是ES可用于的一些场">
+    <meta name="keywords" content="es中的基本概念, 解忧杂货店">
+    <meta name="description" content="基本概念Elasticsearch是一个高可扩展的开源全文搜索和分析引擎，它允许存储、搜索和分析大量的数据，并且这个过程是近实时（NRT）的。它通常被用作底层引擎和技术，为复杂的搜索功能和要求提供动力。
+近实时(NRT)近实时(Near R">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ElasticSearch的入门 | 解忧杂货店</title>
+    <title>es中的基本概念 | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -292,13 +293,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5eac303ac2a9a83be59f8da9.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5eae2faac2a9a83be5547329.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ElasticSearch的入门
+                        es中的基本概念
                     </div>
                 </div>
             </div>
@@ -434,21 +435,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-01
+                    2020-05-03
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        984
+                        2.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        7 分
                     </div>
                     
                 
@@ -464,65 +465,74 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Elasticsearch是一个高度可扩展的开源的分布式Restful全文搜索和分析引擎。它允许用户快速的（近实时的）存储、搜索和分析海量数据。它通常用作底层引擎技术，为具有复杂搜索功能和要求的应用程序提供支持。<br>以下是ES可用于的一些场景：</p>
-<ol>
-<li>电商网站提供搜索功能：可使用ES来存储产品的目录和库存，并为它们提供搜索和自动填充建议。</li>
-<li>收集日志和交易数据，并进行分析：可使用Logstash来收集、聚合和解析数据， 然后让Logstash将此数据提供给ES。然后可在ES中搜索和聚合开发者感兴趣的信息。</li>
-<li>需要快速调查、分析、可视化查询大量数据的特定问题：可以使用ES存储数据，然后使用Kibana构建自定义仪表板，来可视化展示数据。还可以使用ES的聚合功能针对这些数据进行复杂的商业分析。</li>
-</ol>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本文章主要介绍在mac上面安装的过程，其他操作系统类似。</p>
-<p>下载地址如下：</p>
-<p><a href="https://www.elastic.co/cn/downloads/elasticsearch" target="_blank" rel="noopener">es的中文官方文档</a></p>
-<p><img src="https://pic.downk.cc/item/5eac316fc2a9a83be5a3325a.jpg" alt></p>
-<p>可以看到最新的版本是：7.6.2.</p>
-<p>es每个版本改动很大，7版本中去掉了es中的type类型，博主还没有去研究7的版本，因此，我下载的是6的版本，6.2.1的。</p>
-<p>下载历史版本：</p>
-<p><img src="https://pic.downk.cc/item/5eac31f8c2a9a83be5a4084a.jpg" alt></p>
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p><img src="https://pic.downk.cc/item/5eac326fc2a9a83be5a4ff3b.jpg" alt></p>
-<p>es的安装目录简单介绍：</p>
-<p>1）bin目录：主要是es的启动，停止，安装插件的可执行程序</p>
-<p>2）config目录：es的配置文件，修改es启动的ip地址，端口号等</p>
-<p>3）lib目录：es执行依赖的jar包</p>
-<p>4）logs目录：es运行过程中产生的日志文件</p>
-<p>5）plugins目录：es可以自定义插件来扩展es的功能，此目录就是用来安装es插件的。</p>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>1）前台运行</p>
-<p>在es的解压后的目录下：</p>
-<p><code>./bin/elasticsearch</code></p>
-<p><img src="/Users/liuzhuo/Library/Application Support/typora-user-images/image-20200501223708875.png" alt></p>
-<p>2) 后台运行</p>
-<p><code>nohup ./bin/elasticsearhc &amp;</code></p>
-<p>执行后，在当前目录下，可以看到 nohup的文件，<code>tail -f nohup</code> 来实时查看es的运行情况。</p>
-<p>3）验证是否启动成功</p>
-<p>在浏览器中输入：<code>http://localhost:9200/</code></p>
-<p><img src="https://pic.downk.cc/item/5eac34a5c2a9a83be5a8d37f.jpg" alt></p>
-<p>可以看到此时es的启动情况：</p>
-<p>节点的name：node-1</p>
-<p>集群的名字：gakki</p>
-<p>es的版本号，lucene的版本号等。</p>
-<h2 id="es的head插件"><a href="#es的head插件" class="headerlink" title="es的head插件"></a>es的head插件</h2><p>博主下载了es的head的谷歌浏览器的插件，可以很方便的查看es的健康、集群、索引的情况</p>
-<p><img src="https://pic.downk.cc/item/5eac3570c2a9a83be5aae685.jpg" alt></p>
-<h2 id="es的简单restAPI介绍"><a href="#es的简单restAPI介绍" class="headerlink" title="es的简单restAPI介绍"></a>es的简单restAPI介绍</h2><p>今天，这里博主首先使用postman工具来发送http请求，后面会使用Kibana来操作。</p>
-<h3 id="es启动验证"><a href="#es启动验证" class="headerlink" title="es启动验证"></a>es启动验证</h3><p><img src="https://pic.downk.cc/item/5eac3700c2a9a83be5ad142b.jpg" alt></p>
-<p>可以看到，使用get请求，输入：<code>http://localhost:9200/</code></p>
-<p>返回的结果和我们直接使用浏览器访问的结果一致。</p>
-<h3 id="es中创建索引"><a href="#es中创建索引" class="headerlink" title="es中创建索引"></a>es中创建索引</h3><p><img src="https://pic.downk.cc/item/5eac3a44c2a9a83be5b0cb70.jpg" alt></p>
-<p>这里，创建了一个名称为：hello，type：people，主分片数为：1，副本为：0的索引。因为，我这里只有一个节点，不再集群的环境，因此就一个主分配数，没有副本，如果后期搭建集群环境，创建索引时，可以合理安排这两个值。</p>
-<p>验证：</p>
-<p>在我们的es-head的插件中，可以非常直观的看到索引的信息，这也是我安装这个插件的原因</p>
-<p><img src="https://pic.downk.cc/item/5eac3b19c2a9a83be5b18f41.jpg" alt></p>
-<h3 id="es中往索引中插入数据"><a href="#es中往索引中插入数据" class="headerlink" title="es中往索引中插入数据"></a>es中往索引中插入数据</h3><p><img src="https://pic.downk.cc/item/5eac3c6ac2a9a83be5b2fcd9.jpg" alt></p>
-<p>根据我们创建的索引中的type类型来插入数据，上面我们创建了people类型，字段有id和name，类型都是String类型，String类型分为：keyword 和 text 类型，这个后面会介绍，现在只要知道是String类型即可。</p>
-<h3 id="es中的查询"><a href="#es中的查询" class="headerlink" title="es中的查询"></a>es中的查询</h3><p>1）查询所有文档</p>
-<p><code>http://localhost:9200/hello/people/_search</code></p>
-<p><img src="https://pic.downk.cc/item/5eac3e9ec2a9a83be5b5902f.jpg" alt></p>
-<p>2) 查询指定的id的文档</p>
-<p><code>http://localhost:9200/hello/people/${_id}</code></p>
-<p><img src="https://pic.downk.cc/item/5eac3f18c2a9a83be5b625d1.jpg" alt></p>
-<p>3) 高级查询</p>
-<p>根据name字段来查询</p>
-<p><img src="https://pic.downk.cc/item/5eac404ec2a9a83be5b76fb9.jpg" alt></p>
-<p>es-head插件中也能直接看到数据：</p>
-<p><img src="https://pic.downk.cc/item/5eac40abc2a9a83be5b7e823.jpg" alt></p>
+                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Elasticsearch是一个高可扩展的开源全文搜索和分析引擎，它允许存储、搜索和分析大量的数据，并且这个过程是近实时（NRT）的。它通常被用作底层引擎和技术，为复杂的搜索功能和要求提供动力。</p>
+<h3 id="近实时-NRT"><a href="#近实时-NRT" class="headerlink" title="近实时(NRT)"></a>近实时(NRT)</h3><p>近实时(Near Realtime NRT)，Elasticsearch是一个<strong><em>近实时</em></strong>的搜索平台，近实时的意思是指从你建立索引到你能够搜索这个文档这个过程，这个过程时间大概是1秒钟。</p>
+<h3 id="节点-node"><a href="#节点-node" class="headerlink" title="节点(node)"></a>节点(node)</h3><p>ElasticSearch 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 ElasticSearch 实例。</p>
+<p>单个 ElasticSearch 实例称为一个节点（node）。一组节点构成一个集群（cluster）。</p>
+<p>在集群中一个节点是一个单独的服务，用来存储数据，为集群的索引和搜索提供能力。</p>
+<p>集群中的节点，也有唯一标识的，默认在节点启动的时候会随机指定一个UUID(Universally Unique IDentifiter)。如果不使用默认名称，可以为其指定一个名称。节点名称对于集群管理也是很重要的。<br> 一个节点要加入到指定集群，需要为节点指定集群名称。默认情况下，每个节点都设置集群名称为”elasticsearch”，所以当在同一网络环境中，默认启动一些节点，这些节点会组装成一个名为elasticsearch集群。</p>
+<p>查看node节点列表：</p>
+<pre><code>$ curl -X GET http://127.0.0.1:9200/_cat/nodes?v
+</code></pre><p><img src="https://pic.downk.cc/item/5eae3a0bc2a9a83be55ee9ea.jpg" alt></p>
+<p><strong>可以启动Kibana，使用Dev Tools工具来查询，就不演示了。下面操作也都可以使用Kibana。</strong></p>
+<h3 id="集群-cluster"><a href="#集群-cluster" class="headerlink" title="集群(cluster)"></a>集群(cluster)</h3><p>一个集群包含一个或多个节点(node)，用来保存全部数据，并且这些节点<strong>联合</strong>提供索引和搜索能力。集群使用<font color="red"><strong>唯一名称</strong> </font>进行不同集群间的区分，默认名称是”elasticsearch”。集群的名称很重要，因为一个节点如果要加入到一个集群中，需要设置节点的集群名称。<br> 在实际应用中，需要确保你的不同环境，所使用的名称是不同的，否则会导致节点加入到其它集群环境中。比如你可以使用:logging-dev、logging-stage、logging-prod分别用来搭建开发、过渡、生产环境。<br> 集群可以只有一个节点，这个集群也能正常提供工作能力。此外，也可以搭建多个Elasticsearch集群，通过集群名称区分。</p>
+<h3 id="索引-Index"><a href="#索引-Index" class="headerlink" title="索引(Index)"></a>索引(Index)</h3><p>一个索引包含许多<strong>特征类似</strong>的文档。例如，有一个索引用来索引用户数据，另一个索引用来索引产品目录，其它的索引可以索引其它数据。</p>
+<p>一个索引（名词）需要指定一个名称(<font color="red"><strong>必须全部小写</strong></font>)，当执行索引（动词）、搜索、修改和删除操作，需要指定对应的索引名称。</p>
+<p> 在一个集群中，你可以创建多个索引。</p>
+<p>下面的命令可以查看当前节点的所有 Index。</p>
+<pre class=" language-java"><code class="language-java">$ curl <span class="token operator">-</span>X GET <span class="token string">'http://localhost:9200/_cat/indices?v'</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eae34adc2a9a83be559d20c.jpg" alt></p>
+<h3 id="类型-Type"><a href="#类型-Type" class="headerlink" title="类型(Type)"></a>类型(Type)</h3><font color="red">类型type，只有在低于7版本中存在，现在最新的es7版本中已经移除了type的概念，一个索引只有有一个type，而且是es自带的type，不允许用户自己来创建，默认就是：_doc （type）。</font>
+
+<p>不过在这里还是需要说明一下这个概念：</p>
+<p>在<strong>低版本</strong>中，一个索引中，可以定义多个类型。一个类型可以管理索引中符合特定逻辑的一部分数据。一般来说，类型定义具有公共字段的文档。例如你想创建一个博客平台，并且使用一个索引存储所有数据。在这个索引中，你可以定义一个类型用来存储用户数据，另一个类型用来存储博客数据，还可以创建一个类型用来存储评论。</p>
+<p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率，这是对于数据库中表的差异，数据库中的表结构是预定义的，定义之后是不允许修改和插入没有定义的field的！！！</p>
+<hr>
+<p>PS: 可以类比一下数据库中的概念，索引index ：数据库，类型type：表。</p>
+<p>1）下面的命令可以列出<strong>每个 Index</strong> 所包含的 Type。</p>
+<pre class=" language-java"><code class="language-java">$ curl <span class="token string">'localhost:9200/_mapping?pretty=true'</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eae35c2c2a9a83be55aeddf.jpg" alt></p>
+<p>2）列出指定的index的type</p>
+<pre class=" language-java"><code class="language-java">$ curl <span class="token string">'localhost:9200/${index}/_mapping?pretty=true'</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eae363bc2a9a83be55b5c1c.jpg" alt></p>
+<h3 id="文档-Doc"><a href="#文档-Doc" class="headerlink" title="文档(Doc)"></a>文档(Doc)</h3><p>文档是能够被索引的基础单元。例如一个文档存储一个用户信息，另一个文档存储一个产品信息。Elasticsearch文档使用JSON(JavaScript Object Notation)来表现数据。<br> 在一个索引/文档中可以存储许多文档。需要注意，尽管一个文档在物理存储上是存储在一个索引中的，但文档必须被索引或分配给索引的类型中。</p>
+<p>Document 使用 JSON 格式表示，下面是一个例子。</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"ide"</span><span class="token operator">:</span> <span class="token string">"543543565465"</span>
+  <span class="token string">"user"</span><span class="token operator">:</span> <span class="token string">"张三"</span><span class="token punctuation">,</span>
+  <span class="token string">"title"</span><span class="token operator">:</span> <span class="token string">"工程师"</span><span class="token punctuation">,</span>
+  <span class="token string">"desc"</span><span class="token operator">:</span> <span class="token string">"数据库管理"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="分片-Shard-amp-副本-Replicas"><a href="#分片-Shard-amp-副本-Replicas" class="headerlink" title="分片(Shard)&amp;副本(Replicas)"></a>分片(Shard)&amp;副本(Replicas)</h3><p>在实际应用中可能存在这样的场景，一个索引存储超过了一个节点的<strong>物理存储能力</strong>。例如一个索引有十亿的文档，超过了1TB的存储，在单个节点无法完全存储，并且对于单个节点的搜索请求是非常慢的。<br> 为了解决这些问题，Elasticsearch提供了为索引切分成多个分片(Shard)的能力，当你创建一个索引的时候，你能够定义索引被分割成多少个shard。每一个shard都是功能完全，能够独立索引的，可以分配到集群中任何一个节点中。</p>
+<p>使用分片有两个重要原因：</p>
+<ul>
+<li>允许水平分割文档，分布存储。</li>
+<li>允许你分配并且执行分片，在多个节点中能够提供查询性能和吞吐量。</li>
+</ul>
+<p>shard如何分布，当一个请求发来后如何组织数据，这些对于用户来说都是透明的。<br> 当在一个网络环境中，有可能某个节点或分片丢失。Elasticsearch提供了一种针对这种故障转移的功能，就是副本。Elasticsearch允许你为一个分片创建一个或多个副本。分片和副本又称为主/副分片。</p>
+<p>使用副本有两个重要原因：</p>
+<ul>
+<li>当一个节点或分片丢失后，能够继续使用。因此，需要注意的是主/副分片不会存储在一个节点中。</li>
+<li>当进行搜索的时候，允许搜索所有的副本，所以提高了搜索性能。</li>
+</ul>
+<p>所以一个索引能够分割成多个shard，一个索引能够可以有零个或多个副本。每个索引都有主分片(索引切割后的分片，又称原始分片)和副本分片(从原始分片复制过来的)。分片数量和副本数量在创建索引的时候可以被指定，<strong><font color="red">当索引创建后，可以指定改变副本数量，但是不能改变主分片数量</font></strong>。<strong>默认情况下每个索引在Elasticsearch有5个分片和1个副本</strong>，也就是说总共10个shard(副本是对分片来说的，每个shard又一个副本)。每一个shard内部都是一个Lucene索引实例，单个lucene索引最多能够存储2,147,483,519(Integer.MAX_value-128)个文档。</p>
+<h3 id="集群健康"><a href="#集群健康" class="headerlink" title="集群健康"></a>集群健康</h3><p>集群健康检查，这里会用到_cat语法：</p>
+<pre class=" language-java"><code class="language-java">$ curl http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span><span class="token operator">/</span>_cat<span class="token operator">/</span>health<span class="token operator">?</span>v
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eae3876c2a9a83be55d5c8d.jpg" alt></p>
+<p> 从结果可以看到，集群名称为gakki，集群状态为绿色(green)。 </p>
+<p>集群状态分为绿色(green)、黄色(yellow)和红色(red)。</p>
+<ul>
+<li>绿色代表集群当前状态是好的(集群功能齐全)。</li>
+<li>黄色代表所有数据(主分片)都可用，但是一些副本(副分片)还没有分配(集群功能齐全)。</li>
+<li>红色代表一些数据(主分片)不可用。</li>
+</ul>
+<p>需要注意的是，即使集群是红色的，它仍然部分功能可用。例如：可用的shard能够继续为搜索提供服务。但是你应该尽快去解决你丢失的数据。<br> 从上面的信息来看，我们就有一个节点(node)，并且可以看到有2个shard。</p>
+<p>需要注意一点，Elasticsearch启动使用默认名称是elasticsearch。我这里修改了es的配置文件，将集群的名字改为了gakki，以后有新的es节点要加入这个集群，只需要将该节点的配置文件中的集群名称改为：gakki 即可。Elasticsearch默认采用单播网络去发现其它节点，所以如果你启动了多个Elasticsearch实例，则会自动加入这个名称为”gakki”的集群。</p>
 
             </div>
             <hr/>
@@ -670,7 +680,7 @@
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/05/01/elasticsearch-de-ru-men/" class="b-link-green">ElasticSearch的入门</a>
+                    <a href="/2020/05/03/es-zhong-de-ji-ben-gai-nian/" class="b-link-green">es中的基本概念</a>
                 </p>
             </div>
         </div>
@@ -950,28 +960,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/05/02/es-zhong-kibana-de-an-zhuang/">
+                <a href="/2020/05/03/es-zhong-de-ji-ben-gai-nian/">
                     <div class="card-image">
                         
-                        <img src="https://pic.downk.cc/item/5ead8951c2a9a83be5e4a176.jpg" class="responsive-img" alt="es中Kibana的安装">
+                        <img src="https://pic.downk.cc/item/5eae2faac2a9a83be5547329.jpg" class="responsive-img" alt="es中的基本概念">
                         
-                        <span class="card-title">es中Kibana的安装</span>
+                        <span class="card-title">es中的基本概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                      
-                                es中kibana的安装与使用
+                       
+                                介绍es中的基本概念
                       
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -984,6 +995,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1002,30 +1014,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/24/protobuffer-de-jian-jie/">
+                <a href="/2020/05/02/es-zhong-kibana-de-an-zhuang/">
                     <div class="card-image">
                         
-                        <img src="https://pic.downk.cc/item/5e2ab7032fb38b8c3c5fc9af.png" class="responsive-img" alt="ProtoBuffer的简介">
+                        <img src="https://pic.downk.cc/item/5ead8951c2a9a83be5e4a176.jpg" class="responsive-img" alt="es中Kibana的安装">
                         
-                        <span class="card-title">ProtoBuffer的简介</span>
+                        <span class="card-title">es中Kibana的安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                protobuffer的简单使用
+                                es中kibana的安装与使用
                       
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-01-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/protobuffer/" class="post-category" target="_blank">
-                                    protobuffer
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
                                 </a>
                             
                             
@@ -1035,8 +1047,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/protobuffer/" target="_blank">
-                        <span class="chip bg-color">protobuffer</span>
+                    <a href="/tags/elasticsearch/" target="_blank">
+                        <span class="chip bg-color">elasticsearch</span>
                     </a>
                     
                 </div>
