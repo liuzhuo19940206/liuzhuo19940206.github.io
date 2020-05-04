@@ -1,0 +1,1958 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="es中简单入门案例, 解忧杂货店">
+    <meta name="description" content="根据前面的学习，我们已经基本上了解了es的内部原理和基本的概念了，现在就让我们开始学习吧~~~
+案例说明让我们来创建一个员工的目录
+假设我们在XXX公司工作，这时人力资源部门出于某种目的需要让我们建立一个员工目录，这个目录用于促进人文关怀和">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>es中简单入门案例 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5eaf5c5dc2a9a83be54036ef.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        es中简单入门案例
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/elasticsearch/" target="_blank">
+                                <span class="chip bg-color">elasticsearch</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                elasticsearch
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-04
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        4.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        17 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>根据前面的学习，我们已经基本上了解了es的内部原理和基本的概念了，现在就让我们开始学习吧~~~</p>
+<h2 id="案例说明"><a href="#案例说明" class="headerlink" title="案例说明"></a>案例说明</h2><p>让我们来创建一个员工的目录</p>
+<p>假设我们在XXX公司工作，这时人力资源部门出于某种目的需要让我们建立一个员工目录，这个目录用于促进人文关怀和用于实时协同工作，所以它有以下不同的需要：</p>
+<ul>
+<li>数据能包含多个值的标签、数字和纯文本</li>
+<li>检索任何员工的所有信息</li>
+<li>支持结构化搜索，例如查找30岁以上的员工</li>
+<li>支持简单的全文搜索和更复杂的短语（phrase）搜索</li>
+<li>高亮搜索结果中的关键字</li>
+<li>能够利用图表管理分析这些数据</li>
+</ul>
+<h2 id="索引员工文档"><a href="#索引员工文档" class="headerlink" title="索引员工文档"></a>索引员工文档</h2><p>我们首先要做的是存储员工数据，每个文档代表一个员工。在Elasticsearch中存储数据的行为就叫做索引(indexing)，不过 在索引之前，我们需要明确数据应该存储在哪里。</p>
+<p>在Elasticsearch中，文档归属于一种类型(type),而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统 关系型数据库：</p>
+<pre class=" language-java"><code class="language-java">Relational DB <span class="token operator">-</span><span class="token operator">></span> Databases <span class="token operator">-</span><span class="token operator">></span> Tables <span class="token operator">-</span><span class="token operator">></span> Rows <span class="token operator">-</span><span class="token operator">></span> Columns
+Elasticsearch <span class="token operator">-</span><span class="token operator">></span> Indices <span class="token operator">-</span><span class="token operator">></span> Types <span class="token operator">-</span><span class="token operator">></span> Documents <span class="token operator">-</span><span class="token operator">></span> Fields
+</code></pre>
+<p>Elasticsearch集群可以包含多个索引(indices)（数据库），每一个索引可以包含多个类型(types)（表），每一个类型包含多 个文档(documents)（行），然后每个文档包含多个字段(Fields)（列）。</p>
+<p>「索引」含义的区分:</p>
+<p>你可能已经注意到索引(index)这个词在Elasticsearch中有着不同的含义，所以有必要在此做一下区分: </p>
+<ul>
+<li>索引（名词） 如上文所述，一个索引(index)就像是传统关系数据库中的数据库，它是相关文档存储的地方， index的复数是indices 或indexes。</li>
+<li>索引（动词） 「索引一个文档」表示把一个文档存储到索引（名词）里，以便它可以被检索或者查询。这很像 SQL中的 INSERT 关键字，差别是，如果文档已经存在，新的文档将覆盖旧的文档。 </li>
+<li>倒排索引 : 传统数据库为特定列增加一个索引，例如B-Tree索引来加速检索。Elasticsearch和Lucene使用一种叫做 倒排索引(inverted index)的数据结构来达到相同目的。</li>
+</ul>
+<p>ps: <strong>默认情况下，文档中的所有字段都会被索引（拥有一个倒排索引），只有这样他们才是可被搜索的。</strong></p>
+<p>所以为了创建员工目录，我们将进行如下操作：</p>
+<ul>
+<li>为每个员工的文档(document)建立索引，每个文档包含了相应员工的所有信息。 </li>
+<li>每个文档的类型为 employee 。 </li>
+<li>employee 类型归属于索引 gakkij 。</li>
+<li>gakkij 索引存储在Elasticsearch集群中。</li>
+</ul>
+<p>实际上这些都是很容易的（尽管看起来有许多步骤）。我们能通过一个命令执行完成的操作:</p>
+<pre class=" language-java"><code class="language-java">PUT <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span><span class="token number">1</span>
+<span class="token punctuation">{</span>
+<span class="token string">"first_name"</span> <span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+<span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+<span class="token string">"age"</span> <span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+<span class="token string">"about"</span> <span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+<span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"sports"</span><span class="token punctuation">,</span> <span class="token string">"music"</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eaf5f2fc2a9a83be5411570.jpg" alt></p>
+<p>说明：这里我使用了kibana的工具来发送http请求，大家也可以使用其他工具，都是类似的效果，例如：curl等。</p>
+<p>思考：</p>
+<p>1）在插入这条数据之前，我们的es中只有前面博客创建的 hello，kibana索引。</p>
+<p>2）再没有创建索引和type的情况下，直接插入文档能成功吗？成功后，该索引的分片数和副本是多少呢？mapping的设置呢？</p>
+<p>回答：</p>
+<p>1）通过查看该条插入语句的返回值，可以明显的发现是插入成功的，result：created。</p>
+<p>打开es的head也能看到效果：</p>
+<p><img src="https://pic.downk.cc/item/5eaf6096c2a9a83be5417b75.jpg" alt></p>
+<p>这就是es强大的地方，我们不需要任何配置，es会自动帮我们处理一切工作，透明化处理；我们也能制定化配置，后面，我们慢慢来说吧~~~</p>
+<p>2）通过上面的截图，我们能发现，es会自动帮我们创建一个索引，分片数为5，副本为1，即：10份数据。</p>
+<p>但是，上面的图中，为啥只是显示五份数据呢？那是，因为目前我这里es的节点只有一个，集群中不存在其他的节点，es中需要保证主分片和副本不能在一个节点上面，否则就会毫无意义，主分片和副本在同一个节点的话，该节点失效后，岂不是该数据就都丢失了嘛。</p>
+<p>因此，此时的健康状态是 yellow，大家注意到了么；主分片都可用，部分副本不可用就是 黄色（yellow）状态啦</p>
+<p>3）查看该索引类型的mapping结构</p>
+<p><img src="https://pic.downk.cc/item/5eaf6274c2a9a83be54216e3.jpg" alt></p>
+<p>看到，es会根据我们传入的json串的类似，自动帮我们推测该字段的类型。</p>
+<p>字符串的类型：统一是text，字符串还有一个类型是：keyword。</p>
+<p>整形：long。</p>
+<p>关于es的类型，后面我们再说。</p>
+<hr>
+<p>接下来，让我们在目录中加入更多员工信息：</p>
+<pre class=" language-java"><code class="language-java">PUT <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span><span class="token number">2</span>
+<span class="token punctuation">{</span>
+<span class="token string">"first_name"</span> <span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+<span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+<span class="token string">"age"</span> <span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+<span class="token string">"about"</span> <span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+<span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"music"</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+POST <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>          #这里，我没有传入id，es会自动帮我们创建一个uuid
+<span class="token punctuation">{</span>
+<span class="token string">"first_name"</span> <span class="token operator">:</span> <span class="token string">"Douglas"</span><span class="token punctuation">,</span>
+<span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"Fir"</span><span class="token punctuation">,</span>
+<span class="token string">"age"</span> <span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+<span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to build cabinets"</span><span class="token punctuation">,</span>
+<span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"forestry"</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>注意上面，我们插入数据时，带有id和不带id的区别！！！</p>
+<h2 id="检索文档"><a href="#检索文档" class="headerlink" title="检索文档"></a>检索文档</h2><p>现在Elasticsearch中已经存储了一些数据，我们可以根据业务需求开始工作了。</p>
+<p>第一个需求是能够检索单个员工的信息。 这对于Elasticsearch来说非常简单。</p>
+<p>我们只要执行HTTP GET请求并指出文档的“地址”——索引、类型和ID既可。根据这三部 分信息，我们就可以返回原始JSON文档：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span><span class="token number">1</span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5eaf6441c2a9a83be542a82a.jpg" alt></p>
+<p>ps：我们通过HTTP方法 GET 来检索文档，同样的，我们可以使用 DELETE 方法删除文档，使用 HEAD 方法检查某文档是否存 在。如果想更新已存在的文档，我们只需再 PUT 一次【<strong>字段会全部替换</strong>，部分替换需要：_update】。</p>
+<p>后面，我不截图了，图片太浪费资源了。。。</p>
+<hr>
+<h2 id="简单搜索"><a href="#简单搜索" class="headerlink" title="简单搜索"></a>简单搜索</h2><p>GET 请求非常简单——你能轻松获取你想要的文档。让我们来进一步尝试一些东西，比如简单的搜索！ 我们尝试一个最简单的搜索全部员工的请求：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+</code></pre>
+<p>你可以看到我们依然使用 gakkij 索引和 employee 类型，但是我们在结尾使用关键字 <strong>_search</strong> 来取代原来的文档ID。响应内 容的 hits 数组中包含了我们所有的三个文档。<font color="red"><strong>默认情况下搜索会返回前10个结果。</strong></font></p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>             <span class="token comment" spellcheck="true">//查询消耗的时长，单位：毫秒</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>    <span class="token comment" spellcheck="true">// false：未超时</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>          <span class="token comment" spellcheck="true">//5个分片数</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>         <span class="token comment" spellcheck="true">//查询到总数</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"6JQl3XEBkV4diPZu8bHC"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Douglas"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Fir"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to build cabinets"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"forestry"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<p>接下来，让我们搜索姓氏中包含“Smith”的员工。要做到这一点，我们将在命令行中使用<strong>轻量级的搜索方法</strong>。这种方法常被 称作<strong>查询字符串(query string)搜索</strong>.</p>
+<h3 id="字符串-query-string-搜索"><a href="#字符串-query-string-搜索" class="headerlink" title="字符串(query string)搜索"></a>字符串(query string)搜索</h3><pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search<span class="token operator">?</span>q<span class="token operator">=</span>last_name<span class="token operator">:</span>Smith
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">23</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>      <span class="token comment" spellcheck="true">//匹配到的分数：查询的内容对于查询消息的匹配程度</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>我们在请求中依旧使用 _search 关键字，然后将查询语句传递给参数 q= 。这样就可以得到所有姓氏为Smith的结果。</p>
+<h3 id="使用DSL语句查询"><a href="#使用DSL语句查询" class="headerlink" title="使用DSL语句查询"></a>使用DSL语句查询</h3><p>查询字符串搜索便于通过命令行完成特定(ad hoc)的搜索，但是它也有局限性。Elasticsearch提供丰 富且灵活的查询语言叫做 DSL查询(Query DSL) , 它允许你构建更加复杂、强大的查询。</p>
+<p>DSL(Domain Specific Language特定领域语言)以JSON请求体的形式出现。我们可以这样表示之前关于“Smith”的查询:</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+       <span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"Smith"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这会返回与之前查询相同的结果。你可以看到有些东西改变了，我们不再使用查询字符串(query string)做为参数，而是使用 <strong>请求体</strong> 代替。这个请求体使用JSON表示，其中使用了 match 语句（查询类型之一，具体我们以后会学到）。</p>
+<p>说明：我们知道，http请求中，get请求是无法带上请求体的，只能在请求行中传递我们的参数，post请求才能携带请求体，这里为啥GET请求可以携带请求体呢？那是因为es内部帮我们处理了，转化了一下。</p>
+<h2 id="更复杂的搜索"><a href="#更复杂的搜索" class="headerlink" title="更复杂的搜索"></a>更复杂的搜索</h2><p>我们让搜索稍微再变的复杂一些。我们依旧想要找到姓氏为“Smith”的员工，但是我们只想得到年龄大于30岁的员工。我们的 语句将添加过滤器(filter),它使得我们高效率的执行一个结构化搜索：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"filtered"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"filter"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"range"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"age"</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"gt"</span> <span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">//&lt;1> 查询大于30岁的</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"match"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"smith"</span>  <span class="token comment" spellcheck="true">//&lt;2> 名字为：smith</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>然后呢？一不小心就出错了？</p>
+<p><img src="https://pic.downk.cc/item/5eaf6a8bc2a9a83be544e587.jpg" alt></p>
+<p>然后，查找官方的文档，原来：发现是因为过滤查询被弃用了，并在ES 5.0中删除，而我的ES版本正是6.2.1</p>
+<p><strong>所以，大家需要自己多动手去操作，有可能我现在讲的知识点，以后就会弃用了，执行失败了，大家需要自己去官方文档中去查找相关的知识点来验证正确性！！！</strong></p>
+<p>改用：bool查询</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"bool"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"filter"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"range"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"age"</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"gt"</span> <span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span>  
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token string">"must"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"match"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"last_name"</span> <span class="token operator">:</span> <span class="token string">"smith"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>返回结果：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>年纪大于：30岁，名字为：smith的 只有一个。</p>
+<p>PS：现在不要担心语法太多，我们将会在以后详细的讨论。</p>
+<hr>
+<h2 id="全文搜索"><a href="#全文搜索" class="headerlink" title="全文搜索"></a>全文搜索</h2><p>到目前为止搜索都很简单：搜索特定的名字，通过年龄筛选。</p>
+<p>现在，让我们尝试一种更高级的搜索，全文搜索：<strong>一种传统数据库 很难实现的功能</strong>。 我们将会搜索所有喜欢“rock climbing”的员工：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"about"</span> <span class="token operator">:</span> <span class="token string">"rock climbing"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>返回结果：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">//相关性高</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">//相关性低</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>全文检索：就是在查询的字段中，查询是否有匹配的字段的内容，不是精确匹配，包含关系。</p>
+<p>默认情况下，Elasticsearch根据结果<strong>相关性评分</strong>来对结果集进行排序，所谓的「结果相关性评分」就是文档与查询条件的匹 配程度。很显然，排名第一的 John Smith 的 about 字段明确的写到“rock climbing”。 但是为什么 Jane Smith 也会出现在结果里呢？原因是“rock”在她的 abuot 字段中被提及了。因为只有“rock”被提及 而“climbing”没有，所以她的 _score 要低于John。 这个例子很好的解释了Elasticsearch如何在各种文本字段中进行全文搜索，并且返回相关性最大的结果集。相关性 (relevance)的概念在Elasticsearch中非常重要，而这个概念在传统关系型数据库中是不可想象的，因为传统数据库对记录的 查询只有匹配或者不匹配。</p>
+<h2 id="短语搜索"><a href="#短语搜索" class="headerlink" title="短语搜索"></a>短语搜索</h2><p>目前我们可以在字段中搜索单独的一个词，这挺好的，但是有时候你想要<strong>确切的匹配</strong>若干个单词或者短语(phrases)。例如我们想要查询 <strong>同时 包含”rock”和”climbing”（并且是相邻的）的员工记录</strong>。</p>
+<p> 要做到这个，我们只要将 match 查询变更为 match_phrase 查询即可:</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match_phrase"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"about"</span> <span class="token operator">:</span> <span class="token string">"rock climbing"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>毫无疑问，该查询返回John Smith的文档：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="高亮我们的搜索"><a href="#高亮我们的搜索" class="headerlink" title="高亮我们的搜索"></a>高亮我们的搜索</h2><p>很多应用喜欢从每个搜索结果中高亮(highlight)匹配到的关键字，这样用户可以知道为什么这些文档和查询相匹配。</p>
+<p>在 Elasticsearch中高亮片段是非常容易的。 让我们在之前的语句上增加 highlight 参数：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match_phrase"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"about"</span> <span class="token operator">:</span> <span class="token string">"rock climbing"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">"highlight"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"fields"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"about"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>当我们运行这个语句时，会命中与之前相同的结果，但是在返回结果中会有一个新的部分叫做 <strong>highlight</strong> ，这里包含了来 自 about 字段中的文本，并且用  来标识匹配到的单词。</p>
+<p>返回：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.5753642</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">"highlight"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"I love to go &lt;em>rock&lt;/em> &lt;em>climbing&lt;/em>"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="分析聚合"><a href="#分析聚合" class="headerlink" title="分析聚合"></a>分析聚合</h2><p>最后，我们还有一个需求需要完成：允许管理者在职员目录中进行一些分析聚合。</p>
+<p>Elasticsearch有一个功能叫做<strong>聚合 (aggregations)</strong>，它允许你在数据上生成复杂的分析统计。</p>
+<p>它很像SQL中的 <strong>GROUP BY</strong> 但是功能更强大。 举个例子，让我们找到所有职员中最大的共同点（兴趣爱好）是什么：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"aggs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"terms"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"field"</span><span class="token operator">:</span> <span class="token string">"interests"</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>一不小心又出现错误了。。。</p>
+<p><img src="https://pic.downk.cc/item/5eaf6f75c2a9a83be5469c4c.jpg" alt></p>
+<p>这里很明显，需要使用带有keyword的查询</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"aggs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"terms"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"field"</span><span class="token operator">:</span> <span class="token string">"interests.keyword"</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>返回：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"6JQl3XEBkV4diPZu8bHC"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Douglas"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Fir"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to build cabinets"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"forestry"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"aggregations"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"doc_count_error_upper_bound"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token string">"sum_other_doc_count"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token string">"buckets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"key"</span><span class="token operator">:</span> <span class="token string">"music"</span><span class="token punctuation">,</span>
+          <span class="token string">"doc_count"</span><span class="token operator">:</span> <span class="token number">2</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"key"</span><span class="token operator">:</span> <span class="token string">"forestry"</span><span class="token punctuation">,</span>
+          <span class="token string">"doc_count"</span><span class="token operator">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"key"</span><span class="token operator">:</span> <span class="token string">"sports"</span><span class="token punctuation">,</span>
+          <span class="token string">"doc_count"</span><span class="token operator">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这里，我们主要看：aggregations的部分，hits的查询结果可以忽悠。</p>
+<p>我们可以看到两个职员对音乐有兴趣，一个喜欢林学，一个喜欢运动。这些数据并没有被预先计算好，它们是实时的从匹配 查询语句的文档中动态计算生成的。如果我们想知道所有姓”Smith”的人最大的共同点（兴趣爱好），我们只需要增加合适的 语句既可：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"smith"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"aggs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"terms"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"field"</span><span class="token operator">:</span> <span class="token string">"interests.keyword"</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>返回：此时只会在名字中存在smith中聚合数据了。</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span>
+  <span class="token string">"took"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string">"timed_out"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token string">"_shards"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"successful"</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token string">"skipped"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string">"failed"</span><span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"total"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">"max_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+    <span class="token string">"hits"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"Jane"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I like to collect rock albums"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">"_index"</span><span class="token operator">:</span> <span class="token string">"gakkij"</span><span class="token punctuation">,</span>
+        <span class="token string">"_type"</span><span class="token operator">:</span> <span class="token string">"employee"</span><span class="token punctuation">,</span>
+        <span class="token string">"_id"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+        <span class="token string">"_score"</span><span class="token operator">:</span> <span class="token number">0.2876821</span><span class="token punctuation">,</span>
+        <span class="token string">"_source"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"first_name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+          <span class="token string">"last_name"</span><span class="token operator">:</span> <span class="token string">"Smith"</span><span class="token punctuation">,</span>
+          <span class="token string">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+          <span class="token string">"about"</span><span class="token operator">:</span> <span class="token string">"I love to go rock climbing"</span><span class="token punctuation">,</span>
+          <span class="token string">"interests"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">"sports"</span><span class="token punctuation">,</span>
+            <span class="token string">"music"</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"aggregations"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"doc_count_error_upper_bound"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token string">"sum_other_doc_count"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token string">"buckets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"key"</span><span class="token operator">:</span> <span class="token string">"music"</span><span class="token punctuation">,</span>
+          <span class="token string">"doc_count"</span><span class="token operator">:</span> <span class="token number">2</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token string">"key"</span><span class="token operator">:</span> <span class="token string">"sports"</span><span class="token punctuation">,</span>
+          <span class="token string">"doc_count"</span><span class="token operator">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<p>聚合也允许分级汇总。例如，让我们统计每种兴趣下职员的平均年龄：</p>
+<pre class=" language-java"><code class="language-java">GET <span class="token operator">/</span>gakkij<span class="token operator">/</span>employee<span class="token operator">/</span>_search
+<span class="token punctuation">{</span>
+  <span class="token string">"aggs"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"all_interests"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"terms"</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"field"</span> <span class="token operator">:</span> <span class="token string">"interests"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token string">"aggs"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string">"avg_age"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token string">"avg"</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">"field"</span> <span class="token operator">:</span> <span class="token string">"age"</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>返回：</p>
+<pre><code>{
+  &quot;took&quot;: 1,
+  &quot;timed_out&quot;: false,
+  &quot;_shards&quot;: {
+    &quot;total&quot;: 5,
+    &quot;successful&quot;: 5,
+    &quot;skipped&quot;: 0,
+    &quot;failed&quot;: 0
+  },
+  &quot;hits&quot;: {
+    &quot;total&quot;: 3,
+    &quot;max_score&quot;: 1,
+    &quot;hits&quot;: [~]
+  },
+  &quot;aggregations&quot;: {
+    &quot;all_interests&quot;: {
+      &quot;doc_count_error_upper_bound&quot;: 0,
+      &quot;sum_other_doc_count&quot;: 0,
+      &quot;buckets&quot;: [
+        {
+          &quot;key&quot;: &quot;music&quot;,
+          &quot;doc_count&quot;: 2,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 28.5
+          }
+        },
+        {
+          &quot;key&quot;: &quot;forestry&quot;,
+          &quot;doc_count&quot;: 1,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 35
+          }
+        },
+        {
+          &quot;key&quot;: &quot;sports&quot;,
+          &quot;doc_count&quot;: 1,
+          &quot;avg_age&quot;: {
+            &quot;value&quot;: 25
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre><p>该聚合结果比之前的聚合结果要更加丰富。我们依然得到了兴趣以及数量（指具有该兴趣的员工人数）的列表，但是现在每 个兴趣额外拥有 avg_age 字段来显示具有该兴趣员工的平均年龄。 即使你还不理解语法，但你也可以大概感觉到通过这个特性可以完成相当复杂的聚合工作，你可以处理任何类型的数据。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>希望这个简短的教程能够很好的描述Elasticsearch的功能。当然这只是一些皮毛，为了保持简短，还有很多的特性未提及 ——像推荐、定位、渗透、模糊以及部分匹配等。但这也突出了构建高级搜索功能是多么的容易。无需配置，只需要添加数 据然后开始搜索！</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/05/04/es-zhong-jian-dan-ru-men-an-li/" class="b-link-green">es中简单入门案例</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/05/04/es-zhong-jian-dan-ru-men-an-li/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5eaf5c5dc2a9a83be54036ef.jpg" class="responsive-img" alt="es中简单入门案例">
+                        
+                        <span class="card-title">es中简单入门案例</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                es中的简单入门案例
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/elasticsearch/" target="_blank">
+                        <span class="chip bg-color">elasticsearch</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/03/es-zhong-de-ji-ben-gai-nian/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5eae2faac2a9a83be5547329.jpg" class="responsive-img" alt="es中的基本概念">
+                        
+                        <span class="card-title">es中的基本概念</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                介绍es中的基本概念
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/elasticsearch/" class="post-category" target="_blank">
+                                    elasticsearch
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/elasticsearch/" target="_blank">
+                        <span class="chip bg-color">elasticsearch</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">354.4k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>
