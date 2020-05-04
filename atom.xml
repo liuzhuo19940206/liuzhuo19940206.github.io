@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-05-04T01:34:45.785Z</updated>
+  <updated>2020-05-04T17:04:38.860Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人,为什么努力</title>
+    <link href="http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/"/>
+    <id>http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/</id>
+    <published>2020-05-04T16:33:57.000Z</published>
+    <updated>2020-05-04T17:04:38.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;人为什么要努力啊，也许是为了将来有更多选择，也许是为了报答家人，也许是不辜负父母的期盼，我们在努力的过程中，曾经想过放弃，也许还要在黑暗中行走很久，也许看不到希望。但不要放弃，因为只有努力过我们才能证明自己。献给所有正在努力奋斗的学子们。&lt;/p&gt;
+&lt;p&gt;愿中国青年都摆脱冷气
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="励志" scheme="http://gakkil.gitee.io/tags/%E5%8A%B1%E5%BF%97/"/>
+    
+  </entry>
   
   <entry>
     <title>es中简单入门案例</title>
@@ -515,32 +542,6 @@
         
         
           &lt;h4 id=&quot;GSON的流式反序列化&quot;&gt;&lt;a href=&quot;#GSON的流式反序列化&quot; class=&quot;headerlink&quot; title=&quot;GSON的流式反序列化&quot;&gt;&lt;/a&gt;GSON的流式反序列化&lt;/h4&gt;&lt;h5 id=&quot;自动方式&quot;&gt;&lt;a href=&quot;#自动方式&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="GSON" scheme="http://gakkil.gitee.io/categories/GSON/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GSON的进阶&lt;一&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/15/gson-de-jin-jie-yi/"/>
-    <id>http://gakkil.gitee.io/2019/12/15/gson-de-jin-jie-yi/</id>
-    <published>2019-12-15T03:51:19.000Z</published>
-    <updated>2019-12-15T07:39:44.063Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;GSON的说明&quot;&gt;&lt;a href=&quot;#GSON的说明&quot; class=&quot;headerlink&quot; title=&quot;GSON的说明&quot;&gt;&lt;/a&gt;GSON的说明&lt;/h3&gt;&lt;p&gt;Gson（又称Google
         
       
     
