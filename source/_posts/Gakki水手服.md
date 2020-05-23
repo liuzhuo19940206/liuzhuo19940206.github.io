@@ -5,10 +5,10 @@ categories:
   - gakki
 tags:
   - 生活
-img: https://pic3.superbed.cn/item/5d024685451253d1783b7ea5.jpg
+img: https://pic.downk.cc/item/5e0c339876085c3289325f0b.jpg
 top: true
 cover: true
-coverImg: https://pic3.superbed.cn/item/5d024685451253d1783b7ea5.jpg
+coverImg: https://pic.downk.cc/item/5e0c339876085c3289325f0b.jpg
 toc: true
 date: 2019-12-08 20:55:14
 summary: Gakki的水手服
