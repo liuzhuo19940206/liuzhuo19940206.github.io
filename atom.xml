@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-05-04T17:04:38.860Z</updated>
+  <updated>2020-05-23T02:23:16.204Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BigDecimal一定不丢失精度?</title>
+    <link href="http://gakkil.gitee.io/2020/05/23/bigdecimal-yi-ding-bu-diu-shi-jing-du/"/>
+    <id>http://gakkil.gitee.io/2020/05/23/bigdecimal-yi-ding-bu-diu-shi-jing-du/</id>
+    <published>2020-05-23T01:54:25.000Z</published>
+    <updated>2020-05-23T02:23:16.204Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;最近因为接了一个和订单有关的需求，对于优惠力度的计算时，需要精确值，不能丢失精度，一开始无脑使用bigDecimal，后来发现完全不是那么一回事。。。&lt;/p&gt;
+&lt;p&gt;我们基本已经形成了常识，需要用到金钱的地方要用BigDecimal而不是其他，而我们也都知道浮点型变量在进行
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://gakkil.gitee.io/categories/java/"/>
+    
+    
+      <category term="BigDecimal" scheme="http://gakkil.gitee.io/tags/BigDecimal/"/>
+    
+  </entry>
   
   <entry>
     <title>人,为什么努力</title>
@@ -516,32 +543,6 @@
         
         
           &lt;h3 id=&quot;过滤的几种方法&quot;&gt;&lt;a href=&quot;#过滤的几种方法&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="GSON" scheme="http://gakkil.gitee.io/categories/GSON/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GSON的进阶&lt;二&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/15/gson-de-jin-jie-er/"/>
-    <id>http://gakkil.gitee.io/2019/12/15/gson-de-jin-jie-er/</id>
-    <published>2019-12-15T11:53:49.000Z</published>
-    <updated>2019-12-15T13:13:32.643Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;GSON的流式反序列化&quot;&gt;&lt;a href=&quot;#GSON的流式反序列化&quot; class=&quot;headerlink&quot; title=&quot;GSON的流式反序列化&quot;&gt;&lt;/a&gt;GSON的流式反序列化&lt;/h4&gt;&lt;h5 id=&quot;自动方式&quot;&gt;&lt;a href=&quot;#自动方式&quot;
         
       
     
