@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-05-23T02:23:16.204Z</updated>
+  <updated>2020-05-23T09:03:49.968Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>idea2020-01永久破解</title>
+    <link href="http://gakkil.gitee.io/2020/05/23/idea2020-01-yong-jiu-po-jie/"/>
+    <id>http://gakkil.gitee.io/2020/05/23/idea2020-01-yong-jiu-po-jie/</id>
+    <published>2020-05-23T08:42:49.000Z</published>
+    <updated>2020-05-23T09:03:49.968Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;目前，随着2018年后，idea的注册码都一一开始失效了，导致需要随时找注册码，很麻烦。&lt;/p&gt;
+&lt;p&gt;这里教大家破解最新的idea版本，目前，博主这里最新的版本是：idea2020-01的版本。如果后面出现新的idea不保证该方法还能破解，因此需要确认你要下载的idea的
+        
+      
+    
+    </summary>
+    
+      <category term="idea" scheme="http://gakkil.gitee.io/categories/idea/"/>
+    
+    
+      <category term="idea" scheme="http://gakkil.gitee.io/tags/idea/"/>
+    
+  </entry>
   
   <entry>
     <title>BigDecimal一定不丢失精度?</title>
@@ -517,32 +544,6 @@
         
         
           &lt;h3 id=&quot;TypeAdapter&quot;&gt;&lt;a href=&quot;#TypeAdapter&quot; class=&quot;headerlink&quot; title=&quot;TypeAdapter&quot;&gt;&lt;/a&gt;TypeAdapter&lt;/h3&gt;&lt;p&gt;&lt;code&gt;TypeAdapter&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="GSON" scheme="http://gakkil.gitee.io/categories/GSON/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GSON的进阶&lt;三&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/20/gson-de-jin-jie-san/"/>
-    <id>http://gakkil.gitee.io/2019/12/20/gson-de-jin-jie-san/</id>
-    <published>2019-12-20T15:00:53.000Z</published>
-    <updated>2019-12-21T02:00:51.615Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;过滤的几种方法&quot;&gt;&lt;a href=&quot;#过滤的几种方法&quot; class=&quot;headerlink&quot;
         
       
     
