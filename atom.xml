@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-05-23T09:03:49.968Z</updated>
+  <updated>2020-05-24T13:35:57.895Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>构建图床</title>
+    <link href="http://gakkil.gitee.io/2020/05/23/gou-jian-tu-chuang/"/>
+    <id>http://gakkil.gitee.io/2020/05/23/gou-jian-tu-chuang/</id>
+    <published>2020-05-23T14:35:14.000Z</published>
+    <updated>2020-05-24T13:35:57.895Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;大家看到博主博客里面这么多照片，一定想知道是怎么构建的，市面上有很多图床的服务器，可以选择购买，如果大家和博主一样很穷的话，那就只能自己构建免费的图床了。&lt;/p&gt;
+&lt;p&gt;那免费的图床怎么构建呢？首页想到的就是使用github的来作为图片的服务器，毕竟github是大公司，短
+        
+      
+    
+    </summary>
+    
+      <category term="图床" scheme="http://gakkil.gitee.io/categories/%E5%9B%BE%E5%BA%8A/"/>
+    
+    
+      <category term="图床" scheme="http://gakkil.gitee.io/tags/%E5%9B%BE%E5%BA%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>idea2020-01永久破解</title>
@@ -524,32 +551,6 @@
     </summary>
     
       <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GSON的进阶&lt;四&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/21/gson-de-jin-jie-si/"/>
-    <id>http://gakkil.gitee.io/2019/12/21/gson-de-jin-jie-si/</id>
-    <published>2019-12-21T02:07:34.000Z</published>
-    <updated>2019-12-21T03:06:06.264Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;TypeAdapter&quot;&gt;&lt;a href=&quot;#TypeAdapter&quot; class=&quot;headerlink&quot; title=&quot;TypeAdapter&quot;&gt;&lt;/a&gt;TypeAdapter&lt;/h3&gt;&lt;p&gt;&lt;code&gt;TypeAdapter&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="GSON" scheme="http://gakkil.gitee.io/categories/GSON/"/>
     
     
       <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
