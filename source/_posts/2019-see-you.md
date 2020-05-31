@@ -34,7 +34,7 @@ password:
 
 19的五一长假去了上海，来了一次与gakki的隔空旅行。起因：偶然发现了gakki在上海06年拍摄的短篇《相遇》，然后就想着去上海把她走过的旅途再走一遍。
 
-{% dplayer "url=https://gakkil.gitee.io/gakkil-video/movie/gakki.mp4" "pic=https://pic.superbed.cn/item/5d024694451253d1783b809b.jpg"  "loop=no" "theme=#FADFA3" "autoplay=false" "id=dplayerOfgakki" "api=https:\/\/dplayer.moerats.com\/"  "addition=https:\/\/dplayer.moerats.com\/v3\/bilibili?aid=20015128" %}
+{% dplayer "url=http://upos-sz-mirrorhw.bilivideo.com/upgcxcode/65/07/32650765/32650765-1-208.mp4?e=ig8euxZM2rNcNbNBhwdVhwdlhbUVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590904239&gen=playurl&os=hwbv&oi=837395164&trid=ede775841df049da83057362d47cf65dT&platform=html5&upsig=9d6cb71fd7ddeb4119e67262d6e8d868&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000" "pic=https://pic.superbed.cn/item/5d024694451253d1783b809b.jpg"  "loop=no" "theme=#FADFA3" "autoplay=false" "id=dplayerOfgakki" "api=https:\/\/dplayer.moerats.com\/"  "addition=https:\/\/dplayer.moerats.com\/v3\/bilibili?aid=20015128" %}
 
 PS: 完整的旅行记录在我另外的博客中有，大家感兴趣可以去看看：
 
@@ -55,7 +55,7 @@ PS: 完整的旅行记录在我另外的博客中有，大家感兴趣可以去�
 相信爱会永恒 相信每个陌生人
 相信你会成为最想成为的人
 
-{% dplayer "url=https://gakkil.gitee.io/gakkil-video/movie/20190620.mp4" "loop=false" "theme=#FADFA3" "autoplay=false" "id=biyeing" "api=https:\/\/dplayer.moerats.com\/" %}
+{% dplayer "url=http://upos-sz-mirrorks3.bilivideo.com/upgcxcode/00/88/197078800/197078800-1-192.mp4?e=ig8euxZM2rNcNbRMhbdVhwdlhWKghwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590906661&gen=playurl&os=ks3bv&oi=837395164&trid=d270ba03954f4e6199abe05e670c40e4T&platform=html5&upsig=a5e6145ed916ac94ed04646575b96019&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000" "loop=false" "theme=#FADFA3" "autoplay=false" "id=biyeing" "api=https:\/\/dplayer.moerats.com\/" %}
 
 PS：完成历程：
 
@@ -89,7 +89,7 @@ PS：完成历程：
 
 <img src="https://pic.downk.cc/item/5e100a2676085c3289a7d3f4.jpg" style="zoom:50%;" />
 
-{% dplayer "url=https://gakkil.gitee.io/gakkil-video/movie/bili.mp4" "loop=false" "theme=#FADFA3" "autoplay=false" "id=bilibili" "api=https:\/\/dplayer.moerats.com\/" %}
+{% dplayer "url=http://upos-sz-mirrorks3.bilivideo.com/upgcxcode/32/93/197079332/197079332-1-192.mp4?e=ig8euxZM2rNcNbNVnWdVhwdlhbdHhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590906960&gen=playurl&os=ks3bv&oi=837395164&trid=4a2e06f6683148f198513c235f0a3082T&platform=html5&upsig=d01cff0465735d96414a6a8ef4f5c9cb&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000" "loop=false" "theme=#FADFA3" "autoplay=false" "id=bilibili" "api=https:\/\/dplayer.moerats.com\/" %}
 
 ---
 
@@ -219,4 +219,4 @@ PS: 还去了故宫、首都博物馆、电影博物馆、火车博物馆、北�
 
 今年虽然过得不顺人意，但也大致完成了去年的目标「让自己变得充实有趣起来」，希望 2020 自己能更加完美，努力去做到自己的目标，也祝愿大家越来越好。
 
-{% dplayer "url=https://gakkil.gitee.io/gakkil-video/movie/2019.mp4" "pic=https://ae01.alicdn.com/kf/H4dd1264744c34187b8782de35fbed8d5s.jpg"  "loop=yes" "height=500px" "theme=#FADFA3" "autoplay=false" "id=my2019baibai" "api=https:\/\/dplayer.moerats.com\/" %}
+{% dplayer "url=http://upos-sz-mirrorhw.bilivideo.com/upgcxcode/59/82/197078259/197078259-1-208.mp4?e=ig8euxZM2rNcNbhanWdVhwdlhzuHhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590907010&gen=playurl&os=hwbv&oi=837395164&trid=33e1469cf09b43999709f23aed0b7974T&platform=html5&upsig=a3f34d31febdc194081f109a08860c99&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000" "pic=https://ae01.alicdn.com/kf/H4dd1264744c34187b8782de35fbed8d5s.jpg"  "loop=yes" "height=500px" "theme=#FADFA3" "autoplay=false" "id=my2019baibai" "api=https:\/\/dplayer.moerats.com\/" %}

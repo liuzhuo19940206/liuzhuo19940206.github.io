@@ -75,7 +75,7 @@ video:
   enable: true
   showTitle: true
   title: 爱豆gakki酱
-  url: https://gakkil.gitee.io/gakkil-video/gakki/gakki.mp4 # 必填
+  url: http://upos-sz-mirrorhw.bilivideo.com/upgcxcode/03/74/197077403/197077403-1-208.mp4?e=ig8euxZM2rNcNbRanWdVhwdlhWuHhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590906817&gen=playurl&os=hwbv&oi=837395164&trid=1b3d8018dd2941f29360b0c1b6c63030T&platform=html5&upsig=e28f40684591b7e8a94bcb1a9233af25&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000 # 必填
   pic: /medias/movie/gakki.jpg
   thumbnails:
   height:  # 如：400
@@ -91,7 +91,7 @@ video:
 # 留言板視頻
 messageVideo:
   title: 二次元老婆
-  url:  https://gakkil.gitee.io/gakkil-video/messages/message.mp4 # 必填
+  url:  http://upos-sz-mirrorhw.bilivideo.com/upgcxcode/07/84/164198407/164198407-1-208.mp4?e=ig8euxZM2rNcNbNB7wdVhwdlhbUMhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590906522&gen=playurl&os=hwbv&oi=837395164&trid=233a020a8bd44a86a5bb26d8ace77274T&platform=html5&upsig=7a3414ff801b90243e4d6a3f191643d4&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000 # 必填
   pic: /medias/movie/erciyuan.jpeg
   thumbnails:
   height:  # 如：400
