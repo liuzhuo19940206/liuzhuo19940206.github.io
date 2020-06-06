@@ -5,9 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="初始vue, 解忧杂货店">
-    <meta name="description" content="官网介绍vue是尤雨溪创建的，国人。在google工作，由于无聊空闲时间手写的vue，很多时候，你真的会怀疑自己是否配活在这个世界上。
-废话不多说，由于是国人写的，因此官网都是中文介绍，有过编程基础的，基本上都能看懂，大家多去看官方文档就能">
+    <meta name="keywords" content="vue条件渲染, 解忧杂货店">
+    <meta name="description" content="通过上篇的vue初始，大家应该有点感觉了，那么：我们开始vue的基础教程吧
+我们都知道，dom渲染时，有时，我们需要根据用户的操作来选择性渲染dom，以前都是使用jQuery来控制dom，这样的操作有点费事，现在使用vue的话，vue底层会">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>初始vue | 解忧杂货店</title>
+    <title>vue条件渲染 | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -293,13 +293,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5edb6c2cc2a9a83be5af48d0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5edbac60c2a9a83be551a47b.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        初始vue
+                        vue条件渲染
                     </div>
                 </div>
             </div>
@@ -442,14 +442,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        959
+                        1.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        7 分
                     </div>
                     
                 
@@ -465,45 +465,69 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>vue是尤雨溪创建的，国人。在google工作，由于无聊空闲时间手写的vue，很多时候，你真的会怀疑自己是否配活在这个世界上。</p>
-<p>废话不多说，由于是国人写的，因此官网都是中文介绍，有过编程基础的，基本上都能看懂，大家多去看官方文档就能学会，我也是看着学的，因为最近急需上线一个项目，组里没有一个人会前端，我就赶鸭子上架，呜呜呜~~~</p>
-<h4 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h4><p><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="直接引入"><a href="#直接引入" class="headerlink" title="直接引入"></a>直接引入</h4><p>现在，我们处于学习阶段就才用直接使用即可，如果你部署项目，真正上线，不要使用改方式；后面，我们在慢慢学吧，我也是刚起步。</p>
-<p>步骤：直接下载并用 <code>&lt;script&gt;</code> 标签引入，<code>Vue</code>会被注册为一个全局变量。</p>
-<h4 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h4><p>对于制作原型或学习，你可以这样使用最新版本：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
-<p>对于生产环境，我们推荐链接到一个明确的版本号和构建文件，以避免新版本造成的不可预期的破坏：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/vue@2.6.11"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
-<p>如果你使用原生 ES Modules，这里也有一个兼容 ES Module 的构建文件：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">"module"</span><span class="token operator">></span>
-  <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js'</span>
+                <p>通过上篇的vue初始，大家应该有点感觉了，那么：我们开始vue的基础教程吧</p>
+<p>我们都知道，dom渲染时，有时，我们需要根据用户的操作来选择性渲染dom，以前都是使用jQuery来控制dom，这样的操作有点费事，现在使用vue的话，vue底层会采用虚拟的dom对象来装我们的修改，一次性来渲染整个dom文档，操作性简单方便，那么，我们开始吧。</p>
+<h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"isVip"</span><span class="token operator">></span>我是vip用户<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            isVip<span class="token punctuation">:</span><span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p>你可以在 <a href="https://cdn.jsdelivr.net/npm/vue/" target="_blank" rel="noopener">cdn.jsdelivr.net/npm/vue</a> 浏览 NPM 包的源代码。</p>
-<p>Vue 也可以在 <a href="https://unpkg.com/vue@2.6.11/dist/vue.js" target="_blank" rel="noopener">unpkg</a> 和 <a href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js" target="_blank" rel="noopener">cdnjs</a> 上获取 (cdnjs 的版本更新可能略滞后)。</p>
-<p>请确认了解<a href="https://cn.vuejs.org/v2/guide/installation.html#对不同构建版本的解释" target="_blank" rel="noopener">不同构建版本</a>并在你发布的站点中使用<strong>生产环境版本</strong>，把 <code>vue.js</code> 换成 <code>vue.min.js</code>。这是一个更小的构建，可以带来比开发环境下更快的速度体验。</p>
-<hr>
-<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><p>在用 Vue 构建大型应用时推荐使用 NPM 安装<a href="https://cn.vuejs.org/v2/guide/installation.html#footnote-1" target="_blank" rel="noopener">[1]</a>。NPM 能很好地和诸如 <a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a> 或 <a href="http://browserify.org/" target="_blank" rel="noopener">Browserify</a> 模块打包器配合使用。同时 Vue 也提供配套工具来开发<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">单文件组件</a>。</p>
-<pre class=" language-javascript"><code class="language-javascript"># 最新稳定版
-$ npm install vue
+<p><img src="https://pic.downk.cc/item/5edbaebcc2a9a83be557b3b8.jpg" alt></p>
+<p>修改，isVip的值为：false</p>
+<p><img src="https://pic.downk.cc/item/5edbaf32c2a9a83be558eea8.jpg" alt></p>
+<h3 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a>v-else</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"isVip"</span><span class="token operator">></span>我是vip用户<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>  注意：v<span class="token operator">-</span><span class="token keyword">if</span> 和 v<span class="token operator">-</span><span class="token keyword">else</span>之间不能有其他Element元素！！！      <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">></span>我是普通用户<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            isVip<span class="token punctuation">:</span><span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<h4 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h4><p>Vue 提供了一个<a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noopener">官方的 CLI</a>，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了 batteries-included 的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 <a href="https://cli.vuejs.org/" target="_blank" rel="noopener">Vue CLI 的文档</a>。</p>
+<p><img src="https://pic.downk.cc/item/5edbaff4c2a9a83be55b007e.jpg" alt></p>
+<p>修改：isVip的值为：false</p>
+<p><img src="https://pic.downk.cc/item/5edbb029c2a9a83be55b86aa.jpg" alt></p>
 <hr>
-<h3 id="初始vue"><a href="#初始vue" class="headerlink" title="初始vue"></a>初始vue</h3><ul>
-<li>下载vue.js</li>
-<li>创建项目</li>
-<li>引入vue.js</li>
-</ul>
-<hr>
-<p><img src="https://pic.downk.cc/item/5edb73bbc2a9a83be5c230f1.jpg" alt></p>
-<p>打开浏览器，进入控制台：</p>
-<p><img src="https://pic.downk.cc/item/5edb740ac2a9a83be5c2f1f6.jpg" alt></p>
-<p>出现上面的效果，引入成功。</p>
-<hr>
-<p>现在开始，我们第一个vue实例，验证vue的：mvvm的模式好处。</p>
-<p>1）修改html：</p>
+<p><strong>PS: v-if 和 v-else之间是不能有其他的Element元素的！！！</strong></p>
+<p>我们，现在让中间随便写点其他的标签</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
@@ -512,22 +536,29 @@ $ npm install vue
     <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
 <span class="token operator">&lt;</span>body<span class="token operator">></span>
-       <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
-           <span class="token punctuation">{</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">}</span>
-           <span class="token operator">&lt;</span>hr<span class="token operator">></span>
-           <span class="token punctuation">{</span><span class="token punctuation">{</span>msg<span class="token punctuation">}</span><span class="token punctuation">}</span>
-       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+    <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"isVip"</span><span class="token operator">></span>我是vip用户<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>  注意：v<span class="token operator">-</span><span class="token keyword">if</span> 和 v<span class="token operator">-</span><span class="token keyword">else</span>之间不能有其他Element元素！！！      <span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span> 其他元素 ！！！<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">></span>我是普通用户<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
 
 <span class="token operator">&lt;</span>script<span class="token operator">></span>
-    <span class="token comment" spellcheck="true">//console.log(Vue)</span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            isVip<span class="token punctuation">:</span><span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p>此时界面：</p>
-<p><img src="https://pic.downk.cc/item/5edb74adc2a9a83be5c48bd3.jpg" alt></p>
-<p>2) 修改html</p>
-<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<p><img src="https://pic.downk.cc/item/5edbb0afc2a9a83be55cf6ba.jpg" alt></p>
+<h3 id="v-if-else"><a href="#v-if-else" class="headerlink" title="v-if-else"></a>v-if-else</h3><p>v-if-else是2.1.0 新增的</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
@@ -535,41 +566,187 @@ $ npm install vue
     <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
 <span class="token operator">&lt;</span>body<span class="token operator">></span>
-       <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
-           <span class="token punctuation">{</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token punctuation">}</span>
-           <span class="token operator">&lt;</span>hr<span class="token operator">></span>
-           <span class="token punctuation">{</span><span class="token punctuation">{</span>msg<span class="token punctuation">}</span><span class="token punctuation">}</span>
-       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"age > 18"</span><span class="token operator">></span> 我已经是成年人<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">"age > 14"</span><span class="token operator">></span> 我已经是青少年<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">></span>我是未成年<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
 
 <span class="token operator">&lt;</span>script<span class="token operator">></span>
-    <span class="token comment" spellcheck="true">//console.log(Vue)</span>
 
-    let app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-        data<span class="token operator">:</span> <span class="token punctuation">{</span>
-            name<span class="token operator">:</span> <span class="token string">'gakki'</span><span class="token punctuation">,</span>
-            msg<span class="token operator">:</span> <span class="token string">'谢谢大家，喜欢我，啦啦啦啦~~~'</span>
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            age<span class="token punctuation">:</span> <span class="token number">20</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p><img src="https://pic.downk.cc/item/5edb7529c2a9a83be5c5bc5b.jpg" alt></p>
-<p>3）验证mvvm的效果</p>
-<p>在浏览器中，直接修改app实例的data参数，dom模型会实时变化：</p>
-<p><img src="https://pic.downk.cc/item/5edb75f0c2a9a83be5c7a30e.jpg" alt></p>
+<p>类似于 <code>v-else</code>，<code>v-else-if</code> 也必须紧跟在带 <code>v-if</code> 或者 <code>v-else-if</code> 的元素之后。</p>
+<p>大家自行修改age的值来看dom渲染情况吧~~~</p>
 <hr>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-   <span class="token operator">...</span>
-   <span class="token operator">...</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<h3 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h3><p>v-show也是用来显示文档的，但是后面不接v-else的条件.</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
 
-初始化vue时，会在构造方法中，传递一个对象来进行init。
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>span v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"isShow"</span><span class="token operator">></span> 我是显示内容<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
 
-el：是用来进行，model数据（data） 和 view视图（dom）的绑定的。这里就是将div的id为app的进行榜单，#app进行选择器绑定，这个是js中的基本内容，不懂的话，可以先去了解一下。
-data：用来绑定数据的
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            isShow<span class="token punctuation">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
+<p><img src="https://pic.downk.cc/item/5edbb2a7c2a9a83be5622a3f.jpg" alt></p>
+<p>修改：isShow的值为：false</p>
+<p><img src="https://pic.downk.cc/item/5edbb306c2a9a83be5633151.jpg" alt></p>
+<hr>
+<p>区别：</p>
+<p>v-if：false，是直接删除元素</p>
+<p>V-show：false，是display: none ，是隐藏元素。</p>
+<p>使用：</p>
+<p>如果你的元素只是判断一次，或者很少修改的话，请使用：v-if</p>
+<p>如果你的元素频繁修改的话，请使用：v-show，这样会减少性能。</p>
+<hr>
+<p>例子：</p>
+<p>通过按钮的点击事件来频繁修改，某个区域是否显示：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span>style<span class="token operator">></span>
+        <span class="token punctuation">.</span>show<span class="token punctuation">{</span>
+            width<span class="token punctuation">:</span> 500px<span class="token punctuation">;</span>
+            height<span class="token punctuation">:</span> 500px<span class="token punctuation">;</span>
+            background<span class="token punctuation">:</span> aqua<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"show"</span> v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"isShow"</span><span class="token operator">></span>
+         我是显示的内容
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>span @click<span class="token operator">=</span><span class="token string">"isShow = !isShow"</span><span class="token operator">></span>切换<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            isShow<span class="token punctuation">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5edbb475c2a9a83be566ce9d.jpg" alt></p>
+<p>大家，尝试疯狂点击：切换，就会看到蓝色的区域在显示和隐藏之间来回切换：</p>
+<p><img src="https://pic.downk.cc/item/5edbb4c5c2a9a83be5678f8c.jpg" alt></p>
+<hr>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>尝试完成，一般APP下面的切换tag的功能，点击不同的tag切换不同的页面主题：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span>style<span class="token operator">></span>
+        <span class="token punctuation">.</span>home <span class="token punctuation">{</span>
+            width<span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+            height<span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+            background<span class="token punctuation">:</span> aqua<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token punctuation">.</span>subject <span class="token punctuation">{</span>
+            width<span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+            height<span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+            background<span class="token punctuation">:</span> blueviolet<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token punctuation">.</span>person <span class="token punctuation">{</span>
+            width<span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+            height<span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+            background<span class="token punctuation">:</span> chartreuse<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div v<span class="token operator">-</span>bind<span class="token punctuation">:</span><span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"activeClass"</span> v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"tag == 1"</span><span class="token operator">></span>
+        首页
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div v<span class="token operator">-</span>bind<span class="token punctuation">:</span><span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"activeClass"</span> v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"tag == 2"</span><span class="token operator">></span>
+        主题
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div v<span class="token operator">-</span>bind<span class="token punctuation">:</span><span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"activeClass"</span> v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"tag == 3"</span><span class="token operator">></span>
+        个人中心
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"changeTag"</span> data<span class="token operator">-</span>id<span class="token operator">=</span><span class="token string">"1"</span> data<span class="token operator">-</span>className<span class="token operator">=</span><span class="token string">"home"</span><span class="token operator">></span>首页<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"changeTag"</span> data<span class="token operator">-</span>id<span class="token operator">=</span><span class="token string">"2"</span> data<span class="token operator">-</span>className<span class="token operator">=</span><span class="token string">"subject"</span><span class="token operator">></span>主题<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"changeTag"</span> data<span class="token operator">-</span>id<span class="token operator">=</span><span class="token string">"3"</span> data<span class="token operator">-</span>className<span class="token operator">=</span><span class="token string">"person"</span><span class="token operator">></span>个人中心<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            activeClass<span class="token punctuation">:</span> <span class="token string">'show'</span><span class="token punctuation">,</span>
+            tag<span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token function">changeTag</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//e: 就是点击的事件</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true">//获取：data-id的值</span>
+                <span class="token keyword">let</span> id <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>id
+                <span class="token keyword">let</span> className <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>classname
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'id:'</span> <span class="token operator">+</span> id<span class="token punctuation">)</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'className:'</span> <span class="token operator">+</span> className<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true">//app.tag = id 和下面是等价的！！</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>tag <span class="token operator">=</span> id
+                <span class="token keyword">this</span><span class="token punctuation">.</span>activeClass <span class="token operator">=</span> className
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5edbb9efc2a9a83be575278c.jpg" alt></p>
+<p><img src="https://pic.downk.cc/item/5edbba0ec2a9a83be57582e7.jpg" alt></p>
+<hr>
+<p>这个例子：</p>
+<p>请大家仔细看呀：</p>
+<p>首先因为，是需要频繁切换tag，所以，我这里选择了使用v-show，使用v-if也能完成该需求，大家可以自行尝试。</p>
+<p>然后，这里，使用了vue中的methods方法属性，定义了点击事件的方法，并且看到，默认所有的方法都会默认传入一个e的参数，如果你自行传入了其他参数的话，该e事件参数就不会被传了，如果你还需要的话，请将e参数放入到你自定义方法的第一个参数。</p>
+<p>接着，我们需要两个参数，tag的id 和 tag显示的className，这里使用了自定义标签的：data-xxx，注意自定义标签只能是：<strong>data-</strong> 开头，而且<strong>自定义标签的名字是不区分大小写的</strong>！！！我们从e参数中获取:<code>data-id=&quot;1&quot; data-className=&quot;home&quot;</code> 时，使用的名字都是小写：<code>let id = e.target.dataset.id ,let className = e.target.dataset.classname</code>. 主要从e中获取classname就是全部是小写</p>
+<hr>
+<p><strong>ps：vue中的方法中的this 和 我们之间js中和jQuery中的方法中的this的含义不一样，vue中的this指的是：vue本身的实例，这里就是创建的app实例，因此：app.tag  和 this.tag 是等价的作用。</strong></p>
 
             </div>
             <hr/>
@@ -717,7 +894,7 @@ data：用来绑定数据的
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/06/06/chu-shi-vue/" class="b-link-green">初始vue</a>
+                    <a href="/2020/06/06/vue-tiao-jian-xuan-ran/" class="b-link-green">vue条件渲染</a>
                 </p>
             </div>
         </div>
@@ -997,9 +1174,10 @@ data：用来绑定数据的
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/06/vue-tiao-jian-xuan-ran/">
                     <div class="card-image">
@@ -1011,14 +1189,14 @@ data：用来绑定数据的
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                      
+                       
                                 vue条件渲染
                       
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1031,6 +1209,7 @@ data：用来绑定数据的
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1049,30 +1228,30 @@ data：用来绑定数据的
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/30/bei-jing-huan-le-gu/">
+                <a href="/2020/06/06/chu-shi-vue/">
                     <div class="card-image">
                         
-                        <img src="https://pic.downk.cc/item/5ed26996c2a9a83be5da6373.jpg" class="responsive-img" alt="北京欢乐谷">
+                        <img src="https://pic.downk.cc/item/5edb6c2cc2a9a83be5af48d0.jpg" class="responsive-img" alt="初始vue">
                         
-                        <span class="card-title">北京欢乐谷</span>
+                        <span class="card-title">初始vue</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                北京欢乐谷一日游
+                                初始vue，大家和我一起开始吧，奥利给~~~
                       
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-30
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/生活/" class="post-category" target="_blank">
-                                    生活
+                            <a href="/categories/vue/" class="post-category" target="_blank">
+                                    vue
                                 </a>
                             
                             
@@ -1082,8 +1261,8 @@ data：用来绑定数据的
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/北京欢乐谷/" target="_blank">
-                        <span class="chip bg-color">北京欢乐谷</span>
+                    <a href="/tags/vue/" target="_blank">
+                        <span class="chip bg-color">vue</span>
                     </a>
                     
                 </div>
