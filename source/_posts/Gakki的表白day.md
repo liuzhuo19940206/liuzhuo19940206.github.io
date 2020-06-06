@@ -17,7 +17,7 @@ password:
 
 B站up在5月20号制作的表白Gakki的视频，觉得非常有意思，因此保存到自己的博客上，如果侵权请告知。
 
-{% dplayer "url=http://upos-sz-mirrorcos.bilivideo.com/upgcxcode/39/75/39547539/39547539-1-208.mp4?e=ig8euxZM2rNcNbNa7bdVhwdlhbujhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590904057&gen=playurl&os=cosbv&oi=837395164&trid=391e0973cc5a4c5ba95778e3bbd5cebbT&platform=html5&upsig=49d524248dfa86bb2a661e46e80ee072&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000" "pic=https://pic.superbed.cn/item/5d0246c1451253d1783b86b2.jpg"  "loop=yes" "theme=#FADFA3" "autoplay=false" "id=dplayerOfgakki520" "api=https:\/\/dplayer.moerats.com\/"  "addition=https:\/\/dplayer.moerats.com\/v3\/bilibili?aid=23675732" %}
+<iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV12p411d7LN" allowfullscreen="no" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
 
 ---
 

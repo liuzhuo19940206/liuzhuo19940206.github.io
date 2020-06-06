@@ -17,7 +17,7 @@ password:
 
 第一遍可爱，第二遍可爱，第三遍还是可爱。
 
-{% dplayer "url=http://upos-sz-mirrorkodo.bilivideo.com/upgcxcode/38/87/37898738/37898738-1-208.mp4?e=ig8euxZM2rNcNbKVhWdVhwdl7wd1hwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1590903894&gen=playurl&os=kodobv&oi=837395164&trid=c42feb18f84f4120bf85f3e4f9e5efdbT&platform=html5&upsig=19deed6e1dd03870a0261e140d3ba574&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,platform&mid=580104086&orderid=0,1&logo=80000000"  "loop=yes" "theme=#FADFA3" "autoplay=false" "id=dplayerOfgakkishui" "api=https:\/\/dplayer.moerats.com\/"  "addition=https:\/\/dplayer.moerats.com\/v3\/bilibili?aid=22818330" %}
+<iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV1JW411377J" allowfullscreen="no" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
 
 ---
 
