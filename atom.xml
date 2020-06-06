@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-06T02:05:14.023Z</updated>
+  <updated>2020-06-06T11:00:00.695Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初始vue</title>
+    <link href="http://gakkil.gitee.io/2020/06/06/chu-shi-vue/"/>
+    <id>http://gakkil.gitee.io/2020/06/06/chu-shi-vue/</id>
+    <published>2020-06-06T10:10:22.000Z</published>
+    <updated>2020-06-06T11:00:00.695Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;官网&quot;&gt;&lt;a href=&quot;#官网&quot; class=&quot;headerlink&quot; title=&quot;官网&quot;&gt;&lt;/a&gt;官网&lt;/h3&gt;&lt;h4 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>北京欢乐谷</title>
@@ -517,33 +543,6 @@
         
           &lt;p&gt;根据前面的FastJson的学习，我们已经掌握了FastJson的基础用法了，可以完成我们的日常开发了，今天我们来学习FastJson中的几个注解的用法&lt;/p&gt;
 &lt;h3 id=&quot;JSONField-介绍&quot;&gt;&lt;a href=&quot;#JSONField-介绍&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FastJson的进阶&lt;一&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-yi/"/>
-    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-yi/</id>
-    <published>2019-12-22T04:19:47.000Z</published>
-    <updated>2019-12-22T06:05:06.328Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;该篇，会总结FastJson中的一些常用API&lt;/p&gt;
-&lt;h3 id=&quot;FastJson主要的API&quot;&gt;&lt;a href=&quot;#FastJson主要的API&quot; class=&quot;headerlink&quot;
         
       
     
