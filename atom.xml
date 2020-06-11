@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-06T15:56:19.997Z</updated>
+  <updated>2020-06-11T15:12:55.525Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Gakki酱生日</title>
+    <link href="http://gakkil.gitee.io/2020/06/11/gakki-jiang-sheng-ri/"/>
+    <id>http://gakkil.gitee.io/2020/06/11/gakki-jiang-sheng-ri/</id>
+    <published>2020-06-11T14:43:16.000Z</published>
+    <updated>2020-06-11T15:12:55.525Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今年的运气也太好了吧，只要是抽奖的活动，我都中奖了，弄得我都不好意思了，哈哈哈~~&lt;/p&gt;
+&lt;p&gt;我知道，一定是老天爷可怜我了，去年对我太不友善了，这是对我的弥补，哈哈。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://gakkil.gitee.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="gakki" scheme="http://gakkil.gitee.io/tags/gakki/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vue条件渲染</title>
     <link href="http://gakkil.gitee.io/2020/06/06/vue-tiao-jian-xuan-ran/"/>
     <id>http://gakkil.gitee.io/2020/06/06/vue-tiao-jian-xuan-ran/</id>
     <published>2020-06-06T14:44:39.000Z</published>
-    <updated>2020-06-06T15:56:19.997Z</updated>
+    <updated>2020-06-06T15:58:51.470Z</updated>
     
     <summary type="html">
     
@@ -181,7 +210,7 @@
     <link href="http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/"/>
     <id>http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/</id>
     <published>2020-05-04T16:33:57.000Z</published>
-    <updated>2020-06-06T02:21:19.303Z</updated>
+    <updated>2020-06-11T15:05:15.111Z</updated>
     
     <summary type="html">
     
@@ -516,33 +545,6 @@
 &lt;ul&gt;
 &lt;li&gt;ExtraProcessor 用于处理多余的字段；&lt;/li&gt;
 &lt;li&gt;ExtraTypeProvider
-        
-      
-    
-    </summary>
-    
-      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FastJson的进阶&lt;三&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-san/"/>
-    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-san/</id>
-    <published>2019-12-22T13:01:34.000Z</published>
-    <updated>2019-12-22T13:55:38.012Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;通过SerializeFilter可以使用扩展编程的方式实现定制序列化。fastjson提供了多种SerializeFilter：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;PropertyFilter
         
       
     
