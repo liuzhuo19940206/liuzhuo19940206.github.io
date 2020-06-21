@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-11T15:12:55.525Z</updated>
+  <updated>2020-06-21T02:14:24.581Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue的生命周期</title>
+    <link href="http://gakkil.gitee.io/2020/06/21/vue-de-sheng-ming-zhou-qi/"/>
+    <id>http://gakkil.gitee.io/2020/06/21/vue-de-sheng-ming-zhou-qi/</id>
+    <published>2020-06-21T01:09:55.000Z</published>
+    <updated>2020-06-21T02:14:24.581Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;生命周期图示&quot;&gt;&lt;a href=&quot;#生命周期图示&quot; class=&quot;headerlink&quot; title=&quot;生命周期图示&quot;&gt;&lt;/a&gt;生命周期图示&lt;/h3&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/tags/vue/"/>
+    
+      <category term="前端" scheme="http://gakkil.gitee.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Gakki酱生日</title>
@@ -516,35 +544,6 @@
 &lt;hr&gt;
 &lt;p&gt;实例对象：&lt;/p&gt;
 &lt;pre class=&quot; language-java&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FastJson的进阶&lt;四&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-si/"/>
-    <id>http://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-si/</id>
-    <published>2019-12-22T14:02:58.000Z</published>
-    <updated>2019-12-22T14:17:30.949Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;ParseProcess是编程扩展定制反序列化的接口。fastjson支持如下ParseProcess：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ExtraProcessor 用于处理多余的字段；&lt;/li&gt;
-&lt;li&gt;ExtraTypeProvider
         
       
     
