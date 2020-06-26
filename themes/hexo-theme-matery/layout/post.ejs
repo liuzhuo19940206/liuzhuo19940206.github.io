@@ -4,7 +4,11 @@
     (function() {
         let pwd = '<%- page.password %>';
         if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('<%- theme.verifyPassword.promptMessage %>')).toString(CryptoJS.enc.Hex)) {
+            // if (pwd !== CryptoJS.SHA256(prompt('<%- theme.verifyPassword.promptMessage %>')).toString(CryptoJS.enc.Hex)) {
+            //     alert('<%- theme.verifyPassword.errorMessage %>');
+            //     location.href = '<%- url_for("/")  %>';
+            // }
+            if (pwd !== prompt('<%- theme.verifyPassword.promptMessage %>')) {
                 alert('<%- theme.verifyPassword.errorMessage %>');
                 location.href = '<%- url_for("/")  %>';
             }

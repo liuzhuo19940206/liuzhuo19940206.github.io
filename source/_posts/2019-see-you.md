@@ -13,7 +13,7 @@ coverImg:
 toc: true
 date: 2020-01-04 10:35:59
 summary: 2019，再见，2020，你好
-password:
+password: gakkij
 ---
 
 2019年，是我最丧的一年，不能怪外力，只怪自己不够努力。
@@ -35,7 +35,6 @@ password:
 19的五一长假去了上海，来了一次与gakki的隔空旅行。起因：偶然发现了gakki在上海06年拍摄的短篇《相遇》，然后就想着去上海把她走过的旅途再走一遍。
 
 <iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV1HW411475i" allowfullscreen="true" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
-
 PS: 完整的旅行记录在我另外的博客中有，大家感兴趣可以去看看：
 
 [上海圣地巡游](https://liuzhuo19940206.coding.me/2019/07/13/%E4%B8%8A%E6%B5%B7gakki%E5%9C%A3%E5%9C%B0%E5%B7%A1%E6%B8%B8/)
@@ -56,7 +55,6 @@ PS: 完整的旅行记录在我另外的博客中有，大家感兴趣可以去�
 相信你会成为最想成为的人
 
 <iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV1Ef4y1271K" allowfullscreen="true" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
-
 PS：完成历程：
 
 [嗨，416实验室的同学们](https://liuzhuo19940206.coding.me/2019/07/04/%E7%8C%AE%E7%BB%99416%E5%AE%9E%E9%AA%8C%E5%AE%A4%E7%9A%84%E7%AB%A5%E5%AD%A9/)
@@ -90,7 +88,6 @@ PS：完成历程：
 <img src="https://pic.downk.cc/item/5e100a2676085c3289a7d3f4.jpg" style="zoom:50%;" />
 
 <iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV1JA411q7iH" allowfullscreen="true" width="100%" height="500" scrolling="no" frameborder="0"></iframe>
-
 ---
 
 #### 798艺术街
