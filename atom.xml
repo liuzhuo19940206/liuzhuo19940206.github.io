@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-21T02:14:24.581Z</updated>
+  <updated>2020-06-26T03:17:59.685Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue的组件传值</title>
+    <link href="http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi/"/>
+    <id>http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi/</id>
+    <published>2020-06-26T02:23:13.000Z</published>
+    <updated>2020-06-26T03:17:59.685Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上篇文章，了解到了vue的生命周期和vue的组件的使用，今天来学习一下，vue组件之间的传值。&lt;/p&gt;
+&lt;h3 id=&quot;父向子组件传值&quot;&gt;&lt;a href=&quot;#父向子组件传值&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue的生命周期</title>
@@ -521,35 +548,6 @@
     </summary>
     
       <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FastJson的进阶&lt;五&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/28/fastjson-de-jin-jie-wu/"/>
-    <id>http://gakkil.gitee.io/2019/12/28/fastjson-de-jin-jie-wu/</id>
-    <published>2019-12-27T16:40:16.000Z</published>
-    <updated>2019-12-27T16:54:31.538Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;当需要处理超大JSON文本时，需要Stream API，在fastjson-1.1.32版本中开始提供Stream API。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;实例对象：&lt;/p&gt;
-&lt;pre class=&quot; language-java&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="FastJson" scheme="http://gakkil.gitee.io/categories/FastJson/"/>
     
     
       <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
