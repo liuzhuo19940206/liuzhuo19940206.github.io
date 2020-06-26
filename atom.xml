@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-26T03:17:59.685Z</updated>
+  <updated>2020-06-26T11:43:26.387Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Vue的组件传值技巧</title>
+    <link href="http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi-ji-qiao/"/>
+    <id>http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi-ji-qiao/</id>
+    <published>2020-06-26T10:58:40.000Z</published>
+    <updated>2020-06-26T11:43:26.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;接着上篇文章，我们来讲解一下，Vue组件传值的奇淫巧技。&lt;/p&gt;
+&lt;h3 id=&quot;Vue中父直接传递方法给子组件&quot;&gt;&lt;a href=&quot;#Vue中父直接传递方法给子组件&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Vue的组件传值</title>
     <link href="http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi/"/>
     <id>http://gakkil.gitee.io/2020/06/26/vue-de-zu-jian-chuan-zhi/</id>
     <published>2020-06-26T02:23:13.000Z</published>
-    <updated>2020-06-26T03:17:59.685Z</updated>
+    <updated>2020-06-26T03:19:08.993Z</updated>
     
     <summary type="html">
     
@@ -425,7 +452,7 @@
     <link href="http://gakkil.gitee.io/2020/01/04/2019-see-you/"/>
     <id>http://gakkil.gitee.io/2020/01/04/2019-see-you/</id>
     <published>2020-01-04T02:35:59.000Z</published>
-    <updated>2020-06-06T02:13:40.493Z</updated>
+    <updated>2020-06-26T11:18:19.848Z</updated>
     
     <summary type="html">
     
@@ -516,32 +543,6 @@
         
         
           &lt;h3 id=&quot;处理Json&quot;&gt;&lt;a href=&quot;#处理Json&quot; class=&quot;headerlink&quot; title=&quot;处理Json&quot;&gt;&lt;/a&gt;处理Json&lt;/h3&gt;&lt;p&gt;Jackson提供了三种可选的Json处理方法：流式API(Streaming API)
-        
-      
-    
-    </summary>
-    
-      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jackson的使用</title>
-    <link href="http://gakkil.gitee.io/2019/12/28/jackson-de-shi-yong/"/>
-    <id>http://gakkil.gitee.io/2019/12/28/jackson-de-shi-yong/</id>
-    <published>2019-12-28T14:28:04.000Z</published>
-    <updated>2019-12-29T02:42:53.559Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Json已经成为当前服务器与 WEB 应用之间数据传输的公认标准。Java 中常见的 Json 类库有 &lt;strong&gt;JSON-lib 、Gson、FastJson和 Jackson &lt;/strong&gt;等。相比于其他的解析工具，Jackson
         
       
     

@@ -282,7 +282,11 @@ environments(配置环境)配置环境可以注册多个数据源（dataSource�
     (function() {
         let pwd = '';
         if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            // if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            //     alert('密码错误，将返回主页！');
+            //     location.href = '/';
+            // }
+            if (pwd !== prompt('请输入访问本文章的密码')) {
                 alert('密码错误，将返回主页！');
                 location.href = '/';
             }
@@ -1406,7 +1410,7 @@ public class C3P0DataSourceFactory extends UnpooledDataSourceFactory {
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">366.2k</span>
+                <span class="white-color">367.6k</span>
             
 
             

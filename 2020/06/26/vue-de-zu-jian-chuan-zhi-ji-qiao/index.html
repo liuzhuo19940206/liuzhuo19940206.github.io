@@ -5,12 +5,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Vue的组件传值, 解忧杂货店">
-    <meta name="description" content="上篇文章，了解到了vue的生命周期和vue的组件的使用，今天来学习一下，vue组件之间的传值。
-父向子组件传值&amp;lt;!DOCTYPE html&gt;
+    <meta name="keywords" content="Vue的组件传值技巧, 解忧杂货店">
+    <meta name="description" content="接着上篇文章，我们来讲解一下，Vue组件传值的奇淫巧技。
+Vue中父直接传递方法给子组件&amp;lt;!DOCTYPE html&gt;
 &amp;lt;html lang=&#34;en&#34;&gt;
 &amp;lt;head&gt;
-    &amp;lt;meta cha">
+    &amp;lt;meta charset=&#34;UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Vue的组件传值 | 解忧杂货店</title>
+    <title>Vue的组件传值技巧 | 解忧杂货店</title>
     <link rel="icon" type="image/bmp" href="/favicon.bmp">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -283,7 +283,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = '123456';
         if (pwd && pwd.length > 0) {
             // if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
             //     alert('密码错误，将返回主页！');
@@ -300,13 +300,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5ef55ec614195aa59486b56a.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5ef5d52b14195aa594c3ca9c.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Vue的组件传值
+                        Vue的组件传值技巧
                     </div>
                 </div>
             </div>
@@ -449,14 +449,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.1k
+                        1.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        7 分
                     </div>
                     
                 
@@ -472,8 +472,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>上篇文章，了解到了vue的生命周期和vue的组件的使用，今天来学习一下，vue组件之间的传值。</p>
-<h3 id="父向子组件传值"><a href="#父向子组件传值" class="headerlink" title="父向子组件传值"></a>父向子组件传值</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+                <p>接着上篇文章，我们来讲解一下，Vue组件传值的奇淫巧技。</p>
+<h3 id="Vue中父直接传递方法给子组件"><a href="#Vue中父直接传递方法给子组件" class="headerlink" title="Vue中父直接传递方法给子组件"></a>Vue中父直接传递方法给子组件</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
@@ -484,8 +484,11 @@
 
 <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>ul<span class="token operator">></span>
-        <span class="token operator">&lt;</span>product v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in products"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>product<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>定义一个c<span class="token operator">-</span>school的属性，并将父组件中的方法传递给它<span class="token operator">--</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token punctuation">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span> <span class="token punctuation">:</span>c<span class="token operator">-</span>school<span class="token operator">=</span><span class="token string">"cSchool"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
+    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
@@ -493,47 +496,44 @@
 <span class="token operator">&lt;</span>script<span class="token operator">></span>
 
     <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
-    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'product'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
             &lt;li>
-                &lt;h3>文具盒&lt;/h3>
-                &lt;p>超级好用&lt;/p>
-                &lt;p>5&lt;/p>
-            &lt;/li>`</span></span><span class="token punctuation">,</span>
+                &lt;span>{{schoolName}}&lt;/span>
+                &lt;button @click="chooseSchool(schoolName)">选择&lt;/button>
+            &lt;/li>
+        `</span></span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true">//this.$emit('choose-name',schoolName)</span>
+
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>cSchool<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true">// 直接调用父组件中的方法</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">cSchool</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
         el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
         data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            products<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品1'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">12.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品2'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">13.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品3'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">14.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品4'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">15.5</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">]</span>
+            schools<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            chooseSchoolName<span class="token punctuation">:</span><span class="token string">''</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            cSchool<span class="token punctuation">:</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p><img src="https://pic.downk.cc/item/5ef5619914195aa5948779a2.jpg" alt></p>
-<p>这里：能看到渲染出来了四个product的组件，其实都是复用一个组件，这就是组件的好处，定义组件后，可以多次使用，不过这里，我们也看到了，每个组件中的data数据都是相同的，我们想使用父组件传递给子组件的值，怎么使用呢？意思就是怎么使用app这个父组件中的data中的products，给子组件school使用呐？</p>
+<p><img src="https://pic.downk.cc/item/5ef5db8a14195aa594c701ac.jpg" alt></p>
+<p>大家，仔细琢磨即可，父组件直接传递给组件自己的方法，然后子组件调用该方法修改了父组件中的data值。</p>
 <hr>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<h3 id="this-parent"><a href="#this-parent" class="headerlink" title="this.$parent"></a>this.$parent</h3><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
@@ -544,8 +544,10 @@
 
 <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>ul<span class="token operator">></span>
-        <span class="token operator">&lt;</span>product v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in products"</span> <span class="token punctuation">:</span>product<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>product<span class="token operator">></span>
+        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token operator">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
+    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
@@ -553,51 +555,43 @@
 <span class="token operator">&lt;</span>script<span class="token operator">></span>
 
     <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
-    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'product'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'product'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
-            &lt;li>
-                &lt;h3>{{product.title}}&lt;/h3>
-                &lt;p>{{product.description}}&lt;/p>
-                &lt;p>{{product.price}}&lt;/p>
-            &lt;/li>`</span></span><span class="token punctuation">,</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        props<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        template<span class="token operator">:</span> `
+            <span class="token operator">&lt;</span>li<span class="token operator">></span>
+                <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>schoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+                <span class="token operator">&lt;</span>button <span class="token annotation punctuation">@click</span><span class="token operator">=</span><span class="token string">"chooseSchool(schoolName)"</span><span class="token operator">></span>选择<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span>
+        `<span class="token punctuation">,</span>
+        methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+            chooseSchool<span class="token operator">:</span> <span class="token function">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true">//this.$emit('choose-name',schoolName)</span>
+
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$parent<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            products<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品1'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">12.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品2'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">13.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品3'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">14.5</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">{</span>
-                    title<span class="token punctuation">:</span> <span class="token string">'产品4'</span><span class="token punctuation">,</span>
-                    description<span class="token punctuation">:</span> <span class="token string">'非常好用的产品'</span><span class="token punctuation">,</span>
-                    price<span class="token punctuation">:</span> <span class="token number">15.5</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">]</span>
+    let app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token operator">:</span> <span class="token punctuation">{</span>
+            schools<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            chooseSchoolName<span class="token operator">:</span><span class="token string">''</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+            cSchool<span class="token operator">:</span><span class="token function">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p>这里，在子组件中，定义了一个新的属性：<strong>props</strong>，该属性值就是用来接受父组件传递给来的值的。</p>
-<p>在product中使用中，定义了一个product的属性接受item的值。</p>
-<p><img src="https://pic.downk.cc/item/5ef5634c14195aa59487ff3c.jpg" alt></p>
-<p>现在，子组件就讲父组件中的数据给渲染出来了。</p>
-<p><strong>说明：定义props时，属性命不要使用驼峰命名法，否则会出错的，必须使用小写，或者中划线。</strong></p>
-<hr>
-<h3 id="子向父组件传值"><a href="#子向父组件传值" class="headerlink" title="子向父组件传值"></a>子向父组件传值</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<p><img src="https://pic.downk.cc/item/5ef5dc8114195aa594c77d2c.jpg" alt></p>
+<p>在子组件中的this中，我们看到了可以获取到一个特殊的对象，$parent，该对象指代的就是该子组件的直接父组件，即这里的app组件。</p>
+<p>因此，我们可以使用这个对象来调用父组件中的方法：</p>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
@@ -620,7 +614,7 @@
 
     <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
     Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
             &lt;li>
                 &lt;span>{{schoolName}}&lt;/span>
@@ -630,59 +624,13 @@
         methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
             chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            schools<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-            chooseSchoolName<span class="token punctuation">:</span><span class="token string">''</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
-<p><img src="https://pic.downk.cc/item/5ef565c714195aa59488b433.jpg" alt></p>
-<p>这里，想实现，当点击子组件的button按钮时，在父组件中的选择学校那里出现我们选择的学校的名字。</p>
-<p>目前，我们只是在子组件中，获取到了点击的学校名，还没有传递给父组件，怎么实现呢？</p>
-<p><strong>这里需要使用：this.$emit 发射事件！</strong></p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
-<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
-<span class="token operator">&lt;</span>head<span class="token operator">></span>
-    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
-    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
-<span class="token operator">&lt;</span>body<span class="token operator">></span>
+                <span class="token comment" spellcheck="true">//this.$emit('choose-name',schoolName)</span>
 
-<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
-    <span class="token operator">&lt;</span>ul<span class="token operator">></span>
-        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token punctuation">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span> @choose<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"cSchool"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
-    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
-    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$parent<span class="token punctuation">)</span>
 
-<span class="token operator">&lt;</span>script<span class="token operator">></span>
-
-    <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
-    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
-            &lt;li>
-                &lt;span>{{schoolName}}&lt;/span>
-                &lt;button @click="chooseSchool(schoolName)">选择&lt;/button>
-            &lt;/li>
-        `</span></span><span class="token punctuation">,</span>
-        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
-
-                <span class="token comment" spellcheck="true">//1）发射事件</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'choose-name'</span><span class="token punctuation">,</span>schoolName<span class="token punctuation">)</span>
-
+                <span class="token comment" spellcheck="true">//直接调用父组件的方法</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>$parent<span class="token punctuation">.</span><span class="token function">cSchool</span><span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -701,16 +649,189 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
-<p><img src="https://pic.downk.cc/item/5ef567ec14195aa59489ad2b.jpg" alt></p>
-<p>说明：</p>
-<p>1）使用 <code>this.$emit(&#39;choose-name&#39;,schoolName)</code>发射了一个名叫<code>choose-name</code>的事件</p>
-<p>2）在school子组件中的使用中，监听<code>choose-name</code>事件：<code>&lt;school v-for=&quot;(item,index) in schools&quot; :school-name=&quot;item&quot; @choose-name=&quot;cSchool&quot;&gt;</code></p>
-<p>3）监听<code>choose-name</code>事件后，在父组件中定义一个处理监听到该事件的处理函数：<code>cSchool</code></p>
-<pre class=" language-javascript"><code class="language-javascript">cSchool<span class="token punctuation">:</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
-<span class="token punctuation">}</span>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>ul<span class="token operator">></span>
+        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token punctuation">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
+    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+            &lt;li>
+                &lt;span>{{schoolName}}&lt;/span>
+                &lt;button @click="$parent.cSchool(schoolName)">选择&lt;/button>
+            &lt;/li>
+        `</span></span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// console.log(schoolName)</span>
+                <span class="token comment" spellcheck="true">// //this.$emit('choose-name',schoolName)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// console.log(this)</span>
+                <span class="token comment" spellcheck="true">// console.log(this.$parent)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// //直接调用父组件的方法</span>
+                <span class="token comment" spellcheck="true">// this.$parent.cSchool(schoolName)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            schools<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            chooseSchoolName<span class="token punctuation">:</span><span class="token string">''</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            cSchool<span class="token punctuation">:</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 </code></pre>
+<h3 id="this-root"><a href="#this-root" class="headerlink" title="this.$root"></a>this.$root</h3><p>组件是可以嵌套多层的，如果想要调用父组件的父组件的父组件就会写很长的表达式：<code>this.$parent.$parent.$parent</code></p>
+<p>因此，vue提供了一个<code>this.$root</code>对象，可以直接获取到根对象，在我们这里根对象就是：app。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>ul<span class="token operator">></span>
+        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token punctuation">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
+    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+            &lt;li>
+                &lt;span>{{schoolName}}&lt;/span>
+                &lt;button @click="$root.cSchool(schoolName)">选择&lt;/button>
+            &lt;/li>
+        `</span></span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// console.log(schoolName)</span>
+                <span class="token comment" spellcheck="true">// //this.$emit('choose-name',schoolName)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// console.log(this)</span>
+                <span class="token comment" spellcheck="true">// console.log(this.$parent)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// //直接调用父组件的方法</span>
+                <span class="token comment" spellcheck="true">// this.$parent.cSchool(schoolName)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            schools<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            chooseSchoolName<span class="token punctuation">:</span><span class="token string">''</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            cSchool<span class="token punctuation">:</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ef5de2414195aa594c84ba6.jpg" alt>通过上图，使用<code>this.$root</code>对象来调用方法也能成功。</p>
+<h3 id="this-children"><a href="#this-children" class="headerlink" title="this.$children"></a>this.$children</h3><p>父组件可以直接修改<code>this.$children</code>来控制子组件中的数据。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
+<span class="token operator">&lt;</span>head<span class="token operator">></span>
+    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>title<span class="token operator">></span>Title<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"js/vue.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">></span>
+<span class="token operator">&lt;</span>body<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>ul<span class="token operator">></span>
+        <span class="token operator">&lt;</span>school v<span class="token operator">-</span><span class="token keyword">for</span><span class="token operator">=</span><span class="token string">"(item,index) in schools"</span> <span class="token punctuation">:</span>school<span class="token operator">-</span>name<span class="token operator">=</span><span class="token string">"item"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>school<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">/</span><span class="token operator">></span>
+    选择的学校：<span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span>chooseSchoolName<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">></span>
+
+    <span class="token comment" spellcheck="true">//Vue中全局注册：组件，即：注册后，在Vue的实例中都能使用</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'school'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'schoolName'</span><span class="token punctuation">,</span><span class="token string">'cSchool'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+            &lt;li>
+                &lt;span>{{schoolName}}&lt;/span>
+                &lt;button @click="$root.cSchool(schoolName)">选择&lt;/button>
+            &lt;/li>
+        `</span></span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            chooseSchool<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>schoolName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// console.log(schoolName)</span>
+                <span class="token comment" spellcheck="true">// //this.$emit('choose-name',schoolName)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// console.log(this)</span>
+                <span class="token comment" spellcheck="true">// console.log(this.$parent)</span>
+                <span class="token comment" spellcheck="true">//</span>
+                <span class="token comment" spellcheck="true">// //直接调用父组件的方法</span>
+                <span class="token comment" spellcheck="true">// this.$parent.cSchool(schoolName)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            schools<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'清华'</span><span class="token punctuation">,</span> <span class="token string">'北大'</span><span class="token punctuation">,</span> <span class="token string">'复旦'</span><span class="token punctuation">,</span> <span class="token string">'上交'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            chooseSchoolName<span class="token punctuation">:</span><span class="token string">''</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            cSchool<span class="token punctuation">:</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"data:"</span><span class="token operator">+</span>data<span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>chooseSchoolName <span class="token operator">=</span> data
+
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$children<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><img src="https://pic.downk.cc/item/5ef5def514195aa594c8b538.jpg" alt></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>一般，我们不使用这样的方法来控制父子组件之间的传值，因为这样不利于维护，大家都直接调用方法控制数据，强耦合，最好还是使用上一节介绍的方法，也是官方提供的方法。</p>
 
             </div>
             <hr/>
@@ -858,7 +979,7 @@
                     </span>
                     <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2020/06/26/vue-de-zu-jian-chuan-zhi/" class="b-link-green">Vue的组件传值</a>
+                    <a href="/2020/06/26/vue-de-zu-jian-chuan-zhi-ji-qiao/" class="b-link-green">Vue的组件传值技巧</a>
                 </p>
             </div>
         </div>
@@ -1138,9 +1259,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/26/vue-de-zu-jian-chuan-zhi-ji-qiao/">
                     <div class="card-image">
@@ -1152,14 +1274,14 @@
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-                      
+                       
                                 Vue中的组件传值的奇淫巧技
                       
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1172,6 +1294,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1190,23 +1313,23 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/21/vue-de-sheng-ming-zhou-qi/">
+                <a href="/2020/06/26/vue-de-zu-jian-chuan-zhi/">
                     <div class="card-image">
                         
-                        <img src="https://pic.downk.cc/item/5eeeb43e14195aa594c0bbb1.jpg" class="responsive-img" alt="Vue的生命周期">
+                        <img src="https://pic.downk.cc/item/5ef55ec614195aa59486b56a.jpg" class="responsive-img" alt="Vue的组件传值">
                         
-                        <span class="card-title">Vue的生命周期</span>
+                        <span class="card-title">Vue的组件传值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
                        
-                                Vue的生命周期和组件的基本用法
+                                Vue中的父子组件之间的传值
                       
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-26
                             </span>
                         <span class="publish-author">
                             
@@ -1225,10 +1348,6 @@
                     
                     <a href="/tags/vue/" target="_blank">
                         <span class="chip bg-color">vue</span>
-                    </a>
-                    
-                    <a href="/tags/前端/" target="_blank">
-                        <span class="chip bg-color">前端</span>
                     </a>
                     
                 </div>

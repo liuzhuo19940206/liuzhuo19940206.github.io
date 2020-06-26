@@ -286,7 +286,11 @@ set命令set key value [ex 秒数] / [px 毫秒数]  [nx不存在] /[xx存在]
     (function() {
         let pwd = '';
         if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            // if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            //     alert('密码错误，将返回主页！');
+            //     location.href = '/';
+            // }
+            if (pwd !== prompt('请输入访问本文章的密码')) {
                 alert('密码错误，将返回主页！');
                 location.href = '/';
             }
@@ -1535,7 +1539,7 @@ redis 127.0.0.1:6379&gt; get char
             gakki酱的小迷弟
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">366.2k</span>
+                <span class="white-color">367.6k</span>
             
 
             
