@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-06-26T11:43:26.387Z</updated>
+  <updated>2020-06-27T03:21:37.706Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue中组件的v-model使用</title>
+    <link href="http://gakkil.gitee.io/2020/06/27/vue-zhong-zu-jian-de-v-model-shi-yong/"/>
+    <id>http://gakkil.gitee.io/2020/06/27/vue-zhong-zu-jian-de-v-model-shi-yong/</id>
+    <published>2020-06-27T02:14:58.000Z</published>
+    <updated>2020-06-27T03:21:37.706Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;v-model是vue使用比较频繁的特性，在表单中使用的最多，像input输入框、select下拉框、radio单选框等。&lt;/p&gt;
+&lt;p&gt;今天，我们来将vue中的v-model的原理来捋一下吧~&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;使用原生js来实现v-model&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://gakkil.gitee.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue的组件传值技巧</title>
@@ -517,32 +546,6 @@
         
         
           &lt;h3 id=&quot;readValue&quot;&gt;&lt;a href=&quot;#readValue&quot; class=&quot;headerlink&quot; title=&quot;readValue&quot;&gt;&lt;/a&gt;readValue&lt;/h3&gt;&lt;h4 id=&quot;POJO对象&quot;&gt;&lt;a href=&quot;#POJO对象&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jackson的进阶&lt;一&gt;</title>
-    <link href="http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-yi/"/>
-    <id>http://gakkil.gitee.io/2019/12/29/jackson-de-jin-jie-yi/</id>
-    <published>2019-12-29T03:36:18.000Z</published>
-    <updated>2019-12-29T04:36:37.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;处理Json&quot;&gt;&lt;a href=&quot;#处理Json&quot; class=&quot;headerlink&quot; title=&quot;处理Json&quot;&gt;&lt;/a&gt;处理Json&lt;/h3&gt;&lt;p&gt;Jackson提供了三种可选的Json处理方法：流式API(Streaming API)
         
       
     
