@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-07-04T13:20:13.933Z</updated>
+  <updated>2020-07-19T14:29:16.227Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flink的入门</title>
+    <link href="http://gakkil.gitee.io/2020/07/19/flink-de-ru-men/"/>
+    <id>http://gakkil.gitee.io/2020/07/19/flink-de-ru-men/</id>
+    <published>2020-07-19T13:57:52.000Z</published>
+    <updated>2020-07-19T14:29:16.227Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;Flink的简单介绍&quot;&gt;&lt;a href=&quot;#Flink的简单介绍&quot; class=&quot;headerlink&quot; title=&quot;Flink的简单介绍&quot;&gt;&lt;/a&gt;Flink的简单介绍&lt;/h3&gt;&lt;p&gt;Apache Flink
+        
+      
+    
+    </summary>
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/categories/flink/"/>
+    
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/tags/flink/"/>
+    
+  </entry>
   
   <entry>
     <title>vue-cli</title>
@@ -529,33 +555,6 @@
       <category term="生活" scheme="http://gakkil.gitee.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
       <category term="情感" scheme="http://gakkil.gitee.io/tags/%E6%83%85%E6%84%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jackson的进阶&lt;三&gt;</title>
-    <link href="http://gakkil.gitee.io/2020/01/02/jackson-de-jin-jie-san/"/>
-    <id>http://gakkil.gitee.io/2020/01/02/jackson-de-jin-jie-san/</id>
-    <published>2020-01-02T11:08:28.000Z</published>
-    <updated>2020-01-02T14:06:31.912Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;使用jackson annotations简化和增强的json解析与生成。&lt;/p&gt;
-&lt;p&gt;Jackson-2.x通用annotations列表：&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Jackson" scheme="http://gakkil.gitee.io/categories/Jackson/"/>
-    
-    
-      <category term="json" scheme="http://gakkil.gitee.io/tags/json/"/>
     
   </entry>
   
