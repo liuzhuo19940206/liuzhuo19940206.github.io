@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-10-25T08:51:50.731Z</updated>
+  <updated>2020-11-01T10:41:01.691Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建Kafka环境</title>
+    <link href="http://gakkil.gitee.io/2020/11/01/da-jian-kafka-huan-jing/"/>
+    <id>http://gakkil.gitee.io/2020/11/01/da-jian-kafka-huan-jing/</id>
+    <published>2020-11-01T08:46:29.000Z</published>
+    <updated>2020-11-01T10:41:01.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;FLink的使用的过程，需要使用到Kafka这个日志消息中间件，今天，我们来学习搭建环境。&lt;/p&gt;
+&lt;h3 id=&quot;什么是Kafka&quot;&gt;&lt;a href=&quot;#什么是Kafka&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="kafka" scheme="http://gakkil.gitee.io/categories/kafka/"/>
+    
+    
+      <category term="kafka" scheme="http://gakkil.gitee.io/tags/kafka/"/>
+    
+  </entry>
   
   <entry>
     <title>Flink的UDF函数</title>
@@ -526,32 +553,6 @@
     
     
       <category term="elasticsearch" scheme="http://gakkil.gitee.io/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ProtoBuffer的简介</title>
-    <link href="http://gakkil.gitee.io/2020/01/24/protobuffer-de-jian-jie/"/>
-    <id>http://gakkil.gitee.io/2020/01/24/protobuffer-de-jian-jie/</id>
-    <published>2020-01-24T09:16:37.000Z</published>
-    <updated>2020-01-24T14:12:55.451Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;什么是protocol-buffers&quot;&gt;&lt;a href=&quot;#什么是protocol-buffers&quot; class=&quot;headerlink&quot; title=&quot;什么是protocol buffers&quot;&gt;&lt;/a&gt;什么是protocol buffers&lt;/h3&gt;&lt;p&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="protobuffer" scheme="http://gakkil.gitee.io/categories/protobuffer/"/>
-    
-    
-      <category term="protobuffer" scheme="http://gakkil.gitee.io/tags/protobuffer/"/>
     
   </entry>
   
