@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-11-01T10:41:01.691Z</updated>
+  <updated>2020-11-14T14:19:52.213Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flink中的广播无界流</title>
+    <link href="http://gakkil.gitee.io/2020/11/14/flink-zhong-de-guang-bo-wu-jie-liu/"/>
+    <id>http://gakkil.gitee.io/2020/11/14/flink-zhong-de-guang-bo-wu-jie-liu/</id>
+    <published>2020-11-14T13:01:39.000Z</published>
+    <updated>2020-11-14T14:19:52.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天来学习FLink中的广播无界流的变量。&lt;/p&gt;
+&lt;h3 id=&quot;广播变量简介&quot;&gt;&lt;a href=&quot;#广播变量简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/categories/flink/"/>
+    
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/tags/flink/"/>
+    
+  </entry>
   
   <entry>
     <title>搭建Kafka环境</title>
@@ -518,32 +545,6 @@
           &lt;p&gt;根据上篇博客，我们已经了解了es的基本概念和es的安装环境和启动命令，以及简单的crud指令操作。&lt;/p&gt;
 &lt;p&gt;现在，让我们开始学习kibana的安装与使用。&lt;/p&gt;
 &lt;p&gt;Kibana是专门用来为ElasticSearch设计开发的，可以提供数据查询，数据可视化等功能。
-        
-      
-    
-    </summary>
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/categories/elasticsearch/"/>
-    
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch的入门</title>
-    <link href="http://gakkil.gitee.io/2020/05/01/elasticsearch-de-ru-men/"/>
-    <id>http://gakkil.gitee.io/2020/05/01/elasticsearch-de-ru-men/</id>
-    <published>2020-05-01T14:13:16.000Z</published>
-    <updated>2020-05-01T15:39:10.372Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;
         
       
     
