@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-11-15T09:39:24.946Z</updated>
+  <updated>2020-11-29T06:55:41.367Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flink中的窗口介绍</title>
+    <link href="http://gakkil.gitee.io/2020/11/29/flink-zhong-de-chuang-kou-jie-shao/"/>
+    <id>http://gakkil.gitee.io/2020/11/29/flink-zhong-de-chuang-kou-jie-shao/</id>
+    <published>2020-11-29T05:13:52.000Z</published>
+    <updated>2020-11-29T06:55:41.367Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;FLink中的窗口简介&quot;&gt;&lt;a href=&quot;#FLink中的窗口简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/categories/flink/"/>
+    
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/tags/flink/"/>
+    
+  </entry>
   
   <entry>
     <title>Flink中的join</title>
@@ -517,32 +543,6 @@
         
           &lt;p&gt;根据前面的学习，我们已经基本上了解了es的内部原理和基本的概念了，现在就让我们开始学习吧~~~&lt;/p&gt;
 &lt;h2 id=&quot;案例说明&quot;&gt;&lt;a href=&quot;#案例说明&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/categories/elasticsearch/"/>
-    
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>es中的基本概念</title>
-    <link href="http://gakkil.gitee.io/2020/05/03/es-zhong-de-ji-ben-gai-nian/"/>
-    <id>http://gakkil.gitee.io/2020/05/03/es-zhong-de-ji-ben-gai-nian/</id>
-    <published>2020-05-03T02:38:57.000Z</published>
-    <updated>2020-05-03T03:30:07.438Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot;
         
       
     

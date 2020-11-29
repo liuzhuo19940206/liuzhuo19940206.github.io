@@ -1,0 +1,1738 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="flink中的窗口介绍, 解忧杂货店">
+    <meta name="description" content="FLink中的窗口简介Window是无限数据流处理的核心，Window将一个无限的stream拆分成有限大小的”buckets”桶，我们可以在这些桶上做计算操作。
+窗口化的Flink程序的一般结构如下，第一个代码段中是分组的流，而第二段是非">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>flink中的窗口介绍 | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            // if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            //     alert('密码错误，将返回主页！');
+            //     location.href = '/';
+            // }
+            if (pwd !== prompt('请输入访问本文章的密码')) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://pic.downk.cc/item/5fc32edfd590d4788ab02fa5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        flink中的窗口介绍
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/flink/" target="_blank">
+                                <span class="chip bg-color">flink</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/flink/" class="post-category" target="_blank">
+                                flink
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-29
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        6.3k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        25 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="FLink中的窗口简介"><a href="#FLink中的窗口简介" class="headerlink" title="FLink中的窗口简介"></a>FLink中的窗口简介</h3><p>Window是无限数据流处理的核心，Window将一个无限的stream拆分成有限大小的”buckets”桶，我们可以在这些桶上做计算操作。</p>
+<p>窗口化的Flink程序的一般结构如下，第一个代码段中是分组的流，而第二段是非分组的流。</p>
+<p>正如我们所见，唯一的区别是分组的stream调用<code>keyBy(…)</code>和<code>window(…)</code>，而非分组的stream中<code>window()</code>换成了<code>windowAll(…)</code>，这些也将贯穿都这一页的其他部分中。</p>
+<p>Keyed Windows：</p>
+<pre class=" language-java"><code class="language-java">stream<span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>           <span class="token operator">&lt;</span><span class="token operator">-</span>  keyed versus non<span class="token operator">-</span>keyed windows
+       <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>         <span class="token operator">&lt;</span><span class="token operator">-</span>  required<span class="token operator">:</span> <span class="token string">"assigner"</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>       <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token operator">:</span> <span class="token string">"trigger"</span> <span class="token punctuation">(</span><span class="token keyword">else</span> <span class="token keyword">default</span> trigger<span class="token punctuation">)</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">evictor</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>       <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token operator">:</span> <span class="token string">"evictor"</span> <span class="token punctuation">(</span><span class="token keyword">else</span> no evictor<span class="token punctuation">)</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">allowedLateness</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token punctuation">,</span> <span class="token keyword">else</span> zero
+       <span class="token punctuation">.</span>reduce<span class="token operator">/</span>fold<span class="token operator">/</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">-</span>  required<span class="token operator">:</span> <span class="token string">"function"</span>
+</code></pre>
+<p>Non-Keyed Windows:</p>
+<pre class=" language-java"><code class="language-java">stream<span class="token punctuation">.</span><span class="token function">windowAll</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>       <span class="token operator">&lt;</span><span class="token operator">-</span>  required<span class="token operator">:</span> <span class="token string">"assigner"</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>       <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token operator">:</span> <span class="token string">"trigger"</span> <span class="token punctuation">(</span><span class="token keyword">else</span> <span class="token keyword">default</span> trigger<span class="token punctuation">)</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">evictor</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>       <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token operator">:</span> <span class="token string">"evictor"</span> <span class="token punctuation">(</span><span class="token keyword">else</span> no evictor<span class="token punctuation">)</span>
+      <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">allowedLateness</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token operator">&lt;</span><span class="token operator">-</span>  optional<span class="token punctuation">,</span> <span class="token keyword">else</span> zero
+       <span class="token punctuation">.</span>reduce<span class="token operator">/</span>fold<span class="token operator">/</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">-</span>  required<span class="token operator">:</span> <span class="token string">"function"</span>
+</code></pre>
+<p>在上面的例子中，方括号[]内的命令是可选的，这表明Flink允许你根据最符合你的要求来定义自己的window逻辑。</p>
+<h3 id="Window-的生命周期"><a href="#Window-的生命周期" class="headerlink" title="Window 的生命周期"></a>Window 的生命周期</h3><p>简单地说，当一个属于window的元素到达之后这个window就创建了，而当当前时间(事件或者处理时间)为window的创建时间跟用户指定的延迟时间相加时，窗口将被彻底清除。Flink 确保了只清除基于时间的window，其他类型的window不清除，例如：全局窗口；例如:对于一个每5分钟创建无覆盖的(即 翻滚窗口)窗口，允许一个1分钟的时延的窗口策略，Flink将会在12:00到12:05这段时间内第一个元素到达时创建窗口，当水印通过12:06时，移除这个窗口。<br>　　此外，每个 Window 都有一个<strong>Trigger(触发器)</strong> 和一个附属于 <strong>Window 的函数</strong>(例如: <code>WindowFunction</code>, <code>ReduceFunction</code> 及 <code>FoldFunction</code>)。函数里包含了应用于窗口(Window)内容的计算，而Trigger(触发器)则指定了函数在什么条件下可被应用(函数何时被触发),一个触发策略可以是 “当窗口中的元素个数超过4个时” 或者 “当水印达到窗口的边界时”。触发器还可以决定在窗口创建和删除之间的任意时刻清除窗口的内容，本例中的清除仅指清除窗口的内容而不是窗口的元数据,也就是说新的数据还是可以被添加到当前的window中。<br>　　除了上面的提到之外，你还可以指定一个驱逐者(Evictor), Evictor将在触发器触发之后或者在函数被应用之前或者之后，清楚窗口中的元素。</p>
+<h3 id="Window的分类"><a href="#Window的分类" class="headerlink" title="Window的分类"></a>Window的分类</h3><h4 id="Global-Window-和-keyed-Window"><a href="#Global-Window-和-keyed-Window" class="headerlink" title="Global Window 和 keyed Window"></a>Global Window 和 keyed Window</h4><pre class=" language-kotlin"><code class="language-kotlin">概述<span class="token operator">:</span>
+    在运用窗口计算时<span class="token punctuation">,</span>Flink根据上游数据集是否为KeyedStream类型<span class="token punctuation">,</span>对应的Window也会有所不同<span class="token punctuation">.</span>
+
+Keyed Window <span class="token operator">:</span>
+    上游数据集如果是KeyedStream类型<span class="token punctuation">,</span>则调用DataStream API 的<span class="token function">Window</span><span class="token punctuation">(</span><span class="token punctuation">)</span>方法<span class="token punctuation">,</span>数据会根据Key在不同的Task实例中并行分别计算<span class="token punctuation">,</span>最后得出针对每个Key统计的结果<span class="token punctuation">.</span>
+
+Global Window<span class="token operator">:</span>
+    如果是Non<span class="token operator">-</span>Keyey类型<span class="token punctuation">,</span>则调用<span class="token function">WindowsAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>方法<span class="token punctuation">,</span>所有的数据都会在窗口算子中汇到一个Task中计算<span class="token punctuation">,</span>并得出全局统计结果
+eg<span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">// Global Window</span>
+    <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">windowAll</span><span class="token punctuation">(</span>自定义的WindowAssigner<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//KeyedWindow</span>
+    <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>sid<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span>自定义的WindowAssigner<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="窗口分配器-Window-Assingers"><a href="#窗口分配器-Window-Assingers" class="headerlink" title="窗口分配器(Window Assingers)"></a>窗口分配器(Window Assingers)</h4><p>​    指定完你的数据流是分组的还是非分组的之后，接下来你需要定义一个<strong>窗口分配器(<code>window assigner</code>)</strong>，窗口分配器定义了元素如何分配到窗口中，这是通过在分组数据流中调用<code>window(...)</code>或者非分组数据流中调用<code>windowAll(...)</code>时你选择的窗口分配器(<code>WindowAssigner</code>)来指定的。<code>WindowAssigner</code>是负责将每一个到来的元素分配给一个或者多个窗口(window),Flink 提供了一些常用的预定义窗口分配器，即:<strong>滚动窗口、滑动窗口、会话窗口和全局窗口</strong>；你也可以通过<strong>继承<code>WindowAssigner</code>类来自定义自己的窗口</strong>。所有的内置窗口分配器(除了全局窗口 <code>global window</code>)都是通过时间来分配元素到窗口中的，这个时间要么是处理的时间，要么是事件发生的时间。</p>
+<h4 id="计时窗口和计数窗口"><a href="#计时窗口和计数窗口" class="headerlink" title="计时窗口和计数窗口"></a>计时窗口和计数窗口</h4><p>Time Window 和Count Window</p>
+<p>概述:<br>    基于业务数据的方面考虑,Flink又支持两种类型的窗口,一种是基于时间的窗口叫Time Window，还有一种基于输入数据量的窗口叫Count Window。</p>
+<pre class=" language-java"><code class="language-java">根据不同的业务场景<span class="token punctuation">,</span>Time Window也可以分为三种类型<span class="token punctuation">,</span>分别是滚动窗口<span class="token punctuation">(</span>Tumbling Window<span class="token punctuation">)</span>、滑动窗口<span class="token punctuation">(</span>Sliding Window<span class="token punctuation">)</span>和会话窗口叫<span class="token punctuation">(</span>Session Window<span class="token punctuation">)</span>。Count Window 也是类似的
+</code></pre>
+<h4 id="滚动窗口-Tumbling-Window"><a href="#滚动窗口-Tumbling-Window" class="headerlink" title="滚动窗口(Tumbling Window)"></a>滚动窗口(Tumbling Window)</h4><p>概述:<br>    滚动窗口是根据<strong>固定时间</strong>进行切分,且窗口和窗口之间的<strong>元素互不重叠</strong>,这种类型的窗口最大特点是比较简单,只需要指定一个窗口长度(window size)。</p>
+<p>滚动窗口分配器将每个元素分配的一个指定窗口大小的窗口中，滚动窗口有一个固定的大小，并且不会出现重叠。例如:如果你指定了一个5分钟大小的滚动窗口，当前窗口将被评估并每5分钟创建一个新的窗口。</p>
+<p><img src="https://pic.downk.cc/item/5fc3340dd590d4788ab17925.jpg" style="zoom:30%;"></p>
+<pre class=" language-cpp"><code class="language-cpp">    <span class="token comment" spellcheck="true">// 每个5s统计每个基站的日志数量</span>
+    data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>sid<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">timeWindow</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//window(TumblingEventTImeWindows.of(Time.seconds(5)))</span>
+    <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//聚合</span>
+    其中时间间隔可以是Time<span class="token punctuation">.</span><span class="token function">milliseconds</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>或Time<span class="token punctuation">.</span><span class="token function">minutes</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</code></pre>
+<p>PS：<code>timeWindow</code>是一种简写。当我们在执行环境设置了<code>TimeCharacteristic.EventTime</code>时，Flink对应调用<code>TumblingEventTimeWindows</code>；如果我们基于<code>TimeCharacteristic.ProcessingTime</code>，Flink使用<code>TumblingProcessingTimeWindows</code>。</p>
+<hr>
+<p>滚动事件时间窗口( tumbling event-time windows )</p>
+<pre class=" language-cpp"><code class="language-cpp">input
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>key selector<span class="token operator">></span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span>TumblingEventTimeWindows<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token operator">&lt;</span>windowed transformation<span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span>window function<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>滚动处理时间窗口(tumbling processing-time windows)</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(TumblingProcessingTimeWindows.of(Time.seconds(5)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>每日偏移8小时的滚动事件时间窗口(daily tumbling event-time windows offset by -8 hours. )</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(TumblingEventTimeWindows.of(Time.days(1), Time.hours(-8)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>​      在上面最后的例子中，滚动窗口分配器还接受了一个<strong>可选的偏移参数</strong>，可以用来改变窗口的排列。例如，没有偏移的话按小时的滚动窗口将按时间纪元来对齐，也就是说你将一个如: 1:00:00.000~1:59:59.999,2:00:00.000~2:59:59.999等，如果你想改变一下，你可以指定一个偏移，如果你指定了一个15分钟的偏移，你将得到1:15:00.000~2:14:59.999,2:15:00.000~3:14:59.999等。时间偏移一个很大的用处是用来调准非0时区的窗口，例如:在中国你需要指定一个8小时的时间偏移。</p>
+<h4 id="滑动窗口-Sliding-Window"><a href="#滑动窗口-Sliding-Window" class="headerlink" title="滑动窗口(Sliding Window)"></a>滑动窗口(Sliding Window)</h4><p>概述:<br>    滑动窗口也是一种比较常见的窗口类型,其特点是在滚动窗口基础上增加了窗口滑动时间(Slide TIme),且允许窗口数据发生重叠,当Windows size固定之后,窗口并不像滚动窗口按照windows Size向前移动,而是根据设定的Slide Time向前滑动.<br>    窗口之间的数据重叠大小根据Windows Size和Slide Time决定,当SlideTime小于Windows size 便会发生窗口重叠.</p>
+<p>例如，你有10分钟的窗口和5分钟的滑动，那么每个窗口中5分钟的窗口里包含着上个10分钟产生的数据，如下图所示:</p>
+<p><img src="https://pic.downk.cc/item/5fc335d5d590d4788ab1eae8.jpg" alt></p>
+<pre class=" language-cpp"><code class="language-cpp">    <span class="token comment" spellcheck="true">//每隔5s计算最近10s内,每个基站的日志数量</span>
+    data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">timeWindow</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//window(SlidingEventTimeWindows.of(Time.seconds(5)))</span>
+    <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>滑动事件时间窗口</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(SlidingEventTimeWindows.of(Time.seconds(10), Time.seconds(5)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>滑动处理时间窗口</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(SlidingProcessingTimeWindows.of(Time.seconds(10), Time.seconds(5)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>偏移8小时的滑动处理时间窗口(sliding processing-time windows offset by -8 hours)</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(SlidingProcessingTimeWindows.of(Time.hours(12), Time.hours(1), Time.hours(-8)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>​      正如上述例子所示，滑动窗口分配器也有一个可选的偏移参数来改变窗口的对齐。例如，没有偏移参数，按小时的窗口，有30分钟的滑动，将根据时间纪元来对齐，也就是说你将得到如下的窗口1:00:00.001:59:59.999,1:30:00.0002:29:59.999等。而如果你想改变窗口的对齐，你可以给定一个偏移，如果给定一个15分钟的偏移，你将得到如下的窗口:1:15:00.000~2:14.59.999,　1:45:00.000~2:44:59.999等。时间偏移一个很大的用处是用来调准非0时区的窗口，例如:在中国你需要指定一个8小时的时间偏移。</p>
+<hr>
+<h4 id="会话窗口-Session-Window"><a href="#会话窗口-Session-Window" class="headerlink" title="会话窗口(Session Window)"></a>会话窗口(Session Window)</h4><p>概述:<br>    会话窗口主要是将某段时间内活跃度较高的数据聚合成一个窗口进行计算,窗口的触发的条件是<code>Session Gap</code>,是指在规定<br>    的时间内如果没有数据活跃接入,则认为窗口结束,然后触发窗口计算结果。<br>注意:<br>    需要注意的是：如果数据一直不间断地进入窗口,会导致窗口始终不触发。<br>    与滑动窗口不同的是,Session Windows不需要有固定Window size和slide time ,<br>    需要定义Session gap,来规定不活跃数据的时间上限即可。</p>
+<pre class=" language-cpp"><code class="language-cpp">    <span class="token comment" spellcheck="true">//3s内如果没有数据接入,则计算每个基站的日志数量</span>
+    data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>sid<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span>EventTimeSessionWindows<span class="token punctuation">.</span><span class="token function">withGap</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>会话窗口（SESSION）通过SESSION活动来对元素进行分组。会话窗口与滚动窗口和滑动窗口相比，没有窗口重叠，没有固定窗口大小。相反，当它在一个固定的时间周期内不再收到元素，即会话断开时，该窗口就会关闭。</p>
+<p>会话窗口通过一个间隔时间（Gap）来配置，这个间隔定义了非活跃周期的长度。例如，一个表示鼠标单击活动的数据流可能具有长时间的空闲时间，并在两段空闲之间散布着高浓度的单击。如果数据在指定的间隔（Gap）之后到达，则会开始一个新的窗口。</p>
+<p>会话窗口示例如下图，每个Key由于不同的数据分布，形成了不同的Window。</p>
+<p><img src="https://pic.downk.cc/item/5fc33979d590d4788ab2e0ed.jpg" alt></p>
+<p>事件时间会话窗口(event-time session windows)</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(EventTimeSessionWindows.withGap(Time.minutes(10)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p>处理时间会话窗口(processing-time session windows)</p>
+<pre><code>input
+    .keyBy(&lt;key selector&gt;)
+    .window(ProcessingTimeSessionWindows.withGap(Time.minutes(10)))
+    .&lt;windowed transformation&gt;(&lt;window function&gt;);
+</code></pre><p><strong>注意</strong>: 因为session窗口没有一个固定的开始和结束，他们的评估与滑动窗口和滚动窗口不同。在内部，session操作为每一个到达的元素创建一个新的窗口，并合并间隔时间小于指定非活动间隔的窗口。为了进行合并，session窗口的操作需要指定一个<strong>合并触发器</strong>(Trigger)和一个<strong>合并窗口函数</strong>(Window Function),如:ReduceFunction或者WindowFunction(FoldFunction不能合并)。</p>
+<hr>
+<p>计数的窗口也有相应的：滚动、滑动等</p>
+<h3 id="Window-的-API"><a href="#Window-的-API" class="headerlink" title="Window 的 API"></a>Window 的 API</h3><pre class=" language-dart"><code class="language-dart">概述<span class="token punctuation">:</span>
+    在实际案例中Keyed Window 使用最多<span class="token punctuation">,</span>所以我们需要掌握Keyed Window的算子<span class="token punctuation">,</span>在每个窗口算子中包含了 
+    Windows Assigner、Windows <span class="token function">Trigger</span><span class="token punctuation">(</span>窗口触发器<span class="token punctuation">)</span>、<span class="token function">Evictor</span><span class="token punctuation">(</span>数据剔除器<span class="token punctuation">)</span>、<span class="token function">Lateness</span><span class="token punctuation">(</span>时延设定<span class="token punctuation">)</span>、
+    <span class="token function">Output</span> <span class="token punctuation">(</span>输出标签<span class="token punctuation">)</span>以及Windows Function<span class="token punctuation">,</span>其中Windows Assigner和Windows Functions是所有窗口算子
+    必须指定的属性<span class="token punctuation">,</span>其余的属性都是根据实际情况选择指定<span class="token punctuation">.</span>
+code<span class="token punctuation">:</span>
+    stream<span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>是Keyed类型数据集
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//指定窗口分配器类型</span>
+    <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token comment" spellcheck="true">//指定触发器类型(可选)</span>
+    <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">evictor</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">// 指定evictor或者不指定(可选)</span>
+    <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">allowedLateness</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//指定是否延迟处理数据(可选)</span>
+    <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">sideOutputLateData</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">// 指定Output lag(可选)</span>
+    <span class="token punctuation">.</span>reduce<span class="token operator">/</span>aggregate<span class="token operator">/</span>fold<span class="token operator">/</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//指定窗口计算函数</span>
+    <span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token function">getSideOutput</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//根据Tag输出数据(可选)</span>
+intro<span class="token punctuation">:</span>
+    Windows Assigner <span class="token punctuation">:</span> 指定窗口的类型<span class="token punctuation">,</span>定义如何将数据流分配到一个或多个窗口
+    Windows Trigger <span class="token punctuation">:</span> 指定窗口触发的时机<span class="token punctuation">,</span>定义窗口满足什么样的条件触发计算
+    Evictor <span class="token punctuation">:</span> 用于数据剔除
+    allowedLateness <span class="token punctuation">:</span> 标记是否处理迟到数据<span class="token punctuation">,</span>当迟到数据达到窗口是否触发计算
+    Output Tag<span class="token punctuation">:</span> 标记输出标签<span class="token punctuation">,</span>然后在通过getSideOutput将窗口中的数据根据标签输出
+    Windows Function<span class="token punctuation">:</span> 定义窗口上数据处理的逻辑<span class="token punctuation">,</span>例如对数据进行Sum操作
+</code></pre>
+<h4 id="窗口聚合函数"><a href="#窗口聚合函数" class="headerlink" title="窗口聚合函数"></a>窗口聚合函数</h4><pre class=" language-dart"><code class="language-dart">概述<span class="token punctuation">:</span>
+    如果定义了Window Assigner <span class="token punctuation">,</span>下一步就可以定义窗口内数据的计算逻辑<span class="token punctuation">,</span>这也就是Window Function的定义<span class="token punctuation">,</span>
+    Flink提供了四种类型的Window Function<span class="token punctuation">,</span>分别为 ReduceFunction、FoldFunction、AggregateFunction以及ProcessWindowFunction<span class="token punctuation">,</span><span class="token punctuation">(</span>sum和max<span class="token punctuation">)</span>等<span class="token punctuation">.</span>
+
+前<span class="token number">4</span>种类型的Window Function按照计算原理的不同可以分为两大类：
+<span class="token number">1</span><span class="token punctuation">.</span> 一类是增量聚合函数<span class="token punctuation">:</span> 对应有ReduceFunction、FoldFunction、AggregateFunction<span class="token punctuation">;</span>
+<span class="token number">2</span><span class="token punctuation">.</span> 另一类是全量窗口函数<span class="token punctuation">,</span>对应有<span class="token function">ProcessWindowFunction</span><span class="token punctuation">(</span>WindowFunction<span class="token punctuation">)</span>
+
+差异<span class="token punctuation">:</span>
+    <span class="token number">1</span><span class="token punctuation">.</span> 增量聚合函数计算性能较高<span class="token punctuation">,</span>占用内存空间少<span class="token punctuation">,</span>主要因为基于中间状态的计算结果<span class="token punctuation">,</span>窗口中只维护中间结果状态值<span class="token punctuation">,</span>
+    不需要缓存原始数据<span class="token punctuation">.</span>
+    <span class="token number">2</span><span class="token punctuation">.</span> 全量窗口函数使用的代价相对较高<span class="token punctuation">,</span>性能比较弱<span class="token punctuation">,</span>主要因为此时算子需要对所有属于该窗口的接入数据进行缓存<span class="token punctuation">,</span>
+    然后等到窗口触发的时候<span class="token punctuation">,</span>对所有的原始数据进行汇总计算<span class="token punctuation">.</span>
+</code></pre>
+<h4 id="ReduceFunction"><a href="#ReduceFunction" class="headerlink" title="ReduceFunction"></a>ReduceFunction</h4><pre class=" language-dart"><code class="language-dart">概述
+    ReduceFunction 定义了对输入的两个相同类型的数据元素按照指定的计算方法进行聚合的逻辑<span class="token punctuation">,</span>
+    然后输出类型相同的一个结果元素。
+
+code<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true">// 每隔5s统计每个基站的日志数量</span>
+    data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>sid<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span>TumblingEventTimeWindows<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>TIme<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span>v2<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">(</span>v1<span class="token punctuation">.</span>_1<span class="token punctuation">,</span>v1<span class="token punctuation">.</span>_2<span class="token operator">+</span>v2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+code2：
+      DataStream<span class="token operator">&lt;</span>Tuple2<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Long<span class="token operator">>></span> input <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+ input
+    <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>key selector<span class="token operator">></span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>window assigner<span class="token operator">></span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ReduceFunction</span><span class="token operator">&lt;</span>Tuple2<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Long<span class="token operator">>></span> <span class="token punctuation">{</span>
+      public Tuple2<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Long<span class="token operator">></span> <span class="token function">reduce</span><span class="token punctuation">(</span>Tuple2<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Long<span class="token operator">></span> v1<span class="token punctuation">,</span> Tuple2<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Long<span class="token operator">></span> v2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Tuple2</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>v1<span class="token punctuation">.</span>f0<span class="token punctuation">,</span> v1<span class="token punctuation">.</span>f1 <span class="token operator">+</span> v2<span class="token punctuation">.</span>f1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="FoldFunction"><a href="#FoldFunction" class="headerlink" title="FoldFunction"></a>FoldFunction</h4><p><code>FoldFunction</code> 指定了一个输入元素如何与一个输出类型的元素合并的过程，这个<code>FoldFunction</code> 会被每一个加入到窗口中的元素和当前的输出值增量地调用，第一个元素是与一个预定义的类型为输出类型的初始值合并。</p>
+<pre><code>DataStream&lt;Tuple2&lt;String, Long&gt;&gt; input = ...;
+ input
+    .keyBy(&lt;key selector&gt;)
+    .window(&lt;window assigner&gt;)
+    .fold(&quot;&quot;, new FoldFunction&lt;Tuple2&lt;String, Long&gt;, String&gt;&gt; {
+       public String fold(String acc, Tuple2&lt;String, Long&gt; value) {
+         return acc + value.f1;
+       }
+    });
+</code></pre><h4 id="AggregateFunction"><a href="#AggregateFunction" class="headerlink" title="AggregateFunction"></a>AggregateFunction</h4><pre class=" language-kotlin"><code class="language-kotlin">概述<span class="token operator">:</span>
+    AggregateFunction也是基于中间状态计算结果的增量计算函数<span class="token punctuation">,</span>但AggregateFunction在窗口
+    计算上更加通用<span class="token punctuation">,</span>AggregateFunction接口相对ReduceFunction更加灵活<span class="token punctuation">.</span>实现复杂度也相对较高<span class="token punctuation">.</span> 
+    AggregateFunction接口中定义了三个需要复写的方法<span class="token punctuation">,</span>其中
+    <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span>定义数据添加的逻辑<span class="token punctuation">,</span>
+    <span class="token function">getResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>定义了根据accmulator计算结果的逻辑<span class="token punctuation">,</span>
+    <span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">)</span>方法定义合并accumulator的逻辑
+code<span class="token operator">:</span>
+    <span class="token comment" spellcheck="true">//每隔3s内计算最近5s内,每个基站的日志数量</span>
+        <span class="token keyword">val</span> <span class="token keyword">data</span> <span class="token operator">=</span> env<span class="token punctuation">.</span><span class="token function">readTextFile</span><span class="token punctuation">(</span><span class="token string">"D:\\Workspace\\IdeaProjects\\F1Demo\\src\\FlinkDemo\\functions\\station.log"</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">map</span> <span class="token punctuation">{</span> line <span class="token operator">=</span><span class="token operator">></span>
+            <span class="token keyword">var</span> arr <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span>
+            <span class="token function">StationLog</span><span class="token punctuation">(</span><span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">,</span> <span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">,</span> <span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">,</span> <span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">,</span> <span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">.</span>toLong<span class="token punctuation">,</span> <span class="token function">arr</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span>trim<span class="token punctuation">.</span>toLong<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span>
+        <span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token keyword">data</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>stationLog <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span>stationLog<span class="token punctuation">.</span>sid<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">timeWindow</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+          <span class="token comment" spellcheck="true">// new AggregateFunction[In,Acc,Out]</span>
+          <span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span>new AggregateFunction<span class="token punctuation">[</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> Int<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+          <span class="token keyword">override</span> def <span class="token function">createAccumulator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+          <span class="token keyword">override</span> def <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Int<span class="token punctuation">)</span><span class="token punctuation">,</span> acc<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">.</span>_1<span class="token punctuation">,</span> acc<span class="token punctuation">.</span>_2 <span class="token operator">+</span> <span class="token keyword">in</span><span class="token punctuation">.</span>_2<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">override</span> def <span class="token function">getResult</span><span class="token punctuation">(</span>acc<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token function">print</span><span class="token punctuation">(</span>acc<span class="token punctuation">)</span>
+            acc
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">override</span> def <span class="token function">merge</span><span class="token punctuation">(</span>acc<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">,</span> acc1<span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">(</span>acc<span class="token punctuation">.</span>_1<span class="token punctuation">,</span> acc1<span class="token punctuation">.</span>_2 <span class="token operator">+</span> acc<span class="token punctuation">.</span>_2<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+        env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="ProcessWindowFunction"><a href="#ProcessWindowFunction" class="headerlink" title="ProcessWindowFunction"></a>ProcessWindowFunction</h4><pre class=" language-dart"><code class="language-dart">概念<span class="token punctuation">:</span>
+    前面提到的ReduceFunction和AggregateFunction都是基于中间状态实现增量计算的窗口函数<span class="token punctuation">,</span>虽然已经满足绝大
+    多数场景<span class="token punctuation">,</span>但在某些情况下<span class="token punctuation">,</span>统计更复杂的指标可能需要依赖于窗口中所有的数据元素<span class="token punctuation">,</span>或需要操作窗口中的状态数据
+    和窗口元数据<span class="token punctuation">,</span>这时就需要使用到ProcessWindowsFunction<span class="token punctuation">,</span>ProcessWindowsFunction能够更加灵活地支持基于窗口
+    全部数据元素的结果计算<span class="token punctuation">,</span>例如对整个窗口数据排序取TopN<span class="token punctuation">,</span>这样的需要就必须使用ProcessWindowFunction<span class="token punctuation">.</span>
+code<span class="token punctuation">:</span>
+    val result <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>stationLog <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">(</span>stationLog<span class="token punctuation">.</span>sid<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span>_1<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">//.timeWindow(Time.seconds(5))</span>
+  <span class="token punctuation">.</span><span class="token function">window</span><span class="token punctuation">(</span>TumblingProcessingTimeWindows<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// ProcessWindowFunction[In,Out,Key,Window]</span>
+  <span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ProcessWindowFunction</span><span class="token punctuation">[</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> Int<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">,</span> String<span class="token punctuation">,</span> TimeWindow<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//一个窗口结束的时候调用一次(一个分组执行一次)</span>
+  override def <span class="token function">process</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> String<span class="token punctuation">,</span> context<span class="token punctuation">:</span> Context<span class="token punctuation">,</span> elements<span class="token punctuation">:</span> Iterable<span class="token punctuation">[</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> Int<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> out<span class="token punctuation">:</span> Collector<span class="token punctuation">[</span><span class="token punctuation">(</span>String<span class="token punctuation">,</span> Long<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"----"</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//注意：整个窗口的数据保存到Iterable，里面有很多行数据。Iterable的size就是日志的总条数</span>
+    out<span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> elements<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+env<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h4 id="有增量聚合功能的WindowFunction"><a href="#有增量聚合功能的WindowFunction" class="headerlink" title="有增量聚合功能的WindowFunction"></a>有增量聚合功能的WindowFunction</h4><p><code>WindowFunction</code>可以跟<code>ReduceFunction</code>或者<code>FoldFunction</code>结合来增量地对到达<code>window</code>中的元素进行聚合，当<code>window</code>关闭之后，<code>WindowFunction</code>就能提供聚合结果。当获取到<code>WindowFunction</code>额外的<code>window</code>元信息后就可以进行增量计算窗口了。<br><em>标注:</em>你也可以使用<code>ProcessWindowFunction</code>替换<code>WindowFunction</code>来进行增量窗口聚合。</p>
+<p>1.使用FoldFunction 进行增量窗口聚合(Incremental Window Aggregation with FoldFunction)</p>
+<p>下面的例子展示了一个增量的<code>FoldFunction</code>如何跟一个<code>WindowFunction</code>结合，来获取窗口的事件数，并同时返回窗口的<code>key</code>和窗口的最后时间。</p>
+<pre><code>DataStream&lt;SensorReading&gt; input = ...;
+input
+  .keyBy(&lt;key selector&gt;)
+  .timeWindow(&lt;window assigner&gt;)
+  .fold(new Tuple3&lt;String, Long, Integer&gt;(&quot;&quot;,0L, 0), new MyFoldFunction(), new MyWindowFunction())
+// Function definitions
+private static class MyFoldFunction
+    implements FoldFunction&lt;SensorReading, Tuple3&lt;String, Long, Integer&gt; &gt; {
+  public Tuple3&lt;String, Long, Integer&gt; fold(Tuple3&lt;String, Long, Integer&gt; acc, SensorReading s) {
+      Integer cur = acc.getField(2);
+      acc.setField(2, cur + 1);
+      return acc;
+  }
+}
+private static class MyWindowFunction
+    implements WindowFunction&lt;Tuple3&lt;String, Long, Integer&gt;, Tuple3&lt;String, Long, Integer&gt;, String, TimeWindow&gt; {
+  public void apply(String key,
+                    TimeWindow window,
+                    Iterable&lt;Tuple3&lt;String, Long, Integer&gt;&gt; counts,
+                    Collector&lt;Tuple3&lt;String, Long, Integer&gt;&gt; out) {
+    Integer count = counts.iterator().next().getField(2);
+    out.collect(new Tuple3&lt;String, Long, Integer&gt;(key, window.getEnd(),count));
+  }
+}
+</code></pre><p>2.使用ReduceFunction进行增量窗口聚合(Incremental Window Aggregation with ReduceFunction)</p>
+<p>下面例子展示了一个增量额<code>ReduceFunction</code>如何跟一个<code>WindowFunction</code>结合，来获取窗口中最小的事件和窗口的开始时间。</p>
+<pre><code>DataStream&lt;SensorReading&gt; input = ...;
+input
+  .keyBy(&lt;key selector&gt;)
+  .timeWindow(&lt;window assigner&gt;)
+  .reduce(new MyReduceFunction(), new MyWindowFunction());
+// Function definitions
+private static class MyReduceFunction implements ReduceFunction&lt;SensorReading&gt; {
+  public SensorReading reduce(SensorReading r1, SensorReading r2) {
+      return r1.value() &gt; r2.value() ? r2 : r1;
+  }
+}
+private static class MyWindowFunction
+    implements WindowFunction&lt;SensorReading, Tuple2&lt;Long, SensorReading&gt;, String, TimeWindow&gt; {
+  public void apply(String key,
+                    TimeWindow window,
+                    Iterable&lt;SensorReading&gt; minReadings,
+                    Collector&lt;Tuple2&lt;Long, SensorReading&gt;&gt; out) {
+      SensorReading min = minReadings.iterator().next();
+      out.collect(new Tuple2&lt;Long, SensorReading&gt;(window.getStart(), min));
+  }
+}
+</code></pre><h4 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h4><p>触发器（Trigger）决定了何时启动Window Function来处理窗口中的数据以及何时将窗口内的数据清理。增量计算窗口函数对每个新流入的数据直接进行聚合，Trigger决定了在窗口结束时将聚合结果发送出去；全量计算窗口函数需要将窗口内的元素缓存，Trigger决定了在窗口结束时对所有元素进行计算然后将结果发送出去。每个窗口都有一个默认的Trigger，比如前文这些例子都是基于Processing Time的时间窗口，当到达窗口的结束时间时，Trigger以及对应的计算被触发。如果我们有一些个性化的触发条件，比如窗口中遇到某些特定的元素、元素总数达到一定数量或窗口中的元素到达时满足某种特定的模式时，我们可以自定义一个Trigger。我们甚至可以在Trigger中定义一些提前计算的逻辑，比如在Event Time语义中，虽然Watermark还未到达，但是我们可以定义提前计算输出的逻辑，以快速获取计算结果，获得更低的延迟。</p>
+<p>我们先看Trigger返回一个什么样的结果。当满足某个条件，Trigger会返回一个名为<code>TriggerResult</code>的结果：</p>
+<ul>
+<li>CONTINUE：什么都不做。</li>
+<li>FIRE：启动计算并将结果发送给下游，不清理窗口数据。</li>
+<li>PURGE：清理窗口数据但不执行计算。</li>
+<li>FIRE_AND_PURGE：启动计算，发送结果然后清理窗口数据。</li>
+</ul>
+<p>在继续介绍Trigger的使用之前，我们可以先了解一下定时器（Timer）的使用方法。我们可以把Timer理解成一个闹钟，使用前先注册未来一个时间，当时间到达时，就像闹钟会响一样，程序会启用一个回调函数，来执行某个时间相关的任务。对于自定义Trigger来说，我们需要考虑注册时间的逻辑，当到达这个时间时，Flink会启动Window Function，清理窗口数据。</p>
+<p><code>WindowAssigner</code>都有一个默认的<code>Trigger</code>。比如基于Event Time的窗口会有一个<code>EventTimeTrigger</code>，每当窗口的Watermark时间戳到达窗口的结束时间，Trigger会发送<code>FIRE</code>。此外，<code>ProcessingTimeTrigger</code>对应Processing Time窗口，<code>CountTrigger</code>对应Count-based窗口。</p>
+<p>当这些已有的Trigger无法满足我们的需求时，我们需要自定义Trigger，接下来我们看一下Flink的Trigger源码。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+    * T为元素类型
+    * W为窗口
+  */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Trigger</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> W <span class="token keyword">extends</span> <span class="token class-name">Window</span><span class="token operator">></span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当某窗口增加一个元素时调用onElement方法，返回一个TriggerResult
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> TriggerResult <span class="token function">onElement</span><span class="token punctuation">(</span>T element<span class="token punctuation">,</span> <span class="token keyword">long</span> timestamp<span class="token punctuation">,</span> W window<span class="token punctuation">,</span> TriggerContext ctx<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当一个基于Processing Time的Timer触发了FIRE时调用onProcessTime方法
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> TriggerResult <span class="token function">onProcessingTime</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">,</span> W window<span class="token punctuation">,</span> TriggerContext ctx<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当一个基于Event Time的Timer触发了FIRE时调用onEventTime方法
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> TriggerResult <span class="token function">onEventTime</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">,</span> W window<span class="token punctuation">,</span> TriggerContext ctx<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 如果这个Trigger支持状态合并，则返回true
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">canMerge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当多个窗口被合并时调用onMerge
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onMerge</span><span class="token punctuation">(</span>W window<span class="token punctuation">,</span> OnMergeContext ctx<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnsupportedOperationException</span><span class="token punctuation">(</span><span class="token string">"This trigger does not support merging."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当窗口数据被清理时，调用clear方法来清理所有的Trigger状态数据
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span>W window<span class="token punctuation">,</span> TriggerContext ctx<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception
+
+    <span class="token comment" spellcheck="true">/**
+     * 上下文，保存了时间、状态、监控以及定时器
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">TriggerContext</span> <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 返回当前Processing Time
+         */</span>
+        <span class="token keyword">long</span> <span class="token function">getCurrentProcessingTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 返回MetricGroup 
+         */</span>
+        MetricGroup <span class="token function">getMetricGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 返回当前Watermark时间
+         */</span>
+        <span class="token keyword">long</span> <span class="token function">getCurrentWatermark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 将某个time注册为一个Timer，当系统时间到达time这个时间点时，onProcessingTime方法会被调用
+         */</span>
+        <span class="token keyword">void</span> <span class="token function">registerProcessingTimeTimer</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 将某个time注册为一个Timer，当Watermark时间到达time这个时间点时，onEventTime方法会被调用
+         */</span>
+        <span class="token keyword">void</span> <span class="token function">registerEventTimeTimer</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 将注册的Timer删除
+         */</span>
+        <span class="token keyword">void</span> <span class="token function">deleteProcessingTimeTimer</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 将注册的Timer删除
+         */</span>
+        <span class="token keyword">void</span> <span class="token function">deleteEventTimeTimer</span><span class="token punctuation">(</span><span class="token keyword">long</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 获取该窗口Trigger下的状态
+         */</span>
+        <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">State</span><span class="token operator">></span> S <span class="token function">getPartitionedState</span><span class="token punctuation">(</span>StateDescriptor<span class="token operator">&lt;</span>S<span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">></span> stateDescriptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 将多个窗口下Trigger状态合并
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OnMergeContext</span> <span class="token keyword">extends</span> <span class="token class-name">TriggerContext</span> <span class="token punctuation">{</span>
+        <span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">MergingState</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">>></span> <span class="token keyword">void</span> <span class="token function">mergePartitionedState</span><span class="token punctuation">(</span>StateDescriptor<span class="token operator">&lt;</span>S<span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">></span> stateDescriptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>接下来我们以一个提前计算的案例来解释如何使用自定义的Trigger。在股票或任何交易场景中，我们比较关注价格急跌的情况，默认窗口长度是60秒，如果价格跌幅超过5%，则立即执行Window Function，如果价格跌幅在1%到5%之内，那么10秒后触发Window Function。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">MyTrigger</span> <span class="token keyword">extends</span> <span class="token class-name">Trigger</span><span class="token punctuation">[</span>StockPrice<span class="token punctuation">,</span> TimeWindow<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+
+  override def <span class="token function">onElement</span><span class="token punctuation">(</span>element<span class="token operator">:</span> StockPrice<span class="token punctuation">,</span>
+                         time<span class="token operator">:</span> Long<span class="token punctuation">,</span>
+                         window<span class="token operator">:</span> TimeWindow<span class="token punctuation">,</span>
+                         triggerContext<span class="token operator">:</span> Trigger<span class="token punctuation">.</span>TriggerContext<span class="token punctuation">)</span><span class="token operator">:</span> TriggerResult <span class="token operator">=</span> <span class="token punctuation">{</span>
+    val lastPriceState<span class="token operator">:</span> ValueState<span class="token punctuation">[</span>Double<span class="token punctuation">]</span> <span class="token operator">=</span> triggerContext<span class="token punctuation">.</span><span class="token function">getPartitionedState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ValueStateDescriptor</span><span class="token punctuation">[</span>Double<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">"lastPriceState"</span><span class="token punctuation">,</span> classOf<span class="token punctuation">[</span>Double<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 设置返回默认值为CONTINUE</span>
+    var triggerResult<span class="token operator">:</span> TriggerResult <span class="token operator">=</span> TriggerResult<span class="token punctuation">.</span>CONTINUE
+
+    <span class="token comment" spellcheck="true">// 第一次使用lastPriceState时状态是空的,需要先进行判断</span>
+    <span class="token comment" spellcheck="true">// 状态数据由Java端生成，如果是空，返回一个null</span>
+    <span class="token comment" spellcheck="true">// 如果直接使用Scala的Double，需要使用下面的方法判断是否为空</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Option</span><span class="token punctuation">(</span>lastPriceState<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>isDefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>lastPriceState<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> element<span class="token punctuation">.</span>price<span class="token punctuation">)</span> <span class="token operator">></span> lastPriceState<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.05</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 如果价格跌幅大于5%，直接FIRE_AND_PURGE</span>
+        triggerResult <span class="token operator">=</span> TriggerResult<span class="token punctuation">.</span>FIRE_AND_PURGE
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>lastPriceState<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> element<span class="token punctuation">.</span>price<span class="token punctuation">)</span> <span class="token operator">></span> lastPriceState<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.01</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        val t <span class="token operator">=</span> triggerContext<span class="token punctuation">.</span>getCurrentProcessingTime <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">-</span> <span class="token punctuation">(</span>triggerContext<span class="token punctuation">.</span>getCurrentProcessingTime <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">// 给10秒后注册一个Timer</span>
+        triggerContext<span class="token punctuation">.</span><span class="token function">registerProcessingTimeTimer</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    lastPriceState<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>price<span class="token punctuation">)</span>
+    triggerResult
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// 我们不用EventTime，直接返回一个CONTINUE</span>
+  override def <span class="token function">onEventTime</span><span class="token punctuation">(</span>time<span class="token operator">:</span> Long<span class="token punctuation">,</span> window<span class="token operator">:</span> TimeWindow<span class="token punctuation">,</span> triggerContext<span class="token operator">:</span> Trigger<span class="token punctuation">.</span>TriggerContext<span class="token punctuation">)</span><span class="token operator">:</span> TriggerResult <span class="token operator">=</span> <span class="token punctuation">{</span>
+    TriggerResult<span class="token punctuation">.</span>CONTINUE
+  <span class="token punctuation">}</span>
+
+  override def <span class="token function">onProcessingTime</span><span class="token punctuation">(</span>time<span class="token operator">:</span> Long<span class="token punctuation">,</span> window<span class="token operator">:</span> TimeWindow<span class="token punctuation">,</span> triggerContext<span class="token operator">:</span> Trigger<span class="token punctuation">.</span>TriggerContext<span class="token punctuation">)</span><span class="token operator">:</span> TriggerResult <span class="token operator">=</span> <span class="token punctuation">{</span>
+    TriggerResult<span class="token punctuation">.</span>FIRE_AND_PURGE
+  <span class="token punctuation">}</span>
+
+  override def <span class="token function">clear</span><span class="token punctuation">(</span>window<span class="token operator">:</span> TimeWindow<span class="token punctuation">,</span> triggerContext<span class="token operator">:</span> Trigger<span class="token punctuation">.</span>TriggerContext<span class="token punctuation">)</span><span class="token operator">:</span> Unit <span class="token operator">=</span> <span class="token punctuation">{</span>
+    val lastPrice<span class="token operator">:</span> ValueState<span class="token punctuation">[</span>Double<span class="token punctuation">]</span> <span class="token operator">=</span> triggerContext<span class="token punctuation">.</span><span class="token function">getPartitionedState</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ValueStateDescriptor</span><span class="token punctuation">[</span>Double<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">"lastPrice"</span><span class="token punctuation">,</span> classOf<span class="token punctuation">[</span>Double<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    lastPrice<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+senv<span class="token punctuation">.</span><span class="token function">setStreamTimeCharacteristic</span><span class="token punctuation">(</span>TimeCharacteristic<span class="token punctuation">.</span>ProcessingTime<span class="token punctuation">)</span>
+
+val input<span class="token operator">:</span> DataStream<span class="token punctuation">[</span>StockPrice<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+val average <span class="token operator">=</span> input
+      <span class="token punctuation">.</span><span class="token function">keyBy</span><span class="token punctuation">(</span>s <span class="token operator">=</span><span class="token operator">></span> s<span class="token punctuation">.</span>symbol<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">timeWindow</span><span class="token punctuation">(</span>Time<span class="token punctuation">.</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyTrigger</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">aggregate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">AverageAggregate</span><span class="token punctuation">)</span>
+</code></pre>
+<p>在自定义Trigger时，如果使用了状态，一定要使用<code>clear</code>方法将状态数据清理，否则随着窗口越来越多，状态数据会越积越多。</p>
+<h4 id="Evictor"><a href="#Evictor" class="headerlink" title="Evictor"></a>Evictor</h4><p>清除器（Evictor）是在<code>WindowAssigner</code>和<code>Trigger</code>的基础上的一个可选选项，用来清除一些数据。我们可以在Window Function执行前或执行后调用Evictor。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+    * T为元素类型
+    * W为窗口
+  */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Evictor</span><span class="token operator">&lt;</span>T<span class="token punctuation">,</span> W <span class="token keyword">extends</span> <span class="token class-name">Window</span><span class="token operator">></span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 在Window Function前调用
+   */</span>
+    <span class="token keyword">void</span> <span class="token function">evictBefore</span><span class="token punctuation">(</span>Iterable<span class="token operator">&lt;</span>TimestampedValue<span class="token operator">&lt;</span>T<span class="token operator">>></span> elements<span class="token punctuation">,</span> <span class="token keyword">int</span> size<span class="token punctuation">,</span> W window<span class="token punctuation">,</span> EvictorContext evictorContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 在Window Function后调用
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">evictAfter</span><span class="token punctuation">(</span>Iterable<span class="token operator">&lt;</span>TimestampedValue<span class="token operator">&lt;</span>T<span class="token operator">>></span> elements<span class="token punctuation">,</span> <span class="token keyword">int</span> size<span class="token punctuation">,</span> W window<span class="token punctuation">,</span> EvictorContext evictorContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">/**
+     * Evictor的上下文
+     */</span>
+    <span class="token keyword">interface</span> <span class="token class-name">EvictorContext</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">long</span> <span class="token function">getCurrentProcessingTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        MetricGroup <span class="token function">getMetricGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">long</span> <span class="token function">getCurrentWatermark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>evictBefore</code>和<code>evictAfter</code>分别在Window Function之前和之后被调用，窗口的所有元素被放在了<code>Iterable&lt;TimestampedValue&lt;T&gt;&gt;</code>，我们要实现自己的清除逻辑。当然，对于增量计算的<code>ReduceFunction</code>和<code>AggregateFunction</code>，我们没必要使用Evictor。</p>
+<p>Flink提供了几个实现好的Evictor：</p>
+<ul>
+<li><code>CountEvictor</code>保留一定数目的元素，多余的元素按照从前到后的顺序先后清理。</li>
+<li><code>TimeEvictor</code>保留一个时间段的元素，早于这个时间段的元素会被清理。</li>
+</ul>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/11/29/flink-zhong-de-chuang-kou-jie-shao/" class="b-link-green">flink中的窗口介绍</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/11/29/flink-zhong-de-chuang-kou-jie-shao/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5fc32edfd590d4788ab02fa5.jpg" class="responsive-img" alt="flink中的窗口介绍">
+                        
+                        <span class="card-title">flink中的窗口介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                flink中的窗口介绍
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/flink/" class="post-category" target="_blank">
+                                    flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flink/" target="_blank">
+                        <span class="chip bg-color">flink</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/11/15/flink-zhong-de-join/">
+                    <div class="card-image">
+                        
+                        <img src="https://pic.downk.cc/item/5fb0e4aa01d2c6816c435485.jpg" class="responsive-img" alt="Flink中的join">
+                        
+                        <span class="card-title">Flink中的join</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                flink中的join操作
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/flink/" class="post-category" target="_blank">
+                                    flink
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flink/" target="_blank">
+                        <span class="chip bg-color">flink</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">383.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>
