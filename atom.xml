@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2020-11-29T06:55:41.367Z</updated>
+  <updated>2021-02-19T10:27:39.813Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hadoop的环境搭建</title>
+    <link href="http://gakkil.gitee.io/2021/02/19/hadoop-de-huan-jing-da-jian/"/>
+    <id>http://gakkil.gitee.io/2021/02/19/hadoop-de-huan-jing-da-jian/</id>
+    <published>2021-02-19T08:58:47.000Z</published>
+    <updated>2021-02-19T10:27:39.813Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;hadoop的集群搭建&quot;&gt;&lt;a href=&quot;#hadoop的集群搭建&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>flink中的窗口介绍</title>
@@ -525,33 +551,6 @@
     
     
       <category term="励志" scheme="http://gakkil.gitee.io/tags/%E5%8A%B1%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>es中简单入门案例</title>
-    <link href="http://gakkil.gitee.io/2020/05/04/es-zhong-jian-dan-ru-men-an-li/"/>
-    <id>http://gakkil.gitee.io/2020/05/04/es-zhong-jian-dan-ru-men-an-li/</id>
-    <published>2020-05-03T23:52:23.000Z</published>
-    <updated>2020-05-04T01:34:45.785Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;根据前面的学习，我们已经基本上了解了es的内部原理和基本的概念了，现在就让我们开始学习吧~~~&lt;/p&gt;
-&lt;h2 id=&quot;案例说明&quot;&gt;&lt;a href=&quot;#案例说明&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/categories/elasticsearch/"/>
-    
-    
-      <category term="elasticsearch" scheme="http://gakkil.gitee.io/tags/elasticsearch/"/>
     
   </entry>
   
