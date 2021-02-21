@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2021-02-19T10:27:39.813Z</updated>
+  <updated>2021-02-21T12:10:13.225Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hadoop环境的搭建&lt;二&gt;</title>
+    <link href="http://gakkil.gitee.io/2021/02/21/hadoop-huan-jing-de-da-jian-er/"/>
+    <id>http://gakkil.gitee.io/2021/02/21/hadoop-huan-jing-de-da-jian-er/</id>
+    <published>2021-02-21T06:03:00.000Z</published>
+    <updated>2021-02-21T12:10:13.225Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在上一篇文章中，我们已经搭建好了三台可以互相ping通的centos7的环境了，现在接着上一篇来继续搭建hadoop的环境。&lt;/p&gt;
+&lt;h2 id=&quot;创建hadoop用户&quot;&gt;&lt;a href=&quot;#创建hadoop用户&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>hadoop的环境搭建</title>
@@ -524,33 +551,6 @@
     
     
       <category term="BigDecimal" scheme="http://gakkil.gitee.io/tags/BigDecimal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人,为什么努力</title>
-    <link href="http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/"/>
-    <id>http://gakkil.gitee.io/2020/05/05/ren-wei-shi-me-nu-li/</id>
-    <published>2020-05-04T16:33:57.000Z</published>
-    <updated>2020-06-11T15:05:15.111Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;人为什么要努力啊，也许是为了将来有更多选择，也许是为了报答家人，也许是不辜负父母的期盼，我们在努力的过程中，曾经想过放弃，也许还要在黑暗中行走很久，也许看不到希望。但不要放弃，因为只有努力过我们才能证明自己。献给所有正在努力奋斗的学子们。&lt;/p&gt;
-&lt;p&gt;愿中国青年都摆脱冷气
-        
-      
-    
-    </summary>
-    
-      <category term="生活" scheme="http://gakkil.gitee.io/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="励志" scheme="http://gakkil.gitee.io/tags/%E5%8A%B1%E5%BF%97/"/>
     
   </entry>
   
