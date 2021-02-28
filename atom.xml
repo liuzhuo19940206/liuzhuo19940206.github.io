@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2021-02-21T12:10:13.225Z</updated>
+  <updated>2021-02-28T09:22:08.171Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hadoop的环境搭建&lt;三&gt;</title>
+    <link href="http://gakkil.gitee.io/2021/02/27/hadoop-de-huan-jing-da-jian-san/"/>
+    <id>http://gakkil.gitee.io/2021/02/27/hadoop-de-huan-jing-da-jian-san/</id>
+    <published>2021-02-27T07:04:06.000Z</published>
+    <updated>2021-02-28T09:22:08.171Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上一篇博客中，我们了解了hadoop的单机运行、伪分布运行模式，今天来学习完全分布式运行模式。&lt;/p&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h2&gt;&lt;p&gt;1)准备 3
+        
+      
+    
+    </summary>
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="http://gakkil.gitee.io/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>hadoop环境的搭建&lt;二&gt;</title>
@@ -524,33 +551,6 @@
     
     
       <category term="idea" scheme="http://gakkil.gitee.io/tags/idea/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BigDecimal一定不丢失精度?</title>
-    <link href="http://gakkil.gitee.io/2020/05/23/bigdecimal-yi-ding-bu-diu-shi-jing-du/"/>
-    <id>http://gakkil.gitee.io/2020/05/23/bigdecimal-yi-ding-bu-diu-shi-jing-du/</id>
-    <published>2020-05-23T01:54:25.000Z</published>
-    <updated>2020-05-23T02:23:16.204Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;最近因为接了一个和订单有关的需求，对于优惠力度的计算时，需要精确值，不能丢失精度，一开始无脑使用bigDecimal，后来发现完全不是那么一回事。。。&lt;/p&gt;
-&lt;p&gt;我们基本已经形成了常识，需要用到金钱的地方要用BigDecimal而不是其他，而我们也都知道浮点型变量在进行
-        
-      
-    
-    </summary>
-    
-      <category term="java" scheme="http://gakkil.gitee.io/categories/java/"/>
-    
-    
-      <category term="BigDecimal" scheme="http://gakkil.gitee.io/tags/BigDecimal/"/>
     
   </entry>
   

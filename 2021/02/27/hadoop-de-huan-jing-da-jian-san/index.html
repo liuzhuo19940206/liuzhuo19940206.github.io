@@ -1,0 +1,1799 @@
+<!DOCTYPE HTML>
+
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="hadoop的环境搭建&lt;三&gt;, 解忧杂货店">
+    <meta name="description" content="上一篇博客中，我们了解了hadoop的单机运行、伪分布运行模式，今天来学习完全分布式运行模式。
+分析1)准备 3 台客户机(关闭防火墙、静态 IP、主机名称)
+​        上一篇博客中，我们已经准备了三台：hadoop101、hado">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>hadoop的环境搭建&lt;三&gt; | 解忧杂货店</title>
+    <link rel="icon" type="image/bmp" href="/favicon.bmp">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+<script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<script src="/js/jquery.pjax.js"></script>
+<script src="//code.tidio.co/sykwy6ppcx3bghffoye9meseevqzcbyg.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">解忧杂货店</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/messageBoards" class="waves-effect waves-light">
+            
+            <i class="fa fa-comment"></i>
+            
+            <span>留言板</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">解忧杂货店</div>
+        <div class="logo-desc">
+            
+            未来は私が欲しい未来ではありません!
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        <li>
+            <a href="/messageBoards" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-comment"></i>
+                
+                留言板
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/liuzhuo19940206/liuzhuo19940206.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            // if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+            //     alert('密码错误，将返回主页！');
+            //     location.href = '/';
+            // }
+            if (pwd !== prompt('请输入访问本文章的密码')) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://img.imgdb.cn/item/6039ef5b5f4313ce25f25ba1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        hadoop的环境搭建&lt;三&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/hadoop/" target="_blank">
+                                <span class="chip bg-color">hadoop</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/hadoop/" class="post-category" target="_blank">
+                                hadoop
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-27
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        3.1k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        13 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>上一篇博客中，我们了解了hadoop的单机运行、伪分布运行模式，今天来学习完全分布式运行模式。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>1)准备 3 台客户机(关闭防火墙、静态 IP、主机名称)</p>
+<p>​        上一篇博客中，我们已经准备了三台：hadoop101、hadoop102、hadoop103；并且在hadoop101中，</p>
+<p>​        安装了java8和hadoop的环境。</p>
+<p> 2)安装 JDK</p>
+<p> 3)配置环境变量</p>
+<p> 4)安装 Hadoop</p>
+<p> 5)配置环境变量</p>
+<p> <strong>6)配置集群</strong></p>
+<p><strong>7)单点启动</strong></p>
+<p><strong>8)配置 ssh</strong> </p>
+<p><strong>9)群起并测试集群</strong></p>
+<h2 id="编写集群分发脚本xsync"><a href="#编写集群分发脚本xsync" class="headerlink" title="编写集群分发脚本xsync"></a>编写集群分发脚本xsync</h2><h3 id="scp安全拷贝"><a href="#scp安全拷贝" class="headerlink" title="scp安全拷贝"></a>scp安全拷贝</h3><p>目前，hadoop101上面，有java8和hadoop的解压缩的包，和配置好的环境变量，现在我们不想在hadoop102和hadoop103上面再次安装java8、hadoop的压缩包和配置环境变量，比较繁琐。</p>
+<p>使用scp，可以直接将安装好的软件包和配置文件拷贝过来即可。</p>
+<p>scp的语法命令：</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>scp 定义
+scp 可以实现服务器与服务器之间的数据拷贝。<span class="token punctuation">(</span>from server1 to server2<span class="token punctuation">)</span> 
+
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>基本语法
+scp <span class="token operator">-</span>r $pdir<span class="token operator">/</span>$fname $user@$host<span class="token operator">:</span>$pdir<span class="token operator">/</span>$fname
+命令 递归 要拷贝的文件路径<span class="token operator">/</span>名称 目的地用户@主机<span class="token operator">:</span>目的地路径<span class="token operator">/</span>名称
+</code></pre>
+<p>目前的环境：</p>
+<p>Hadoop101：</p>
+<p><img src="https://img.imgdb.cn/item/6039f8ac5f4313ce25fa92bb.jpg" alt></p>
+<p>Hadoop102：</p>
+<p><img src="https://img.imgdb.cn/item/6039f8f25f4313ce25facb6f.jpg" alt></p>
+<p>Hadoop103：</p>
+<p><img src="https://img.imgdb.cn/item/6039f9205f4313ce25faf38b.jpg" alt></p>
+<hr>
+<p>1）在hadoop101上，将<strong>java环境</strong>，传输到hadoop102上面。</p>
+<p><code>scp -r jdk1.8.0_211/ hadoop@hadoop102/opt/modules/</code></p>
+<p><img src="https://img.imgdb.cn/item/6039fa2c5f4313ce25fbf143.jpg" alt></p>
+<p>传输完毕后，查看hadoop102的 /opt/modules目录：</p>
+<p><img src="https://img.imgdb.cn/item/6039fade5f4313ce25fc9a1b.jpg" alt></p>
+<p>2）在hadoop102上面，将hadoop101的<strong>hadoop环境</strong>，传输到hadoop102上面。</p>
+<p><code>scp -r hadoop@hadoop101:/opt/modules/hadoop-3.2.2/ ./</code></p>
+<p><img src="https://img.imgdb.cn/item/6039fbb25f4313ce25fd57f7.jpg" alt></p>
+<p>传输完成：</p>
+<p><img src="https://img.imgdb.cn/item/6039fed25f4313ce250217d7.jpg" alt></p>
+<p>3) 在hadoop103服务器上，将hadoop101的环境变量配置文件传输到hadoop102。</p>
+<p><code>scp -r hadoop@hadoop101/etc/profile hadoop@hadoop102/etc/profile</code></p>
+<p><img src="https://img.imgdb.cn/item/603a00125f4313ce2503c1b0.jpg" alt></p>
+<p>失败，没有权限：</p>
+<p><img src="https://img.imgdb.cn/item/603a00ae5f4313ce25049f46.jpg" alt></p>
+<p>在hadoop102上面，查看：/etc/profile是否修改：</p>
+<p><img src="https://img.imgdb.cn/item/603a01955f4313ce2505d5e9.jpg" alt></p>
+<h3 id="rsync-远程同步工具"><a href="#rsync-远程同步工具" class="headerlink" title="rsync 远程同步工具"></a><strong>rsync</strong> 远程同步工具</h3><p>rsync 主要用于<strong>备份和镜像</strong>。具有<strong>速度快、避免复制相同内容</strong>和支持符号链接的优点。 rsync 和 scp 区别: 用 rsync 做文件的复制要比 scp 的速度快，rsync 只对差异文件做更新。</p>
+<p>scp 是把所有文件都复制过去。</p>
+<p>1）rsync的使用</p>
+<pre class=" language-java"><code class="language-java">基本语法<span class="token operator">:</span>
+
+rsync <span class="token operator">-</span>av $pdir<span class="token operator">/</span>$fname $user@$host<span class="token operator">:</span>$pdir<span class="token operator">/</span>$fname
+命令 选项参数 要拷贝的文件路径<span class="token operator">/</span>名称 目的地用户@主机<span class="token operator">:</span>目的地路径<span class="token operator">/</span>名称 选项参数说明
+
+选项 功能
+<span class="token operator">-</span>a 归档拷贝
+<span class="token operator">-</span>v 显示复制过程
+</code></pre>
+<p>2）案例</p>
+<p>在hadoop102上面，删除：wcinput和wcoutput，然后从hadoop101上面同步过来。</p>
+<p><img src="https://img.imgdb.cn/item/603a04c25f4313ce2509b2da.jpg" alt></p>
+<p><code>rsync -av hadoop@hadoop101:/opt/modules/hadoop-3.3.2/ ./</code></p>
+<p><img src="https://img.imgdb.cn/item/603a055a5f4313ce250a752e.jpg" alt></p>
+<h3 id="xsync-集群分发脚本"><a href="#xsync-集群分发脚本" class="headerlink" title="xsync 集群分发脚本"></a><strong>xsync</strong> 集群分发脚本</h3><p>1）需求:循环复制文件到所有节点的相同目录下</p>
+<p>2）需求分析:</p>
+<ol>
+<li><p>rsync 命令原始拷贝:</p>
+<pre><code> `rsync -av /opt/module atguigu@hadoop103:/opt/ `
+</code></pre></li>
+<li><p>期望脚本:</p>
+<p><strong>xsync</strong> 要同步的文件名称</p>
+</li>
+<li><p>期望脚本在任何路径都能使用(脚本放在声明了全局环境变量的路径)</p>
+<pre><code>[hadoop@hadoop101 ~]$ echo $PATH 
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/hadoop/.local/bin:/home/hadoop/bin:/opt/module/jdk1.8.0_221/bin
+</code></pre><p><img src="https://img.imgdb.cn/item/603a601f5f4313ce25473d1b.jpg" alt></p>
+<p>因此：我们编写自定义脚本后，放到hadoop的家目录下的bin目录下，就可以在任意的路径下使用该脚本了。</p>
+</li>
+</ol>
+<p>3）脚本实现</p>
+<ol>
+<li>在/home/atguigu/bin 目录下创建 xsync 文件</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">[hadoop@hadoop101 opt]$ cd /home/hadoop
+[hadoop@hadoop101 ~]$ mkdir bin
+[hadoop@hadoop101 ~]$ cd bin 
+[hadoop@hadoop101 bin]$ vim xsync
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603a654e5f4313ce2549da1d.jpg" alt></p>
+<p>在该文件中编写如下代码:</p>
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
+
+#1. 判断参数个数 
+if [ $# -lt 1 ] 
+then
+   echo Not Enough Arguement!
+   exit; 
+fi
+
+#2. 遍历集群所有机器
+for host in hadoop101 hadoop102 hadoop103 
+do
+    echo ==================== $host ====================
+    #3. 遍历所有目录，挨个发送
+    for file in $@
+    do
+       #4. 判断文件是否存在 
+       if [ -e $file ]
+          then
+               #5. 获取父目录
+               pdir=$(cd -P $(dirname $file); pwd)
+               #6. 获取当前文件的名称 fname=$(basename $file)
+               ssh $host "mkdir -p $pdir"
+               rsync -av $pdir/$fname $host:$pdir
+          else
+               echo $file does not exists!
+        fi 
+     done
+done
+</code></pre>
+<ol start="2">
+<li><p>修改脚本 xsync 具有执行权限</p>
+<p><code>chmod +x xsync</code></p>
+</li>
+<li><p>测试脚本</p>
+<p><code>xsync /home/hadoop/bin/</code></p>
+<p><img src="https://img.imgdb.cn/item/603a67ca5f4313ce254b1cfa.jpg" alt></p>
+</li>
+<li><p>将脚本复制到/bin中，以便全局调用</p>
+<p><code>sudo cp xsync /bin/</code></p>
+</li>
+<li><p>同步环境变量配置(root 所有者)</p>
+<p><code>sudo ./bin/xsync /etc/profile</code></p>
+</li>
+</ol>
+<p>注意：如果需要使用 sudo，那么xsync一定要给它的路径补全：/bin/xsync</p>
+<h2 id="SSH无密码登录配置"><a href="#SSH无密码登录配置" class="headerlink" title="SSH无密码登录配置"></a>SSH无密码登录配置</h2><h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p>1）基本语法</p>
+<p>ssh 另一台电脑的 IP 地址</p>
+<p>2）ssh 连接时出现 Host key verification failed 的解决方法 ：</p>
+<p>​     <code>ssh hadoop103</code><br> ➢ 如果出现如下内容<br> Are you sure you want to continue connecting (yes/no)?</p>
+<p>➢ 输入yes，并回车</p>
+<p>3）退回到 hadoop101</p>
+<p> <code>exit</code></p>
+<p><img src="https://img.imgdb.cn/item/603b200f5f4313ce258ce08a.jpg" alt></p>
+<h3 id="无密码登入"><a href="#无密码登入" class="headerlink" title="无密码登入"></a>无密码登入</h3><p>能够看到：ssh ip地址 后，我们都需要输入密码，很麻烦！</p>
+<p>1）免密登录原理</p>
+<p><img src="https://img.imgdb.cn/item/603b20825f4313ce258d0f71.jpg" alt></p>
+<p>2）生成公钥和私钥</p>
+<pre class=" language-java"><code class="language-java">查看家目录下是否有：<span class="token punctuation">.</span>ssh目录
+
+cd <span class="token operator">/</span>home<span class="token operator">/</span>hadoop<span class="token operator">/</span><span class="token punctuation">.</span>ssh
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603b21205f4313ce258d58c1.jpg" alt></p>
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span>）进入 <span class="token punctuation">.</span>ssh 目录下：
+
+cd <span class="token operator">/</span>home<span class="token operator">/</span>hadoop<span class="token operator">/</span><span class="token punctuation">.</span>ssh
+
+<span class="token number">2</span>）输入：
+ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa
+
+回车：三次，就会生成两个文件 <span class="token function">id_rsa</span><span class="token punctuation">(</span>私钥<span class="token punctuation">)</span>、id_rsa<span class="token punctuation">.</span><span class="token function">pub</span><span class="token punctuation">(</span>公钥<span class="token punctuation">)</span>
+
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603b22a85f4313ce258e100d.jpg" alt></p>
+<p><img src="https://img.imgdb.cn/item/603b22e95f4313ce258e2dae.jpg" alt></p>
+<p>3）将公钥拷贝到要免密登录的目标机器上</p>
+<pre class=" language-java"><code class="language-java">ssh<span class="token operator">-</span>copy<span class="token operator">-</span>id hadoop101
+ssh<span class="token operator">-</span>copy<span class="token operator">-</span>id hadoop102
+ssh<span class="token operator">-</span>copy<span class="token operator">-</span>id hadoop103
+
+注意：三台服务器上面，都要这样执行！
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603b235f5f4313ce258e60e3.jpg" alt></p>
+<p>注意:</p>
+<p>还需要在 hadoop101 上采用 root 账号，配置一下无密登录到 hadoop101、hadoop102、 hadoop103;</p>
+<p>还需要在 hadoop102 上采用 hadoop 账号配置一下无密登录到 hadoop101、hadoop102、 hadoop103 服务器上。</p>
+<p>还需要在 hadoop103 上采用 hadoop 账号配置一下无密登录到 hadoop101、hadoop102、 hadoop103 服务器上。</p>
+<hr>
+<p>三天服务器都执行完毕后：</p>
+<p><img src="https://img.imgdb.cn/item/603b24db5f4313ce258f111d.jpg" alt></p>
+<p>此时，再次执行：<code>ssh ip地址</code>就不会在要求输入密码了。</p>
+<p>3）.ssh 文件夹下(<strong>~/.ssh</strong>)的文件功能解释</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">known_hosts</th>
+<th>记录 ssh 访问过计算机的公钥(public key)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id_rsa</td>
+<td>生成的私钥</td>
+</tr>
+<tr>
+<td style="text-align:left">id_rsa.pub</td>
+<td>生成的公钥</td>
+</tr>
+<tr>
+<td style="text-align:left">authorized_keys</td>
+<td>存放授权过的无密登录服务器公钥</td>
+</tr>
+</tbody>
+</table>
+<h2 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h2><p><strong>1）集群部署规划</strong></p>
+<p>注意：</p>
+<p> ➢ NameNode和SecondaryNameNode不要安装在同一台服务器<br> ➢ ResourceManager也很消耗内存，不要和NameNode、SecondaryNameNode配置在同一台机器上。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hadoop101</th>
+<th>Hadoop102</th>
+<th>Hadoop103</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HDFS</td>
+<td><strong>NameNode</strong><br>DateNode</td>
+<td>DataNode</td>
+<td><strong>SecondaryNameNode</strong><br>DataNode</td>
+</tr>
+<tr>
+<td>YARN</td>
+<td>NodeManager</td>
+<td><strong>ResourceManager</strong><br>NodeManager</td>
+<td>NodeManager</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2）配置文件说明</strong></p>
+<p>Hadoop 配置文件分两类:默认配置文件和自定义配置文件，只有用户想修改某一默认</p>
+<p>配置值时，才需要修改自定义配置文件，更改相应属性值。</p>
+<ol>
+<li><p>默认配置文件:</p>
+<pre><code>要获取的默认文件             文件存放在 Hadoop 的 jar 包中的位置
+[core-default.xml]        hadoop-common-3.2.2.jar/core-default.xml
+[hdfs-default.xml]        hadoop-hdfs-3.2.2.jar/hdfs-default.xml
+[yarn-default.xml]        hadoop-yarn-common-3.2.2.jar/yarn-default.xml
+[mapred-default.xml]      hadoop-mapreduce-client-core-3.2.2.jar/mapred-default.xml
+</code></pre></li>
+<li><p>自定义配置文件:</p>
+<p><strong>core-site.xml</strong>、<strong>hdfs-site.xml</strong>、<strong>yarn-site.xml</strong>、<strong>mapred-site.xml</strong> 四个配置文件存放在 <strong>$HADOOP_HOME/etc/hadoop</strong> 这个路径上，用户可以根据项目需求重新进行修改配置。</p>
+</li>
+</ol>
+<p><strong>3）配置集群</strong></p>
+<ol>
+<li><p>核心配置</p>
+<p>配置 core-site.xml</p>
+<pre class=" language-xml"><code class="language-xml">cd $HADOOP_HOME/etc/hadoop
+
+vim core-site.xml
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 指定 NameNode 的地址 --></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://hadoop101:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 指定 hadoop 数据的存储目录 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span> 
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/opt/modules/hadoop-3.2.2/data<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 配置 HDFS 网页登录使用的静态用户为 hadoop --></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.http.staticuser.user<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+
+</code></pre>
+</li>
+<li><p>HDFS 配置文件</p>
+<p>配置 hdfs-site.xml</p>
+<pre class=" language-xml"><code class="language-xml">vim hdfs-site.xml
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- hdfs的副本数：默认为3，可以不配置--></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- nn web端访问地址--></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.namenode.http-address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop101:9870<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 2nn web 端访问地址--></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.namenode.secondary.http-address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop103:9868<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+</code></pre>
+</li>
+<li><p>YARN 配置文件</p>
+<p>配置 yarn-site.xml</p>
+<pre class=" language-xml"><code class="language-xml">vim yarn-site.xml
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 指定 MR 走 shuffle --></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.nodemanager.aux-services<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>mapreduce_shuffle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 指定 ResourceManager 的地址--></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.resourcemanager.hostname<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop102<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 是否开启yarn日志的聚集--></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.log-aggregation-enable<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- yarn日志聚集的时长--></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.log-aggregation.retain-seconds<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>604800<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+</code></pre>
+</li>
+<li><p>MapReduce 配置文件</p>
+<p>配置 mapred-site.xml</p>
+<pre class=" language-xml"><code class="language-xml">vim mapred-site.xml
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 指定 MapReduce 程序运行在 Yarn 上 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>mapreduce.framework.name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>yarn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 指定mr的历史日记 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>mapreduce.jobhistory.address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop101:10020<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- 指定mr的历史日记的web端口号 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>mapreduce.jobhistory.webapp.https.address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop101:19888<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+</code></pre>
+</li>
+</ol>
+<p><strong>4</strong>）在集群上分发配置好的 <strong>Hadoop</strong> 配置文件</p>
+<pre class=" language-shell"><code class="language-shell">xsync /opt/modules/hadoop-3.2.2/etc/hadoop/
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603b30c35f4313ce2594ea76.jpg" alt></p>
+<p><strong>5</strong>）去 <strong>103</strong> 和 <strong>104</strong> 上查看文件分发情况</p>
+<pre class=" language-shell"><code class="language-shell">cat /opt/modules/hadoop-3.2.2/etc/hadoop/core-site.xml
+</code></pre>
+<h2 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h2><p><strong>1）配置workers</strong></p>
+<pre><code>vim /opt/module/hadoop-3.2.2/etc/hadoop/workers
+
+在该文件中增加如下内容:
+hadoop101
+hadoop102
+hadoop103
+
+注意:该文件中添加的内容结尾不允许有空格，文件中不允许有空行。
+
+同步所有节点配置文件:
+xsync /opt/modules/hadoop-3.2.2/etc/hadoop/workers
+</code></pre><p><strong>2</strong>）启动集群</p>
+<ol>
+<li><p>如果集群是第一次启动，需要在 hadoop101 节点格式化 NameNode</p>
+<p>(注意: 格式化 NameNode，会产生<strong>新的集群 id</strong>，导致 NameNode 和 DataNode 的集群 id 不一致，集群找不到已往数据。如果集群在运行过程中报错，需要重新格式化 NameNode 的话，一定要先停 止 namenode 和 datanode 进程，并且要删除所有机器的 data 和 logs 目录，然后再进行格式化。)</p>
+<p><code>hdfs namenode -format</code></p>
+</li>
+<li><p>启动 HDFS（hadoop101上）</p>
+<p><code>sbin/start-dfs.sh</code></p>
+</li>
+<li><p>在配置了 <strong>ResourceManager</strong> 的节点(<strong>hadoop102</strong>)启动 YARN</p>
+<p><code>sbin/start-yarn.sh</code></p>
+</li>
+<li><p>启动历史服务器（hadoop101上）</p>
+<p><code>bin/mapred --daemon start historyserver</code></p>
+<p>hadoop101：</p>
+<p><img src="https://img.imgdb.cn/item/603b40925f4313ce259b45e4.jpg" alt></p>
+<p>hadoop102：</p>
+<p><img src="https://img.imgdb.cn/item/603b40c35f4313ce259b5a23.jpg" alt></p>
+<p>hadoop103：</p>
+<p><img src="https://img.imgdb.cn/item/603b40f05f4313ce259b6d2b.jpg" alt></p>
+</li>
+<li><p>Web 端查看 HDFS 的 NameNode</p>
+<p>浏览器中输入:<a href="http://hadoop101:9870" target="_blank" rel="noopener">http://hadoop101:9870</a></p>
+<p>查看 HDFS 上存储的数据信息</p>
+</li>
+<li><p>Web 端查看 YARN 的 ResourceManager</p>
+<p>浏览器中输入:<a href="http://hadoop102:8088" target="_blank" rel="noopener">http://hadoop102:8088</a></p>
+<p>查看 YARN 上运行的 Job 信息</p>
+</li>
+</ol>
+<p><strong>3</strong>）集群基本测试</p>
+<ol>
+<li><p>上传文件到集群</p>
+<p>➢ 上传小文件</p>
+<pre class=" language-shell"><code class="language-shell">hdfs dfs -mkdir /input
+
+hdfs dfs -put $HADOOP_HOME/wcinput/word.txt /input
+</code></pre>
+<p>➢ 上传大文件</p>
+<pre class=" language-shell"><code class="language-shell">hdfs dfs -put /opt/sofes/jdk-8u212-linux-x64.tar.gz /
+</code></pre>
+<p><img src="https://img.imgdb.cn/item/603b53245f4313ce25a46f84.jpg" alt></p>
+<p><img src="https://img.imgdb.cn/item/603b537f5f4313ce25a4aecf.jpg" alt></p>
+</li>
+<li><p>上传文件后查看文件存放在什么位置</p>
+<p>➢ 查看HDFS文件存储路径</p>
+<pre><code>[hadoop@hadoop101 subdir0]$ pwd
+/opt/module/hadoop-3.1.3/data/dfs/data/current/BP-1436128598- 192.168.10.102-1610603650062/current/finalized/subdir0/subdir0
+</code></pre><p>➢ 查看HDFS在磁盘存储文件内容</p>
+<pre><code>[hadoop@hadoop101 subdir0]$ cat blk_1073741825 
+hadoop java
+hadoop mapreduce
+yarn c++
+flink spark
+</code></pre></li>
+<li><p>拼接</p>
+<pre class=" language-shell"><code class="language-shell">[hadoop@hadoop101 subdir0]$ cat blk_1073741836 >> tmp.tar.gz
+[hadoop@hadoop101 subdir0]$ cat blk_1073741837 >> tmp.tar.gz 
+[hadoop@hadoop101 subdir0]$ tar -zxvf tmp.tar.gz
+
+发现就是我们上传的 java的安装包
+</code></pre>
+<p>因为：上传到hdfs中的文件，是以块来存储的，128M为一个块，java的安装包大于128M，因此会有两块文件，合在一起就是完整的数据。</p>
+</li>
+<li><p>下载</p>
+<pre class=" language-shell"><code class="language-shell">[hadoop@hadoop103 sofes]$ hdfs dfs -get /jdk-8u212-linux-x64.tar.gz ./
+</code></pre>
+</li>
+<li><p>执行 wordcount 程序</p>
+<pre class=" language-shell"><code class="language-shell">[hadoop@hadoop101 hadoop-3.2.2]$ hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.2.jar wordcount /input /output
+
+</code></pre>
+</li>
+</ol>
+<p><img src="https://img.imgdb.cn/item/603b54cb5f4313ce25a59615.jpg" alt></p>
+<h2 id="集群启动-停止方式总结"><a href="#集群启动-停止方式总结" class="headerlink" title="集群启动/停止方式总结"></a>集群启动<strong>/</strong>停止方式总结</h2><p><strong>1</strong>）各个模块分开启动<strong>/</strong>停止(配置 <strong>ssh</strong> 是前提)常用</p>
+<ol>
+<li><p>整体启动/停止 HDFS</p>
+<pre><code>start-dfs.sh/stop-dfs.sh
+</code></pre></li>
+<li><p>整体启动/停止 YARN</p>
+<pre><code>start-yarn.sh/stop-yarn.sh
+</code></pre></li>
+</ol>
+<p><strong>2</strong>）各个服务组件逐一启动<strong>/</strong>停止</p>
+<ol>
+<li><p>分别启动/停止 HDFS 组件</p>
+<pre><code>hdfs --daemon start/stop namenode/datanode/secondarynamenode
+</code></pre></li>
+<li><p>启动/停止 YARN</p>
+<pre><code>yarn --daemon start/stop resourcemanager/nodemanager
+</code></pre></li>
+<li><p>启动历史服务</p>
+<pre><code>mapred --daemon start/stop historyserver 
+</code></pre></li>
+</ol>
+<h2 id="编写-Hadoop-集群常用脚本"><a href="#编写-Hadoop-集群常用脚本" class="headerlink" title="编写 Hadoop 集群常用脚本"></a>编写 <strong>Hadoop</strong> 集群常用脚本</h2><p><strong>1</strong>）<strong>Hadoop</strong> 集群启停脚本(包含 <strong>HDFS</strong>，<strong>Yarn</strong>，<strong>Historyserver</strong>):<strong>myhadoop.sh</strong></p>
+<p>创建：myhadoop.sh 文件</p>
+<pre class=" language-shell"><code class="language-shell">cd /home/hadoop/bin
+vim myhadoop.sh
+</code></pre>
+<p>输入输入如下内容:</p>
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
+if [ $# -lt 1 ]
+then
+   echo "No Args Input..."
+   exit; 
+fi
+
+case $1 in
+"start")
+                echo " =================== 启动 hadoop 集群 ==================="
+                echo " ------------------- 启动 hdfs ---------------"
+                ssh hadoop101 "/opt/module/hadoop-3.1.3/sbin/start-dfs.sh" 
+                echo " ------------------- 启动 yarn ---------------"
+                ssh hadoop102 "/opt/module/hadoop-3.1.3/sbin/start-yarn.sh"
+                echo " ------------------- 启动 historyserver ---------------"
+                ssh hadoop101 "/opt/module/hadoop-3.1.3/bin/mapred --daemon start historyserver"
+;;
+"stop")
+                echo " =================== 关闭 hadoop 集群 ==================="
+                echo " ------------------- 关闭 historyserver ---------------"
+                ssh hadoop101 "/opt/module/hadoop-3.1.3/bin/mapred --daemon stop historyserver"
+                echo " ------------------- 关闭 yarn ---------------"
+                ssh hadoop102 "/opt/module/hadoop-3.1.3/sbin/stop-yarn.sh" 
+                echo " ------------------- 关闭 hdfs ---------------"
+                ssh hadoop101 "/opt/module/hadoop-3.1.3/sbin/stop-dfs.sh"
+;;
+*)
+        echo "Input Args Error..."
+;;
+esac
+</code></pre>
+<p>赋予脚本执行权限：</p>
+<pre class=" language-shell"><code class="language-shell">chmod +x myhadoop.sh
+</code></pre>
+<p><strong>2</strong>）查看三台服务器 <strong>Java</strong> 进程脚本:<strong>jpsall</strong></p>
+<p>创建：jpsall 文件</p>
+<pre class=" language-shell"><code class="language-shell">cd /home/hadoop/bin
+vim jpsall
+</code></pre>
+<p>输入以下内容：</p>
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
+
+for host in hadoop101 hadoop102 hadoop103 
+do
+       echo "=============== $host ==============="
+       ssh $host "source /etc/profile;jps"
+done
+</code></pre>
+<p>保存后退出，然后赋予脚本执行权限:</p>
+<pre class=" language-shell"><code class="language-shell">chmod +x jpsall
+</code></pre>
+<p><strong>3</strong>）分发<strong>/home/atguigu/bin</strong> 目录，保证自定义脚本在三台机器上都可以使用</p>
+<pre class=" language-shell"><code class="language-shell">xsync /home/hadoop/bin/
+</code></pre>
+<h2 id="常用端口号说明"><a href="#常用端口号说明" class="headerlink" title="常用端口号说明"></a>常用端口号说明</h2><table>
+<thead>
+<tr>
+<th>端口名称</th>
+<th>Hadoop2.x</th>
+<th>Hadoop3.x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NameNode 内部通信端口</td>
+<td>8020 / 9000</td>
+<td>8020 / 9000/9820</td>
+</tr>
+<tr>
+<td>NameNode HTTP UI</td>
+<td>50070</td>
+<td>9870</td>
+</tr>
+<tr>
+<td>MapReduce 查看执行任务端口</td>
+<td>8088</td>
+<td>8088</td>
+</tr>
+<tr>
+<td>历史服务器通信端口</td>
+<td>19888</td>
+<td>19888</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://gakkil.gitee.io" class="b-link-green">解忧杂货店</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2021/02/27/hadoop-de-huan-jing-da-jian-san/" class="b-link-green">hadoop的环境搭建&lt;三&gt;</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'czeMb63q1knq7zTW4KYb3PiR-gzGzoHsz',
+        appKey: 'TOIvQuWMaVWiLDCAl2kE6PLE',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'identicon',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊! '
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/02/27/hadoop-de-huan-jing-da-jian-san/">
+                    <div class="card-image">
+                        
+                        <img src="https://img.imgdb.cn/item/6039ef5b5f4313ce25f25ba1.jpg" class="responsive-img" alt="hadoop的环境搭建<三>">
+                        
+                        <span class="card-title">hadoop的环境搭建<三></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                hadoop的完全分布式环境搭建
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hadoop/" class="post-category" target="_blank">
+                                    hadoop
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hadoop/" target="_blank">
+                        <span class="chip bg-color">hadoop</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/21/hadoop-huan-jing-de-da-jian-er/">
+                    <div class="card-image">
+                        
+                        <img src="https://img.imgdb.cn/item/6031f8905f4313ce25fd1de1.jpg" class="responsive-img" alt="hadoop环境的搭建<二>">
+                        
+                        <span class="card-title">hadoop环境的搭建<二></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+                       
+                                hadoop的环境搭建二
+                      
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hadoop/" class="post-category" target="_blank">
+                                    hadoop
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hadoop/" target="_blank">
+                        <span class="chip bg-color">hadoop</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 解忧杂货店<br />'
+            + '作者: 刘小宅<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="
+     margin-right: 70px;
+     margin-bottom: 15px;
+">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            gakki酱的小迷弟
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">389.6k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/liuzhuo19940206" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="https://weibo.com/3310889015" class="tooltipped" target="_blank" data-tooltip="微博" data-position="top" data-delay="50">
+        <i class="fa fa-weibo"></i>
+    </a>
+
+
+
+    <a href="mailto:575920824@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=575920824" class="tooltipped" data-tooltip="QQ联系我: 575920824" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+
+</html>
