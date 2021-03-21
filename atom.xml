@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gakkil.gitee.io/"/>
-  <updated>2021-02-28T09:54:34.899Z</updated>
+  <updated>2021-03-21T07:33:19.712Z</updated>
   <id>http://gakkil.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flink中连接Kafka</title>
+    <link href="http://gakkil.gitee.io/2021/03/21/flink-zhong-lian-jie-kafka/"/>
+    <id>http://gakkil.gitee.io/2021/03/21/flink-zhong-lian-jie-kafka/</id>
+    <published>2021-03-21T06:51:58.000Z</published>
+    <updated>2021-03-21T07:33:19.712Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;前面的文章，我们已经了解过了Kafka的搭建，所以今天，我们要来使用flink连接kafka消费数据，然后处理后，发送数据到Kafka中。&lt;/p&gt;
+&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/categories/flink/"/>
+    
+    
+      <category term="flink" scheme="http://gakkil.gitee.io/tags/flink/"/>
+    
+  </entry>
   
   <entry>
     <title>hadoop的环境搭建&lt;三&gt;</title>
@@ -524,33 +551,6 @@
     
     
       <category term="图床" scheme="http://gakkil.gitee.io/tags/%E5%9B%BE%E5%BA%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>idea2020-01永久破解</title>
-    <link href="http://gakkil.gitee.io/2020/05/23/idea2020-01-yong-jiu-po-jie/"/>
-    <id>http://gakkil.gitee.io/2020/05/23/idea2020-01-yong-jiu-po-jie/</id>
-    <published>2020-05-23T08:42:49.000Z</published>
-    <updated>2020-05-23T09:03:49.968Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;目前，随着2018年后，idea的注册码都一一开始失效了，导致需要随时找注册码，很麻烦。&lt;/p&gt;
-&lt;p&gt;这里教大家破解最新的idea版本，目前，博主这里最新的版本是：idea2020-01的版本。如果后面出现新的idea不保证该方法还能破解，因此需要确认你要下载的idea的
-        
-      
-    
-    </summary>
-    
-      <category term="idea" scheme="http://gakkil.gitee.io/categories/idea/"/>
-    
-    
-      <category term="idea" scheme="http://gakkil.gitee.io/tags/idea/"/>
     
   </entry>
   
